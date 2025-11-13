@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    color-scheme: light;
+    scroll-behavior: smooth;
+}
+
+body {
+    @apply bg-white text-slate-900 antialiased;
+}
+
+::selection {
+    @apply bg-brand-200 text-brand-900;
+}
+
+a {
+    @apply transition-colors duration-200;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    @apply outline-none ring-2 ring-brand-400 ring-offset-2 ring-offset-white;
+}
+
+[data-prefers-reduced-motion='reduce'] * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+}

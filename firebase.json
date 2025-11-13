@@ -1,27 +1,11 @@
 {
-  "hosting": {
-    "public": ".",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
+  "hosting": [
+    {
+      "site": "cojauny",
+      "source": ".",
+      "frameworksBackend": {
+        "region": "us-central1"
       }
-    ],
-    "headers": [
-      {
-        "source": "**",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "public, max-age=3600"
-          }
-        ]
-      }
-    ]
-  }
+    }
+  ]
 }

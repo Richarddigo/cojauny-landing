@@ -1,280 +1,103 @@
-# 🚀 Coride - MVP Landing Page
+# Cojauny Landing
 
-![Coride Banner](https://via.placeholder.com/1200x400/667eea/ffffff?text=Coride+-+Share+Transportation+with+Your+Flight)
+Landing page oficial de Cojauny construida con Next.js 14, TypeScript, Tailwind CSS, Framer Motion, Supabase y Zoho Mail.
 
-## 📋 Descripción
+## Requisitos previos
 
-Landing page para validación activa del MVP de **Coride** - una plataforma que conecta pasajeros del mismo vuelo para compartir transporte desde/hacia el aeropuerto.
+- Node.js 18+
+- Cuenta de Supabase (`mi-proyecto-supabase`)
+- Cuenta de Zoho Mail con acceso SMTP/API
+- Cuenta de Vercel para el despliegue
 
-### ✨ Características
-
-- 🌍 **Multiidioma**: Español, Inglés y Alemán
-- 📱 **Responsive**: Diseño mobile-first optimizado
-- 🎨 **Moderno**: UI/UX limpia y profesional
-- 📊 **Analytics**: Integración con Google Analytics y Meta Pixel
-- 📝 **Waitlist**: Formulario funcional para captura de early adopters
-- ⚡ **Rápido**: Sin frameworks pesados, HTML/CSS/JS puro
-- 🎯 **Conversion Optimized**: CTAs estratégicos y social proof
-
-## 🚀 Despliegue Rápido en GitHub Pages
-
-### Opción 1: Interfaz Web de GitHub
-
-1. **Sube los archivos a tu repositorio**
-   - Crea un nuevo repositorio en GitHub
-   - Sube todos los archivos (index.html, styles.css, app.js, translations.js)
-
-2. **Activa GitHub Pages**
-   - Ve a Settings → Pages
-   - En "Source", selecciona "main" branch
-   - Carpeta: / (root)
-   - Click en "Save"
-
-3. **¡Listo!** Tu sitio estará disponible en:
-   ```
-   https://[tu-usuario].github.io/[nombre-repo]/
-   ```
-
-### Opción 2: Línea de Comandos
+## Instalación
 
 ```bash
-# 1. Inicializa el repositorio
-git init
-git add .
-git commit -m "🚀 Initial commit: Coride MVP landing page"
-
-# 2. Conecta con GitHub (reemplaza con tu repo)
-git remote add origin https://github.com/[tu-usuario]/coride-web.git
-git branch -M main
-git push -u origin main
-
-# 3. GitHub Pages se activará automáticamente si el repo se llama [tu-usuario].github.io
-# O manualmente en Settings → Pages
+npm install
 ```
 
-## 📁 Estructura del Proyecto
+Copia `.env.example` a `.env.local` y completa las variables de entorno:
 
-```
-coride_web/
-├── index.html          # Página principal
-├── styles.css          # Estilos CSS
-├── app.js             # Lógica JavaScript
-├── translations.js    # Sistema de traducciones (ES, EN, DE)
-├── README.md          # Este archivo
-└── assets/            # (opcional) Imágenes y recursos
+```bash
+cp .env.example .env.local
 ```
 
-## 🛠️ Configuración
+Variables clave:
 
-### 1. Google Analytics
+- `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_PROJECT_ID`, `SUPABASE_URL`
+- `ZOHO_SMTP_USER`, `ZOHO_SMTP_PASSWORD`, `ZOHO_API_KEY`, `ZOHO_ACCOUNT_ID`
+- `EMAIL_FROM_ADDRESS`, `EMAIL_ADMIN_RECIPIENT`
+- `CURRENT_SITE_URL` o `CURRENT_SITE_HTML` para la migración
 
-Reemplaza `G-XXXXXXXXXX` en `index.html` (línea ~370) con tu ID de Analytics:
+## Desarrollo local
 
-```javascript
-gtag('config', 'G-TU-ID-AQUI');
+```bash
+npm run dev
 ```
 
-### 2. Meta Pixel (Facebook)
+La aplicación estará disponible en `http://localhost:3000`.
 
-Reemplaza `YOUR_PIXEL_ID` en `index.html` (línea ~378) con tu Pixel ID:
+## Scripts útiles
 
-```javascript
-fbq('init', 'TU-PIXEL-ID-AQUI');
+- `npm run lint` – linting con ESLint.
+- `npm run type-check` – verificación estricta de TypeScript.
+- `npm run test` – ejecuta Jest y React Testing Library.
+- `npm run build` – compila para producción (SSG/ISR).
+- `npm run migrate:content` – extrae contenido del sitio actual (`scripts/extract-current-site.ts`).
+- `npm run supabase:backup` – exporta tablas críticas a `docs/backups` (`scripts/backup-supabase.ts`).
+
+## Supabase
+
+1. Ejecuta `SUPABASE_SCHEMA.sql` en el proyecto Supabase (`mi-proyecto-supabase`).
+2. Habilita las políticas RLS y asegúrate de que la función `anonymize_user_data` se haya creado.
+3. Despliega la función edge `supabase/functions/send-beta-email`:
+
+```bash
+supabase functions deploy send-beta-email --project-ref mi-proyecto-supabase
 ```
 
-### 3. Personalización
+4. Configura las variables de la función edge (`ZOHO_SMTP_USER`, `ZOHO_SMTP_PASSWORD`, `ZOHO_API_KEY`, `ZOHO_ACCOUNT_ID`, `EMAIL_FROM_ADDRESS`).
 
-- **Logo**: Reemplaza el emoji ✈️ con tu logo en `.logo-icon`
-- **Colores**: Modifica las variables CSS en `:root` (styles.css)
-- **Contenido**: Edita los textos en `translations.js`
+## Despliegue en Vercel
 
-## 📊 Gestión de Datos
+1. Ejecuta un build local para validar:
 
-### Ver Inscripciones en Waitlist
-
-Abre la consola del navegador (F12) y ejecuta:
-
-```javascript
-exportWaitlist()
+```bash
+npm run build
 ```
 
-Esto descargará un archivo JSON con todos los registros.
+2. Conecta el repositorio `cojauny-landing` a Vercel.
+3. Define las variables en el dashboard de Vercel (incluyendo las claves de Supabase y Zoho).
+4. El workflow de GitHub Actions (`.github/workflows/ci.yml`) compila, ejecuta tests y despliega en Vercel usando los secretos `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`.
 
-### Ver Datos en Consola
+## Emails
 
-```javascript
-// Ver todos los inscritos
-JSON.parse(localStorage.getItem('corideWaitlist'))
+- Plantillas HTML y texto plano en `emails/templates`.
+- `supabase/functions/send-beta-email` envía a través de SMTP o API REST de Zoho.
+- `src/lib/email.ts` expone `triggerEdgeEmailFunction` para invocar la función edge.
 
-// Ver contador actual
-localStorage.getItem('corideUserCount')
+## Migración de contenido
 
-// Limpiar todos los datos (reset)
-localStorage.clear()
-```
+1. Establece `CURRENT_SITE_URL` o `CURRENT_SITE_HTML` en `.env.local`.
+2. Ejecuta `npm run migrate:content` para generar `docs/extracted-content.json`.
+3. Sigue `MIGRATION.md` para asignar textos e imágenes.
 
-## 🎯 Funcionalidades Implementadas
+## Backup de datos
 
-### ✅ Requerimientos Cumplidos
+Ejecuta `npm run supabase:backup` con `SUPABASE_URL` y `SUPABASE_SERVICE_ROLE_KEY` configurados. Los archivos se guardan en `docs/backups`.
 
-- [x] **Landing page rápida y visual**
-  - Header claro con propuesta de valor
-  - Explicación problema + solución
-  - Mockup visual del MVP
-  - CTA prominente
+## Pruebas y calidad
 
-- [x] **Form de waitlist**
-  - Campos: Nombre, Email, Vuelo (opcional)
-  - Checkbox beta tester
-  - Validación HTML5
-  - Almacenamiento local (localStorage)
+- Tests unitarios en `__tests__/` para componentes clave y librerías.
+- Objetivo de Lighthouse ≥ 90 en Performance/SEO/Best Practices/Accessibility.
+- Accesibilidad: WCAG 2.1 AA (usa `npm run test` y verifica manualmente con stories y Lighthouse).
 
-- [x] **Botón "Quiero probar"**
-  - Visible en header y secciones principales
-  - Modal elegante con formulario
-  - Mensaje de confirmación
+## Recursos adicionales
 
-- [x] **Social proof**
-  - Counter de early testers con animación
-  - Testimonios convincentes
-  - Lista de aeropuertos objetivo
-  - Estadísticas de ahorro
+- Plan de integración con SDK móviles en `src/app/docs/sdk-plan`.
+- Políticas legales en `src/app/legal/*` (versiones base, actualiza según necesidades legales).
+- Checklist de cumplimiento en `CHECKLIST.md`.
 
-- [x] **Multiidioma**
-  - Español, Inglés, Alemán
-  - Cambio dinámico sin recargar
-  - Detección automática del navegador
-  - Preferencia guardada
+## Licencia
 
-- [x] **Analytics**
-  - Google Analytics configurado
-  - Meta Pixel integrado
-  - Eventos personalizados (scroll, clicks, conversiones)
-
-## 📱 SEO y Performance
-
-- Meta tags optimizados
-- Open Graph para redes sociales
-- Responsive design (mobile-first)
-- Fonts optimizados (Google Fonts)
-- CSS y JS sin dependencias externas
-- Tiempo de carga < 1s
-
-## 🎨 Personalización Avanzada
-
-### Cambiar Colores
-
-Edita `styles.css`:
-
-```css
-:root {
-    --primary: #2563eb;        /* Color principal */
-    --primary-dark: #1d4ed8;   /* Hover states */
-    --secondary: #10b981;      /* Acentos */
-}
-```
-
-### Añadir Nuevos Idiomas
-
-En `translations.js`, añade un nuevo objeto:
-
-```javascript
-const translations = {
-    // ... existentes
-    fr: {
-        cta: "Je veux essayer 🚀",
-        // ... resto de traducciones
-    }
-};
-```
-
-Añade el botón en `index.html`:
-
-```html
-<button class="lang-btn" data-lang="fr">🇫🇷 FR</button>
-```
-
-## 🔗 Integraciones Futuras
-
-### Recomendadas para Producción
-
-1. **Backend para Waitlist**
-   - Supabase (gratis, fácil setup)
-   - Google Sheets + Apps Script
-   - Airtable API
-   - Firebase
-
-2. **Email Marketing**
-   - ConvertKit
-   - MailerLite
-   - Mailchimp
-
-3. **Analytics Avanzados**
-   - Hotjar (heatmaps)
-   - Microsoft Clarity (sesiones grabadas)
-   - Plausible (alternativa a GA)
-
-## 📈 Métricas a Monitorear
-
-1. **Conversión**
-   - % visitantes que abren modal
-   - % que completan formulario
-   - Bounce rate
-
-2. **Engagement**
-   - Tiempo en página
-   - Scroll depth
-   - Clicks en CTAs
-
-3. **Adquisición**
-   - Fuentes de tráfico
-   - Páginas de entrada
-   - Dispositivos (mobile vs desktop)
-
-## 🐛 Troubleshooting
-
-### La página no se muestra en GitHub Pages
-
-- Verifica que `index.html` esté en la raíz
-- Espera 5-10 minutos después de activar Pages
-- Revisa Settings → Pages para ver el estado
-
-### Los estilos no cargan
-
-- Verifica las rutas en `index.html`
-- Asegúrate de que `styles.css` esté en la misma carpeta
-
-### Las traducciones no funcionan
-
-- Abre la consola (F12) y busca errores
-- Verifica que `translations.js` cargue antes de `app.js`
-
-## 📞 Soporte
-
-Para dudas sobre el proyecto Coride:
-- Email: hello@coride.app
-- GitHub Issues: [tu-repo]/issues
-
-## 📄 Licencia
-
-Este proyecto es de código abierto para fines de validación MVP.
-
----
-
-## 🎯 Próximos Pasos Recomendados
-
-1. **Hoy**: Despliega en GitHub Pages
-2. **Esta semana**: 
-   - Añade tu logo real
-   - Conecta con servicio de email
-   - Comparte en redes sociales
-3. **Este mes**:
-   - Recoge feedback de los primeros 50 usuarios
-   - Itera basándote en datos
-   - Prepara MVP funcional
-
----
-
-**¡Buena suerte con tu validación! 🚀**
-
-Made with ❤️ for early-stage founders
+MIT – ver `LICENSE`.

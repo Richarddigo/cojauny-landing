@@ -1,0 +1,7 @@
+Alerta interna: nuevo feedback crítico
+
+Nombre: {{name}}
+Email: {{email}}
+Sentimiento: {{sentiment}}
+Mensaje:
+{{message}}

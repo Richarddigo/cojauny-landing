@@ -1,0 +1,991 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for locales/legal.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">locales</a> legal.ts</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>0/302</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>0/302</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line low'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a>
+<a name='L142'></a><a href='#L142'>142</a>
+<a name='L143'></a><a href='#L143'>143</a>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a>
+<a name='L153'></a><a href='#L153'>153</a>
+<a name='L154'></a><a href='#L154'>154</a>
+<a name='L155'></a><a href='#L155'>155</a>
+<a name='L156'></a><a href='#L156'>156</a>
+<a name='L157'></a><a href='#L157'>157</a>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a>
+<a name='L181'></a><a href='#L181'>181</a>
+<a name='L182'></a><a href='#L182'>182</a>
+<a name='L183'></a><a href='#L183'>183</a>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a>
+<a name='L198'></a><a href='#L198'>198</a>
+<a name='L199'></a><a href='#L199'>199</a>
+<a name='L200'></a><a href='#L200'>200</a>
+<a name='L201'></a><a href='#L201'>201</a>
+<a name='L202'></a><a href='#L202'>202</a>
+<a name='L203'></a><a href='#L203'>203</a>
+<a name='L204'></a><a href='#L204'>204</a>
+<a name='L205'></a><a href='#L205'>205</a>
+<a name='L206'></a><a href='#L206'>206</a>
+<a name='L207'></a><a href='#L207'>207</a>
+<a name='L208'></a><a href='#L208'>208</a>
+<a name='L209'></a><a href='#L209'>209</a>
+<a name='L210'></a><a href='#L210'>210</a>
+<a name='L211'></a><a href='#L211'>211</a>
+<a name='L212'></a><a href='#L212'>212</a>
+<a name='L213'></a><a href='#L213'>213</a>
+<a name='L214'></a><a href='#L214'>214</a>
+<a name='L215'></a><a href='#L215'>215</a>
+<a name='L216'></a><a href='#L216'>216</a>
+<a name='L217'></a><a href='#L217'>217</a>
+<a name='L218'></a><a href='#L218'>218</a>
+<a name='L219'></a><a href='#L219'>219</a>
+<a name='L220'></a><a href='#L220'>220</a>
+<a name='L221'></a><a href='#L221'>221</a>
+<a name='L222'></a><a href='#L222'>222</a>
+<a name='L223'></a><a href='#L223'>223</a>
+<a name='L224'></a><a href='#L224'>224</a>
+<a name='L225'></a><a href='#L225'>225</a>
+<a name='L226'></a><a href='#L226'>226</a>
+<a name='L227'></a><a href='#L227'>227</a>
+<a name='L228'></a><a href='#L228'>228</a>
+<a name='L229'></a><a href='#L229'>229</a>
+<a name='L230'></a><a href='#L230'>230</a>
+<a name='L231'></a><a href='#L231'>231</a>
+<a name='L232'></a><a href='#L232'>232</a>
+<a name='L233'></a><a href='#L233'>233</a>
+<a name='L234'></a><a href='#L234'>234</a>
+<a name='L235'></a><a href='#L235'>235</a>
+<a name='L236'></a><a href='#L236'>236</a>
+<a name='L237'></a><a href='#L237'>237</a>
+<a name='L238'></a><a href='#L238'>238</a>
+<a name='L239'></a><a href='#L239'>239</a>
+<a name='L240'></a><a href='#L240'>240</a>
+<a name='L241'></a><a href='#L241'>241</a>
+<a name='L242'></a><a href='#L242'>242</a>
+<a name='L243'></a><a href='#L243'>243</a>
+<a name='L244'></a><a href='#L244'>244</a>
+<a name='L245'></a><a href='#L245'>245</a>
+<a name='L246'></a><a href='#L246'>246</a>
+<a name='L247'></a><a href='#L247'>247</a>
+<a name='L248'></a><a href='#L248'>248</a>
+<a name='L249'></a><a href='#L249'>249</a>
+<a name='L250'></a><a href='#L250'>250</a>
+<a name='L251'></a><a href='#L251'>251</a>
+<a name='L252'></a><a href='#L252'>252</a>
+<a name='L253'></a><a href='#L253'>253</a>
+<a name='L254'></a><a href='#L254'>254</a>
+<a name='L255'></a><a href='#L255'>255</a>
+<a name='L256'></a><a href='#L256'>256</a>
+<a name='L257'></a><a href='#L257'>257</a>
+<a name='L258'></a><a href='#L258'>258</a>
+<a name='L259'></a><a href='#L259'>259</a>
+<a name='L260'></a><a href='#L260'>260</a>
+<a name='L261'></a><a href='#L261'>261</a>
+<a name='L262'></a><a href='#L262'>262</a>
+<a name='L263'></a><a href='#L263'>263</a>
+<a name='L264'></a><a href='#L264'>264</a>
+<a name='L265'></a><a href='#L265'>265</a>
+<a name='L266'></a><a href='#L266'>266</a>
+<a name='L267'></a><a href='#L267'>267</a>
+<a name='L268'></a><a href='#L268'>268</a>
+<a name='L269'></a><a href='#L269'>269</a>
+<a name='L270'></a><a href='#L270'>270</a>
+<a name='L271'></a><a href='#L271'>271</a>
+<a name='L272'></a><a href='#L272'>272</a>
+<a name='L273'></a><a href='#L273'>273</a>
+<a name='L274'></a><a href='#L274'>274</a>
+<a name='L275'></a><a href='#L275'>275</a>
+<a name='L276'></a><a href='#L276'>276</a>
+<a name='L277'></a><a href='#L277'>277</a>
+<a name='L278'></a><a href='#L278'>278</a>
+<a name='L279'></a><a href='#L279'>279</a>
+<a name='L280'></a><a href='#L280'>280</a>
+<a name='L281'></a><a href='#L281'>281</a>
+<a name='L282'></a><a href='#L282'>282</a>
+<a name='L283'></a><a href='#L283'>283</a>
+<a name='L284'></a><a href='#L284'>284</a>
+<a name='L285'></a><a href='#L285'>285</a>
+<a name='L286'></a><a href='#L286'>286</a>
+<a name='L287'></a><a href='#L287'>287</a>
+<a name='L288'></a><a href='#L288'>288</a>
+<a name='L289'></a><a href='#L289'>289</a>
+<a name='L290'></a><a href='#L290'>290</a>
+<a name='L291'></a><a href='#L291'>291</a>
+<a name='L292'></a><a href='#L292'>292</a>
+<a name='L293'></a><a href='#L293'>293</a>
+<a name='L294'></a><a href='#L294'>294</a>
+<a name='L295'></a><a href='#L295'>295</a>
+<a name='L296'></a><a href='#L296'>296</a>
+<a name='L297'></a><a href='#L297'>297</a>
+<a name='L298'></a><a href='#L298'>298</a>
+<a name='L299'></a><a href='#L299'>299</a>
+<a name='L300'></a><a href='#L300'>300</a>
+<a name='L301'></a><a href='#L301'>301</a>
+<a name='L302'></a><a href='#L302'>302</a>
+<a name='L303'></a><a href='#L303'>303</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import type { Locale } from './config';</span></span></span>
+<span class="cstat-no" title="statement not covered" >import { defaultLocale } from './config';</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >interface LegalSection {</span>
+<span class="cstat-no" title="statement not covered" >  heading: string;</span>
+<span class="cstat-no" title="statement not covered" >  body: string;</span>
+<span class="cstat-no" title="statement not covered" >}</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >export interface LegalPageCopy {</span>
+<span class="cstat-no" title="statement not covered" >  title: string;</span>
+<span class="cstat-no" title="statement not covered" >  intro: string;</span>
+<span class="cstat-no" title="statement not covered" >  updatedAt: string;</span>
+<span class="cstat-no" title="statement not covered" >  sections: LegalSection[];</span>
+<span class="cstat-no" title="statement not covered" >  contact: string;</span>
+<span class="cstat-no" title="statement not covered" >}</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >interface LegalCopy {</span>
+<span class="cstat-no" title="statement not covered" >  privacy: LegalPageCopy;</span>
+<span class="cstat-no" title="statement not covered" >  cookies: LegalPageCopy;</span>
+<span class="cstat-no" title="statement not covered" >  terms: LegalPageCopy;</span>
+<span class="cstat-no" title="statement not covered" >}</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >const legalCopy: Record&lt;Locale, LegalCopy&gt; = {</span>
+<span class="cstat-no" title="statement not covered" >  es: {</span>
+<span class="cstat-no" title="statement not covered" >    privacy: {</span>
+<span class="cstat-no" title="statement not covered" >      title: 'Política de privacidad',</span>
+<span class="cstat-no" title="statement not covered" >      intro:</span>
+<span class="cstat-no" title="statement not covered" >        'En Cojauny tratamos la información personal con especial cuidado. Este documento resume cómo recopilamos, utilizamos y protegemos tus datos cuando participas en la beta o envías feedback.',</span>
+<span class="cstat-no" title="statement not covered" >      updatedAt: 'Actualizado el 13 de noviembre de 2025',</span>
+<span class="cstat-no" title="statement not covered" >      sections: [</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Responsable del tratamiento',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Cojauny Mobility S.L. (CIF B0000000) con correo de contacto privacidad@cojauny.com.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Datos que recopilamos',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Datos de identificación (nombre, email profesional), información sobre tu compañía y caso de uso, mensajes enviados en formularios y métricas agregadas de uso de la landing.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Finalidades y conservación',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Gestionar el acceso a la beta, responder a solicitudes y mejorar el producto. Conservamos los datos como máximo 12 meses desde el último contacto o hasta que solicites su eliminación.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Derechos de las personas usuarias',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Puedes ejercer acceso, rectificación, supresión, oposición y portabilidad escribiendo a privacidad@cojauny.com. Responderemos en un plazo máximo de 30 días.'</span>
+<span class="cstat-no" title="statement not covered" >        }</span>
+<span class="cstat-no" title="statement not covered" >      ],</span>
+<span class="cstat-no" title="statement not covered" >      contact: 'Para cualquier duda adicional escribe a privacidad@cojauny.com.'</span>
+<span class="cstat-no" title="statement not covered" >    },</span>
+<span class="cstat-no" title="statement not covered" >    cookies: {</span>
+<span class="cstat-no" title="statement not covered" >      title: 'Política de cookies',</span>
+<span class="cstat-no" title="statement not covered" >      intro:</span>
+<span class="cstat-no" title="statement not covered" >        'Utilizamos cookies estrictamente necesarias para el funcionamiento del sitio y, de forma opcional, cookies de analítica para entender cómo se utiliza la landing.',</span>
+<span class="cstat-no" title="statement not covered" >      updatedAt: 'Actualizado el 13 de noviembre de 2025',</span>
+<span class="cstat-no" title="statement not covered" >      sections: [</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Cookies esenciales',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Mantienen la seguridad, recuerdan tu selección de idioma y permiten enviar formularios. No pueden deshabilitarse desde el panel porque romperían la experiencia.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Cookies analíticas',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Usamos Google Analytics 4 con IP anonimizada para medir conversiones y detectar errores. Solo se activan si aceptas explícitamente el banner.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Gestión de preferencias',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Puedes modificar tu consentimiento en cualquier momento limpiando las cookies del navegador o escribiéndonos para eliminarlas manualmente.'</span>
+<span class="cstat-no" title="statement not covered" >        }</span>
+<span class="cstat-no" title="statement not covered" >      ],</span>
+<span class="cstat-no" title="statement not covered" >      contact: 'Si tienes preguntas sobre cookies, contáctanos en privacidad@cojauny.com.'</span>
+<span class="cstat-no" title="statement not covered" >    },</span>
+<span class="cstat-no" title="statement not covered" >    terms: {</span>
+<span class="cstat-no" title="statement not covered" >      title: 'Términos y condiciones de uso',</span>
+<span class="cstat-no" title="statement not covered" >      intro:</span>
+<span class="cstat-no" title="statement not covered" >        'Estas condiciones regulan el acceso a la landing y a los formularios de beta y feedback. Participar implica aceptar los términos descritos.',</span>
+<span class="cstat-no" title="statement not covered" >      updatedAt: 'Actualizado el 13 de noviembre de 2025',</span>
+<span class="cstat-no" title="statement not covered" >      sections: [</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Uso permitido',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Puedes navegar por la landing, solicitar acceso a la beta y compartir comentarios siempre que la información proporcionada sea veraz y tengas autorización para usarla.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Contenido proporcionado',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Los mensajes enviados a través del formulario de feedback pueden utilizarse de forma anonimizada para mejorar el producto. No se compartirán públicamente sin tu permiso.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Limitación de responsabilidad',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'La landing se ofrece “tal cual”. Cojauny no garantiza la disponibilidad continuada ni se responsabiliza de daños derivados de interrupciones en el servicio.'</span>
+<span class="cstat-no" title="statement not covered" >        }</span>
+<span class="cstat-no" title="statement not covered" >      ],</span>
+<span class="cstat-no" title="statement not covered" >      contact: 'Para cuestiones legales escribe a legal@cojauny.com.'</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" >  },</span>
+<span class="cstat-no" title="statement not covered" >  en: {</span>
+<span class="cstat-no" title="statement not covered" >    privacy: {</span>
+<span class="cstat-no" title="statement not covered" >      title: 'Privacy Policy',</span>
+<span class="cstat-no" title="statement not covered" >      intro:</span>
+<span class="cstat-no" title="statement not covered" >        'Cojauny handles personal information with care. This notice explains what data we collect, how we use it and the rights you have when joining the beta or sending feedback.',</span>
+<span class="cstat-no" title="statement not covered" >      updatedAt: 'Updated on November 13, 2025',</span>
+<span class="cstat-no" title="statement not covered" >      sections: [</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Data controller',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Cojauny Mobility S.L., contact privacy@cojauny.com.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Data we process',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Identification data (name, professional email), company details, intended use cases, feedback messages and aggregated usage metrics from the landing page.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Purpose and retention',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'We use the data to manage beta access, follow up on requests and improve the product. Information is stored for up to 12 months after the last interaction or until you ask us to delete it.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Your rights',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'You may exercise access, rectification, erasure, restriction and portability by emailing privacy@cojauny.com. We reply within 30 days.'</span>
+<span class="cstat-no" title="statement not covered" >        }</span>
+<span class="cstat-no" title="statement not covered" >      ],</span>
+<span class="cstat-no" title="statement not covered" >      contact: 'Questions? Reach us at privacy@cojauny.com.'</span>
+<span class="cstat-no" title="statement not covered" >    },</span>
+<span class="cstat-no" title="statement not covered" >    cookies: {</span>
+<span class="cstat-no" title="statement not covered" >      title: 'Cookie Policy',</span>
+<span class="cstat-no" title="statement not covered" >      intro:</span>
+<span class="cstat-no" title="statement not covered" >        'We use strictly necessary cookies to keep the site running and optional analytics cookies to understand how visitors use the landing.',</span>
+<span class="cstat-no" title="statement not covered" >      updatedAt: 'Updated on November 13, 2025',</span>
+<span class="cstat-no" title="statement not covered" >      sections: [</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Necessary cookies',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'They keep sessions secure, remember your language choice and allow form submissions. Disabling them would break core features.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Analytics cookies',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'We rely on Google Analytics 4 with IP anonymisation to measure conversions and detect errors. They only load after you provide explicit consent.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Managing preferences',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'You can withdraw consent at any time by clearing your browser cookies or contacting us for manual removal.'</span>
+<span class="cstat-no" title="statement not covered" >        }</span>
+<span class="cstat-no" title="statement not covered" >      ],</span>
+<span class="cstat-no" title="statement not covered" >      contact: 'For cookie questions, email privacy@cojauny.com.'</span>
+<span class="cstat-no" title="statement not covered" >    },</span>
+<span class="cstat-no" title="statement not covered" >    terms: {</span>
+<span class="cstat-no" title="statement not covered" >      title: 'Terms of Use',</span>
+<span class="cstat-no" title="statement not covered" >      intro:</span>
+<span class="cstat-no" title="statement not covered" >        'These terms govern access to the landing page and the beta or feedback forms. By submitting information you agree to the clauses below.',</span>
+<span class="cstat-no" title="statement not covered" >      updatedAt: 'Updated on November 13, 2025',</span>
+<span class="cstat-no" title="statement not covered" >      sections: [</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Permitted use',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'You may browse the site, request beta access and share feedback as long as the information you submit is accurate and you are authorised to use it.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'User contributions',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Feedback messages may be used internally in anonymised reports to improve Cojauny. We will never publish them without your explicit approval.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Liability',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'The site is provided “as is”. Cojauny is not liable for damages caused by downtime, maintenance or third-party services.'</span>
+<span class="cstat-no" title="statement not covered" >        }</span>
+<span class="cstat-no" title="statement not covered" >      ],</span>
+<span class="cstat-no" title="statement not covered" >      contact: 'For legal matters contact legal@cojauny.com.'</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" >  },</span>
+<span class="cstat-no" title="statement not covered" >  de: {</span>
+<span class="cstat-no" title="statement not covered" >    privacy: {</span>
+<span class="cstat-no" title="statement not covered" >      title: 'Datenschutzerklärung',</span>
+<span class="cstat-no" title="statement not covered" >      intro:</span>
+<span class="cstat-no" title="statement not covered" >        'Cojauny behandelt personenbezogene Daten vertraulich. Diese Erklärung beschreibt, welche Daten wir erheben, wie wir sie nutzen und welche Rechte du hast, wenn du an der Beta teilnimmst oder Feedback sendest.',</span>
+<span class="cstat-no" title="statement not covered" >      updatedAt: 'Aktualisiert am 13. November 2025',</span>
+<span class="cstat-no" title="statement not covered" >      sections: [</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Verantwortliche Stelle',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Cojauny Mobility S.L., Kontakt privacy@cojauny.com.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Welche Daten wir verarbeiten',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Name, berufliche E-Mail, Unternehmensangaben, geplante Anwendungsfälle, Nachrichten aus Formularen sowie aggregierte Nutzungsmetriken der Landingpage.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Zweck und Speicherdauer',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Verwaltung des Beta-Zugangs, Beantwortung von Anfragen und Produktverbesserung. Die Daten werden höchstens 12 Monate nach dem letzten Kontakt oder bis zur Löschanfrage aufbewahrt.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Rechte der betroffenen Personen',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Du kannst Auskunft, Berichtigung, Löschung, Einschränkung und Übertragbarkeit verlangen. Schreibe dazu an privacy@cojauny.com. Wir antworten innerhalb von 30 Tagen.'</span>
+<span class="cstat-no" title="statement not covered" >        }</span>
+<span class="cstat-no" title="statement not covered" >      ],</span>
+<span class="cstat-no" title="statement not covered" >      contact: 'Fragen? Melde dich unter privacy@cojauny.com.'</span>
+<span class="cstat-no" title="statement not covered" >    },</span>
+<span class="cstat-no" title="statement not covered" >    cookies: {</span>
+<span class="cstat-no" title="statement not covered" >      title: 'Cookie-Richtlinie',</span>
+<span class="cstat-no" title="statement not covered" >      intro:</span>
+<span class="cstat-no" title="statement not covered" >        'Wir setzen unbedingt notwendige Cookies sowie optionale Analyse-Cookies ein, um die Nutzung der Landingpage zu verstehen.',</span>
+<span class="cstat-no" title="statement not covered" >      updatedAt: 'Aktualisiert am 13. November 2025',</span>
+<span class="cstat-no" title="statement not covered" >      sections: [</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Notwendige Cookies',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Sie sorgen für Sicherheit, speichern die Sprachauswahl und ermöglichen Formularübermittlungen. Eine Deaktivierung würde Kernfunktionen beeinträchtigen.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Analyse-Cookies',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Wir nutzen Google Analytics 4 mit anonymisierten IP-Adressen, um Conversions zu messen und Fehler zu erkennen. Sie werden nur mit deiner Zustimmung geladen.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Verwaltung der Einstellungen',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Du kannst deine Zustimmung jederzeit widerrufen, indem du Browser-Cookies löschst oder uns kontaktierst.'</span>
+<span class="cstat-no" title="statement not covered" >        }</span>
+<span class="cstat-no" title="statement not covered" >      ],</span>
+<span class="cstat-no" title="statement not covered" >      contact: 'Bei Fragen zu Cookies erreichst du uns unter privacy@cojauny.com.'</span>
+<span class="cstat-no" title="statement not covered" >    },</span>
+<span class="cstat-no" title="statement not covered" >    terms: {</span>
+<span class="cstat-no" title="statement not covered" >      title: 'Nutzungsbedingungen',</span>
+<span class="cstat-no" title="statement not covered" >      intro:</span>
+<span class="cstat-no" title="statement not covered" >        'Diese Bedingungen regeln den Zugang zur Landingpage sowie zu Beta- und Feedbackformularen. Mit dem Absenden von Informationen stimmst du ihnen zu.',</span>
+<span class="cstat-no" title="statement not covered" >      updatedAt: 'Aktualisiert am 13. November 2025',</span>
+<span class="cstat-no" title="statement not covered" >      sections: [</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Zulässige Nutzung',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Du darfst die Seite besuchen, Beta-Zugang anfordern und Feedback geben, sofern die Angaben korrekt sind und du zur Nutzung berechtigt bist.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Bereitgestellte Inhalte',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Feedback kann anonymisiert zur Produktverbesserung verwendet werden. Eine Veröffentlichung erfolgt nur mit deiner Zustimmung.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Haftungsbeschränkung',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Die Website wird ohne Garantien bereitgestellt. Cojauny haftet nicht für Schäden durch Ausfallzeiten oder Wartungsarbeiten.'</span>
+<span class="cstat-no" title="statement not covered" >        }</span>
+<span class="cstat-no" title="statement not covered" >      ],</span>
+<span class="cstat-no" title="statement not covered" >      contact: 'Rechtliche Anfragen an legal@cojauny.com.'</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" >  },</span>
+<span class="cstat-no" title="statement not covered" >  fr: {</span>
+<span class="cstat-no" title="statement not covered" >    privacy: {</span>
+<span class="cstat-no" title="statement not covered" >      title: 'Politique de confidentialité',</span>
+<span class="cstat-no" title="statement not covered" >      intro:</span>
+<span class="cstat-no" title="statement not covered" >        'Cojauny protège vos données personnelles. Ce document explique les informations collectées, leur usage et vos droits lorsque vous rejoignez la bêta ou envoyez un retour.',</span>
+<span class="cstat-no" title="statement not covered" >      updatedAt: 'Mis à jour le 13 novembre 2025',</span>
+<span class="cstat-no" title="statement not covered" >      sections: [</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Responsable du traitement',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Cojauny Mobility S.L., contact privacy@cojauny.com.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Données traitées',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Nom, e-mail professionnel, informations sur votre organisation, cas d’usage envisagé, messages envoyés et métriques agrégées d’utilisation du site.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Finalité et durée de conservation',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Gérer l’accès à la bêta, répondre aux demandes et améliorer le produit. Les données sont conservées au maximum 12 mois après le dernier contact ou jusqu’à suppression sur demande.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Vos droits',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Vous pouvez exercer vos droits d’accès, de rectification, d’opposition, d’effacement et de portabilité en écrivant à privacy@cojauny.com. Réponse sous 30 jours.'</span>
+<span class="cstat-no" title="statement not covered" >        }</span>
+<span class="cstat-no" title="statement not covered" >      ],</span>
+<span class="cstat-no" title="statement not covered" >      contact: 'Pour toute question, écrivez à privacy@cojauny.com.'</span>
+<span class="cstat-no" title="statement not covered" >    },</span>
+<span class="cstat-no" title="statement not covered" >    cookies: {</span>
+<span class="cstat-no" title="statement not covered" >      title: 'Politique de cookies',</span>
+<span class="cstat-no" title="statement not covered" >      intro:</span>
+<span class="cstat-no" title="statement not covered" >        'Nous utilisons des cookies indispensables pour le fonctionnement du site et, avec votre accord, des cookies analytiques pour comprendre son utilisation.',</span>
+<span class="cstat-no" title="statement not covered" >      updatedAt: 'Mis à jour le 13 novembre 2025',</span>
+<span class="cstat-no" title="statement not covered" >      sections: [</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Cookies nécessaires',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Ils sécurisent les sessions, mémorisent la langue et permettent l’envoi des formulaires. Les désactiver bloquerait certaines fonctionnalités.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Cookies analytiques',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Nous utilisons Google Analytics 4 avec IP anonymisée pour mesurer les conversions et détecter les erreurs. Ils ne sont activés qu’après consentement explicite.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Gestion du consentement',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Vous pouvez retirer votre consentement à tout moment en effaçant les cookies du navigateur ou en nous contactant.'</span>
+<span class="cstat-no" title="statement not covered" >        }</span>
+<span class="cstat-no" title="statement not covered" >      ],</span>
+<span class="cstat-no" title="statement not covered" >      contact: 'Questions sur les cookies ? privacy@cojauny.com.'</span>
+<span class="cstat-no" title="statement not covered" >    },</span>
+<span class="cstat-no" title="statement not covered" >    terms: {</span>
+<span class="cstat-no" title="statement not covered" >      title: 'Conditions d’utilisation',</span>
+<span class="cstat-no" title="statement not covered" >      intro:</span>
+<span class="cstat-no" title="statement not covered" >        'Ces conditions régissent l’accès au site et aux formulaires de bêta ou de feedback. En envoyant vos informations, vous acceptez ces clauses.',</span>
+<span class="cstat-no" title="statement not covered" >      updatedAt: 'Mis à jour le 13 novembre 2025',</span>
+<span class="cstat-no" title="statement not covered" >      sections: [</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Usage autorisé',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Vous pouvez consulter le site, demander l’accès à la bêta et partager votre avis si les informations fournies sont exactes et autorisées.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Contenu fourni',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Les retours peuvent être utilisés de manière anonymisée pour améliorer Cojauny. Ils ne seront jamais publiés sans votre accord.'</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        {</span>
+<span class="cstat-no" title="statement not covered" >          heading: 'Limitation de responsabilité',</span>
+<span class="cstat-no" title="statement not covered" >          body: 'Le site est fourni « en l’état ». Cojauny n’est pas responsable des dommages causés par une indisponibilité temporaire ou un service tiers.'</span>
+<span class="cstat-no" title="statement not covered" >        }</span>
+<span class="cstat-no" title="statement not covered" >      ],</span>
+<span class="cstat-no" title="statement not covered" >      contact: 'Pour toute demande légale, écrivez à legal@cojauny.com.'</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" >  }</span>
+<span class="cstat-no" title="statement not covered" >};</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >export const getLegalCopy = (locale: Locale): LegalCopy =&gt; legalCopy[locale] ?? legalCopy[defaultLocale];</span>
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-11-13T08:53:11.719Z
+            </div>
+        <script src="../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../sorter.js"></script>
+        <script src="../block-navigation.js"></script>
+    </body>
+</html>
+    

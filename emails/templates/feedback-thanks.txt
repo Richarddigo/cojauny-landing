@@ -1,0 +1,5 @@
+Hola {{name}},
+
+Gracias por tu feedback. Lo tendremos en cuenta para priorizar mejoras en Cojauny.
+
+Equipo Cojauny

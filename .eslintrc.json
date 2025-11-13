@@ -1,0 +1,11 @@
+{
+  "root": true,
+  "extends": ["next/core-web-vitals", "plugin:jsx-a11y/recommended", "plugin:testing-library/react", "plugin:jest-dom/recommended", "prettier"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "react/jsx-props-no-spreading": "off",
+    "@next/next/no-img-element": "off"
+  }
+}
