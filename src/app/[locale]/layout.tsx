@@ -9,6 +9,7 @@ import Header from '@/components/Header';
 import { locales, defaultLocale, type Locale } from '@/locales/config';
 import { getLandingCopy } from '@/locales/copy';
 import { siteMetadata, ogImages } from '@/lib/site';
+import { buildLocaleAlternates, buildRobotsMeta } from '@/lib/jsonld';
 
 interface LocaleLayoutProps {
     children: ReactNode;
@@ -27,8 +28,8 @@ export function generateMetadata({ params }: { params: { locale: string } }): Me
     }
 
     const copy = getLandingCopy(locale);
-
     const otherLocales = locales.filter((value) => value !== locale);
+    const alternates = buildLocaleAlternates(locale);
 
     return {
         metadataBase: new URL(siteMetadata.url),
@@ -51,10 +52,8 @@ export function generateMetadata({ params }: { params: { locale: string } }): Me
             site: siteMetadata.twitter,
             creator: siteMetadata.twitter
         },
-        alternates: {
-            canonical: `${siteMetadata.url}/${locale}`,
-            languages: Object.fromEntries(locales.map((value) => [value, `${siteMetadata.url}/${value}`]))
-        }
+        alternates,
+        robots: buildRobotsMeta()
     };
 }
 

@@ -15,7 +15,10 @@
     "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watch",
     "test:ci": "cross-env NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules jest --ci",
     "migrate:content": "tsx scripts/extract-current-site.ts",
-    "supabase:backup": "tsx scripts/backup-supabase.ts"
+    "supabase:backup": "tsx scripts/backup-supabase.ts",
+    "seo:sitemap": "tsx scripts/generate-sitemap.ts",
+    "seo:preflight": "npm run lint && npm run type-check",
+    "deploy:verify": "tsx scripts/deploy-check.ts"
   },
   "keywords": [
     "cojauny",

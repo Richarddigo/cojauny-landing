@@ -4,8 +4,10 @@ import Script from 'next/script';
 
 import '@/styles/globals.css';
 import { env } from '@/lib/env';
-import { defaultLocale } from '@/locales/config';
-import { siteMetadata, structuredData, ogImages } from '@/lib/site';
+import { defaultLocale, locales } from '@/locales/config';
+import { siteMetadata, ogImages } from '@/lib/site';
+import StructuredData from '@/components/StructuredData';
+import { buildOrganizationJsonLd, buildWebsiteJsonLd } from '@/lib/jsonld';
 
 export const metadata: Metadata = {
     metadataBase: new URL(siteMetadata.url),
@@ -33,12 +35,19 @@ export const metadata: Metadata = {
         creator: siteMetadata.twitter
     },
     alternates: {
-        canonical: siteMetadata.url
+        canonical: siteMetadata.url,
+        languages: Object.fromEntries(
+            locales.map((locale) => [locale, `${siteMetadata.url}/${locale}`]).concat([
+                ['x-default', siteMetadata.url]
+            ])
+        )
     },
     category: 'business',
     robots: {
         index: true,
-        follow: true
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1
     },
     icons: {
         icon: '/icons/icon.svg',
@@ -57,9 +66,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     return (
         <html lang={defaultLocale} suppressHydrationWarning>
             <head>
-                <Script id="ld-json" type="application/ld+json" strategy="beforeInteractive">
-                    {JSON.stringify(structuredData)}
-                </Script>
+                <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+                <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+                <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+                <link rel="preload" href="/images/mockup-hero.svg" as="image" type="image/svg+xml" />
+                <StructuredData id="ld-org" data={buildOrganizationJsonLd()} />
+                <StructuredData id="ld-website" data={buildWebsiteJsonLd(defaultLocale)} />
                 {env.NEXT_PUBLIC_ANALYTICS_ID && (
                     <>
                         <Script

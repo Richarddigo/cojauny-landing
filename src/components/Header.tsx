@@ -15,6 +15,7 @@ interface HeaderProps {
         features: string;
         demo: string;
         beta: string;
+        blog: string;
     };
 }
 
@@ -47,17 +48,20 @@ const Header = ({ locale, copy }: HeaderProps) => {
                     </button>
                 </div>
                 <div className="hidden lg:flex lg:gap-x-8">
-                    <Link href="#inicio" className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
+                    <Link href={`/${locale}#inicio`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
                         {copy.home}
                     </Link>
-                    <Link href="#features" className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
+                    <Link href={`/${locale}#features`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
                         {copy.features}
                     </Link>
-                    <Link href="#demo" className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
+                    <Link href={`/${locale}#demo`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
                         {copy.demo}
                     </Link>
-                    <Link href="#beta" className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
+                    <Link href={`/${locale}#beta`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
                         {copy.beta}
+                    </Link>
+                    <Link href={`/${locale}/blog`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
+                        {copy.blog}
                     </Link>
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -92,32 +96,39 @@ const Header = ({ locale, copy }: HeaderProps) => {
                         <div className="-my-6 divide-y divide-slate-500/10">
                             <div className="space-y-2 py-6">
                                 <Link
-                                    href="#inicio"
+                                    href={`/${locale}#inicio`}
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     {copy.home}
                                 </Link>
                                 <Link
-                                    href="#features"
+                                    href={`/${locale}#features`}
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     {copy.features}
                                 </Link>
                                 <Link
-                                    href="#demo"
+                                    href={`/${locale}#demo`}
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     {copy.demo}
                                 </Link>
                                 <Link
-                                    href="#beta"
+                                    href={`/${locale}#beta`}
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     {copy.beta}
+                                </Link>
+                                <Link
+                                    href={`/${locale}/blog`}
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    {copy.blog}
                                 </Link>
                             </div>
                             <div className="py-6">

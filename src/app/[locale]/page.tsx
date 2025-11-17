@@ -1,8 +1,18 @@
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 
 import LandingPageContent from '@/components/LandingPageContent';
+import StructuredData from '@/components/StructuredData';
 import { locales, type Locale } from '@/locales/config';
 import { getLandingCopy } from '@/locales/copy';
+import { siteMetadata } from '@/lib/site';
+import {
+    buildSoftwareAppJsonLd,
+    buildFaqJsonLd,
+    buildBreadcrumbJsonLd,
+    buildLocaleAlternates
+} from '@/lib/jsonld';
+import { getFaqEntries } from '@/lib/faq';
 
 interface LocalePageProps {
     params: { locale: string };
@@ -14,7 +24,7 @@ export function generateStaticParams() {
     return locales.map((locale) => ({ locale }));
 }
 
-export default function LocalePage({ params }: LocalePageProps) {
+export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
     const locale = params.locale as Locale;
 
     if (!locales.includes(locale)) {
@@ -23,5 +33,34 @@ export default function LocalePage({ params }: LocalePageProps) {
 
     const copy = getLandingCopy(locale);
 
-    return <LandingPageContent copy={copy} locale={locale} />;
+    return {
+        title: copy.seo.title,
+        description: copy.seo.description,
+        alternates: buildLocaleAlternates(locale)
+    };
+}
+
+export default function LocalePage({ params }: LocalePageProps) {
+    const locale = params.locale as Locale;
+
+    if (!locales.includes(locale)) {
+        notFound();
+    }
+
+    const copy = getLandingCopy(locale);
+    const faqItems = getFaqEntries(locale);
+
+    const breadcrumb = buildBreadcrumbJsonLd(locale, [
+        { name: 'Cojauny', absoluteUrl: siteMetadata.url },
+        { name: copy.header.home, path: '' }
+    ]);
+
+    return (
+        <>
+            <StructuredData id={`ld-app-${locale}`} data={buildSoftwareAppJsonLd(locale)} />
+            <StructuredData id={`ld-faq-${locale}`} data={buildFaqJsonLd(faqItems)} />
+            <StructuredData id={`ld-breadcrumb-${locale}`} data={breadcrumb} />
+            <LandingPageContent copy={copy} locale={locale} />
+        </>
+    );
 }

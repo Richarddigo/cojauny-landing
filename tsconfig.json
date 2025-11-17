@@ -36,6 +36,9 @@
       "@/locales/*": [
         "src/locales/*"
       ],
+      "@/content/*": [
+        "src/content/*"
+      ],
       "@/styles/*": [
         "src/styles/*"
       ]

@@ -3,6 +3,7 @@ import { env } from './env';
 export const siteMetadata = {
   name: 'Cojauny',
   shortName: 'Cojauny',
+  legalName: 'Equipo fundador de Cojauny',
   description:
     'Gestiona invitaciones, listas de espera y experiencias de movilidad colaborativa con la app de Cojauny.',
   url: 'https://cojauny.com',
@@ -12,9 +13,14 @@ export const siteMetadata = {
   twitter: '@cojauny',
   primaryColor: '#5a67f2',
   secondaryColor: '#121754',
-  appStoreUrl: '#',
-  playStoreUrl: '#',
-  contactEmail: 'support@cojauny.com'
+  appStoreUrl: '{{PLACEHOLDER_APP_STORE_URL}}',
+  playStoreUrl: '{{PLACEHOLDER_PLAY_STORE_URL}}',
+  contactEmail: 'support@cojauny.com',
+  socialProfiles: [
+    'https://www.linkedin.com/company/cojauny',
+    'https://twitter.com/cojauny',
+    'https://www.instagram.com/cojaunyapp'
+  ]
 };
 
 export const ogImages = [
@@ -25,31 +31,11 @@ export const ogImages = [
     alt: 'Cojauny - movilidad colaborativa',
     type: 'image/svg+xml'
   }
-];
+};
 
-export const structuredData = {
-  '@context': 'https://schema.org',
-  '@type': 'MobileApplication',
-  name: siteMetadata.name,
-  operatingSystem: 'iOS, Android',
-  applicationCategory: 'BusinessApplication',
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    ratingCount: '87'
-  },
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR'
-  },
-  url: siteMetadata.url,
-  publisher: {
-    '@type': 'Organization',
-    name: 'Cojauny',
-    logo: {
-      '@type': 'ImageObject',
-      url: `${siteMetadata.url}/icons/icon.svg`
-    }
-  }
+export const hreflangByLocale: Record<string, string> = {
+  es: 'es-ES',
+  en: 'en-US',
+  fr: 'fr-FR',
+  de: 'de-DE'
 };

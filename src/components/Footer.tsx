@@ -135,6 +135,9 @@ const Footer = ({ copy, locale }: FooterProps) => (
                     <Link href={`/${locale}/legal/terms`} className="hover:text-brand-600">
                         {copy.terms}
                     </Link>
+                    <Link href={`/${locale}/blog`} className="hover:text-brand-600">
+                        {copy.blog}
+                    </Link>
                     <Link href={`/${locale}/contact`} className="hover:text-brand-600">
                         {copy.contact}
                     </Link>

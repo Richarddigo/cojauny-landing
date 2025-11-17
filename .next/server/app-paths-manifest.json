@@ -1,8 +1,1 @@
-{
-  "/not-found": "app/not-found.js",
-  "/page": "app/page.js",
-  "/[locale]/legal/privacy/page": "app/[locale]/legal/privacy/page.js",
-  "/[locale]/page": "app/[locale]/page.js",
-  "/[locale]/legal/cookies/page": "app/[locale]/legal/cookies/page.js",
-  "/[locale]/legal/terms/page": "app/[locale]/legal/terms/page.js"
-}
+{}
