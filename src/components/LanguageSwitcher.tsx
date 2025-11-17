@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useMemo } from 'react';
+import { Fragment, useMemo, useState, useEffect } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -26,7 +26,22 @@ const languageFlags: Record<Locale, string> = {
     fr: '🇫🇷'
 };
 
+const languageCodes: Record<Locale, string> = {
+    es: 'ES',
+    en: 'EN',
+    de: 'DE',
+    fr: 'FR'
+};
+
 const LanguageSwitcher = ({ currentLocale, label }: LanguageSwitcherProps) => {
+    const [isChrome, setIsChrome] = useState(false);
+
+    useEffect(() => {
+        // Detectar si es Chrome (pero no Edge u otros basados en Chromium que sí soportan emojis)
+        const userAgent = navigator.userAgent;
+        const isChromeBrowser = /Chrome/.test(userAgent) && !/Edg/.test(userAgent) && !/OPR/.test(userAgent);
+        setIsChrome(isChromeBrowser);
+    }, []);
     const router = useRouter();
     const pathname = usePathname() ?? '/';
     const searchParams = useSearchParams();
@@ -36,7 +51,8 @@ const LanguageSwitcher = ({ currentLocale, label }: LanguageSwitcherProps) => {
             localeValues.map((value) => ({
                 value,
                 label: languageLabels[value],
-                flag: languageFlags[value]
+                flag: languageFlags[value],
+                code: languageCodes[value]
             })),
         []
     );
@@ -64,6 +80,7 @@ const LanguageSwitcher = ({ currentLocale, label }: LanguageSwitcherProps) => {
     const activeOption = options.find((option) => option.value === currentLocale);
     const buttonLabel = activeOption?.label ?? currentLocale.toUpperCase();
     const buttonFlag = activeOption?.flag ?? '🌐';
+    const buttonCode = activeOption?.code ?? currentLocale.toUpperCase();
 
     const buttonAriaLabel = label ?? 'Change language';
 
@@ -73,7 +90,13 @@ const LanguageSwitcher = ({ currentLocale, label }: LanguageSwitcherProps) => {
                 aria-label={buttonAriaLabel}
                 className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:border-brand-200 hover:text-brand-700 focus:outline-none focus-visible:border-brand-400 focus-visible:ring-2 focus-visible:ring-brand-200"
             >
-                <span aria-hidden className="text-base leading-none">{buttonFlag}</span>
+                {isChrome ? (
+                    <span aria-hidden className="flex h-5 w-5 items-center justify-center rounded-sm bg-brand-100 text-xs font-bold text-brand-700">
+                        {buttonCode}
+                    </span>
+                ) : (
+                    <span aria-hidden className="text-base leading-none">{buttonFlag}</span>
+                )}
                 <span>{buttonLabel}</span>
                 <ChevronDownIcon className="h-4 w-4 text-slate-400" aria-hidden />
             </Menu.Button>
@@ -99,9 +122,15 @@ const LanguageSwitcher = ({ currentLocale, label }: LanguageSwitcherProps) => {
                                             }`}
                                     >
                                         <span className="flex items-center gap-3">
-                                            <span aria-hidden className="flex h-8 w-8 items-center justify-center text-xl">
-                                                {option.flag}
-                                            </span>
+                                            {isChrome ? (
+                                                <span aria-hidden className="flex h-8 w-8 items-center justify-center rounded-md bg-brand-100 text-sm font-bold text-brand-700">
+                                                    {option.code}
+                                                </span>
+                                            ) : (
+                                                <span aria-hidden className="flex h-8 w-8 items-center justify-center text-xl">
+                                                    {option.flag}
+                                                </span>
+                                            )}
                                             <span className="font-medium">{option.label}</span>
                                         </span>
                                         {isActive ? <CheckIcon className="h-4 w-4 text-brand-600" aria-hidden /> : null}
