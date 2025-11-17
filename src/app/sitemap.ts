@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     [...localeAwarePaths, ...legalPaths].map((path) => ({
       url: `${base}/${locale}${path === '/' ? '' : path}`,
       lastModified,
-      changeFrequency: path === '/' ? 'daily' : 'monthly',
+      changeFrequency: (path === '/' ? 'daily' : 'monthly') as 'daily' | 'monthly',
       priority: path === '/' ? 1 : 0.7
     }))
   );
@@ -23,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blogEntries = blogPosts.map((post) => ({
     url: `${base}/${post.locale}/blog/${post.slug}`,
     lastModified: new Date(post.updatedAt),
-    changeFrequency: 'monthly',
+    changeFrequency: 'monthly' as const,
     priority: 0.6
   }));
 
@@ -31,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const legacyRoutes = ['/legal/privacidad', '/legal/cookies', '/legal/terminos'].map((route) => ({
     url: `${base}${route}`,
     lastModified,
-    changeFrequency: 'monthly',
+    changeFrequency: 'monthly' as const,
     priority: 0.4
   }));
 
@@ -39,13 +39,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: base,
       lastModified,
-      changeFrequency: 'daily',
+      changeFrequency: 'daily' as const,
       priority: 1
     },
     {
       url: `${base}/contact`,
       lastModified,
-      changeFrequency: 'monthly',
+      changeFrequency: 'monthly' as const,
       priority: 0.6
     }
   ];

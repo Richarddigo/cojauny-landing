@@ -1,11 +1,10 @@
-import { env } from './env';
+﻿import { env } from './env';
 
 export const siteMetadata = {
   name: 'Cojauny',
   shortName: 'Cojauny',
   legalName: 'Equipo fundador de Cojauny',
-  description:
-    'Gestiona invitaciones, listas de espera y experiencias de movilidad colaborativa con la app de Cojauny.',
+  description: 'Conecta viajeros del mismo vuelo para compartir transporte, reducir costos y crear comunidad. Disponible para iOS y Android.',
   url: 'https://cojauny.com',
   currentSiteUrl: env.CURRENT_SITE_URL ?? 'https://ejemplo.com',
   locale: 'es_ES',
@@ -31,7 +30,7 @@ export const ogImages = [
     alt: 'Cojauny - movilidad colaborativa',
     type: 'image/svg+xml'
   }
-};
+];
 
 export const hreflangByLocale: Record<string, string> = {
   es: 'es-ES',

@@ -7,6 +7,8 @@ import Mockups from '@/components/Mockups';
 import ValuePropsSection from '@/components/ValuePropsSection';
 import SavingsSection from '@/components/SavingsSection';
 import WorkflowSection from '@/components/WorkflowSection';
+import PricingSection from '@/components/PricingSection';
+import FaqSection from '@/components/FaqSection';
 import type { LandingCopy } from '@/locales/copy';
 import type { Locale } from '@/locales/config';
 
@@ -31,6 +33,8 @@ const LandingPageContent = ({ copy, locale }: LandingPageContentProps) => (
                 <FeedbackForm copy={copy.forms.feedback} locale={locale} />
             </div>
         </section>
+        <PricingSection copy={copy.pricing} />
+        <FaqSection copy={copy.faq} />
         <IntegrationCTA copy={copy.ctaStrip} locale={locale} />
     </>
 );
