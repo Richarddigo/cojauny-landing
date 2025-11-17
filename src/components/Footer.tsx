@@ -139,7 +139,7 @@ const Footer = ({ copy, locale }: FooterProps) => (
                         {copy.contact}
                     </a>
                 </nav>
-                <LanguageSwitcher locale={locale} label={copy.languageLabel} />
+                <LanguageSwitcher currentLocale={locale} label={copy.languageLabel} />
                 <p className="text-xs text-slate-500">© {new Date().getFullYear()} Cojauny. {copy.rights}</p>
             </div>
         </div>

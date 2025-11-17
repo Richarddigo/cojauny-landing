@@ -1,7 +1,12 @@
-import { redirect } from 'next/navigation';
-
 import { defaultLocale } from '@/locales/config';
+import LandingPageContent from '@/components/LandingPageContent';
+import { getLandingCopy } from '@/locales/copy';
+
+export const revalidate = 60;
 
 export default function Page() {
-    redirect(`/${defaultLocale}`);
+    const locale = defaultLocale;
+    const copy = getLandingCopy(locale);
+
+    return <LandingPageContent copy={copy} locale={locale} />;
 }

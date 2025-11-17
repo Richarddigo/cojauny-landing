@@ -1,13 +1,15 @@
 "use client";
 
+import { Fragment, useMemo } from 'react';
+import { Menu, Transition } from '@headlessui/react';
+import { CheckIcon, ChevronDownIcon, GlobeAltIcon } from '@heroicons/react/20/solid';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { ChangeEvent, useMemo } from 'react';
 
 import { localeValues, type Locale } from '@/locales/config';
 
 interface LanguageSwitcherProps {
-    locale: Locale;
-    label: string;
+    currentLocale: Locale;
+    label?: string;
 }
 
 const languageLabels: Record<Locale, string> = {
@@ -17,7 +19,7 @@ const languageLabels: Record<Locale, string> = {
     fr: 'Français'
 };
 
-const LanguageSwitcher = ({ locale, label }: LanguageSwitcherProps) => {
+const LanguageSwitcher = ({ currentLocale, label }: LanguageSwitcherProps) => {
     const router = useRouter();
     const pathname = usePathname() ?? '/';
     const searchParams = useSearchParams();
@@ -31,9 +33,8 @@ const LanguageSwitcher = ({ locale, label }: LanguageSwitcherProps) => {
         []
     );
 
-    const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-        const nextLocale = event.target.value as Locale;
-        if (nextLocale === locale) {
+    const navigateToLocale = (nextLocale: Locale) => {
+        if (nextLocale === currentLocale) {
             return;
         }
 
@@ -52,21 +53,57 @@ const LanguageSwitcher = ({ locale, label }: LanguageSwitcherProps) => {
         router.push(target);
     };
 
+    const activeOption = options.find((option) => option.value === currentLocale);
+    const buttonLabel = activeOption?.label ?? currentLocale.toUpperCase();
+
+    const buttonAriaLabel = label ?? 'Change language';
+
     return (
-        <label className="flex items-center gap-2 text-sm text-slate-500">
-            <span className="sr-only md:not-sr-only">{label}</span>
-            <select
-                className="rounded-full border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 shadow-sm focus:border-brand-300 focus:outline-none"
-                value={locale}
-                onChange={handleChange}
+        <Menu as="div" className="relative inline-block text-left">
+            <Menu.Button
+                aria-label={buttonAriaLabel}
+                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:border-brand-200 hover:text-brand-700 focus:outline-none focus-visible:border-brand-400 focus-visible:ring-2 focus-visible:ring-brand-200"
             >
-                {options.map((option) => (
-                    <option key={option.value} value={option.value}>
-                        {option.label}
-                    </option>
-                ))}
-            </select>
-        </label>
+                <GlobeAltIcon className="h-4 w-4 text-brand-500" aria-hidden />
+                <span>{buttonLabel}</span>
+                <ChevronDownIcon className="h-4 w-4 text-slate-400" aria-hidden />
+            </Menu.Button>
+            <Transition
+                as={Fragment}
+                enter="transition ease-out duration-100"
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave="transition ease-in duration-75"
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+            >
+                <Menu.Items className="absolute right-0 z-50 mt-2 w-56 origin-top-right overflow-hidden rounded-3xl border border-slate-100 bg-white/95 p-2 shadow-xl backdrop-blur">
+                    {options.map((option) => {
+                        const isActive = option.value === currentLocale;
+                        return (
+                            <Menu.Item key={option.value}>
+                                {({ active }) => (
+                                    <button
+                                        type="button"
+                                        onClick={() => navigateToLocale(option.value)}
+                                        className={`flex w-full items-center justify-between gap-3 rounded-2xl px-3 py-2 text-left text-sm transition ${active ? 'bg-brand-50 text-brand-700' : 'text-slate-700'
+                                            }`}
+                                    >
+                                        <span className="flex items-center gap-3">
+                                            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-100 text-xs font-semibold uppercase text-brand-700">
+                                                {option.value}
+                                            </span>
+                                            <span className="font-medium">{option.label}</span>
+                                        </span>
+                                        {isActive ? <CheckIcon className="h-4 w-4 text-brand-600" aria-hidden /> : null}
+                                    </button>
+                                )}
+                            </Menu.Item>
+                        );
+                    })}
+                </Menu.Items>
+            </Transition>
+        </Menu>
     );
 };
 

@@ -1,22 +1,12 @@
-import type { ComponentType, ComponentPropsWithoutRef } from 'react';
-import {
-  BoltIcon,
-  UsersIcon,
-  ChatBubbleLeftRightIcon,
-  ShieldCheckIcon,
-  SparklesIcon,
-  GlobeAltIcon
-} from '@heroicons/react/24/outline';
-
 import type { Locale } from './config';
 import { defaultLocale, locales } from './config';
 
-type Heroicon = ComponentType<ComponentPropsWithoutRef<'svg'>>;
+export type IconName = 'bolt' | 'users' | 'chat' | 'shield' | 'sparkles' | 'globe';
 
 export interface FeatureCopy {
   title: string;
   description: string;
-  icon: Heroicon;
+  iconName: IconName;
 }
 
 export interface MockupScreenCopy {
@@ -47,8 +37,30 @@ export interface FormCopy {
   sentimentOptions?: Array<{ value: string; label: string }>;
 }
 
+export interface ValuePropCopy {
+  title: string;
+  description: string;
+}
+
+export interface SavingsMetricCopy {
+  value: string;
+  label: string;
+  description: string;
+}
+
+export interface WorkflowStepCopy {
+  title: string;
+  description: string;
+}
+
 export interface LandingCopy {
   skipLink: string;
+  header: {
+    home: string;
+    features: string;
+    demo: string;
+    beta: string;
+  };
   seo: {
     title: string;
     description: string;
@@ -68,6 +80,21 @@ export interface LandingCopy {
     title: string;
     subtitle: string;
     items: FeatureCopy[];
+  };
+  value: {
+    title: string;
+    subtitle: string;
+    items: ValuePropCopy[];
+  };
+  savings: {
+    title: string;
+    caption: string;
+    metrics: SavingsMetricCopy[];
+  };
+  workflow: {
+    title: string;
+    intro: string;
+    steps: WorkflowStepCopy[];
   };
   mockups: {
     heading: string;
@@ -103,18 +130,15 @@ export interface LandingCopy {
   };
 }
 
-const baseFeatures = {
-  mobility: BoltIcon,
-  groupSaver: UsersIcon,
-  ephemeralChat: ChatBubbleLeftRightIcon,
-  privacy: ShieldCheckIcon,
-  automation: SparklesIcon,
-  global: GlobeAltIcon
-};
-
 export const landingCopy: Record<Locale, LandingCopy> = {
   es: {
     skipLink: 'Saltar al contenido principal',
+    header: {
+      home: 'Inicio',
+      features: 'Características',
+      demo: 'Demo',
+      beta: 'Beta'
+    },
     seo: {
       title: 'Cojauny · Coordina transporte compartido con tus compañeros de vuelo',
       description:
@@ -148,25 +172,86 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Eventos por vuelo',
           description:
             'Genera eventos con origen/destino, franjas horarias y participantes confirmados. Cojauny sugiere combinaciones óptimas y ahorros estimados.',
-          icon: baseFeatures.mobility
+          iconName: 'bolt'
         },
         {
           title: 'Chat que caduca en 48h',
           description:
             'Coordina detalles en un chat que se elimina automáticamente después del vuelo. Comparte ubicación, estado del tráfico o cambios de puerta sin dejar rastro permanente.',
-          icon: baseFeatures.ephemeralChat
+          iconName: 'chat'
         },
         {
           title: 'Ahorro transparente',
           description:
             'Calcula cuánto ahorra cada pasajero frente a un trayecto individual para taxi, Uber, coche privado o parking de larga estancia.',
-          icon: baseFeatures.groupSaver
+          iconName: 'users'
         },
         {
           title: 'Privacidad y control',
           description:
             'Comparte datos mínimos y decide si quieres intercambiar redes sociales o mantener la coordinación dentro de Cojauny. Todo cifrado siguiendo GDPR.',
-          icon: baseFeatures.privacy
+          iconName: 'shield'
+        }
+      ]
+    },
+    value: {
+      title: 'El copiloto que tu operación de traslados necesitaba',
+      subtitle:
+        'Cojauny elimina el trabajo manual y da visibilidad a tu equipo sobre quién comparte trayecto, cuánto cuesta y qué impacto tiene en la experiencia de pasajeros.',
+      items: [
+        {
+          title: 'Menos correos y hojas de cálculo',
+          description:
+            'Automatiza invitaciones, confirmaciones y recordatorios para cada vuelo. La información vive en un panel único con roles para operaciones y atención al cliente.'
+        },
+        {
+          title: 'Pasajeros informados de extremo a extremo',
+          description:
+            'Indicaciones claras, seguimiento de conductores y chat temporal reducen la incertidumbre pre y post vuelo. El resultado: CSAT más alto y menos incidencias.'
+        },
+        {
+          title: 'Datos accionables para negociar tarifas',
+          description:
+            'Analiza la ocupación de traslados, el coste por asiento y el ahorro acumulado para renegociar con proveedores y reforzar tus programas de fidelización.'
+        }
+      ]
+    },
+    savings: {
+      title: 'Ahorro medible desde el primer mes',
+      caption: 'Resultados medios de pilotos en aerolíneas, agencias corporativas y operadores de transfers.',
+      metrics: [
+        {
+          value: '32% menos',
+          label: 'Coste por trayecto',
+          description: 'Reducción media frente a traslados individuales gracias a la consolidación inteligente de pasajeros.'
+        },
+        {
+          value: '12 h',
+          label: 'Coordinación manual evitada',
+          description: 'Horas semanales liberadas en equipos de operaciones al centralizar comunicaciones y seguimiento.'
+        },
+        {
+          value: '95%',
+          label: 'Pasajeros confirmados',
+          description: 'Participantes que llegan a compartir transporte en pilotos con incentivos mínimos.'
+        }
+      ]
+    },
+    workflow: {
+      title: 'Cómo funciona Cojauny',
+      intro: 'Configura tus proyectos en horas y comienza a validar con pasajeros reales sin desarrollos costosos.',
+      steps: [
+        {
+          title: 'Importa vuelos y lanza invitaciones',
+          description: 'Sincroniza tus vuelos o crea eventos manuales. Personaliza mensajes y deja que el sistema envíe invitaciones segmentadas.'
+        },
+        {
+          title: 'Coordina en un hub compartido',
+          description: 'Los pasajeros ven horarios compatibles, estimaciones de ahorro y pueden chatear 48h antes del vuelo para cerrar detalles.'
+        },
+        {
+          title: 'Mide impacto y escala',
+          description: 'Obtén reportes de ocupación, ahorro económico y feedback. Replica las mejores rutas o integra tus proveedores habituales.'
         }
       ]
     },
@@ -275,6 +360,12 @@ export const landingCopy: Record<Locale, LandingCopy> = {
   },
   en: {
     skipLink: 'Skip to main content',
+    header: {
+      home: 'Home',
+      features: 'Features',
+      demo: 'Demo',
+      beta: 'Beta'
+    },
     seo: {
       title: 'Cojauny · Coordinate airport rides with your flight companions',
       description:
@@ -308,25 +399,86 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Flight based events',
           description:
             'Create events with meeting point, time slots and seats. Cojauny suggests optimal combinations and estimated savings per passenger.',
-          icon: baseFeatures.mobility
+          iconName: 'bolt'
         },
         {
           title: '48h ephemeral chat',
           description:
             'Coordinate in a chat that self-destructs 48 hours after take-off. Share live location, traffic status or gate changes without endless threads.',
-          icon: baseFeatures.ephemeralChat
+          iconName: 'chat'
         },
         {
           title: 'Transparent savings',
           description:
             'Show how much each passenger saves compared with travelling alone—taxi, Uber, private car or long-term parking.',
-          icon: baseFeatures.groupSaver
+          iconName: 'users'
         },
         {
           title: 'Privacy-first control',
           description:
             'Share the minimum data required and decide whether to exchange social handles. Everything is encrypted and GDPR compliant.',
-          icon: baseFeatures.privacy
+          iconName: 'shield'
+        }
+      ]
+    },
+    value: {
+      title: 'A control tower for shared ground transport',
+      subtitle:
+        'Cojauny removes spreadsheets and scattered chats so your ops team knows who is sharing a ride, how much it costs and what passengers experience.',
+      items: [
+        {
+          title: 'No more back-and-forth emails',
+          description:
+            'Automate invites, confirmations and reminders for every flight. All status updates live in one dashboard with roles for CX, ops and partners.'
+        },
+        {
+          title: 'Peace of mind for travellers',
+          description:
+            'Clear instructions, driver tracking and temporary chat reduce pre-flight anxiety. Your passengers arrive coordinated and happier.'
+        },
+        {
+          title: 'Insights to optimise suppliers',
+          description:
+            'Track occupancy, seat cost and cumulative savings to negotiate better rates and reinforce your loyalty programmes.'
+        }
+      ]
+    },
+    savings: {
+      title: 'Savings you can present to leadership',
+      caption: 'Average results from airline, corporate travel and airport transfer pilots.',
+      metrics: [
+        {
+          value: '32% less',
+          label: 'Cost per ride',
+          description: 'Average reduction versus single-passenger transfers thanks to smart grouping.'
+        },
+        {
+          value: '12 hrs',
+          label: 'Ops work reclaimed',
+          description: 'Weekly hours saved by centralising communications and automating follow-up.'
+        },
+        {
+          value: '95%',
+          label: 'Passengers confirmed',
+          description: 'Share of invited passengers that end up sharing a ride during low-incentive pilots.'
+        }
+      ]
+    },
+    workflow: {
+      title: 'From pilot to production in three steps',
+      intro: 'Set up your workspace in hours and start validating with real passengers while keeping compliance in check.',
+      steps: [
+        {
+          title: 'Import flights and invite passengers',
+          description: 'Sync schedules or create events manually. Customise messaging and let Cojauny send segmented invitations.'
+        },
+        {
+          title: 'Coordinate in a shared hub',
+          description: 'Passengers see compatible times, estimated savings and start a 48-hour chat to finalise details.'
+        },
+        {
+          title: 'Measure impact and expand',
+          description: 'Review occupancy, savings and feedback. Scale to new routes or integrate your preferred transport partners.'
         }
       ]
     },
@@ -437,6 +589,12 @@ export const landingCopy: Record<Locale, LandingCopy> = {
   },
   de: {
     skipLink: 'Zum Hauptinhalt springen',
+    header: {
+      home: 'Startseite',
+      features: 'Funktionen',
+      demo: 'Demo',
+      beta: 'Beta'
+    },
     seo: {
       title: 'Cojauny · Gemeinsame Fahrten zum Flughafen mit Mitreisenden planen',
       description:
@@ -470,25 +628,86 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Events pro Flug',
           description:
             'Lege Treffpunkt, Zeitfenster und Plätze fest. Cojauny schlägt optimale Kombinationen und Einsparungen pro Person vor.',
-          icon: baseFeatures.mobility
+          iconName: 'bolt'
         },
         {
           title: '48h-Chat',
           description:
             'Koordiniere Details in einem Chat, der 48 Stunden nach dem Flug automatisch gelöscht wird. Keine endlosen Gruppen.',
-          icon: baseFeatures.ephemeralChat
+          iconName: 'chat'
         },
         {
           title: 'Transparente Ersparnis',
           description:
             'Zeige, wie viel jeder Passagier im Vergleich zur Einzelfahrt spart – Taxi, Uber, Privatwagen oder Langzeitparkplatz.',
-          icon: baseFeatures.groupSaver
+          iconName: 'users'
         },
         {
           title: 'Datenschutz zuerst',
           description:
             'Teile nur notwendige Informationen und entscheide selbst, ob du weitere Kontaktdaten austauschst. Alles DSGVO-konform.',
-          icon: baseFeatures.privacy
+          iconName: 'shield'
+        }
+      ]
+    },
+    value: {
+      title: 'Die Leitstelle für geteilte Flughafentransfers',
+      subtitle:
+        'Cojauny ersetzt Excel-Listen und verstreute Chats. Dein Team sieht auf einen Blick, wer mit wem fährt, welche Kosten entstehen und wie die Reise erlebt wird.',
+      items: [
+        {
+          title: 'Weniger manuelle Abstimmung',
+          description:
+            'Einladungen, Bestätigungen und Erinnerungen laufen automatisiert. Status und Verantwortlichkeiten bleiben in einem gemeinsamen Dashboard.'
+        },
+        {
+          title: 'Bessere Passagiererfahrung',
+          description:
+            'Klare Anweisungen, Fahrer-Tracking und zeitlich begrenzter Chat reduzieren Stress vor Abflug und Ankunft. Zufriedenere Gäste, weniger Supportfälle.'
+        },
+        {
+          title: 'Kennzahlen für bessere Konditionen',
+          description:
+            'Analysiere Auslastung, Sitzkosten und kumulierte Einsparungen, um mit Transportpartnern neu zu verhandeln und Treueprogramme zu stärken.'
+        }
+      ]
+    },
+    savings: {
+      title: 'Spürbare Effekte in wenigen Wochen',
+      caption: 'Durchschnittswerte aus Pilotprojekten mit Airlines, Geschäftsreiseanbietern und Transfer-Operatoren.',
+      metrics: [
+        {
+          value: '32% weniger',
+          label: 'Kosten pro Fahrt',
+          description: 'Einsparung gegenüber Einzelfahrten durch intelligente Gruppierung und Kapazitätsplanung.'
+        },
+        {
+          value: '12 Std.',
+          label: 'Teamaufwand eingespart',
+          description: 'Wöchentliche Stunden, die Operations-Teams durch zentrale Kommunikation und Automatisierung zurückgewinnen.'
+        },
+        {
+          value: '95%',
+          label: 'Bestätigte Teilnehmer',
+          description: 'Anteil der eingeladenen Passagiere, die in Piloten mit minimalen Anreizen tatsächlich teilen.'
+        }
+      ]
+    },
+    workflow: {
+      title: 'In drei Schritten live',
+      intro: 'Setze dein Projekt binnen Stunden auf und teste mit realen Passagieren – ohne langwierige IT-Roadmaps.',
+      steps: [
+        {
+          title: 'Flüge importieren und Gäste einladen',
+          description: 'Synchronisiere Flugpläne oder lege Events manuell an. Passe Texte an und lass Cojauny segmentierte Einladungen versenden.'
+        },
+        {
+          title: 'Alle koordinieren in einem Hub',
+          description: 'Passagiere sehen passende Slots, geschätzte Ersparnisse und starten einen 48-Stunden-Chat zur Feinabstimmung.'
+        },
+        {
+          title: 'Ergebnisse auswerten und skalieren',
+          description: 'Analysiere Auslastung, Einsparungen und Feedback. Rolle das Programm auf neue Strecken aus oder binde bestehende Partner an.'
         }
       ]
     },
@@ -599,6 +818,12 @@ export const landingCopy: Record<Locale, LandingCopy> = {
   },
   fr: {
     skipLink: 'Aller au contenu principal',
+    header: {
+      home: 'Accueil',
+      features: 'Fonctionnalités',
+      demo: 'Démo',
+      beta: 'Beta'
+    },
     seo: {
       title: 'Cojauny · Coordonnez les trajets vers l’aéroport avec vos compagnons de vol',
       description:
@@ -632,25 +857,86 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Événements par vol',
           description:
             'Définissez point de rendez-vous, horaires et places disponibles. Cojauny suggère la meilleure combinaison et les économies estimées.',
-          icon: baseFeatures.mobility
+          iconName: 'bolt'
         },
         {
           title: 'Chat éphémère 48h',
           description:
-            'Coordonnez-vous dans un chat qui s’efface 48h après le vol. Partagez localisation, circulation ou changement de porte sans bruit inutile.',
-          icon: baseFeatures.ephemeralChat
+            "Coordonnez-vous dans un chat qui s'efface 48h après le vol. Partagez localisation, circulation ou changement de porte sans bruit inutile.",
+          iconName: 'chat'
         },
         {
           title: 'Économies claires',
           description:
             'Affichez les économies par passager par rapport à un trajet individuel — taxi, VTC, voiture privée ou parking longue durée.',
-          icon: baseFeatures.groupSaver
+          iconName: 'users'
         },
         {
           title: 'Contrôle de la confidentialité',
           description:
             'Partagez seulement les informations nécessaires et choisissez si vous souhaitez échanger vos réseaux. Conforme RGPD.',
-          icon: baseFeatures.privacy
+          iconName: 'shield'
+        }
+      ]
+    },
+    value: {
+      title: 'Le cockpit de vos transferts partagés',
+      subtitle:
+        'Cojauny supprime les feuilles de calcul et les groupes dispersés. Vos équipes savent qui partage un trajet, quel est le coût et comment se déroule l’expérience passager.',
+      items: [
+        {
+          title: 'Moins de coordination manuelle',
+          description:
+            'Invitations, relances et confirmations sont automatisées. Chaque vol dispose d’un suivi clair pour les équipes opérations et relation client.'
+        },
+        {
+          title: 'Des voyageurs rassurés',
+          description:
+            'Briefs précis, suivi chauffeur et chat temporaire limitent le stress avant ou après le vol. Vos clients arrivent ensemble, à l’heure et informés.'
+        },
+        {
+          title: 'Des données pour négocier',
+          description:
+            'Mesurez taux de remplissage, coût par siège et économies cumulées afin d’optimiser vos contrats transport et programmes de fidélité.'
+        }
+      ]
+    },
+    savings: {
+      title: 'Des gains prouvés dès les premiers vols',
+      caption: 'Moyennes observées lors de pilotes avec compagnies aériennes, agences corporate et opérateurs de transferts.',
+      metrics: [
+        {
+          value: '32 %',
+          label: 'Coût par trajet en moins',
+          description: 'Réduction moyenne face aux trajets individuels grâce au regroupement intelligent des passagers.'
+        },
+        {
+          value: '12 h',
+          label: 'Coordination économisée',
+          description: 'Heures hebdomadaires libérées pour les équipes grâce à l’automatisation des communications.'
+        },
+        {
+          value: '95 %',
+          label: 'Passagers confirmés',
+          description: 'Taux de participation lors de pilotes avec incitations limitées.'
+        }
+      ]
+    },
+    workflow: {
+      title: 'Déployer Cojauny en trois étapes',
+      intro: 'Configurez votre espace en quelques heures et testez avec de vrais passagers tout en respectant vos exigences conformité.',
+      steps: [
+        {
+          title: 'Importer vos vols et inviter',
+          description: 'Synchronisez vos plannings ou créez des événements manuellement. Personnalisez les messages et laissez Cojauny envoyer les invitations ciblées.'
+        },
+        {
+          title: 'Coordonner dans un hub partagé',
+          description: 'Les passagers visualisent les créneaux compatibles, les économies estimées et ouvrent un chat de 48 h pour finaliser les détails.'
+        },
+        {
+          title: 'Mesurer et étendre',
+          description: 'Analysez remplissage, économies et feedback. Répliquez sur d’autres lignes ou connectez vos fournisseurs préférés.'
         }
       ]
     },

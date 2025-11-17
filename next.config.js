@@ -2,10 +2,6 @@
 const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
-    i18n: {
-        locales: ['es', 'en', 'de', 'fr'],
-        defaultLocale: 'es'
-    },
     images: {
         formats: ['image/avif', 'image/webp'],
         remotePatterns: [
