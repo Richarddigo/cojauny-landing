@@ -89,7 +89,7 @@ const Footer = ({ copy, locale }: FooterProps) => (
     <footer className="mt-24 border-t border-slate-100 bg-slate-50">
         <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 md:flex-row md:items-center md:justify-between">
             <div>
-                <p className="text-lg font-semibold text-slate-900">Cojauny</p>
+                <p className="text-lg font-semibold text-slate-900">Cojauny™</p>
                 <p className="mt-2 max-w-xs text-sm text-slate-600">{copy.description}</p>
                 <div className="mt-4 flex gap-4">
                     <Link
@@ -135,12 +135,12 @@ const Footer = ({ copy, locale }: FooterProps) => (
                     <Link href={`/${locale}/legal/terms`} className="hover:text-brand-600">
                         {copy.terms}
                     </Link>
-                    <a href="mailto:hola@cojauny.com" className="hover:text-brand-600">
+                    <Link href={`/${locale}/contact`} className="hover:text-brand-600">
                         {copy.contact}
-                    </a>
+                    </Link>
                 </nav>
                 <LanguageSwitcher currentLocale={locale} label={copy.languageLabel} />
-                <p className="text-xs text-slate-500">© {new Date().getFullYear()} Cojauny. {copy.rights}</p>
+                <p className="text-xs text-slate-500">© {new Date().getFullYear()} Cojauny™. {copy.rights}</p>
             </div>
         </div>
     </footer>

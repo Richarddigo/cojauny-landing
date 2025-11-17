@@ -1,8 +1,6 @@
 import BetaSignupForm from '@/components/BetaSignupForm';
 import FeedbackForm from '@/components/FeedbackForm';
 import Features from '@/components/Features';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import IntegrationCTA from '@/components/IntegrationCTA';
 import Mockups from '@/components/Mockups';
@@ -19,25 +17,21 @@ interface LandingPageContentProps {
 
 const LandingPageContent = ({ copy, locale }: LandingPageContentProps) => (
     <>
-        <Header locale={locale} copy={copy.header} />
-        <div className="pt-20">
-            <Hero copy={copy.hero} />
-            <ValuePropsSection copy={copy.value} />
-            <SavingsSection copy={copy.savings} />
-            <Features copy={copy.features} />
-            <WorkflowSection copy={copy.workflow} />
-            <section className="mx-auto mt-24 flex max-w-6xl flex-col gap-16 px-6 lg:flex-row">
-                <div className="flex-1">
-                    <Mockups className="h-full" copy={copy.mockups} />
-                </div>
-                <div className="flex flex-1 flex-col gap-16">
-                    <BetaSignupForm copy={copy.forms.beta} locale={locale} />
-                    <FeedbackForm copy={copy.forms.feedback} locale={locale} />
-                </div>
-            </section>
-            <IntegrationCTA copy={copy.ctaStrip} locale={locale} />
-            <Footer copy={copy.footer} locale={locale} />
-        </div>
+        <Hero copy={copy.hero} />
+        <ValuePropsSection copy={copy.value} />
+        <SavingsSection copy={copy.savings} />
+        <Features copy={copy.features} />
+        <WorkflowSection copy={copy.workflow} />
+        <section className="mx-auto mt-24 flex max-w-6xl flex-col gap-16 px-6 lg:flex-row">
+            <div className="flex-1">
+                <Mockups className="h-full" copy={copy.mockups} />
+            </div>
+            <div className="flex flex-1 flex-col gap-16">
+                <BetaSignupForm copy={copy.forms.beta} locale={locale} />
+                <FeedbackForm copy={copy.forms.feedback} locale={locale} />
+            </div>
+        </section>
+        <IntegrationCTA copy={copy.ctaStrip} locale={locale} />
     </>
 );
 

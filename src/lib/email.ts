@@ -1,5 +1,10 @@
 import { env } from './env';
-export type EmailTemplateName = 'beta-confirmation' | 'feedback-thanks' | 'internal-notification';
+export type EmailTemplateName =
+  | 'beta-confirmation'
+  | 'feedback-thanks'
+  | 'internal-notification'
+  | 'contact-thanks'
+  | 'contact-notification';
 
 export interface EmailEdgePayload {
   email: string;
@@ -43,6 +48,12 @@ export const emailTemplateMap: Record<EmailTemplateName, { description: string }
   },
   'feedback-thanks': {
     description: 'Agradece el feedback recibido y mantiene el contacto.'
+  },
+  'contact-thanks': {
+    description: 'Confirma la recepción de un mensaje de contacto y detalla los próximos pasos.'
+  },
+  'contact-notification': {
+    description: 'Notifica al equipo interno cuando llega un mensaje del formulario de contacto.'
   },
   'internal-notification': {
     description: 'Notifica al equipo interno cuando llega feedback relevante.'

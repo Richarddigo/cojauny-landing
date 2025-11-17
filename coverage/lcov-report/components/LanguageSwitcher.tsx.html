@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/111</span>
+                <span class='fraction'>0/119</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/111</span>
+                <span class='fraction'>0/119</span>
             </div>
         
             
@@ -174,7 +174,23 @@
 <a name='L109'></a><a href='#L109'>109</a>
 <a name='L110'></a><a href='#L110'>110</a>
 <a name='L111'></a><a href='#L111'>111</a>
-<a name='L112'></a><a href='#L112'>112</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L112'></a><a href='#L112'>112</a>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -289,7 +305,7 @@
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >import { Fragment, useMemo } from 'react';</span>
 <span class="cstat-no" title="statement not covered" >import { Menu, Transition } from '@headlessui/react';</span>
-<span class="cstat-no" title="statement not covered" >import { CheckIcon, ChevronDownIcon, GlobeAltIcon } from '@heroicons/react/20/solid';</span>
+<span class="cstat-no" title="statement not covered" >import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid';</span>
 <span class="cstat-no" title="statement not covered" >import { usePathname, useRouter, useSearchParams } from 'next/navigation';</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >import { localeValues, type Locale } from '@/locales/config';</span>
@@ -306,6 +322,13 @@
 <span class="cstat-no" title="statement not covered" >    fr: 'Français'</span>
 <span class="cstat-no" title="statement not covered" >};</span>
 <span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >const languageFlags: Record&lt;Locale, string&gt; = {</span>
+<span class="cstat-no" title="statement not covered" >    es: '🇪🇸',</span>
+<span class="cstat-no" title="statement not covered" >    en: '🇬🇧',</span>
+<span class="cstat-no" title="statement not covered" >    de: '🇩🇪',</span>
+<span class="cstat-no" title="statement not covered" >    fr: '🇫🇷'</span>
+<span class="cstat-no" title="statement not covered" >};</span>
+<span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >const LanguageSwitcher = ({ currentLocale, label }: LanguageSwitcherProps) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    const router = useRouter();</span>
 <span class="cstat-no" title="statement not covered" >    const pathname = usePathname() ?? '/';</span>
@@ -315,7 +338,8 @@
 <span class="cstat-no" title="statement not covered" >        () =&gt;</span>
 <span class="cstat-no" title="statement not covered" >            localeValues.map((value) =&gt; ({</span>
 <span class="cstat-no" title="statement not covered" >                value,</span>
-<span class="cstat-no" title="statement not covered" >                label: languageLabels[value]</span>
+<span class="cstat-no" title="statement not covered" >                label: languageLabels[value],</span>
+<span class="cstat-no" title="statement not covered" >                flag: languageFlags[value]</span>
 <span class="cstat-no" title="statement not covered" >            })),</span>
 <span class="cstat-no" title="statement not covered" >        []</span>
 <span class="cstat-no" title="statement not covered" >    );</span>
@@ -342,6 +366,7 @@
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >    const activeOption = options.find((option) =&gt; option.value === currentLocale);</span>
 <span class="cstat-no" title="statement not covered" >    const buttonLabel = activeOption?.label ?? currentLocale.toUpperCase();</span>
+<span class="cstat-no" title="statement not covered" >    const buttonFlag = activeOption?.flag ?? '🌐';</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >    const buttonAriaLabel = label ?? 'Change language';</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -351,7 +376,7 @@
 <span class="cstat-no" title="statement not covered" >                aria-label={buttonAriaLabel}</span>
 <span class="cstat-no" title="statement not covered" >                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:border-brand-200 hover:text-brand-700 focus:outline-none focus-visible:border-brand-400 focus-visible:ring-2 focus-visible:ring-brand-200"</span>
 <span class="cstat-no" title="statement not covered" >            &gt;</span>
-<span class="cstat-no" title="statement not covered" >                &lt;GlobeAltIcon className="h-4 w-4 text-brand-500" aria-hidden /&gt;</span>
+<span class="cstat-no" title="statement not covered" >                &lt;span aria-hidden className="text-base leading-none"&gt;{buttonFlag}&lt;/span&gt;</span>
 <span class="cstat-no" title="statement not covered" >                &lt;span&gt;{buttonLabel}&lt;/span&gt;</span>
 <span class="cstat-no" title="statement not covered" >                &lt;ChevronDownIcon className="h-4 w-4 text-slate-400" aria-hidden /&gt;</span>
 <span class="cstat-no" title="statement not covered" >            &lt;/Menu.Button&gt;</span>
@@ -373,13 +398,12 @@
 <span class="cstat-no" title="statement not covered" >                                    &lt;button</span>
 <span class="cstat-no" title="statement not covered" >                                        type="button"</span>
 <span class="cstat-no" title="statement not covered" >                                        onClick={() =&gt; navigateToLocale(option.value)}</span>
-<span class="cstat-no" title="statement not covered" >                                        className={`flex w-full items-center justify-between gap-3 rounded-2xl px-3 py-2 text-left text-sm transition ${</span>
-<span class="cstat-no" title="statement not covered" >                                            active ? 'bg-brand-50 text-brand-700' : 'text-slate-700'</span>
-<span class="cstat-no" title="statement not covered" >                                        }`}</span>
+<span class="cstat-no" title="statement not covered" >                                        className={`flex w-full items-center justify-between gap-3 rounded-2xl px-3 py-2 text-left text-sm transition ${active ? 'bg-brand-50 text-brand-700' : 'text-slate-700'</span>
+<span class="cstat-no" title="statement not covered" >                                            }`}</span>
 <span class="cstat-no" title="statement not covered" >                                    &gt;</span>
 <span class="cstat-no" title="statement not covered" >                                        &lt;span className="flex items-center gap-3"&gt;</span>
-<span class="cstat-no" title="statement not covered" >                                            &lt;span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-100 text-xs font-semibold uppercase text-brand-700"&gt;</span>
-<span class="cstat-no" title="statement not covered" >                                                {option.value}</span>
+<span class="cstat-no" title="statement not covered" >                                            &lt;span aria-hidden className="flex h-8 w-8 items-center justify-center text-xl"&gt;</span>
+<span class="cstat-no" title="statement not covered" >                                                {option.flag}</span>
 <span class="cstat-no" title="statement not covered" >                                            &lt;/span&gt;</span>
 <span class="cstat-no" title="statement not covered" >                                            &lt;span className="font-medium"&gt;{option.label}&lt;/span&gt;</span>
 <span class="cstat-no" title="statement not covered" >                                        &lt;/span&gt;</span>
@@ -403,7 +427,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-17T10:10:44.349Z
+                at 2025-11-17T11:49:19.111Z
             </div>
         <script src="../prettify.js"></script>
         <script>

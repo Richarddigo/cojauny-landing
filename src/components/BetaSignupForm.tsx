@@ -86,7 +86,7 @@ const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
         <form
             id="beta"
             onSubmit={handleSubmit}
-            className="mt-16 space-y-6 rounded-3xl border border-slate-100 bg-white p-8 shadow-xl"
+            className="mt-16 space-y-6 rounded-3xl border border-slate-100 bg-white p-8 shadow-xl scroll-mt-24 lg:scroll-mt-36"
             aria-describedby="beta-form-help"
         >
             <div>

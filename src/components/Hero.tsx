@@ -17,7 +17,7 @@ interface HeroProps {
 const Hero = ({ copy }: HeroProps) => (
     <section
         id="inicio"
-        className="relative overflow-hidden pt-24 text-center md:pt-32 lg:pt-40"
+        className="relative overflow-hidden scroll-mt-24 pt-24 text-center md:scroll-mt-28 md:pt-32 lg:scroll-mt-32 lg:pt-40"
     >
         <motion.div
             initial="hidden"
@@ -66,7 +66,7 @@ const Hero = ({ copy }: HeroProps) => (
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.8, ease: 'easeOut' }}
-            className="relative mx-auto mt-16 w-full max-w-5xl rounded-[3rem] bg-gradient-to-br from-slate-900 via-slate-800 to-brand-900 p-6 shadow-soft-glow"
+            className="relative mx-auto mt-16 w-full max-w-5xl scroll-mt-24 rounded-[3rem] bg-gradient-to-br from-slate-900 via-slate-800 to-brand-900 p-6 shadow-soft-glow lg:scroll-mt-32"
         >
             <div className="pointer-events-none absolute inset-0 rounded-[3rem] border border-white/10" />
             <Image

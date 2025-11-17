@@ -2,7 +2,7 @@
 
 import { Fragment, useMemo } from 'react';
 import { Menu, Transition } from '@headlessui/react';
-import { CheckIcon, ChevronDownIcon, GlobeAltIcon } from '@heroicons/react/20/solid';
+import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import { localeValues, type Locale } from '@/locales/config';
@@ -19,6 +19,13 @@ const languageLabels: Record<Locale, string> = {
     fr: 'Français'
 };
 
+const languageFlags: Record<Locale, string> = {
+    es: '🇪🇸',
+    en: '🇬🇧',
+    de: '🇩🇪',
+    fr: '🇫🇷'
+};
+
 const LanguageSwitcher = ({ currentLocale, label }: LanguageSwitcherProps) => {
     const router = useRouter();
     const pathname = usePathname() ?? '/';
@@ -28,7 +35,8 @@ const LanguageSwitcher = ({ currentLocale, label }: LanguageSwitcherProps) => {
         () =>
             localeValues.map((value) => ({
                 value,
-                label: languageLabels[value]
+                label: languageLabels[value],
+                flag: languageFlags[value]
             })),
         []
     );
@@ -55,6 +63,7 @@ const LanguageSwitcher = ({ currentLocale, label }: LanguageSwitcherProps) => {
 
     const activeOption = options.find((option) => option.value === currentLocale);
     const buttonLabel = activeOption?.label ?? currentLocale.toUpperCase();
+    const buttonFlag = activeOption?.flag ?? '🌐';
 
     const buttonAriaLabel = label ?? 'Change language';
 
@@ -64,7 +73,7 @@ const LanguageSwitcher = ({ currentLocale, label }: LanguageSwitcherProps) => {
                 aria-label={buttonAriaLabel}
                 className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:border-brand-200 hover:text-brand-700 focus:outline-none focus-visible:border-brand-400 focus-visible:ring-2 focus-visible:ring-brand-200"
             >
-                <GlobeAltIcon className="h-4 w-4 text-brand-500" aria-hidden />
+                <span aria-hidden className="text-base leading-none">{buttonFlag}</span>
                 <span>{buttonLabel}</span>
                 <ChevronDownIcon className="h-4 w-4 text-slate-400" aria-hidden />
             </Menu.Button>
@@ -90,8 +99,8 @@ const LanguageSwitcher = ({ currentLocale, label }: LanguageSwitcherProps) => {
                                             }`}
                                     >
                                         <span className="flex items-center gap-3">
-                                            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-100 text-xs font-semibold uppercase text-brand-700">
-                                                {option.value}
+                                            <span aria-hidden className="flex h-8 w-8 items-center justify-center text-xl">
+                                                {option.flag}
                                             </span>
                                             <span className="font-medium">{option.label}</span>
                                         </span>

@@ -1,6 +1,10 @@
-import { defaultLocale } from '@/locales/config';
+import AccessibilitySkipLink from '@/components/AccessibilitySkipLink';
+import CookieBanner from '@/components/CookieBanner';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 import LandingPageContent from '@/components/LandingPageContent';
 import { getLandingCopy } from '@/locales/copy';
+import { defaultLocale } from '@/locales/config';
 
 export const revalidate = 60;
 
@@ -8,5 +12,15 @@ export default function Page() {
     const locale = defaultLocale;
     const copy = getLandingCopy(locale);
 
-    return <LandingPageContent copy={copy} locale={locale} />;
+    return (
+        <>
+            <AccessibilitySkipLink label={copy.skipLink} />
+            <Header locale={locale} copy={copy.header} />
+            <main id="main-content" className="relative pt-24">
+                <LandingPageContent copy={copy} locale={locale} />
+            </main>
+            <Footer copy={copy.footer} locale={locale} />
+            <CookieBanner copy={copy.cookie} locale={locale} />
+        </>
+    );
 }

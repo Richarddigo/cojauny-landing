@@ -4,6 +4,8 @@ import type { ReactNode } from 'react';
 
 import AccessibilitySkipLink from '@/components/AccessibilitySkipLink';
 import CookieBanner from '@/components/CookieBanner';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 import { locales, defaultLocale, type Locale } from '@/locales/config';
 import { getLandingCopy } from '@/locales/copy';
 import { siteMetadata, ogImages } from '@/lib/site';
@@ -70,9 +72,11 @@ export default function LocaleLayout({ children, params }: LocaleLayoutProps) {
     return (
         <>
             <AccessibilitySkipLink label={copy.skipLink} />
-            <main id="main-content" className="relative">
+            <Header locale={locale} copy={copy.header} />
+            <main id="main-content" className="relative pt-24">
                 {children}
             </main>
+            <Footer copy={copy.footer} locale={locale} />
             <CookieBanner copy={copy.cookie} locale={locale} />
         </>
     );

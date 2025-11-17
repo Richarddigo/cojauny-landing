@@ -306,7 +306,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         description:
           'Prioridad para aerolíneas, agencias de viaje corporativas y equipos de operaciones que quieran validar Cojauny con pasajeros reales.',
         success:
-          '¡Gracias! Te enviaremos un correo desde beta@cojauny.com con tu token de activación.',
+          '¡Gracias! Te enviaremos un correo desde support@cojauny.com con tu token de activación.',
         error: 'No se pudo enviar tu solicitud. Inténtalo de nuevo en unos minutos.',
         submit: 'Solicitar acceso',
         checkboxLabel: 'Acepto la {privacyLink} y el tratamiento de mis datos para coordinar la beta.',
@@ -321,7 +321,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       feedback: {
         title: 'Cuéntanos tu caso de uso',
         description:
-          '¿Gestionas transfer colectivos? ¿Quieres mejorar la experiencia de pasajeros corporativos? Comparte detalles y te responderemos desde feedback@cojauny.com.',
+          '¿Gestionas transfer colectivos? ¿Quieres mejorar la experiencia de pasajeros corporativos? Comparte detalles y te responderemos desde support@cojauny.com.',
         success: 'Gracias por tu feedback. Te escribiremos en la misma dirección si necesitamos más contexto.',
         error: 'No se pudo enviar el feedback. Revisa los datos o inténtalo más tarde.',
         submit: 'Enviar feedback',
@@ -347,7 +347,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       moreInfo: 'Más información'
     },
     footer: {
-      description: 'Cojauny coordina transporte compartido para pasajeros que ya comparten vuelo. Sin fricciones, sin redes sociales permanentes.',
+      description: 'Cojauny impulsa traslados compartidos con ahorro trazable para operaciones de viaje exigentes.',
       rights: 'Todos los derechos reservados.',
       appStoreSoon: 'App Store (próximamente)',
       playStoreSoon: 'Google Play (próximamente)',
@@ -533,7 +533,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         description:
           'Priority for airlines, corporate travel and mobility teams wanting to validate shared rides with real passengers.',
         success:
-          'Thanks! You will receive an email from beta@cojauny.com with your activation token.',
+          'Thanks! You will receive an email from support@cojauny.com with your activation token.',
         error: 'We could not send your request. Please try again in a moment.',
         submit: 'Request access',
         checkboxLabel: 'I accept the {privacyLink} and consent to data processing for the beta.',
@@ -548,7 +548,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       feedback: {
         title: 'Share your use case',
         description:
-          'Managing group transfers or premium passengers? Tell us more and we will reply from feedback@cojauny.com.',
+          'Managing group transfers or premium passengers? Tell us more and we will reply from support@cojauny.com.',
         success:
           'Thanks for the feedback. We will reach out using the same address if we need more context.',
         error: 'We could not submit your feedback. Check the fields and try again.',
@@ -576,7 +576,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     footer: {
       description:
-        'Cojauny coordinates shared rides for passengers already on the same flight. No permanent networks, just practical collaboration.',
+        'Cojauny powers flight-based ride coordination with measurable savings for demanding mobility teams.',
       rights: 'All rights reserved.',
       appStoreSoon: 'App Store (coming soon)',
       playStoreSoon: 'Google Play (coming soon)',
@@ -762,7 +762,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         description:
           'Priorität für Airlines, Geschäftsreise-Teams und Mobilitätsanbieter, die gemeinsame Fahrten mit echten Passagieren testen möchten.',
         success:
-          'Danke! Du erhältst eine E-Mail von beta@cojauny.com mit deinem Aktivierungs-Token.',
+          'Danke! Du erhältst eine E-Mail von support@cojauny.com mit deinem Aktivierungs-Token.',
         error: 'Deine Anfrage konnte nicht gesendet werden. Bitte versuche es später erneut.',
         submit: 'Zugang anfragen',
         checkboxLabel:
@@ -778,7 +778,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       feedback: {
         title: 'Erzähl uns von deinem Szenario',
         description:
-          'Du organisierst Sammeltransfers oder Premium-Reisende? Teile Details, wir melden uns von feedback@cojauny.com.',
+          'Du organisierst Sammeltransfers oder Premium-Reisende? Teile Details, wir melden uns von support@cojauny.com.',
         success: 'Danke für dein Feedback. Wir kontaktieren dich bei Rückfragen über dieselbe Adresse.',
         error: 'Feedback konnte nicht übermittelt werden. Bitte überprüfe die Angaben.',
         submit: 'Feedback senden',
@@ -805,7 +805,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     footer: {
       description:
-        'Cojauny koordiniert gemeinsame Fahrten für Passagiere desselben Fluges. Keine dauerhaften Netzwerke, nur praktische Zusammenarbeit.',
+        'Cojauny orchestriert Flughafentransfers mit nachweisbaren Einsparungen für anspruchsvolle Teams.',
       rights: 'Alle Rechte vorbehalten.',
       appStoreSoon: 'App Store (bald verfügbar)',
       playStoreSoon: 'Google Play (bald verfügbar)',
@@ -991,7 +991,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         description:
           'Priorité aux compagnies aériennes, agences corporate et équipes mobilité voulant tester des trajets partagés avec de vrais passagers.',
         success:
-          'Merci ! Vous recevrez un e-mail de beta@cojauny.com avec votre token d’activation.',
+          'Merci ! Vous recevrez un e-mail de support@cojauny.com avec votre token d’activation.',
         error: 'Impossible d’envoyer votre demande. Réessayez dans quelques minutes.',
         submit: 'Demander l’accès',
         checkboxLabel:
@@ -1007,7 +1007,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       feedback: {
         title: 'Partagez votre scénario',
         description:
-          'Vous gérez des transferts collectifs ou des voyageurs premium ? Donnez-nous des détails et nous répondrons depuis feedback@cojauny.com.',
+          'Vous gérez des transferts collectifs ou des voyageurs premium ? Donnez-nous des détails et nous répondrons depuis support@cojauny.com.',
         success:
           'Merci pour votre retour. Nous vous contacterons par ce même e-mail si besoin.',
         error: 'Impossible d’envoyer le feedback. Vérifiez les informations.',
@@ -1035,7 +1035,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     footer: {
       description:
-        'Cojauny coordonne des trajets partagés entre passagers d’un même vol. Pas de réseau permanent, seulement de la collaboration efficace.',
+        'Cojauny orchestre les trajets d’aéroport avec des économies mesurables pour les équipes les plus exigeantes.',
       rights: 'Tous droits réservés.',
       appStoreSoon: 'App Store (bientôt)',
       playStoreSoon: 'Google Play (bientôt)',

@@ -14,7 +14,7 @@ export const siteMetadata = {
   secondaryColor: '#121754',
   appStoreUrl: '#',
   playStoreUrl: '#',
-  contactEmail: 'hola@cojauny.com'
+  contactEmail: 'support@cojauny.com'
 };
 
 export const ogImages = [

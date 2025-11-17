@@ -16,6 +16,19 @@ export const feedbackSchema = z
     path: ['honeypot']
   });
 
+export const contactSchema = z
+  .object({
+    email: z.string().email('Introduce un correo válido'),
+    message: z.string().min(10, 'Cuéntanos el motivo del contacto con un poco más de detalle'),
+    name: z.string().min(2, 'Incluye tu nombre'),
+    locale: z.enum(localeValues),
+    honeypot: z.string().optional()
+  })
+  .refine((values) => !values.honeypot, {
+    message: 'Posible bot detectado',
+    path: ['honeypot']
+  });
+
 export const betaSignupSchema = z
   .object({
     email: z.string().email('Introduce un correo válido'),
@@ -36,4 +49,5 @@ export const betaSignupSchema = z
   });
 
 export type FeedbackInput = z.infer<typeof feedbackSchema>;
+export type ContactInput = z.infer<typeof contactSchema>;
 export type BetaSignupInput = z.infer<typeof betaSignupSchema>;
