@@ -8,7 +8,7 @@ interface WorkflowSectionProps {
 }
 
 const WorkflowSection = ({ copy }: WorkflowSectionProps) => (
-    <section id="flujo" className="bg-white py-24">
+    <section id="como-funciona" className="bg-white py-24">
         <div className="mx-auto max-w-6xl px-6">
             <div className="mx-auto max-w-3xl text-center">
                 <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{copy.title}</h2>

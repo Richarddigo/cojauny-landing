@@ -15,7 +15,7 @@ const FaqSection = ({ copy }: FaqSectionProps) => {
     };
 
     return (
-        <section className="mx-auto mt-24 max-w-4xl px-6">
+        <section id="faq" className="mx-auto mt-24 max-w-4xl px-6">
             <div className="text-center">
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                     {copy.title}

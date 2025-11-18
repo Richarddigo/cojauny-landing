@@ -26,7 +26,7 @@ const iconMap: Record<IconName, typeof BoltIcon> = {
 
 const Features = ({ copy }: FeaturesProps) => (
     <section
-        id="features"
+        id="caracteristicas"
         className="relative mt-24 scroll-mt-24 border-y border-slate-100 bg-slate-50 py-24 lg:scroll-mt-32"
     >
         <div className="mx-auto max-w-6xl px-6">
@@ -36,7 +36,7 @@ const Features = ({ copy }: FeaturesProps) => (
                 </h2>
                 <p className="mt-4 text-lg text-slate-600">{copy.subtitle}</p>
             </div>
-            <div className="mt-16 grid gap-8 md:grid-cols-2">
+            <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 {copy.items.map((feature) => {
                     const Icon = iconMap[feature.iconName];
                     return (

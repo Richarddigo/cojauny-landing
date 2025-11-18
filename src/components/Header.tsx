@@ -47,21 +47,33 @@ const Header = ({ locale, copy }: HeaderProps) => {
                         <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                     </button>
                 </div>
-                <div className="hidden lg:flex lg:gap-x-8">
+                <div className="hidden lg:flex lg:gap-x-6">
                     <Link href={`/${locale}#inicio`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
-                        {copy.home}
+                        Inicio
                     </Link>
-                    <Link href={`/${locale}#features`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
-                        {copy.features}
+                    <Link href={`/${locale}#beneficios`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
+                        Beneficios
+                    </Link>
+                    <Link href={`/${locale}#impacto`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
+                        Impacto
+                    </Link>
+                    <Link href={`/${locale}#caracteristicas`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
+                        Características
+                    </Link>
+                    <Link href={`/${locale}#como-funciona`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
+                        Cómo Funciona
                     </Link>
                     <Link href={`/${locale}#demo`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
-                        {copy.demo}
+                        Demo
+                    </Link>
+                    <Link href={`/${locale}#precios`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
+                        Precios
+                    </Link>
+                    <Link href={`/${locale}#faq`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
+                        FAQ
                     </Link>
                     <Link href={`/${locale}#beta`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
-                        {copy.beta}
-                    </Link>
-                    <Link href={`/${locale}/blog`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
-                        {copy.blog}
+                        Beta
                     </Link>
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -70,7 +82,14 @@ const Header = ({ locale, copy }: HeaderProps) => {
             </nav>
             {/* Mobile menu */}
             <div className={`lg:hidden ${mobileMenuOpen ? 'fixed inset-0 z-50' : 'hidden'}`}>
-                <div className="fixed inset-0 bg-slate-900/25" onClick={() => setMobileMenuOpen(false)} />
+                <div
+                    className="fixed inset-0 bg-slate-900/25"
+                    onClick={() => setMobileMenuOpen(false)}
+                    onKeyDown={(e) => e.key === 'Escape' && setMobileMenuOpen(false)}
+                    role="button"
+                    tabIndex={0}
+                    aria-label="Close menu"
+                />
                 <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-slate-900/10">
                     <div className="flex items-center justify-between">
                         <Link href={`/${locale}`} className="-m-1.5 flex items-center gap-3 p-1.5" onClick={() => setMobileMenuOpen(false)}>
@@ -100,35 +119,63 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
-                                    {copy.home}
+                                    Inicio
                                 </Link>
                                 <Link
-                                    href={`/${locale}#features`}
+                                    href={`/${locale}#beneficios`}
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
-                                    {copy.features}
+                                    Beneficios
+                                </Link>
+                                <Link
+                                    href={`/${locale}#impacto`}
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    Impacto
+                                </Link>
+                                <Link
+                                    href={`/${locale}#caracteristicas`}
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    Características
+                                </Link>
+                                <Link
+                                    href={`/${locale}#como-funciona`}
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    Cómo Funciona
                                 </Link>
                                 <Link
                                     href={`/${locale}#demo`}
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
-                                    {copy.demo}
+                                    Demo
+                                </Link>
+                                <Link
+                                    href={`/${locale}#precios`}
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    Precios
+                                </Link>
+                                <Link
+                                    href={`/${locale}#faq`}
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    FAQ
                                 </Link>
                                 <Link
                                     href={`/${locale}#beta`}
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
-                                    {copy.beta}
-                                </Link>
-                                <Link
-                                    href={`/${locale}/blog`}
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    {copy.blog}
+                                    Beta
                                 </Link>
                             </div>
                             <div className="py-6">

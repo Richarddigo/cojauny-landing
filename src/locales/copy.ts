@@ -305,28 +305,28 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     savings: {
-      title: 'El impacto de viajar inteligente',
-      caption: 'Datos reales de nuestra comunidad de viajeros en todo el mundo.',
+      title: 'El impacto de viajar inteligente con Cojauny',
+      caption: 'El potencial que alcanzaremos juntos cuando lances tu próximo viaje con nosotros.',
       metrics: [
         {
-          value: '+15,000',
-          label: 'Viajeros Conectados',
-          description: 'Miles de personas ya están compartiendo vuelos, reduciendo costos y haciendo amigos en Cojauny.'
+          value: '50,000+',
+          label: 'Viajeros Objetivo Año 1',
+          description: 'Nuestro objetivo es conectar a más de 50,000 viajeros en el primer año, creando una comunidad global de transporte compartido.'
         },
         {
           value: '50-75%',
-          label: 'Ahorro Promedio',
-          description: 'Los usuarios de Cojauny ahorran entre 50% y 75% en transporte al aeropuerto comparado con viajes individuales.'
+          label: 'Ahorro Potencial',
+          description: 'Podrás ahorrar entre 50% y 75% en cada trayecto al aeropuerto compartiendo con otros pasajeros de tu mismo vuelo.'
         },
         {
-          value: '450+ Ton',
-          label: 'CO₂ Reducido',
-          description: 'Nuestra comunidad ha evitado más de 450 toneladas de emisiones de CO₂ compartiendo trayectos al aeropuerto.'
+          value: '1,000+ Ton',
+          label: 'CO₂ a Reducir',
+          description: 'Juntos podemos evitar más de 1,000 toneladas de emisiones de CO₂ en el primer año compartiendo trayectos.'
         },
         {
           value: '120+',
-          label: 'Aeropuertos Cubiertos',
-          description: 'Cojauny opera en más de 120 aeropuertos principales en todo el mundo y seguimos creciendo.'
+          label: 'Aeropuertos Disponibles',
+          description: 'Cojauny estará disponible en más de 120 aeropuertos principales de Europa y Estados Unidos desde el lanzamiento.'
         }
       ]
     },
@@ -357,7 +357,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     mockups: {
-      heading: 'Explora la app que está transformando cómo viajamos',
+      heading: 'Explora la app que transformará cómo viajas',
       description:
         'Descubre las pantallas principales de Cojauny: búsqueda de vuelos, eventos con cupos, chat en tiempo real, perfiles verificados y panel de impacto.',
       screens: [
@@ -413,7 +413,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     ctaStrip: {
       heading: '¿Listo para empezar a ahorrar en tus viajes?',
-      body: 'Únete a miles de viajeros inteligentes que ya están reduciendo costos, emociones de CO₂ y haciendo nuevos amigos en cada vuelo.',
+      body: 'Únete a la revolución del viaje compartido. Serás parte de una comunidad que reducirá costos, emisiones de CO₂ y creará nuevas amistades en cada vuelo.',
       link: '#beta-signup',
       linkLabel: 'Únete al Beta Ahora'
     },
@@ -429,8 +429,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         premium: {
           name: 'Premium',
-          price: '$4.99/mes',
-          description: 'Para viajeros frecuentes que quieren aprovechar al máximo cada viaje',
+          price: '3,99€/mes',
+          description: 'Para viajeros que quieren acceso completo y viajes ilimitados. ¡39/año (ahorra 18%)',
           cta: 'Actualizar a Premium',
           badge: '🔥 Más Popular'
         }
@@ -529,6 +529,10 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           question: '¿Cuánto puedo ahorrar realmente?',
           answer: 'El ahorro depende de la ruta y cuántas personas comparten. En promedio, nuestros usuarios ahorran entre 50-75% en transporte al aeropuerto. Por ejemplo, un taxi de 60€ dividido entre 4 personas son solo 15€ por persona.'
+        },
+        {
+          question: '¿Existe un plan anual? ¿Cuánto ahorro?',
+          answer: 'Sí. El plan Premium cuesta 3,99€/mes o 39€/año. Con el plan anual ahorras 8,88€ (18% de descuento). Si viajas regularmente, el plan anual se paga solo con 2-3 trayectos compartidos al año.'
         },
         {
           question: '¿Qué pasa si mi vuelo se retrasa o cancela?',
@@ -686,23 +690,28 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     savings: {
-      title: 'Savings you can present to leadership',
-      caption: 'Average results from airline, corporate travel and airport transfer pilots.',
+      title: 'The impact of smart travel with Cojauny',
+      caption: 'The potential we will achieve together when you launch your next trip with us.',
       metrics: [
         {
-          value: '32% less',
-          label: 'Cost per ride',
-          description: 'Average reduction versus single-passenger transfers thanks to smart grouping.'
+          value: '50,000+',
+          label: 'Target Travelers Year 1',
+          description: 'Our goal is to connect over 50,000 travelers in the first year, creating a global shared transport community.'
         },
         {
-          value: '12 hrs',
-          label: 'Ops work reclaimed',
-          description: 'Weekly hours saved by centralising communications and automating follow-up.'
+          value: '50-75%',
+          label: 'Potential Savings',
+          description: 'You can save between 50% and 75% on each airport trip by sharing with other passengers from your same flight.'
         },
         {
-          value: '95%',
-          label: 'Passengers confirmed',
-          description: 'Share of invited passengers that end up sharing a ride during low-incentive pilots.'
+          value: '1,000+ Tons',
+          label: 'CO₂ to Reduce',
+          description: 'Together we can avoid over 1,000 tons of CO₂ emissions in the first year by sharing trips.'
+        },
+        {
+          value: '120+',
+          label: 'Airports Available',
+          description: 'Cojauny will be available in over 120 major airports in Europe and the United States from launch.'
         }
       ]
     },
@@ -725,7 +734,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     mockups: {
-      heading: 'Designed for rapid decisions',
+      heading: 'Explore the app that will transform how you travel',
       description:
         'Explore Cojauny’s key flows: home dashboard, shared transport event creation, temporary chat and privacy settings.',
       screens: [
@@ -765,7 +774,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     ctaStrip: {
       heading: 'Ready to start saving on your trips?',
-      body: 'Join thousands of smart travelers already reducing costs, CO₂ emissions and making new friends on every flight.',
+      body: 'Join the shared travel revolution. Be part of a community that will reduce costs, CO₂ emissions, and create new friendships on every flight.',
       link: '#beta-signup',
       linkLabel: 'Join Beta Now'
     },
@@ -781,8 +790,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         premium: {
           name: 'Premium',
-          price: '$4.99/month',
-          description: 'For frequent travelers who want to maximize every trip',
+          price: '$3.99/month',
+          description: 'For travelers who want full access and unlimited trips. $39/year (save 18%)',
           cta: 'Upgrade to Premium',
           badge: '🔥 Most Popular'
         }
@@ -881,6 +890,10 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           question: 'How much can I really save?',
           answer: 'Savings depend on the route and how many people share. On average, our users save 50-75% on airport transport. For example, a $60 taxi split among 4 people is only $15 per person.'
+        },
+        {
+          question: 'Is there an annual plan? How much do I save?',
+          answer: 'Yes. Premium costs $3.99/month or $39/year. With the annual plan you save $8.88 (18% discount). If you travel regularly, the annual plan pays for itself with just 2-3 shared trips per year.'
         },
         {
           question: 'What if my flight is delayed or canceled?',
@@ -1040,23 +1053,28 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     savings: {
-      title: 'Spürbare Effekte in wenigen Wochen',
-      caption: 'Durchschnittswerte aus Pilotprojekten mit Airlines, Geschäftsreiseanbietern und Transfer-Operatoren.',
+      title: 'Die Wirkung von intelligentem Reisen mit Cojauny',
+      caption: 'Das Potenzial, das wir gemeinsam erreichen werden, wenn Sie Ihre nächste Reise mit uns starten.',
       metrics: [
         {
-          value: '32% weniger',
-          label: 'Kosten pro Fahrt',
-          description: 'Einsparung gegenüber Einzelfahrten durch intelligente Gruppierung und Kapazitätsplanung.'
+          value: '50.000+',
+          label: 'Ziel Reisende Jahr 1',
+          description: 'Unser Ziel ist es, im ersten Jahr über 50.000 Reisende zu verbinden und eine globale Gemeinschaft für geteilte Mobilität zu schaffen.'
         },
         {
-          value: '12 Std.',
-          label: 'Teamaufwand eingespart',
-          description: 'Wöchentliche Stunden, die Operations-Teams durch zentrale Kommunikation und Automatisierung zurückgewinnen.'
+          value: '50-75%',
+          label: 'Potenzielles Sparen',
+          description: 'Sie können bei jeder Flughafen-Fahrt zwischen 50% und 75% sparen, indem Sie mit anderen Passagieren Ihres Fluges teilen.'
         },
         {
-          value: '95%',
-          label: 'Bestätigte Teilnehmer',
-          description: 'Anteil der eingeladenen Passagiere, die in Piloten mit minimalen Anreizen tatsächlich teilen.'
+          value: '1.000+ Tonnen',
+          label: 'CO₂ zu reduzieren',
+          description: 'Gemeinsam können wir im ersten Jahr über 1.000 Tonnen CO₂-Emissionen vermeiden, indem wir Fahrten teilen.'
+        },
+        {
+          value: '120+',
+          label: 'Verfügbare Flughäfen',
+          description: 'Cojauny wird ab dem Start in über 120 Hauptflughäfen in Europa und den USA verfügbar sein.'
         }
       ]
     },
@@ -1079,9 +1097,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     mockups: {
-      heading: 'Für schnelle Entscheidungen gestaltet',
+      heading: 'Entdecken Sie die App, die Ihr Reisen transformieren wird',
       description:
-        'Erlebe die wichtigsten Bereiche: Startseite, Event-Erstellung, temporärer Chat und Privatsphäre-Einstellungen.',
+        'Entdecken Sie die Hauptbildschirme von Cojauny: Flugsuche, Events mit Kapazität, Echtzeit-Chat, verifizierte Profile und Impact-Dashboard.',
       screens: [
         {
           id: 'home',
@@ -1118,8 +1136,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     ctaStrip: {
-      heading: 'Bereit, bei deinen Reisen zu sparen?',
-      body: 'Schließe dich Tausenden klugen Reisenden an, die bereits Kosten, CO₂-Emissionen reduzieren und auf jedem Flug neue Freunde finden.',
+      heading: 'Bereit, bei Ihren Reisen zu sparen?',
+      body: 'Werden Sie Teil der geteilten Reiserevolution. Seien Sie Teil einer Gemeinschaft, die Kosten reduzieren, CO₂-Emissionen senken und neue Freundschaften auf jedem Flug schließen wird.',
       link: '#beta-signup',
       linkLabel: 'Beta jetzt beitreten'
     },
@@ -1135,8 +1153,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         premium: {
           name: 'Premium',
-          price: '4,99€/Monat',
-          description: 'Für Vielreisende, die jede Reise maximieren möchten',
+          price: '3,99€/Monat',
+          description: 'Für Reisende mit vollem Zugriff und unbegrenzten Reisen. 39€/Jahr (18% sparen)',
           cta: 'Auf Premium upgraden',
           badge: '🔥 Am beliebtesten'
         }
@@ -1235,6 +1253,10 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           question: 'Wie viel kann ich wirklich sparen?',
           answer: 'Die Einsparungen hängen von der Route und der Anzahl der Teilnehmer ab. Im Durchschnitt sparen unsere Benutzer 50-75% beim Flughafentransport. Zum Beispiel: Ein 60€-Taxi geteilt durch 4 Personen sind nur 15€ pro Person.'
+        },
+        {
+          question: 'Gibt es einen Jahresplan? Wie viel spare ich?',
+          answer: 'Ja. Premium kostet 3,99€/Monat oder 39€/Jahr. Mit dem Jahresplan sparst du 8,88€ (18% Rabatt). Wenn du regelmäßig reist, amortisiert sich der Jahresplan bereits mit 2-3 geteilten Fahrten pro Jahr.'
         },
         {
           question: 'Was ist, wenn mein Flug verspätet oder gestrichen wird?',
@@ -1394,23 +1416,28 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     savings: {
-      title: 'Des gains prouvés dès les premiers vols',
-      caption: 'Moyennes observées lors de pilotes avec compagnies aériennes, agences corporate et opérateurs de transferts.',
+      title: "L'impact du voyage intelligent avec Cojauny",
+      caption: 'Le potentiel que nous atteindrons ensemble lorsque vous lancerez votre prochain voyage avec nous.',
       metrics: [
         {
-          value: '32 %',
-          label: 'Coût par trajet en moins',
-          description: 'Réduction moyenne face aux trajets individuels grâce au regroupement intelligent des passagers.'
+          value: '50 000+',
+          label: 'Objectif voyageurs Année 1',
+          description: 'Notre objectif est de connecter plus de 50 000 voyageurs la première année, créant une communauté mondiale de transport partagé.'
         },
         {
-          value: '12 h',
-          label: 'Coordination économisée',
+          value: '50-75%',
+          label: 'Économies potentielles',
           description: 'Heures hebdomadaires libérées pour les équipes grâce à l’automatisation des communications.'
         },
         {
-          value: '95 %',
-          label: 'Passagers confirmés',
-          description: 'Taux de participation lors de pilotes avec incitations limitées.'
+          value: '1 000+ tonnes',
+          label: 'CO₂ à réduire',
+          description: 'Ensemble, nous pouvons éviter plus de 1 000 tonnes d’émissions de CO₂ la première année en partageant les trajets.'
+        },
+        {
+          value: '120+',
+          label: 'Aéroports disponibles',
+          description: 'Cojauny sera disponible dans plus de 120 grands aéroports en Europe et aux États-Unis dès le lancement.'
         }
       ]
     },
@@ -1433,7 +1460,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     mockups: {
-      heading: 'Conçue pour décider rapidement',
+      heading: "Découvrez l'app qui transformera votre façon de voyager",
       description:
         'Découvrez les écrans clés : tableau de bord, création d’événement partagé, chat temporaire et réglages de confidentialité.',
       screens: [
@@ -1472,10 +1499,10 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     ctaStrip: {
-      heading: 'Prêt pour les intégrations compagnies aériennes',
-      body: 'SDK mobile, API REST et console d’opérations pour vous connecter rapidement à vos systèmes.',
-      link: '/docs/sdk-plan',
-      linkLabel: 'Voir le plan technique'
+      heading: 'Prêt à économiser sur vos voyages?',
+      body: 'Rejoignez la révolution du voyage partagé. Faites partie d’une communauté qui réduira les coûts, les émissions de CO₂ et créera de nouvelles amitiés à chaque vol.',
+      link: '#beta-signup',
+      linkLabel: 'Rejoindre la Bêta'
     },
     pricing: {
       title: 'Choisissez le plan parfait pour vous',
@@ -1489,8 +1516,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         premium: {
           name: 'Premium',
-          price: '4,99/mois',
-          description: 'Pour les voyageurs fréquents qui veulent maximiser chaque voyage',
+          price: '3,99€/mois',
+          description: 'Pour les voyageurs avec accès complet et voyages illimités. 39€/an (économisez 18%)',
           cta: 'Passer à Premium',
           badge: '🔥 Plus populaire'
         }
@@ -1553,6 +1580,10 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           question: 'Combien puis-je vraiment économiser ?',
           answer: 'Les économies dépendent de l\'itinéraire et du nombre de personnes qui partagent. En moyenne, nos utilisateurs économisent 50-75% sur le transport aéroportuaire. Par exemple, un taxi de 60€ partagé entre 4 personnes ne coûte que 15€ par personne.'
+        },
+        {
+          question: 'Existe-t-il un plan annuel ? Combien j\'économise ?',
+          answer: 'Oui. Premium coûte 3,99€/mois ou 39€/an. Avec le plan annuel, vous économisez 8,88€ (18% de réduction). Si vous voyagez régulièrement, le plan annuel est rentabilisé avec seulement 2-3 trajets partagés par an.'
         },
         {
           question: 'Que se passe-t-il si mon vol est retardé ou annulé ?',

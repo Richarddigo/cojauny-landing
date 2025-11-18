@@ -8,13 +8,13 @@ interface ValuePropsSectionProps {
 }
 
 const ValuePropsSection = ({ copy }: ValuePropsSectionProps) => (
-    <section id="valor" className="bg-white py-24">
+    <section id="beneficios" className="bg-white py-24">
         <div className="mx-auto max-w-6xl px-6">
             <div className="mx-auto max-w-3xl text-center">
                 <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{copy.title}</h2>
                 <p className="mt-4 text-lg text-slate-600">{copy.subtitle}</p>
             </div>
-            <div className="mt-16 grid gap-8 md:grid-cols-3">
+            <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 {copy.items.map((item) => (
                     <motion.article
                         key={item.title}

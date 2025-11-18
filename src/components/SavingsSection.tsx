@@ -8,13 +8,13 @@ interface SavingsSectionProps {
 }
 
 const SavingsSection = ({ copy }: SavingsSectionProps) => (
-    <section id="ahorros" className="bg-slate-900 py-24 text-white">
+    <section id="impacto" className="bg-slate-900 py-24 text-white">
         <div className="mx-auto max-w-6xl px-6">
             <div className="max-w-3xl">
                 <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{copy.title}</h2>
                 <p className="mt-4 text-base text-white/80">{copy.caption}</p>
             </div>
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
+            <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
                 {copy.metrics.map((metric) => (
                     <motion.article
                         key={metric.label}
