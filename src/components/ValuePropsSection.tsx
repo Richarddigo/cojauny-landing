@@ -2,30 +2,37 @@
 
 import { motion } from 'framer-motion';
 import type { LandingCopy } from '@/locales/copy';
+import SectionIntro from '@/components/SectionIntro';
 
 interface ValuePropsSectionProps {
     copy: LandingCopy['value'];
 }
 
 const ValuePropsSection = ({ copy }: ValuePropsSectionProps) => (
-    <section id="beneficios" className="scroll-mt-24 bg-white py-24 lg:scroll-mt-32">
+    <section
+        id="beneficios"
+        className="scroll-mt-24 bg-gradient-to-b from-white via-slate-50 to-white py-24 lg:scroll-mt-32"
+    >
         <div className="mx-auto max-w-7xl px-6">
-            <div className="mx-auto max-w-3xl text-center">
-                <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{copy.title}</h2>
-                <p className="mt-4 text-lg text-slate-600">{copy.subtitle}</p>
-            </div>
+            <SectionIntro title={copy.title} description={copy.subtitle} />
             <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                {copy.items.map((item) => (
+                {copy.items.map((item, index) => (
                     <motion.article
                         key={item.title}
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 24 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.2 }}
-                        transition={{ duration: 0.4 }}
-                        className="rounded-3xl border border-slate-100 bg-slate-50/60 p-8 shadow-sm"
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.4, delay: index * 0.05 }}
+                        className="group relative overflow-hidden rounded-3xl border border-white/70 bg-white/80 p-8 shadow-lg shadow-slate-200/60 backdrop-blur-sm"
                     >
-                        <h3 className="text-xl font-semibold text-slate-900">{item.title}</h3>
-                        <p className="mt-4 text-base text-slate-600">{item.description}</p>
+                        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-400 via-brand-500 to-brand-300 opacity-0 transition group-hover:opacity-100" />
+                        <div className="flex items-center gap-3 text-sm font-semibold text-slate-500">
+                            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-brand-50 text-brand-600">
+                                {(index + 1).toString().padStart(2, '0')}
+                            </span>
+                        </div>
+                        <h3 className="mt-6 text-xl font-semibold text-slate-900">{item.title}</h3>
+                        <p className="mt-4 text-base leading-relaxed text-slate-600">{item.description}</p>
                     </motion.article>
                 ))}
             </div>

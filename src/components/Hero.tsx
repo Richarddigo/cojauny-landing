@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
 import type { LandingCopy } from '@/locales/copy';
 
@@ -17,8 +16,12 @@ interface HeroProps {
 const Hero = ({ copy }: HeroProps) => (
     <section
         id="inicio"
-        className="relative overflow-hidden scroll-mt-24 pt-20 text-center md:scroll-mt-28 md:pt-24 lg:scroll-mt-32 lg:pt-28"
+        className="relative overflow-hidden scroll-mt-24 pt-12 text-center md:scroll-mt-28 md:pt-12 lg:scroll-mt-32 lg:pt-12"
     >
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white via-white to-slate-50" aria-hidden />
+        <div className="absolute inset-x-0 top-0 -z-10 flex justify-center opacity-70" aria-hidden>
+            <div className="h-60 w-60 rounded-full bg-brand-200/40 blur-3xl" />
+        </div>
         <motion.div
             initial="hidden"
             animate="visible"
@@ -49,13 +52,15 @@ const Hero = ({ copy }: HeroProps) => (
             >
                 <Link
                     href="#beta"
-                    className="inline-flex items-center justify-center rounded-full bg-brand-600 px-8 py-3 text-base font-semibold text-white shadow-soft-glow transition hover:bg-brand-500 focus-visible:bg-brand-700"
+                    prefetch={false}
+                    className="inline-flex items-center justify-center rounded-full bg-slate-900 px-10 py-3 text-base font-semibold text-white shadow-2xl shadow-slate-900/30 transition hover:bg-slate-800 focus-visible:bg-slate-950"
                 >
                     {copy.primaryCta}
                 </Link>
                 <Link
                     href="#demo"
-                    className="inline-flex items-center justify-center rounded-full border border-brand-200 px-8 py-3 text-base font-semibold text-brand-600 transition hover:bg-brand-50"
+                    prefetch={false}
+                    className="inline-flex items-center justify-center rounded-full border border-slate-200 px-10 py-3 text-base font-semibold text-slate-900 transition hover:bg-white"
                 >
                     {copy.secondaryCta}
                 </Link>

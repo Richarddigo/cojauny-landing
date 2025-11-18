@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useMemo, useState, useEffect } from 'react';
+import { Fragment, useMemo } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -35,14 +35,6 @@ const languageCodes: Record<Locale, string> = {
 };
 
 const LanguageSwitcher = ({ currentLocale, label, dropdownDirection = 'down' }: LanguageSwitcherProps) => {
-    const [isChrome, setIsChrome] = useState(false);
-
-    useEffect(() => {
-        // Detectar si es Chrome (pero no Edge u otros basados en Chromium que sí soportan emojis)
-        const userAgent = navigator.userAgent;
-        const isChromeBrowser = /Chrome/.test(userAgent) && !/Edg/.test(userAgent) && !/OPR/.test(userAgent);
-        setIsChrome(isChromeBrowser);
-    }, []);
     const router = useRouter();
     const pathname = usePathname() ?? '/';
     const searchParams = useSearchParams();
@@ -94,13 +86,7 @@ const LanguageSwitcher = ({ currentLocale, label, dropdownDirection = 'down' }: 
                 aria-label={buttonAriaLabel}
                 className="inline-flex items-center gap-2 rounded-3xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white shadow-soft-glow transition hover:border-brand-200 hover:bg-white/10 focus:outline-none focus-visible:border-brand-200 focus-visible:ring-2 focus-visible:ring-brand-200/50"
             >
-                {isChrome ? (
-                    <span aria-hidden className="flex h-5 w-5 items-center justify-center rounded-sm bg-brand-200/20 text-xs font-bold text-brand-200">
-                        {buttonCode}
-                    </span>
-                ) : (
-                    <span aria-hidden className="text-base leading-none">{buttonFlag}</span>
-                )}
+                <span aria-hidden className="text-base leading-none">{buttonFlag}</span>
                 <span>{buttonLabel}</span>
                 <ChevronDownIcon className="h-4 w-4 text-white/60" aria-hidden />
             </Menu.Button>
@@ -126,15 +112,9 @@ const LanguageSwitcher = ({ currentLocale, label, dropdownDirection = 'down' }: 
                                             }`}
                                     >
                                         <span className="flex items-center gap-3">
-                                            {isChrome ? (
-                                                <span aria-hidden className="flex h-8 w-8 items-center justify-center rounded-md bg-brand-200/20 text-sm font-bold text-brand-200">
-                                                    {option.code}
-                                                </span>
-                                            ) : (
-                                                <span aria-hidden className="flex h-8 w-8 items-center justify-center text-xl">
-                                                    {option.flag}
-                                                </span>
-                                            )}
+                                            <span aria-hidden className="flex h-8 w-8 items-center justify-center text-xl">
+                                                {option.flag}
+                                            </span>
                                             <span className="font-medium">{option.label}</span>
                                         </span>
                                         {isActive ? <CheckIcon className="h-4 w-4 text-brand-200" aria-hidden /> : null}

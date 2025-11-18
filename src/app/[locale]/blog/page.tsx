@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
@@ -77,8 +78,17 @@ export default function BlogIndex({ params }: BlogIndexProps) {
                 {posts.map((post) => (
                     <article
                         key={post.slug}
-                        className="group rounded-3xl border border-slate-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg"
+                        className="group relative rounded-3xl border border-slate-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg"
                     >
+                        <div className="absolute right-4 top-4 opacity-10 transition group-hover:opacity-20">
+                            <Image
+                                src="/assets/logo/mountain_black.svg"
+                                alt="Cojauny"
+                                width={48}
+                                height={48}
+                                className="h-12 w-12"
+                            />
+                        </div>
                         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-600">
                             {post.readingTimeMinutes} {copy.readTimeLabel}
                         </p>

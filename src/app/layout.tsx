@@ -12,14 +12,20 @@ import { buildOrganizationJsonLd, buildWebsiteJsonLd } from '@/lib/jsonld';
 export const metadata: Metadata = {
     metadataBase: new URL(siteMetadata.url),
     title: {
-        default: `${siteMetadata.name} · Movilidad colaborativa sin fricciones`,
+        default: `${siteMetadata.name} · Traslados compartidos coordinados por vuelo`,
         template: `%s · ${siteMetadata.name}`
     },
     description: siteMetadata.description,
-    keywords: ['movilidad', 'espera', 'invitaciones', 'listas', 'viajes compartidos'],
+    keywords: [
+        'traslado aeropuerto compartido',
+        'airport ride sharing',
+        'flight coordination',
+        'carpool aeropuerto',
+        'movilidad colaborativa'
+    ],
     authors: [{ name: siteMetadata.author }],
     openGraph: {
-        title: `${siteMetadata.name} · Movilidad colaborativa sin fricciones`,
+        title: `${siteMetadata.name} · Traslados compartidos coordinados por vuelo`,
         description: siteMetadata.description,
         url: siteMetadata.url,
         siteName: siteMetadata.name,
@@ -29,7 +35,7 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: `${siteMetadata.name} · Movilidad colaborativa sin fricciones`,
+        title: `${siteMetadata.name} · Traslados compartidos coordinados por vuelo`,
         description: siteMetadata.description,
         site: siteMetadata.twitter,
         creator: siteMetadata.twitter

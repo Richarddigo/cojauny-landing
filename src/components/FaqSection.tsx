@@ -1,7 +1,9 @@
-'use client';
+"use client";
 
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import type { FaqCopy } from '@/locales/copy';
+import SectionIntro from '@/components/SectionIntro';
 
 interface FaqSectionProps {
     copy: FaqCopy;
@@ -15,42 +17,51 @@ const FaqSection = ({ copy }: FaqSectionProps) => {
     };
 
     return (
-        <section id="faq" className="scroll-mt-24 mx-auto mt-24 max-w-7xl px-6 lg:scroll-mt-32">
-            <div className="text-center">
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                    {copy.title}
-                </h2>
-                <p className="mt-4 text-lg text-gray-600">{copy.subtitle}</p>
-            </div>
+        <section id="faq" className="scroll-mt-24 py-20 mx-auto max-w-7xl px-6 lg:scroll-mt-32">
+            <SectionIntro title={copy.title} description={copy.subtitle} />
 
             <div className="mt-12 space-y-4">
                 {copy.items.map((item, index) => (
-                    <div
-                        key={index}
-                        className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md"
+                    <motion.div
+                        key={item.question}
+                        initial={{ opacity: 0, y: 12 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.4, delay: index * 0.05 }}
+                        className="overflow-hidden rounded-3xl border border-slate-100 bg-white/90 shadow-lg shadow-slate-200/60"
                     >
                         <button
                             onClick={() => toggleFaq(index)}
-                            className="flex w-full items-center justify-between px-6 py-4 text-left transition-colors hover:bg-gray-50"
+                            className="flex w-full items-center justify-between px-6 py-5 text-left"
                             aria-expanded={openIndex === index}
+                            aria-controls={`faq-panel-${index}`}
                         >
-                            <span className="text-lg font-semibold text-gray-900">{item.question}</span>
+                            <span className="text-lg font-semibold text-slate-900">{item.question}</span>
                             <svg
-                                className={`h-5 w-5 flex-shrink-0 text-gray-600 transition-transform ${openIndex === index ? 'rotate-180' : ''
-                                    }`}
+                                className={`h-5 w-5 flex-shrink-0 text-slate-500 transition-transform ${openIndex === index ? 'rotate-180' : ''}`}
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
+                                aria-hidden
                             >
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                             </svg>
                         </button>
-                        {openIndex === index && (
-                            <div className="border-t border-gray-100 bg-gray-50 px-6 py-4">
-                                <p className="text-gray-700">{item.answer}</p>
-                            </div>
-                        )}
-                    </div>
+                        <AnimatePresence initial={false}>
+                            {openIndex === index && (
+                                <motion.div
+                                    id={`faq-panel-${index}`}
+                                    initial={{ height: 0, opacity: 0 }}
+                                    animate={{ height: 'auto', opacity: 1 }}
+                                    exit={{ height: 0, opacity: 0 }}
+                                    transition={{ duration: 0.3 }}
+                                    className="border-t border-slate-100 bg-slate-50/80 px-6"
+                                >
+                                    <p className="py-4 text-base text-slate-600">{item.answer}</p>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </motion.div>
                 ))}
             </div>
         </section>

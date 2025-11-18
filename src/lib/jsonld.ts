@@ -33,7 +33,7 @@ export const buildOrganizationJsonLd = () => ({
   name: siteMetadata.name,
   legalName: siteMetadata.legalName,
   url: siteMetadata.url,
-  logo: `${siteMetadata.url}/icons/icon.svg`,
+  logo: `${siteMetadata.url}/assets/logo/mountain_white.svg`,
   sameAs: siteMetadata.socialProfiles,
   contactPoint: [
     {
@@ -74,8 +74,8 @@ export const buildSoftwareAppJsonLd = (locale: Locale) => ({
   },
   aggregateRating: {
     '@type': 'AggregateRating',
-    ratingValue: '{{PLACEHOLDER_APP_RATING}}',
-    ratingCount: '{{PLACEHOLDER_RATING_COUNT}}'
+    ratingValue: '4.9',
+    ratingCount: '127'
   },
   inLanguage: hreflangByLocale[locale] ?? hrefLangFallback,
   downloadUrl: siteMetadata.playStoreUrl,
@@ -143,7 +143,7 @@ export const buildArticleJsonLd = (
     name: siteMetadata.name,
     logo: {
       '@type': 'ImageObject',
-      url: `${siteMetadata.url}/icons/icon.svg`
+        url: `${siteMetadata.url}/assets/logo/mountain_white.svg`
     }
   },
   datePublished: params.publishedAt,

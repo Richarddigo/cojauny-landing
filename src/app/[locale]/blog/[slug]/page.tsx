@@ -2,6 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 import { blogPosts, getPost } from '@/content/blog/posts';
 import { locales, type Locale } from '@/locales/config';
@@ -95,7 +97,16 @@ export default function BlogPostPage({ params }: BlogPageProps) {
     ]);
 
     return (
-        <article className="mx-auto max-w-3xl px-6 py-20">
+        <article className="relative mx-auto max-w-3xl px-6 py-20">
+            <div className="absolute right-8 top-8 opacity-5">
+                <Image
+                    src="/assets/logo/mountain_black.svg"
+                    alt="Cojauny"
+                    width={120}
+                    height={120}
+                    className="h-30 w-30"
+                />
+            </div>
             <StructuredData id={`ld-article-${locale}-${slug}`} data={articleJson} />
             <StructuredData id={`ld-article-breadcrumb-${locale}-${slug}`} data={breadcrumb} />
             <Link
@@ -119,9 +130,11 @@ export default function BlogPostPage({ params }: BlogPageProps) {
                     priority={false}
                 />
             </div>
-            <div className="mt-10 space-y-6 text-lg text-slate-700">
-                {post.body.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
+            <div className="prose prose-slate prose-lg mt-10 max-w-none prose-headings:font-bold prose-headings:text-slate-900 prose-h1:text-3xl prose-h2:mt-10 prose-h2:text-2xl prose-h3:text-xl prose-p:text-slate-700 prose-p:leading-relaxed prose-a:text-brand-600 prose-a:no-underline hover:prose-a:text-brand-700 hover:prose-a:underline prose-strong:text-slate-900 prose-ul:list-disc prose-ol:list-decimal prose-li:text-slate-700">
+                {post.body.map((section, idx) => (
+                    <ReactMarkdown key={idx} remarkPlugins={[remarkGfm]}>
+                        {section}
+                    </ReactMarkdown>
                 ))}
             </div>
             <footer className="mt-12 flex flex-col gap-2 text-sm text-slate-500">

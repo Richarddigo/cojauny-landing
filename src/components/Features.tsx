@@ -10,6 +10,7 @@ import {
     GlobeAltIcon
 } from '@heroicons/react/24/outline';
 import type { LandingCopy, IconName } from '@/locales/copy';
+import SectionIntro from '@/components/SectionIntro';
 
 interface FeaturesProps {
     copy: LandingCopy['features'];
@@ -27,30 +28,30 @@ const iconMap: Record<IconName, typeof BoltIcon> = {
 const Features = ({ copy }: FeaturesProps) => (
     <section
         id="caracteristicas"
-        className="relative mt-24 scroll-mt-24 border-y border-slate-100 bg-slate-50 py-24 lg:scroll-mt-32"
+        className="relative scroll-mt-24 border-y border-transparent bg-gradient-to-b from-white to-slate-50 py-20 px-6 lg:scroll-mt-32"
     >
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
         <div className="mx-auto max-w-7xl px-6">
-            <div className="mx-auto max-w-2xl text-center">
-                <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-                    {copy.title}
-                </h2>
-                <p className="mt-4 text-lg text-slate-600">{copy.subtitle}</p>
-            </div>
+            <SectionIntro title={copy.title} description={copy.subtitle} />
             <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                {copy.items.map((feature) => {
+                {copy.items.map((feature, index) => {
                     const Icon = iconMap[feature.iconName];
                     return (
                         <motion.article
                             key={feature.title}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 24 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.2 }}
-                            transition={{ duration: 0.5 }}
-                            className="group rounded-3xl border border-transparent bg-white p-8 shadow-sm transition hover:border-brand-200 hover:shadow-lg"
+                            transition={{ duration: 0.5, delay: index * 0.05 }}
+                            className="group relative rounded-3xl border border-white/70 bg-white/90 p-8 shadow-xl shadow-slate-200/60 backdrop-blur"
                         >
-                            <Icon className="h-10 w-10 text-brand-600" aria-hidden />
+                            <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-600">
+                                <Icon className="h-6 w-6" aria-hidden />
+                            </span>
                             <h3 className="mt-6 text-xl font-semibold text-slate-900">{feature.title}</h3>
                             <p className="mt-4 text-base text-slate-600">{feature.description}</p>
+                            <div className="mt-6 h-px w-full bg-gradient-to-r from-brand-200/0 via-brand-200/60 to-brand-200/0 opacity-0 transition group-hover:opacity-100" />
                         </motion.article>
                     );
                 })}

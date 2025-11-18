@@ -10,14 +10,7 @@ import type { LandingCopy } from '@/locales/copy';
 
 interface HeaderProps {
     locale: Locale;
-    copy: {
-        home: string;
-        features: string;
-        demo: string;
-        pricing: string;
-        beta: string;
-        blog: string;
-    };
+    copy: LandingCopy['header'];
 }
 
 const Header = ({ locale, copy }: HeaderProps) => {
@@ -56,16 +49,16 @@ const Header = ({ locale, copy }: HeaderProps) => {
                         {copy.demo}
                     </Link>
                     <Link href={`/${locale}#beneficios`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
-                        Benefits
+                        {copy.benefits}
                     </Link>
                     <Link href={`/${locale}#impacto`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
-                        Impact
+                        {copy.impact}
                     </Link>
                     <Link href={`/${locale}#caracteristicas`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
                         {copy.features}
                     </Link>
                     <Link href={`/${locale}#como-funciona`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
-                        How it works
+                        {copy.workflow}
                     </Link>
                     <Link href={`/${locale}#precios`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
                         {copy.pricing}
@@ -74,7 +67,7 @@ const Header = ({ locale, copy }: HeaderProps) => {
                         {copy.beta}
                     </Link>
                     <Link href={`/${locale}#faq`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
-                        FAQ
+                        {copy.faq}
                     </Link>
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -134,14 +127,14 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-white/10"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
-                                    Benefits
+                                    {copy.benefits}
                                 </Link>
                                 <Link
                                     href={`/${locale}#impacto`}
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-white/10"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
-                                    Impact
+                                    {copy.impact}
                                 </Link>
                                 <Link
                                     href={`/${locale}#caracteristicas`}
@@ -155,7 +148,7 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-white/10"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
-                                    How it works
+                                    {copy.workflow}
                                 </Link>
                                 <Link
                                     href={`/${locale}#precios`}
@@ -176,7 +169,7 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-white/10"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
-                                    FAQ
+                                    {copy.faq}
                                 </Link>
                             </div>
                             <div className="py-6">
