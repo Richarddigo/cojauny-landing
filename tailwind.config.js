@@ -21,7 +21,7 @@ module.exports = {
                 }
             },
             fontFamily: {
-                sans: ['"SF Pro Display"', 'Inter', 'system-ui', 'sans-serif']
+                sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', 'system-ui', 'sans-serif']
             },
             boxShadow: {
                 'soft-glow': '0 20px 60px rgba(90, 103, 242, 0.25)'

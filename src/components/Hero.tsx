@@ -17,7 +17,7 @@ interface HeroProps {
 const Hero = ({ copy }: HeroProps) => (
     <section
         id="inicio"
-        className="relative overflow-hidden scroll-mt-24 pt-24 text-center md:scroll-mt-28 md:pt-32 lg:scroll-mt-32 lg:pt-40"
+        className="relative overflow-hidden scroll-mt-24 pt-20 text-center md:scroll-mt-28 md:pt-24 lg:scroll-mt-32 lg:pt-28"
     >
         <motion.div
             initial="hidden"

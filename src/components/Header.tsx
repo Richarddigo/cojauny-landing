@@ -24,45 +24,57 @@ const Header = ({ locale, copy }: HeaderProps) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     return (
-        <header className="fixed left-0 right-0 top-0 z-50 bg-white/95 shadow-sm backdrop-blur-sm">
+        <header className="fixed left-0 right-0 top-0 z-50 bg-slate-900/95 shadow-lg backdrop-blur-sm">
             <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8" aria-label="Global">
                 <div className="flex lg:flex-1">
                     <Link href={`/${locale}`} className="-m-1.5 flex items-center gap-3 p-1.5">
                         <Image
-                            src="/icons/icon.svg"
+                            src="/assets/logo/mountain_white.svg"
                             alt="Cojauny"
                             width={32}
                             height={32}
                             className="h-8 w-auto"
                         />
-                        <span className="text-xl font-bold text-slate-900">Cojauny</span>
+                        <span className="text-xl font-bold text-white">Cojauny</span>
                     </Link>
                 </div>
                 <div className="flex lg:hidden">
                     <button
                         type="button"
-                        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-slate-700"
+                        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
                         onClick={() => setMobileMenuOpen(true)}
                     >
                         <span className="sr-only">Open main menu</span>
                         <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                     </button>
                 </div>
-                <div className="hidden lg:flex lg:gap-x-6">
-                    <Link href={`/${locale}#inicio`} className="text-sm font-semibold leading-6 text-teal-900 transition hover:text-teal-600">
+                <div className="hidden lg:flex lg:gap-x-4">
+                    <Link href={`/${locale}#inicio`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
                         {copy.home}
                     </Link>
-                    <Link href={`/${locale}#demo`} className="text-sm font-semibold leading-6 text-teal-900 transition hover:text-teal-600">
+                    <Link href={`/${locale}#demo`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
                         {copy.demo}
                     </Link>
-                    <Link href={`/${locale}#beneficios`} className="text-sm font-semibold leading-6 text-teal-900 transition hover:text-teal-600">
+                    <Link href={`/${locale}#beneficios`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
+                        Benefits
+                    </Link>
+                    <Link href={`/${locale}#impacto`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
+                        Impact
+                    </Link>
+                    <Link href={`/${locale}#caracteristicas`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
                         {copy.features}
                     </Link>
-                    <Link href={`/${locale}#precios`} className="text-sm font-semibold leading-6 text-teal-900 transition hover:text-teal-600">
+                    <Link href={`/${locale}#como-funciona`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
+                        How it works
+                    </Link>
+                    <Link href={`/${locale}#precios`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
                         {copy.pricing}
                     </Link>
-                    <Link href={`/${locale}#beta`} className="text-sm font-semibold leading-6 text-teal-900 transition hover:text-teal-600">
+                    <Link href={`/${locale}#beta`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
                         {copy.beta}
+                    </Link>
+                    <Link href={`/${locale}#faq`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
+                        FAQ
                     </Link>
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -72,28 +84,28 @@ const Header = ({ locale, copy }: HeaderProps) => {
             {/* Mobile menu */}
             <div className={`lg:hidden ${mobileMenuOpen ? 'fixed inset-0 z-50' : 'hidden'}`}>
                 <div
-                    className="fixed inset-0 bg-slate-900/25"
+                    className="fixed inset-0 bg-slate-900/50"
                     onClick={() => setMobileMenuOpen(false)}
                     onKeyDown={(e) => e.key === 'Escape' && setMobileMenuOpen(false)}
                     role="button"
                     tabIndex={0}
                     aria-label="Close menu"
                 />
-                <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-slate-900/10">
+                <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-slate-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
                     <div className="flex items-center justify-between">
                         <Link href={`/${locale}`} className="-m-1.5 flex items-center gap-3 p-1.5" onClick={() => setMobileMenuOpen(false)}>
                             <Image
-                                src="/icons/icon.svg"
+                                src="/assets/logo/mountain_white.svg"
                                 alt="Cojauny"
                                 width={32}
                                 height={32}
                                 className="h-8 w-auto"
                             />
-                            <span className="text-xl font-bold text-slate-900">Cojauny</span>
+                            <span className="text-xl font-bold text-white">Cojauny</span>
                         </Link>
                         <button
                             type="button"
-                            className="-m-2.5 rounded-md p-2.5 text-slate-700"
+                            className="-m-2.5 rounded-md p-2.5 text-white"
                             onClick={() => setMobileMenuOpen(false)}
                         >
                             <span className="sr-only">Close menu</span>
@@ -105,38 +117,66 @@ const Header = ({ locale, copy }: HeaderProps) => {
                             <div className="space-y-2 py-6">
                                 <Link
                                     href={`/${locale}#inicio`}
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-white/10"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
-                                    Inicio
+                                    {copy.home}
                                 </Link>
                                 <Link
                                     href={`/${locale}#demo`}
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-teal-900 hover:bg-teal-50"
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-white/10"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     {copy.demo}
                                 </Link>
                                 <Link
                                     href={`/${locale}#beneficios`}
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-teal-900 hover:bg-teal-50"
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-white/10"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    Benefits
+                                </Link>
+                                <Link
+                                    href={`/${locale}#impacto`}
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-white/10"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    Impact
+                                </Link>
+                                <Link
+                                    href={`/${locale}#caracteristicas`}
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-white/10"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     {copy.features}
                                 </Link>
                                 <Link
+                                    href={`/${locale}#como-funciona`}
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-white/10"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    How it works
+                                </Link>
+                                <Link
                                     href={`/${locale}#precios`}
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-teal-900 hover:bg-teal-50"
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-white/10"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     {copy.pricing}
                                 </Link>
                                 <Link
                                     href={`/${locale}#beta`}
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-teal-900 hover:bg-teal-50"
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-white/10"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     {copy.beta}
+                                </Link>
+                                <Link
+                                    href={`/${locale}#faq`}
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-white/10"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    FAQ
                                 </Link>
                             </div>
                             <div className="py-6">

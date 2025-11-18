@@ -29,7 +29,7 @@ const Features = ({ copy }: FeaturesProps) => (
         id="caracteristicas"
         className="relative mt-24 scroll-mt-24 border-y border-slate-100 bg-slate-50 py-24 lg:scroll-mt-32"
     >
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-7xl px-6">
             <div className="mx-auto max-w-2xl text-center">
                 <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
                     {copy.title}

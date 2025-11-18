@@ -8,8 +8,8 @@ interface SavingsSectionProps {
 }
 
 const SavingsSection = ({ copy }: SavingsSectionProps) => (
-    <section id="impacto" className="bg-slate-900 py-24 text-white">
-        <div className="mx-auto max-w-6xl px-6">
+    <section id="impacto" className="scroll-mt-24 bg-slate-900 py-24 text-white lg:scroll-mt-32">
+        <div className="mx-auto max-w-7xl px-6">
             <div className="max-w-3xl">
                 <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{copy.title}</h2>
                 <p className="mt-4 text-base text-white/80">{copy.caption}</p>

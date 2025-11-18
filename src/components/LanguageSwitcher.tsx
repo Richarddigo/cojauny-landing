@@ -10,6 +10,7 @@ import { localeValues, type Locale } from '@/locales/config';
 interface LanguageSwitcherProps {
     currentLocale: Locale;
     label?: string;
+    dropdownDirection?: 'up' | 'down';
 }
 
 const languageLabels: Record<Locale, string> = {
@@ -33,7 +34,7 @@ const languageCodes: Record<Locale, string> = {
     fr: 'FR'
 };
 
-const LanguageSwitcher = ({ currentLocale, label }: LanguageSwitcherProps) => {
+const LanguageSwitcher = ({ currentLocale, label, dropdownDirection = 'down' }: LanguageSwitcherProps) => {
     const [isChrome, setIsChrome] = useState(false);
 
     useEffect(() => {
@@ -91,17 +92,17 @@ const LanguageSwitcher = ({ currentLocale, label }: LanguageSwitcherProps) => {
         <Menu as="div" className="relative inline-block text-left">
             <Menu.Button
                 aria-label={buttonAriaLabel}
-                className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:border-brand-200 hover:text-brand-700 focus:outline-none focus-visible:border-brand-400 focus-visible:ring-2 focus-visible:ring-brand-200"
+                className="inline-flex items-center gap-2 rounded-3xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-white shadow-soft-glow transition hover:border-brand-200 hover:bg-white/10 focus:outline-none focus-visible:border-brand-200 focus-visible:ring-2 focus-visible:ring-brand-200/50"
             >
                 {isChrome ? (
-                    <span aria-hidden className="flex h-5 w-5 items-center justify-center rounded-sm bg-brand-100 text-xs font-bold text-brand-700">
+                    <span aria-hidden className="flex h-5 w-5 items-center justify-center rounded-sm bg-brand-200/20 text-xs font-bold text-brand-200">
                         {buttonCode}
                     </span>
                 ) : (
                     <span aria-hidden className="text-base leading-none">{buttonFlag}</span>
                 )}
                 <span>{buttonLabel}</span>
-                <ChevronDownIcon className="h-4 w-4 text-slate-400" aria-hidden />
+                <ChevronDownIcon className="h-4 w-4 text-white/60" aria-hidden />
             </Menu.Button>
             <Transition
                 as={Fragment}
@@ -112,7 +113,7 @@ const LanguageSwitcher = ({ currentLocale, label }: LanguageSwitcherProps) => {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
             >
-                <Menu.Items className="absolute right-0 z-50 mt-2 w-56 origin-top-right overflow-hidden rounded-3xl border border-slate-100 bg-white/95 p-2 shadow-xl backdrop-blur">
+                <Menu.Items className={`absolute right-0 z-50 w-56 overflow-hidden rounded-3xl border border-white/10 bg-slate-900/95 p-2 shadow-soft-glow backdrop-blur ${dropdownDirection === 'up' ? 'bottom-full mb-2 origin-bottom-right' : 'mt-2 origin-top-right'}`}>
                     {options.map((option) => {
                         const isActive = option.value === currentLocale;
                         return (
@@ -121,12 +122,12 @@ const LanguageSwitcher = ({ currentLocale, label }: LanguageSwitcherProps) => {
                                     <button
                                         type="button"
                                         onClick={() => navigateToLocale(option.value)}
-                                        className={`flex w-full items-center justify-between gap-3 rounded-2xl px-3 py-2 text-left text-sm transition ${active ? 'bg-brand-50 text-brand-700' : 'text-slate-700'
+                                        className={`flex w-full items-center justify-between gap-3 rounded-2xl px-3 py-2 text-left text-sm transition ${active ? 'bg-white/10 text-white' : 'text-white/80'
                                             }`}
                                     >
                                         <span className="flex items-center gap-3">
                                             {isChrome ? (
-                                                <span aria-hidden className="flex h-8 w-8 items-center justify-center rounded-md bg-brand-100 text-sm font-bold text-brand-700">
+                                                <span aria-hidden className="flex h-8 w-8 items-center justify-center rounded-md bg-brand-200/20 text-sm font-bold text-brand-200">
                                                     {option.code}
                                                 </span>
                                             ) : (
@@ -136,7 +137,7 @@ const LanguageSwitcher = ({ currentLocale, label }: LanguageSwitcherProps) => {
                                             )}
                                             <span className="font-medium">{option.label}</span>
                                         </span>
-                                        {isActive ? <CheckIcon className="h-4 w-4 text-brand-600" aria-hidden /> : null}
+                                        {isActive ? <CheckIcon className="h-4 w-4 text-brand-200" aria-hidden /> : null}
                                     </button>
                                 )}
                             </Menu.Item>

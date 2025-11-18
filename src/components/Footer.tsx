@@ -123,15 +123,15 @@ const socialLinks = [
 ];
 
 const Footer = ({ copy, locale }: FooterProps) => (
-    <footer className="mt-24 border-t border-slate-100 bg-slate-50">
+    <footer className="border-t border-white/10 bg-slate-900">
         <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 md:flex-row md:items-center md:justify-between">
             <div>
-                <p className="text-lg font-semibold text-slate-900">Cojauny™</p>
-                <p className="mt-2 max-w-xs text-sm text-slate-600">{copy.description}</p>
+                <p className="text-lg font-semibold text-white">Cojauny™</p>
+                <p className="mt-2 max-w-xs text-sm text-white/80">{copy.description}</p>
                 <div className="mt-4 flex gap-4">
                     <Link
                         href="https://cojauny.com/app-store"
-                        className="text-sm text-brand-600 underline"
+                        className="text-sm text-brand-200 underline hover:text-white"
                         target="_blank"
                         rel="noreferrer"
                     >
@@ -139,7 +139,7 @@ const Footer = ({ copy, locale }: FooterProps) => (
                     </Link>
                     <Link
                         href="https://cojauny.com/google-play"
-                        className="text-sm text-brand-600 underline"
+                        className="text-sm text-brand-200 underline hover:text-white"
                         target="_blank"
                         rel="noreferrer"
                     >
@@ -148,7 +148,7 @@ const Footer = ({ copy, locale }: FooterProps) => (
                 </div>
             </div>
             <div className="flex flex-col items-start gap-4 md:items-end">
-                <div className="flex gap-4 text-slate-600">
+                <div className="flex gap-4 text-white/80">
                     {socialLinks.map((link) => (
                         <a
                             key={link.label}
@@ -156,31 +156,31 @@ const Footer = ({ copy, locale }: FooterProps) => (
                             aria-label={link.label}
                             target="_blank"
                             rel="noreferrer"
-                            className="rounded-full border border-transparent p-2 text-slate-500 transition hover:border-brand-200 hover:text-brand-600 focus-visible:border-brand-400"
+                            className="rounded-full border border-transparent p-2 text-white/60 transition hover:border-brand-200 hover:text-brand-200 focus-visible:border-brand-400"
                         >
                             {link.icon}
                         </a>
                     ))}
                 </div>
-                <nav className="flex flex-wrap justify-end gap-4 text-sm text-slate-600">
-                    <Link href={`/${locale}/legal/privacy`} className="hover:text-brand-600">
+                <nav className="flex flex-wrap justify-end gap-4 text-sm text-white/80">
+                    <Link href={`/${locale}/legal/privacy`} className="hover:text-brand-200">
                         {copy.privacy}
                     </Link>
-                    <Link href={`/${locale}/legal/cookies`} className="hover:text-brand-600">
+                    <Link href={`/${locale}/legal/cookies`} className="hover:text-brand-200">
                         {copy.cookies}
                     </Link>
-                    <Link href={`/${locale}/legal/terms`} className="hover:text-brand-600">
+                    <Link href={`/${locale}/legal/terms`} className="hover:text-brand-200">
                         {copy.terms}
                     </Link>
-                    <Link href={`/${locale}/blog`} className="hover:text-brand-600">
+                    <Link href={`/${locale}/blog`} className="hover:text-brand-200">
                         {copy.blog}
                     </Link>
-                    <Link href={`/${locale}/contact`} className="hover:text-brand-600">
+                    <Link href={`/${locale}/contact`} className="hover:text-brand-200">
                         {copy.contact}
                     </Link>
                 </nav>
-                <LanguageSwitcher currentLocale={locale} label={copy.languageLabel} />
-                <p className="text-xs text-slate-500">© {new Date().getFullYear()} Cojauny™. {copy.rights}</p>
+                <LanguageSwitcher currentLocale={locale} label={copy.languageLabel} dropdownDirection="up" />
+                <p className="text-xs text-white/60">© {new Date().getFullYear()} Cojauny™. {copy.rights}</p>
             </div>
         </div>
     </footer>

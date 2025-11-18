@@ -68,7 +68,7 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                         aria-live="polite"
                     >
                         {/* iPhone-style device frame */}
-                        <div className="relative rounded-[3rem] bg-black shadow-2xl">
+                        <div className="relative rounded-[3rem] border-[5px] border-black bg-black shadow-2xl">
                             {/* Dynamic Island */}
                             <div className="absolute left-1/2 top-[22px] z-30 h-[30px] w-[120px] -translate-x-1/2 rounded-full bg-black"></div>
 

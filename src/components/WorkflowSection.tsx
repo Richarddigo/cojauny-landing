@@ -8,8 +8,8 @@ interface WorkflowSectionProps {
 }
 
 const WorkflowSection = ({ copy }: WorkflowSectionProps) => (
-    <section id="como-funciona" className="bg-white py-24">
-        <div className="mx-auto max-w-6xl px-6">
+    <section id="como-funciona" className="scroll-mt-24 bg-white py-24 lg:scroll-mt-32">
+        <div className="mx-auto max-w-7xl px-6">
             <div className="mx-auto max-w-3xl text-center">
                 <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{copy.title}</h2>
                 <p className="mt-4 text-lg text-slate-600">{copy.intro}</p>
