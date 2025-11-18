@@ -20,22 +20,20 @@ interface LandingPageContentProps {
 const LandingPageContent = ({ copy, locale }: LandingPageContentProps) => (
     <>
         <Hero copy={copy.hero} />
+        <section id="demo" className="mx-auto mt-16 max-w-7xl scroll-mt-24 px-6 lg:scroll-mt-32">
+            <Mockups className="h-full" copy={copy.mockups} />
+        </section>
         <ValuePropsSection copy={copy.value} />
         <SavingsSection copy={copy.savings} />
         <Features copy={copy.features} />
         <WorkflowSection copy={copy.workflow} />
-        <section className="mx-auto mt-24 max-w-7xl px-6">
-            <Mockups className="h-full" copy={copy.mockups} />
-        </section>
         <PricingSection copy={copy.pricing} />
+        <section id="beta" className="mx-auto mt-24 max-w-2xl scroll-mt-24 px-6 lg:scroll-mt-32">
+            <BetaSignupForm copy={copy.forms.beta} locale={locale} />
+        </section>
         <FaqSection copy={copy.faq} />
-        <section className="mx-auto mt-24 flex max-w-6xl flex-col gap-16 px-6 lg:flex-row lg:gap-12">
-            <div className="flex-1">
-                <BetaSignupForm copy={copy.forms.beta} locale={locale} />
-            </div>
-            <div className="flex-1">
-                <FeedbackForm copy={copy.forms.feedback} locale={locale} />
-            </div>
+        <section className="mx-auto mt-24 max-w-2xl px-6">
+            <FeedbackForm copy={copy.forms.feedback} locale={locale} />
         </section>
         <IntegrationCTA copy={copy.ctaStrip} locale={locale} />
     </>

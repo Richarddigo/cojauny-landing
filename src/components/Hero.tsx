@@ -61,23 +61,6 @@ const Hero = ({ copy }: HeroProps) => (
                 </Link>
             </motion.div>
         </motion.div>
-        <motion.div
-            id="demo"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4, duration: 0.8, ease: 'easeOut' }}
-            className="relative mx-auto mt-16 w-full max-w-5xl scroll-mt-24 rounded-[3rem] bg-gradient-to-br from-slate-900 via-slate-800 to-brand-900 p-6 shadow-soft-glow lg:scroll-mt-32"
-        >
-            <div className="pointer-events-none absolute inset-0 rounded-[3rem] border border-white/10" />
-            <Image
-                src="/images/mockup-hero.svg"
-                alt={copy.imageAlt}
-                width={2160}
-                height={1280}
-                priority
-                className="h-auto w-full"
-            />
-        </motion.div>
     </section>
 );
 

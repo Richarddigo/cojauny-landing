@@ -6,7 +6,7 @@ interface PricingSectionProps {
 
 const PricingSection = ({ copy }: PricingSectionProps) => {
     return (
-        <section id="precios" className="mx-auto mt-24 max-w-7xl px-6">
+        <section id="precios" className="scroll-mt-24 mx-auto mt-24 max-w-7xl px-6 lg:scroll-mt-32">
             <div className="text-center">
                 <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                     {copy.title}

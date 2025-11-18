@@ -8,7 +8,7 @@ interface ValuePropsSectionProps {
 }
 
 const ValuePropsSection = ({ copy }: ValuePropsSectionProps) => (
-    <section id="beneficios" className="bg-white py-24">
+    <section id="beneficios" className="scroll-mt-24 bg-white py-24 lg:scroll-mt-32">
         <div className="mx-auto max-w-6xl px-6">
             <div className="mx-auto max-w-3xl text-center">
                 <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{copy.title}</h2>

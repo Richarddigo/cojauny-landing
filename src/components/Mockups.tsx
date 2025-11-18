@@ -64,24 +64,47 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                         initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.96, y: 20 }}
                         animate={prefersReducedMotion ? {} : { opacity: 1, scale: 1, y: 0 }}
                         transition={{ duration: 0.5, ease: 'easeOut' }}
-                        className="relative mx-auto w-[280px] max-w-full rounded-[3rem] border-4 border-slate-300 bg-slate-900 p-3 shadow-2xl lg:w-[340px]"
+                        className="relative mx-auto w-[280px] max-w-full lg:w-[340px]"
                         aria-live="polite"
                     >
-                        <div className="flex items-center justify-between px-2 text-[10px] text-white/70">
-                            <span>Cojauny</span>
-                            <span>{activeScreen?.badge}</span>
-                        </div>
-                        <div className="mt-4 overflow-hidden rounded-[2rem] bg-slate-950">
-                            {activeScreen && (
-                                <Image
-                                    src={activeScreen.image}
-                                    alt={activeScreen.title}
-                                    width={720}
-                                    height={1560}
-                                    priority={false}
-                                    loading="lazy"
-                                />
-                            )}
+                        {/* iPhone-style device frame */}
+                        <div className="relative rounded-[3rem] bg-black shadow-2xl">
+                            {/* Dynamic Island */}
+                            <div className="absolute left-1/2 top-[22px] z-30 h-[30px] w-[120px] -translate-x-1/2 rounded-full bg-black"></div>
+
+                            {/* Status bar */}
+                            <div className="relative z-20 flex items-center justify-between bg-black px-8 pb-3 pt-5 text-[11px] font-medium text-white rounded-t-[3rem]">
+                                <span>9:41</span>
+                                <div className="flex items-center gap-1">
+                                    <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+                                    </svg>
+                                    <svg className="h-3 w-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M17.778 8.222c-4.296-4.296-11.26-4.296-15.556 0A1 1 0 01.808 6.808c5.076-5.077 13.308-5.077 18.384 0a1 1 0 01-1.414 1.414zM14.95 11.05a7 7 0 00-9.9 0 1 1 0 01-1.414-1.414 9 9 0 0112.728 0 1 1 0 01-1.414 1.414zM12.12 13.88a3 3 0 00-4.242 0 1 1 0 01-1.415-1.415 5 5 0 017.072 0 1 1 0 01-1.415 1.415zM9 16a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clipRule="evenodd" />
+                                    </svg>
+                                    <svg className="h-3 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M4 4h12v2H4V4zm0 4h12v2H4V8zm0 4h8v2H4v-2zm16-1.5a3.5 3.5 0 110 7 3.5 3.5 0 010-7z" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            {/* Screen content */}
+                            <div className="overflow-hidden rounded-b-[3rem] bg-white">
+                                {activeScreen && (
+                                    <Image
+                                        src={activeScreen.image}
+                                        alt={activeScreen.title}
+                                        width={720}
+                                        height={1560}
+                                        priority={false}
+                                        loading="lazy"
+                                        className="h-full w-full object-cover"
+                                    />
+                                )}
+                            </div>
+
+                            {/* Home indicator */}
+                            <div className="absolute bottom-3 left-1/2 h-1 w-32 -translate-x-1/2 rounded-full bg-white/30"></div>
                         </div>
                     </motion.div>
                 </div>

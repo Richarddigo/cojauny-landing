@@ -74,7 +74,7 @@ export interface PricingCopy {
       price: string;
       description: string;
       cta: string;
-      badge: string;
+      badge?: string;
     };
   };
   comparison: {
@@ -100,6 +100,7 @@ export interface LandingCopy {
     home: string;
     features: string;
     demo: string;
+    pricing: string;
     beta: string;
     blog: string;
   };
@@ -182,6 +183,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       home: 'Inicio',
       features: 'Características',
       demo: 'Demo',
+      pricing: 'Precios',
       beta: 'Beta',
       blog: 'Blog'
     },
@@ -431,8 +433,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           name: 'Premium',
           price: '4,99€/mes',
           description: 'Para viajeros que quieren acceso completo y viajes ilimitados. 49€/año (ahorra 17%)',
-          cta: 'Actualizar a Premium',
-          badge: '🔥 Más Popular'
+          cta: 'Actualizar a Premium'
         }
       },
       comparison: {
@@ -609,6 +610,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       home: 'Home',
       features: 'Features',
       demo: 'Demo',
+      pricing: 'Pricing',
       beta: 'Beta',
       blog: 'Blog'
     },
@@ -739,36 +741,52 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         'Explore Cojauny’s key flows: home dashboard, shared transport event creation, temporary chat and privacy settings.',
       screens: [
         {
-          id: 'home',
-          badge: 'Home',
-          title: 'Upcoming rides & savings',
+          id: 'flight-search',
+          badge: 'Search',
+          title: 'Find your flight in seconds',
           description:
-            'See upcoming flights, seat availability and saving estimates before joining.',
-          image: '/images/mockups/mockup-home.svg'
+            'Enter your flight number and date. Our system automatically finds flight information and shows you other available travelers.',
+          image: '/images/mockups/mockup-flight-search.svg'
         },
         {
-          id: 'event',
-          badge: 'Event',
-          title: 'Plan a ride in minutes',
+          id: 'events-list',
+          badge: 'Events',
+          title: 'Events for your flight',
           description:
-            'Choose transport mode, meeting time and who picks up travellers. Everyone stays in sync.',
-          image: '/images/mockups/mockup-event.svg'
+            'See all available events for your flight: "Share taxi from airport A to city B", "Dinner at destination", etc. With real-time capacity and participants.',
+          image: '/images/mockups/mockup-events-list.svg'
+        },
+        {
+          id: 'event-detail',
+          badge: 'Detail',
+          title: 'Complete event information',
+          description:
+            'View organizer, confirmed participants, available spots, meeting point, time and estimated costs. Like or comment.',
+          image: '/images/mockups/mockup-event-detail.svg'
         },
         {
           id: 'chat',
-          badge: '48h chat',
-          title: 'Stay aligned without noise',
+          badge: 'Chat',
+          title: 'Private and group chat',
           description:
-            'Share updates and live driver position. Chats vanish 48h after the flight.',
+            'Chat directly with organizers (Free) or with the entire group (Premium). Share location, payment details and coordinate in real-time.',
           image: '/images/mockups/mockup-chat.svg'
         },
         {
-          id: 'settings',
-          badge: 'Privacy',
-          title: 'Granular data & payments',
+          id: 'profile',
+          badge: 'Profile',
+          title: 'Verified profiles',
           description:
-            'Control what other passengers can see and add shared payment methods only when necessary.',
-          image: '/images/mockups/mockup-settings.svg'
+            'See other travelers information: photo, name, verification, reputation and events they have participated in. Travel with confidence.',
+          image: '/images/mockups/mockup-profile.svg'
+        },
+        {
+          id: 'impact',
+          badge: 'Impact',
+          title: 'Your savings and carbon footprint',
+          description:
+            'Dashboard with charts of how much money you have saved, how much CO₂ you have reduced and statistics of your shared trips.',
+          image: '/images/mockups/mockup-impact.svg'
         }
       ]
     },
@@ -792,8 +810,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           name: 'Premium',
           price: '$4.99/month',
           description: 'For travelers who want full access and unlimited trips. $49/year (save 17%)',
-          cta: 'Upgrade to Premium',
-          badge: '🔥 Most Popular'
+          cta: 'Upgrade to Premium'
         }
       },
       comparison: {
@@ -972,6 +989,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       home: 'Startseite',
       features: 'Funktionen',
       demo: 'Demo',
+      pricing: 'Preise',
       beta: 'Beta',
       blog: 'Blog'
     },
@@ -1102,36 +1120,52 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         'Entdecken Sie die Hauptbildschirme von Cojauny: Flugsuche, Events mit Kapazität, Echtzeit-Chat, verifizierte Profile und Impact-Dashboard.',
       screens: [
         {
-          id: 'home',
-          badge: 'Home',
-          title: 'Bevorstehende Fahrten & Ersparnisse',
+          id: 'flight-search',
+          badge: 'Suche',
+          title: 'Finde deinen Flug in Sekunden',
           description:
-            'Behalte kommende Flüge, verfügbare Plätze und Einsparungen im Blick, bevor du beitrittst.',
-          image: '/images/mockups/mockup-home.svg'
+            'Gib deine Flugnummer und Datum ein. Unser System findet automatisch Fluginformationen und zeigt dir andere verfügbare Reisende.',
+          image: '/images/mockups/mockup-flight-search.svg'
         },
         {
-          id: 'event',
-          badge: 'Event',
-          title: 'Fahrt in Minuten planen',
+          id: 'events-list',
+          badge: 'Events',
+          title: 'Events für deinen Flug',
           description:
-            'Wähle Transportmittel, Treffpunkt und beteiligte Personen. Alle bleiben synchron.',
-          image: '/images/mockups/mockup-event.svg'
+            'Sieh alle verfügbaren Events für deinen Flug: "Taxi teilen von Flughafen A nach Stadt B", "Abendessen am Ziel", etc. Mit Echtzeit-Kapazität und Teilnehmern.',
+          image: '/images/mockups/mockup-events-list.svg'
+        },
+        {
+          id: 'event-detail',
+          badge: 'Details',
+          title: 'Alle Event-Informationen',
+          description:
+            'Siehe Organisator, bestätigte Teilnehmer, verfügbare Plätze, Treffpunkt, Zeit und geschätzte Kosten. Liken oder kommentieren.',
+          image: '/images/mockups/mockup-event-detail.svg'
         },
         {
           id: 'chat',
-          badge: '48h-Chat',
-          title: 'Abstimmung ohne Lärm',
+          badge: 'Chat',
+          title: 'Privater und Gruppen-Chat',
           description:
-            'Teile Updates und die Position des Fahrers in Echtzeit. Der Chat verschwindet 48h nach dem Flug.',
+            'Chatte direkt mit Organisatoren (Free) oder mit der ganzen Gruppe (Premium). Teile Standort, Zahlungsdetails und koordiniere in Echtzeit.',
           image: '/images/mockups/mockup-chat.svg'
         },
         {
-          id: 'settings',
-          badge: 'Privatsphäre',
-          title: 'Feinsteuerung für Daten & Zahlungen',
+          id: 'profile',
+          badge: 'Profil',
+          title: 'Verifizierte Profile',
           description:
-            'Bestimme, was Mitreisende sehen und füge gemeinsame Zahlungsmittel nur bei Bedarf hinzu.',
-          image: '/images/mockups/mockup-settings.svg'
+            'Siehe Informationen anderer Reisender: Foto, Name, Verifizierung, Reputation und Events, an denen sie teilgenommen haben. Reise mit Vertrauen.',
+          image: '/images/mockups/mockup-profile.svg'
+        },
+        {
+          id: 'impact',
+          badge: 'Impact',
+          title: 'Deine Ersparnisse und CO₂-Fußabdruck',
+          description:
+            'Dashboard mit Grafiken über eingesparte Geld, reduziertes CO₂ und Statistiken deiner geteilten Reisen.',
+          image: '/images/mockups/mockup-impact.svg'
         }
       ]
     },
@@ -1155,8 +1189,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           name: 'Premium',
           price: '4,99€/Monat',
           description: 'Für Reisende mit vollem Zugriff und unbegrenzten Reisen. 49€/Jahr (17% sparen)',
-          cta: 'Auf Premium upgraden',
-          badge: '🔥 Am beliebtesten'
+          cta: 'Auf Premium upgraden'
         }
       },
       comparison: {
@@ -1335,6 +1368,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       home: 'Accueil',
       features: 'Fonctionnalités',
       demo: 'Démo',
+      pricing: 'Tarifs',
       beta: 'Beta',
       blog: 'Blog'
     },
@@ -1465,38 +1499,55 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         'Découvrez les écrans clés : tableau de bord, création d’événement partagé, chat temporaire et réglages de confidentialité.',
       screens: [
         {
-          id: 'home',
-          badge: 'Accueil',
-          title: 'Trajets à venir & économies',
+          id: 'flight-search',
+          badge: 'Recherche',
+          title: 'Trouvez votre vol en quelques secondes',
           description:
-            'Visualisez vols prochains, disponibilité et économies avant de rejoindre un trajet.',
-          image: '/images/mockups/mockup-home.svg'
+            'Entrez votre num?ro de vol et la date. Notre syst?me trouve automatiquement les informations du vol et vous montre d\'autres voyageurs disponibles.',
+          image: '/images/mockups/mockup-flight-search.svg'
         },
         {
-          id: 'event',
-          badge: 'Événement',
-          title: 'Planifiez en quelques minutes',
+          id: 'events-list',
+          badge: '?v?nements',
+          title: '?v?nements pour votre vol',
           description:
-            'Choisissez le mode de transport, l’heure de rendez-vous et les passagers impliqués.',
-          image: '/images/mockups/mockup-event.svg'
+            'Voyez tous les ?v?nements disponibles pour votre vol : "Partager un taxi de l\'a?roport A ? la ville B", "D?ner ? destination", etc. Avec capacit? et participants en temps r?el.',
+          image: '/images/mockups/mockup-events-list.svg'
+        },
+        {
+          id: 'event-detail',
+          badge: 'D?tail',
+          title: 'Informations compl?tes de l\'?v?nement',
+          description:
+            'Voir l\'organisateur, les participants confirm?s, les places disponibles, le point de rencontre, l\'heure et les co?ts estim?s. Liker ou commenter.',
+          image: '/images/mockups/mockup-event-detail.svg'
         },
         {
           id: 'chat',
-          badge: 'Chat 48h',
-          title: 'Restez alignés sans bruit',
+          badge: 'Chat',
+          title: 'Chat priv? et de groupe',
           description:
-            'Partagez mises à jour et position du chauffeur. Le chat disparaît 48h après le vol.',
+            'Chattez directement avec les organisateurs (Free) ou avec tout le groupe (Premium). Partagez la localisation, les d?tails de paiement et coordonnez en temps r?el.',
           image: '/images/mockups/mockup-chat.svg'
         },
         {
-          id: 'settings',
-          badge: 'Confidentialité',
-          title: 'Contrôle fin des données',
+          id: 'profile',
+          badge: 'Profil',
+          title: 'Profils v?rifi?s',
           description:
-            'Décidez quelles informations sont visibles et ajoutez des paiements partagés uniquement si besoin.',
-          image: '/images/mockups/mockup-settings.svg'
+            'Voir les informations des autres voyageurs : photo, nom, v?rification, r?putation et ?v?nements auxquels ils ont particip?. Voyagez en toute confiance.',
+          image: '/images/mockups/mockup-profile.svg'
+        },
+        {
+          id: 'impact',
+          badge: 'Impact',
+          title: 'Vos ?conomies et empreinte carbone',
+          description:
+            'Tableau de bord avec graphiques de combien d\'argent vous avez ?conomis?, combien de CO? vous avez r?duit et statistiques de vos trajets partag?s.',
+          image: '/images/mockups/mockup-impact.svg'
         }
       ]
+
     },
     ctaStrip: {
       heading: 'Prêt à économiser sur vos voyages?',
@@ -1518,8 +1569,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           name: 'Premium',
           price: '4,99€/mois',
           description: 'Pour les voyageurs avec accès complet et voyages illimités. 49€/an (économisez 17%)',
-          cta: 'Passer à Premium',
-          badge: '🔥 Plus populaire'
+          cta: 'Passer à Premium'
         }
       },
       comparison: {

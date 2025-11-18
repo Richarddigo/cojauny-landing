@@ -14,6 +14,7 @@ interface HeaderProps {
         home: string;
         features: string;
         demo: string;
+        pricing: string;
         beta: string;
         blog: string;
     };
@@ -48,32 +49,20 @@ const Header = ({ locale, copy }: HeaderProps) => {
                     </button>
                 </div>
                 <div className="hidden lg:flex lg:gap-x-6">
-                    <Link href={`/${locale}#inicio`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
-                        Inicio
+                    <Link href={`/${locale}#inicio`} className="text-sm font-semibold leading-6 text-teal-900 transition hover:text-teal-600">
+                        {copy.home}
                     </Link>
-                    <Link href={`/${locale}#beneficios`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
-                        Beneficios
+                    <Link href={`/${locale}#demo`} className="text-sm font-semibold leading-6 text-teal-900 transition hover:text-teal-600">
+                        {copy.demo}
                     </Link>
-                    <Link href={`/${locale}#impacto`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
-                        Impacto
+                    <Link href={`/${locale}#beneficios`} className="text-sm font-semibold leading-6 text-teal-900 transition hover:text-teal-600">
+                        {copy.features}
                     </Link>
-                    <Link href={`/${locale}#caracteristicas`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
-                        Características
+                    <Link href={`/${locale}#precios`} className="text-sm font-semibold leading-6 text-teal-900 transition hover:text-teal-600">
+                        {copy.pricing}
                     </Link>
-                    <Link href={`/${locale}#como-funciona`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
-                        Cómo Funciona
-                    </Link>
-                    <Link href={`/${locale}#demo`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
-                        Demo
-                    </Link>
-                    <Link href={`/${locale}#precios`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
-                        Precios
-                    </Link>
-                    <Link href={`/${locale}#faq`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
-                        FAQ
-                    </Link>
-                    <Link href={`/${locale}#beta`} className="text-sm font-semibold leading-6 text-slate-900 hover:text-brand-600">
-                        Beta
+                    <Link href={`/${locale}#beta`} className="text-sm font-semibold leading-6 text-teal-900 transition hover:text-teal-600">
+                        {copy.beta}
                     </Link>
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -122,60 +111,32 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                     Inicio
                                 </Link>
                                 <Link
-                                    href={`/${locale}#beneficios`}
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    Beneficios
-                                </Link>
-                                <Link
-                                    href={`/${locale}#impacto`}
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    Impacto
-                                </Link>
-                                <Link
-                                    href={`/${locale}#caracteristicas`}
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    Características
-                                </Link>
-                                <Link
-                                    href={`/${locale}#como-funciona`}
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    Cómo Funciona
-                                </Link>
-                                <Link
                                     href={`/${locale}#demo`}
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-teal-900 hover:bg-teal-50"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
-                                    Demo
+                                    {copy.demo}
+                                </Link>
+                                <Link
+                                    href={`/${locale}#beneficios`}
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-teal-900 hover:bg-teal-50"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                >
+                                    {copy.features}
                                 </Link>
                                 <Link
                                     href={`/${locale}#precios`}
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-teal-900 hover:bg-teal-50"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
-                                    Precios
-                                </Link>
-                                <Link
-                                    href={`/${locale}#faq`}
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    FAQ
+                                    {copy.pricing}
                                 </Link>
                                 <Link
                                     href={`/${locale}#beta`}
-                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
+                                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-teal-900 hover:bg-teal-50"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
-                                    Beta
+                                    {copy.beta}
                                 </Link>
                             </div>
                             <div className="py-6">

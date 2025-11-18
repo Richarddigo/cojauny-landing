@@ -62,6 +62,9 @@ const LanguageSwitcher = ({ currentLocale, label }: LanguageSwitcherProps) => {
             return;
         }
 
+        // Preserve current hash/section
+        const currentHash = typeof window !== 'undefined' ? window.location.hash : '';
+
         const segments = pathname.split('/').filter((segment, index) => !(segment === '' && index !== 0));
 
         if (segments.length > 1) {
@@ -73,7 +76,7 @@ const LanguageSwitcher = ({ currentLocale, label }: LanguageSwitcherProps) => {
         const nextPath = `/${segments.slice(1).join('/')}` || `/${nextLocale}`;
         const query = searchParams?.toString();
 
-        const target = query ? `${nextPath}?${query}` : nextPath;
+        const target = query ? `${nextPath}?${query}${currentHash}` : `${nextPath}${currentHash}`;
         router.push(target);
     };
 
