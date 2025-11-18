@@ -31,8 +31,8 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                 </h2>
                 <p className="mt-4 text-lg text-slate-600">{copy.description}</p>
             </div>
-            <div className="relative mt-16 flex flex-col gap-10 lg:flex-row lg:gap-16">
-                <div className="flex flex-1 flex-col gap-5 text-left lg:max-w-2xl">
+            <div className="relative mt-16 flex flex-col gap-10 lg:flex-row lg:gap-12 xl:gap-16">
+                <div className="flex flex-1 flex-col gap-5 text-left lg:max-w-3xl">
                     {copy.screens.map((screen) => {
                         const isActive = screen.id === activeScreenId;
                         return (

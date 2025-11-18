@@ -429,8 +429,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         premium: {
           name: 'Premium',
-          price: '3,99€/mes',
-          description: 'Para viajeros que quieren acceso completo y viajes ilimitados. ¡39/año (ahorra 18%)',
+          price: '4,99€/mes',
+          description: 'Para viajeros que quieren acceso completo y viajes ilimitados. 49€/año (ahorra 17%)',
           cta: 'Actualizar a Premium',
           badge: '🔥 Más Popular'
         }
@@ -532,7 +532,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: '¿Existe un plan anual? ¿Cuánto ahorro?',
-          answer: 'Sí. El plan Premium cuesta 3,99€/mes o 39€/año. Con el plan anual ahorras 8,88€ (18% de descuento). Si viajas regularmente, el plan anual se paga solo con 2-3 trayectos compartidos al año.'
+          answer: 'Sí. El plan Premium cuesta 4,99€/mes o 49€/año. Con el plan anual ahorras 10,88€ (17% de descuento). Si viajas regularmente, el plan anual se paga solo con 2-3 trayectos compartidos al año.'
         },
         {
           question: '¿Qué pasa si mi vuelo se retrasa o cancela?',
@@ -790,8 +790,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         premium: {
           name: 'Premium',
-          price: '$3.99/month',
-          description: 'For travelers who want full access and unlimited trips. $39/year (save 18%)',
+          price: '$4.99/month',
+          description: 'For travelers who want full access and unlimited trips. $49/year (save 17%)',
           cta: 'Upgrade to Premium',
           badge: '🔥 Most Popular'
         }
@@ -893,7 +893,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: 'Is there an annual plan? How much do I save?',
-          answer: 'Yes. Premium costs $3.99/month or $39/year. With the annual plan you save $8.88 (18% discount). If you travel regularly, the annual plan pays for itself with just 2-3 shared trips per year.'
+          answer: 'Yes. Premium costs $4.99/month or $49/year. With the annual plan you save $10.88 (17% discount). If you travel regularly, the annual plan pays for itself with just 2-3 shared trips per year.'
         },
         {
           question: 'What if my flight is delayed or canceled?',
@@ -1153,8 +1153,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         premium: {
           name: 'Premium',
-          price: '3,99€/Monat',
-          description: 'Für Reisende mit vollem Zugriff und unbegrenzten Reisen. 39€/Jahr (18% sparen)',
+          price: '4,99€/Monat',
+          description: 'Für Reisende mit vollem Zugriff und unbegrenzten Reisen. 49€/Jahr (17% sparen)',
           cta: 'Auf Premium upgraden',
           badge: '🔥 Am beliebtesten'
         }
@@ -1256,7 +1256,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: 'Gibt es einen Jahresplan? Wie viel spare ich?',
-          answer: 'Ja. Premium kostet 3,99€/Monat oder 39€/Jahr. Mit dem Jahresplan sparst du 8,88€ (18% Rabatt). Wenn du regelmäßig reist, amortisiert sich der Jahresplan bereits mit 2-3 geteilten Fahrten pro Jahr.'
+          answer: 'Ja. Premium kostet 4,99€/Monat oder 49€/Jahr. Mit dem Jahresplan sparst du 10,88€ (17% Rabatt). Wenn du regelmäßig reist, amortisiert sich der Jahresplan bereits mit 2-3 geteilten Fahrten pro Jahr.'
         },
         {
           question: 'Was ist, wenn mein Flug verspätet oder gestrichen wird?',
@@ -1516,8 +1516,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         premium: {
           name: 'Premium',
-          price: '3,99€/mois',
-          description: 'Pour les voyageurs avec accès complet et voyages illimités. 39€/an (économisez 18%)',
+          price: '4,99€/mois',
+          description: 'Pour les voyageurs avec accès complet et voyages illimités. 49€/an (économisez 17%)',
           cta: 'Passer à Premium',
           badge: '🔥 Plus populaire'
         }

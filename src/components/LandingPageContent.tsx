@@ -24,17 +24,19 @@ const LandingPageContent = ({ copy, locale }: LandingPageContentProps) => (
         <SavingsSection copy={copy.savings} />
         <Features copy={copy.features} />
         <WorkflowSection copy={copy.workflow} />
-        <section className="mx-auto mt-24 flex max-w-6xl flex-col gap-16 px-6 lg:flex-row">
-            <div className="flex-1">
-                <Mockups className="h-full" copy={copy.mockups} />
-            </div>
-            <div className="flex flex-1 flex-col gap-16">
-                <BetaSignupForm copy={copy.forms.beta} locale={locale} />
-                <FeedbackForm copy={copy.forms.feedback} locale={locale} />
-            </div>
+        <section className="mx-auto mt-24 max-w-7xl px-6">
+            <Mockups className="h-full" copy={copy.mockups} />
         </section>
         <PricingSection copy={copy.pricing} />
         <FaqSection copy={copy.faq} />
+        <section className="mx-auto mt-24 flex max-w-6xl flex-col gap-16 px-6 lg:flex-row lg:gap-12">
+            <div className="flex-1">
+                <BetaSignupForm copy={copy.forms.beta} locale={locale} />
+            </div>
+            <div className="flex-1">
+                <FeedbackForm copy={copy.forms.feedback} locale={locale} />
+            </div>
+        </section>
         <IntegrationCTA copy={copy.ctaStrip} locale={locale} />
     </>
 );
