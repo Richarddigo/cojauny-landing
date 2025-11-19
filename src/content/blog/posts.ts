@@ -247,6 +247,90 @@ export const blogPosts: BlogPost[] = [
     readingTimeMinutes: 8
   },
   {
+    slug: 'real-time-flight-coordination',
+    locale: 'en',
+    title: 'Real-time flight coordination: Stay synced with Cojauny',
+    summary:
+      'Learn how automatic flight sync helps you orchestrate airport transfers without worrying about delays or last-minute gate changes.',
+    heroImage: '/images/og-default.svg',
+    heroAlt: 'Passengers checking live flight updates inside Cojauny',
+    heroWidth: 1280,
+    heroHeight: 720,
+    body: [
+      '# Real-time flight coordination changes everything\n\nCoordinating shared airport transport becomes chaos when flights move. Cojauny connects directly to live flight databases so you always know what is happening.',
+      '## How automatic sync works\n\nWhen you create an event in Cojauny you log airline, flight number and date. From that moment:\n\n- **Continuous monitoring**: Status refreshed every 15 minutes against airline feeds\n- **Instant notifications**: Delays, gate changes or cancellations trigger push alerts for everyone\n- **Smart schedule adjustment**: Pickup windows recalculate automatically with the new ETA\n- **Chat timeline**: Changes are pinned in the event chat so nobody misses updates',
+      '## Real-world scenarios\n\n**Scenario 1: Departure delay**\nLaura planned a 06:00 shared taxi. At 05:20 the flight slips by 45 minutes. Cojauny notifies the group and moves the pickup to 06:45 automatically.\n\n**Scenario 2: Terminal swap**\nAn arrival switches from T1 to T4. The map inside the event updates instantly so the driver and passengers meet at the correct curb.\n\n**Scenario 3: Early landing**\nA flight lands 20 minutes early. The driver receives the alert and heads to the airport sooner, avoiding idle time.',
+      '## Advantages vs manual coordination\n\n- No one has to refresh airline websites\n- Push alerts replace long WhatsApp threads\n- You know who has read every update\n- History of changes stays attached to the event',
+      '## Airline API coverage\n\nCojauny connects with FlightStats, IATA schedules, OpenSky Network and direct airline APIs (Iberia, Vueling, Air Europa, etc.). That gives you:\n\n- 5,000+ airports monitored\n- 1,200+ airlines, low-cost and legacy\n- Domestic and international flights\n- Automatic timezone handling',
+      '## How to activate notifications\n\n1. Add the correct flight number when creating the event\n2. Open Settings → Notifications and enable "Flight alerts"\n3. Choose your preference: only major changes (>30 min), all changes, or silent mode\n4. Activate push notifications 24h before departure for the most critical window',
+      '## Privacy and permissions\n\n- Cojauny never tracks your personal location unless you enable live sharing\n- Only event members can see flight updates\n- You can pause alerts whenever you want\n- Data is deleted 24 hours after the event closes',
+      '## FAQ\n\n**Does it work with charter flights?** Only published commercial flights are supported.\n\n**What if I have no mobile data on arrival?** The latest update stays cached offline and syncs once you connect to Wi-Fi.\n\n**Can I add multiple flights to one event?** Create separate events and link them; perfect for groups that arrive on different flights.\n\n**Is there an extra cost?** Flight alerts are included in Free and Premium plans.',
+      '## Conclusion\n\nReal-time coordination is not a luxury when dozens of people depend on the same ride. Let Cojauny monitor flights for you so your group can focus on traveling, not constantly refreshing status pages.'
+    ],
+    tags: ['real-time', 'coordination', 'flights'],
+    categories: ['product', 'operations'],
+    publishedAt: '2025-11-19T08:00:00.000Z',
+    updatedAt: '2025-11-19T08:00:00.000Z',
+    author: 'Cojauny Team',
+    readingTimeMinutes: 8
+  },
+  {
+    slug: 'flugkoordination-echtzeit',
+    locale: 'de',
+    title: 'Flugkoordination in Echtzeit: Immer synchron mit Cojauny',
+    summary:
+      'Erfahre, wie die automatische Flugsynchronisierung deine Flughafentransfers rettet, selbst wenn Gates, Terminals oder Zeiten sich spontan ändern.',
+    heroImage: '/images/og-default.svg',
+    heroAlt: 'Reisende erhalten Echtzeit-Updates in der Cojauny-App',
+    heroWidth: 1280,
+    heroHeight: 720,
+    body: [
+      '# Echtzeit-Flugkoordination verändert alles\n\nGeteilte Transfers scheitern, sobald ein Flug sich verschiebt. Cojauny verbindet sich direkt mit Live-Flugdatenbanken, damit du immer weißt, was passiert.',
+      '## So funktioniert die automatische Synchronisierung\n\nWenn du in Cojauny ein Event anlegst, hinterlegst du Airline, Flugnummer und Datum. Ab diesem Moment:\n\n- **Kontinuierliches Monitoring**: Status wird alle 15 Minuten mit den Airline-Feeds abgeglichen\n- **Sofortige Benachrichtigungen**: Verspätungen, Gate-Wechsel oder Ausfälle lösen Push-Nachrichten für alle aus\n- **Intelligente Zeitfenster**: Abholzeiten werden anhand der neuen ETA automatisch neu berechnet\n- **Chat-Protokoll**: Jede Änderung wird im Event-Chat fixiert, damit niemand sie verpasst',
+      '## Einsatzszenarien\n\n**Szenario 1: Startverspätung**\nTim plant ein Taxi um 6:00 Uhr. Um 5:25 Uhr verschiebt sich der Flug um 50 Minuten. Cojauny informiert die Gruppe und schlägt eine neue Abholzeit vor.\n\n**Szenario 2: Terminal-Wechsel**\nEin ankommender Flug wechselt von T1 zu T4. Karte und Treffpunkt aktualisieren sich sofort für Fahrer und Passagiere.\n\n**Szenario 3: Frühe Landung**\nDas Flugzeug landet 20 Minuten früher. Der Fahrer bekommt die Meldung und macht sich rechtzeitig auf den Weg.',
+      '## Vorteile gegenüber manueller Koordination\n\n- Niemand muss Airline-Seiten ständig aktualisieren\n- Push-Alerts ersetzen endlose WhatsApp-Ketten\n- Gelesen-Status zeigt, wer informiert ist\n- Änderungsverlauf bleibt am Event angehängt',
+      '## Abdeckung der Airline-APIs\n\nCojauny bindet FlightStats, IATA-Pläne, OpenSky Network und direkte Airline-APIs (Iberia, Vueling, Air Europa usw.) ein. Dadurch erhältst du:\n\n- Über 5.000 überwachte Flughäfen\n- 1.200+ Airlines, Low-Cost und Legacy\n- Inlands- und Auslandsflüge\n- Automatische Zeitzonen-Anpassung',
+      '## So aktivierst du die Benachrichtigungen\n\n1. Trage beim Erstellen des Events die korrekte Flugnummer ein\n2. Öffne Einstellungen → Benachrichtigungen → "Flugalarm"\n3. Wähle: nur große Änderungen (>30 Min), alle Änderungen oder lautlosen Modus\n4. Aktiviere Push-Meldungen spätestens 24h vor Abflug',
+      '## Datenschutz und Rechte\n\n- Cojauny verfolgt deinen Standort nur, wenn du Live-Sharing aktivierst\n- Flug-Updates sehen ausschließlich Event-Mitglieder\n- Alerts lassen sich jederzeit pausieren\n- Daten werden 24h nach Event-Ende gelöscht',
+      '## FAQ\n\n**Funktioniert das bei Charterflügen?** Nur veröffentlichte Linienflüge werden unterstützt.\n\n**Kein mobiles Internet bei der Ankunft?** Die letzte Aktualisierung bleibt offline gespeichert und synchronisiert sich bei WLAN.\n\n**Mehrere Flüge in einem Event?** Lege getrennte Events an und verknüpfe sie – ideal für Gruppen mit unterschiedlichen Ankünften.\n\n**Kostet das extra?** Nein, Flugalarm ist in Free und Premium enthalten.',
+      '## Fazit\n\nWenn viele Personen vom selben Transfer abhängen, ist Echtzeit-Koordination Pflicht. Lass Cojauny die Flugdaten überwachen, während du dich auf die Reise konzentrierst.'
+    ],
+    tags: ['echtzeit', 'koordination', 'flüge'],
+    categories: ['product', 'operations'],
+    publishedAt: '2025-11-19T08:00:00.000Z',
+    updatedAt: '2025-11-19T08:00:00.000Z',
+    author: 'Cojauny Team DACH',
+    readingTimeMinutes: 8
+  },
+  {
+    slug: 'coordination-vol-temps-reel',
+    locale: 'fr',
+    title: 'Coordination de vol en temps réel : Restez synchronisés avec Cojauny',
+    summary:
+      'Découvrez comment la synchronisation automatique du vol vous permet d\'organiser les transferts aéroport sans stress même en cas de retard.',
+    heroImage: '/images/og-default.svg',
+    heroAlt: 'Voyageurs français recevant des alertes de vol en direct',
+    heroWidth: 1280,
+    heroHeight: 720,
+    body: [
+      '# La coordination de vol en temps réel change tout\n\nLes transferts partagés se compliquent dès qu\'un vol bouge. Cojauny se connecte aux bases de données aériennes en direct pour que vous sachiez toujours ce qui se passe.',
+      '## Comment fonctionne la synchronisation automatique\n\nEn créant un événement dans Cojauny vous indiquez compagnie, numéro de vol et date. À partir de là :\n\n- **Surveillance continue** : statut actualisé toutes les 15 minutes auprès des compagnies\n- **Notifications immédiates** : retards, changements de porte ou annulations déclenchent une alerte push pour tout le monde\n- **Réglage intelligent des horaires** : la fenêtre de prise en charge se recalcul automatiquement selon la nouvelle ETA\n- **Fil de chat** : chaque changement est épinglé dans la conversation pour rester visible',
+      '## Scénarios concrets\n\n**Scénario 1 : Décollage retardé**\nLucia avait prévu un taxi partagé à 6h00. À 5h25, le vol se retarde de 50 minutes. Cojauny avertit le groupe et propose un nouveau rendez-vous à 6h50.\n\n**Scénario 2 : Changement de terminal**\nUn vol arrivant passe de T1 à T4. La carte et le point de rencontre se mettent à jour instantanément pour les passagers et le chauffeur.\n\n**Scénario 3 : Atterrissage anticipé**\nUn vol arrive 20 minutes avant l\'heure prévue. Le chauffeur reçoit l\'alerte et se dirige plus tôt vers l\'aéroport.',
+      '## Avantages face à la coordination manuelle\n\n- Plus besoin de rafraîchir les sites des compagnies\n- Les alertes push remplacent les fils WhatsApp interminables\n- Vous voyez qui a lu l\'information\n- L\'historique des changements reste attaché à l\'événement',
+      '## Couverture des API compagnies\n\nCojauny s\'interface avec FlightStats, les horaires IATA, OpenSky Network et des API directes (Iberia, Vueling, Air Europa, etc.). Résultat :\n\n- 5 000+ aéroports suivis\n- 1 200+ compagnies, low-cost et traditionnelles\n- Vols domestiques et internationaux\n- Gestion automatique des fuseaux horaires',
+      '## Activer les notifications\n\n1. Ajoutez le numéro de vol correct lors de la création de l\'événement\n2. Paramètres → Notifications → "Alertes de vol"\n3. Choisissez : seulement les grands changements (>30 min), toutes les modifications ou mode silencieux\n4. Activez les push 24h avant le vol pour la période critique',
+      '## Confidentialité\n\n- Cojauny ne suit jamais votre position sauf si vous activez le partage en direct\n- Seuls les membres de l\'événement voient les mises à jour de vol\n- Vous pouvez mettre les alertes en pause quand vous voulez\n- Les données sont supprimées 24h après la clôture de l\'événement',
+      '## FAQ\n\n**Fonctionne-t-il avec les vols charter ?** Uniquement les vols commerciaux publiés.\n\n**Et si je n\'ai pas de données mobiles à l\'atterrissage ?** La dernière mise à jour reste en cache et se synchronise dès que vous trouvez du Wi-Fi.\n\n**Puis-je ajouter plusieurs vols au même événement ?** Créez des événements distincts et reliez-les, idéal pour des groupes arrivant par différents vols.\n\n**Y a-t-il un surcoût ?** Non, les alertes de vol sont incluses dans les plans Free et Premium.',
+      '## Conclusion\n\nLa coordination en temps réel n\'est plus un luxe quand plusieurs voyageurs dépendent du même transport. Laissez Cojauny surveiller les vols pour que votre groupe reste concentré sur le voyage.'
+    ],
+    tags: ['temps réel', 'coordination', 'vols'],
+    categories: ['product', 'operations'],
+    publishedAt: '2025-11-19T08:00:00.000Z',
+    updatedAt: '2025-11-19T08:00:00.000Z',
+    author: 'Équipe Cojauny',
+    readingTimeMinutes: 8
+  },
+  {
     slug: 'real-time-location-sharing',
     locale: 'en',
     title: 'Real-time location sharing: Never lose track of your ride partners',

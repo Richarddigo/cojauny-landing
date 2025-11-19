@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import { useReducedMotionPreference } from '@/hooks/useReducedMotionPreference';
 import type { LandingCopy } from '@/locales/copy';
@@ -18,21 +18,22 @@ const Mockups = ({ className, copy }: MockupsProps) => {
     const [activeScreenId, setActiveScreenId] = useState(copy.screens[0]?.id ?? 'home');
     const sectionRef = useRef<HTMLElement>(null);
 
+    useEffect(() => {
+        if (copy.screens.length) {
+            setActiveScreenId(copy.screens[0].id);
+        }
+    }, [copy]);
+
     const activeScreen = copy.screens.find((screen) => screen.id === activeScreenId) ?? copy.screens[0];
 
-    // Parallax effect based on scroll position within the section
+    // Parallax effect scoped to this section
     const { scrollYProgress } = useScroll({
         target: sectionRef,
-        offset: ["start end", "end start"]
+        offset: ['start center', 'end end']
     });
 
-    // Smooth vertical movement - subtle parallax
-    const phoneY = useTransform(scrollYProgress, [0, 1], [100, -100]);
-
-    const sectionHeight = useTransform(scrollYProgress, [0, 1], ['100vh', 'auto']);
-    const sectionStyle = {
-        height: sectionHeight,
-    };
+    const phoneY = useTransform(scrollYProgress, [0, 1], [80, -80]);
+    const phoneMotionStyle = prefersReducedMotion ? undefined : { y: phoneY };
 
     return (
         <section
@@ -74,14 +75,14 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                         );
                     })}
                 </div>
-                <div className="relative flex flex-1 items-center justify-center min-h-[600px]">
+                <div className="relative flex flex-1 items-center justify-center min-h-[520px] lg:sticky lg:top-24 lg:self-start lg:h-[640px]">
                     <motion.div
                         key={activeScreen?.id}
-                        initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.96, y: 20 }}
-                        animate={prefersReducedMotion ? {} : { opacity: 1, scale: 1, y: 0 }}
-                        style={prefersReducedMotion ? {} : { y: phoneY }}
+                        initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.96 }}
+                        animate={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
+                        style={phoneMotionStyle}
                         transition={{ duration: 0.5, ease: 'easeOut' }}
-                        className="relative mx-auto w-[280px] max-w-full lg:w-[340px]"
+                        className="relative mx-auto w-[280px] max-w-full will-change-transform lg:w-[340px]"
                         aria-live="polite"
                     >
                         {/* iPhone-style device frame */}

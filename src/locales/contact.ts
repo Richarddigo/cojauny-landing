@@ -10,6 +10,7 @@ interface ContactFormCopy {
   fields: {
     name: string;
     email: string;
+    topic: string;
     message: string;
   };
   legalNotice: string;

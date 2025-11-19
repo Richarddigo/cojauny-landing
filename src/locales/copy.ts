@@ -1695,47 +1695,47 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           badge: 'Recherche',
           title: 'Trouvez votre vol en quelques secondes',
           description:
-            'Entrez votre num?ro de vol et la date. Notre syst?me trouve automatiquement les informations du vol et vous montre d\'autres voyageurs disponibles.',
+            'Entrez votre numéro de vol et la date. Notre système trouve automatiquement les informations du vol et vous montre d\'autres voyageurs disponibles.',
           image: '/images/mockups/mockup-flight-search.svg'
         },
         {
           id: 'events-list',
-          badge: '?v?nements',
-          title: '?v?nements pour votre vol',
+          badge: 'Événements',
+          title: 'Événements pour votre vol',
           description:
-            'Voyez tous les ?v?nements disponibles pour votre vol : "Partager un taxi de l\'a?roport A ? la ville B", "D?ner ? destination", etc. Avec capacit? et participants en temps r?el.',
+            'Voyez tous les événements disponibles pour votre vol : "Partager un taxi de l\'aéroport A à la ville B", "Dîner à destination", etc. Avec capacité et participants en temps réel.',
           image: '/images/mockups/mockup-events-list.svg'
         },
         {
           id: 'event-detail',
-          badge: 'D?tail',
-          title: 'Informations compl?tes de l\'?v?nement',
+          badge: 'Détail',
+          title: 'Informations complètes de l\'événement',
           description:
-            'Voir l\'organisateur, les participants confirm?s, les places disponibles, le point de rencontre, l\'heure et les co?ts estim?s. Liker ou commenter.',
+            'Voir l\'organisateur, les participants confirmés, les places disponibles, le point de rencontre, l\'heure et les coûts estimés. Liker ou commenter.',
           image: '/images/mockups/mockup-event-detail.svg'
         },
         {
           id: 'chat',
           badge: 'Chat',
-          title: 'Chat priv? et de groupe',
+          title: 'Chat privé et de groupe',
           description:
-            'Chattez directement avec les organisateurs (Free) ou avec tout le groupe (Premium). Partagez la localisation, les d?tails de paiement et coordonnez en temps r?el.',
+            'Chattez directement avec les organisateurs (Free) ou avec tout le groupe (Premium). Partagez la localisation, les détails de paiement et coordonnez en temps réel.',
           image: '/images/mockups/mockup-chat.svg'
         },
         {
           id: 'profile',
           badge: 'Profil',
-          title: 'Profils v?rifi?s',
+          title: 'Profils vérifiés',
           description:
-            'Voir les informations des autres voyageurs : photo, nom, v?rification, r?putation et ?v?nements auxquels ils ont particip?. Voyagez en toute confiance.',
+            'Voir les informations des autres voyageurs : photo, nom, vérification, réputation et événements auxquels ils ont participé. Voyagez en toute confiance.',
           image: '/images/mockups/mockup-profile.svg'
         },
         {
           id: 'impact',
           badge: 'Impact',
-          title: 'Vos ?conomies et empreinte carbone',
+          title: 'Vos économies et empreinte carbone',
           description:
-            'Tableau de bord avec graphiques de combien d\'argent vous avez ?conomis?, combien de CO? vous avez r?duit et statistiques de vos trajets partag?s.',
+            'Tableau de bord avec graphiques de combien d\'argent vous avez économisé, combien de CO₂ vous avez réduit et statistiques de vos trajets partagés.',
           image: '/images/mockups/mockup-impact.svg'
         }
       ]
