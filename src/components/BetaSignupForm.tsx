@@ -83,7 +83,7 @@ const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
     };
 
     return (
-        <div className="scroll-mt-24 lg:scroll-mt-36">
+        <div className="scroll-mt-16 lg:scroll-mt-20">
             <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{copy.heading}</h2>
                 <p className="mt-4 text-lg text-slate-600 mx-auto max-w-2xl">{copy.subheading}</p>

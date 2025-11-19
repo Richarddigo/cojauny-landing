@@ -11,7 +11,7 @@ interface SavingsSectionProps {
 const SavingsSection = ({ copy }: SavingsSectionProps) => (
     <section
         id="impact"
-        className="relative scroll-mt-24 overflow-hidden bg-slate-950 py-20 px-6 text-white lg:scroll-mt-32"
+        className="relative scroll-mt-16 overflow-hidden bg-slate-950 py-20 px-6 text-white lg:scroll-mt-20"
     >
         <div className="absolute inset-0 opacity-50" aria-hidden>
             <div className="absolute inset-y-0 left-1/2 h-full w-[120%] -translate-x-1/2 rounded-full bg-gradient-to-r from-brand-500/30 via-brand-300/20 to-brand-500/30 blur-3xl" />

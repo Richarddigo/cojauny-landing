@@ -55,8 +55,9 @@ const LanguageSwitcher = ({ currentLocale, label, dropdownDirection = 'down' }: 
             return;
         }
 
-        // Preserve current hash/section
+        // Preserve current hash/section and scroll position
         const currentHash = typeof window !== 'undefined' ? window.location.hash : '';
+        const currentScrollY = typeof window !== 'undefined' ? window.scrollY : 0;
 
         const segments = pathname.split('/').filter((segment, index) => !(segment === '' && index !== 0));
 
@@ -70,7 +71,16 @@ const LanguageSwitcher = ({ currentLocale, label, dropdownDirection = 'down' }: 
         const query = searchParams?.toString();
 
         const target = query ? `${nextPath}?${query}${currentHash}` : `${nextPath}${currentHash}`;
+
         router.push(target);
+
+        // Restore scroll position after navigation
+        if (typeof window !== 'undefined') {
+            // Use requestAnimationFrame to ensure DOM is updated
+            requestAnimationFrame(() => {
+                window.scrollTo(0, currentScrollY);
+            });
+        }
     };
 
     const activeOption = options.find((option) => option.value === currentLocale);

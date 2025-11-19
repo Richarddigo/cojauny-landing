@@ -246,7 +246,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Chat en Tiempo Real',
           description:
-            'Habla con el organizador o con todo el grupo desde un canal cifrado. Comparte puntos de encuentro, costos y enlaces sin salir de la app.',
+            'Habla con el organizador o con todo el grupo desde un canal cifrado. Funciona incluso en modo offline durante el vuelo y se sincroniza automáticamente al aterrizar. Comparte puntos de encuentro, costos y enlaces sin salir de la app.',
           iconName: 'chat'
         },
         {
@@ -677,7 +677,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: '48h ephemeral chat',
           description:
-            'Coordinate in a chat that self-destructs 48 hours after take-off. Share live location, traffic status or gate changes without endless threads.',
+            'Coordinate in a chat that self-destructs 48 hours after take-off. Works offline during flight and syncs when you land. Share live location, traffic status or gate changes without endless threads.',
           iconName: 'chat'
         },
         {
@@ -782,20 +782,28 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     workflow: {
-      title: 'From pilot to production in three steps',
-      intro: 'Set up your workspace in hours and start validating with real passengers while keeping compliance in check.',
+      title: 'How to coordinate a trip on Cojauny',
+      intro: 'Five clear milestones from entering your flight to recording savings for your team.',
       steps: [
         {
-          title: 'Import flights and invite passengers',
-          description: 'Sync schedules or create events manually. Customise messaging and let Cojauny send segmented invitations.'
+          title: '1. Create your verified profile',
+          description: 'Sign in with Apple, Google or email, add a photo and basic documentation to unlock matching.'
         },
         {
-          title: 'Coordinate in a shared hub',
-          description: 'Passengers see compatible times, estimated savings and start a 48-hour chat to finalise details.'
+          title: '2. Add your flight',
+          description: 'Enter airline, number and date. The app fetches official schedules and suggests other matching travelers.'
         },
         {
-          title: 'Measure impact and expand',
-          description: 'Review occupancy, savings and feedback. Scale to new routes or integrate your preferred transport partners.'
+          title: '3. Join or create an event',
+          description: 'Browse community-created events or launch a new one by defining capacity, meeting point and payment method.'
+        },
+        {
+          title: '4. Coordinate in secure chat',
+          description: 'Share locations, license plates and fares from a moderated chat with optional automatic translation. Works offline during flight and syncs when you land.'
+        },
+        {
+          title: '5. Close the trip and report',
+          description: 'Mark the trip as complete to split costs and automatically record savings and avoided CO₂.'
         }
       ]
     },
@@ -1108,7 +1116,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: '48h-Chat',
           description:
-            'Koordiniere Details in einem Chat, der 48 Stunden nach dem Flug automatisch gelöscht wird. Keine endlosen Gruppen.',
+            'Koordiniere Details in einem Chat, der 48 Stunden nach dem Flug automatisch gelöscht wird. Funktioniert offline während des Fluges und synchronisiert sich bei der Landung. Keine endlosen Gruppen.',
           iconName: 'chat'
         },
         {
@@ -1213,20 +1221,28 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     workflow: {
-      title: 'In drei Schritten live',
-      intro: 'Setze dein Projekt binnen Stunden auf und teste mit realen Passagieren – ohne langwierige IT-Roadmaps.',
+      title: 'So koordinierst du eine Fahrt mit Cojauny',
+      intro: 'Fünf klare Meilensteine vom Eingeben deines Fluges bis zur Aufzeichnung der Einsparungen für dein Team.',
       steps: [
         {
-          title: 'Flüge importieren und Gäste einladen',
-          description: 'Synchronisiere Flugpläne oder lege Events manuell an. Passe Texte an und lass Cojauny segmentierte Einladungen versenden.'
+          title: '1. Erstelle dein verifiziertes Profil',
+          description: 'Melde dich mit Apple, Google oder E-Mail an, füge ein Foto und grundlegende Dokumente hinzu, um das Matching freizuschalten.'
         },
         {
-          title: 'Alle koordinieren in einem Hub',
-          description: 'Passagiere sehen passende Slots, geschätzte Ersparnisse und starten einen 48-Stunden-Chat zur Feinabstimmung.'
+          title: '2. Füge deinen Flug hinzu',
+          description: 'Gib Fluggesellschaft, Nummer und Datum ein. Die App ruft offizielle Flugzeiten ab und schlägt andere passende Reisende vor.'
         },
         {
-          title: 'Ergebnisse auswerten und skalieren',
-          description: 'Analysiere Auslastung, Einsparungen und Feedback. Rolle das Programm auf neue Strecken aus oder binde bestehende Partner an.'
+          title: '3. Tritt einem Event bei oder erstelle eines',
+          description: 'Durchsuche von der Community erstellte Events oder starte ein neues, indem du Kapazität, Treffpunkt und Zahlungsmethode festlegst.'
+        },
+        {
+          title: '4. Koordiniere im sicheren Chat',
+          description: 'Teile Standorte, Kennzeichen und Tarife über einen moderierten Chat mit optionaler automatischer Übersetzung. Funktioniert offline während des Fluges und synchronisiert sich bei der Landung.'
+        },
+        {
+          title: '5. Schließe die Fahrt ab und berichte',
+          description: 'Markiere die Fahrt als abgeschlossen, um Kosten aufzuteilen und Einsparungen sowie vermiedenes CO₂ automatisch zu erfassen.'
         }
       ]
     },
@@ -1644,20 +1660,28 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     workflow: {
-      title: 'Déployer Cojauny en trois étapes',
-      intro: 'Configurez votre espace en quelques heures et testez avec de vrais passagers tout en respectant vos exigences conformité.',
+      title: 'Comment coordonner un trajet sur Cojauny',
+      intro: 'Cinq étapes claires depuis la saisie de votre vol jusqu\'à l\'enregistrement des économies pour votre équipe.',
       steps: [
         {
-          title: 'Importer vos vols et inviter',
-          description: 'Synchronisez vos plannings ou créez des événements manuellement. Personnalisez les messages et laissez Cojauny envoyer les invitations ciblées.'
+          title: '1. Créez votre profil vérifié',
+          description: 'Connectez-vous avec Apple, Google ou email, ajoutez une photo et des documents de base pour débloquer le matching.'
         },
         {
-          title: 'Coordonner dans un hub partagé',
-          description: 'Les passagers visualisent les créneaux compatibles, les économies estimées et ouvrent un chat de 48 h pour finaliser les détails.'
+          title: '2. Ajoutez votre vol',
+          description: 'Saisissez la compagnie aérienne, le numéro et la date. L\'app récupère les horaires officiels et suggère d\'autres voyageurs correspondants.'
         },
         {
-          title: 'Mesurer et étendre',
-          description: 'Analysez remplissage, économies et feedback. Répliquez sur d’autres lignes ou connectez vos fournisseurs préférés.'
+          title: '3. Rejoignez ou créez un événement',
+          description: 'Parcourez les événements créés par la communauté ou lancez-en un nouveau en définissant la capacité, le point de rencontre et le mode de paiement.'
+        },
+        {
+          title: '4. Coordonnez dans le chat sécurisé',
+          description: 'Partagez emplacements, plaques d\'immatriculation et tarifs depuis un chat modéré avec traduction automatique optionnelle. Fonctionne hors ligne pendant le vol et se synchronise à l\'atterrissage.'
+        },
+        {
+          title: '5. Clôturez le trajet et rapportez',
+          description: 'Marquez le trajet comme terminé pour diviser les coûts et enregistrer automatiquement les économies et le CO₂ évité.'
         }
       ]
     },

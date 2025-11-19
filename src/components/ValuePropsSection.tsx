@@ -11,7 +11,7 @@ interface ValuePropsSectionProps {
 const ValuePropsSection = ({ copy }: ValuePropsSectionProps) => (
     <section
         id="benefits"
-        className="scroll-mt-24 bg-gradient-to-b from-white via-slate-50 to-white py-24 lg:scroll-mt-32"
+        className="scroll-mt-16 bg-gradient-to-b from-white via-slate-50 to-white py-24 lg:scroll-mt-20"
     >
         <div className="mx-auto max-w-7xl px-6">
             <SectionIntro title={copy.title} description={copy.subtitle} />
