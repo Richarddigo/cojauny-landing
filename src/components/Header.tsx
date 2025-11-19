@@ -28,7 +28,7 @@ const Header = ({ locale, copy }: HeaderProps) => {
                             height={32}
                             className="h-8 w-auto"
                         />
-                        <span className="text-xl font-bold text-white">Cojauny</span>
+                        <span className="text-xl font-bold text-white">Cojauny™</span>
                     </Link>
                 </div>
                 <div className="flex lg:hidden">
@@ -94,7 +94,7 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                 height={32}
                                 className="h-8 w-auto"
                             />
-                            <span className="text-xl font-bold text-white">Cojauny</span>
+                            <span className="text-xl font-bold text-white">Cojauny™</span>
                         </Link>
                         <button
                             type="button"

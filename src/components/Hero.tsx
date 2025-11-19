@@ -53,14 +53,14 @@ const Hero = ({ copy }: HeroProps) => (
                 <Link
                     href="#beta"
                     prefetch={false}
-                    className="inline-flex items-center justify-center rounded-full bg-slate-900 px-10 py-3 text-base font-semibold text-white shadow-2xl shadow-slate-900/30 transition hover:bg-slate-800 focus-visible:bg-slate-950"
+                    className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-slate-900 to-slate-800 px-10 py-3.5 text-base font-semibold text-white shadow-2xl shadow-slate-900/30 transition-all duration-200 hover:shadow-3xl hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
                 >
                     {copy.primaryCta}
                 </Link>
                 <Link
                     href="#demo"
                     prefetch={false}
-                    className="inline-flex items-center justify-center rounded-full border border-slate-200 px-10 py-3 text-base font-semibold text-slate-900 transition hover:bg-white"
+                    className="inline-flex items-center justify-center rounded-full border-2 border-slate-200 px-10 py-3.5 text-base font-semibold text-slate-900 transition-all duration-200 hover:bg-white hover:border-slate-300 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2"
                 >
                     {copy.secondaryCta}
                 </Link>
