@@ -99,7 +99,8 @@ const ContactForm = ({ locale, copy }: ContactFormProps) => {
                         value={form.name}
                         onChange={handleChange}
                         required
-                        className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-brand-400"
+                        aria-label={copy.fields.name}
+                        className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20"
                     />
                 </label>
                 <label className="flex flex-col gap-2">
@@ -110,7 +111,8 @@ const ContactForm = ({ locale, copy }: ContactFormProps) => {
                         value={form.email}
                         onChange={handleChange}
                         required
-                        className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-brand-400"
+                        aria-label={copy.fields.email}
+                        className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20"
                     />
                 </label>
             </div>
@@ -123,7 +125,8 @@ const ContactForm = ({ locale, copy }: ContactFormProps) => {
                     rows={5}
                     required
                     minLength={10}
-                    className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-brand-400"
+                    aria-label={copy.fields.message}
+                    className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20 resize-none"
                 />
             </label>
             <div className="sr-only" aria-hidden>
@@ -144,7 +147,7 @@ const ContactForm = ({ locale, copy }: ContactFormProps) => {
             <button
                 type="submit"
                 disabled={submitting}
-                className="inline-flex w-full items-center justify-center rounded-full bg-brand-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-brand-500 focus-visible:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-70"
+                className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-brand-600 to-brand-500 px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-brand-600/30 transition-all duration-200 hover:shadow-xl hover:shadow-brand-600/40 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:scale-100"
             >
                 {submitting ? `${copy.submit}…` : copy.submit}
             </button>

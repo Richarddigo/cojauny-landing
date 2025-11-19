@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 import { useReducedMotionPreference } from '@/hooks/useReducedMotionPreference';
 import type { LandingCopy } from '@/locales/copy';
@@ -16,11 +16,22 @@ const Mockups = ({ className, copy }: MockupsProps) => {
     const prefersReducedMotionClient = useReducedMotion();
     const prefersReducedMotion = useReducedMotionPreference() || prefersReducedMotionClient;
     const [activeScreenId, setActiveScreenId] = useState(copy.screens[0]?.id ?? 'home');
+    const sectionRef = useRef<HTMLElement>(null);
 
     const activeScreen = copy.screens.find((screen) => screen.id === activeScreenId) ?? copy.screens[0];
 
+    // Parallax effect based on scroll position within the section
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"]
+    });
+
+    // Smooth vertical movement - subtle parallax
+    const phoneY = useTransform(scrollYProgress, [0, 1], [50, -50]);
+
     return (
         <section
+            ref={sectionRef}
             id="demo"
             className={`relative mt-8 w-full ${className ?? ''}`.trim()}
             aria-labelledby="mockups-title"
@@ -58,11 +69,12 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                         );
                     })}
                 </div>
-                <div className="relative flex flex-1 items-center justify-center lg:sticky lg:top-24 lg:self-start">
+                <div className="relative flex flex-1 items-center justify-center lg:sticky lg:top-24 lg:self-start lg:h-[600px]">
                     <motion.div
                         key={activeScreen?.id}
                         initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.96, y: 20 }}
                         animate={prefersReducedMotion ? {} : { opacity: 1, scale: 1, y: 0 }}
+                        style={prefersReducedMotion ? {} : { y: phoneY }}
                         transition={{ duration: 0.5, ease: 'easeOut' }}
                         className="relative mx-auto w-[280px] max-w-full lg:w-[340px]"
                         aria-live="polite"

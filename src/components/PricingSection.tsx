@@ -28,14 +28,31 @@ const PricingSection = ({ copy }: PricingSectionProps) => {
                             initial={{ opacity: 0, y: 32 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.3 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className={`relative rounded-3xl border p-8 shadow-xl ${isPremium
-                                ? 'border-brand-200 bg-gradient-to-br from-white via-brand-50/40 to-white'
-                                : 'border-slate-100 bg-white'
+                            animate={isPremium ? {
+                                opacity: 1,
+                                y: 0,
+                                boxShadow: [
+                                    "0 20px 50px -12px rgba(79, 70, 229, 0.25)",
+                                    "0 20px 60px -12px rgba(79, 70, 229, 0.35)",
+                                    "0 20px 50px -12px rgba(79, 70, 229, 0.25)"
+                                ]
+                            } : { opacity: 1, y: 0 }}
+                            transition={isPremium ? {
+                                opacity: { duration: 0.5, delay: index * 0.1 },
+                                y: { duration: 0.5, delay: index * 0.1 },
+                                boxShadow: {
+                                    duration: 3,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }
+                            } : { duration: 0.5, delay: index * 0.1 }}
+                            className={`relative rounded-3xl border p-8 ${isPremium
+                                ? 'border-brand-300 bg-gradient-to-br from-white via-brand-50/50 to-brand-100/30 shadow-2xl ring-2 ring-brand-200/50'
+                                : 'border-slate-100 bg-white shadow-xl'
                                 }`}
                         >
                             {badgeLabel && (
-                                <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-slate-900 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white">
+                                <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-brand-600 to-brand-500 px-5 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-lg">
                                     {badgeLabel}
                                 </span>
                             )}
@@ -49,9 +66,9 @@ const PricingSection = ({ copy }: PricingSectionProps) => {
                             <Link
                                 href="#beta"
                                 prefetch={false}
-                                className={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-base font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 ${isPremium
-                                    ? 'bg-slate-900 text-white hover:bg-slate-800'
-                                    : 'border border-slate-200 text-slate-900 hover:border-slate-300'
+                                className={`mt-8 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-base font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 ${isPremium
+                                    ? 'bg-gradient-to-r from-brand-600 to-brand-500 text-white shadow-lg shadow-brand-600/30 hover:shadow-xl hover:shadow-brand-600/40 hover:scale-105'
+                                    : 'border-2 border-slate-200 text-slate-900 hover:border-slate-300 hover:bg-slate-50'
                                     }`}
                                 aria-label={`${plan.name} - ${ctaLabel}`}
                             >
