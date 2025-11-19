@@ -16,6 +16,7 @@ const buildInitialState = (locale: Locale): ContactInput => ({
     email: '',
     message: '',
     name: '',
+    topic: '',
     locale,
     honeypot: ''
 });
@@ -116,6 +117,18 @@ const ContactForm = ({ locale, copy }: ContactFormProps) => {
                     />
                 </label>
             </div>
+            <label className="flex flex-col gap-2">
+                <span className="text-sm font-medium text-slate-700">{copy.fields.topic}</span>
+                <input
+                    type="text"
+                    name="topic"
+                    value={form.topic}
+                    onChange={handleChange}
+                    required
+                    aria-label={copy.fields.topic}
+                    className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20"
+                />
+            </label>
             <label className="flex flex-col gap-2">
                 <span className="text-sm font-medium text-slate-700">{copy.fields.message}</span>
                 <textarea

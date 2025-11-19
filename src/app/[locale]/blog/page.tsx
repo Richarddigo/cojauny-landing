@@ -76,8 +76,9 @@ export default function BlogIndex({ params }: BlogIndexProps) {
             </header>
             <div className="mt-12 grid gap-8 sm:grid-cols-2">
                 {posts.map((post) => (
-                    <article
+                    <Link
                         key={post.slug}
+                        href={`/${locale}/blog/${post.slug}`}
                         className="group relative rounded-3xl border border-slate-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg"
                     >
                         <div className="absolute right-4 top-4 opacity-10 transition group-hover:opacity-20">
@@ -101,19 +102,7 @@ export default function BlogIndex({ params }: BlogIndexProps) {
                                 </span>
                             ))}
                         </div>
-                        <Link
-                            href={`/${locale}/blog/${post.slug}`}
-                            className="mt-6 inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700"
-                        >
-                            {locale === 'de'
-                                ? 'Weiterlesen'
-                                : locale === 'fr'
-                                    ? 'Lire'
-                                    : locale === 'en'
-                                        ? 'Read more'
-                                        : 'Leer más'}
-                        </Link>
-                    </article>
+                    </Link>
                 ))}
             </div>
             {posts.length === 0 && (

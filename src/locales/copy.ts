@@ -572,7 +572,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         privacyLinkLabel: 'política de privacidad',
         fields: {
           fullName: 'Nombre completo',
-          email: 'Correo electrónico',
+          email: 'Email',
           company: 'Empresa o contexto (opcional)',
           useCase: 'Cuéntanos cómo planeas usar Cojauny'
         }
@@ -1009,7 +1009,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         privacyLinkLabel: 'privacy policy',
         fields: {
           fullName: 'Full name',
-          email: 'Work email',
+          email: 'Email',
           company: 'Organization or airline',
           useCase: 'How do you plan to use Cojauny?'
         }
@@ -1449,7 +1449,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         privacyLinkLabel: 'Datenschutzrichtlinie',
         fields: {
           fullName: 'Vollständiger Name',
-          email: 'Geschäftliche E-Mail',
+          email: 'Email',
           company: 'Organisation oder Airline',
           useCase: 'Wie möchtest du Cojauny einsetzen?'
         }
@@ -1853,7 +1853,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         privacyLinkLabel: 'politique de confidentialité',
         fields: {
           fullName: 'Nom complet',
-          email: 'E-mail professionnel',
+          email: 'Email',
           company: 'Organisation ou compagnie',
           useCase: 'Comment souhaitez-vous utiliser Cojauny ?'
         }
@@ -1870,7 +1870,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         submit: 'Envoyer',
         fields: {
           fullName: 'Nom',
-          email: 'E-mail',
+          email: 'Email',
           message: 'Dites-nous en plus',
           sentiment: 'Type de retour',
           selectPlaceholder: 'Choisissez une option'

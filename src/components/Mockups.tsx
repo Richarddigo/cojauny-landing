@@ -27,7 +27,12 @@ const Mockups = ({ className, copy }: MockupsProps) => {
     });
 
     // Smooth vertical movement - subtle parallax
-    const phoneY = useTransform(scrollYProgress, [0, 1], [50, -50]);
+    const phoneY = useTransform(scrollYProgress, [0, 1], [100, -100]);
+
+    const sectionHeight = useTransform(scrollYProgress, [0, 1], ['100vh', 'auto']);
+    const sectionStyle = {
+        height: sectionHeight,
+    };
 
     return (
         <section
@@ -69,7 +74,7 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                         );
                     })}
                 </div>
-                <div className="relative flex flex-1 items-center justify-center lg:sticky lg:top-24 lg:self-start lg:h-[600px]">
+                <div className="relative flex flex-1 items-center justify-center min-h-[600px]">
                     <motion.div
                         key={activeScreen?.id}
                         initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.96, y: 20 }}

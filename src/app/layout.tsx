@@ -56,8 +56,8 @@ export const metadata: Metadata = {
         'max-snippet': -1
     },
     icons: {
-        icon: '/assets/logo/mountain_white.svg',
-        apple: '/assets/logo/mountain_white.svg',
+        icon: '/assets/logo/mountain_black.svg',
+        apple: '/assets/logo/mountain_black.svg',
         other: [
             {
                 rel: 'mask-icon',

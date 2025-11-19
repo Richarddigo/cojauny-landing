@@ -21,6 +21,7 @@ export const contactSchema = z
     email: z.string().email('Introduce un correo válido'),
     message: z.string().min(10, 'Cuéntanos el motivo del contacto con un poco más de detalle'),
     name: z.string().min(2, 'Incluye tu nombre'),
+    topic: z.string().min(2, 'Incluye el tema'),
     locale: z.enum(localeValues),
     honeypot: z.string().optional()
   })
