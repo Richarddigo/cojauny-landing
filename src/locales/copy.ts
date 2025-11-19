@@ -381,7 +381,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Encuentra tu vuelo en segundos',
           description:
             'Introduce tu número de vuelo y fecha. Nuestro sistema busca automáticamente información del vuelo y te muestra otros viajeros disponibles.',
-          image: '/images/mockups/mockup-flight-search.svg'
+          image: '/images/mockups/es/mockup-flight-search.svg'
         },
         {
           id: 'events-list',
@@ -389,7 +389,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Eventos de tu vuelo',
           description:
             'Ve todos los eventos disponibles para tu vuelo: "Compartir taxi aeropuerto A a ciudad B", "Cena en ciudad destino", etc. Con cupos y participantes en tiempo real.',
-          image: '/images/mockups/mockup-events-list.svg'
+          image: '/images/mockups/es/mockup-events-list.svg'
         },
         {
           id: 'event-detail',
@@ -397,7 +397,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Toda la información del evento',
           description:
             'Ve organizador, participantes confirmados, cupos disponibles, punto de encuentro, hora y costos estimados. Dale like o comenta.',
-          image: '/images/mockups/mockup-event-detail.svg'
+          image: '/images/mockups/es/mockup-event-detail.svg'
         },
         {
           id: 'chat',
@@ -405,7 +405,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Chat privado y grupal',
           description:
             'Chatea directamente con organizadores (Free) o con todo el grupo (Premium). Comparte ubicación, detalles de pago y coordina en tiempo real.',
-          image: '/images/mockups/mockup-chat.svg'
+          image: '/images/mockups/es/mockup-chat.svg'
         },
         {
           id: 'profile',
@@ -413,7 +413,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Perfiles verificados',
           description:
             'Consulta identidad, reputación y eventos anteriores para decidir con quién compartir trayecto.',
-          image: '/images/mockups/mockup-profile.svg'
+          image: '/images/mockups/es/mockup-profile.svg'
         },
         {
           id: 'impact',
@@ -421,7 +421,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Tu ahorro y huella de carbono',
           description:
             'Panel resumen con ahorros, emisiones evitadas y cadencia de viaje para compartir con tu equipo.',
-          image: '/images/mockups/mockup-impact.svg'
+          image: '/images/mockups/es/mockup-impact.svg'
         }
       ]
     },
@@ -818,7 +818,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Find your flight in seconds',
           description:
             'Enter your flight number and date. Our system automatically finds flight information and shows you other available travelers.',
-          image: '/images/mockups/mockup-flight-search.svg'
+          image: '/images/mockups/en/mockup-flight-search.svg'
         },
         {
           id: 'events-list',
@@ -826,7 +826,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Events for your flight',
           description:
             'See all available events for your flight: "Share taxi from airport A to city B", "Dinner at destination", etc. With real-time capacity and participants.',
-          image: '/images/mockups/mockup-events-list.svg'
+          image: '/images/mockups/en/mockup-events-list.svg'
         },
         {
           id: 'event-detail',
@@ -834,7 +834,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Complete event information',
           description:
             'View organizer, confirmed participants, available spots, meeting point, time and estimated costs. Like or comment.',
-          image: '/images/mockups/mockup-event-detail.svg'
+          image: '/images/mockups/en/mockup-event-detail.svg'
         },
         {
           id: 'chat',
@@ -842,7 +842,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Private and group chat',
           description:
             'Chat directly with organizers (Free) or with the entire group (Premium). Share location, payment details and coordinate in real-time.',
-          image: '/images/mockups/mockup-chat.svg'
+          image: '/images/mockups/en/mockup-chat.svg'
         },
         {
           id: 'profile',
@@ -850,7 +850,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Verified profiles',
           description:
             'See other travelers information: photo, name, verification, reputation and events they have participated in. Travel with confidence.',
-          image: '/images/mockups/mockup-profile.svg'
+          image: '/images/mockups/en/mockup-profile.svg'
         },
         {
           id: 'impact',
@@ -858,7 +858,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Your savings and carbon footprint',
           description:
             'Dashboard with charts of how much money you have saved, how much CO₂ you have reduced and statistics of your shared trips.',
-          image: '/images/mockups/mockup-impact.svg'
+          image: '/images/mockups/en/mockup-impact.svg'
         }
       ]
     },
@@ -1257,7 +1257,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Finde deinen Flug in Sekunden',
           description:
             'Gib deine Flugnummer und Datum ein. Unser System findet automatisch Fluginformationen und zeigt dir andere verfügbare Reisende.',
-          image: '/images/mockups/mockup-flight-search.svg'
+          image: '/images/mockups/de/mockup-flight-search.svg'
         },
         {
           id: 'events-list',
@@ -1265,7 +1265,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Events für deinen Flug',
           description:
             'Sieh alle verfügbaren Events für deinen Flug: "Taxi teilen von Flughafen A nach Stadt B", "Abendessen am Ziel", etc. Mit Echtzeit-Kapazität und Teilnehmern.',
-          image: '/images/mockups/mockup-events-list.svg'
+          image: '/images/mockups/de/mockup-events-list.svg'
         },
         {
           id: 'event-detail',
@@ -1273,7 +1273,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Alle Event-Informationen',
           description:
             'Siehe Organisator, bestätigte Teilnehmer, verfügbare Plätze, Treffpunkt, Zeit und geschätzte Kosten. Liken oder kommentieren.',
-          image: '/images/mockups/mockup-event-detail.svg'
+          image: '/images/mockups/de/mockup-event-detail.svg'
         },
         {
           id: 'chat',
@@ -1281,7 +1281,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Privater und Gruppen-Chat',
           description:
             'Chatte direkt mit Organisatoren (Free) oder mit der ganzen Gruppe (Premium). Teile Standort, Zahlungsdetails und koordiniere in Echtzeit.',
-          image: '/images/mockups/mockup-chat.svg'
+          image: '/images/mockups/de/mockup-chat.svg'
         },
         {
           id: 'profile',
@@ -1289,7 +1289,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Verifizierte Profile',
           description:
             'Siehe Informationen anderer Reisender: Foto, Name, Verifizierung, Reputation und Events, an denen sie teilgenommen haben. Reise mit Vertrauen.',
-          image: '/images/mockups/mockup-profile.svg'
+          image: '/images/mockups/de/mockup-profile.svg'
         },
         {
           id: 'impact',
@@ -1297,7 +1297,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Deine Ersparnisse und CO₂-Fußabdruck',
           description:
             'Dashboard mit Grafiken über eingesparte Geld, reduziertes CO₂ und Statistiken deiner geteilten Reisen.',
-          image: '/images/mockups/mockup-impact.svg'
+          image: '/images/mockups/de/mockup-impact.svg'
         }
       ]
     },
@@ -1696,7 +1696,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Trouvez votre vol en quelques secondes',
           description:
             'Entrez votre numéro de vol et la date. Notre système trouve automatiquement les informations du vol et vous montre d\'autres voyageurs disponibles.',
-          image: '/images/mockups/mockup-flight-search.svg'
+          image: '/images/mockups/fr/mockup-flight-search.svg'
         },
         {
           id: 'events-list',
@@ -1704,7 +1704,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Événements pour votre vol',
           description:
             'Voyez tous les événements disponibles pour votre vol : "Partager un taxi de l\'aéroport A à la ville B", "Dîner à destination", etc. Avec capacité et participants en temps réel.',
-          image: '/images/mockups/mockup-events-list.svg'
+          image: '/images/mockups/fr/mockup-events-list.svg'
         },
         {
           id: 'event-detail',
@@ -1712,7 +1712,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Informations complètes de l\'événement',
           description:
             'Voir l\'organisateur, les participants confirmés, les places disponibles, le point de rencontre, l\'heure et les coûts estimés. Liker ou commenter.',
-          image: '/images/mockups/mockup-event-detail.svg'
+          image: '/images/mockups/fr/mockup-event-detail.svg'
         },
         {
           id: 'chat',
@@ -1720,7 +1720,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Chat privé et de groupe',
           description:
             'Chattez directement avec les organisateurs (Free) ou avec tout le groupe (Premium). Partagez la localisation, les détails de paiement et coordonnez en temps réel.',
-          image: '/images/mockups/mockup-chat.svg'
+          image: '/images/mockups/fr/mockup-chat.svg'
         },
         {
           id: 'profile',
@@ -1728,7 +1728,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Profils vérifiés',
           description:
             'Voir les informations des autres voyageurs : photo, nom, vérification, réputation et événements auxquels ils ont participé. Voyagez en toute confiance.',
-          image: '/images/mockups/mockup-profile.svg'
+          image: '/images/mockups/fr/mockup-profile.svg'
         },
         {
           id: 'impact',
@@ -1736,7 +1736,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Vos économies et empreinte carbone',
           description:
             'Tableau de bord avec graphiques de combien d\'argent vous avez économisé, combien de CO₂ vous avez réduit et statistiques de vos trajets partagés.',
-          image: '/images/mockups/mockup-impact.svg'
+          image: '/images/mockups/fr/mockup-impact.svg'
         }
       ]
 

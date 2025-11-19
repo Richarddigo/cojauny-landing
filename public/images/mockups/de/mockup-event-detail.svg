@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 780" fill="none">
+  <!-- Background -->
+  <rect width="360" height="780" fill="#F8FAFC"/>
+  
+  <!-- Header with back button -->
+  <rect width="360" height="60" fill="#0F172A"/>
+  <text x="40" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#FFFFFF">←</text>
+  <text x="180" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#FFFFFF" text-anchor="middle">Eventdetails</text>
+  
+  <!-- Event Title -->
+  <text x="20" y="95" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#0F172A">🚕 Taxi Flughafen→Zentrum</text>
+  
+  <!-- Status Badge -->
+  <rect x="20" y="105" width="120" height="28" rx="14" fill="#10B981" opacity="0.15"/>
+  <text x="80" y="125" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#10B981" text-anchor="middle">3 von 4 Plätzen</text>
+  
+  <!-- Info Cards -->
+  <g transform="translate(20, 150)">
+    <rect width="320" height="80" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <text x="20" y="25" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#64748B">ORGANISATOR</text>
+    <text x="20" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="600" fill="#0F172A">Ana María González</text>
+    <text x="20" y="66" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#64748B">⭐ 4.8 • 23 viajes</text>
+    <circle cx="285" cy="40" r="25" fill="#E2E8F0"/>
+    <text x="285" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="20" text-anchor="middle">👤</text>
+  </g>
+  
+  <!-- Details Section -->
+  <text x="20" y="265" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#0F172A">Reisedetails</text>
+  
+  <g transform="translate(20, 280)">
+    <rect width="320" height="200" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    
+    <!-- Time -->
+    <text x="20" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#64748B">🕐 ZEIT</text>
+    <text x="20" y="50" font-family="system-ui, -apple-system, sans-serif" font-size="15" fill="#0F172A">Heute, 13:30</text>
+    
+    <!-- Location -->
+    <text x="20" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#64748B">📍 TREFFPUNKT</text>
+    <text x="20" y="100" font-family="system-ui, -apple-system, sans-serif" font-size="15" fill="#0F172A">Terminal T4, Abflüge</text>
+    <text x="20" y="118" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748B">Flughafen Madrid-Barajas</text>
+    
+    <!-- Destination -->
+    <text x="20" y="148" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#64748B">🎯 ZIEL</text>
+    <text x="20" y="168" font-family="system-ui, -apple-system, sans-serif" font-size="15" fill="#0F172A">Madrid Zentrum (Sol)</text>
+  </g>
+  
+  <!-- Participants -->
+  <text x="20" y="515" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#0F172A">Teilnehmende (3)</text>
+  
+  <g transform="translate(20, 530)">
+    <circle cx="25" cy="20" r="20" fill="#3B82F6"/>
+    <text x="25" y="27" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="middle">AM</text>
+    <circle cx="75" cy="20" r="20" fill="#10B981"/>
+    <text x="75" y="27" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="middle">CR</text>
+    <circle cx="125" cy="20" r="20" fill="#F59E0B"/>
+    <text x="125" y="27" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="middle">ML</text>
+    <circle cx="175" cy="20" r="20" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="4,4"/>
+    <text x="175" y="27" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#94A3B8" text-anchor="middle">+</text>
+  </g>
+  
+  <!-- Cost -->
+  <g transform="translate(20, 595)">
+    <rect width="320" height="60" rx="12" fill="#3B82F6" opacity="0.1"/>
+    <text x="20" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#64748B">GESCHÄTZTER PREIS PRO PERSON</text>
+    <text x="20" y="50" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#3B82F6">~15€</text>
+    <text x="300" y="50" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748B" text-anchor="end">💰 Du sparst 45€</text>
+  </g>
+  
+  <!-- Action Buttons -->
+  <rect x="20" y="680" width="150" height="48" rx="12" fill="#FFFFFF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="95" y="709" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#3B82F6" text-anchor="middle">💬 Chat</text>
+  
+  <rect x="190" y="680" width="150" height="48" rx="12" fill="#3B82F6"/>
+  <text x="265" y="709" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="middle">Beitreten</text>
+</svg>

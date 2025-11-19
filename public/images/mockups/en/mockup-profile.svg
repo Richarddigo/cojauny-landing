@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 780" fill="none">
+  <!-- Background -->
+  <rect width="360" height="780" fill="#F8FAFC"/>
+  
+  <!-- Header -->
+  <rect width="360" height="60" fill="#0F172A"/>
+  <text x="40" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#FFFFFF">←</text>
+  <text x="180" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#FFFFFF" text-anchor="middle">Profile</text>
+  <text x="320" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="#FFFFFF">⋯</text>
+  
+  <!-- Profile Picture -->
+  <circle cx="180" cy="125" r="55" fill="#3B82F6"/>
+  <text x="180" y="145" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="600" fill="#FFFFFF" text-anchor="middle">AM</text>
+  
+  <!-- Verified Badge -->
+  <circle cx="220" cy="155" r="16" fill="#10B981"/>
+  <text x="220" y="163" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#FFFFFF" text-anchor="middle">✓</text>
+  
+  <!-- Name and Stats -->
+  <text x="180" y="210" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#0F172A" text-anchor="middle">Ana María González</text>
+  <text x="180" y="235" font-family="system-ui, -apple-system, sans-serif" font-size="15" fill="#64748B" text-anchor="middle">Member since 2024 • ✓ Verified</text>
+  
+  <!-- Stats Row -->
+  <g transform="translate(40, 260)">
+    <g>
+      <text x="45" y="10" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#0F172A" text-anchor="middle">23</text>
+      <text x="45" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">Trips</text>
+    </g>
+    <g transform="translate(95, 0)">
+      <text x="45" y="10" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#0F172A" text-anchor="middle">4.8</text>
+      <text x="45" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">Rating</text>
+    </g>
+    <g transform="translate(190, 0)">
+      <text x="45" y="10" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#0F172A" text-anchor="middle">180kg</text>
+      <text x="45" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">CO₂ saved</text>
+    </g>
+  </g>
+  
+  <!-- About Section -->
+  <g transform="translate(20, 330)">
+    <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#0F172A">About me</text>
+    <rect x="0" y="10" width="320" height="80" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+    <text x="15" y="35" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#475569">I travel frequently for work between</text>
+    <text x="15" y="55" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#475569">Madrid and Barcelona. Love sharing rides</text>
+    <text x="15" y="75" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#475569">and meeting new people 🌍</text>
+  </g>
+  
+  <!-- Badges Section -->
+  <g transform="translate(20, 440)">
+    <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#0F172A">Badges</text>
+    <g transform="translate(0, 15)">
+      <!-- Badge 1 -->
+      <g>
+        <rect x="0" y="0" width="100" height="100" rx="12" fill="#FFFFFF" stroke="#F59E0B" stroke-width="2"/>
+        <text x="50" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="32" text-anchor="middle">🌟</text>
+        <text x="50" y="65" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0F172A" text-anchor="middle">Early</text>
+        <text x="50" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0F172A" text-anchor="middle">Adopter</text>
+      </g>
+      <!-- Badge 2 -->
+      <g transform="translate(110, 0)">
+        <rect x="0" y="0" width="100" height="100" rx="12" fill="#FFFFFF" stroke="#10B981" stroke-width="2"/>
+        <text x="50" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="32" text-anchor="middle">🌱</text>
+        <text x="50" y="65" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0F172A" text-anchor="middle">Eco</text>
+        <text x="50" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0F172A" text-anchor="middle">Warrior</text>
+      </g>
+      <!-- Badge 3 -->
+      <g transform="translate(220, 0)">
+        <rect x="0" y="0" width="100" height="100" rx="12" fill="#FFFFFF" stroke="#3B82F6" stroke-width="2"/>
+        <text x="50" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="32" text-anchor="middle">⭐</text>
+        <text x="50" y="65" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0F172A" text-anchor="middle">Super</text>
+        <text x="50" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0F172A" text-anchor="middle">Host</text>
+      </g>
+    </g>
+  </g>
+  
+  <!-- Reviews Section -->
+  <g transform="translate(20, 570)">
+    <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#0F172A">Reviews (18)</text>
+    
+    <!-- Review 1 -->
+    <g transform="translate(0, 15)">
+      <rect x="0" y="0" width="320" height="85" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+      <circle cx="25" cy="25" r="18" fill="#8B5CF6"/>
+      <text x="25" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF" text-anchor="middle">CR</text>
+      <text x="55" y="23" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#0F172A">Carlos Rodríguez</text>
+      <text x="55" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748B">⭐⭐⭐⭐⭐</text>
+      <text x="15" y="63" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#475569">Very punctual and friendly. Great ride.</text>
+      <text x="305" y="25" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#94A3B8" text-anchor="end">2 days ago</text>
+    </g>
+  </g>
+  
+  <!-- Action Buttons -->
+  <rect x="20" y="690" width="150" height="48" rx="12" fill="#FFFFFF" stroke="#3B82F6" stroke-width="2"/>
+  <text x="95" y="719" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#3B82F6" text-anchor="middle">💬 Message</text>
+  
+  <rect x="190" y="690" width="150" height="48" rx="12" fill="#EF4444"/>
+  <text x="265" y="719" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="middle">🚫 Report</text>
+</svg>
