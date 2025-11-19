@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
-import { useState, useRef, useEffect } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { useReducedMotionPreference } from '@/hooks/useReducedMotionPreference';
 import type { LandingCopy } from '@/locales/copy';
@@ -15,27 +15,98 @@ interface MockupsProps {
 const Mockups = ({ className, copy }: MockupsProps) => {
     const prefersReducedMotionClient = useReducedMotion();
     const prefersReducedMotion = useReducedMotionPreference() || prefersReducedMotionClient;
-    const [activeScreenId, setActiveScreenId] = useState(copy.screens[0]?.id ?? 'home');
     const sectionRef = useRef<HTMLElement>(null);
+    const phoneRef = useRef<HTMLDivElement>(null);
+    const cardsContainerRef = useRef<HTMLDivElement>(null);
+    const firstCardRef = useRef<HTMLButtonElement>(null);
+    const lastCardRef = useRef<HTMLButtonElement>(null);
+    const [parallaxOffset, setParallaxOffset] = useState(0);
+
+    const screenOptions = useMemo(() => copy.screens, [copy]);
+    const [activeScreenId, setActiveScreenId] = useState(() => screenOptions[0]?.id ?? 'home');
+    const tickingRef = useRef(false);
 
     useEffect(() => {
-        if (copy.screens.length) {
-            setActiveScreenId(copy.screens[0].id);
+        if (screenOptions.length) {
+            setActiveScreenId(screenOptions[0].id);
         }
-    }, [copy]);
+    }, [screenOptions]);
 
-    const activeScreen = copy.screens.find((screen) => screen.id === activeScreenId) ?? copy.screens[0];
+    const activeScreen = screenOptions.find((screen) => screen.id === activeScreenId) ?? screenOptions[0];
 
-    // Parallax effect scoped to this section
-    const { scrollYProgress } = useScroll({
-        target: sectionRef,
-        offset: ['start center', 'end end']
-    });
+    useEffect(() => {
+        if (prefersReducedMotion) return;
 
-    const phoneY = useTransform(scrollYProgress, [0, 1], [80, -80]);
-    const phoneMotionStyle = prefersReducedMotion ? undefined : { y: phoneY };
+        const sectionEl = sectionRef.current;
+        const phoneEl = phoneRef.current;
+        const firstCardEl = firstCardRef.current;
+        const lastCardEl = lastCardRef.current;
 
-    return (
+        if (!sectionEl || !phoneEl || !firstCardEl || !lastCardEl) return;
+
+        const updateParallax = () => {
+            if (!phoneRef.current || !firstCardRef.current || !lastCardRef.current) return;
+
+            const firstRect = firstCardEl.getBoundingClientRect();
+            const lastRect = lastCardEl.getBoundingClientRect();
+            const phoneRect = phoneEl.getBoundingClientRect();
+
+            // Get top of first card and bottom of last card
+            const firstCardTop = firstRect.top;
+            const lastCardBottom = lastRect.bottom;
+
+            // Calculate the scroll range between first card top and last card bottom
+            const totalScrollRange = lastCardBottom - firstCardTop;
+
+            // Calculate available space for the phone to move
+            const phoneHeight = phoneRect.height;
+            const availableSpace = totalScrollRange - phoneHeight;
+
+            // Calculate scroll progress: 0 when first card top aligns with phone container top
+            // 1 when last card bottom aligns with phone container bottom
+            // Start 100px earlier by adding 100 to firstCardTop
+            const scrollProgress = Math.max(0, Math.min(1, (-firstCardTop + 120) / availableSpace));
+
+            // Calculate offset: phone moves from top alignment to bottom alignment
+            // Add 66px initial offset to align with first card top
+            const offset = scrollProgress * availableSpace + 66;
+
+            setParallaxOffset(offset);
+            tickingRef.current = false;
+        };
+
+        const onScroll = () => {
+            if (!tickingRef.current) {
+                window.requestAnimationFrame(updateParallax);
+                tickingRef.current = true;
+            }
+        };
+
+        // IntersectionObserver to activate/deactivate scroll listener
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        window.addEventListener('scroll', onScroll, { passive: true });
+                        updateParallax();
+                    } else {
+                        window.removeEventListener('scroll', onScroll);
+                    }
+                });
+            },
+            {
+                root: null,
+                threshold: [0, 1.0]
+            }
+        );
+
+        observer.observe(sectionEl);
+
+        return () => {
+            observer.disconnect();
+            window.removeEventListener('scroll', onScroll);
+        };
+    }, [prefersReducedMotion]); return (
         <section
             ref={sectionRef}
             id="demo"
@@ -49,12 +120,15 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                 <p className="mt-4 text-lg text-slate-600">{copy.description}</p>
             </div>
             <div className="relative mt-16 flex flex-col gap-10 lg:flex-row lg:gap-12 xl:gap-16">
-                <div className="flex flex-1 flex-col gap-5 text-left lg:max-w-3xl">
-                    {copy.screens.map((screen) => {
+                <div ref={cardsContainerRef} className="flex flex-1 flex-col gap-5 text-left lg:max-w-3xl">
+                    {screenOptions.map((screen, index) => {
                         const isActive = screen.id === activeScreenId;
+                        const isFirst = index === 0;
+                        const isLast = index === screenOptions.length - 1;
                         return (
                             <button
                                 key={screen.id}
+                                ref={isFirst ? firstCardRef : isLast ? lastCardRef : null}
                                 type="button"
                                 onMouseEnter={() => setActiveScreenId(screen.id)}
                                 onFocus={() => setActiveScreenId(screen.id)}
@@ -76,55 +150,58 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                     })}
                 </div>
                 <div className="relative flex flex-1 items-center justify-center min-h-[520px] lg:sticky lg:top-24 lg:self-start lg:h-[640px]">
-                    <motion.div
-                        key={activeScreen?.id}
-                        initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.96 }}
-                        animate={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
-                        style={phoneMotionStyle}
-                        transition={{ duration: 0.5, ease: 'easeOut' }}
-                        className="relative mx-auto w-[280px] max-w-full will-change-transform lg:w-[340px]"
-                        aria-live="polite"
+                    <div
+                        ref={phoneRef}
+                        style={
+                            prefersReducedMotion
+                                ? undefined
+                                : {
+                                    transform: `translateY(${parallaxOffset}px)`,
+                                    willChange: 'transform'
+                                }
+                        }
+                        className="relative mx-auto w-[280px] max-w-full lg:w-[340px]"
                     >
-                        {/* iPhone-style device frame */}
-                        <div className="relative rounded-[3rem] border-[5px] border-black bg-black shadow-2xl">
-                            {/* Dynamic Island */}
-                            <div className="absolute left-1/2 top-[22px] z-30 h-[30px] w-[120px] -translate-x-1/2 rounded-full bg-black"></div>
-
-                            {/* Status bar */}
-                            <div className="relative z-20 flex items-center justify-between bg-black px-8 pb-3 pt-5 text-[11px] font-medium text-white rounded-t-[3rem]">
-                                <span>9:41</span>
-                                <div className="flex items-center gap-1">
-                                    <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
-                                    </svg>
-                                    <svg className="h-3 w-4" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fillRule="evenodd" d="M17.778 8.222c-4.296-4.296-11.26-4.296-15.556 0A1 1 0 01.808 6.808c5.076-5.077 13.308-5.077 18.384 0a1 1 0 01-1.414 1.414zM14.95 11.05a7 7 0 00-9.9 0 1 1 0 01-1.414-1.414 9 9 0 0112.728 0 1 1 0 01-1.414 1.414zM12.12 13.88a3 3 0 00-4.242 0 1 1 0 01-1.415-1.415 5 5 0 017.072 0 1 1 0 01-1.415 1.415zM9 16a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clipRule="evenodd" />
-                                    </svg>
-                                    <svg className="h-3 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M4 4h12v2H4V4zm0 4h12v2H4V8zm0 4h8v2H4v-2zm16-1.5a3.5 3.5 0 110 7 3.5 3.5 0 010-7z" />
-                                    </svg>
+                        <motion.div
+                            key={activeScreen?.id}
+                            initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.96 }}
+                            animate={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.45, ease: 'easeOut' }}
+                            className="relative"
+                            aria-live="polite"
+                        >
+                            <div className="relative rounded-[3rem] border-[5px] border-black bg-black">
+                                <div className="absolute left-1/2 top-[22px] z-30 h-[30px] w-[120px] -translate-x-1/2 rounded-full bg-black" />
+                                <div className="relative z-20 flex items-center justify-between rounded-t-[3rem] bg-black px-8 pb-3 pt-5 text-[11px] font-medium text-white">
+                                    <span>9:41</span>
+                                    <div className="flex items-center gap-1">
+                                        <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+                                        </svg>
+                                        <svg className="h-3 w-4" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M17.778 8.222c-4.296-4.296-11.26-4.296-15.556 0A1 1 0 01.808 6.808c5.076-5.077 13.308-5.077 18.384 0a1 1 0 01-1.414 1.414zM14.95 11.05a7 7 0 00-9.9 0 1 1 0 01-1.414-1.414 9 9 0 0112.728 0 1 1 0 01-1.414 1.414zM12.12 13.88a3 3 0 00-4.242 0 1 1 0 01-1.415-1.415 5 5 0 017.072 0 1 1 0 01-1.415 1.415zM9 16a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clipRule="evenodd" />
+                                        </svg>
+                                        <svg className="h-3 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M4 4h12v2H4V4zm0 4h12v2H4V8zm0 4h8v2H4v-2zm16-1.5a3.5 3.5 0 110 7 3.5 3.5 0 010-7z" />
+                                        </svg>
+                                    </div>
                                 </div>
+                                <div className="overflow-hidden rounded-b-[3rem] bg-white">
+                                    {activeScreen && (
+                                        <Image
+                                            src={activeScreen.image}
+                                            alt={activeScreen.title}
+                                            width={720}
+                                            height={1560}
+                                            loading="lazy"
+                                            className="h-full w-full object-cover"
+                                        />
+                                    )}
+                                </div>
+                                <div className="pointer-events-none absolute bottom-3 left-1/2 h-1 w-32 -translate-x-1/2 rounded-full bg-white/30" />
                             </div>
-
-                            {/* Screen content */}
-                            <div className="overflow-hidden rounded-b-[3rem] bg-white">
-                                {activeScreen && (
-                                    <Image
-                                        src={activeScreen.image}
-                                        alt={activeScreen.title}
-                                        width={720}
-                                        height={1560}
-                                        priority={false}
-                                        loading="lazy"
-                                        className="h-full w-full object-cover"
-                                    />
-                                )}
-                            </div>
-
-                            {/* Home indicator */}
-                            <div className="absolute bottom-3 left-1/2 h-1 w-32 -translate-x-1/2 rounded-full bg-white/30"></div>
-                        </div>
-                    </motion.div>
+                        </motion.div>
+                    </div>
                 </div>
             </div>
         </section>

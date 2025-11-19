@@ -595,7 +595,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         sentimentOptions: [
           { value: 'positive', label: 'Feedback' },
-          { value: 'neutral', label: 'Idea' },
+          { value: 'neutral', label: 'Ideas' },
           { value: 'negative', label: 'Propuesta de negocio' }
         ]
       }
