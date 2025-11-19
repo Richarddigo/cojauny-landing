@@ -27,7 +27,7 @@ const iconMap: Record<IconName, typeof BoltIcon> = {
 
 const Features = ({ copy }: FeaturesProps) => (
     <section
-        id="caracteristicas"
+        id="features"
         className="relative scroll-mt-24 border-y border-transparent bg-gradient-to-b from-white to-slate-50 py-20 px-6 lg:scroll-mt-32"
     >
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />

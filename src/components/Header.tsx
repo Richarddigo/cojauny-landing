@@ -42,25 +42,25 @@ const Header = ({ locale, copy }: HeaderProps) => {
                     </button>
                 </div>
                 <div className="hidden lg:flex lg:gap-x-4">
-                    <Link href={`/${locale}#inicio`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
+                    <Link href={`/${locale}#home`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
                         {copy.home}
                     </Link>
                     <Link href={`/${locale}#demo`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
                         {copy.demo}
                     </Link>
-                    <Link href={`/${locale}#beneficios`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
+                    <Link href={`/${locale}#benefits`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
                         {copy.benefits}
                     </Link>
-                    <Link href={`/${locale}#impacto`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
+                    <Link href={`/${locale}#impact`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
                         {copy.impact}
                     </Link>
-                    <Link href={`/${locale}#caracteristicas`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
+                    <Link href={`/${locale}#features`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
                         {copy.features}
                     </Link>
-                    <Link href={`/${locale}#como-funciona`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
+                    <Link href={`/${locale}#how-it-works`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
                         {copy.workflow}
                     </Link>
-                    <Link href={`/${locale}#precios`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
+                    <Link href={`/${locale}#pricing`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">
                         {copy.pricing}
                     </Link>
                     <Link href={`/${locale}#beta`} className="text-sm font-semibold leading-6 text-white/90 transition hover:text-brand-200">

@@ -18,6 +18,8 @@ export interface MockupScreenCopy {
 }
 
 export interface FormCopy {
+  heading?: string;
+  subheading?: string;
   title: string;
   description: string;
   success: string;
@@ -557,6 +559,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     forms: {
       beta: {
+        heading: 'Únete a la revolución del viaje compartido',
+        subheading: 'Consigue acceso anticipado a Cojauny y forma parte de la comunidad early adopter. Tarifas exclusivas, soporte prioritario y línea directa con el equipo de producto.',
         title: 'Solicita acceso beta',
         description:
           '🌟 Acceso anticipado · 💰 Tarifas preferentes · 🏆 Distintivo early adopter · 🛠️ Canal directo con producto · 🚀 Soporte prioritario',
@@ -574,7 +578,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         }
       },
       feedback: {
-        title: 'Comparte feedback o ideas',
+        heading: 'Feedback, ideas y propuestas de negocio',
+        subheading: '¿Tienes una sugerencia para mejorar Cojauny? ¿Quieres compartir una idea innovadora o explorar oportunidades de negocio? Estamos aqui para escucharte.',
+        title: 'Comparte tu propuesta',
         description:
           '¿Gestionas transfer colectivos o programas corporativos? Cuéntanos tu escenario para ayudarte mejor desde support@cojauny.com.',
         success: 'Gracias por tu mensaje. Si necesitamos ampliar información te contactaremos pronto.',
@@ -584,13 +590,13 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           fullName: 'Nombre',
           email: 'Correo',
           message: 'Cuéntanos más',
-          sentiment: 'Tipo de feedback',
+          sentiment: 'Tipo de mensaje',
           selectPlaceholder: 'Selecciona una opción'
         },
         sentimentOptions: [
-          { value: 'positive', label: 'Estoy listo para probar' },
-          { value: 'neutral', label: 'Necesito más información' },
-          { value: 'negative', label: 'Tengo dudas importantes' }
+          { value: 'positive', label: 'Feedback' },
+          { value: 'neutral', label: 'Idea' },
+          { value: 'negative', label: 'Propuesta de negocio' }
         ]
       }
     },
@@ -629,19 +635,24 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       faq: 'FAQ'
     },
     seo: {
-      title: 'Cojauny · Coordinate every airport ride with your flight',
+      title: 'Cojauny: Share Airport Taxi with Your Flight | Save up to 75%',
       description:
-        'One workspace to align passengers on the same flight, split taxis or shuttles, keep a 48h chat alive and track savings plus avoided CO₂.',
+        'Connect with passengers on your flight to share airport taxis, vans or parking. Automatic matching, verified profiles, secure chat and real savings of 50-75% per trip. Available at 120+ airports worldwide.',
       keywords: [
+        'shared airport taxi',
         'airport ride sharing',
-        'flight transport coordination',
-        'group airport taxi',
-        'temporary flight chat',
-        'sustainable business travel'
+        'split airport taxi cost',
+        'airport carpool app',
+        'share uber to airport',
+        'airport shuttle alternative',
+        'cheap airport transfer',
+        'airport taxi sharing app',
+        'split taxi with travelers',
+        'airport transportation app'
       ],
-      ogTitle: 'Cojauny · Shared ground transport for your flight',
+      ogTitle: 'Cojauny: Share Airport Taxi & Save 50-75% | Free App',
       ogDescription:
-        'Publish flight events, confirm passengers, divide costs and measure the climate impact from a single platform.'
+        'Match with verified travelers on your flight to share airport transfers. Secure chat, automatic cost splitting, and measurable savings. Now at 120+ airports.'
     },
     hero: {
       eyebrow: 'Smart coordination for every crew',
@@ -680,6 +691,30 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           description:
             'Share the minimum data required and decide whether to exchange social handles. Everything is encrypted and GDPR compliant.',
           iconName: 'shield'
+        },
+        {
+          title: '78 Languages Supported',
+          description:
+            'Product experience adapts to 78 languages, including automatic messages. Every passenger can coordinate in their native language.',
+          iconName: 'globe'
+        },
+        {
+          title: 'Smart Notifications',
+          description:
+            'Prioritized alerts for new events, flight changes, meeting reminders and driver arrival notices.',
+          iconName: 'sparkles'
+        },
+        {
+          title: 'Savings & Impact Stats',
+          description:
+            'Dashboard with accumulated savings, shared kilometers and avoided CO₂ to report to your team or community.',
+          iconName: 'bolt'
+        },
+        {
+          title: 'Recurring Events',
+          description:
+            'Set up events that repeat by route, schedule or airline and keep your group automatically notified on every flight.',
+          iconName: 'users'
         }
       ]
     },
@@ -702,6 +737,21 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Insights to optimise suppliers',
           description:
             'Track occupancy, seat cost and cumulative savings to negotiate better rates and reinforce your loyalty programmes.'
+        },
+        {
+          title: '⏱️ Coordination without endless chats',
+          description:
+            'Agenda, reminders and automatic confirmations. Cojauny notifies everyone when the driver is arriving or the boarding gate changes.'
+        },
+        {
+          title: '🛡️ Trust and reputation',
+          description:
+            'Ratings, verification and anti-bot policies. If someone doesn\'t show up, the group can report them and the system adjusts their reputation.'
+        },
+        {
+          title: '📱 Omnichannel operation',
+          description:
+            'All information—flight, meeting point, payments, contacts—lives in a single thread accessible from mobile or progressive web.'
         }
       ]
     },
@@ -938,6 +988,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     forms: {
       beta: {
+        heading: 'Join the shared travel revolution',
+        subheading: 'Get early access to Cojauny and become part of the early adopter community. Exclusive rates, priority support and direct line to the product team.',
         title: 'Join the private beta',
         description:
           'Priority for airlines, corporate travel and mobility teams wanting to validate shared rides with real passengers.',
@@ -955,24 +1007,26 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         }
       },
       feedback: {
-        title: 'Share your use case',
+        heading: 'Feedback, ideas and business proposals',
+        subheading: 'Have a suggestion to improve Cojauny? Want to share an innovative idea or explore business opportunities? We are here to listen.',
+        title: 'Share your proposal',
         description:
           'Managing group transfers or premium passengers? Tell us more and we will reply from support@cojauny.com.',
         success:
           'Thanks for the feedback. We will reach out using the same address if we need more context.',
         error: 'We could not submit your feedback. Check the fields and try again.',
-        submit: 'Send feedback',
+        submit: 'Send message',
         fields: {
           fullName: 'Name',
           email: 'Email',
           message: 'Tell us more',
-          sentiment: 'Feedback type',
+          sentiment: 'Message type',
           selectPlaceholder: 'Select an option'
         },
         sentimentOptions: [
-          { value: 'positive', label: 'Ready to pilot' },
-          { value: 'neutral', label: 'Need more information' },
-          { value: 'negative', label: 'I have blockers' }
+          { value: 'positive', label: 'Feedback' },
+          { value: 'neutral', label: 'Idea' },
+          { value: 'negative', label: 'Business proposal' }
         ]
       }
     },
@@ -1012,19 +1066,24 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       faq: 'FAQ'
     },
     seo: {
-      title: 'Cojauny · Gemeinsame Fahrten zum Flughafen mit Mitreisenden planen',
+      title: 'Cojauny: Flughafen-Taxi mit Mitreisenden teilen | Bis zu 75% sparen',
       description:
-        'Cojauny verbindet Passagiere desselben Fluges, um Taxi, Fahrgemeinschaft oder Parkplatz vor und nach dem Flug zu organisieren. Flugbasierte Events, 48h-Chat und transparente Ersparnisse.',
+        'Verbinden Sie sich mit Passagieren Ihres Fluges, um Flughafen-Taxis, Shuttles oder Parkplätze zu teilen. Automatisches Matching, verifizierte Profile, sicherer Chat und echte Ersparnisse von 50-75% pro Fahrt. Verfügbar an 120+ Flughäfen.',
       keywords: [
+        'flughafen taxi teilen',
+        'airport ride sharing',
         'flughafen fahrgemeinschaft',
-        'flug koordination',
-        'taxi teilen flughafen',
-        'temporärer chat',
-        'reisekosten sparen'
+        'taxi kosten teilen flughafen',
+        'günstig zum flughafen',
+        'flughafen shuttle alternative',
+        'flughafen transport app',
+        'mitfahrgelegenheit flughafen',
+        'flughafen transfer teilen',
+        'gemeinsame fahrt flughafen'
       ],
-      ogTitle: 'Cojauny · Gemeinsame Fahrten für deinen Flug',
+      ogTitle: 'Cojauny: Flughafen-Taxi teilen & 50-75% sparen | Kostenlose App',
       ogDescription:
-        'Erstelle Flug-Events, koordiniere Fahrten zum Flughafen und spare bei Taxi, Uber oder Parkplatz mit Cojauny.'
+        'Finden Sie verifizierte Mitreisende auf Ihrem Flug zum Teilen von Flughafen-Transfers. Sicherer Chat, automatische Kostenteilung und messbare Ersparnisse. Jetzt an 120+ Flughäfen.'
     },
     hero: {
       eyebrow: 'Intelligente Koordination für deinen Flug',
@@ -1063,6 +1122,30 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           description:
             'Teile nur notwendige Informationen und entscheide selbst, ob du weitere Kontaktdaten austauschst. Alles DSGVO-konform.',
           iconName: 'shield'
+        },
+        {
+          title: '78 Unterstützte Sprachen',
+          description:
+            'Die Produkterfahrung passt sich an 78 Sprachen an, einschließlich automatischer Nachrichten. Jeder Passagier kann in seiner Muttersprache koordinieren.',
+          iconName: 'globe'
+        },
+        {
+          title: 'Intelligente Benachrichtigungen',
+          description:
+            'Priorisierte Warnungen für neue Events, Flugänderungen, Treffpunkt-Erinnerungen und Fahrer-Ankunftsmeldungen.',
+          iconName: 'sparkles'
+        },
+        {
+          title: 'Einsparungs- & Impact-Statistiken',
+          description:
+            'Dashboard mit kumulierten Einsparungen, geteilten Kilometern und vermiedenem CO₂ zum Berichten an dein Team oder deine Community.',
+          iconName: 'bolt'
+        },
+        {
+          title: 'Wiederkehrende Events',
+          description:
+            'Richte Events ein, die sich nach Route, Zeitplan oder Fluggesellschaft wiederholen, und halte deine Gruppe bei jedem Flug automatisch informiert.',
+          iconName: 'users'
         }
       ]
     },
@@ -1085,6 +1168,21 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Kennzahlen für bessere Konditionen',
           description:
             'Analysiere Auslastung, Sitzkosten und kumulierte Einsparungen, um mit Transportpartnern neu zu verhandeln und Treueprogramme zu stärken.'
+        },
+        {
+          title: '⏱️ Koordination ohne endlose Chats',
+          description:
+            'Agenda, Erinnerungen und automatische Bestätigungen. Cojauny benachrichtigt alle, wenn der Fahrer ankommt oder sich das Boarding-Gate ändert.'
+        },
+        {
+          title: '🛡️ Vertrauen und Reputation',
+          description:
+            'Bewertungen, Verifizierung und Anti-Bot-Richtlinien. Wenn jemand nicht erscheint, kann die Gruppe ihn melden und das System passt seine Reputation an.'
+        },
+        {
+          title: '📱 Omnichannel-Betrieb',
+          description:
+            'Alle Informationen—Flug, Treffpunkt, Zahlungen, Kontakte—leben in einem einzigen Thread, der von Mobilgeräten oder progressivem Web zugänglich ist.'
         }
       ]
     },
@@ -1321,6 +1419,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     forms: {
       beta: {
+        heading: 'Werde Teil der geteilten Reise-Revolution',
+        subheading: 'Erhalte frühen Zugang zu Cojauny und werde Teil der Early-Adopter-Community. Exklusive Tarife, vorrangiger Support und direkter Draht zum Produktteam.',
         title: 'Werde Teil der privaten Beta',
         description:
           'Priorität für Airlines, Geschäftsreise-Teams und Mobilitätsanbieter, die gemeinsame Fahrten mit echten Passagieren testen möchten.',
@@ -1339,23 +1439,25 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         }
       },
       feedback: {
-        title: 'Erzähl uns von deinem Szenario',
+        heading: 'Feedback, Ideen und Geschäftsvorschläge',
+        subheading: 'Haben Sie einen Vorschlag zur Verbesserung von Cojauny? Möchten Sie eine innovative Idee teilen oder Geschäftsmöglichkeiten erkunden? Wir sind hier, um zuzuhören.',
+        title: 'Teilen Sie Ihren Vorschlag',
         description:
           'Du organisierst Sammeltransfers oder Premium-Reisende? Teile Details, wir melden uns von support@cojauny.com.',
         success: 'Danke für dein Feedback. Wir kontaktieren dich bei Rückfragen über dieselbe Adresse.',
         error: 'Feedback konnte nicht übermittelt werden. Bitte überprüfe die Angaben.',
-        submit: 'Feedback senden',
+        submit: 'Nachricht senden',
         fields: {
           fullName: 'Name',
           email: 'E-Mail',
           message: 'Weitere Details',
-          sentiment: 'Feedback-Typ',
+          sentiment: 'Nachrichtentyp',
           selectPlaceholder: 'Option auswählen'
         },
         sentimentOptions: [
-          { value: 'positive', label: 'Bereit für einen Pilot' },
-          { value: 'neutral', label: 'Benötige mehr Infos' },
-          { value: 'negative', label: 'Habe Bedenken' }
+          { value: 'positive', label: 'Feedback' },
+          { value: 'neutral', label: 'Idee' },
+          { value: 'negative', label: 'Geschäftsvorschlag' }
         ]
       }
     },
@@ -1395,19 +1497,24 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       faq: 'FAQ'
     },
     seo: {
-      title: 'Cojauny · Coordonnez les trajets vers l’aéroport avec vos compagnons de vol',
+      title: 'Cojauny : Partagez un Taxi d\'Aéroport avec Votre Vol | Économisez jusqu\'à 75%',
       description:
-        'Cojauny rapproche les passagers d’un même vol pour organiser taxi, covoiturage ou parking avant et après le trajet. Événements par vol, chat 48h et économies transparentes.',
+        'Connectez-vous avec des passagers de votre vol pour partager des taxis, navettes ou parkings d\'aéroport. Matching automatique, profils vérifiés, chat sécurisé et économies réelles de 50-75% par trajet. Disponible dans 120+ aéroports.',
       keywords: [
-        'partage trajet aéroport',
-        'coordination vol',
-        'taxi partagé aéroport',
-        'chat temporaire',
-        'réduction coûts transport'
+        'partage taxi aéroport',
+        'covoiturage aéroport',
+        'partager taxi aéroport',
+        'diviser coût taxi aéroport',
+        'transport aéroport pas cher',
+        'alternative navette aéroport',
+        'application partage taxi',
+        'covoiturage vol',
+        'trajet partagé aéroport',
+        'app transport aéroport'
       ],
-      ogTitle: 'Cojauny · Transport partagé pour votre vol',
+      ogTitle: 'Cojauny : Partagez un Taxi d\'Aéroport & Économisez 50-75% | App Gratuite',
       ogDescription:
-        'Créez des événements de vol, coordonnez les trajets aller-retour et économisez sur taxi, VTC ou parking avec Cojauny.'
+        'Trouvez des voyageurs vérifiés sur votre vol pour partager les transferts aéroport. Chat sécurisé, partage automatique des coûts et économies mesurables. Maintenant dans 120+ aéroports.'
     },
     hero: {
       eyebrow: 'Coordination intelligente pour votre vol',
@@ -1446,6 +1553,30 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           description:
             'Partagez seulement les informations nécessaires et choisissez si vous souhaitez échanger vos réseaux. Conforme RGPD.',
           iconName: 'shield'
+        },
+        {
+          title: '78 Langues Supportées',
+          description:
+            'L\'expérience produit s\'adapte à 78 langues, y compris les messages automatiques. Chaque passager peut coordonner dans sa langue maternelle.',
+          iconName: 'globe'
+        },
+        {
+          title: 'Notifications Intelligentes',
+          description:
+            'Alertes priorisées pour les nouveaux événements, les modifications de vol, les rappels de rendez-vous et les avis d\'arrivée du chauffeur.',
+          iconName: 'sparkles'
+        },
+        {
+          title: 'Statistiques d\'Économies et d\'Impact',
+          description:
+            'Tableau de bord avec économies cumulées, kilomètres partagés et CO₂ évité pour rendre compte à votre équipe ou communauté.',
+          iconName: 'bolt'
+        },
+        {
+          title: 'Événements Récurrents',
+          description:
+            'Configurez des événements qui se répètent par itinéraire, horaire ou compagnie aérienne et maintenez votre groupe automatiquement informé à chaque vol.',
+          iconName: 'users'
         }
       ]
     },
@@ -1468,6 +1599,21 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           title: 'Des données pour négocier',
           description:
             'Mesurez taux de remplissage, coût par siège et économies cumulées afin d’optimiser vos contrats transport et programmes de fidélité.'
+        },
+        {
+          title: '⏱️ Coordination sans chats infinis',
+          description:
+            'Agenda, rappels et confirmations automatiques. Cojauny prévient tout le monde quand le chauffeur arrive ou que la porte d\'embarquement change.'
+        },
+        {
+          title: '🛡️ Confiance et réputation',
+          description:
+            'Notes, vérification et politiques anti-bot. Si quelqu\'un ne se présente pas, le groupe peut le signaler et le système ajuste sa réputation.'
+        },
+        {
+          title: '📱 Opération omnicanale',
+          description:
+            'Toutes les informations—vol, point de rencontre, paiements, contacts—vivent dans un seul fil accessible depuis mobile ou web progressif.'
         }
       ]
     },
@@ -1483,7 +1629,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           value: '50-75%',
           label: 'Économies potentielles',
-          description: 'Heures hebdomadaires libérées pour les équipes grâce à l’automatisation des communications.'
+          description: 'Vous pouvez économiser entre 50% et 75% sur chaque trajet aéroportuaire en partageant avec d\'autres passagers de votre vol.'
         },
         {
           value: '1 000+ tonnes',
@@ -1669,6 +1815,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     forms: {
       beta: {
+        heading: 'Rejoignez la révolution du voyage partagé',
+        subheading: 'Obtenez un accès anticipé à Cojauny et rejoignez la communauté early adopter. Tarifs exclusifs, support prioritaire et ligne directe avec l’équipe produit.',
         title: 'Rejoignez la beta privée',
         description:
           'Priorité aux compagnies aériennes, agences corporate et équipes mobilité voulant tester des trajets partagés avec de vrais passagers.',
@@ -1687,6 +1835,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         }
       },
       feedback: {
+        heading: 'Feedback, idées et propositions commerciales',
+        subheading: 'Vous avez une suggestion pour améliorer Cojauny? Vous souhaitez partager une idée innovante ou explorer des opportunités commerciales? Nous sommes là pour vous écouter.',
         title: 'Partagez votre scénario',
         description:
           'Vous gérez des transferts collectifs ou des voyageurs premium ? Donnez-nous des détails et nous répondrons depuis support@cojauny.com.',

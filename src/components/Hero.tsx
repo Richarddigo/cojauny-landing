@@ -15,8 +15,8 @@ interface HeroProps {
 
 const Hero = ({ copy }: HeroProps) => (
     <section
-        id="inicio"
-        className="relative overflow-hidden scroll-mt-24 pt-12 text-center md:scroll-mt-28 md:pt-12 lg:scroll-mt-32 lg:pt-12"
+        id="home"
+        className="relative overflow-hidden bg-white pb-12 text-center md:pb-16 lg:pb-20"
     >
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white via-white to-slate-50" aria-hidden />
         <div className="absolute inset-x-0 top-0 -z-10 flex justify-center opacity-70" aria-hidden>

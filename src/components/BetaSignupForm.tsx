@@ -83,128 +83,134 @@ const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
     };
 
     return (
-        <form
-            id="beta"
-            onSubmit={handleSubmit}
-            className="mt-16 space-y-6 rounded-3xl border border-slate-100 bg-white p-8 shadow-xl scroll-mt-24 lg:scroll-mt-36"
-            aria-describedby="beta-form-help"
-        >
-            <div>
-                <h3 className="text-2xl font-semibold text-slate-900">{copy.title}</h3>
-                <p id="beta-form-help" className="mt-2 text-sm text-slate-600">
-                    {copy.description}
-                </p>
+        <div className="scroll-mt-24 lg:scroll-mt-36">
+            <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{copy.heading}</h2>
+                <p className="mt-4 text-lg text-slate-600 mx-auto max-w-2xl">{copy.subheading}</p>
             </div>
-            <div className="grid gap-6 md:grid-cols-2">
-                <label className="flex flex-col gap-2">
-                    <span className="text-sm font-medium text-slate-700">{copy.fields.fullName}</span>
-                    <input
-                        type="text"
-                        name="fullName"
-                        value={form.fullName}
-                        onChange={handleChange}
-                        required
-                        autoComplete="name"
-                        className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-brand-400"
-                    />
-                </label>
-                <label className="flex flex-col gap-2">
-                    <span className="text-sm font-medium text-slate-700">{copy.fields.email}</span>
-                    <input
-                        type="email"
-                        name="email"
-                        value={form.email}
-                        onChange={handleChange}
-                        required
-                        autoComplete="email"
-                        inputMode="email"
-                        className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-brand-400"
-                    />
-                </label>
-                <label className="flex flex-col gap-2">
-                    <span className="text-sm font-medium text-slate-700">{copy.fields.company}</span>
-                    <input
-                        type="text"
-                        name="company"
-                        value={form.company}
-                        onChange={handleChange}
-                        placeholder={copy.fields.company}
-                        className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-brand-400"
-                    />
-                </label>
-                <label className="flex flex-col gap-2">
-                    <span className="text-sm font-medium text-slate-700">{copy.fields.useCase}</span>
-                    <textarea
-                        name="useCase"
-                        value={form.useCase}
-                        onChange={handleChange}
-                        minLength={3}
-                        required
-                        rows={3}
-                        className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-brand-400"
-                    />
-                </label>
-            </div>
-            <label className="flex items-start gap-3">
-                <input
-                    type="checkbox"
-                    name="termsAccepted"
-                    checked={form.termsAccepted}
-                    onChange={handleChange}
-                    required
-                    className="mt-1 h-5 w-5 rounded border-slate-300 text-brand-600 focus:ring-brand-500"
-                />
-                <span className="text-sm text-slate-600">
-                    {copy.checkboxLabel && copy.privacyLinkLabel ? (
-                        copy.checkboxLabel.split('{privacyLink}').map((segment, index, array) => (
-                            <Fragment key={`${segment}-${index}`}>
-                                {segment}
-                                {index < array.length - 1 && (
-                                    <a href={`/${locale}/legal/privacy`} className="text-brand-600 underline">
-                                        {copy.privacyLinkLabel}
-                                    </a>
-                                )}
-                            </Fragment>
-                        ))
-                    ) : (
-                        copy.checkboxLabel
-                    )}
-                </span>
-            </label>
-            <div className="sr-only" aria-hidden>
-                <label>
-                    No rellenes este campo si eres humano
-                    <input
-                        type="text"
-                        name="honeypot"
-                        tabIndex={-1}
-                        autoComplete="off"
-                        value={form.honeypot}
-                        onChange={handleChange}
-                    />
-                </label>
-            </div>
-            <input type="hidden" name="locale" value={form.locale} />
-            <button
-                type="submit"
-                disabled={submitting}
-                className="inline-flex w-full items-center justify-center rounded-full bg-brand-600 px-6 py-3 text-base font-semibold text-white shadow-soft-glow transition hover:bg-brand-500 focus-visible:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-70"
+            <form
+                id="beta"
+                onSubmit={handleSubmit}
+                className="space-y-6 rounded-3xl border border-slate-100 bg-white p-8 shadow-xl"
+                aria-describedby="beta-form-help"
             >
-                {submitting ? `${copy.submit}…` : copy.submit}
-            </button>
-            {success && (
-                <p className="flex items-center gap-2 rounded-2xl bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
-                    <CheckCircleIcon className="h-5 w-5" aria-hidden />
-                    {success}
-                </p>
-            )}
-            {error && (
-                <p className="flex items-center gap-2 rounded-2xl bg-rose-50 px-4 py-3 text-sm text-rose-700">
-                    <ExclamationTriangleIcon className="h-5 w-5" aria-hidden />
-                    {error}
-                </p>
-            )}
-        </form>
+                <div>
+                    <h3 className="text-2xl font-semibold text-slate-900">{copy.title}</h3>
+                    <p id="beta-form-help" className="mt-2 text-sm text-slate-600">
+                        {copy.description}
+                    </p>
+                </div>
+                <div className="grid gap-6 md:grid-cols-2">
+                    <label className="flex flex-col gap-2">
+                        <span className="text-sm font-medium text-slate-700">{copy.fields.fullName}</span>
+                        <input
+                            type="text"
+                            name="fullName"
+                            value={form.fullName}
+                            onChange={handleChange}
+                            required
+                            autoComplete="name"
+                            className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-brand-400"
+                        />
+                    </label>
+                    <label className="flex flex-col gap-2">
+                        <span className="text-sm font-medium text-slate-700">{copy.fields.email}</span>
+                        <input
+                            type="email"
+                            name="email"
+                            value={form.email}
+                            onChange={handleChange}
+                            required
+                            autoComplete="email"
+                            inputMode="email"
+                            className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-brand-400"
+                        />
+                    </label>
+                    <label className="flex flex-col gap-2">
+                        <span className="text-sm font-medium text-slate-700">{copy.fields.company}</span>
+                        <input
+                            type="text"
+                            name="company"
+                            value={form.company}
+                            onChange={handleChange}
+                            placeholder={copy.fields.company}
+                            className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-brand-400"
+                        />
+                    </label>
+                    <label className="flex flex-col gap-2">
+                        <span className="text-sm font-medium text-slate-700">{copy.fields.useCase}</span>
+                        <textarea
+                            name="useCase"
+                            value={form.useCase}
+                            onChange={handleChange}
+                            minLength={3}
+                            required
+                            rows={3}
+                            className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-brand-400"
+                        />
+                    </label>
+                </div>
+                <label className="flex items-start gap-3">
+                    <input
+                        type="checkbox"
+                        name="termsAccepted"
+                        checked={form.termsAccepted}
+                        onChange={handleChange}
+                        required
+                        className="mt-1 h-5 w-5 rounded border-slate-300 text-brand-600 focus:ring-brand-500"
+                    />
+                    <span className="text-sm text-slate-600">
+                        {copy.checkboxLabel && copy.privacyLinkLabel ? (
+                            copy.checkboxLabel.split('{privacyLink}').map((segment, index, array) => (
+                                <Fragment key={`${segment}-${index}`}>
+                                    {segment}
+                                    {index < array.length - 1 && (
+                                        <a href={`/${locale}/legal/privacy`} className="text-brand-600 underline">
+                                            {copy.privacyLinkLabel}
+                                        </a>
+                                    )}
+                                </Fragment>
+                            ))
+                        ) : (
+                            copy.checkboxLabel
+                        )}
+                    </span>
+                </label>
+                <div className="sr-only" aria-hidden>
+                    <label>
+                        No rellenes este campo si eres humano
+                        <input
+                            type="text"
+                            name="honeypot"
+                            tabIndex={-1}
+                            autoComplete="off"
+                            value={form.honeypot}
+                            onChange={handleChange}
+                        />
+                    </label>
+                </div>
+                <input type="hidden" name="locale" value={form.locale} />
+                <button
+                    type="submit"
+                    disabled={submitting}
+                    className="inline-flex w-full items-center justify-center rounded-full bg-brand-600 px-6 py-3 text-base font-semibold text-white shadow-soft-glow transition hover:bg-brand-500 focus-visible:bg-brand-700 disabled:cursor-not-allowed disabled:opacity-70"
+                >
+                    {submitting ? `${copy.submit}…` : copy.submit}
+                </button>
+                {success && (
+                    <p className="flex items-center gap-2 rounded-2xl bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+                        <CheckCircleIcon className="h-5 w-5" aria-hidden />
+                        {success}
+                    </p>
+                )}
+                {error && (
+                    <p className="flex items-center gap-2 rounded-2xl bg-rose-50 px-4 py-3 text-sm text-rose-700">
+                        <ExclamationTriangleIcon className="h-5 w-5" aria-hidden />
+                        {error}
+                    </p>
+                )}
+            </form>
+        </div>
     );
 };
 

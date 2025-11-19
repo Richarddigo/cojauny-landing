@@ -10,7 +10,7 @@ interface SavingsSectionProps {
 
 const SavingsSection = ({ copy }: SavingsSectionProps) => (
     <section
-        id="impacto"
+        id="impact"
         className="relative scroll-mt-24 overflow-hidden bg-slate-950 py-20 px-6 text-white lg:scroll-mt-32"
     >
         <div className="absolute inset-0 opacity-50" aria-hidden>

@@ -58,7 +58,7 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                         );
                     })}
                 </div>
-                <div className="relative flex flex-1 items-center justify-center lg:sticky lg:top-24 lg:h-screen lg:max-h-[800px]">
+                <div className="relative flex flex-1 items-center justify-center lg:sticky lg:top-24 lg:self-start">
                     <motion.div
                         key={activeScreen?.id}
                         initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.96, y: 20 }}

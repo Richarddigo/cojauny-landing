@@ -80,105 +80,111 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
     };
 
     return (
-        <form
-            onSubmit={handleSubmit}
-            className="space-y-6 rounded-3xl border border-slate-100 bg-white p-8 shadow-xl"
-            aria-describedby="feedback-help"
-        >
-            <div>
-                <h3 className="text-2xl font-semibold text-slate-900">{copy.title}</h3>
-                <p id="feedback-help" className="mt-2 text-sm text-slate-600">
-                    {copy.description}
-                </p>
+        <div>
+            <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{copy.heading}</h2>
+                <p className="mt-4 text-lg text-slate-600 mx-auto max-w-2xl">{copy.subheading}</p>
             </div>
-            <div className="grid gap-6 md:grid-cols-2">
-                <label className="flex flex-col gap-2">
-                    <span className="text-sm font-medium text-slate-700">{copy.fields.fullName}</span>
-                    <input
-                        type="text"
-                        name="name"
-                        value={form.name}
-                        onChange={handleChange}
-                        required
-                        className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-brand-400"
-                    />
-                </label>
-                <label className="flex flex-col gap-2">
-                    <span className="text-sm font-medium text-slate-700">{copy.fields.email}</span>
-                    <input
-                        type="email"
-                        name="email"
-                        value={form.email}
-                        onChange={handleChange}
-                        required
-                        className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-brand-400"
-                    />
-                </label>
-            </div>
-            <label className="flex flex-col gap-2">
-                <span className="text-sm font-medium text-slate-700">{copy.fields.sentiment}</span>
-                <select
-                    name="sentiment"
-                    value={form.sentiment}
-                    onChange={handleChange}
-                    className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-brand-400"
-                >
-                    <option value="" disabled>
-                        {copy.fields.selectPlaceholder ?? ''}
-                    </option>
-                    {copy.sentimentOptions?.map((option) => (
-                        <option key={option.value} value={option.value}>
-                            {option.label}
-                        </option>
-                    ))}
-                </select>
-            </label>
-            <label className="flex flex-col gap-2">
-                <span className="text-sm font-medium text-slate-700">{copy.fields.message}</span>
-                <textarea
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    rows={4}
-                    required
-                    minLength={10}
-                    className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-brand-400"
-                />
-            </label>
-            <div className="sr-only" aria-hidden>
-                <label>
-                    No rellenes este campo si eres humano
-                    <input
-                        type="text"
-                        name="honeypot"
-                        tabIndex={-1}
-                        autoComplete="off"
-                        value={form.honeypot}
-                        onChange={handleChange}
-                    />
-                </label>
-            </div>
-            <input type="hidden" name="locale" value={form.locale} />
-            <button
-                type="submit"
-                disabled={submitting}
-                className="inline-flex w-full items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-base font-semibold text-white transition hover:bg-slate-700 focus-visible:bg-slate-950 disabled:cursor-not-allowed disabled:opacity-70"
+            <form
+                onSubmit={handleSubmit}
+                className="space-y-6 rounded-3xl border border-slate-100 bg-white p-8 shadow-xl"
+                aria-describedby="feedback-help"
             >
-                {submitting ? `${copy.submit}…` : copy.submit}
-            </button>
-            {success && (
-                <p className="flex items-center gap-2 rounded-2xl bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
-                    <CheckCircleIcon className="h-5 w-5" aria-hidden />
-                    {success}
-                </p>
-            )}
-            {error && (
-                <p className="flex items-center gap-2 rounded-2xl bg-rose-50 px-4 py-3 text-sm text-rose-700">
-                    <ExclamationTriangleIcon className="h-5 w-5" aria-hidden />
-                    {error}
-                </p>
-            )}
-        </form>
+                <div>
+                    <h3 className="text-2xl font-semibold text-slate-900">{copy.title}</h3>
+                    <p id="feedback-help" className="mt-2 text-sm text-slate-600">
+                        {copy.description}
+                    </p>
+                </div>
+                <div className="grid gap-6 md:grid-cols-2">
+                    <label className="flex flex-col gap-2">
+                        <span className="text-sm font-medium text-slate-700">{copy.fields.fullName}</span>
+                        <input
+                            type="text"
+                            name="name"
+                            value={form.name}
+                            onChange={handleChange}
+                            required
+                            className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-brand-400"
+                        />
+                    </label>
+                    <label className="flex flex-col gap-2">
+                        <span className="text-sm font-medium text-slate-700">{copy.fields.email}</span>
+                        <input
+                            type="email"
+                            name="email"
+                            value={form.email}
+                            onChange={handleChange}
+                            required
+                            className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-brand-400"
+                        />
+                    </label>
+                </div>
+                <label className="flex flex-col gap-2">
+                    <span className="text-sm font-medium text-slate-700">{copy.fields.sentiment}</span>
+                    <select
+                        name="sentiment"
+                        value={form.sentiment}
+                        onChange={handleChange}
+                        className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-brand-400"
+                    >
+                        <option value="" disabled>
+                            {copy.fields.selectPlaceholder ?? ''}
+                        </option>
+                        {copy.sentimentOptions?.map((option) => (
+                            <option key={option.value} value={option.value}>
+                                {option.label}
+                            </option>
+                        ))}
+                    </select>
+                </label>
+                <label className="flex flex-col gap-2">
+                    <span className="text-sm font-medium text-slate-700">{copy.fields.message}</span>
+                    <textarea
+                        name="message"
+                        value={form.message}
+                        onChange={handleChange}
+                        rows={4}
+                        required
+                        minLength={10}
+                        className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-brand-400"
+                    />
+                </label>
+                <div className="sr-only" aria-hidden>
+                    <label>
+                        No rellenes este campo si eres humano
+                        <input
+                            type="text"
+                            name="honeypot"
+                            tabIndex={-1}
+                            autoComplete="off"
+                            value={form.honeypot}
+                            onChange={handleChange}
+                        />
+                    </label>
+                </div>
+                <input type="hidden" name="locale" value={form.locale} />
+                <button
+                    type="submit"
+                    disabled={submitting}
+                    className="inline-flex w-full items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-base font-semibold text-white transition hover:bg-slate-700 focus-visible:bg-slate-950 disabled:cursor-not-allowed disabled:opacity-70"
+                >
+                    {submitting ? `${copy.submit}…` : copy.submit}
+                </button>
+                {success && (
+                    <p className="flex items-center gap-2 rounded-2xl bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+                        <CheckCircleIcon className="h-5 w-5" aria-hidden />
+                        {success}
+                    </p>
+                )}
+                {error && (
+                    <p className="flex items-center gap-2 rounded-2xl bg-rose-50 px-4 py-3 text-sm text-rose-700">
+                        <ExclamationTriangleIcon className="h-5 w-5" aria-hidden />
+                        {error}
+                    </p>
+                )}
+            </form>
+        </div>
     );
 };
 
