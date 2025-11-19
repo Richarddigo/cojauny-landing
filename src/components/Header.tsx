@@ -109,7 +109,7 @@ const Header = ({ locale, copy }: HeaderProps) => {
                         <div className="-my-6 divide-y divide-slate-500/10">
                             <div className="space-y-2 py-6">
                                 <Link
-                                    href={`/${locale}#inicio`}
+                                    href={`/${locale}#home`}
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-white/10"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
@@ -123,35 +123,35 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                     {copy.demo}
                                 </Link>
                                 <Link
-                                    href={`/${locale}#beneficios`}
+                                    href={`/${locale}#benefits`}
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-white/10"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     {copy.benefits}
                                 </Link>
                                 <Link
-                                    href={`/${locale}#impacto`}
+                                    href={`/${locale}#impact`}
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-white/10"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     {copy.impact}
                                 </Link>
                                 <Link
-                                    href={`/${locale}#caracteristicas`}
+                                    href={`/${locale}#features`}
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-white/10"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     {copy.features}
                                 </Link>
                                 <Link
-                                    href={`/${locale}#como-funciona`}
+                                    href={`/${locale}#how-it-works`}
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-white/10"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >
                                     {copy.workflow}
                                 </Link>
                                 <Link
-                                    href={`/${locale}#precios`}
+                                    href={`/${locale}#pricing`}
                                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-white/10"
                                     onClick={() => setMobileMenuOpen(false)}
                                 >

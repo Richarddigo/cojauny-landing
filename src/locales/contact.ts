@@ -39,7 +39,7 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
       fields: {
         name: 'Nombre',
         email: 'Email',
-        topic: 'Tema',
+        topic: 'Asunto',
         message: 'Mensaje'
       },
       legalNotice: 'Guardaremos tu mensaje en nuestra base de datos segura para poder responderte. Puedes pedir que lo eliminemos cuando quieras escribiendo a feedback@cojauny.com.'
@@ -60,7 +60,7 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
       fields: {
         name: 'Name',
         email: 'Email',
-        topic: 'Topic',
+        topic: 'Subject',
         message: 'Message'
       },
       legalNotice: 'We will store your message in our secure database so we can reply. You can request deletion at any time by emailing feedback@cojauny.com.'
@@ -81,7 +81,7 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
       fields: {
         name: 'Name',
         email: 'Email',
-        topic: 'Thema',
+        topic: 'Betreff',
         message: 'Nachricht'
       },
       legalNotice: 'Wir speichern deine Nachricht in unserer sicheren Datenbank, um dir antworten zu können. Du kannst jederzeit die Löschung beantragen unter feedback@cojauny.com.'
@@ -102,7 +102,7 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
       fields: {
         name: 'Nom',
         email: 'Email',
-        topic: 'Sujet',
+        topic: 'Objet',
         message: 'Message'
       },
       legalNotice: 'Nous conserverons votre message dans notre base de données sécurisée afin de pouvoir vous répondre. Vous pouvez demander sa suppression à tout moment en écrivant à feedback@cojauny.com.'

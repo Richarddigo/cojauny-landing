@@ -17,7 +17,7 @@ const FaqSection = ({ copy }: FaqSectionProps) => {
     };
 
     return (
-        <section id="faq" className="scroll-mt-16 py-20 mx-auto max-w-7xl px-6 lg:scroll-mt-20">
+        <section id="faq" className="scroll-mt-[84px] py-20 mx-auto max-w-7xl px-6 lg:scroll-mt-[100px]">
             <SectionIntro title={copy.title} description={copy.subtitle} />
 
             <div className="mt-12 space-y-4">

@@ -21,7 +21,7 @@ const LandingPageContent = ({ copy, locale }: LandingPageContentProps) => (
     <main className="relative overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(90,103,242,0.08),_transparent_60%)]">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,_rgba(90,103,242,0.08),_transparent_30%),_radial-gradient(circle_at_80%_0%,_rgba(18,23,84,0.08),_transparent_35%)]" aria-hidden />
         <Hero copy={copy.hero} />
-        <section id="demo" className="mx-auto max-w-7xl scroll-mt-16 py-20 px-6 lg:scroll-mt-20">
+        <section id="demo" className="mx-auto max-w-7xl scroll-mt-[84px] py-20 px-6 lg:scroll-mt-[100px]">
             <Mockups className="h-full" copy={copy.mockups} />
         </section>
         <ValuePropsSection copy={copy.value} />
@@ -29,7 +29,7 @@ const LandingPageContent = ({ copy, locale }: LandingPageContentProps) => (
         <Features copy={copy.features} />
         <WorkflowSection copy={copy.workflow} />
         <PricingSection copy={copy.pricing} />
-        <section id="beta" className="mx-auto max-w-7xl scroll-mt-16 py-20 px-6 lg:scroll-mt-20">
+        <section id="beta" className="mx-auto max-w-7xl scroll-mt-[84px] py-20 px-6 lg:scroll-mt-[100px]">
             <BetaSignupForm copy={copy.forms.beta} locale={locale} />
         </section>
         <FaqSection copy={copy.faq} />

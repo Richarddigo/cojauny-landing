@@ -14,7 +14,7 @@ const PricingSection = ({ copy }: PricingSectionProps) => {
     const plans = [copy.plans.free, copy.plans.premium];
 
     return (
-        <section id="pricing" className="scroll-mt-16 py-20 mx-auto max-w-7xl px-6 lg:scroll-mt-20">
+        <section id="pricing" className="scroll-mt-[84px] py-20 mx-auto max-w-7xl px-6 lg:scroll-mt-[100px]">
             <SectionIntro title={copy.title} description={copy.subtitle} />
             <div className="mt-16 grid gap-8 md:grid-cols-2 lg:gap-12">
                 {plans.map((plan, index) => {
