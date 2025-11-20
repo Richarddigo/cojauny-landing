@@ -23,9 +23,10 @@ cp .env.example .env.local
 
 Variables clave:
 
-- `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-- `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_PROJECT_ID`, `SUPABASE_URL`
-- `ZOHO_SMTP_USER`, `ZOHO_SMTP_PASSWORD`, `ZOHO_API_KEY`, `ZOHO_ACCOUNT_ID`
+- `NEXT_PUBLIC_BASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `BASE_SERVICE_ROLE_KEY`, `SUPABASE_PROJECT_ID`, `BASE_URL`
+- `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`
+- `SMTP_USER_BETA`, `SMTP_USER_FEEDBACK`, `SMTP_USER_SUPPORT` (opcional `SMTP_PASS_*` y `SMTP_FROM_NAME_*`)
 - `EMAIL_FROM_ADDRESS`, `EMAIL_ADMIN_RECIPIENT`
 - `CURRENT_SITE_URL` o `CURRENT_SITE_HTML` para la migración
 
@@ -56,7 +57,7 @@ La aplicación estará disponible en `http://localhost:3000`.
 supabase functions deploy send-beta-email --project-ref mi-proyecto-supabase
 ```
 
-4. Configura las variables de la función edge (`ZOHO_SMTP_USER`, `ZOHO_SMTP_PASSWORD`, `ZOHO_API_KEY`, `ZOHO_ACCOUNT_ID`, `EMAIL_FROM_ADDRESS`).
+4. Configura las variables de la función edge (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_USER_BETA`, `SMTP_USER_FEEDBACK`, `SMTP_USER_SUPPORT`, `SMTP_FROM_NAME_*`).
 
 ## Despliegue en Vercel
 
@@ -72,9 +73,9 @@ npm run build
 
 ## Emails
 
-- Plantillas HTML y texto plano en `emails/templates`.
-- `supabase/functions/send-beta-email` envía a través de SMTP o API REST de Zoho.
-- `src/lib/email.ts` expone `triggerEdgeEmailFunction` para invocar la función edge.
+- Plantillas de referencia en `emails/templates` y contenido localizado dentro de `supabase/functions/send-beta-email`.
+- La función edge usa SMTP (Zoho) con remitentes dedicados: `beta@`, `feedback@` y `support@`.
+- `src/lib/email.ts` expone `triggerEdgeEmailFunction` para invocar la función y se encarga de pasar el `locale` del usuario.
 
 ## Migración de contenido
 
@@ -84,7 +85,7 @@ npm run build
 
 ## Backup de datos
 
-Ejecuta `npm run supabase:backup` con `SUPABASE_URL` y `SUPABASE_SERVICE_ROLE_KEY` configurados. Los archivos se guardan en `docs/backups`.
+Ejecuta `npm run supabase:backup` con `BASE_URL` y `BASE_SERVICE_ROLE_KEY` configurados. Los archivos se guardan en `docs/backups`.
 
 ## Pruebas y calidad
 

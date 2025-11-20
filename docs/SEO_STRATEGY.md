@@ -186,22 +186,22 @@ Las métricas de volumen y dificultad son **{{ESTIMATED}}** basadas en análisis
 
 #### ES
 - **Title**: `Contacto · Cojauny | Propuestas comerciales y soporte`
-- **Description**: `¿Propuesta de negocio, mejora para la app o consulta? Escríbenos y el equipo fundador te responde en 2 días laborables desde feedback@cojauny.com.`
+- **Description**: `¿Propuesta de negocio, mejora para la app o consulta? Escríbenos y el equipo fundador te responde en 2 días laborables desde support@cojauny.com.`
 - **Robots**: `index, follow`
 
 #### EN
 - **Title**: `Contact · Cojauny | Business Proposals & Support`
-- **Description**: `Business proposal, product improvement or question? Write us and the founding team replies within 2 business days from feedback@cojauny.com.`
+- **Description**: `Business proposal, product improvement or question? Write us and the founding team replies within 2 business days from support@cojauny.com.`
 - **Robots**: `index, follow`
 
 #### FR
 - **Title**: `Contact · Cojauny | Propositions commerciales et support`
-- **Description**: `Proposition business, amélioration produit ou question ? Écrivez-nous et l'équipe fondatrice répond sous 2 jours ouvrables depuis feedback@cojauny.com.`
+- **Description**: `Proposition business, amélioration produit ou question ? Écrivez-nous et l'équipe fondatrice répond sous 2 jours ouvrables depuis support@cojauny.com.`
 - **Robots**: `index, follow`
 
 #### DE
 - **Title**: `Kontakt · Cojauny | Geschäftsanfragen & Support`
-- **Description**: `Business-Angebot, Produktverbesserung oder Frage? Schreib uns und das Gründerteam antwortet innerhalb von 2 Werktagen von feedback@cojauny.com.`
+- **Description**: `Business-Angebot, Produktverbesserung oder Frage? Schreib uns und das Gründerteam antwortet innerhalb von 2 Werktagen von support@cojauny.com.`
 - **Robots**: `index, follow`
 
 ---

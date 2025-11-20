@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
       name: data.name,
       message: data.message,
       sentiment: data.sentiment,
-      locale: data.locale,
+      language: data.locale,
       ip_address: ipAddress,
       user_agent: request.headers.get('user-agent') ?? ''
     })
@@ -80,25 +80,25 @@ export async function POST(request: NextRequest) {
     await triggerEdgeEmailFunction({
       email: data.email,
       template: 'feedback-thanks',
+      locale: data.locale,
       variables: {
-        name: data.name,
-        locale: data.locale
+        name: data.name
       }
     });
 
-    if (env.EMAIL_ADMIN_RECIPIENT) {
-      await triggerEdgeEmailFunction({
-        email: env.EMAIL_ADMIN_RECIPIENT,
-        template: 'internal-notification',
-        variables: {
-          name: data.name,
-          email: data.email,
-          message: data.message,
-          sentiment: data.sentiment,
-          locale: data.locale
-        }
-      });
-    }
+    const adminRecipient = env.EMAIL_ADMIN_RECIPIENT || 'feedback@cojauny.com';
+    await triggerEdgeEmailFunction({
+      email: adminRecipient,
+      template: 'internal-notification',
+      locale: 'es',
+      variables: {
+        name: data.name,
+        email: data.email,
+        message: data.message,
+        sentiment: data.sentiment,
+        locale: data.locale
+      }
+    });
   } catch (error) {
     console.error('Error enviando notificaciones de feedback', error);
   }

@@ -9,7 +9,7 @@ describe('triggerEdgeEmailFunction', () => {
     process.env = {
       ...originalEnv,
       SUPABASE_PROJECT_ID: 'mi-proyecto-supabase',
-      SUPABASE_SERVICE_ROLE_KEY: 'service-role-key'
+      BASE_SERVICE_ROLE_KEY: 'service-role-key'
     };
 
     mockFetch.mockResolvedValue({

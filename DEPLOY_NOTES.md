@@ -12,13 +12,13 @@
 ## Supabase
 
 - Provisiona tablas y políticas con `SUPABASE_SCHEMA.sql`.
-- Despliega la función edge `send-beta-email` y configura secretos (`ZOHO_*`, `EMAIL_FROM_ADDRESS`).
+- Despliega la función edge `send-beta-email` y configura secretos (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_USER_BETA`, `SMTP_USER_FEEDBACK`, `SMTP_USER_SUPPORT`, `SMTP_FROM_NAME_*`).
 - Habilita logs en Supabase para monitorizar errores en `emails_sent`.
 
-## Email (Zoho)
+## Email (Zoho SMTP)
 
-- Configura SMTP (puerto 465) o API (oAuth token + account ID).
-- La función edge detecta automáticamente qué método usar según variables disponibles.
+- Configura SMTP (puerto 465) con los buzones dedicados (`beta@`, `feedback@`, `support@`).
+- Cada plantilla usa su remitente correspondiente para reforzar la entregabilidad.
 - Define SPF/DKIM/DMARC en tu dominio para evitar spam.
 
 ## Costes estimados
@@ -47,7 +47,7 @@
 - Mantén claves en Variables de entorno, nunca en el repositorio.
 - Revisa periódicamente políticas RLS en Supabase.
 - Activa 2FA en Vercel, GitHub y Zoho.
-- Considera rotar `SUPABASE_SERVICE_ROLE_KEY` trimestralmente.
+- Considera rotar `BASE_SERVICE_ROLE_KEY` trimestralmente.
 
 ## Próximos pasos sugeridos
 

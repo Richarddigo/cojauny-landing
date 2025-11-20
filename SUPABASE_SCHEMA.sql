@@ -4,33 +4,61 @@
 create extension if not exists "uuid-ossp" with schema extensions;
 create extension if not exists pgcrypto;
 
-create table if not exists public.beta_signups (
+create table if not exists public.waitlist (
     id uuid primary key default uuid_generate_v4(),
     email text not null,
-    full_name text not null,
+    name text not null,
     company text,
-    use_case text not null,
+    use_case text,
+    flight text,
+    beta_tester boolean not null default true,
     terms_accepted boolean not null default false,
-    confirmation_token text not null,
+    language text not null default 'es',
+    confirmation_token text,
     confirmed_at timestamptz,
     ip_address inet,
     user_agent text,
     created_at timestamptz not null default timezone('utc', now())
 );
 
-create unique index if not exists beta_signups_email_idx on public.beta_signups (lower(email));
-create index if not exists beta_signups_created_idx on public.beta_signups (created_at);
+alter table if exists public.waitlist add column if not exists company text;
+alter table if exists public.waitlist add column if not exists use_case text;
+alter table if exists public.waitlist add column if not exists flight text;
+alter table if exists public.waitlist add column if not exists beta_tester boolean not null default true;
+alter table if exists public.waitlist add column if not exists terms_accepted boolean not null default false;
+alter table if exists public.waitlist add column if not exists language text not null default 'es';
+alter table if exists public.waitlist add column if not exists confirmation_token text;
+alter table if exists public.waitlist add column if not exists confirmed_at timestamptz;
+alter table if exists public.waitlist add column if not exists ip_address inet;
+alter table if exists public.waitlist add column if not exists user_agent text;
+
+create unique index if not exists waitlist_email_idx on public.waitlist (lower(email));
+create index if not exists waitlist_created_idx on public.waitlist (created_at);
 
 create table if not exists public.feedback (
     id uuid primary key default uuid_generate_v4(),
     email text not null,
     name text not null,
     message text not null,
-    sentiment text not null check (sentiment in ('positive', 'neutral', 'negative')),
+    sentiment text not null check (sentiment in ('positive', 'neutral', 'negative', 'contact')),
+    topic text,
+    language text not null default 'es',
     ip_address inet,
     user_agent text,
     created_at timestamptz not null default timezone('utc', now())
 );
+
+alter table if exists public.feedback add column if not exists sentiment text;
+alter table if exists public.feedback alter column sentiment set default 'neutral';
+update public.feedback set sentiment = 'neutral' where sentiment is null;
+alter table if exists public.feedback alter column sentiment set not null;
+alter table if exists public.feedback add column if not exists topic text;
+alter table if exists public.feedback add column if not exists language text not null default 'es';
+alter table if exists public.feedback add column if not exists ip_address inet;
+alter table if exists public.feedback add column if not exists user_agent text;
+alter table if exists public.feedback drop constraint if exists feedback_sentiment_check;
+alter table if exists public.feedback add constraint feedback_sentiment_check
+    check (sentiment in ('positive', 'neutral', 'negative', 'contact'));
 
 create index if not exists feedback_sentiment_idx on public.feedback (sentiment);
 create index if not exists feedback_created_idx on public.feedback (created_at);
@@ -45,20 +73,22 @@ create table if not exists public.emails_sent (
     created_at timestamptz not null default timezone('utc', now())
 );
 
-alter table public.beta_signups enable row level security;
+alter table if exists public.emails_sent add column if not exists metadata jsonb;
+
+alter table public.waitlist enable row level security;
 alter table public.feedback enable row level security;
 alter table public.emails_sent enable row level security;
 
 create role cojauny_beta_writer;
 
-create policy "Permitir inserciones autenticadas en beta_signups"
-    on public.beta_signups
+create policy "Permitir inserciones autenticadas en waitlist"
+    on public.waitlist
     for insert
     to authenticated, service_role
     with check (true);
 
-create policy "Permitir lectura de beta_signups a service_role"
-    on public.beta_signups
+create policy "Permitir lectura de waitlist a service_role"
+    on public.waitlist
     for select using (auth.role() = 'service_role');
 
 create policy "Insert feedback" on public.feedback
@@ -85,9 +115,9 @@ declare
     deleted_beta int;
     deleted_feedback int;
 begin
-    update public.beta_signups
+    update public.waitlist
     set email = concat('anon-', md5(email || now()) , '@example.com'),
-        full_name = 'Eliminado',
+        name = 'Eliminado',
         company = null,
         use_case = null,
         confirmation_token = null
@@ -102,7 +132,7 @@ begin
     returning 1 into deleted_feedback;
 
     return jsonb_build_object(
-        'beta_signups_cleaned', coalesce(deleted_beta, 0),
+        'waitlist_cleaned', coalesce(deleted_beta, 0),
         'feedback_cleaned', coalesce(deleted_feedback, 0)
     );
 end;
@@ -112,6 +142,6 @@ grant execute on function public.anonymize_user_data(text) to service_role;
 
 grant usage on schema public to cojauny_beta_writer;
 
-grant insert on public.beta_signups to cojauny_beta_writer;
+grant insert on public.waitlist to cojauny_beta_writer;
 
 grant insert on public.feedback to cojauny_beta_writer;

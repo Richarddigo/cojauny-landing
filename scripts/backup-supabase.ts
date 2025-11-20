@@ -5,7 +5,7 @@ import path from 'path';
 import { createClient } from '@supabase/supabase-js';
 
 const OUTPUT_DIR = path.join(process.cwd(), 'docs', 'backups');
-const tables = ['beta_signups', 'feedback', 'emails_sent'] as const;
+const tables = ['waitlist', 'feedback', 'emails_sent'] as const;
 
 type TableName = (typeof tables)[number];
 
@@ -32,8 +32,8 @@ async function exportTable(client: ReturnType<typeof createClient>, table: Table
 }
 
 async function main() {
-  const url = requireEnv('SUPABASE_URL');
-  const key = requireEnv('SUPABASE_SERVICE_ROLE_KEY');
+  const url = requireEnv('BASE_URL');
+  const key = requireEnv('BASE_SERVICE_ROLE_KEY');
 
   const supabase = createClient(url, key, {
     auth: {

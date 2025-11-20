@@ -32,6 +32,17 @@ lerna-debug.log*
 .env.development.local
 .env.test.local
 .env.production.local
+.env.production
+.env.staging
+.env.preview
+*.env.secret
+
+# Supabase/Firebase secrets
+.supabase/secrets.json
+firebase.env
+
+# Data exports / backups
+docs/backups/
 
 # Vercel
 .vercel

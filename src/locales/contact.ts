@@ -33,7 +33,7 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
       title: 'Envíanos un mensaje',
       description:
         'Cuéntanos en qué podemos ayudarte y deja tu correo para que podamos responderte. El nombre y el email son obligatorios.',
-      success: 'Gracias por escribirnos. Te responderemos desde feedback@cojauny.com muy pronto.',
+      success: 'Gracias por escribirnos. Te responderemos desde support@cojauny.com muy pronto.',
       error: 'No hemos podido enviar tu mensaje. Inténtalo de nuevo en unos minutos.',
       submit: 'Enviar mensaje',
       fields: {
@@ -42,7 +42,7 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
         topic: 'Asunto',
         message: 'Mensaje'
       },
-      legalNotice: 'Guardaremos tu mensaje en nuestra base de datos segura para poder responderte. Puedes pedir que lo eliminemos cuando quieras escribiendo a feedback@cojauny.com.'
+      legalNotice: 'Guardaremos tu mensaje en nuestra base de datos segura para poder responderte. Puedes pedir que lo eliminemos cuando quieras escribiendo a support@cojauny.com.'
     }
   },
   en: {
@@ -54,7 +54,7 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
       title: 'Send us a message',
       description:
         "Tell us how we can help and leave your email so we can get back to you. Name and email are mandatory.",
-      success: 'Thanks for reaching out. We will reply from feedback@cojauny.com shortly.',
+      success: 'Thanks for reaching out. We will reply from support@cojauny.com shortly.',
       error: 'We could not send your message. Please try again in a few minutes.',
       submit: 'Send message',
       fields: {
@@ -63,7 +63,7 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
         topic: 'Subject',
         message: 'Message'
       },
-      legalNotice: 'We will store your message in our secure database so we can reply. You can request deletion at any time by emailing feedback@cojauny.com.'
+      legalNotice: 'We will store your message in our secure database so we can reply. You can request deletion at any time by emailing support@cojauny.com.'
     }
   },
   de: {
@@ -75,7 +75,7 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
       title: 'Schreib uns eine Nachricht',
       description:
         'Erzähl uns, wobei wir helfen können, und hinterlasse deine E-Mail-Adresse. Name und E-Mail sind Pflichtfelder.',
-      success: 'Vielen Dank für deine Nachricht. Wir antworten dir bald von feedback@cojauny.com.',
+      success: 'Vielen Dank für deine Nachricht. Wir antworten dir bald von support@cojauny.com.',
       error: 'Deine Nachricht konnte nicht gesendet werden. Versuch es in ein paar Minuten erneut.',
       submit: 'Nachricht senden',
       fields: {
@@ -84,7 +84,7 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
         topic: 'Betreff',
         message: 'Nachricht'
       },
-      legalNotice: 'Wir speichern deine Nachricht in unserer sicheren Datenbank, um dir antworten zu können. Du kannst jederzeit die Löschung beantragen unter feedback@cojauny.com.'
+      legalNotice: 'Wir speichern deine Nachricht in unserer sicheren Datenbank, um dir antworten zu können. Du kannst jederzeit die Löschung beantragen unter support@cojauny.com.'
     }
   },
   fr: {
@@ -96,7 +96,7 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
       title: 'Envoyez-nous un message',
       description:
         'Expliquez comment nous pouvons vous aider et laissez votre e-mail pour que nous puissions répondre. Le nom et l\'e-mail sont obligatoires.',
-      success: 'Merci de nous avoir écrit. Nous vous répondrons très vite depuis feedback@cojauny.com.',
+      success: 'Merci de nous avoir écrit. Nous vous répondrons très vite depuis support@cojauny.com.',
       error: "Nous n'avons pas pu envoyer votre message. Veuillez réessayer dans quelques minutes.",
       submit: 'Envoyer le message',
       fields: {
@@ -105,7 +105,7 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
         topic: 'Objet',
         message: 'Message'
       },
-      legalNotice: 'Nous conserverons votre message dans notre base de données sécurisée afin de pouvoir vous répondre. Vous pouvez demander sa suppression à tout moment en écrivant à feedback@cojauny.com.'
+      legalNotice: 'Nous conserverons votre message dans notre base de données sécurisée afin de pouvoir vous répondre. Vous pouvez demander sa suppression à tout moment en écrivant à support@cojauny.com.'
     }
   }
 };

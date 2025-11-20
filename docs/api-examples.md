@@ -42,21 +42,26 @@ curl -X POST https://cojauny.com/api/privacy/data-deletion \
    - `baseUrl` → `https://cojauny.com`
    - `betaToken` (para pruebas internas, opcional)
 
-## Ejemplo de llamada desde Supabase Edge Function (Zoho API)
+## Ejemplo de envío SMTP desde una Edge Function
 
 ```typescript
-await fetch(`https://mail.zoho.eu/api/accounts/${Deno.env.get('ZOHO_ACCOUNT_ID')}/messages`, {
-  method: 'POST',
-  headers: {
-    Authorization: `Zoho-oauthtoken ${Deno.env.get('ZOHO_API_KEY')}`,
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    fromAddress: Deno.env.get('EMAIL_FROM_ADDRESS'),
-    toAddress: ['nuevo@ejemplo.com'],
-    subject: 'Bienvenido a la beta de Cojauny',
-    content: '<p>Tu token es 123456</p>',
-    mailFormat: 'html'
-  })
+import { SmtpClient } from 'https://deno.land/x/smtp@v0.7.0/mod.ts';
+
+const client = new SmtpClient();
+await client.connectTLS({
+  hostname: Deno.env.get('SMTP_HOST') ?? 'smtppro.zoho.eu',
+  port: Number(Deno.env.get('SMTP_PORT') ?? '465'),
+  username: Deno.env.get('SMTP_USER_BETA')!,
+  password: Deno.env.get('SMTP_PASS')!
 });
+
+await client.send({
+  from: `Cojauny Beta <${Deno.env.get('SMTP_USER_BETA')}>`,
+  to: 'nuevo@ejemplo.com',
+  subject: 'Bienvenido a la beta de Cojauny',
+  content: 'Tu token es 123456',
+  html: '<p>Tu token es <strong>123456</strong></p>'
+});
+
+await client.close();
 ```

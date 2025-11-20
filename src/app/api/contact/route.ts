@@ -10,7 +10,7 @@ export const runtime = 'edge';
 
 const WINDOW_MINUTES = 10;
 const MAX_ATTEMPTS = 5;
-const INTERNAL_CONTACT_EMAIL = 'feedback@cojauny.com';
+const INTERNAL_CONTACT_EMAIL = 'support@cojauny.com';
 
 export async function POST(request: NextRequest) {
   const payload = await request.json().catch(() => null);
@@ -65,7 +65,8 @@ export async function POST(request: NextRequest) {
       name: data.name,
       message: data.message,
       sentiment: 'contact',
-      locale: data.locale,
+      topic: data.topic,
+      language: data.locale,
       ip_address: ipAddress,
       user_agent: request.headers.get('user-agent') ?? ''
     })
@@ -81,9 +82,9 @@ export async function POST(request: NextRequest) {
     await triggerEdgeEmailFunction({
       email: data.email,
       template: 'contact-thanks',
+      locale: data.locale,
       variables: {
-        name: data.name,
-        locale: data.locale
+        name: data.name
       }
     });
 
@@ -92,10 +93,12 @@ export async function POST(request: NextRequest) {
     await triggerEdgeEmailFunction({
       email: adminRecipient,
       template: 'contact-notification',
+      locale: 'es',
       variables: {
         name: data.name,
         email: data.email,
         message: data.message,
+        topic: data.topic,
         locale: data.locale
       }
     });

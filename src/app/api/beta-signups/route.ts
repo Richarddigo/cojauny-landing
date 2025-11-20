@@ -10,6 +10,7 @@ export const runtime = 'edge';
 
 const WINDOW_MINUTES = 10;
 const MAX_ATTEMPTS = 3;
+const WAITLIST_TABLE = 'waitlist';
 
 export async function POST(request: NextRequest) {
   const payload = await request.json().catch(() => null);
@@ -31,6 +32,9 @@ export async function POST(request: NextRequest) {
   data.fullName = data.fullName.trim();
   if (data.company) {
     data.company = data.company.trim();
+    if (data.company.length === 0) {
+      data.company = undefined;
+    }
   }
   data.useCase = data.useCase.trim();
 
@@ -44,7 +48,7 @@ export async function POST(request: NextRequest) {
   const since = new Date(Date.now() - WINDOW_MINUTES * 60 * 1000).toISOString();
 
   const recentAttempts = await supabase
-    .from('beta_signups')
+    .from(WAITLIST_TABLE)
     .select('id', { count: 'exact', head: true })
     .gte('created_at', since)
     .eq('ip_address', ipAddress);
@@ -64,14 +68,15 @@ export async function POST(request: NextRequest) {
   const confirmationToken = uuidv4();
 
   const insertResult = await supabase
-    .from('beta_signups')
+    .from(WAITLIST_TABLE)
     .insert({
       email: data.email,
-      full_name: data.fullName,
-      company: data.company,
+      name: data.fullName,
+      company: data.company ?? null,
       use_case: data.useCase,
+      beta_tester: true,
       terms_accepted: data.termsAccepted,
-      locale: data.locale,
+      language: data.locale,
       confirmation_token: confirmationToken,
       ip_address: ipAddress,
       user_agent: request.headers.get('user-agent') ?? ''
@@ -88,6 +93,7 @@ export async function POST(request: NextRequest) {
     await triggerEdgeEmailFunction({
       email: data.email,
       template: 'beta-confirmation',
+      locale: data.locale,
       variables: {
         name: data.fullName,
         confirmation_token: confirmationToken

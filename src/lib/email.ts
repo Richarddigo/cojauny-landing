@@ -1,4 +1,6 @@
 import { env } from './env';
+import type { Locale } from '@/locales/config';
+
 export type EmailTemplateName =
   | 'beta-confirmation'
   | 'feedback-thanks'
@@ -9,6 +11,7 @@ export type EmailTemplateName =
 export interface EmailEdgePayload {
   email: string;
   template: EmailTemplateName;
+  locale?: Locale;
   variables: Record<string, string>;
 }
 
@@ -22,14 +25,15 @@ export function getEdgeEmailUrl() {
 
 export async function triggerEdgeEmailFunction(event: EmailEdgePayload) {
   const url = getEdgeEmailUrl();
+  const payload = { ...event, locale: event.locale ?? 'es' };
 
   const response = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY ?? ''}`
+      Authorization: `Bearer ${env.BASE_SERVICE_ROLE_KEY ?? ''}`
     },
-    body: JSON.stringify(event)
+    body: JSON.stringify(payload)
   });
 
   if (!response.ok) {
@@ -44,18 +48,18 @@ export async function triggerEdgeEmailFunction(event: EmailEdgePayload) {
 
 export const emailTemplateMap: Record<EmailTemplateName, { description: string }> = {
   'beta-confirmation': {
-    description: 'Confirma el acceso de un nuevo beta tester con token único.'
+    description: 'Envía el token de acceso a la beta con el remitente beta@cojauny.com.'
   },
   'feedback-thanks': {
-    description: 'Agradece el feedback recibido y mantiene el contacto.'
+    description: 'Agradece el feedback recibido desde feedback@cojauny.com en el idioma del usuario.'
   },
   'contact-thanks': {
-    description: 'Confirma la recepción de un mensaje de contacto y detalla los próximos pasos.'
+    description: 'Confirma la recepción de solicitudes de soporte desde support@cojauny.com.'
   },
   'contact-notification': {
-    description: 'Notifica al equipo interno cuando llega un mensaje del formulario de contacto.'
+    description: 'Notifica al equipo de soporte cada vez que llega un nuevo mensaje.'
   },
   'internal-notification': {
-    description: 'Notifica al equipo interno cuando llega feedback relevante.'
+    description: 'Envía un resumen interno cuando se recibe feedback destacado.'
   }
 };
