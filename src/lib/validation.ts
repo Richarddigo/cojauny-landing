@@ -2,6 +2,21 @@ import { z } from 'zod';
 
 import { localeValues } from '@/locales/config';
 
+export const betaCountryValues = [
+  'es',
+  'de',
+  'fr',
+  'uk',
+  'us',
+  'mx',
+  'ar',
+  'co',
+  'cl',
+  'other'
+] as const;
+
+export const betaFrequencyValues = ['once', 'two_to_five', 'six_to_ten', 'more_than_ten'] as const;
+
 export const feedbackSchema = z
   .object({
     email: z.string().email('Introduce un correo válido'),
@@ -34,12 +49,25 @@ export const betaSignupSchema = z
   .object({
     email: z.string().email('Introduce un correo válido'),
     fullName: z.string().min(3, 'Introduce tu nombre completo'),
-    company: z.string().optional(),
     useCase: z.string().min(3, 'Describe brevemente tu caso de uso'),
+    country: z.enum(betaCountryValues, {
+      errorMap: () => ({ message: 'Selecciona tu país' })
+    }),
+    flightFrequency: z.enum(betaFrequencyValues, {
+      errorMap: () => ({ message: 'Selecciona tu frecuencia de vuelo' })
+    }),
+    homeAirport: z.string().max(120).optional(),
+    joinReason: z.string().max(500).optional(),
+    updatesOptIn: z.boolean().optional(),
     termsAccepted: z
       .boolean()
       .refine((value) => value === true, {
         message: 'Debes aceptar los términos para continuar'
+      }),
+    privacyAccepted: z
+      .boolean()
+      .refine((value) => value === true, {
+        message: 'Debes aceptar la política de privacidad'
       }),
     locale: z.enum(localeValues),
     honeypot: z.string().optional()

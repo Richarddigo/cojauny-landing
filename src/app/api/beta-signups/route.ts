@@ -30,13 +30,11 @@ export async function POST(request: NextRequest) {
 
   data.email = data.email.trim().toLowerCase();
   data.fullName = data.fullName.trim();
-  if (data.company) {
-    data.company = data.company.trim();
-    if (data.company.length === 0) {
-      data.company = undefined;
-    }
-  }
   data.useCase = data.useCase.trim();
+  const normalizedHomeAirport = data.homeAirport?.trim();
+  data.homeAirport = normalizedHomeAirport && normalizedHomeAirport.length > 0 ? normalizedHomeAirport : undefined;
+  const normalizedJoinReason = data.joinReason?.trim();
+  data.joinReason = normalizedJoinReason && normalizedJoinReason.length > 0 ? normalizedJoinReason : undefined;
 
   if (!isHuman(data.honeypot)) {
     return NextResponse.json({ error: 'Detección de bot' }, { status: 400 });
@@ -72,10 +70,15 @@ export async function POST(request: NextRequest) {
     .insert({
       email: data.email,
       name: data.fullName,
-      company: data.company ?? null,
       use_case: data.useCase,
+      country: data.country,
+      flight_frequency: data.flightFrequency,
+      home_airport: data.homeAirport ?? null,
+      join_reason: data.joinReason ?? null,
+      marketing_opt_in: Boolean(data.updatesOptIn),
       beta_tester: true,
       terms_accepted: data.termsAccepted,
+      privacy_accepted: data.privacyAccepted,
       language: data.locale,
       confirmation_token: confirmationToken,
       ip_address: ipAddress,

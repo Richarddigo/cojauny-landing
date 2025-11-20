@@ -32,18 +32,31 @@ describe('BetaSignupForm', () => {
         fireEvent.change(screen.getByLabelText(/correo profesional/i), {
             target: { value: 'juan@example.com' }
         });
-        fireEvent.change(screen.getByLabelText(/organización/i), {
-            target: { value: 'Cojauny' }
+        fireEvent.change(screen.getByLabelText(/país de residencia/i), {
+            target: { value: 'es' }
         });
-        fireEvent.change(screen.getByLabelText(/¿cómo quieres usar cojauny\?/i), {
+        fireEvent.change(screen.getByLabelText(/ciudad o aeropuerto habitual/i), {
+            target: { value: 'Madrid (MAD)' }
+        });
+        fireEvent.click(screen.getByLabelText(/2–5 veces al año/i));
+        fireEvent.change(screen.getByLabelText(/cuéntanos cómo planeas usar cojauny/i), {
             target: { value: 'Gestionar beta testers' }
         });
+        fireEvent.change(screen.getByLabelText(/beta\?/i), {
+            target: { value: 'Quiero validar ride-sharing corporativo' }
+        });
+        fireEvent.click(screen.getByRole('checkbox', { name: /novedades del desarrollo/i }));
         fireEvent.click(screen.getByRole('checkbox', { name: /política de privacidad/i }));
+        fireEvent.click(
+            screen.getByRole('checkbox', {
+                name: /acepto que se almacenen mis datos para participar en la beta/i
+            })
+        );
 
-        fireEvent.submit(screen.getByRole('button', { name: /Solicitar acceso/i }));
+        fireEvent.submit(screen.getByRole('button', { name: /Enviar solicitud/i }));
 
         await waitFor(() => {
-            expect(screen.getByText(/Te enviaremos un correo/i)).toBeInTheDocument();
+            expect(screen.getByText(/Enviaremos tu código/i)).toBeInTheDocument();
         });
 
         expect(mockFetch).toHaveBeenCalledWith(

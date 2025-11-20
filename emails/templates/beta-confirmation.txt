@@ -1,9 +1,0 @@
-Hola {{name}},
-
-Gracias por solicitar acceso a la beta privada de Cojauny. Usa el siguiente token para activar tu cuenta:
-
-{{confirmation_token}}
-
-Copia el código en la app o responde a este correo si necesitas ayuda. El token expira en 72 horas.
-
-Equipo Cojauny

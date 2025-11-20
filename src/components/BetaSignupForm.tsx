@@ -12,12 +12,24 @@ interface BetaSignupFormProps {
     locale: Locale;
 }
 
+const localeDefaultCountry: Record<Locale, BetaSignupInput['country']> = {
+    es: 'es',
+    en: 'uk',
+    de: 'de',
+    fr: 'fr'
+};
+
 const buildInitialState = (locale: Locale): BetaSignupInput => ({
     email: '',
     fullName: '',
-    company: '',
     useCase: '',
+    country: localeDefaultCountry[locale] ?? 'other',
+    flightFrequency: 'two_to_five',
+    homeAirport: '',
+    joinReason: '',
+    updatesOptIn: false,
     termsAccepted: false,
+    privacyAccepted: false,
     honeypot: '',
     locale
 });
@@ -27,6 +39,8 @@ const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
     const [submitting, setSubmitting] = useState(false);
     const [success, setSuccess] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const countryOptions = copy.countryOptions ?? [];
+    const flightFrequencyOptions = copy.flightFrequencyOptions ?? [];
 
     useEffect(() => {
         setForm(buildInitialState(locale));
@@ -35,7 +49,7 @@ const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
     }, [locale]);
 
     const handleChange = (
-        event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+        event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
     ) => {
         const target = event.target;
         const { name, value } = target;
@@ -129,17 +143,60 @@ const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
                         />
                     </label>
                     <label className="flex flex-col gap-2">
-                        <span className="text-sm font-medium text-slate-700">{copy.fields.company}</span>
+                        <span className="text-sm font-medium text-slate-700">{copy.fields.country}</span>
+                        <select
+                            name="country"
+                            value={form.country}
+                            onChange={handleChange}
+                            required
+                            aria-label={copy.fields.country}
+                            className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20"
+                        >
+                            {countryOptions.map((option) => (
+                                <option key={option.value} value={option.value}>
+                                    {option.label}
+                                </option>
+                            ))}
+                        </select>
+                    </label>
+                    <label className="flex flex-col gap-2">
+                        <span className="text-sm font-medium text-slate-700">{copy.fields.homeAirport}</span>
                         <input
                             type="text"
-                            name="company"
-                            value={form.company}
+                            name="homeAirport"
+                            value={form.homeAirport ?? ''}
                             onChange={handleChange}
-                            placeholder={copy.fields.company}
-                            aria-label={copy.fields.company}
+                            placeholder={copy.placeholders?.homeAirport}
+                            aria-label={copy.fields.homeAirport}
                             className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20 placeholder:text-slate-400"
                         />
                     </label>
+                </div>
+                <div>
+                    <p className="text-sm font-medium text-slate-700 mb-3">{copy.fields.flightFrequency}</p>
+                    <div className="grid gap-3 md:grid-cols-2">
+                        {flightFrequencyOptions.map((option) => (
+                            <label
+                                key={option.value}
+                                className={`flex flex-col gap-1 rounded-2xl border-2 px-4 py-3 transition-colors ${form.flightFrequency === option.value ? 'border-brand-500 bg-brand-50' : 'border-slate-200 bg-white hover:border-brand-300'}`}
+                            >
+                                <div className="flex items-center gap-2">
+                                    <input
+                                        type="radio"
+                                        name="flightFrequency"
+                                        value={option.value}
+                                        checked={form.flightFrequency === option.value}
+                                        onChange={handleChange}
+                                        className="h-4 w-4 text-brand-600 focus:ring-brand-500"
+                                    />
+                                    <span className="text-sm font-medium text-slate-900">{option.label}</span>
+                                </div>
+                                <span className="text-xs text-slate-500">{option.description}</span>
+                            </label>
+                        ))}
+                    </div>
+                </div>
+                <div className="grid gap-6 md:grid-cols-2">
                     <label className="flex flex-col gap-2">
                         <span className="text-sm font-medium text-slate-700">{copy.fields.useCase}</span>
                         <textarea
@@ -153,7 +210,29 @@ const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
                             className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20 resize-none"
                         />
                     </label>
+                    <label className="flex flex-col gap-2">
+                        <span className="text-sm font-medium text-slate-700">{copy.fields.joinReason}</span>
+                        <textarea
+                            name="joinReason"
+                            value={form.joinReason ?? ''}
+                            onChange={handleChange}
+                            rows={3}
+                            aria-label={copy.fields.joinReason}
+                            placeholder={copy.placeholders?.joinReason}
+                            className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20 resize-none placeholder:text-slate-400"
+                        />
+                    </label>
                 </div>
+                <label className="flex items-start gap-3">
+                    <input
+                        type="checkbox"
+                        name="updatesOptIn"
+                        checked={Boolean(form.updatesOptIn)}
+                        onChange={handleChange}
+                        className="mt-1 h-5 w-5 rounded border-slate-300 text-brand-600 focus:ring-brand-500"
+                    />
+                    <span className="text-sm text-slate-600">{copy.fields.updatesOptIn}</span>
+                </label>
                 <label className="flex items-start gap-3">
                     <input
                         type="checkbox"
@@ -179,6 +258,17 @@ const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
                             copy.checkboxLabel
                         )}
                     </span>
+                </label>
+                <label className="flex items-start gap-3">
+                    <input
+                        type="checkbox"
+                        name="privacyAccepted"
+                        checked={form.privacyAccepted}
+                        onChange={handleChange}
+                        required
+                        className="mt-1 h-5 w-5 rounded border-slate-300 text-brand-600 focus:ring-brand-500"
+                    />
+                    <span className="text-sm text-slate-600">{copy.fields.privacyAcceptance}</span>
                 </label>
                 <div className="sr-only" aria-hidden>
                     <label>

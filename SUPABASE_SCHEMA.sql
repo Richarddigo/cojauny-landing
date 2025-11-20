@@ -11,8 +11,14 @@ create table if not exists public.waitlist (
     company text,
     use_case text,
     flight text,
+    country text not null default 'es',
+    flight_frequency text not null default 'once',
+    home_airport text,
+    join_reason text,
+    marketing_opt_in boolean not null default false,
     beta_tester boolean not null default true,
     terms_accepted boolean not null default false,
+    privacy_accepted boolean not null default false,
     language text not null default 'es',
     confirmation_token text,
     confirmed_at timestamptz,
@@ -24,8 +30,14 @@ create table if not exists public.waitlist (
 alter table if exists public.waitlist add column if not exists company text;
 alter table if exists public.waitlist add column if not exists use_case text;
 alter table if exists public.waitlist add column if not exists flight text;
+alter table if exists public.waitlist add column if not exists country text not null default 'es';
+alter table if exists public.waitlist add column if not exists flight_frequency text not null default 'once';
+alter table if exists public.waitlist add column if not exists home_airport text;
+alter table if exists public.waitlist add column if not exists join_reason text;
+alter table if exists public.waitlist add column if not exists marketing_opt_in boolean not null default false;
 alter table if exists public.waitlist add column if not exists beta_tester boolean not null default true;
 alter table if exists public.waitlist add column if not exists terms_accepted boolean not null default false;
+alter table if exists public.waitlist add column if not exists privacy_accepted boolean not null default false;
 alter table if exists public.waitlist add column if not exists language text not null default 'es';
 alter table if exists public.waitlist add column if not exists confirmation_token text;
 alter table if exists public.waitlist add column if not exists confirmed_at timestamptz;
@@ -79,32 +91,43 @@ alter table public.waitlist enable row level security;
 alter table public.feedback enable row level security;
 alter table public.emails_sent enable row level security;
 
-create role cojauny_beta_writer;
+do $$
+begin
+  if not exists (select 1 from pg_roles where rolname = 'cojauny_beta_writer') then
+    create role cojauny_beta_writer;
+  end if;
+end $$;
 
+drop policy if exists "Permitir inserciones autenticadas en waitlist" on public.waitlist;
 create policy "Permitir inserciones autenticadas en waitlist"
     on public.waitlist
     for insert
     to authenticated, service_role
     with check (true);
 
+drop policy if exists "Permitir lectura de waitlist a service_role" on public.waitlist;
 create policy "Permitir lectura de waitlist a service_role"
     on public.waitlist
     for select using (auth.role() = 'service_role');
 
+drop policy if exists "Insert feedback" on public.feedback;
 create policy "Insert feedback" on public.feedback
     for insert
     to authenticated, service_role
     with check (true);
 
+drop policy if exists "Lectura feedback restringida" on public.feedback;
 create policy "Lectura feedback restringida"
     on public.feedback
     for select using (auth.role() = 'service_role');
 
+drop policy if exists "Insert emails_sent" on public.emails_sent;
 create policy "Insert emails_sent" on public.emails_sent
     for insert
     to service_role
     with check (true);
 
+drop policy if exists "Lectura emails_sent" on public.emails_sent;
 create policy "Lectura emails_sent" on public.emails_sent
     for select using (auth.role() = 'service_role');
 
