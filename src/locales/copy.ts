@@ -27,6 +27,7 @@ export interface FormCopy {
   submit: string;
   checkboxLabel?: string;
   privacyLinkLabel?: string;
+  referralNotice?: string;
   fields: {
     fullName?: string;
     email: string;
@@ -37,6 +38,25 @@ export interface FormCopy {
     selectPlaceholder?: string;
   };
   sentimentOptions?: Array<{ value: string; label: string }>;
+}
+
+export interface ReferralPanelCopy {
+  title: string;
+  subtitle: string;
+  yourLink: string;
+  copyButton: string;
+  copiedButton: string;
+  stats: {
+    visits: string;
+    signups: string;
+  };
+  instructions: {
+    title: string;
+    step1: string;
+    step2: string;
+    step3: string;
+  };
+  privacy: string;
 }
 
 export interface ValuePropCopy {
@@ -162,6 +182,7 @@ export interface LandingCopy {
     beta: FormCopy;
     feedback: FormCopy;
   };
+  referralPanel: ReferralPanelCopy;
   cookie: {
     message: string;
     acceptAll: string;
@@ -570,6 +591,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         submit: 'Enviar solicitud',
         checkboxLabel: 'Acepto la {privacyLink} y deseo recibir novedades sobre Cojauny.',
         privacyLinkLabel: 'política de privacidad',
+        referralNotice:
+          'ℹ️ Al registrarte obtendrás un enlace único que podrás compartir. Usamos este enlace solo para contar visitas y nuevos registros que provengan de ti. No recopilamos datos personales de quienes hagan clic.',
         fields: {
           fullName: 'Nombre completo',
           email: 'Email',
@@ -599,6 +622,25 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           { value: 'negative', label: 'Propuesta de negocio' }
         ]
       }
+    },
+    referralPanel: {
+      title: '🎁 Comparte Cojauny y gana acceso prioritario',
+      subtitle: 'Invita a otros profesionales y obtén beneficios exclusivos',
+      yourLink: 'Tu enlace único de invitación',
+      copyButton: 'Copiar enlace',
+      copiedButton: '✓ Copiado',
+      stats: {
+        visits: 'Visitas',
+        signups: 'Registros'
+      },
+      instructions: {
+        title: 'Cómo compartir tu enlace',
+        step1: 'Comparte este enlace con colegas, amigos y en redes sociales.',
+        step2: 'Cada vez que alguien visite tu enlace, contaremos una visita anónima.',
+        step3: 'Si se registran en la beta, contaremos un nuevo registro asociado a ti.'
+      },
+      privacy:
+        'Solo contamos visitas y registros de forma anónima. No recopilamos datos personales de quienes hacen clic en tu enlace.'
     },
     cookie: {
       message:
@@ -1007,6 +1049,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         submit: 'Request access',
         checkboxLabel: 'I accept the {privacyLink} and consent to data processing for the beta.',
         privacyLinkLabel: 'privacy policy',
+        referralNotice:
+          'ℹ️ When you register, you will get a unique link to share. We use this link only to count visits and new signups that come from you. We do not collect personal data from those who click.',
         fields: {
           fullName: 'Full name',
           email: 'Email',
@@ -1037,6 +1081,25 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           { value: 'negative', label: 'Business proposal' }
         ]
       }
+    },
+    referralPanel: {
+      title: '🎁 Share Cojauny and get priority access',
+      subtitle: 'Invite other professionals and get exclusive benefits',
+      yourLink: 'Your unique invitation link',
+      copyButton: 'Copy link',
+      copiedButton: '✓ Copied',
+      stats: {
+        visits: 'Visits',
+        signups: 'Signups'
+      },
+      instructions: {
+        title: 'How to share your link',
+        step1: 'Share this link with colleagues, friends and on social media.',
+        step2: 'Every time someone visits your link, we count an anonymous visit.',
+        step3: 'If they sign up for the beta, we count a new signup associated with you.'
+      },
+      privacy:
+        'We only count visits and signups anonymously. We do not collect personal data from those who click your link.'
     },
     cookie: {
       message:
@@ -1447,6 +1510,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         checkboxLabel:
           'Ich akzeptiere die {privacyLink} und die Verarbeitung meiner Daten für die Beta.',
         privacyLinkLabel: 'Datenschutzrichtlinie',
+        referralNotice:
+          'ℹ️ Bei der Registrierung erhältst du einen eindeutigen Link zum Teilen. Wir nutzen diesen Link nur, um Besuche und neue Anmeldungen zu zählen, die von dir kommen. Wir sammeln keine personenbezogenen Daten derjenigen, die klicken.',
         fields: {
           fullName: 'Vollständiger Name',
           email: 'Email',
@@ -1476,6 +1541,25 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           { value: 'negative', label: 'Geschäftsvorschlag' }
         ]
       }
+    },
+    referralPanel: {
+      title: '🎁 Teile Cojauny und erhalte prioritären Zugang',
+      subtitle: 'Lade andere Profis ein und erhalte exklusive Vorteile',
+      yourLink: 'Dein einzigartiger Einladungslink',
+      copyButton: 'Link kopieren',
+      copiedButton: '✓ Kopiert',
+      stats: {
+        visits: 'Besuche',
+        signups: 'Anmeldungen'
+      },
+      instructions: {
+        title: 'So teilst du deinen Link',
+        step1: 'Teile diesen Link mit Kollegen, Freunden und in sozialen Medien.',
+        step2: 'Jedes Mal, wenn jemand deinen Link besucht, zählen wir einen anonymen Besuch.',
+        step3: 'Wenn sie sich für die Beta anmelden, zählen wir eine neue Anmeldung, die dir zugeordnet ist.'
+      },
+      privacy:
+        'Wir zählen nur Besuche und Anmeldungen anonym. Wir sammeln keine personenbezogenen Daten derjenigen, die auf deinen Link klicken.'
     },
     cookie: {
       message:
@@ -1851,6 +1935,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         checkboxLabel:
           'J’accepte la {privacyLink} et le traitement de mes données pour la beta.',
         privacyLinkLabel: 'politique de confidentialité',
+        referralNotice:
+          'ℹ️ Lors de votre inscription, vous obtiendrez un lien unique à partager. Nous utilisons ce lien uniquement pour compter les visites et les nouvelles inscriptions provenant de vous. Nous ne collectons pas de données personnelles de ceux qui cliquent.',
         fields: {
           fullName: 'Nom complet',
           email: 'Email',
@@ -1881,6 +1967,25 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           { value: 'negative', label: 'J’ai des freins' }
         ]
       }
+    referralPanel: {
+      title: '🎁 Partagez Cojauny et obtenez un accès prioritaire',
+      subtitle: 'Invitez d'autres professionnels et obtenez des avantages exclusifs',
+      yourLink: 'Votre lien d'invitation unique',
+      copyButton: 'Copier le lien',
+      copiedButton: '✓ Copié',
+      stats: {
+        visits: 'Visites',
+        signups: 'Inscriptions'
+      },
+      instructions: {
+        title: 'Comment partager votre lien',
+        step1: 'Partagez ce lien avec des collègues, des amis et sur les réseaux sociaux.',
+        step2: 'Chaque fois que quelqu'un visite votre lien, nous comptons une visite anonyme.',
+        step3: 'S'ils s'inscrivent à la bêta, nous comptons une nouvelle inscription associée à vous.'
+      },
+      privacy:
+        'Nous comptons uniquement les visites et les inscriptions de manière anonyme. Nous ne collectons pas de données personnelles de ceux qui cliquent sur votre lien.'
+    },
     },
     cookie: {
       message:

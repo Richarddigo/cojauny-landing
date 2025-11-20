@@ -31,6 +31,7 @@ alter table if exists public.waitlist add column if not exists confirmation_toke
 alter table if exists public.waitlist add column if not exists confirmed_at timestamptz;
 alter table if exists public.waitlist add column if not exists ip_address inet;
 alter table if exists public.waitlist add column if not exists user_agent text;
+alter table if exists public.waitlist add column if not exists referral_code_used text;
 
 create unique index if not exists waitlist_email_idx on public.waitlist (lower(email));
 create index if not exists waitlist_created_idx on public.waitlist (created_at);
@@ -145,3 +146,163 @@ grant usage on schema public to cojauny_beta_writer;
 grant insert on public.waitlist to cojauny_beta_writer;
 
 grant insert on public.feedback to cojauny_beta_writer;
+
+-- ============================================================
+-- Referral System / Sistema de Invitaciones / Empfehlungssystem / Système de Parrainage
+-- ============================================================
+
+-- Create referral_stats table / Crear tabla referral_stats / Tabelle referral_stats erstellen / Créer la table referral_stats
+create table if not exists public.referral_stats (
+    user_id uuid primary key references public.waitlist(id) on delete cascade,
+    referral_code text not null unique,
+    referral_link text not null,
+    visits integer not null default 0,
+    signups integer not null default 0,
+    created_at timestamptz not null default timezone('utc', now()),
+    updated_at timestamptz not null default timezone('utc', now())
+);
+
+create unique index if not exists referral_stats_code_idx on public.referral_stats (referral_code);
+create index if not exists referral_stats_user_idx on public.referral_stats (user_id);
+
+-- Enable RLS on referral_stats / Habilitar RLS en referral_stats / RLS aktivieren / Activer RLS
+alter table public.referral_stats enable row level security;
+
+-- RLS Policy: Allow service role to manage all records
+create policy "Permitir lectura de referral_stats a service_role"
+    on public.referral_stats
+    for select using (auth.role() = 'service_role');
+
+create policy "Permitir actualización de referral_stats a service_role"
+    on public.referral_stats
+    for update using (auth.role() = 'service_role');
+
+create policy "Permitir inserción de referral_stats a service_role"
+    on public.referral_stats
+    for insert
+    to service_role
+    with check (true);
+
+-- Function to generate unique referral code / Función para generar código único
+-- Fonction pour générer un code unique / Funktion zur Generierung eines eindeutigen Codes
+create or replace function public.generate_referral_code()
+returns text as $$
+declare
+    code text;
+    exists_check boolean;
+begin
+    loop
+        -- Generate 8-character alphanumeric code / Generar código alfanumérico de 8 caracteres
+        -- Générer un code alphanumérique de 8 caractères / 8-stelligen alphanumerischen Code generieren
+        code := upper(substr(md5(random()::text || clock_timestamp()::text), 1, 8));
+        
+        -- Check if code already exists / Verificar si el código ya existe
+        -- Vérifier si le code existe déjà / Prüfen ob Code bereits existiert
+        select exists(select 1 from public.referral_stats where referral_code = code) into exists_check;
+        
+        exit when not exists_check;
+    end loop;
+    
+    return code;
+end;
+$$ language plpgsql security definer;
+
+-- Function to create referral stats for new user / Función para crear estadísticas de referral
+-- Fonction pour créer les stats de parrainage / Funktion zur Erstellung von Empfehlungsstatistiken
+create or replace function public.create_referral_stats_for_user()
+returns trigger as $$
+declare
+    new_code text;
+    base_url text;
+begin
+    -- Generate unique referral code / Generar código único de referral
+    -- Générer un code de parrainage unique / Eindeutigen Empfehlungscode generieren
+    new_code := public.generate_referral_code();
+    
+    -- Get base URL from environment or use default
+    base_url := coalesce(current_setting('app.base_url', true), 'https://cojauny.com');
+    
+    -- Insert referral stats / Insertar estadísticas de referral
+    -- Insérer les statistiques de parrainage / Empfehlungsstatistiken einfügen
+    insert into public.referral_stats (user_id, referral_code, referral_link, visits, signups)
+    values (
+        NEW.id,
+        new_code,
+        base_url || '?ref=' || new_code,
+        0,
+        0
+    );
+    
+    return NEW;
+end;
+$$ language plpgsql security definer;
+
+-- Trigger to auto-create referral stats when user signs up / Trigger para auto-crear stats
+-- Déclencheur pour créer automatiquement les stats / Trigger zur automatischen Erstellung
+drop trigger if exists create_referral_on_signup on public.waitlist;
+create trigger create_referral_on_signup
+    after insert on public.waitlist
+    for each row
+    execute function public.create_referral_stats_for_user();
+
+-- Function to increment referral visits / Función para incrementar visitas
+-- Fonction pour incrémenter les visites / Funktion zur Erhöhung der Besuche
+create or replace function public.increment_referral_visits(ref_code text)
+returns jsonb as $$
+declare
+    result_row public.referral_stats;
+begin
+    -- Update visits counter / Actualizar contador de visitas
+    -- Mettre à jour le compteur de visites / Besucherzähler aktualisieren
+    update public.referral_stats
+    set visits = visits + 1,
+        updated_at = timezone('utc', now())
+    where referral_code = ref_code
+    returning * into result_row;
+    
+    if result_row is null then
+        return jsonb_build_object('error', 'Referral code not found');
+    end if;
+    
+    return jsonb_build_object(
+        'success', true,
+        'visits', result_row.visits,
+        'signups', result_row.signups
+    );
+end;
+$$ language plpgsql security definer;
+
+-- Function to increment referral signups / Función para incrementar registros
+-- Fonction pour incrémenter les inscriptions / Funktion zur Erhöhung der Anmeldungen
+create or replace function public.increment_referral_signups(ref_code text)
+returns jsonb as $$
+declare
+    result_row public.referral_stats;
+begin
+    -- Update signups counter / Actualizar contador de registros
+    -- Mettre à jour le compteur d'inscriptions / Anmeldungszähler aktualisieren
+    update public.referral_stats
+    set signups = signups + 1,
+        updated_at = timezone('utc', now())
+    where referral_code = ref_code
+    returning * into result_row;
+    
+    if result_row is null then
+        return jsonb_build_object('error', 'Referral code not found');
+    end if;
+    
+    return jsonb_build_object(
+        'success', true,
+        'visits', result_row.visits,
+        'signups', result_row.signups
+    );
+end;
+$$ language plpgsql security definer;
+
+grant execute on function public.generate_referral_code() to service_role;
+grant execute on function public.increment_referral_visits(text) to service_role, authenticated, anon;
+grant execute on function public.increment_referral_signups(text) to service_role;
+
+grant select on public.referral_stats to service_role;
+grant insert on public.referral_stats to service_role;
+grant update on public.referral_stats to service_role;

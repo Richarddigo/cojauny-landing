@@ -79,7 +79,8 @@ export async function POST(request: NextRequest) {
       language: data.locale,
       confirmation_token: confirmationToken,
       ip_address: ipAddress,
-      user_agent: request.headers.get('user-agent') ?? ''
+      user_agent: request.headers.get('user-agent') ?? '',
+      referral_code_used: data.referralCode ?? null
     })
     .select()
     .single();
@@ -89,6 +90,38 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'No se pudo guardar tu registro' }, { status: 500 });
   }
 
+  // If user signed up via referral, increment the signup counter
+  // Si el usuario se registró vía referral, incrementar el contador de signups
+  // Wenn Benutzer über Empfehlung registriert, Anmeldungszähler erhöhen
+  // Si l'utilisateur s'est inscrit via parrainage, incrémenter le compteur
+  if (data.referralCode) {
+    try {
+      await supabase.rpc('increment_referral_signups', {
+        ref_code: data.referralCode
+      });
+    } catch (error) {
+      console.error('Error incrementing referral signups', error);
+    }
+  }
+
+  // Fetch referral stats for this new user to include in email
+  // Obtener estadísticas de referral para incluir en el email
+  // Empfehlungsstatistiken abrufen / Récupérer les stats de parrainage
+  let referralLink = '';
+  try {
+    const { data: referralData, error: referralError } = await supabase
+      .from('referral_stats')
+      .select('referral_link')
+      .eq('user_id', insertResult.data.id)
+      .single();
+
+    if (!referralError && referralData) {
+      referralLink = referralData.referral_link;
+    }
+  } catch (error) {
+    console.error('Error fetching referral link', error);
+  }
+
   try {
     await triggerEdgeEmailFunction({
       email: data.email,
@@ -96,7 +129,8 @@ export async function POST(request: NextRequest) {
       locale: data.locale,
       variables: {
         name: data.fullName,
-        confirmation_token: confirmationToken
+        confirmation_token: confirmationToken,
+        referral_link: referralLink
       }
     });
   } catch (error) {
@@ -107,7 +141,8 @@ export async function POST(request: NextRequest) {
     {
       success: true,
       id: insertResult.data.id,
-      confirmationToken
+      confirmationToken,
+      referralLink
     },
     { status: 201 }
   );
