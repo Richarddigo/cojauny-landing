@@ -30,7 +30,8 @@ export async function POST(request: NextRequest) {
 
   data.email = data.email.trim().toLowerCase();
   data.fullName = data.fullName.trim();
-  data.useCase = data.useCase.trim();
+  const normalizedUseCase = data.useCase?.trim();
+  data.useCase = normalizedUseCase && normalizedUseCase.length > 0 ? normalizedUseCase : undefined;
   const normalizedHomeAirport = data.homeAirport?.trim();
   data.homeAirport = normalizedHomeAirport && normalizedHomeAirport.length > 0 ? normalizedHomeAirport : undefined;
   const normalizedJoinReason = data.joinReason?.trim();
@@ -65,25 +66,33 @@ export async function POST(request: NextRequest) {
 
   const confirmationToken = uuidv4();
 
+  const insertPayload = {
+    email: data.email,
+    name: data.fullName,
+    flight_frequency: data.flightFrequency,
+    home_airport: data.homeAirport ?? null,
+    join_reason: data.joinReason ?? null,
+    marketing_opt_in: Boolean(data.updatesOptIn),
+    beta_tester: true,
+    terms_accepted: data.termsAccepted,
+    privacy_accepted: data.privacyAccepted,
+    language: data.locale,
+    confirmation_token: confirmationToken,
+    ip_address: ipAddress,
+    user_agent: request.headers.get('user-agent') ?? ''
+  } as Record<string, unknown>;
+
+  if (data.useCase) {
+    insertPayload.use_case = data.useCase;
+  }
+
+  if (data.country) {
+    insertPayload.country = data.country;
+  }
+
   const insertResult = await supabase
     .from(WAITLIST_TABLE)
-    .insert({
-      email: data.email,
-      name: data.fullName,
-      use_case: data.useCase,
-      country: data.country,
-      flight_frequency: data.flightFrequency,
-      home_airport: data.homeAirport ?? null,
-      join_reason: data.joinReason ?? null,
-      marketing_opt_in: Boolean(data.updatesOptIn),
-      beta_tester: true,
-      terms_accepted: data.termsAccepted,
-      privacy_accepted: data.privacyAccepted,
-      language: data.locale,
-      confirmation_token: confirmationToken,
-      ip_address: ipAddress,
-      user_agent: request.headers.get('user-agent') ?? ''
-    })
+    .insert(insertPayload)
     .select()
     .single();
 

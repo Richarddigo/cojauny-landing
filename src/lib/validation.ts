@@ -49,10 +49,15 @@ export const betaSignupSchema = z
   .object({
     email: z.string().email('Introduce un correo válido'),
     fullName: z.string().min(3, 'Introduce tu nombre completo'),
-    useCase: z.string().min(3, 'Describe brevemente tu caso de uso'),
-    country: z.enum(betaCountryValues, {
-      errorMap: () => ({ message: 'Selecciona tu país' })
-    }),
+    useCase: z
+      .string()
+      .min(3, 'Describe brevemente tu caso de uso')
+      .optional(),
+    country: z
+      .enum(betaCountryValues, {
+        errorMap: () => ({ message: 'Selecciona tu país' })
+      })
+      .optional(),
     flightFrequency: z.enum(betaFrequencyValues, {
       errorMap: () => ({ message: 'Selecciona tu frecuencia de vuelo' })
     }),

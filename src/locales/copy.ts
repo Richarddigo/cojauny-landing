@@ -634,7 +634,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         fields: {
           fullName: 'Nombre',
           email: 'Correo',
-          message: 'Cuéntanos más',
+          message: 'Cuéntanos tu caso',
           sentiment: 'Tipo de mensaje',
           selectPlaceholder: 'Selecciona una opción'
         },
@@ -1111,7 +1111,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         fields: {
           fullName: 'Name',
           email: 'Email',
-          message: 'Tell us more',
+          message: 'Tell us about your case',
           sentiment: 'Message type',
           selectPlaceholder: 'Select an option'
         },
@@ -1589,7 +1589,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         fields: {
           fullName: 'Name',
           email: 'E-Mail',
-          message: 'Weitere Details',
+          message: 'Erzähl uns deinen Fall',
           sentiment: 'Nachrichtentyp',
           selectPlaceholder: 'Option auswählen'
         },
@@ -2033,7 +2033,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         fields: {
           fullName: 'Nom',
           email: 'Email',
-          message: 'Dites-nous en plus',
+          message: 'Parlez-nous de votre cas',
           sentiment: 'Type de retour',
           selectPlaceholder: 'Choisissez une option'
         },

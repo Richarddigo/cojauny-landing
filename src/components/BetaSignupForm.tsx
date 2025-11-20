@@ -12,6 +12,10 @@ interface BetaSignupFormProps {
     locale: Locale;
 }
 
+type BetaSignupFormState = Omit<BetaSignupInput, 'flightFrequency'> & {
+    flightFrequency: BetaSignupInput['flightFrequency'] | '';
+};
+
 const localeDefaultCountry: Record<Locale, BetaSignupInput['country']> = {
     es: 'es',
     en: 'uk',
@@ -19,12 +23,12 @@ const localeDefaultCountry: Record<Locale, BetaSignupInput['country']> = {
     fr: 'fr'
 };
 
-const buildInitialState = (locale: Locale): BetaSignupInput => ({
+const buildInitialState = (locale: Locale): BetaSignupFormState => ({
     email: '',
     fullName: '',
     useCase: '',
     country: localeDefaultCountry[locale] ?? 'other',
-    flightFrequency: 'two_to_five',
+    flightFrequency: '',
     homeAirport: '',
     joinReason: '',
     updatesOptIn: false,
@@ -35,7 +39,7 @@ const buildInitialState = (locale: Locale): BetaSignupInput => ({
 });
 
 const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
-    const [form, setForm] = useState<BetaSignupInput>(() => buildInitialState(locale));
+    const [form, setForm] = useState<BetaSignupFormState>(() => buildInitialState(locale));
     const [submitting, setSubmitting] = useState(false);
     const [success, setSuccess] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
@@ -59,13 +63,30 @@ const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
         setSuccess(null);
     };
 
+    const normalizeOptionalField = (value?: string | null) => {
+        if (typeof value !== 'string') {
+            return undefined;
+        }
+        const trimmed = value.trim();
+        return trimmed.length > 0 ? trimmed : undefined;
+    };
+
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setSubmitting(true);
         setSuccess(null);
         setError(null);
 
-        const parseResult = betaSignupSchema.safeParse(form);
+        const normalizedPayload: BetaSignupInput = {
+            ...form,
+            country: normalizeOptionalField(form.country) as BetaSignupInput['country'],
+            useCase: normalizeOptionalField(form.useCase),
+            homeAirport: normalizeOptionalField(form.homeAirport),
+            joinReason: normalizeOptionalField(form.joinReason),
+            flightFrequency: form.flightFrequency as BetaSignupInput['flightFrequency']
+        };
+
+        const parseResult = betaSignupSchema.safeParse(normalizedPayload);
         if (!parseResult.success) {
             setSubmitting(false);
             setError(copy.error);
@@ -146,9 +167,8 @@ const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
                         <span className="text-sm font-medium text-slate-700">{copy.fields.country}</span>
                         <select
                             name="country"
-                            value={form.country}
+                            value={form.country ?? ''}
                             onChange={handleChange}
-                            required
                             aria-label={copy.fields.country}
                             className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20"
                         >
@@ -201,10 +221,8 @@ const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
                         <span className="text-sm font-medium text-slate-700">{copy.fields.useCase}</span>
                         <textarea
                             name="useCase"
-                            value={form.useCase}
+                            value={form.useCase ?? ''}
                             onChange={handleChange}
-                            minLength={3}
-                            required
                             rows={3}
                             aria-label={copy.fields.useCase}
                             className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20 resize-none"
