@@ -1967,10 +1967,11 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           { value: 'negative', label: 'J’ai des freins' }
         ]
       }
+    },
     referralPanel: {
       title: '🎁 Partagez Cojauny et obtenez un accès prioritaire',
-      subtitle: 'Invitez d'autres professionnels et obtenez des avantages exclusifs',
-      yourLink: 'Votre lien d'invitation unique',
+      subtitle: 'Invitez d\'autres professionnels et obtenez des avantages exclusifs',
+      yourLink: 'Votre lien d\'invitation unique',
       copyButton: 'Copier le lien',
       copiedButton: '✓ Copié',
       stats: {
@@ -1980,12 +1981,11 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       instructions: {
         title: 'Comment partager votre lien',
         step1: 'Partagez ce lien avec des collègues, des amis et sur les réseaux sociaux.',
-        step2: 'Chaque fois que quelqu'un visite votre lien, nous comptons une visite anonyme.',
-        step3: 'S'ils s'inscrivent à la bêta, nous comptons une nouvelle inscription associée à vous.'
+        step2: 'Chaque fois que quelqu\'un visite votre lien, nous comptons une visite anonyme.',
+        step3: 'S\'ils s\'inscrivent à la bêta, nous comptons une nouvelle inscription associée à vous.'
       },
       privacy:
         'Nous comptons uniquement les visites et les inscriptions de manière anonyme. Nous ne collectons pas de données personnelles de ceux qui cliquent sur votre lien.'
-    },
     },
     cookie: {
       message:

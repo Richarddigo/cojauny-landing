@@ -30,7 +30,7 @@ const LandingPageContent = ({ copy, locale }: LandingPageContentProps) => (
         <WorkflowSection copy={copy.workflow} />
         <PricingSection copy={copy.pricing} />
         <section id="beta" className="mx-auto max-w-7xl scroll-mt-[84px] py-20 px-6 lg:scroll-mt-[100px]">
-            <BetaSignupForm copy={copy.forms.beta} locale={locale} />
+            <BetaSignupForm copy={copy.forms.beta} referralPanelCopy={copy.referralPanel} locale={locale} />
         </section>
         <FaqSection copy={copy.faq} />
         <section className="mx-auto max-w-7xl py-20 px-6">

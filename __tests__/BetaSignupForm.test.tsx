@@ -24,7 +24,7 @@ describe('BetaSignupForm', () => {
     it('envía el formulario cuando los datos son válidos', async () => {
         const copy = getLandingCopy('es');
 
-        render(<BetaSignupForm copy={copy.forms.beta} locale="es" />);
+        render(<BetaSignupForm copy={copy.forms.beta} referralPanelCopy={copy.referralPanel} locale="es" />);
 
         fireEvent.change(screen.getByLabelText(/nombre completo/i), {
             target: { value: 'Juan Pérez' }
