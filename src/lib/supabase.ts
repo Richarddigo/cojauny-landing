@@ -1,11 +1,11 @@
 import { createClient } from '@supabase/supabase-js';
 import { env } from './env';
 
-export const supabaseUrl = env.NEXT_PUBLIC_BASE_URL ?? '';
+export const supabaseUrl = env.NEXT_PUBLIC_BASE_URL ?? env.BASE_URL ?? '';
 export const supabaseAnonKey = env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '';
 
 if (!supabaseUrl) {
-  console.warn('NEXT_PUBLIC_BASE_URL no está configurado');
+  console.warn('No se encontró NEXT_PUBLIC_BASE_URL ni BASE_URL para conectar con Supabase');
 }
 
 if (!supabaseAnonKey) {
@@ -21,7 +21,7 @@ export const createBrowserSupabaseClient = () =>
 
 export const createServiceRoleClient = () => {
   if (!supabaseUrl) {
-    throw new Error('NEXT_PUBLIC_BASE_URL no está configurado');
+    throw new Error('No se encontró ninguna URL de Supabase (NEXT_PUBLIC_BASE_URL o BASE_URL)');
   }
   if (!env.BASE_SERVICE_ROLE_KEY) {
     throw new Error('BASE_SERVICE_ROLE_KEY no está configurada');
