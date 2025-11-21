@@ -74,7 +74,8 @@ export const betaSignupSchema = z
         message: 'Debes aceptar la política de privacidad'
       }),
     locale: z.enum(localeValues),
-    honeypot: z.string().optional()
+    honeypot: z.string().optional(),
+    referralCode: z.string().optional()
   })
   .refine((values) => !values.honeypot, {
     message: 'Posible bot detectado',

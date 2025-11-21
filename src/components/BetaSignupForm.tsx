@@ -6,9 +6,11 @@ import { CheckCircleIcon, ExclamationTriangleIcon } from '@heroicons/react/24/so
 import { betaSignupSchema, type BetaSignupInput } from '@/lib/validation';
 import type { LandingCopy } from '@/locales/copy';
 import type { Locale } from '@/locales/config';
+import ReferralPanel from './ReferralPanel';
 
 interface BetaSignupFormProps {
     copy: LandingCopy['forms']['beta'];
+    referralPanelCopy: LandingCopy['referralPanel'];
     locale: Locale;
 }
 
@@ -34,22 +36,47 @@ const buildInitialState = (locale: Locale): BetaSignupFormState => ({
     termsAccepted: false,
     privacyAccepted: false,
     honeypot: '',
-    locale
+    locale,
+    referralCode
 });
 
-const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
-    const [form, setForm] = useState<BetaSignupFormState>(() => buildInitialState(locale));
+const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps) => {
+    const [referralCode, setReferralCode] = useState<string | undefined>();
+    const [form, setForm] = useState<BetaSignupInput>(() => buildInitialState(locale, referralCode));
     const [submitting, setSubmitting] = useState(false);
     const [success, setSuccess] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
-    const countryOptions = copy.countryOptions ?? [];
-    const flightFrequencyOptions = copy.flightFrequencyOptions ?? [];
+    const [userEmail, setUserEmail] = useState<string | null>(null);
+    const [showReferralPanel, setShowReferralPanel] = useState(false);
+
+    // Capture referral code from URL / Capturar código de referral desde URL
+    // Empfehlungscode von URL erfassen / Capturer le code de parrainage depuis l'URL
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const refParam = urlParams.get('ref');
+        
+        if (refParam) {
+            setReferralCode(refParam);
+            
+            // Track the visit anonymously / Rastrear la visita de forma anónima
+            // Besuch anonym verfolgen / Suivre la visite de manière anonyme
+            fetch('/api/referral/visit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ referralCode: refParam })
+            }).catch(err => console.error('Failed to track referral visit:', err));
+        }
+    }, []);
 
     useEffect(() => {
-        setForm(buildInitialState(locale));
+        setForm(buildInitialState(locale, referralCode));
         setSuccess(null);
         setError(null);
-    }, [locale]);
+    }, [locale, referralCode]);
 
     const handleChange = (
         event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -111,8 +138,10 @@ const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
                 return;
             }
 
-            setForm(buildInitialState(locale));
+            setUserEmail(form.email);
+            setForm(buildInitialState(locale, referralCode));
             setSuccess(copy.success);
+            setShowReferralPanel(true);
         } catch (err) {
             setError(copy.error);
         } finally {
@@ -137,6 +166,10 @@ const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
                     <p id="beta-form-help" className="mt-2 text-sm text-slate-600">
                         {copy.description}
                     </p>
+                    {copy.referralNotice && (
+                        <div className="mt-4 rounded-2xl bg-blue-50 border border-blue-200 px-4 py-3 text-sm text-blue-800">
+                            {copy.referralNotice}
+                        </div>
                     {copy.optionalHint && (
                         <p className="mt-1 text-xs text-slate-500">{copy.optionalHint}</p>
                     )}
@@ -335,6 +368,14 @@ const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
                     </p>
                 )}
             </form>
+            
+            {/* Show Referral Panel after successful signup / Mostrar panel de referral tras registro exitoso */}
+            {/* Empfehlungs-Panel nach erfolgreicher Anmeldung anzeigen / Afficher le panneau de parrainage après inscription */}
+            {showReferralPanel && userEmail && (
+                <div className="mt-8">
+                    <ReferralPanel copy={referralPanelCopy} email={userEmail} />
+                </div>
+            )}
         </div>
     );
 };
