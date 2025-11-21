@@ -14,12 +14,27 @@ interface BetaSignupFormProps {
     locale: Locale;
 }
 
-const buildInitialState = (locale: Locale, referralCode?: string): BetaSignupInput => ({
+type BetaSignupFormState = Omit<BetaSignupInput, 'flightFrequency'> & {
+    flightFrequency: BetaSignupInput['flightFrequency'] | '';
+};
+
+const localeDefaultCountry: Record<Locale, BetaSignupInput['country']> = {
+    es: 'es',
+    en: 'uk',
+    de: 'de',
+    fr: 'fr'
+};
+
+const buildInitialState = (locale: Locale): BetaSignupFormState => ({
     email: '',
     fullName: '',
-    company: '',
     useCase: '',
+    country: localeDefaultCountry[locale] ?? 'other',
+    flightFrequency: '',
+    homeAirport: '',
+    updatesOptIn: false,
     termsAccepted: false,
+    privacyAccepted: false,
     honeypot: '',
     locale,
     referralCode
@@ -64,7 +79,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
     }, [locale, referralCode]);
 
     const handleChange = (
-        event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+        event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
     ) => {
         const target = event.target;
         const { name, value } = target;
@@ -74,13 +89,29 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
         setSuccess(null);
     };
 
+    const normalizeOptionalField = (value?: string | null) => {
+        if (typeof value !== 'string') {
+            return undefined;
+        }
+        const trimmed = value.trim();
+        return trimmed.length > 0 ? trimmed : undefined;
+    };
+
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setSubmitting(true);
         setSuccess(null);
         setError(null);
 
-        const parseResult = betaSignupSchema.safeParse(form);
+        const normalizedPayload: BetaSignupInput = {
+            ...form,
+            country: normalizeOptionalField(form.country) as BetaSignupInput['country'],
+            useCase: normalizeOptionalField(form.useCase),
+            homeAirport: normalizeOptionalField(form.homeAirport),
+            flightFrequency: form.flightFrequency as BetaSignupInput['flightFrequency']
+        };
+
+        const parseResult = betaSignupSchema.safeParse(normalizedPayload);
         if (!parseResult.success) {
             setSubmitting(false);
             setError(copy.error);
@@ -99,7 +130,12 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
             if (!response.ok) {
                 const payload = await response.json().catch(() => null);
                 console.error('Beta signup error response', payload);
-                throw new Error(copy.error);
+                if (payload?.errorCode === 'beta_duplicate_email') {
+                    setError(copy.duplicateError ?? copy.error);
+                } else {
+                    setError(copy.error);
+                }
+                return;
             }
 
             setUserEmail(form.email);
@@ -134,6 +170,8 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                         <div className="mt-4 rounded-2xl bg-blue-50 border border-blue-200 px-4 py-3 text-sm text-blue-800">
                             {copy.referralNotice}
                         </div>
+                    {copy.optionalHint && (
+                        <p className="mt-1 text-xs text-slate-500">{copy.optionalHint}</p>
                     )}
                 </div>
                 <div className="grid gap-6 md:grid-cols-2">
@@ -165,31 +203,100 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                         />
                     </label>
                     <label className="flex flex-col gap-2">
-                        <span className="text-sm font-medium text-slate-700">{copy.fields.company}</span>
+                        <span className="text-sm font-medium text-slate-700">
+                            {copy.fields.country}
+                            {copy.optionalLabel && (
+                                <span className="ml-2 text-xs font-normal text-slate-500">{copy.optionalLabel}</span>
+                            )}
+                        </span>
+                        <select
+                            name="country"
+                            value={form.country ?? ''}
+                            onChange={handleChange}
+                            aria-label={copy.fields.country}
+                            className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20"
+                        >
+                            {countryOptions.map((option) => (
+                                <option key={option.value} value={option.value}>
+                                    {option.label}
+                                </option>
+                            ))}
+                        </select>
+                    </label>
+                    <label className="flex flex-col gap-2">
+                        <span className="text-sm font-medium text-slate-700">
+                            {copy.fields.homeAirport}
+                            {copy.optionalLabel && (
+                                <span className="ml-2 text-xs font-normal text-slate-500">{copy.optionalLabel}</span>
+                            )}
+                        </span>
                         <input
                             type="text"
-                            name="company"
-                            value={form.company}
+                            name="homeAirport"
+                            value={form.homeAirport ?? ''}
                             onChange={handleChange}
-                            placeholder={copy.fields.company}
-                            aria-label={copy.fields.company}
+                            placeholder={copy.placeholders?.homeAirport}
+                            aria-label={copy.fields.homeAirport}
                             className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20 placeholder:text-slate-400"
                         />
                     </label>
-                    <label className="flex flex-col gap-2">
-                        <span className="text-sm font-medium text-slate-700">{copy.fields.useCase}</span>
-                        <textarea
-                            name="useCase"
-                            value={form.useCase}
-                            onChange={handleChange}
-                            minLength={3}
-                            required
-                            rows={3}
-                            aria-label={copy.fields.useCase}
-                            className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20 resize-none"
-                        />
-                    </label>
                 </div>
+                <div>
+                    <p className="text-sm font-medium text-slate-700 mb-3">{copy.fields.flightFrequency}</p>
+                    <div className="grid gap-3 md:grid-cols-2">
+                        {flightFrequencyOptions.map((option) => (
+                            <label
+                                key={option.value}
+                                className={`flex flex-col gap-1 rounded-2xl border-2 px-4 py-3 transition-colors ${form.flightFrequency === option.value ? 'border-brand-500 bg-brand-50' : 'border-slate-200 bg-white hover:border-brand-300'}`}
+                            >
+                                <div className="flex items-center gap-2">
+                                    <input
+                                        type="radio"
+                                        name="flightFrequency"
+                                        value={option.value}
+                                        checked={form.flightFrequency === option.value}
+                                        onChange={handleChange}
+                                        className="h-4 w-4 text-brand-600 focus:ring-brand-500"
+                                    />
+                                    <span className="text-sm font-medium text-slate-900">{option.label}</span>
+                                </div>
+                                <span className="text-xs text-slate-500">{option.description}</span>
+                            </label>
+                        ))}
+                    </div>
+                </div>
+                <label className="flex flex-col gap-2">
+                    <span className="text-sm font-medium text-slate-700">
+                        {copy.fields.useCase}
+                        {copy.optionalLabel && (
+                            <span className="ml-2 text-xs font-normal text-slate-500">{copy.optionalLabel}</span>
+                        )}
+                    </span>
+                    <textarea
+                        name="useCase"
+                        value={form.useCase ?? ''}
+                        onChange={handleChange}
+                        rows={3}
+                        aria-label={copy.fields.useCase}
+                        placeholder={copy.placeholders?.useCase}
+                        className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20 resize-none placeholder:text-slate-400"
+                    />
+                </label>
+                <label className="flex items-start gap-3">
+                    <input
+                        type="checkbox"
+                        name="updatesOptIn"
+                        checked={Boolean(form.updatesOptIn)}
+                        onChange={handleChange}
+                        className="mt-1 h-5 w-5 rounded border-slate-300 text-brand-600 focus:ring-brand-500"
+                    />
+                    <span className="text-sm text-slate-600">
+                        {copy.fields.updatesOptIn}
+                        {copy.optionalLabel && (
+                            <span className="ml-2 text-xs font-normal text-slate-500">{copy.optionalLabel}</span>
+                        )}
+                    </span>
+                </label>
                 <label className="flex items-start gap-3">
                     <input
                         type="checkbox"
@@ -215,6 +322,17 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                             copy.checkboxLabel
                         )}
                     </span>
+                </label>
+                <label className="flex items-start gap-3">
+                    <input
+                        type="checkbox"
+                        name="privacyAccepted"
+                        checked={form.privacyAccepted}
+                        onChange={handleChange}
+                        required
+                        className="mt-1 h-5 w-5 rounded border-slate-300 text-brand-600 focus:ring-brand-500"
+                    />
+                    <span className="text-sm text-slate-600">{copy.fields.privacyAcceptance}</span>
                 </label>
                 <div className="sr-only" aria-hidden>
                     <label>

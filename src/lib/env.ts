@@ -1,7 +1,22 @@
 import { z } from 'zod';
 
+const optionalUrl = z.preprocess((value) => {
+  if (typeof value !== 'string') {
+    return undefined;
+  }
+  const trimmed = value.trim();
+  if (trimmed.length === 0) {
+    return undefined;
+  }
+  if (/^https?:\/\//i.test(trimmed)) {
+    return trimmed;
+  }
+  return `https://${trimmed}`;
+}, z.string().url().optional());
+
 const envSchema = z.object({
-  NEXT_PUBLIC_BASE_URL: z.string().url().optional(),
+  NEXT_PUBLIC_BASE_URL: optionalUrl,
+  BASE_URL: optionalUrl,
   NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1).optional(),
   BASE_SERVICE_ROLE_KEY: z.string().min(1).optional(),
   SUPABASE_JWT_SECRET: z.string().optional(),
@@ -9,7 +24,7 @@ const envSchema = z.object({
   ZOHO_SMTP_PASSWORD: z.string().optional(),
   ZOHO_API_KEY: z.string().optional(),
   ZOHO_ACCOUNT_ID: z.string().optional(),
-  CURRENT_SITE_URL: z.string().url().optional(),
+  CURRENT_SITE_URL: optionalUrl,
   NEXT_PUBLIC_ANALYTICS_ID: z.string().optional(),
   EMAIL_FROM_ADDRESS: z.string().email().optional(),
   EMAIL_ADMIN_RECIPIENT: z.string().email().optional(),
@@ -20,6 +35,7 @@ export type AppEnv = z.infer<typeof envSchema>;
 
 export const env: AppEnv = envSchema.parse({
   NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
+  BASE_URL: process.env.BASE_URL,
   NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   BASE_SERVICE_ROLE_KEY: process.env.BASE_SERVICE_ROLE_KEY,
   SUPABASE_JWT_SECRET: process.env.SUPABASE_JWT_SECRET,

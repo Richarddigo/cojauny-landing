@@ -1,7 +1,42 @@
+// @ts-nocheck
 // deno-lint-ignore-file no-explicit-any
 import { serve } from 'https://deno.land/std@0.192.0/http/server.ts';
-import { SmtpClient } from 'https://deno.land/x/smtp@v0.7.0/mod.ts';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.6';
+
+// Polyfill helpers for older SMTP library that calls Deno.writeAll / Deno.readAll.
+// Newer Deno runtimes don't expose these globals; provide small compatible impls.
+if (!(Deno as any).writeAll) {
+  (Deno as any).writeAll = async (w: { write: (p: Uint8Array) => Promise<number | null> }, arr: Uint8Array) => {
+    let offset = 0;
+    while (offset < arr.length) {
+      const n = await w.write(arr.subarray(offset));
+      if (n === null || n === 0) throw new Error('writeAll: writer returned 0 or null');
+      offset += n;
+    }
+  };
+}
+
+if (!(Deno as any).readAll) {
+  (Deno as any).readAll = async (r: { read: (p: Uint8Array) => Promise<number | null> }) => {
+    const chunks: Uint8Array[] = [];
+    const buf = new Uint8Array(8192);
+    while (true) {
+      const n = await r.read(buf);
+      if (n === null) break;
+      chunks.push(buf.subarray(0, n));
+    }
+    // concat
+    let length = 0;
+    for (const c of chunks) length += c.length;
+    const out = new Uint8Array(length);
+    let pos = 0;
+    for (const c of chunks) {
+      out.set(c, pos);
+      pos += c.length;
+    }
+    return out;
+  };
+}
 
 type Locale = 'es' | 'en' | 'de' | 'fr';
 type SenderKey = 'beta' | 'feedback' | 'support';
@@ -31,26 +66,29 @@ const smtpPort = Number(Deno.env.get('SMTP_PORT') ?? '465');
 const defaultUser = Deno.env.get('SMTP_USER') ?? '';
 const defaultPassword = Deno.env.get('SMTP_PASS') ?? '';
 
-const senderProfiles: Record<SenderKey, { email: string; password: string; name: string }> = {
+type SenderProfile = { email?: string; password?: string; name: string };
+type ResolvedSender = { email: string; name: string; authEmail: string; authPassword: string };
+
+const senderProfiles: Record<SenderKey, SenderProfile> = {
   beta: {
-    email: Deno.env.get('SMTP_USER_BETA') ?? defaultUser,
-    password: Deno.env.get('SMTP_PASS_BETA') ?? defaultPassword,
+    email: Deno.env.get('SMTP_USER_BETA') ?? undefined,
+    password: Deno.env.get('SMTP_PASS') ?? undefined,
     name: Deno.env.get('SMTP_FROM_NAME_BETA') ?? 'Cojauny Beta'
   },
   feedback: {
-    email: Deno.env.get('SMTP_USER_FEEDBACK') ?? defaultUser,
-    password: Deno.env.get('SMTP_PASS_FEEDBACK') ?? defaultPassword,
+    email: Deno.env.get('SMTP_USER_FEEDBACK') ?? undefined,
+    password: Deno.env.get('SMTP_PASS') ?? undefined,
     name: Deno.env.get('SMTP_FROM_NAME_FEEDBACK') ?? 'Cojauny Feedback'
   },
   support: {
-    email: Deno.env.get('SMTP_USER_SUPPORT') ?? defaultUser,
-    password: Deno.env.get('SMTP_PASS_SUPPORT') ?? defaultPassword,
+    email: Deno.env.get('SMTP_USER_SUPPORT') ?? undefined,
+    password: Deno.env.get('SMTP_PASS') ?? undefined,
     name: Deno.env.get('SMTP_FROM_NAME_SUPPORT') ?? 'Cojauny Support Team'
   }
 };
 
-const supabaseUrl = Deno.env.get('BASE_URL') ?? '';
-const supabaseKey = Deno.env.get('BASE_SERVICE_ROLE_KEY') ?? '';
+const supabaseUrl = Deno.env.get('SUPABASE_URL') ?? '';
+const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '';
 
 const supabase = createClient(supabaseUrl, supabaseKey, {
   auth: {
@@ -58,95 +96,80 @@ const supabase = createClient(supabaseUrl, supabaseKey, {
   }
 });
 
+// Build a canonical site URL for absolute asset links (ensure protocol present)
+const _rawSite = Deno.env.get('CURRENT_SITE_URL') || Deno.env.get('BASE_URL') || Deno.env.get('SUPABASE_URL') || 'https://www.cojauny.com';
+const siteUrlFromEnv = (_rawSite.startsWith('http') ? _rawSite : `https://${_rawSite}`).replace(/\/$/, '');
+const logoUrl = `${siteUrlFromEnv}/assets/logo/mountain_black.svg`;
+
+const emailSignatureHtml = (locale: Locale) => `\n  <br/>\n  <div style="display:flex;gap:12px;align-items:center;margin-top:18px">\n    <img src=\"${logoUrl}\" width=\"72\" alt=\"Cojauny\" style=\"display:block;border:0;\" />\n    <div style=\"font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color:#333;\">\n      <div style=\"font-weight:700\">Cojauny</div>\n      <div style=\"font-size:13px;color:#555;margin-top:4px\">Productivity tools for creative teams — <a href=\"${siteUrlFromEnv}\" style=\"color:#1a73e8;text-decoration:none\">${siteUrlFromEnv.replace(/^https?:\/\//, '')}</a></div>\n    </div>\n  </div>\n  <div style=\"margin-top:12px;font-size:12px;color:#777\">If you need help, contact <a href=\"mailto:support@cojauny.com\" style=\"color:#1a73e8\">support@cojauny.com</a></div>\n`;
+
+const emailSignatureText = `\n--\nCojauny — Productivity tools for creative teams\n${siteUrlFromEnv}\nSupport: support@cojauny.com\n`;
+
 const localizedTemplates: Record<Extract<TemplateKey, 'beta-confirmation' | 'feedback-thanks' | 'contact-thanks'>, Record<Locale, TemplateContent>> = {
   'beta-confirmation': {
     es: {
       subject: 'Tu token de acceso a la beta de Cojauny',
-      html:
-        '<p>Hola {{name}},</p><p>Gracias por unirte a la beta privada de Cojauny. Este es tu token personal:</p><p style="font-size:26px;font-weight:700;letter-spacing:2px;">{{confirmation_token}}</p><p>Úsalo en las próximas 72 horas dentro de la app o responde a este correo si necesitas ayuda.</p><hr style="margin:30px 0;border:none;border-top:1px solid #e5e7eb;"/><h3 style="color:#1f2937;">🎁 Comparte Cojauny y gana acceso prioritario</h3><p>Tu enlace único de invitación:</p><p style="background:#f3f4f6;padding:15px;border-radius:8px;font-family:monospace;word-break:break-all;">{{referral_link}}</p><p><strong>Cómo funciona:</strong></p><ul><li>Comparte este enlace con colegas y amigos interesados en mejorar su movilidad corporativa.</li><li>Solo contamos visitas y registros, sin recopilar datos personales de quienes hacen clic.</li><li>Puedes ver tus estadísticas en el panel una vez que hayas confirmado tu registro.</li></ul><p>— Equipo Cojauny</p>',
-      text:
-        'Hola {{name}},\n\nGracias por unirte a la beta privada de Cojauny. Tu token personal es {{confirmation_token}}. Úsalo en las próximas 72 horas o responde a este correo si necesitas ayuda.\n\n🎁 COMPARTE COJAUNY\n\nTu enlace único de invitación:\n{{referral_link}}\n\nCómo funciona:\n- Comparte este enlace con colegas y amigos.\n- Solo contamos visitas y registros, sin recopilar datos personales.\n- Puedes ver tus estadísticas en el panel después de confirmar tu registro.\n\n— Equipo Cojauny'
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#222;\"><p>Hola {{name}},</p><p>Gracias por unirte a la beta privada de <strong>Cojauny</strong>. Aquí tienes tu token personal:</p><div style=\"background:#f7f9fc;padding:12px;border-radius:6px;display:inline-block;margin:8px 0;font-size:22px;font-weight:700;letter-spacing:2px;color:#0b3d91\">{{confirmation_token}}</div><p>Usa este código en las próximas <strong>72 horas</strong> en la app. Responde a este correo si necesitas ayuda.</p></div>" + emailSignatureHtml('es'),
+      text: 'Hola {{name}},\n\nGracias por unirte a la beta privada de Cojauny. Tu token personal es {{confirmation_token}}. Úsalo en las próximas 72 horas en la app o responde a este correo para asistencia.' + emailSignatureText
     },
     en: {
       subject: 'Your Cojauny beta access token',
-      html:
-        '<p>Hi {{name}},</p><p>Thanks for joining the Cojauny private beta. Here is your personal token:</p><p style="font-size:26px;font-weight:700;letter-spacing:2px;">{{confirmation_token}}</p><p>Use it within the next 72 hours inside the app or reply to this email if you need assistance.</p><hr style="margin:30px 0;border:none;border-top:1px solid #e5e7eb;"/><h3 style="color:#1f2937;">🎁 Share Cojauny and get priority access</h3><p>Your unique invitation link:</p><p style="background:#f3f4f6;padding:15px;border-radius:8px;font-family:monospace;word-break:break-all;">{{referral_link}}</p><p><strong>How it works:</strong></p><ul><li>Share this link with colleagues and friends interested in improving corporate mobility.</li><li>We only count visits and signups, without collecting personal data from those who click.</li><li>You can see your stats in the dashboard once you have confirmed your registration.</li></ul><p>— Cojauny Team</p>',
-      text:
-        'Hi {{name}},\n\nThanks for joining the Cojauny private beta. Your personal token is {{confirmation_token}}. Use it within the next 72 hours inside the app or reply to this email for assistance.\n\n🎁 SHARE COJAUNY\n\nYour unique invitation link:\n{{referral_link}}\n\nHow it works:\n- Share this link with colleagues and friends.\n- We only count visits and signups, without collecting personal data.\n- You can see your stats in the dashboard after confirming your registration.\n\n— Cojauny Team'
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#222;\"><p>Hi {{name}},</p><p>Thanks for joining the private Cojauny beta. Your personal token:</p><div style=\"background:#f7f9fc;padding:12px;border-radius:6px;display:inline-block;margin:8px 0;font-size:22px;font-weight:700;letter-spacing:2px;color:#0b3d91\">{{confirmation_token}}</div><p>Please use it within the next <strong>72 hours</strong> in the app. Reply to this email if you need help.</p></div>" + emailSignatureHtml('en'),
+      text: 'Hi {{name}},\n\nThanks for joining the private Cojauny beta. Your token: {{confirmation_token}}. Use it within the next 72 hours in the app. Reply to this email for help.' + emailSignatureText
     },
     de: {
-      subject: 'Dein Zugangscode für die Cojauny-Beta',
-      html:
-        '<p>Hallo {{name}},</p><p>willkommen in der privaten Cojauny-Beta. Hier ist dein persönlicher Code:</p><p style="font-size:26px;font-weight:700;letter-spacing:2px;">{{confirmation_token}}</p><p>Nutze ihn innerhalb der nächsten 72 Stunden in der App oder antworte auf diese E-Mail, falls du Hilfe brauchst.</p><hr style="margin:30px 0;border:none;border-top:1px solid #e5e7eb;"/><h3 style="color:#1f2937;">🎁 Teile Cojauny und erhalte prioritären Zugang</h3><p>Dein einzigartiger Einladungslink:</p><p style="background:#f3f4f6;padding:15px;border-radius:8px;font-family:monospace;word-break:break-all;">{{referral_link}}</p><p><strong>So funktioniert es:</strong></p><ul><li>Teile diesen Link mit Kollegen und Freunden, die an verbesserter Unternehmensmobilität interessiert sind.</li><li>Wir zählen nur Besuche und Anmeldungen, ohne personenbezogene Daten derer zu sammeln, die klicken.</li><li>Du kannst deine Statistiken im Dashboard sehen, sobald du deine Registrierung bestätigt hast.</li></ul><p>— Dein Cojauny Team</p>',
-      text:
-        'Hallo {{name}},\n\nwillkommen in der privaten Cojauny-Beta. Dein persönlicher Code lautet {{confirmation_token}}. Verwende ihn innerhalb der nächsten 72 Stunden in der App oder antworte auf diese E-Mail, wenn du Unterstützung brauchst.\n\n🎁 TEILE COJAUNY\n\nDein einzigartiger Einladungslink:\n{{referral_link}}\n\nSo funktioniert es:\n- Teile diesen Link mit Kollegen und Freunden.\n- Wir zählen nur Besuche und Anmeldungen, ohne personenbezogene Daten zu sammeln.\n- Du kannst deine Statistiken im Dashboard sehen, nachdem du deine Registrierung bestätigt hast.\n\n— Dein Cojauny Team'
+      subject: 'Dein Zugangscode para la Cojauny-Beta',
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#222;\"><p>Hallo {{name}},</p><p>Willkommen in der privaten Cojauny-Beta. Dein persönlicher Code:</p><div style=\"background:#f7f9fc;padding:12px;border-radius:6px;display:inline-block;margin:8px 0;font-size:22px;font-weight:700;letter-spacing:2px;color:#0b3d91\">{{confirmation_token}}</div><p>Bitte nutze ihn innerhalb von <strong>72 Stunden</strong> in der App. Antworte auf diese E-Mail bei Fragen.</p></div>" + emailSignatureHtml('de'),
+      text: 'Hallo {{name}},\n\nWillkommen in der privaten Cojauny-Beta. Dein Code: {{confirmation_token}}. Por favor usa' + emailSignatureText
     },
     fr: {
       subject: 'Votre code d’accès à la bêta Cojauny',
-      html:
-        '<p>Bonjour {{name}},</p><p>Merci de rejoindre la bêta privée de Cojauny. Voici votre code personnel :</p><p style="font-size:26px;font-weight:700;letter-spacing:2px;">{{confirmation_token}}</p><p>Utilisez-le dans les 72 prochaines heures dans l’app ou répondez à ce message si vous avez besoin d’aide.</p><p>— Équipe Cojauny</p><hr style="margin:30px 0;border:none;border-top:1px solid #e5e7eb;"/><h3 style="color:#1f2937;">🎁 Partagez Cojauny et obtenez un accès prioritaire</h3><p>Votre lien d'invitation unique :</p><p style="background:#f3f4f6;padding:15px;border-radius:8px;font-family:monospace;word-break:break-all;">{{referral_link}}</p><p><strong>Comment ça marche :</strong></p><ul><li>Partagez ce lien avec des collègues et amis intéressés par l'amélioration de la mobilité d'entreprise.</li><li>Nous comptons uniquement les visites et les inscriptions, sans collecter de données personnelles de ceux qui cliquent.</li><li>Vous pouvez voir vos statistiques dans le tableau de bord une fois votre inscription confirmée.</li></ul><p>— Équipe Cojauny</p>',
-      text:
-        'Bonjour {{name}},\n\nMerci de rejoindre la bêta privée de Cojauny. Votre code personnel est {{confirmation_token}}. Utilisez-le dans les 72 prochaines heures ou répondez à cet e-mail si vous avez besoin d’aide.\n\n— Équipe Cojauny\n\n🎁 PARTAGEZ COJAUNY\n\nVotre lien d'invitation unique :\n{{referral_link}}\n\nComment ça marche :\n- Partagez ce lien avec des collègues et amis.\n- Nous comptons uniquement les visites et les inscriptions, sans collecter de données personnelles.\n- Vous pouvez voir vos statistiques dans le tableau de bord après avoir confirmé votre inscription.\n\n— Équipe Cojauny'
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#222;\"><p>Bonjour {{name}},</p><p>Merci d’avoir rejoint la bêta privée de Cojauny. Votre code :</p><div style=\"background:#f7f9fc;padding:12px;border-radius:6px;display:inline-block;margin:8px 0;font-size:22px;font-weight:700;letter-spacing:2px;color:#0b3d91\">{{confirmation_token}}</div><p>Utilisez-le dans les <strong>72 prochaines heures</strong> dans l’app. Répondez à cet email si vous avez besoin d’aide.</p></div>" + emailSignatureHtml('fr'),
+      text: 'Bonjour {{name}},\n\nMerci d’avoir rejoint la bêta privée. Votre code: {{confirmation_token}}. Utilisez-le dans les 72 prochaines heures dans l’app.' + emailSignatureText
     }
   },
   'feedback-thanks': {
     es: {
       subject: '¡Gracias por tu feedback, {{name}}! 💌',
-      html:
-        '<p>Hola {{name}},</p><p>Tu mensaje llegó perfecto y ya lo está revisando el equipo de producto. Estas notas nos ayudan a priorizar qué lanzar en la siguiente iteración.</p><p>Si quieres ampliar la información, basta con responder a este correo.</p><p>— Cojauny Feedback</p>',
-      text:
-        'Hola {{name}},\n\nTu mensaje llegó perfecto y el equipo de producto ya lo está revisando. Responde a este correo si quieres ampliar la información.\n\n— Cojauny Feedback'
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#222;\"><p>Hola {{name}},</p><p>Gracias por tu comentario — lo hemos recibido y el equipo de producto lo está revisando. Tus ideas nos ayudan a priorizar lo siguiente.</p><p>Si quieres agregar contexto adicional, responde a este correo y lo adjuntaremos a tu ticket.</p></div>" + emailSignatureHtml('es'),
+      text: 'Hola {{name}},\n\nGracias por tu feedback — lo recibimos y el equipo de producto lo está revisando. Responde a este correo para añadir más contexto.' + emailSignatureText
     },
     en: {
       subject: 'Thanks for your Cojauny feedback, {{name}}',
-      html:
-        '<p>Hi {{name}},</p><p>Your note just landed in our product queue. Insights like yours guide the next Cojauny releases.</p><p>If you want to add more context simply reply to this email.</p><p>— Cojauny Feedback</p>',
-      text:
-        'Hi {{name}},\n\nYour note just landed in our product queue. Reply to this email any time you want to add more context.\n\n— Cojauny Feedback'
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#222;\"><p>Hi {{name}},</p><p>Thanks for your note — it landed in our product queue and the team is reviewing it. Feedback like yours helps us decide what to build next.</p><p>Reply to this email if you want to add more details.</p></div>" + emailSignatureHtml('en'),
+      text: 'Hi {{name}},\n\nThanks for your feedback — our product team has received it and is reviewing it. Reply here to add more details.' + emailSignatureText
     },
     de: {
       subject: 'Danke für dein Feedback zu Cojauny, {{name}}',
-      html:
-        '<p>Hallo {{name}},</p><p>Deine Nachricht ist angekommen und das Produktteam schaut sie sich bereits an. Solches Feedback hilft uns bei den nächsten Releases.</p><p>Wenn du mehr Details teilen möchtest, antworte einfach auf diese E-Mail.</p><p>— Cojauny Feedback</p>',
-      text:
-        'Hallo {{name}},\n\nDeine Nachricht ist angekommen und unser Produktteam prüft sie bereits. Antworte einfach auf diese E-Mail, wenn du noch etwas ergänzen möchtest.\n\n— Cojauny Feedback'
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#222;\"><p>Hallo {{name}},</p><p>Danke für dein Feedback — wir haben es erhalten und unser Produktteam prüft es. Solche Rückmeldungen sind sehr wertvoll para nuestra planificación.</p><p>Antworte auf diese E-Mail, um weitere Details hinzuzufügen.</p></div>" + emailSignatureHtml('de'),
+      text: 'Hallo {{name}},\n\nDanke für dein Feedback — wir haben deine Nachricht erhalten y nuestro equipo estará revisándolo. Responde a este correo para añadir contexto.' + emailSignatureText
     },
     fr: {
       subject: 'Merci pour votre retour sur Cojauny, {{name}}',
-      html:
-        '<p>Bonjour {{name}},</p><p>Votre message est bien arrivé et notre équipe produit est déjà dessus. Vos retours influencent directement les prochaines fonctionnalités.</p><p>Pour ajouter des précisions, il suffit de répondre à cet email.</p><p>— Cojauny Feedback</p>',
-      text:
-        'Bonjour {{name}},\n\nVotre message est bien arrivé et notre équipe produit l’examine. Répondez simplement à cet email si vous souhaitez ajouter des précisions.\n\n— Cojauny Feedback'
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#222;\"><p>Bonjour {{name}},</p><p>Merci — votre message a bien été reçu et notre équipe produit l’examine. Vos retours nous aident à prioriser les améliorations.</p><p>Répondez à cet e-mail pour ajouter un complément d’information.</p></div>" + emailSignatureHtml('fr'),
+      text: 'Bonjour {{name}},\n\nMerci pour votre retour — nous avons bien reçu votre message et notre équipe produit l’examine. Répondez pour ajouter des précisions.' + emailSignatureText
     }
   },
   'contact-thanks': {
     es: {
-      subject: 'Tu solicitud ya está en el inbox de soporte',
-      html:
-        '<p>Hola {{name}},</p><p>Recibimos tu mensaje y una persona del equipo de soporte lo revisará en menos de 48h. Te responderemos desde support@cojauny.com.</p><p>Si necesitas adjuntar más detalles solo responde a este correo.</p><p>— Cojauny Support</p>',
-      text:
-        'Hola {{name}},\n\nRecibimos tu mensaje y lo revisaremos en menos de 48 h. Puedes responder a este correo para añadir más detalles.\n\n— Cojauny Support'
+      subject: 'Hemos recibido tu solicitud, {{name}}',
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#222;\"><p>Hola {{name}},</p><p>Hemos recibido tu mensaje y un miembro del equipo de soporte lo revisará en menos de 48 horas. Responderemos desde <a href=\"mailto:support@cojauny.com\">support@cojauny.com</a>.</p><p>Responde a este correo si necesitas añadir más información o archivos.</p></div>" + emailSignatureHtml('es'),
+      text: 'Hola {{name}},\n\nHemos recibido tu solicitud y la revisaremos en menos de 48 h. Responderemos desde support@cojauny.com. Responde a este correo si necesitas añadir más información.' + emailSignatureText
     },
     en: {
-      subject: 'We are on your request, {{name}}',
-      html:
-        '<p>Hi {{name}},</p><p>Your message reached the Cojauny support inbox. Someone in the team will get back to you within 48h from support@cojauny.com.</p><p>Need to share more context? Reply to this email.</p><p>— Cojauny Support</p>',
-      text:
-        'Hi {{name}},\n\nYour message reached the Cojauny support inbox. Expect an answer within 48 h and reply to this email if you want to add details.\n\n— Cojauny Support'
+      subject: 'We received your request, {{name}}',
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#222;\"><p>Hi {{name}},</p><p>We received your message. Our support team will review it and reply within 48 hours from <a href=\"mailto:support@cojauny.com\">support@cojauny.com</a>.</p><p>If you want to add attachments or more details, reply to this email.</p></div>" + emailSignatureHtml('en'),
+      text: 'Hi {{name}},\n\nThanks — we received your request and will respond within 48 hours from support@cojauny.com. Reply to add more details or attachments.' + emailSignatureText
     },
     de: {
-      subject: 'Wir kümmern uns um deine Anfrage, {{name}}',
-      html:
-        '<p>Hallo {{name}},</p><p>Deine Nachricht ist im Support-Postfach eingegangen. Jemand aus dem Team meldet sich innerhalb von 48 Stunden bei dir (support@cojauny.com).</p><p>Für weitere Informationen kannst du einfach auf diese E-Mail antworten.</p><p>— Cojauny Support</p>',
-      text:
-        'Hallo {{name}},\n\nDeine Nachricht ist im Support-Postfach angekommen. Wir melden uns innerhalb von 48 Stunden. Antworte auf diese Mail, wenn du mehr Details brauchst.\n\n— Cojauny Support'
+      subject: 'Wir haben deine Anfrage erhalten, {{name}}',
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#222;\"><p>Hallo {{name}},</p><p>Wir haben deine Nachricht erhalten. Unser Support-Team prüft sie und meldet sich innerhalb von 48 Stunden von <a href=\"mailto:support@cojauny.com\">support@cojauny.com</a>.</p><p>Antworte auf diese E-Mail, um Anhänge oder weitere Informationen zu senden.</p></div>" + emailSignatureHtml('de'),
+      text: 'Hallo {{name}},\n\nWir haben deine Anfrage erhalten und melden uns innerhalb von 48 Stunden von support@cojauny.com. Antworte auf diese E-Mail, um zusätzliche Informationen hinzuzufügen.' + emailSignatureText
     },
     fr: {
       subject: 'Nous avons bien reçu votre demande, {{name}}',
-      html:
-        '<p>Bonjour {{name}},</p><p>Votre message est arrivé dans la boîte de support Cojauny. Nous reviendrons vers vous sous 48h depuis support@cojauny.com.</p><p>Besoin d’ajouter des détails ? Répondez simplement à cet email.</p><p>— Cojauny Support</p>',
-      text:
-        'Bonjour {{name}},\n\nVotre message est arrivé dans la boîte de support Cojauny. Nous vous répondrons sous 48 h. Répondez à cet email pour ajouter des détails.\n\n— Cojauny Support'
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#222;\"><p>Bonjour {{name}},</p><p>Votre message est bien arrivé. Notre équipe support vous répondra sous 48 heures depuis <a href=\"mailto:support@cojauny.com\">support@cojauny.com</a>.</p><p>Répondez à cet e-mail pour ajouter des pièces jointes ou des informations supplémentaires.</p></div>" + emailSignatureHtml('fr'),
+      text: 'Bonjour {{name}},\n\nMerci — nous avons bien reçu votre message. Nous vous répondrons sous 48 heures depuis support@cojauny.com. Répondez pour ajouter des précisions ou des pièces jointes.' + emailSignatureText
     }
   }
 };
@@ -155,16 +178,22 @@ const staticTemplates: Record<Extract<TemplateKey, 'contact-notification' | 'int
   'contact-notification': {
     subject: 'Nuevo mensaje en el formulario de soporte',
     html:
-      '<p>Nombre: {{name}}</p><p>Email: {{email}}</p><p>Asunto: {{topic}}</p><p>Mensaje:</p><pre style="white-space:pre-wrap;font-family:inherit;">{{message}}</pre><p>Idioma declarado: {{locale}}</p>',
+      "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#222;\">" +
+      `<div style=\"display:flex;gap:12px;align-items:center;margin-bottom:12px\"><img src=\"${logoUrl}\" width=\"64\" alt=\"Cojauny\" style=\"display:block;border:0\" /><div style=\"font-weight:700\">Cojauny</div></div>` +
+      "<p><strong>Nombre:</strong> {{name}}</p><p><strong>Email:</strong> {{email}}</p><p><strong>Asunto:</strong> {{topic}}</p><p><strong>Mensaje:</strong></p><pre style=\"white-space:pre-wrap;font-family:inherit;\">{{message}}</pre><p style=\"color:#666;font-size:13px;margin-top:8px\">Idioma declarado: {{locale}}</p>" +
+      emailSignatureHtml('en'),
     text:
-      'Nuevo mensaje de {{name}} ({{email}})\nAsunto: {{topic}}\nIdioma: {{locale}}\n---\n{{message}}'
+      'Nuevo mensaje de {{name}} ({{email}})\nAsunto: {{topic}}\nIdioma: {{locale}}\n---\n{{message}}\n\nCojauny · ' + siteUrlFromEnv + '\nSupport: support@cojauny.com'
   },
   'internal-notification': {
     subject: 'Nuevo feedback en Cojauny',
     html:
-      '<p>{{name}} ({{email}}) envió un nuevo feedback.</p><p>Sentimiento: {{sentiment}}</p><p>Idioma: {{locale}}</p><p>Mensaje:</p><pre style="white-space:pre-wrap;font-family:inherit;">{{message}}</pre>',
+      "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#222;\">" +
+      `<div style=\"display:flex;gap:12px;align-items:center;margin-bottom:12px\"><img src=\"${logoUrl}\" width=\"64\" alt=\"Cojauny\" style=\"display:block;border:0\" /><div style=\"font-weight:700\">Cojauny — Feedback</div></div>` +
+      "<p><strong>{{name}}</strong> ({{email}}) envió un nuevo feedback.</p><p><strong>Sentimiento:</strong> {{sentiment}}</p><p><strong>Idioma:</strong> {{locale}}</p><p><strong>Mensaje:</strong></p><pre style=\"white-space:pre-wrap;font-family:inherit;\">{{message}}</pre>" +
+      emailSignatureHtml('en'),
     text:
-      '{{name}} ({{email}}) envió un nuevo feedback.\nSentimiento: {{sentiment}}\nIdioma: {{locale}}\n---\n{{message}}'
+      '{{name}} ({{email}}) envió un nuevo feedback.\nSentimiento: {{sentiment}}\nIdioma: {{locale}}\n---\n{{message}}\n\nCojauny · ' + siteUrlFromEnv + ' · support@cojauny.com'
   }
 };
 
@@ -202,26 +231,64 @@ function resolveTemplate(key: TemplateKey, locale: Locale): TemplateContent {
   return staticTemplates[key as keyof typeof staticTemplates];
 }
 
-function resolveSender(key: TemplateKey) {
+function resolveSender(key: TemplateKey): ResolvedSender {
   const profileKey = templateSenders[key];
   const profile = senderProfiles[profileKey];
-  if (!profile.email || !profile.password) {
-    throw new Error(`No hay credenciales SMTP configuradas para ${profileKey}`);
+
+  // If the profile has its own credentials, authenticate and send as that account.
+  if (profile.email && profile.password) {
+    // send as the profile and authenticate as the profile
+    return {
+      email: profile.email,
+      name: profile.name,
+      authEmail: profile.email,
+      authPassword: profile.password
+    };
   }
-  return profile;
+
+  if (!defaultUser || !defaultPassword) {
+    throw new Error('No hay credenciales SMTP predeterminadas configuradas');
+  }
+
+  if (profile.email && !profile.password) {
+    // No password for alias: authenticate with default account but use alias as From
+    console.warn(
+      `SMTP_PASS_${profileKey.toUpperCase()} no está configurada. Autenticando con la cuenta predeterminada, pero usando la dirección alias como From.`
+    );
+    return {
+      email: profile.email,
+      name: profile.name,
+      authEmail: defaultUser,
+      authPassword: defaultPassword
+    };
+  }
+
+  // No specific profile email: authenticate and send from default
+  console.warn(`SMTP_USER_${profileKey.toUpperCase()} no está configurada. Se enviará desde la cuenta predeterminada.`);
+  return {
+    email: defaultUser,
+    name: profile.name,
+    authEmail: defaultUser,
+    authPassword: defaultPassword
+  };
 }
 
 async function sendViaSmtp(
   recipient: string,
   rendered: ReturnType<typeof render>,
-  sender: { email: string; password: string; name: string }
+  sender: ResolvedSender
 ) {
+  // Import SMTP client dynamically so polyfills run first and avoid std/io version mismatches
+  const { SmtpClient } = await import('https://deno.land/x/smtp@v0.7.0/mod.ts');
   const client = new SmtpClient();
+  // Authenticate with the resolved auth credentials, but set the From header to sender.email
+  // which may be an alias. This requires the alias to be authorized as "send as" for the
+  // authenticated account in Zoho.
   await client.connectTLS({
     hostname: smtpHost,
     port: smtpPort,
-    username: sender.email,
-    password: sender.password
+    username: sender.authEmail,
+    password: sender.authPassword
   });
 
   await client.send({
@@ -229,7 +296,10 @@ async function sendViaSmtp(
     to: recipient,
     subject: rendered.subject,
     content: rendered.text,
-    html: rendered.html
+    html: rendered.html,
+    headers: {
+      'Reply-To': `${sender.name} <${sender.email}>`
+    }
   });
 
   await client.close();
@@ -251,7 +321,7 @@ async function logEmail(payload: Payload, status: 'sent' | 'error', errorMessage
   }
 }
 
-serve(async (request) => {
+serve(async (request: Request) => {
   if (request.method !== 'POST') {
     return new Response('Método no permitido', { status: 405 });
   }
@@ -285,8 +355,10 @@ serve(async (request) => {
     });
   } catch (error) {
     console.error('Fallo enviando email', error);
-    await logEmail(payload, 'error', error instanceof Error ? error.message : String(error));
-    return new Response(JSON.stringify({ error: 'No se pudo enviar el email' }), {
+    const message = error instanceof Error ? error.message : String(error);
+    const stack = error instanceof Error && error.stack ? error.stack : null;
+    await logEmail(payload, 'error', `${message}${stack ? '\n' + stack : ''}`);
+    return new Response(JSON.stringify({ error: 'No se pudo enviar el email', details: { message, stack } }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
     });

@@ -32,17 +32,17 @@ describe('FeedbackForm', () => {
         fireEvent.change(screen.getByLabelText(/^correo$/i), {
             target: { value: 'laura@example.com' }
         });
-        fireEvent.change(screen.getByLabelText(/tipo de feedback/i), {
+        fireEvent.change(screen.getByLabelText(/tipo de mensaje/i), {
             target: { value: 'positive' }
         });
-        fireEvent.change(screen.getByLabelText(/cuéntanos más/i), {
+        fireEvent.change(screen.getByLabelText(/cuéntanos tu caso/i), {
             target: { value: 'Me encanta la interfaz y la velocidad.' }
         });
 
-        fireEvent.submit(screen.getByRole('button', { name: /Enviar feedback/i }));
+        fireEvent.submit(screen.getByRole('button', { name: /Enviar mensaje/i }));
 
         await waitFor(() => {
-            expect(screen.getByText(/Gracias por tu feedback/i)).toBeInTheDocument();
+            expect(screen.getByText(copy.forms.feedback.success)).toBeInTheDocument();
         });
 
         expect(mockFetch).toHaveBeenCalledWith(

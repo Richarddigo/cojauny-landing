@@ -64,8 +64,16 @@ export const blogPosts: BlogPost[] = [
     heroWidth: 1280,
     heroHeight: 720,
     body: [
-      'We cover pre-flight coordination, recommended chat prompts and how to keep the channel live offline during the flight.',
-        'Use the downloadable checklist (https://cojauny.com/resources/airport-ride-checklist.pdf) to brief the group before boarding.'
+      '# The playbook for sharing airport rides with confidence\n\nCoordinating a shared ride with people on your same flight sounds simple until you add real-world constraints: staggered arrival times, luggage delays, drivers calling the wrong phone number. This guide shows how Cojauny structures the process so no one is left behind.',
+      '## 1. Capture the basics early\n\nCreate a flight event as soon as tickets are confirmed. Add airline, flight number, date and the city where everyone will meet. Cojauny automatically proposes a meeting point based on historical success (hotel lobby, terminal door, coworking space). Invite your teammates or share the event link on Slack/WhatsApp so fellow passengers can join before travel day.',
+      '## 2. Offer clear ride slots\n\nFor each ride, configure capacity, pickup window and travel time buffer. Example: “Taxi to MAD T4 · 3 seats · pickup 05:40–05:50 · ETA 06:20”. When people tap “Join ride”, they see exactly how many seats remain and what behaviour is expected (carry-on only, cash preferred, etc.).',
+      '## 3. Keep the chat structured\n\nPinned prompts avoid chaos. Start with “👋 Present yourself + luggage type”, follow with “🕒 Confirma tu hora estimada de llegada”, and remind everyone to share driver details the moment the car departs. Chats remain active offline, so messages written mid-flight resync when you land.',
+      '## 4. Align on payments before boarding\n\nUse the cost splitter to define how the fare will be divided. Choose equal parts or assign heavier luggage a slightly higher percentage. Add your preferred payment links (Bizum, PayPal.me, Wise). Travelers receive a notification with their amount minutes after the ride closes—no awkward negotiations curbside.',
+      '## 5. Keep the channel alive during the flight\n\nCojauny stores up to 50 offline messages. Encourage passengers to type quick updates before the plane takes off: gate changes, baggage delays, customs expectations. Once everyone reconnects on Wi-Fi or data, the chat syncs automatically and nobody wonders where the rest of the group is.',
+      '## 6. Handle last-minute surprises\n\nIf someone drops out, the waitlist activates so the next traveler can take the seat without creating a new group. If the flight diverts to a new terminal, the organizer edits the event once and everyone receives refreshed meeting instructions plus a map pin.',
+      '## 7. Wrap up with accountability\n\nClose the event after the ride. The app records cost per person, CO₂ saved, and punctuality stats. Travelers can rate each other, helping the trustworthy riders bubble to the top of future events. Download the results as a PDF if finance or travel ops needs proof.',
+      '## 8. Template for your team\n\nDuplicate this structure inside your workspace:\n- Event name\n- Meeting point photo\n- Driver or supplier contact\n- Payment method\n- Contingency plan if someone is late\n\nUse the checklist at https://cojauny.com/resources/airport-ride-checklist.pdf to brief groups before boarding.',
+      '## Final thoughts\n\nShared rides stop being a gamble when the process is transparent. Set expectations early, document who is in charge of what, and rely on Cojauny to keep the information synced even when devices are offline. The result: lower costs, calmer passengers, and teams that arrive at the airport already in sync.'
     ],
     tags: ['airport ride', 'travel planning'],
     categories: ['operations'],
@@ -85,8 +93,16 @@ export const blogPosts: BlogPost[] = [
     heroWidth: 1280,
     heroHeight: 720,
     body: [
-      "Découvrez comment configurer un salon temporaire Cojauny, verrouiller le point de rencontre et suivre l'arrivée du chauffeur.",
-      "Ajoutez vos propres conseils tarifaires dans la checklist afin d'éviter les malentendus à l'arrivée."
+      "# Organiser une navette partagée sans stress\n\nPartager un taxi ou un VTC avec les passagers de votre vol est le moyen le plus simple de réduire les coûts et d'arriver ensemble. Voici la méthode Cojauny pour orchestrer la navette parfaite, du premier message jusqu'au paiement final.",
+      '## 1. Créez l’événement de vol\n\nDans Cojauny, sélectionnez votre vol, précisez si le trajet est au départ ou à l’arrivée et indiquez le nombre de places disponibles. L’application suggère automatiquement un point de rencontre en fonction de votre terminal et du trafic local.',
+      "## 2. Invitez vos co-passagers\n\nPartagez le lien de l'événement dans le groupe WhatsApp de votre équipe, par Slack ou directement depuis l'app. Les passagers voient immédiatement :\n- l'heure de rencontre\n- le nombre de sièges restants\n- le prix estimé par personne\n- les règles d'étiquette (bagage cabine uniquement, paiement avant embarquement, etc.)",
+      "## 3. Verrouillez le point de rendez-vous\n\nUtilisez la carte intégrée pour placer précisément le lieu de départ (Terminal 2E – Porte 6, par exemple). Ajoutez une photo ou une note : *'Devant Starbucks, côté gauche'*. En cas de changement de porte ou de terminal, mettez à jour l'événement et tout le monde reçoit une notification.",
+      "## 4. Briefing minute \u2013 chat éphémère\n\nAvant le vol, proposez un mini agenda dans le chat :\n- 00:00 Confirmation des participants\n- 00:15 Partage du nom du chauffeur et de la plaque\n- 00:30 Vérification de l'état du vol\n\nLes messages restent disponibles hors ligne et se synchronisent dès que l'appareil se reconnecte au Wi-Fi de l'aéroport.",
+      "## 5. Suivez le chauffeur en temps réel\n\nUne fois la navette en route, le conducteur partage sa localisation grâce au lien Cojauny. Les passagers voient son ETA et reçoivent une alerte lorsqu'il approche à moins de 5 minutes du point de rendez-vous.",
+      "## 6. Répartition instantanée des coûts\n\nÀ la fin du trajet, saisissez le montant total dans le calculateur d'économies. L'app répartit automatiquement la somme, arrondit selon vos paramètres et envoie à chacun un rappel de paiement (Bizum, Lydia, PayPal ou virement).",
+      "## 7. Checklist anti-surprises\n\n- Confirmez si le chauffeur accepte les paiements séparés\n- Mentionnez la quantité de bagages autorisée\n- Ajoutez un plan B (bus express, RER, etc.) en cas de retard extrême\n- Notez un contact d'urgence pour le groupe",
+      "## 8. Capitalisez pour le prochain vol\n\nFermez l'événement et exportez les statistiques : temps de coordination, économies réalisées, CO₂ évité. Les organisateurs peuvent dupliquer l'événement pour le prochain vol en un clic.",
+      "## Conclusion\n\nUne navette partagée réussie repose sur la clarté des informations et la visibilité temps réel. Avec Cojauny, tout le monde sait où aller, combien payer et quoi faire si le plan change. Résultat : moins de stress, plus d'efficacité et une expérience passager premium."
     ],
     tags: ['navette', 'aéroport', 'mobilité partagée'],
     categories: ['product'],
@@ -106,8 +122,16 @@ export const blogPosts: BlogPost[] = [
     heroWidth: 1280,
     heroHeight: 720,
     body: [
-      'Wir erklären, wie du Slots für Fahrer erstellst, jemanden als Moderator festlegst und auch nach der Landung synchron bleibst.',
-        'Nutze die Vorlage https://cojauny.com/resources/briefing-global-crews.pdf als Pflichtbriefing für internationale Crews.'
+      '# Leitfaden für gemeinsame Flughafentransfers\n\nWer mit Kolleg:innen oder anderen Passagieren desselben Fluges reist, kann Kosten halbieren und Stress vermeiden. Mit Cojauny organisierst du die komplette Fahrt in weniger als zehn Minuten. So funktioniert es Schritt für Schritt.',
+      '## 1. Event anlegen\n\nLege deinen Flug fest, wähle Abflug- oder Ankunftstransfer und definiere Kapazität, Treffpunkt sowie Zeitfenster. Füge Hinweise hinzu (z. B. "Nur Handgepäck" oder "Firmenkarte übernimmt Zahlung"). Alle Reisenden des gleichen Fluges sehen das Event sofort.',
+      '## 2. Rollen verteilen\n\nBestimme eine moderierende Person, die Fahrende koordiniert und letzte Updates postet. Teilnehmende bestätigen ihre Anwesenheit mit einem Tap. Wer öfter mitfährt, bekommt automatisch Priorität bei zukünftigen Fahrten.',
+      '## 3. Slots für Fahrer oder Vans\n\nDu kannst mehrere Fahrzeuge planen: z. B. Taxi (4 Plätze) + Van (7 Plätze). Jede Option hat eigenes Chat-Thread, damit Kommunikation fokussiert bleibt. Cojauny meldet, wenn ein Slot voll ist, und schlägt Alternativen vor.',
+      '## 4. Kommunikation im Event-Chat\n\nNutze vordefinierte Prompts: "Wo bist du gerade?", "Wann bist du am Treffpunkt?", "Kannst du den Fahrer beschreiben?". Nachrichten werden automatisch übersetzt, falls internationale Teams beteiligt sind. Offline gesendete Infos synchronisieren sich nach der Landung.',
+      '## 5. Live-Tracking und Gate-Änderungen\n\nDie App zeigt den Standort des Fahrzeugs, teilt Gate-Updates und informiert alle, wenn der Fahrer angekommen ist. Bei Verspätungen schlägt Cojauny alternative Zeiten vor und verschiebt Erinnerungen automatisch.',
+      '## 6. Nach der Fahrt abrechnen\n\nTrage den Gesamtpreis ein, füge Trinkgeld hinzu und lass das System den Betrag pro Person berechnen. Jede Person erhält eine Push-Nachricht mit Zahlungslink. Offene Beträge werden nach 24 und 48 Stunden erneut erinnert.',
+      '## 7. Dokumentation für Teams\n\nExportiere Kostenübersichten, CO₂-Ersparnis und Pünktlichkeitswerte als PDF oder CSV. Ideal für Travel-Manager:innen, die den Nutzen gemeinsamer Fahrten gegenüber der Finanzabteilung belegen möchten.',
+      '## Bonus: Briefing-Vorlage\n\nNutze die Vorlage https://cojauny.com/resources/briefing-global-crews.pdf, um internationalen Crews vorab klare Regeln zu geben: Treffpunktfoto, Plan B bei Staus, Kommunikationskanäle. Kopiere sie direkt in dein Event.',
+      '## Fazit\n\nEine geteilte Flughafentransfer-Experience braucht kein Chaos. Strukturierte Events, klare Rollen und transparente Kosten sorgen dafür, dass Business-Teams entspannt starten und gemeinsam ankommen.'
     ],
     tags: ['reiseplanung', 'fahrgemeinschaft'],
     categories: ['operations'],
@@ -166,8 +190,15 @@ export const blogPosts: BlogPost[] = [
     heroWidth: 1280,
     heroHeight: 720,
     body: [
-      'Segment shuttles by hotel cluster, assign moderators inside Cojauny and keep everyone updated with the temporary chat.',
-      'Export savings and occupancy metrics to align with finance and prove the ROI of shared ground transport.'
+      '# Airport shuttle blueprint for tech conferences\n\nMoving speakers, sponsors and staff between the airport and venue is a mini logistics project. With Cojauny you can orchestrate shuttles like production runs instead of ad-hoc rides.',
+      '## 1. Map demand before attendees land\n\nImport flight manifests or ask registrants to log their itineraries. Tag each person with hotel cluster, arrival window and badge type (speaker, VIP, crew). The dashboard reveals how many vans you need per hour.',
+      '## 2. Build recurring shuttle events\n\nCreate an event per route: “Airport → Venue”, “Airport → Downtown Hotels”, “Venue → Afterparty”. Define capacity, pickup cadence (every 30 minutes) and the moderator responsible for that lane. People self-assign slots that best match their flight.',
+      '## 3. Brief moderators like stage managers\n\nAssign each route to a volunteer or staffer. Their checklist:\n- confirm driver contact\n- post license plate + color\n- mark no-shows after 5 minutes\n- escalate if occupancy <60% (combine groups)\n\nModerators can broadcast updates that reach only the riders booked on their shuttle.',
+      '## 4. Provide live visibility to sponsors and ops\n\nShare read-only links with finance, venue security or headline sponsors. They see shuttle status (boarding, in transit, arrived) without joining the chat. It reduces back-and-forth on radios during crunch time.',
+      '## 5. Keep riders informed even offline\n\nThe temporary chat pins the latest pickup point, driver ETA and Wi-Fi password. Messages queued during the flight sync once travelers connect to airport Wi-Fi, so no one misses the “line forming at Gate 15” alert.',
+      '## 6. Capture metrics that justify the budget\n\nAfter the conference, export:\n- occupancy by shuttle\n- average wait time\n- cost per passenger compared with taxis\n- CO₂ saved vs individual rides\n\nFinance teams love seeing that a €1,200 shuttle contract moved 85 people versus 40 in fragmented rideshares.',
+      '## 7. Replicate for your next edition\n\nDuplicate the most efficient routes, update dates and you have the shuttle program for the next summit ready in minutes. Historical data lets you negotiate better fleet pricing with transport partners.',
+      '## Final takeaway\n\nTreat shuttles like session tracks: curated, staffed and measured. Cojauny gives tech event teams the same clarity backstage that attendees see on stage.'
     ],
     tags: ['events', 'airport shuttles'],
     categories: ['operations', 'case-studies'],
@@ -187,15 +218,22 @@ export const blogPosts: BlogPost[] = [
     heroWidth: 1280,
     heroHeight: 720,
     body: [
-      'Créez des événements par vol ou train et invitez automatiquement chaque collaborateur avec les instructions adaptées.',
-      'Analysez les économies générées grâce au tableau d’impact pour alimenter votre reporting climat.'
+      "# Navettes durables pour équipes en mission\n\nRéduire les coûts tout en respectant les objectifs RSE n'est pas incompatible. Voici comment les travel managers utilisent Cojauny pour orchestrer des navettes partagées et prouver leur impact.",
+      "## 1. Segmenter les flux\n\nClassez vos collaborateurs par vol ou train, puis créez un événement Cojauny par groupe (ex. 'CDG → Quartier Défense – 18h30'). L'application calcule automatiquement la capacité idéale (van 7 places, minibus 16 places) et signale les créneaux surchargés.",
+      "## 2. Invitations automatiques\n\nImportez la liste des voyageurs depuis Google Workspace ou Slack. Chaque personne reçoit une notification dans sa langue avec instructions de rendez-vous, contact chauffeur et rappel des règles de bagages.",
+      "## 3. Transparence sur le CO₂ évité\n\nAprès chaque trajet, Cojauny compare l'empreinte carbone d'un trajet partagé vs. des taxis individuels. Les résultats alimentent votre tableau d'impact : kg de CO₂ évités, taux de remplissage, nombre de véhicules économisés.",
+      "## 4. Tableaux de bord pour la direction\n\nExportez un rapport PDF par mission ou trimestre :\n- coûts totaux vs budget initial\n- économies réalisées par passager\n- classement des villes les plus performantes\n- recommandations pour la prochaine opération",
+      "## 5. Gouvernance et conformité\n\nFixez des politiques : priorité aux véhicules électriques, seuil minimal de remplissage, interdiction des navettes si moins de 3 passagers confirmés. Cojauny bloque automatiquement les événements qui ne respectent pas les règles.",
+      "## 6. Expérience voyageur améliorée\n\nLes collaborateurs voient la localisation du chauffeur, reçoivent des rappels 15 minutes avant le départ et peuvent signaler un retard sans devoir appeler tout le monde. Plus besoin de groupes WhatsApp non sécurisés.",
+      "## 7. Réplication instantanée\n\nDupliquez un événement réussi pour une prochaine mission : même parcours, nouvelles dates, nouveaux participants. En deux minutes, la logistique est prête.",
+      "## Conclusion\n\nEn documentant chaque navette, vous démontrez concrètement votre contribution aux KPI climat tout en offrant une expérience fluide aux équipes. Cojauny devient ainsi l'allié des responsables RSE et des directions financières."
     ],
     tags: ['durabilité', 'transport partagé'],
     categories: ['sustainability'],
     publishedAt: '2025-11-17T09:45:00.000Z',
     updatedAt: '2025-11-17T09:45:00.000Z',
     author: 'Équipe Cojauny',
-    readingTimeMinutes: 4
+    readingTimeMinutes: 7
   },
   {
     slug: 'team-shuttle-bestenpraktiken',
@@ -208,15 +246,21 @@ export const blogPosts: BlogPost[] = [
     heroWidth: 1280,
     heroHeight: 720,
     body: [
-      'Nutze wiederkehrende Events für jede Route, tracke Auslastung und teile Statusupdates über den temporären Chat.',
-      'Verknüpfe deine bevorzugten Shuttle-Partner und lasse sie selbst Slots bestätigen, um Zeit im Backoffice zu sparen.'
+      '# Team-Shuttles ohne E-Mail-Chaos\n\nDelegationen, Projektteams oder Consultants reisen selten allein. Mit Cojauny baust du einen klaren Shuttle-Plan vom Flughafen bis ins Hotel auf.',
+      '## 1. Strecken katalogisieren\n\nLege pro Strecke ein Event an (z. B. "BER → Potsdamer Platz" oder "Hotel → Messegelände"). Hinterlege Fahrtdauer, Kapazität und erlaubte Gepäckmenge. Wiederkehrende Events generieren automatisch Instanzen für jeden Tag deiner Reise.',
+      '## 2. Teilnehmer synchronisieren\n\nImportiere deine Teamliste, lass Mitarbeitende selbst Slots wählen und definiere Deadlines für Zu- oder Absagen. Wartelisten springen automatisch ein, wenn jemand kurzfristig absagt.',
+      '## 3. Partner einbinden\n\nVerknüpfe bevorzugte Shuttle-Unternehmen mit deinem Workspace. Fahrer:innen erhalten die Eventdetails, können Ankunftszeiten bestätigen und Fotos des Fahrzeugs hochladen. Du siehst sofort, welcher Wagen bereits unterwegs ist.',
+      '## 4. Chat + Push statt Anrufe\n\nDer temporäre Chat bündelt Updates: Platte, Farbe, ETA, Verzögerungen. Push-Meldungen erinnern 15 Minuten vor Abfahrt daran, sich zum Treffpunkt zu begeben. Keine Telefonlawinen mehr.',
+      '## 5. Kennzahlen messen\n\nCojauny trackt Auslastung, Pünktlichkeit, Kosten pro Kopf und CO₂-Einsparung jeder Fahrt. Mit einem Klick exportierst du PDF-Reports für Kund:innen oder interne Reviews.',
+      '## 6. Lessons Learned sichern\n\nSchließe Events und hinterlasse Notizen: "Terminal B war überfüllt – nächstes Mal Ausgang C". Beim nächsten Projekt duplizierst du das Event und profitierst vom dokumentierten Wissen.',
+      '## Fazit\n\nStrukturierte Team-Shuttles reduzieren Wartezeiten, schützen Budgets und liefern nachvollziehbare Metriken. Mit Cojauny planst du wie ein Mobility-Operations-Profi.'
     ],
     tags: ['shuttle', 'teamreisen'],
     categories: ['operations'],
     publishedAt: '2025-11-18T06:30:00.000Z',
     updatedAt: '2025-11-18T06:30:00.000Z',
     author: 'Cojauny Team DACH',
-    readingTimeMinutes: 6
+    readingTimeMinutes: 7
   },
   {
     slug: 'coordinacion-vuelo-tiempo-real',

@@ -7,6 +7,8 @@ interface ContactFormCopy {
   success: string;
   error: string;
   submit: string;
+  optionalLabel?: string;
+  optionalHint?: string;
   fields: {
     name: string;
     email: string;
@@ -36,6 +38,8 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
       success: 'Gracias por escribirnos. Te responderemos desde support@cojauny.com muy pronto.',
       error: 'No hemos podido enviar tu mensaje. Inténtalo de nuevo en unos minutos.',
       submit: 'Enviar mensaje',
+      optionalLabel: '(opcional)',
+      optionalHint: 'Todos los campos son obligatorios salvo que veas "(opcional)" en la etiqueta.',
       fields: {
         name: 'Nombre',
         email: 'Email',
@@ -57,6 +61,8 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
       success: 'Thanks for reaching out. We will reply from support@cojauny.com shortly.',
       error: 'We could not send your message. Please try again in a few minutes.',
       submit: 'Send message',
+      optionalLabel: '(optional)',
+      optionalHint: 'Every field is required unless you see "(optional)" next to the label.',
       fields: {
         name: 'Name',
         email: 'Email',
@@ -78,6 +84,8 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
       success: 'Vielen Dank für deine Nachricht. Wir antworten dir bald von support@cojauny.com.',
       error: 'Deine Nachricht konnte nicht gesendet werden. Versuch es in ein paar Minuten erneut.',
       submit: 'Nachricht senden',
+      optionalLabel: '(optional)',
+      optionalHint: 'Alle Felder sind Pflicht, außer sie sind mit „(optional)“ markiert.',
       fields: {
         name: 'Name',
         email: 'Email',
@@ -99,6 +107,8 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
       success: 'Merci de nous avoir écrit. Nous vous répondrons très vite depuis support@cojauny.com.',
       error: "Nous n'avons pas pu envoyer votre message. Veuillez réessayer dans quelques minutes.",
       submit: 'Envoyer le message',
+      optionalLabel: '(Optionnel)',
+      optionalHint: 'Tous les champs sont requis sauf indication « (Optionnel) ».',
       fields: {
         name: 'Nom',
         email: 'Email',

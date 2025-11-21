@@ -16,11 +16,25 @@ export interface EmailEdgePayload {
 }
 
 export function getEdgeEmailUrl() {
-  if (!env.SUPABASE_PROJECT_ID) {
-    throw new Error('SUPABASE_PROJECT_ID no está configurado');
+  // Prefer explicit project id, otherwise try to derive it from SUPABASE_URL or BASE_URL
+  const projectId = env.SUPABASE_PROJECT_ID ?? (() => {
+    try {
+      const candidate = process.env.SUPABASE_URL ?? process.env.BASE_URL ?? process.env.NEXT_PUBLIC_BASE_URL;
+      if (!candidate) return undefined;
+      const parsed = new URL(candidate);
+      const hostParts = parsed.hostname.split('.');
+      if (hostParts.length > 0) return hostParts[0];
+    } catch (_e) {
+      return undefined;
+    }
+    return undefined;
+  })();
+
+  if (!projectId) {
+    throw new Error('SUPABASE_PROJECT_ID no está configurado y no se pudo derivar a partir de SUPABASE_URL');
   }
 
-  return `https://${env.SUPABASE_PROJECT_ID}.functions.supabase.co/send-beta-email`;
+  return `https://${projectId}.functions.supabase.co/send-beta-email`;
 }
 
 export async function triggerEdgeEmailFunction(event: EmailEdgePayload) {
@@ -37,10 +51,18 @@ export async function triggerEdgeEmailFunction(event: EmailEdgePayload) {
   });
 
   if (!response.ok) {
-    const payload = await response.json().catch(() => ({}));
-    throw new Error(
-      payload.error ?? 'No se pudo invocar la función de Supabase para enviar el correo'
-    );
+    const bodyText = await response.text().catch(() => '');
+    let parsed: any = {};
+    try {
+      parsed = JSON.parse(bodyText || '{}');
+    } catch (_e) {
+      parsed = { error: bodyText };
+    }
+    const message = parsed.error ?? parsed.message ?? `Edge function error: ${response.status}`;
+    const err = new Error(message);
+    (err as any).status = response.status;
+    (err as any).body = parsed;
+    throw err;
   }
 
   return response.json();
