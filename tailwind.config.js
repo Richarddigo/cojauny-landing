@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
     content: [
         './src/**/*.{js,ts,jsx,tsx}',
@@ -21,7 +23,7 @@ module.exports = {
                 }
             },
             fontFamily: {
-                sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro Text"', 'system-ui', 'sans-serif']
+                sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans]
             },
             boxShadow: {
                 'soft-glow': '0 20px 60px rgba(90, 103, 242, 0.25)'

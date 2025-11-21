@@ -25,7 +25,7 @@ const localeDefaultCountry: Record<Locale, BetaSignupInput['country']> = {
     fr: 'fr'
 };
 
-const buildInitialState = (locale: Locale): BetaSignupFormState => ({
+const buildInitialState = (locale: Locale, referralCode?: string): BetaSignupFormState => ({
     email: '',
     fullName: '',
     useCase: '',
@@ -42,7 +42,7 @@ const buildInitialState = (locale: Locale): BetaSignupFormState => ({
 
 const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps) => {
     const [referralCode, setReferralCode] = useState<string | undefined>();
-    const [form, setForm] = useState<BetaSignupInput>(() => buildInitialState(locale, referralCode));
+    const [form, setForm] = useState<BetaSignupFormState>(() => buildInitialState(locale, referralCode));
     const [submitting, setSubmitting] = useState(false);
     const [success, setSuccess] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
@@ -53,13 +53,13 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
     // Empfehlungscode von URL erfassen / Capturer le code de parrainage depuis l'URL
     useEffect(() => {
         if (typeof window === 'undefined') return;
-        
+
         const urlParams = new URLSearchParams(window.location.search);
         const refParam = urlParams.get('ref');
-        
+
         if (refParam) {
             setReferralCode(refParam);
-            
+
             // Track the visit anonymously / Rastrear la visita de forma anónima
             // Besuch anonym verfolgen / Suivre la visite de manière anonyme
             fetch('/api/referral/visit', {
@@ -170,6 +170,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                         <div className="mt-4 rounded-2xl bg-blue-50 border border-blue-200 px-4 py-3 text-sm text-blue-800">
                             {copy.referralNotice}
                         </div>
+                    )}
                     {copy.optionalHint && (
                         <p className="mt-1 text-xs text-slate-500">{copy.optionalHint}</p>
                     )}
@@ -216,7 +217,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                             aria-label={copy.fields.country}
                             className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20"
                         >
-                            {countryOptions.map((option) => (
+                            {(copy.countryOptions ?? []).map((option) => (
                                 <option key={option.value} value={option.value}>
                                     {option.label}
                                 </option>
@@ -244,7 +245,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                 <div>
                     <p className="text-sm font-medium text-slate-700 mb-3">{copy.fields.flightFrequency}</p>
                     <div className="grid gap-3 md:grid-cols-2">
-                        {flightFrequencyOptions.map((option) => (
+                        {(copy.flightFrequencyOptions ?? []).map((option) => (
                             <label
                                 key={option.value}
                                 className={`flex flex-col gap-1 rounded-2xl border-2 px-4 py-3 transition-colors ${form.flightFrequency === option.value ? 'border-brand-500 bg-brand-50' : 'border-slate-200 bg-white hover:border-brand-300'}`}
@@ -368,7 +369,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                     </p>
                 )}
             </form>
-            
+
             {/* Show Referral Panel after successful signup / Mostrar panel de referral tras registro exitoso */}
             {/* Empfehlungs-Panel nach erfolgreicher Anmeldung anzeigen / Afficher le panneau de parrainage après inscription */}
             {showReferralPanel && userEmail && (

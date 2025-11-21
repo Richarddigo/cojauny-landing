@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { env } from './env';
 
 export const supabaseUrl = env.NEXT_PUBLIC_BASE_URL ?? env.BASE_URL ?? '';
@@ -12,12 +12,19 @@ if (!supabaseAnonKey) {
   console.warn('NEXT_PUBLIC_SUPABASE_ANON_KEY no está configurado');
 }
 
-export const createBrowserSupabaseClient = () =>
-  createClient(supabaseUrl, supabaseAnonKey, {
+let browserClient: SupabaseClient | undefined;
+
+export const createBrowserSupabaseClient = () => {
+  if (browserClient) return browserClient;
+
+  browserClient = createClient(supabaseUrl, supabaseAnonKey, {
     auth: {
       persistSession: true
     }
   });
+
+  return browserClient;
+};
 
 export const createServiceRoleClient = () => {
   if (!supabaseUrl) {

@@ -118,3 +118,6 @@ ehthumbs_vista.db
 
 # Supabase
 .supabase/
+
+# user defined ignores
+*.md

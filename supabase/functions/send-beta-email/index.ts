@@ -72,17 +72,17 @@ type ResolvedSender = { email: string; name: string; authEmail: string; authPass
 const senderProfiles: Record<SenderKey, SenderProfile> = {
   beta: {
     email: Deno.env.get('SMTP_USER_BETA') ?? undefined,
-    password: Deno.env.get('SMTP_PASS') ?? undefined,
+    password: Deno.env.get('SMTP_PASS_BETA') ?? undefined,
     name: Deno.env.get('SMTP_FROM_NAME_BETA') ?? 'Cojauny Beta'
   },
   feedback: {
     email: Deno.env.get('SMTP_USER_FEEDBACK') ?? undefined,
-    password: Deno.env.get('SMTP_PASS') ?? undefined,
+    password: Deno.env.get('SMTP_PASS_FEEDBACK') ?? undefined,
     name: Deno.env.get('SMTP_FROM_NAME_FEEDBACK') ?? 'Cojauny Feedback'
   },
   support: {
     email: Deno.env.get('SMTP_USER_SUPPORT') ?? undefined,
-    password: Deno.env.get('SMTP_PASS') ?? undefined,
+    password: Deno.env.get('SMTP_PASS_SUPPORT') ?? undefined,
     name: Deno.env.get('SMTP_FROM_NAME_SUPPORT') ?? 'Cojauny Support Team'
   }
 };
@@ -298,12 +298,48 @@ async function sendViaSmtp(
     content: rendered.text,
     html: rendered.html,
     headers: {
-      'Reply-To': `${sender.name} <${sender.email}>`
+      'Reply-To': `${sender.name} <${sender.email}>`,
+      'X-Sender': sender.email // Some SMTP servers use this
     }
   });
 
   await client.close();
 }
+
+async function sendViaResend(
+  recipient: string,
+  rendered: ReturnType<typeof render>,
+  sender: ResolvedSender
+) {
+  const resendApiKey = Deno.env.get('RESEND_API_KEY');
+  if (!resendApiKey) {
+    throw new Error('RESEND_API_KEY no está configurada');
+  }
+
+  const response = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${resendApiKey}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      from: `${sender.name} <${sender.email}>`,
+      to: [recipient],
+      subject: rendered.subject,
+      html: rendered.html,
+      text: rendered.text,
+      reply_to: sender.email
+    })
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(`Resend error: ${JSON.stringify(errorData)}`);
+  }
+
+  return response.json();
+}
+
 
 async function logEmail(payload: Payload, status: 'sent' | 'error', errorMessage?: string) {
   const { error } = await supabase.from('emails_sent').insert({
@@ -346,8 +382,15 @@ serve(async (request: Request) => {
   const rendered = render(template, payload.variables ?? {});
   const sender = resolveSender(payload.template);
 
+  // Use Resend if configured, otherwise fall back to SMTP
+  const useResend = Deno.env.get('USE_RESEND') === 'true';
+
   try {
-    await sendViaSmtp(payload.email, rendered, sender);
+    if (useResend) {
+      await sendViaResend(payload.email, rendered, sender);
+    } else {
+      await sendViaSmtp(payload.email, rendered, sender);
+    }
     await logEmail(payload, 'sent');
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,

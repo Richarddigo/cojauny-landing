@@ -40,6 +40,7 @@ export async function POST(request: NextRequest) {
   const supabase = createServiceRoleClient();
   const since = new Date(Date.now() - WINDOW_MINUTES * 60 * 1000).toISOString();
 
+  // Check rate limit: max 5 requests per 10 minutes per IP
   const recent = await supabase
     .from('feedback')
     .select('id', { count: 'exact', head: true })
@@ -47,17 +48,18 @@ export async function POST(request: NextRequest) {
     .eq('ip_address', ipAddress);
 
   if (recent.error) {
-    console.error('Error comprobando rate limit contacto', recent.error);
-    return NextResponse.json({ error: 'No se pudo validar el rate limit' }, { status: 500 });
+    console.error('Error checking rate limit for contact form', recent.error);
+    return NextResponse.json({ error: 'Error validando límite de envíos' }, { status: 500 });
   }
 
   if ((recent.count ?? 0) >= MAX_ATTEMPTS) {
     return NextResponse.json(
-      { error: 'Has alcanzado el límite de envíos. Inténtalo más tarde.' },
+      { error: 'Has alcanzado el límite de envíos. Por favor, inténtalo más tarde.' },
       { status: 429 }
     );
   }
 
+  // Insert into Supabase
   const insertResult = await supabase
     .from('feedback')
     .insert({
@@ -74,11 +76,13 @@ export async function POST(request: NextRequest) {
     .single();
 
   if (insertResult.error) {
-    console.error('Error guardando contacto', insertResult.error);
-    return NextResponse.json({ error: 'No se pudo guardar tu mensaje' }, { status: 500 });
+    console.error('Error saving contact form submission', insertResult.error);
+    return NextResponse.json({ error: 'No se pudo guardar tu mensaje. Inténtalo de nuevo.' }, { status: 500 });
   }
 
+  // Trigger email notifications via Edge Function
   try {
+    // 1. Send confirmation to user
     await triggerEdgeEmailFunction({
       email: data.email,
       template: 'contact-thanks',
@@ -90,6 +94,7 @@ export async function POST(request: NextRequest) {
 
     const adminRecipient = env.EMAIL_ADMIN_RECIPIENT || INTERNAL_CONTACT_EMAIL;
 
+    // 2. Send notification to admin
     await triggerEdgeEmailFunction({
       email: adminRecipient,
       template: 'contact-notification',
@@ -103,7 +108,8 @@ export async function POST(request: NextRequest) {
       }
     });
   } catch (error) {
-    console.error('Error enviando notificaciones de contacto', error);
+    // Log error but don't fail the request since the data is already saved
+    console.error('Error sending contact notifications', error);
   }
 
   return NextResponse.json({ success: true }, { status: 201 });

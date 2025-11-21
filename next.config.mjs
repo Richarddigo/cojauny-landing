@@ -19,7 +19,15 @@ const securityHeaders = [
     },
     {
         key: 'Permissions-Policy',
-        value: 'geolocation=()'
+        value: 'camera=(), microphone=(), geolocation=()'
+    },
+    {
+        key: 'X-DNS-Prefetch-Control',
+        value: 'on'
+    },
+    {
+        key: 'X-Frame-Options',
+        value: 'SAMEORIGIN'
     }
 ];
 
@@ -45,29 +53,47 @@ const cacheHeaders = [
                 value: 'public, max-age=31536000, immutable'
             }
         ]
+    },
+    {
+        source: '/icons/:path*',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }]
     }
 ];
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
+    swcMinify: true,
+    output: 'standalone',
+    poweredByHeader: false,
+    compress: true,
+
     experimental: {
         optimizeCss: true,
-        scrollRestoration: true
+        scrollRestoration: true,
+        optimizePackageImports: ['@heroicons/react', '@headlessui/react']
     },
-    i18n: {
-        locales: LOCALES,
-        defaultLocale: 'es',
-        localeDetection: true
-    },
+
+
+
     images: {
         formats: ['image/avif', 'image/webp'],
         deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
-        imageSizes: [16, 32, 48, 64, 96, 128, 256, 384]
+        imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+        minimumCacheTTL: 31536000,
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: '**'
+            }
+        ]
     },
-    headers: async () => cacheHeaders,
-    compress: true,
-    poweredByHeader: false
+
+    compiler: {
+        removeConsole: process.env.NODE_ENV === 'production'
+    },
+
+    headers: async () => cacheHeaders
 };
 
 export default nextConfig;

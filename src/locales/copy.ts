@@ -118,6 +118,11 @@ export interface PricingCopy {
     features: PlanFeature[];
   };
 }
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
 export interface FaqCopy {
   title: string;
   subtitle: string;

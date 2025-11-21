@@ -87,21 +87,12 @@ export async function POST(request: NextRequest) {
     insertPayload.country = data.country;
   }
 
+  if (data.referralCode) {
+    insertPayload.referral_code_used = data.referralCode;
+  }
+
   const insertResult = await supabase
     .from(WAITLIST_TABLE)
-    .insert({
-      email: data.email,
-      name: data.fullName,
-      company: data.company ?? null,
-      use_case: data.useCase,
-      beta_tester: true,
-      terms_accepted: data.termsAccepted,
-      language: data.locale,
-      confirmation_token: confirmationToken,
-      ip_address: ipAddress,
-      user_agent: request.headers.get('user-agent') ?? '',
-      referral_code_used: data.referralCode ?? null
-    })
     .insert(insertPayload)
     .select()
     .single();
