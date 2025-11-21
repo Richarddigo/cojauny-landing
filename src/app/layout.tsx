@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import Script from 'next/script';
-import { Inter } from 'next/font/google';
 
 import '@/styles/globals.css';
 import { env } from '@/lib/env';
@@ -9,12 +8,6 @@ import { defaultLocale, locales } from '@/locales/config';
 import { siteMetadata, ogImages } from '@/lib/site';
 import StructuredData from '@/components/StructuredData';
 import { buildOrganizationJsonLd, buildWebsiteJsonLd } from '@/lib/jsonld';
-
-const inter = Inter({
-    subsets: ['latin'],
-    display: 'swap',
-    variable: '--font-inter',
-});
 
 export const metadata: Metadata = {
     metadataBase: new URL(siteMetadata.url),
@@ -77,7 +70,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
     return (
-        <html lang={defaultLocale} suppressHydrationWarning className={inter.variable}>
+        <html lang={defaultLocale} suppressHydrationWarning>
             <head>
                 <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
                 <link rel="dns-prefetch" href="https://www.googletagmanager.com" />

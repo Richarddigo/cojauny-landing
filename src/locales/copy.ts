@@ -535,59 +535,59 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     faq: {
       title: 'Preguntas frecuentes',
-      subtitle: 'Resolvemos las dudas más comunes antes de tu primer vuelo compartido.',
+      subtitle: 'Todo lo que necesitas saber sobre Cojauny antes de tu primer viaje compartido.',
       items: [
         {
-          question: '¿Cómo funciona el matching por vuelo?',
-          answer: 'Ingresa aerolínea y número de vuelo. Consultamos nuestra base global (Aerodatabox + datos propios) y te proponemos grupos compatibles por horario y aeropuerto.'
+          question: '¿Cómo funciona el sistema de matching de vuelos?',
+          answer: 'Simplemente introduce tu número de vuelo (ejemplo: IB2345) y fecha. Nuestra plataforma consulta en tiempo real nuestra base de datos global integrada con Aerodatabox API y automáticamente te conecta con otros viajeros del mismo vuelo o vuelos compatibles en el mismo horario y aeropuerto. El sistema verifica automáticamente la compatibilidad de horarios, terminales y destinos para garantizar coordinación perfecta.'
         },
         {
-          question: '¿Es seguro compartir transporte?',
-          answer: 'Sí. Todas las cuentas pasan por verificación, reputación y moderación automática. Puedes revisar perfiles y hablar con el grupo antes de confirmar.'
+          question: '¿Es seguro compartir transporte con personas desconocidas?',
+          answer: 'Absolutamente. La seguridad es nuestra máxima prioridad. Todos los usuarios deben verificar su identidad con foto y documento de identidad. Contamos con un sistema de reputación transparente donde puedes ver valoraciones y comentarios de otros viajeros. Antes de confirmar tu participación, puedes revisar perfiles completos, historial de viajes y comunicarte con el grupo a través del chat. Además, nuestra moderación automática detecta y elimina comportamientos sospechosos en tiempo real.'
         },
         {
-          question: '¿Puedo cancelar sin penalización?',
-          answer: 'Puedes salir de un evento cuando lo necesites. Si eres anfitrión, la app notifica al instante al resto del grupo para que reorganicen el aforo.'
+          question: '¿Puedo cancelar mi participación sin penalización económica?',
+          answer: 'Sí, tienes total flexibilidad. Puedes salir de cualquier evento directamente desde la app sin costes adicionales. Si eres el organizador del evento, al cancelar, todos los participantes reciben una notificación instantánea con opciones para reorganizar el grupo o encontrar alternativas. Recomendamos avisar con la mayor antelación posible para permitir que otros viajeros se reorganicen. Tu historial de cancelaciones es visible en tu perfil para mantener la transparencia en la comunidad.'
         },
         {
-          question: '¿Qué diferencia hay entre Free y Premium?',
-          answer: 'Free permite un viaje y un evento activo, con chat directo al anfitrión. Premium desbloquea eventos y chats ilimitados, estadísticas avanzadas y soporte prioritario.'
+          question: '¿Qué diferencia hay entre la versión Free y Premium?',
+          answer: 'La versión Free te permite gestionar 1 viaje activo y unirte a 1 evento simultáneamente, con chat directo solo con el organizador del evento. Es perfecta para probar la plataforma. Premium desbloquea viajes y eventos ilimitados, chats grupales completos, estadísticas detalladas de ahorro y CO₂, eventos recurrentes para viajeros frecuentes, soporte técnico prioritario en menos de 2 horas, y acceso anticipado a nuevas funcionalidades. Cuesta 4,99€/mes o 49€/año con 17% de descuento.'
         },
         {
-          question: '¿Cómo se reparten los pagos?',
-          answer: 'Cojauny no intermedia dinero. Cada grupo acuerda si paga en efectivo, Bizum o transferencia y la app registra el estimado para tu historial.'
+          question: '¿Cómo funcionan los pagos entre participantes?',
+          answer: 'Cojauny no procesa pagos directamente para mantener costes bajos y flexibilidad máxima. Los participantes coordinan el método de pago que prefieran: efectivo al conductor, Bizum, transferencia bancaria, PayPal o pago directo con tarjeta compartida. La app proporciona una calculadora automática que divide los costes equitativamente y guarda el registro del ahorro estimado en tu perfil. Todos los cálculos son transparentes y visibles para el grupo antes del viaje.'
         },
         {
-          question: '¿Qué tipo de eventos existen?',
-          answer: 'Traslados al aeropuerto, regreso desde destino, vans corporativas, parkings, alojamientos compartidos y actividades sociales posteriores.'
+          question: '¿Qué tipos de eventos puedo crear o unirme?',
+          answer: 'Cojauny soporta múltiples categorías de eventos: Traslados compartidos al aeropuerto de salida, recogidas desde aeropuerto de llegada, servicios de van corporativa para equipos empresariales, parkings de larga duración compartidos (especialmente útil en aeropuertos caros), alojamientos compartidos en el destino (hostel o apartamento completo), y actividades sociales posteriores al vuelo. Los usuarios Premium pueden crear eventos personalizados para cualquier tipo de necesidad de viaje compartido.'
         },
         {
-          question: '¿En qué aeropuertos está disponible?',
-          answer: 'Operamos en más de 120 aeropuertos y añadimos nuevos cada trimestre según demanda. Puedes solicitar el tuyo desde la app.'
+          question: '¿En qué aeropuertos está disponible Cojauny?',
+          answer: 'Actualmente operamos en más de 120 aeropuertos principales a nivel mundial, cubriendo Europa, América, Asia y Oceanía. Nuestra cobertura incluye todos los hubs principales como Madrid-Barajas, Barcelona-El Prat, Londres-Heathrow, París-Charles de Gaulle, Nueva York-JFK, y muchos más. Añadimos nuevos aeropuertos trimestralmente basándonos en la demanda de usuarios. Si tu aeropuerto no aparece en la lista, puedes solicitarlo desde Configuración → Solicitar Aeropuerto y lo priorizaremos según el volumen de peticiones.'
         },
         {
-          question: '¿Qué ocurre con mis datos personales?',
-          answer: 'Solo mostramos nombre, país y foto. El resto permanece cifrado y cumpliendo con GDPR. Tú decides si compartes teléfono o redes.'
+          question: '¿Cómo protegen mis datos personales y privacidad?',
+          answer: 'Tu privacidad es sagrada para nosotros. Solo mostramos públicamente tu nombre de perfil, país de residencia y foto de perfil. Tu email, teléfono, dirección y documentos de identidad permanecen completamente cifrados con encriptación AES-256 y solo son accesibles por ti. Cumplimos estrictamente con el Reglamento General de Protección de Datos (GDPR) europeo. Tú decides manualmente si compartes información adicional como redes sociales o número de teléfono con otros participantes. No vendemos ni compartimos tus datos con terceros bajo ninguna circunstancia. Puedes descargar o eliminar todos tus datos en cualquier momento desde tu perfil.'
         },
         {
-          question: '¿Soporta varios idiomas?',
-          answer: 'La interfaz y los mensajes automáticos están disponibles en 78 idiomas para evitar barreras dentro del grupo.'
+          question: '¿La aplicación está disponible en mi idioma?',
+          answer: 'Sí, Cojauny está completamente traducido a 78 idiomas incluyendo español, inglés, francés, alemán, portugués, italiano, chino mandarín, japonés, coreano, árabe, ruso, y muchos más. La interfaz detecta automáticamente el idioma de tu dispositivo al iniciar sesión por primera vez. Puedes cambiarlo manualmente en cualquier momento desde Configuración → Idioma. Esto es especialmente útil en grupos multiculturales donde participantes de diferentes países necesitan comunicarse eficazmente.'
         },
         {
-          question: '¿Cuánto puedo ahorrar?',
-          answer: 'Nuestros usuarios reducen entre 50 % y 75 % el coste de taxi, VTC o parking al dividirlo entre 3 o 4 pasajeros.'
+          question: '¿Cuánto dinero puedo ahorrar realmente usando Cojauny?',
+          answer: 'El ahorro promedio es del 50-75% en transporte aeroportuario. Ejemplo concreto: Un taxi desde el centro de Madrid al Aeropuerto T4 cuesta aproximadamente 30-35€. Si viajas solo, pagas el total. Compartiendo con 3 pasajeros más del mismo vuelo, tu parte es solo 7,50-9€, ahorrando 22-25€ por trayecto. Viajeros frecuentes que hacen 2 viajes mensuales ahorran aproximadamente 500-600€ al año. El panel de impacto en tu perfil muestra estadísticas detalladas de ahorro acumulado, CO₂ evitado y número de conexiones realizadas.'
         },
         {
-          question: '¿Hay plan anual?',
-          answer: 'Sí, Premium cuesta 4,99 €/mes o 49 €/año (17 % de ahorro). Con dos trayectos compartidos al año ya se amortiza.'
+          question: '¿Ofrecen plan de suscripción anual con descuento?',
+          answer: 'Sí. Premium está disponible en dos modalidades: suscripción mensual a 4,99€/mes (total 59,88€/año) o suscripción anual por 49€/año, lo que representa un ahorro de 10,88€ (17% de descuento). El plan anual se amortiza fácilmente: con solo 2 viajes compartidos al año ya has recuperado la inversión. Además, los suscriptores anuales reciben beneficios exclusivos como acceso a eventos VIP, sorteos mensuales de vuelos, y distintivo especial «Anual» en su perfil que genera mayor confianza en la comunidad. Puedes cambiar de mensual a anual en cualquier momento con crédito prorrateado.'
         },
         {
-          question: '¿Qué pasa si mi vuelo cambia?',
-          answer: 'Recibimos alertas en tiempo real. Si hay retraso o cancelación, todos los participantes reciben aviso y puedes reajustar el evento sin recrearlo.'
+          question: '¿Qué sucede si mi vuelo se retrasa, cancela o cambia de puerta?',
+          answer: 'Cojauny recibe actualizaciones de vuelos en tiempo real desde múltiples fuentes (aerolíneas, aeropuertos, FlightAware). Cuando tu vuelo sufre cambios, todos los participantes de tus eventos reciben notificaciones push instantáneas con los detalles actualizados. Puedes ajustar automáticamente la hora del evento con un solo clic, cambiar el punto de encuentro si hay cambio de terminal, o cancelar el evento si el vuelo se cancela definitivamente. El historial de cambios queda registrado para transparencia. Nuestro sistema de alertas tempranas te avisa incluso 6 horas antes del despegue si detecta probabilidad alta de retraso basándose en condiciones meteorológicas o congestión aeroportuaria.'
         },
         {
-          question: '¿Cómo funciona la reputación?',
-          answer: 'Tras cada viaje los participantes se evalúan mutuamente. Las buenas prácticas suben tu score y te posicionan en los primeros resultados.'
+          question: '¿Cómo funciona exactamente el sistema de reputación y valoraciones?',
+          answer: 'Después de completar cada evento, todos los participantes pueden evaluarse mutuamente en 3 dimensiones: puntualidad (llegó a la hora acordada), comunicación (respondió rápido en el chat), y amistad (fue agradable durante el viaje). Usas un sistema de 5 estrellas con comentario opcional. Estas valoraciones se promedian y aparecen en tu perfil público junto con insignias especiales (Viajero de Oro 100+ viajes, Eco-Warrior 5 toneladas CO₂ ahorradas, etc.). Una reputación alta (4,5+ estrellas) te posiciona automáticamente en los primeros resultados cuando otros buscan compañeros de viaje, y te hacen elegible para el programa «Trusted Traveler» con verificación avanzada. Las valoraciones negativas son analizadas por nuestro equipo de moderación para detectar abusos.'
         }
       ]
     },

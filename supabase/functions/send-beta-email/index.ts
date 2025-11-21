@@ -118,9 +118,9 @@ const localizedTemplates: Record<Extract<TemplateKey, 'beta-confirmation' | 'fee
       text: 'Hi {{name}},\n\nThanks for joining the private Cojauny beta. Your token: {{confirmation_token}}. Use it within the next 72 hours in the app. Reply to this email for help.' + emailSignatureText
     },
     de: {
-      subject: 'Dein Zugangscode para la Cojauny-Beta',
+      subject: 'Dein Zugangscode für die Cojauny-Beta',
       html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#222;\"><p>Hallo {{name}},</p><p>Willkommen in der privaten Cojauny-Beta. Dein persönlicher Code:</p><div style=\"background:#f7f9fc;padding:12px;border-radius:6px;display:inline-block;margin:8px 0;font-size:22px;font-weight:700;letter-spacing:2px;color:#0b3d91\">{{confirmation_token}}</div><p>Bitte nutze ihn innerhalb von <strong>72 Stunden</strong> in der App. Antworte auf diese E-Mail bei Fragen.</p></div>" + emailSignatureHtml('de'),
-      text: 'Hallo {{name}},\n\nWillkommen in der privaten Cojauny-Beta. Dein Code: {{confirmation_token}}. Por favor usa' + emailSignatureText
+      text: 'Hallo {{name}},\n\nWillkommen in der privaten Cojauny-Beta. Dein Code: {{confirmation_token}}. Bitte nutze ihn innerhalb von 72 Stunden in der App.' + emailSignatureText
     },
     fr: {
       subject: 'Votre code d’accès à la bêta Cojauny',
@@ -141,8 +141,8 @@ const localizedTemplates: Record<Extract<TemplateKey, 'beta-confirmation' | 'fee
     },
     de: {
       subject: 'Danke für dein Feedback zu Cojauny, {{name}}',
-      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#222;\"><p>Hallo {{name}},</p><p>Danke für dein Feedback — wir haben es erhalten und unser Produktteam prüft es. Solche Rückmeldungen sind sehr wertvoll para nuestra planificación.</p><p>Antworte auf diese E-Mail, um weitere Details hinzuzufügen.</p></div>" + emailSignatureHtml('de'),
-      text: 'Hallo {{name}},\n\nDanke für dein Feedback — wir haben deine Nachricht erhalten y nuestro equipo estará revisándolo. Responde a este correo para añadir contexto.' + emailSignatureText
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#222;\"><p>Hallo {{name}},</p><p>Danke für dein Feedback — wir haben es erhalten und unser Produktteam prüft es. Solche Rückmeldungen sind sehr wertvoll für unsere Planung.</p><p>Antworte auf diese E-Mail, um weitere Details hinzuzufügen.</p></div>" + emailSignatureHtml('de'),
+      text: 'Hallo {{name}},\n\nDanke für dein Feedback — wir haben deine Nachricht erhalten und unser Team prüft sie. Antworte auf diese E-Mail, um weitere Informationen hinzuzufügen.' + emailSignatureText
     },
     fr: {
       subject: 'Merci pour votre retour sur Cojauny, {{name}}',

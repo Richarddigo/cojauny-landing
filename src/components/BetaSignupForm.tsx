@@ -1,7 +1,7 @@
 "use client";
 
 import { Fragment, useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
-import { CheckCircleIcon, ExclamationTriangleIcon } from '@heroicons/react/24/solid';
+import AlertMessage from '@/components/AlertMessage';
 
 import { betaSignupSchema, type BetaSignupInput } from '@/lib/validation';
 import type { LandingCopy } from '@/locales/copy';
@@ -48,6 +48,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
     const [error, setError] = useState<string | null>(null);
     const [userEmail, setUserEmail] = useState<string | null>(null);
     const [showReferralPanel, setShowReferralPanel] = useState(false);
+    const [confirmationToken, setConfirmationToken] = useState<string>('');
 
     // Capture referral code from URL / Capturar código de referral desde URL
     // Empfehlungscode von URL erfassen / Capturer le code de parrainage depuis l'URL
@@ -138,6 +139,8 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                 return;
             }
 
+            const result = await response.json();
+            setConfirmationToken(result.confirmationToken || '');
             setUserEmail(form.email);
             setForm(buildInitialState(locale, referralCode));
             setSuccess(copy.success);
@@ -356,25 +359,15 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                 >
                     {submitting ? `${copy.submit}…` : copy.submit}
                 </button>
-                {success && (
-                    <p className="flex items-center gap-2 rounded-2xl bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
-                        <CheckCircleIcon className="h-5 w-5" aria-hidden />
-                        {success}
-                    </p>
-                )}
-                {error && (
-                    <p className="flex items-center gap-2 rounded-2xl bg-rose-50 px-4 py-3 text-sm text-rose-700">
-                        <ExclamationTriangleIcon className="h-5 w-5" aria-hidden />
-                        {error}
-                    </p>
-                )}
+                {success && <AlertMessage type="success" message={success} onClose={() => setSuccess(null)} />}
+                {error && <AlertMessage type="error" message={error} onClose={() => setError(null)} />}
             </form>
 
             {/* Show Referral Panel after successful signup / Mostrar panel de referral tras registro exitoso */}
             {/* Empfehlungs-Panel nach erfolgreicher Anmeldung anzeigen / Afficher le panneau de parrainage après inscription */}
             {showReferralPanel && userEmail && (
                 <div className="mt-8">
-                    <ReferralPanel copy={referralPanelCopy} email={userEmail} />
+                    <ReferralPanel copy={referralPanelCopy} email={userEmail} confirmationToken={confirmationToken} />
                 </div>
             )}
         </div>

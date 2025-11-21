@@ -23,7 +23,17 @@ module.exports = {
                 }
             },
             fontFamily: {
-                sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans]
+                // SF Pro Display and Text (iPhone system font) with optimal fallbacks
+                sans: [
+                    '-apple-system',
+                    'BlinkMacSystemFont',
+                    'SF Pro Display',
+                    'SF Pro Text',
+                    'Helvetica Neue',
+                    'Helvetica',
+                    'Arial',
+                    ...defaultTheme.fontFamily.sans
+                ]
             },
             boxShadow: {
                 'soft-glow': '0 20px 60px rgba(90, 103, 242, 0.25)'

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
-import { CheckCircleIcon, ExclamationTriangleIcon } from '@heroicons/react/24/solid';
+import AlertMessage from '@/components/AlertMessage';
 
 import { feedbackSchema, type FeedbackInput } from '@/lib/validation';
 import type { LandingCopy } from '@/locales/copy';
@@ -175,18 +175,8 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
                 >
                     {submitting ? `${copy.submit}…` : copy.submit}
                 </button>
-                {success && (
-                    <p className="flex items-center gap-2 rounded-2xl bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
-                        <CheckCircleIcon className="h-5 w-5" aria-hidden />
-                        {success}
-                    </p>
-                )}
-                {error && (
-                    <p className="flex items-center gap-2 rounded-2xl bg-rose-50 px-4 py-3 text-sm text-rose-700">
-                        <ExclamationTriangleIcon className="h-5 w-5" aria-hidden />
-                        {error}
-                    </p>
-                )}
+                {success && <AlertMessage type="success" message={success} onClose={() => setSuccess(null)} />}
+                {error && <AlertMessage type="error" message={error} onClose={() => setError(null)} />}
             </form>
         </div>
     );

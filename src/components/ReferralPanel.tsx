@@ -7,6 +7,7 @@ import type { ReferralPanelCopy } from '@/locales/copy';
 interface ReferralPanelProps {
   copy: ReferralPanelCopy;
   email: string;
+  confirmationToken?: string;
 }
 
 interface ReferralStats {
@@ -16,11 +17,12 @@ interface ReferralStats {
   signups: number;
 }
 
-const ReferralPanel = ({ copy, email }: ReferralPanelProps) => {
+const ReferralPanel = ({ copy, email, confirmationToken }: ReferralPanelProps) => {
   const [stats, setStats] = useState<ReferralStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
+  const [copiedToken, setCopiedToken] = useState(false);
+  const [copiedLink, setCopiedLink] = useState(false);
 
   useEffect(() => {
     const fetchStats = async () => {
@@ -42,15 +44,27 @@ const ReferralPanel = ({ copy, email }: ReferralPanelProps) => {
     fetchStats();
   }, [email]);
 
-  const handleCopy = async () => {
+  const handleCopyToken = async () => {
+    if (!confirmationToken) return;
+
+    try {
+      await navigator.clipboard.writeText(confirmationToken);
+      setCopiedToken(true);
+      setTimeout(() => setCopiedToken(false), 3000);
+    } catch (err) {
+      console.error('Failed to copy token:', err);
+    }
+  };
+
+  const handleCopyLink = async () => {
     if (!stats) return;
-    
+
     try {
       await navigator.clipboard.writeText(stats.referral_link);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setCopiedLink(true);
+      setTimeout(() => setCopiedLink(false), 3000);
     } catch (err) {
-      console.error('Failed to copy:', err);
+      console.error('Failed to copy link:', err);
     }
   };
 
@@ -66,17 +80,100 @@ const ReferralPanel = ({ copy, email }: ReferralPanelProps) => {
   }
 
   if (error || !stats) {
+    // If referral stats fail, still show the confirmation token
+    if (confirmationToken) {
+      return (
+        <div className="rounded-3xl border border-emerald-100 bg-gradient-to-br from-emerald-50 to-white p-8 shadow-xl">
+          <div className="text-center mb-6">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 mb-3">
+              ✅ ¡Registro Exitoso!
+            </h2>
+            <p className="text-lg text-slate-600">Tu token de acceso beta:</p>
+          </div>
+
+          <div className="mb-6">
+            <div className="flex gap-3">
+              <input
+                type="text"
+                readOnly
+                value={confirmationToken}
+                className="flex-1 rounded-2xl border-2 border-emerald-300 bg-white px-4 py-4 text-center text-2xl font-mono font-bold text-emerald-900 focus:outline-none"
+              />
+              <button
+                onClick={handleCopyToken}
+                className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-600 to-emerald-500 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-emerald-600/30 transition-all duration-200 hover:shadow-xl hover:shadow-emerald-600/40 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2"
+              >
+                {copiedToken ? (
+                  <>
+                    <CheckIcon className="h-5 w-5" aria-hidden />
+                    Copiado
+                  </>
+                ) : (
+                  <>
+                    <ClipboardDocumentIcon className="h-5 w-5" aria-hidden />
+                    Copiar
+                  </>
+                )}
+              </button>
+            </div>
+            <p className="mt-3 text-sm text-center text-slate-600">
+              ⏰ Úsalo en las próximas <strong>72 horas</strong> para activar tu cuenta beta.
+            </p>
+          </div>
+        </div>
+      );
+    }
     return null;
   }
 
   return (
     <div className="scroll-mt-16 lg:scroll-mt-20">
       <div className="rounded-3xl border border-brand-100 bg-gradient-to-br from-brand-50 to-white p-8 shadow-xl">
+        {/* Confirmation Token Section - PROMINENT / Sección de Token de Confirmación - DESTACADO */}
+        {confirmationToken && (
+          <div className="mb-8 rounded-2xl border-2 border-emerald-200 bg-emerald-50 p-6">
+            <div className="text-center mb-4">
+              <h2 className="text-2xl font-bold tracking-tight text-emerald-900 mb-2">
+                ✅ Tu Token de Acceso Beta
+              </h2>
+              <p className="text-sm text-emerald-700">También enviado a tu email</p>
+            </div>
+
+            <div className="flex gap-3">
+              <input
+                type="text"
+                readOnly
+                value={confirmationToken}
+                className="flex-1 rounded-2xl border-2 border-emerald-300 bg-white px-4 py-4 text-center text-xl md:text-2xl font-mono font-bold text-emerald-900 focus:outline-none"
+              />
+              <button
+                onClick={handleCopyToken}
+                className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-600 to-emerald-500 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-emerald-600/30 transition-all duration-200 hover:shadow-xl hover:shadow-emerald-600/40 hover:scale-[1.02]"
+              >
+                {copiedToken ? (
+                  <>
+                    <CheckIcon className="h-5 w-5" />
+                    ✓
+                  </>
+                ) : (
+                  <>
+                    <ClipboardDocumentIcon className="h-5 w-5" />
+                    Copiar
+                  </>
+                )}
+              </button>
+            </div>
+            <p className="mt-3 text-sm text-center text-emerald-700">
+              ⏰ <strong>Válido por 72 horas</strong> — Guárdalo para acceder a la app
+            </p>
+          </div>
+        )}
+
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 mb-3">
+          <h3 className="text-2xl font-bold tracking-tight text-slate-900 mb-3">
             {copy.title}
-          </h2>
-          <p className="text-lg text-slate-600">{copy.subtitle}</p>
+          </h3>
+          <p className="text-base text-slate-600">{copy.subtitle}</p>
         </div>
 
         {/* Referral Link Section / Sección de enlace de referral / Empfehlungslink-Bereich / Section de lien de parrainage */}
@@ -92,10 +189,10 @@ const ReferralPanel = ({ copy, email }: ReferralPanelProps) => {
               className="flex-1 rounded-2xl border-2 border-brand-200 bg-white px-4 py-3 text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-400/20"
             />
             <button
-              onClick={handleCopy}
+              onClick={handleCopyLink}
               className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-brand-600 to-brand-500 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-brand-600/30 transition-all duration-200 hover:shadow-xl hover:shadow-brand-600/40 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
             >
-              {copied ? (
+              {copiedLink ? (
                 <>
                   <CheckIcon className="h-5 w-5" aria-hidden />
                   {copy.copiedButton}
