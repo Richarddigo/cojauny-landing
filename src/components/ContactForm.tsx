@@ -90,6 +90,9 @@ const ContactForm = ({ locale, copy }: ContactFormProps) => {
                 <p id="contact-help" className="mt-2 text-sm text-slate-600">
                     {copy.description}
                 </p>
+                {copy.optionalHint && (
+                    <p className="mt-1 text-xs text-slate-500">{copy.optionalHint}</p>
+                )}
             </div>
             <div className="grid gap-6 md:grid-cols-2">
                 <label className="flex flex-col gap-2">

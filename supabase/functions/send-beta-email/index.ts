@@ -1,7 +1,42 @@
+// @ts-nocheck
 // deno-lint-ignore-file no-explicit-any
 import { serve } from 'https://deno.land/std@0.192.0/http/server.ts';
-import { SmtpClient } from 'https://deno.land/x/smtp@v0.7.0/mod.ts';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.6';
+
+// Polyfill helpers for older SMTP library that calls Deno.writeAll / Deno.readAll.
+// Newer Deno runtimes don't expose these globals; provide small compatible impls.
+if (!(Deno as any).writeAll) {
+  (Deno as any).writeAll = async (w: { write: (p: Uint8Array) => Promise<number | null> }, arr: Uint8Array) => {
+    let offset = 0;
+    while (offset < arr.length) {
+      const n = await w.write(arr.subarray(offset));
+      if (n === null || n === 0) throw new Error('writeAll: writer returned 0 or null');
+      offset += n;
+    }
+  };
+}
+
+if (!(Deno as any).readAll) {
+  (Deno as any).readAll = async (r: { read: (p: Uint8Array) => Promise<number | null> }) => {
+    const chunks: Uint8Array[] = [];
+    const buf = new Uint8Array(8192);
+    while (true) {
+      const n = await r.read(buf);
+      if (n === null) break;
+      chunks.push(buf.subarray(0, n));
+    }
+    // concat
+    let length = 0;
+    for (const c of chunks) length += c.length;
+    const out = new Uint8Array(length);
+    let pos = 0;
+    for (const c of chunks) {
+      out.set(c, pos);
+      pos += c.length;
+    }
+    return out;
+  };
+}
 
 type Locale = 'es' | 'en' | 'de' | 'fr';
 type SenderKey = 'beta' | 'feedback' | 'support';
@@ -31,20 +66,23 @@ const smtpPort = Number(Deno.env.get('SMTP_PORT') ?? '465');
 const defaultUser = Deno.env.get('SMTP_USER') ?? '';
 const defaultPassword = Deno.env.get('SMTP_PASS') ?? '';
 
-const senderProfiles: Record<SenderKey, { email: string; password: string; name: string }> = {
+type SenderProfile = { email?: string; password?: string; name: string };
+type ResolvedSender = { email: string; name: string; authEmail: string; authPassword: string };
+
+const senderProfiles: Record<SenderKey, SenderProfile> = {
   beta: {
-    email: Deno.env.get('SMTP_USER_BETA') ?? defaultUser,
-    password: Deno.env.get('SMTP_PASS_BETA') ?? defaultPassword,
+    email: Deno.env.get('SMTP_USER_BETA') ?? undefined,
+    password: Deno.env.get('SMTP_PASS') ?? undefined,
     name: Deno.env.get('SMTP_FROM_NAME_BETA') ?? 'Cojauny Beta'
   },
   feedback: {
-    email: Deno.env.get('SMTP_USER_FEEDBACK') ?? defaultUser,
-    password: Deno.env.get('SMTP_PASS_FEEDBACK') ?? defaultPassword,
+    email: Deno.env.get('SMTP_USER_FEEDBACK') ?? undefined,
+    password: Deno.env.get('SMTP_PASS') ?? undefined,
     name: Deno.env.get('SMTP_FROM_NAME_FEEDBACK') ?? 'Cojauny Feedback'
   },
   support: {
-    email: Deno.env.get('SMTP_USER_SUPPORT') ?? defaultUser,
-    password: Deno.env.get('SMTP_PASS_SUPPORT') ?? defaultPassword,
+    email: Deno.env.get('SMTP_USER_SUPPORT') ?? undefined,
+    password: Deno.env.get('SMTP_PASS') ?? undefined,
     name: Deno.env.get('SMTP_FROM_NAME_SUPPORT') ?? 'Cojauny Support Team'
   }
 };
@@ -202,26 +240,64 @@ function resolveTemplate(key: TemplateKey, locale: Locale): TemplateContent {
   return staticTemplates[key as keyof typeof staticTemplates];
 }
 
-function resolveSender(key: TemplateKey) {
+function resolveSender(key: TemplateKey): ResolvedSender {
   const profileKey = templateSenders[key];
   const profile = senderProfiles[profileKey];
-  if (!profile.email || !profile.password) {
-    throw new Error(`No hay credenciales SMTP configuradas para ${profileKey}`);
+
+  // If the profile has its own credentials, authenticate and send as that account.
+  if (profile.email && profile.password) {
+    // send as the profile and authenticate as the profile
+    return {
+      email: profile.email,
+      name: profile.name,
+      authEmail: profile.email,
+      authPassword: profile.password
+    };
   }
-  return profile;
+
+  if (!defaultUser || !defaultPassword) {
+    throw new Error('No hay credenciales SMTP predeterminadas configuradas');
+  }
+
+  if (profile.email && !profile.password) {
+    // No password for alias: authenticate with default account but use alias as From
+    console.warn(
+      `SMTP_PASS_${profileKey.toUpperCase()} no está configurada. Autenticando con la cuenta predeterminada, pero usando la dirección alias como From.`
+    );
+    return {
+      email: profile.email,
+      name: profile.name,
+      authEmail: defaultUser,
+      authPassword: defaultPassword
+    };
+  }
+
+  // No specific profile email: authenticate and send from default
+  console.warn(`SMTP_USER_${profileKey.toUpperCase()} no está configurada. Se enviará desde la cuenta predeterminada.`);
+  return {
+    email: defaultUser,
+    name: profile.name,
+    authEmail: defaultUser,
+    authPassword: defaultPassword
+  };
 }
 
 async function sendViaSmtp(
   recipient: string,
   rendered: ReturnType<typeof render>,
-  sender: { email: string; password: string; name: string }
+  sender: ResolvedSender
 ) {
+  // Import SMTP client dynamically so polyfills run first and avoid std/io version mismatches
+  const { SmtpClient } = await import('https://deno.land/x/smtp@v0.7.0/mod.ts');
   const client = new SmtpClient();
+  // Authenticate with the resolved auth credentials, but set the From header to sender.email
+  // which may be an alias. This requires the alias to be authorized as "send as" for the
+  // authenticated account in Zoho.
   await client.connectTLS({
     hostname: smtpHost,
     port: smtpPort,
-    username: sender.email,
-    password: sender.password
+    username: sender.authEmail,
+    password: sender.authPassword
   });
 
   await client.send({
@@ -229,7 +305,10 @@ async function sendViaSmtp(
     to: recipient,
     subject: rendered.subject,
     content: rendered.text,
-    html: rendered.html
+    html: rendered.html,
+    headers: {
+      'Reply-To': `${sender.name} <${sender.email}>`
+    }
   });
 
   await client.close();
@@ -251,7 +330,7 @@ async function logEmail(payload: Payload, status: 'sent' | 'error', errorMessage
   }
 }
 
-serve(async (request) => {
+serve(async (request: Request) => {
   if (request.method !== 'POST') {
     return new Response('Método no permitido', { status: 405 });
   }
@@ -285,8 +364,10 @@ serve(async (request) => {
     });
   } catch (error) {
     console.error('Fallo enviando email', error);
-    await logEmail(payload, 'error', error instanceof Error ? error.message : String(error));
-    return new Response(JSON.stringify({ error: 'No se pudo enviar el email' }), {
+    const message = error instanceof Error ? error.message : String(error);
+    const stack = error instanceof Error && error.stack ? error.stack : null;
+    await logEmail(payload, 'error', `${message}${stack ? '\n' + stack : ''}`);
+    return new Response(JSON.stringify({ error: 'No se pudo enviar el email', details: { message, stack } }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
     });

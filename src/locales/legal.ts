@@ -34,7 +34,7 @@ const legalCopy: Record<Locale, LegalCopy> = {
         },
         {
           heading: 'Datos personales que tratamos',
-          body: 'Recopilamos la información que nos facilitas directamente (nombre, correo profesional, empresa, caso de uso, mensajes) junto a métricas anónimas de navegación como páginas visitadas, idioma, dispositivo o eventos de formularios, además de registros técnicos necesarios para la seguridad.'
+          body: 'Recopilamos la información que nos facilitas directamente (nombre, correo electrónico, empresa, caso de uso, mensajes) junto a métricas anónimas de navegación como páginas visitadas, idioma, dispositivo o eventos de formularios, además de registros técnicos necesarios para la seguridad.'
         },
         {
           heading: 'Finalidades y bases jurídicas',

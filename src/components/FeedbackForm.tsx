@@ -95,6 +95,9 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
                     <p id="feedback-help" className="mt-2 text-sm text-slate-600">
                         {copy.description}
                     </p>
+                    {copy.optionalHint && (
+                        <p className="mt-1 text-xs text-slate-500">{copy.optionalHint}</p>
+                    )}
                 </div>
                 <div className="grid gap-6 md:grid-cols-2">
                     <label className="flex flex-col gap-2">
@@ -126,6 +129,7 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
                         name="sentiment"
                         value={form.sentiment}
                         onChange={handleChange}
+                        required
                         className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base text-slate-900 focus:border-brand-400"
                     >
                         <option value="" disabled>

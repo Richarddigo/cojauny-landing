@@ -30,7 +30,6 @@ const buildInitialState = (locale: Locale): BetaSignupFormState => ({
     country: localeDefaultCountry[locale] ?? 'other',
     flightFrequency: '',
     homeAirport: '',
-    joinReason: '',
     updatesOptIn: false,
     termsAccepted: false,
     privacyAccepted: false,
@@ -82,7 +81,6 @@ const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
             country: normalizeOptionalField(form.country) as BetaSignupInput['country'],
             useCase: normalizeOptionalField(form.useCase),
             homeAirport: normalizeOptionalField(form.homeAirport),
-            joinReason: normalizeOptionalField(form.joinReason),
             flightFrequency: form.flightFrequency as BetaSignupInput['flightFrequency']
         };
 
@@ -105,7 +103,12 @@ const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
             if (!response.ok) {
                 const payload = await response.json().catch(() => null);
                 console.error('Beta signup error response', payload);
-                throw new Error(copy.error);
+                if (payload?.errorCode === 'beta_duplicate_email') {
+                    setError(copy.duplicateError ?? copy.error);
+                } else {
+                    setError(copy.error);
+                }
+                return;
             }
 
             setForm(buildInitialState(locale));
@@ -134,6 +137,9 @@ const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
                     <p id="beta-form-help" className="mt-2 text-sm text-slate-600">
                         {copy.description}
                     </p>
+                    {copy.optionalHint && (
+                        <p className="mt-1 text-xs text-slate-500">{copy.optionalHint}</p>
+                    )}
                 </div>
                 <div className="grid gap-6 md:grid-cols-2">
                     <label className="flex flex-col gap-2">
@@ -164,7 +170,12 @@ const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
                         />
                     </label>
                     <label className="flex flex-col gap-2">
-                        <span className="text-sm font-medium text-slate-700">{copy.fields.country}</span>
+                        <span className="text-sm font-medium text-slate-700">
+                            {copy.fields.country}
+                            {copy.optionalLabel && (
+                                <span className="ml-2 text-xs font-normal text-slate-500">{copy.optionalLabel}</span>
+                            )}
+                        </span>
                         <select
                             name="country"
                             value={form.country ?? ''}
@@ -180,7 +191,12 @@ const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
                         </select>
                     </label>
                     <label className="flex flex-col gap-2">
-                        <span className="text-sm font-medium text-slate-700">{copy.fields.homeAirport}</span>
+                        <span className="text-sm font-medium text-slate-700">
+                            {copy.fields.homeAirport}
+                            {copy.optionalLabel && (
+                                <span className="ml-2 text-xs font-normal text-slate-500">{copy.optionalLabel}</span>
+                            )}
+                        </span>
                         <input
                             type="text"
                             name="homeAirport"
@@ -216,31 +232,23 @@ const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
                         ))}
                     </div>
                 </div>
-                <div className="grid gap-6 md:grid-cols-2">
-                    <label className="flex flex-col gap-2">
-                        <span className="text-sm font-medium text-slate-700">{copy.fields.useCase}</span>
-                        <textarea
-                            name="useCase"
-                            value={form.useCase ?? ''}
-                            onChange={handleChange}
-                            rows={3}
-                            aria-label={copy.fields.useCase}
-                            className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20 resize-none"
-                        />
-                    </label>
-                    <label className="flex flex-col gap-2">
-                        <span className="text-sm font-medium text-slate-700">{copy.fields.joinReason}</span>
-                        <textarea
-                            name="joinReason"
-                            value={form.joinReason ?? ''}
-                            onChange={handleChange}
-                            rows={3}
-                            aria-label={copy.fields.joinReason}
-                            placeholder={copy.placeholders?.joinReason}
-                            className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20 resize-none placeholder:text-slate-400"
-                        />
-                    </label>
-                </div>
+                <label className="flex flex-col gap-2">
+                    <span className="text-sm font-medium text-slate-700">
+                        {copy.fields.useCase}
+                        {copy.optionalLabel && (
+                            <span className="ml-2 text-xs font-normal text-slate-500">{copy.optionalLabel}</span>
+                        )}
+                    </span>
+                    <textarea
+                        name="useCase"
+                        value={form.useCase ?? ''}
+                        onChange={handleChange}
+                        rows={3}
+                        aria-label={copy.fields.useCase}
+                        placeholder={copy.placeholders?.useCase}
+                        className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20 resize-none placeholder:text-slate-400"
+                    />
+                </label>
                 <label className="flex items-start gap-3">
                     <input
                         type="checkbox"
@@ -249,7 +257,12 @@ const BetaSignupForm = ({ copy, locale }: BetaSignupFormProps) => {
                         onChange={handleChange}
                         className="mt-1 h-5 w-5 rounded border-slate-300 text-brand-600 focus:ring-brand-500"
                     />
-                    <span className="text-sm text-slate-600">{copy.fields.updatesOptIn}</span>
+                    <span className="text-sm text-slate-600">
+                        {copy.fields.updatesOptIn}
+                        {copy.optionalLabel && (
+                            <span className="ml-2 text-xs font-normal text-slate-500">{copy.optionalLabel}</span>
+                        )}
+                    </span>
                 </label>
                 <label className="flex items-start gap-3">
                     <input

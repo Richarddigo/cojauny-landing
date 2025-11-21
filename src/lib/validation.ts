@@ -62,7 +62,6 @@ export const betaSignupSchema = z
       errorMap: () => ({ message: 'Selecciona tu frecuencia de vuelo' })
     }),
     homeAirport: z.string().max(120).optional(),
-    joinReason: z.string().max(500).optional(),
     updatesOptIn: z.boolean().optional(),
     termsAccepted: z
       .boolean()

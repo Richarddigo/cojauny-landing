@@ -14,7 +14,6 @@ create table if not exists public.waitlist (
     country text not null default 'es',
     flight_frequency text not null default 'once',
     home_airport text,
-    join_reason text,
     marketing_opt_in boolean not null default false,
     beta_tester boolean not null default true,
     terms_accepted boolean not null default false,
@@ -33,7 +32,7 @@ alter table if exists public.waitlist add column if not exists flight text;
 alter table if exists public.waitlist add column if not exists country text not null default 'es';
 alter table if exists public.waitlist add column if not exists flight_frequency text not null default 'once';
 alter table if exists public.waitlist add column if not exists home_airport text;
-alter table if exists public.waitlist add column if not exists join_reason text;
+    -- join_reason column has been removed
 alter table if exists public.waitlist add column if not exists marketing_opt_in boolean not null default false;
 alter table if exists public.waitlist add column if not exists beta_tester boolean not null default true;
 alter table if exists public.waitlist add column if not exists terms_accepted boolean not null default false;
@@ -43,6 +42,7 @@ alter table if exists public.waitlist add column if not exists confirmation_toke
 alter table if exists public.waitlist add column if not exists confirmed_at timestamptz;
 alter table if exists public.waitlist add column if not exists ip_address inet;
 alter table if exists public.waitlist add column if not exists user_agent text;
+alter table if exists public.waitlist drop column if exists join_reason;
 
 create unique index if not exists waitlist_email_idx on public.waitlist (lower(email));
 create index if not exists waitlist_created_idx on public.waitlist (created_at);

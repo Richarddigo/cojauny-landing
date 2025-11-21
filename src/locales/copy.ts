@@ -27,6 +27,9 @@ export interface FormCopy {
   submit: string;
   checkboxLabel?: string;
   privacyLinkLabel?: string;
+  optionalLabel?: string;
+  optionalHint?: string;
+  duplicateError?: string;
   fields: {
     fullName?: string;
     email: string;
@@ -38,14 +41,13 @@ export interface FormCopy {
     country?: string;
     homeAirport?: string;
     flightFrequency?: string;
-    joinReason?: string;
     updatesOptIn?: string;
     privacyAcceptance?: string;
   };
   sentimentOptions?: Array<{ value: string; label: string }>;
   placeholders?: {
     homeAirport?: string;
-    joinReason?: string;
+    useCase?: string;
   };
   countryOptions?: Array<{ value: string; label: string }>;
   flightFrequencyOptions?: Array<{ value: string; label: string; description: string }>;
@@ -573,23 +575,26 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         success:
           'Gracias por confiar en Cojauny. Enviaremos tu código y siguientes pasos desde support@cojauny.com.',
         error: 'No pudimos registrar tu solicitud. Revisa los datos o inténtalo en unos minutos.',
+        duplicateError:
+          'Este correo ya está registrado en la beta. Revisa tu bandeja o escríbenos a support@cojauny.com.',
         submit: 'Enviar solicitud',
         checkboxLabel: 'He leído y acepto la {privacyLink} de Cojauny.',
         privacyLinkLabel: 'política de privacidad',
+        optionalLabel: '(opcional)',
+        optionalHint: 'Los campos marcados como "(opcional)" puedes dejarlos en blanco.',
         fields: {
           fullName: 'Nombre completo',
-          email: 'Correo profesional',
+          email: 'Correo electrónico',
           country: 'País de residencia',
           homeAirport: 'Ciudad o aeropuerto habitual',
           flightFrequency: '¿Con qué frecuencia vuelas?',
-          useCase: 'Cuéntanos cómo planeas usar Cojauny',
-          joinReason: '¿Qué te gustaría validar en la beta?',
-          updatesOptIn: 'Quiero recibir novedades del desarrollo (opcional)',
+          useCase: '¿Cómo usarás Cojauny o qué quieres validar en la beta?',
+          updatesOptIn: 'Quiero recibir novedades del desarrollo',
           privacyAcceptance: 'Acepto que se almacenen mis datos para participar en la beta privada de Cojauny.'
         },
         placeholders: {
           homeAirport: 'Ej. Madrid (MAD), Barcelona-El Prat, CDMX',
-          joinReason: 'Comparte retos o métricas que buscas mejorar'
+          useCase: 'Comparte retos, KPIs o hipótesis que quieras validar'
         },
         countryOptions: [
           { value: 'es', label: 'España' },
@@ -631,6 +636,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         success: 'Gracias por tu mensaje. Si necesitamos ampliar información te contactaremos pronto.',
         error: 'No fue posible enviar el formulario. Inténtalo de nuevo en breve.',
         submit: 'Enviar mensaje',
+        optionalLabel: '(opcional)',
+        optionalHint: 'Todos los campos son obligatorios salvo que veas "(opcional)".',
         fields: {
           fullName: 'Nombre',
           email: 'Correo',
@@ -1049,23 +1056,26 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         success:
           'Thanks for trusting Cojauny. We will send your activation token and next steps from support@cojauny.com.',
         error: 'We could not register your request. Please verify the details or try again shortly.',
+        duplicateError:
+          'This email is already on the beta list. Check your inbox or contact support@cojauny.com.',
         submit: 'Submit request',
         checkboxLabel: 'I have read and accept the Cojauny {privacyLink}.',
         privacyLinkLabel: 'privacy policy',
+        optionalLabel: '(optional)',
+        optionalHint: 'Fields marked as "(optional)" can be left blank.',
         fields: {
           fullName: 'Full name',
-          email: 'Work email',
+          email: 'Email',
           country: 'Country',
           homeAirport: 'Home city or main airport',
           flightFrequency: 'How often do you fly?',
-          useCase: 'How do you plan to use Cojauny?',
-          joinReason: 'What do you expect from the beta?',
-          updatesOptIn: 'Send me product updates and roadmap news (optional)',
+          useCase: 'How will you use Cojauny or what do you want to validate in the beta?',
+          updatesOptIn: 'Send me product updates and roadmap news',
           privacyAcceptance: 'I consent to Cojauny storing my data to participate in the beta program.'
         },
         placeholders: {
           homeAirport: 'e.g. London Heathrow (LHR), JFK, CDMX',
-          joinReason: 'Share the goals or KPIs you want to improve'
+          useCase: 'Share the goals, KPIs or hypotheses you hope to validate'
         },
         countryOptions: [
           { value: 'es', label: 'Spain' },
@@ -1108,6 +1118,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           'Thanks for the feedback. We will reach out using the same address if we need more context.',
         error: 'We could not submit your feedback. Check the fields and try again.',
         submit: 'Send message',
+        optionalLabel: '(optional)',
+        optionalHint: 'Every field is required unless you see "(optional)" next to the label.',
         fields: {
           fullName: 'Name',
           email: 'Email',
@@ -1527,24 +1539,27 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         success:
           'Danke! Du erhältst eine E-Mail von support@cojauny.com mit deinem Aktivierungs-Token.',
         error: 'Deine Anfrage konnte nicht gesendet werden. Bitte versuche es später erneut.',
+        duplicateError:
+          'Diese E-Mail steht bereits auf der Beta-Liste. Prüfe dein Postfach oder melde dich bei support@cojauny.com.',
         submit: 'Zugang anfragen',
         checkboxLabel:
           'Ich habe die {privacyLink} gelesen und akzeptiere sie.',
         privacyLinkLabel: 'Datenschutzrichtlinie',
+        optionalLabel: '(optional)',
+        optionalHint: 'Felder mit dem Hinweis „(optional)“ kannst du frei lassen.',
         fields: {
           fullName: 'Vollständiger Name',
           email: 'Email',
           country: 'Land oder Region',
           homeAirport: 'Stadt oder bevorzugter Flughafen',
           flightFrequency: 'Wie häufig fliegst du?',
-          useCase: 'Wie möchtest du Cojauny einsetzen?',
-          joinReason: 'Was möchtest du in der Beta validieren?',
-          updatesOptIn: 'Ich möchte Produktupdates und Roadmap-News (optional)',
+          useCase: 'Wie nutzt du Cojauny oder was willst du in der Beta testen?',
+          updatesOptIn: 'Ich möchte Produktupdates und Roadmap-News',
           privacyAcceptance: 'Ich stimme zu, dass meine Daten gespeichert werden, um an der Cojauny-Beta teilzunehmen.'
         },
         placeholders: {
           homeAirport: 'Z. B. Berlin (BER), München (MUC), Zürich',
-          joinReason: 'Welche Ziele oder KPIs willst du verbessern?'
+          useCase: 'Welche Ziele, KPIs oder Hypothesen willst du überprüfen?'
         },
         countryOptions: [
           { value: 'es', label: 'Spanien' },
@@ -1586,6 +1601,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         success: 'Danke für dein Feedback. Wir kontaktieren dich bei Rückfragen über dieselbe Adresse.',
         error: 'Feedback konnte nicht übermittelt werden. Bitte überprüfe die Angaben.',
         submit: 'Nachricht senden',
+        optionalLabel: '(optional)',
+        optionalHint: 'Alle Felder sind Pflicht, außer sie sind mit „(optional)“ markiert.',
         fields: {
           fullName: 'Name',
           email: 'E-Mail',
@@ -1970,24 +1987,27 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         success:
           'Merci ! Vous recevrez un e-mail de support@cojauny.com avec votre token d’activation.',
         error: 'Impossible d’envoyer votre demande. Réessayez dans quelques minutes.',
+        duplicateError:
+          'Cet e-mail est déjà inscrit à la bêta. Vérifiez votre boîte mail ou écrivez-nous à support@cojauny.com.',
         submit: 'Demander l’accès',
         checkboxLabel:
           'J’ai lu et j’accepte la {privacyLink}.',
         privacyLinkLabel: 'politique de confidentialité',
+        optionalLabel: '(Optionnel)',
+        optionalHint: 'Les champs indiqués « (Optionnel) » peuvent être laissés vides.',
         fields: {
           fullName: 'Nom complet',
           email: 'Email',
           country: 'Pays de résidence',
           homeAirport: 'Ville ou aéroport habituel',
           flightFrequency: 'À quelle fréquence prenez-vous l’avion ?',
-          useCase: 'Comment souhaitez-vous utiliser Cojauny ?',
-          joinReason: 'Que souhaitez-vous valider pendant la bêta ?',
-          updatesOptIn: 'Je souhaite recevoir les nouveautés produit (optionnel)',
+          useCase: 'Comment utiliserez-vous Cojauny ou que voulez-vous valider pendant la bêta ?',
+          updatesOptIn: 'Je souhaite recevoir les nouveautés produit',
           privacyAcceptance: 'J’accepte que mes données soient stockées pour participer à la bêta Cojauny.'
         },
         placeholders: {
           homeAirport: 'Ex. Paris (CDG), Montréal (YUL), Genève',
-          joinReason: 'Expliquez les objectifs ou KPIs à améliorer'
+          useCase: 'Précisez les objectifs, KPI ou hypothèses à valider'
         },
         countryOptions: [
           { value: 'es', label: 'Espagne' },
@@ -2030,6 +2050,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           'Merci pour votre retour. Nous vous contacterons par ce même e-mail si besoin.',
         error: 'Impossible d’envoyer le feedback. Vérifiez les informations.',
         submit: 'Envoyer',
+        optionalLabel: '(Optionnel)',
+        optionalHint: 'Tous les champs sont requis sauf indication « (Optionnel) ». ',
         fields: {
           fullName: 'Nom',
           email: 'Email',

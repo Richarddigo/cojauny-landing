@@ -34,8 +34,6 @@ export async function POST(request: NextRequest) {
   data.useCase = normalizedUseCase && normalizedUseCase.length > 0 ? normalizedUseCase : undefined;
   const normalizedHomeAirport = data.homeAirport?.trim();
   data.homeAirport = normalizedHomeAirport && normalizedHomeAirport.length > 0 ? normalizedHomeAirport : undefined;
-  const normalizedJoinReason = data.joinReason?.trim();
-  data.joinReason = normalizedJoinReason && normalizedJoinReason.length > 0 ? normalizedJoinReason : undefined;
 
   if (!isHuman(data.honeypot)) {
     return NextResponse.json({ error: 'Detección de bot' }, { status: 400 });
@@ -71,7 +69,6 @@ export async function POST(request: NextRequest) {
     name: data.fullName,
     flight_frequency: data.flightFrequency,
     home_airport: data.homeAirport ?? null,
-    join_reason: data.joinReason ?? null,
     marketing_opt_in: Boolean(data.updatesOptIn),
     beta_tester: true,
     terms_accepted: data.termsAccepted,
@@ -98,6 +95,9 @@ export async function POST(request: NextRequest) {
 
   if (insertResult.error) {
     console.error('Error insertando beta signup', insertResult.error);
+    if (insertResult.error.code === '23505') {
+      return NextResponse.json({ errorCode: 'beta_duplicate_email' }, { status: 409 });
+    }
     return NextResponse.json({ error: 'No se pudo guardar tu registro' }, { status: 500 });
   }
 
@@ -111,8 +111,13 @@ export async function POST(request: NextRequest) {
         confirmation_token: confirmationToken
       }
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error invocando función de email', error);
+    // Return 502 with error details for easier debugging in dev
+    return NextResponse.json(
+      { error: 'Error invocando función de email', details: { message: error.message, status: error.status ?? null, body: error.body ?? null } },
+      { status: 502 }
+    );
   }
 
   return NextResponse.json(
