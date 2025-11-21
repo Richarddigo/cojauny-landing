@@ -175,7 +175,7 @@ grant insert on public.feedback to cojauny_beta_writer;
 
 -- Create referral_stats table / Crear tabla referral_stats / Tabelle referral_stats erstellen / Créer la table referral_stats
 create table if not exists public.referral_stats (
-    user_id uuid primary key references public.waitlist(id) on delete cascade,
+    user_id bigint primary key references public.waitlist(id) on delete cascade,
     referral_code text not null unique,
     referral_link text not null,
     visits integer not null default 0,
