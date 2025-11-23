@@ -142,6 +142,7 @@ export interface LandingCopy {
     impact: string;
     workflow: string;
     faq: string;
+    feedback: string;
   };
   seo: {
     title: string;
@@ -229,7 +230,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       benefits: 'Beneficios',
       impact: 'Impacto',
       workflow: 'Cómo funciona',
-      faq: 'FAQ'
+      faq: 'FAQ',
+      feedback: 'Propuesta'
     },
     seo: {
       title: 'Cojauny: Comparte Taxi al Aeropuerto con tu Vuelo | Ahorra hasta 75%',
@@ -731,7 +733,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       benefits: 'Benefits',
       impact: 'Impact',
       workflow: 'Workflow',
-      faq: 'FAQ'
+      faq: 'FAQ',
+      feedback: 'Proposal'
     },
     seo: {
       title: 'Cojauny: Share Airport Taxi with Your Flight | Save up to 75%',
@@ -1235,7 +1238,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       benefits: 'Vorteile',
       impact: 'Impact',
       workflow: 'Ablauf',
-      faq: 'FAQ'
+      faq: 'FAQ',
+      feedback: 'Vorschlag'
     },
     seo: {
       title: 'Cojauny: Flughafen-Taxi mit Mitreisenden teilen | Bis zu 75% sparen',
@@ -1739,7 +1743,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       benefits: 'Avantages',
       impact: 'Impact',
       workflow: 'Parcours',
-      faq: 'FAQ'
+      faq: 'FAQ',
+      feedback: 'Proposition'
     },
     seo: {
       title: 'Cojauny : Partagez un Taxi d\'Aéroport avec Votre Vol | Économisez jusqu\'à 75%',

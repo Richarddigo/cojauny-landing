@@ -25,6 +25,7 @@ module.exports = {
             fontFamily: {
                 // SF Pro Display and Text (iPhone system font) with optimal fallbacks
                 sans: [
+                    'var(--font-inter)',
                     '-apple-system',
                     'BlinkMacSystemFont',
                     'SF Pro Display',

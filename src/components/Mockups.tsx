@@ -51,24 +51,12 @@ const Mockups = ({ className, copy }: MockupsProps) => {
             const lastRect = lastCardEl.getBoundingClientRect();
             const phoneRect = phoneEl.getBoundingClientRect();
 
-            // Get top of first card and bottom of last card
             const firstCardTop = firstRect.top;
             const lastCardBottom = lastRect.bottom;
-
-            // Calculate the scroll range between first card top and last card bottom
             const totalScrollRange = lastCardBottom - firstCardTop;
-
-            // Calculate available space for the phone to move
             const phoneHeight = phoneRect.height;
             const availableSpace = totalScrollRange - phoneHeight;
-
-            // Calculate scroll progress: 0 when first card top aligns with phone container top
-            // 1 when last card bottom aligns with phone container bottom
-            // Start 100px earlier by adding 100 to firstCardTop
             const scrollProgress = Math.max(0, Math.min(1, (-firstCardTop + 120) / availableSpace));
-
-            // Calculate offset: phone moves from top alignment to bottom alignment
-            // Add 66px initial offset to align with first card top
             const offset = scrollProgress * availableSpace + 66;
 
             setParallaxOffset(offset);
@@ -82,7 +70,6 @@ const Mockups = ({ className, copy }: MockupsProps) => {
             }
         };
 
-        // IntersectionObserver to activate/deactivate scroll listener
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -106,21 +93,23 @@ const Mockups = ({ className, copy }: MockupsProps) => {
             observer.disconnect();
             window.removeEventListener('scroll', onScroll);
         };
-    }, [prefersReducedMotion]); return (
+    }, [prefersReducedMotion]);
+
+    return (
         <section
             ref={sectionRef}
             id="demo"
-            className={`relative mt-8 w-full ${className ?? ''}`.trim()}
+            className={`relative mt-8 w-full md:mt-12 lg:mt-16 ${className ?? ''}`.trim()}
             aria-labelledby="mockups-title"
         >
             <div className="text-center">
-                <h2 id="mockups-title" className="text-3xl font-bold tracking-tight text-slate-900">
+                <h2 id="mockups-title" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
                     {copy.heading}
                 </h2>
-                <p className="mt-4 text-lg text-slate-600">{copy.description}</p>
+                <p className="mt-3 text-base leading-relaxed text-slate-600 sm:mt-4 sm:text-lg">{copy.description}</p>
             </div>
-            <div className="relative mt-16 flex flex-col gap-10 lg:flex-row lg:gap-12 xl:gap-16">
-                <div ref={cardsContainerRef} className="flex flex-1 flex-col gap-5 text-left lg:max-w-3xl">
+            <div className="relative mt-12 flex flex-col gap-8 md:mt-16 lg:mt-20 lg:flex-row lg:gap-12 xl:gap-16">
+                <div ref={cardsContainerRef} className="flex flex-1 flex-col gap-4 text-left md:gap-5 md:max-w-2xl lg:max-w-3xl">
                     {screenOptions.map((screen, index) => {
                         const isActive = screen.id === activeScreenId;
                         const isFirst = index === 0;
@@ -133,9 +122,9 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                                 onMouseEnter={() => setActiveScreenId(screen.id)}
                                 onFocus={() => setActiveScreenId(screen.id)}
                                 onClick={() => setActiveScreenId(screen.id)}
-                                className={`group rounded-3xl border bg-white p-8 text-left shadow-lg transition focus-visible:outline-none ${isActive
-                                    ? 'border-brand-300 shadow-soft-glow ring-2 ring-brand-100'
-                                    : 'border-slate-100 hover:border-brand-100 hover:shadow-xl'
+                                className={`group rounded-2xl border bg-white p-6 text-left shadow-lg transition focus-visible:outline-none md:rounded-3xl md:p-8 ${isActive
+                                        ? 'border-brand-300 shadow-soft-glow ring-2 ring-brand-100'
+                                        : 'border-slate-100 hover:border-brand-100 hover:shadow-xl'
                                     }`}
                             >
                                 <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">
@@ -143,13 +132,13 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                                         {screen.badge}
                                     </span>
                                 </span>
-                                <h3 className="mt-5 text-2xl font-semibold text-slate-900">{screen.title}</h3>
-                                <p className="mt-3 text-base leading-relaxed text-slate-600">{screen.description}</p>
+                                <h3 className="mt-4 text-xl font-semibold text-slate-900 sm:mt-5 sm:text-2xl">{screen.title}</h3>
+                                <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:mt-3 sm:text-base">{screen.description}</p>
                             </button>
                         );
                     })}
                 </div>
-                <div className="relative flex flex-1 items-center justify-center min-h-[520px] lg:sticky lg:top-24 lg:self-start lg:h-[640px]">
+                <div className="relative flex flex-1 items-center justify-center min-h-[480px] sm:min-h-[520px] lg:sticky lg:top-24 lg:self-start lg:h-[640px]">
                     <div
                         ref={phoneRef}
                         style={
@@ -160,7 +149,7 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                                     willChange: 'transform'
                                 }
                         }
-                        className="relative mx-auto w-[280px] max-w-full lg:w-[340px]"
+                        className="relative mx-auto w-[260px] max-w-full sm:w-[300px] lg:w-[340px]"
                     >
                         <motion.div
                             key={activeScreen?.id}
@@ -170,9 +159,9 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                             className="relative"
                             aria-live="polite"
                         >
-                            <div className="relative rounded-[3rem] border-[5px] border-black bg-black">
+                            <div className="relative rounded-[2.5rem] border-[5px] border-black bg-black sm:rounded-[3rem]">
                                 <div className="absolute left-1/2 top-[22px] z-30 h-[30px] w-[120px] -translate-x-1/2 rounded-full bg-black" />
-                                <div className="relative z-20 flex items-center justify-between rounded-t-[3rem] bg-black px-8 pb-3 pt-5 text-[11px] font-medium text-white">
+                                <div className="relative z-20 flex items-center justify-between rounded-t-[2.5rem] bg-black px-6 pb-3 pt-5 text-[11px] font-medium text-white sm:rounded-t-[3rem] sm:px-8">
                                     <span>9:41</span>
                                     <div className="flex items-center gap-1">
                                         <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
@@ -186,7 +175,7 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                                         </svg>
                                     </div>
                                 </div>
-                                <div className="overflow-hidden rounded-b-[3rem] bg-white">
+                                <div className="overflow-hidden rounded-b-[2.5rem] bg-white sm:rounded-b-[3rem]">
                                     {activeScreen && (
                                         <Image
                                             src={activeScreen.image}
@@ -194,6 +183,7 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                                             width={720}
                                             height={1560}
                                             loading="lazy"
+                                            sizes="(max-width: 640px) 260px, (max-width: 1024px) 300px, 340px"
                                             className="h-full w-full object-cover"
                                         />
                                     )}

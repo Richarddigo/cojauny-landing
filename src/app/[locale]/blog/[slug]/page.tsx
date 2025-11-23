@@ -98,15 +98,6 @@ export default function BlogPostPage({ params }: BlogPageProps) {
 
     return (
         <article className="relative mx-auto max-w-3xl px-6 py-20">
-            <div className="absolute right-8 top-8 opacity-5">
-                <Image
-                    src="/assets/logo/mountain_black.svg"
-                    alt="Cojauny"
-                    width={120}
-                    height={120}
-                    className="h-30 w-30"
-                />
-            </div>
             <StructuredData id={`ld-article-${locale}-${slug}`} data={articleJson} />
             <StructuredData id={`ld-article-breadcrumb-${locale}-${slug}`} data={breadcrumb} />
             <Link
@@ -120,22 +111,23 @@ export default function BlogPostPage({ params }: BlogPageProps) {
             <p className="mt-4 text-xs font-semibold uppercase tracking-[0.3em] text-brand-600">
                 {post.readingTimeMinutes} {copy.readTimeLabel}
             </p>
-            <div className="mt-8 overflow-hidden rounded-3xl border border-slate-100">
-                <Image
-                    src={post.heroImage}
-                    alt={post.heroAlt}
-                    width={post.heroWidth}
-                    height={post.heroHeight}
-                    className="h-auto w-full"
-                    priority={false}
-                />
+            <div className="mt-8 flex items-center justify-center overflow-hidden rounded-3xl border border-brand-100 bg-gradient-to-br from-brand-100 via-brand-50 to-white py-32 shadow-lg shadow-brand-900/5">
+                <div className="relative">
+                    <div className="absolute -inset-4 rounded-full bg-brand-200/20 blur-xl"></div>
+                    <Image
+                        src="/assets/logo/mountain_black.svg"
+                        alt="Cojauny"
+                        width={180}
+                        height={180}
+                        className="relative h-44 w-44 opacity-90 drop-shadow-sm"
+                        priority={true}
+                    />
+                </div>
             </div>
-            <div className="prose prose-slate prose-lg mt-10 max-w-none prose-headings:font-bold prose-headings:text-slate-900 prose-h1:text-3xl prose-h2:mt-10 prose-h2:text-2xl prose-h3:text-xl prose-p:text-slate-700 prose-p:leading-relaxed prose-a:text-brand-600 prose-a:no-underline hover:prose-a:text-brand-700 hover:prose-a:underline prose-strong:text-slate-900 prose-ul:list-disc prose-ol:list-decimal prose-li:text-slate-700">
-                {post.body.map((section, idx) => (
-                    <ReactMarkdown key={idx} remarkPlugins={[remarkGfm]}>
-                        {section}
-                    </ReactMarkdown>
-                ))}
+            <div className="prose prose-slate prose-lg mt-10 max-w-none prose-headings:font-bold prose-headings:text-slate-900 prose-h1:text-3xl prose-h2:mt-10 prose-h2:text-2xl prose-h3:text-xl prose-p:text-slate-700 prose-p:leading-relaxed prose-a:text-brand-600 prose-a:no-underline hover:prose-a:text-brand-700 hover:prose-a:underline prose-ul:list-disc prose-ol:list-decimal prose-li:text-slate-700">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {post.body.join('\n\n')}
+                </ReactMarkdown>
             </div>
             <footer className="mt-12 flex flex-col gap-2 text-sm text-slate-500">
                 <span>

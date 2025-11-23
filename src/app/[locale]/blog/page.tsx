@@ -74,33 +74,55 @@ export default function BlogIndex({ params }: BlogIndexProps) {
                 <h1 className="mt-4 text-4xl font-bold text-slate-900">{copy.heading}</h1>
                 <p className="mt-3 text-lg text-slate-600">{copy.subtitle}</p>
             </header>
-            <div className="mt-12 grid gap-8 sm:grid-cols-2">
+            <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 {posts.map((post) => (
                     <Link
                         key={post.slug}
                         href={`/${locale}/blog/${post.slug}`}
-                        className="group relative rounded-3xl border border-slate-100 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg"
+                        className="group relative flex flex-col overflow-hidden rounded-3xl border border-white/20 bg-white/80 p-8 shadow-soft-glow backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-2xl hover:shadow-brand-500/10"
                     >
-                        <div className="absolute right-4 top-4 opacity-10 transition group-hover:opacity-20">
-                            <Image
-                                src="/assets/logo/mountain_black.svg"
-                                alt="Cojauny"
-                                width={48}
-                                height={48}
-                                className="h-12 w-12"
-                            />
+                        <div className="mb-8 flex items-center justify-center">
+                            <div className="relative flex h-24 w-24 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-50 to-white shadow-inner transition-transform duration-500 group-hover:scale-110">
+                                <Image
+                                    src="/assets/logo/mountain_black.svg"
+                                    alt="Cojauny"
+                                    width={64}
+                                    height={64}
+                                    className="h-16 w-16 opacity-80 transition-opacity duration-300 group-hover:opacity-100"
+                                />
+                            </div>
                         </div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-brand-600">
-                            {post.readingTimeMinutes} {copy.readTimeLabel}
-                        </p>
-                        <h2 className="mt-3 text-2xl font-semibold text-slate-900">{post.title}</h2>
-                        <p className="mt-3 text-sm text-slate-600">{post.summary}</p>
-                        <div className="mt-4 flex flex-wrap gap-2 text-xs text-brand-700">
-                            {post.tags.map((tag) => (
-                                <span key={tag} className="rounded-full bg-brand-50 px-3 py-1">
-                                    #{tag}
+
+                        <div className="flex flex-1 flex-col">
+                            <div className="mb-4 flex items-center gap-2">
+                                <span className="inline-flex items-center rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-medium text-brand-700 ring-1 ring-inset ring-brand-700/10">
+                                    {post.categories[0] ? post.categories[0].toUpperCase() : 'BLOG'}
                                 </span>
-                            ))}
+                                <span className="text-xs font-medium text-slate-400">
+                                    • {post.readingTimeMinutes} {copy.readTimeLabel}
+                                </span>
+                            </div>
+
+                            <h2 className="mb-3 text-xl font-bold leading-tight text-slate-900 transition-colors group-hover:text-brand-600">
+                                {post.title}
+                            </h2>
+
+                            <p className="mb-6 line-clamp-3 text-sm leading-relaxed text-slate-600">
+                                {post.summary}
+                            </p>
+
+                            <div className="mt-auto flex items-center justify-between border-t border-slate-100 pt-4">
+                                <div className="flex flex-wrap gap-2">
+                                    {post.tags.slice(0, 2).map((tag) => (
+                                        <span key={tag} className="text-xs font-medium text-slate-500">
+                                            #{tag}
+                                        </span>
+                                    ))}
+                                </div>
+                                <span className="text-xs font-semibold text-brand-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                    Read more →
+                                </span>
+                            </div>
                         </div>
                     </Link>
                 ))}

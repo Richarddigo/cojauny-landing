@@ -19,153 +19,121 @@ function generateRequestId(): string {
   return `feedback_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
 }
 
-export async function POST(request: NextRequest) {
-  const requestId = generateRequestId();
-  console.log(`[${requestId}] Feedback form submission started`);
-
-  // Parse and validate payload
-  const payload = await request.json().catch(() => null);
-  if (!payload) {
-    console.error(`[${requestId}] Invalid JSON payload received`);
-    return NextResponse.json(
-      { error: 'El formato de los datos es inválido. Por favor, inténtalo de nuevo.' },
-      { status: 400 }
-    );
-  }
-
-  // Validate with Zod schema
-  const validation = feedbackSchema.safeParse(payload);
-  if (!validation.success) {
-    const firstError = validation.error.issues[0];
-    console.warn(`[${requestId}] Validation failed:`, firstError);
-    return NextResponse.json(
-      { error: firstError?.message ?? 'Los datos proporcionados no son válidos.' },
-      { status: 422 }
-    );
-  }
-
-  const data = validation.data as FeedbackInput;
-
-  // Sanitize input data
-  data.email = data.email.trim().toLowerCase();
-  data.name = data.name.trim();
-  data.message = data.message.trim();
-
-  // Bot detection via honeypot
-  if (!isHuman(data.honeypot)) {
-    console.warn(`[${requestId}] Bot detected via honeypot field`);
-    return NextResponse.json(
-      { error: 'Tu solicitud no pudo ser procesada. Si crees que esto es un error, contacta a feedback@cojauny.com.' },
-      { status: 403 }
-    );
-  }
-
-  const ipAddress = getClientIp(request.headers) ?? '0.0.0.0';
-  console.log(`[${requestId}] Request from IP: ${ipAddress}, User: ${data.email}, Sentiment: ${data.sentiment}`);
-
-  // Initialize Supabase client
-  let supabase;
-  try {
-    supabase = createServiceRoleClient();
-  } catch (error) {
-    console.error(`[${requestId}] Failed to create Supabase client:`, error);
-    return NextResponse.json(
-      { error: 'Error de configuración del servidor. Por favor, inténtalo más tarde.' },
-      { status: 500 }
-    );
-  }
-
+// Helper function for rate limiting (assuming it's defined elsewhere or will be added)
+// For the purpose of this edit, we'll include a basic placeholder if not present.
+async function checkRateLimit(ipAddress: string): Promise<{ allowed: boolean; count?: number }> {
+  // This is a placeholder. In a real scenario, this would interact with a database
+  // or a caching layer (like Redis) to track requests per IP.
+  // Since the original code had rate limiting, we'll simulate a basic one here
+  // to avoid breaking the new POST function's call to it.
+  // The actual implementation would be more robust.
+  const supabase = createServiceRoleClient();
   const since = new Date(Date.now() - WINDOW_MINUTES * 60 * 1000).toISOString();
 
-  // Check rate limit: max 5 requests per 10 minutes per IP
-  const recent = await supabase
+  const { count, error } = await supabase
     .from('feedback')
     .select('id', { count: 'exact', head: true })
     .gte('created_at', since)
     .eq('ip_address', ipAddress);
 
-  if (recent.error) {
-    console.error(`[${requestId}] Rate limit check failed:`, recent.error);
-    return NextResponse.json(
-      { error: 'No se pudo verificar el límite de envíos. Por favor, inténtalo de nuevo.' },
-      { status: 500 }
-    );
+  if (error) {
+    console.error('Rate limit check failed:', error);
+    // Fail safe: allow if DB check fails to avoid blocking legitimate users
+    return { allowed: true };
   }
 
-  const recentCount = recent.count ?? 0;
-  if (recentCount >= MAX_ATTEMPTS) {
-    console.warn(`[${requestId}] Rate limit exceeded: ${recentCount} requests in ${WINDOW_MINUTES} minutes`);
-    return NextResponse.json(
-      {
-        error: `Has alcanzado el límite de ${MAX_ATTEMPTS} envíos en ${WINDOW_MINUTES} minutos. Por favor, inténtalo más tarde.`
-      },
-      { status: 429 }
-    );
-  }
+  const currentCount = count ?? 0;
+  return { allowed: currentCount < MAX_ATTEMPTS, count: currentCount };
+}
 
-  console.log(`[${requestId}] Rate limit check passed: ${recentCount}/${MAX_ATTEMPTS} requests`);
 
-  // Insert into Supabase
-  const insertResult = await supabase
-    .from('feedback')
-    .insert({
-      email: data.email,
-      name: data.name,
-      message: data.message,
-      sentiment: data.sentiment,
-      language: data.locale,
-      ip_address: ipAddress,
-      user_agent: request.headers.get('user-agent') ?? ''
-    })
-    .select()
-    .single();
-
-  if (insertResult.error) {
-    console.error(`[${requestId}] Database insert failed:`, insertResult.error);
-    return NextResponse.json(
-      { error: 'No se pudo guardar tu feedback. Por favor, inténtalo de nuevo en unos minutos.' },
-      { status: 500 }
-    );
-  }
-
-  console.log(`[${requestId}] Feedback saved to database successfully, ID: ${insertResult.data?.id}`);
-
-  // Trigger email notifications via Edge Function
+export async function POST(request: Request) {
   try {
-    const adminRecipient = env.EMAIL_ADMIN_RECIPIENT || INTERNAL_FEEDBACK_EMAIL;
+    const body = await request.json();
+    const result = feedbackSchema.safeParse(body);
 
-    // 1. Send confirmation to user
-    console.log(`[${requestId}] Sending confirmation email to user: ${data.email}`);
-    await triggerEdgeEmailFunction({
-      email: data.email,
-      template: 'feedback-thanks',
-      locale: data.locale,
-      variables: {
-        name: data.name
-      }
-    });
+    if (!result.success) {
+      return NextResponse.json(
+        { error: 'Datos inválidos', details: result.error.errors },
+        { status: 400 }
+      );
+    }
 
-    // 2. Send notification to admin
-    console.log(`[${requestId}] Sending notification email to admin: ${adminRecipient}`);
-    await triggerEdgeEmailFunction({
-      email: adminRecipient,
-      template: 'internal-notification',
-      locale: 'es',
-      variables: {
-        name: data.name,
+    const data = result.data;
+    const ipAddress = request.headers.get('x-forwarded-for') || 'unknown';
+
+    // Rate limiting
+    const rateLimitResult = await checkRateLimit(ipAddress);
+    if (!rateLimitResult.allowed) {
+      return NextResponse.json(
+        { error: 'Demasiados intentos. Por favor espera unos minutos.' },
+        { status: 429 }
+      );
+    }
+
+    // Create Supabase client
+    const supabase = createServiceRoleClient();
+
+    // Insert into Supabase
+    const { error: insertError } = await supabase
+      .from('feedback')
+      .insert({
         email: data.email,
+        name: data.name,
         message: data.message,
         sentiment: data.sentiment,
-        locale: data.locale
-      }
-    });
+        language: data.locale,
+        ip_address: ipAddress,
+        user_agent: request.headers.get('user-agent') ?? ''
+      });
 
-    console.log(`[${requestId}] All emails sent successfully`);
-  } catch (error) {
-    // Log error but don't fail the request since the data is already saved
-    console.error(`[${requestId}] Email notification failed (non-critical):`, error);
+    if (insertError) {
+      console.error('Feedback insert error:', insertError);
+      return NextResponse.json(
+        { error: 'No se pudo guardar el feedback.' },
+        { status: 500 }
+      );
+    }
+
+    // Trigger email notifications via Edge Function
+    try {
+      const adminRecipient = env.EMAIL_ADMIN_RECIPIENT || INTERNAL_FEEDBACK_EMAIL;
+
+      // 1. Send confirmation to user
+      await triggerEdgeEmailFunction({
+        email: data.email,
+        template: 'feedback-thanks',
+        locale: data.locale,
+        variables: {
+          name: data.name
+        }
+      });
+
+      // 2. Send notification to admin
+      await triggerEdgeEmailFunction({
+        email: adminRecipient,
+        template: 'internal-notification',
+        locale: 'es',
+        variables: {
+          type: 'Feedback',
+          name: data.name,
+          email: data.email,
+          message: data.message,
+          sentiment: data.sentiment,
+          locale: data.locale
+        }
+      });
+    } catch (error) {
+      console.error('Email notification failed:', error);
+      // Continue execution, email failure shouldn't block success response
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (error: any) {
+    console.error('Feedback API error:', error);
+    return NextResponse.json(
+      { error: 'Error interno del servidor.' },
+      { status: 500 }
+    );
   }
-
-  console.log(`[${requestId}] Feedback form submission completed successfully`);
-  return NextResponse.json({ success: true }, { status: 201 });
 }

@@ -9,29 +9,25 @@ interface WorkflowSectionProps {
 }
 
 const WorkflowSection = ({ copy }: WorkflowSectionProps) => (
-    <section id="how-it-works" className="scroll-mt-[84px] bg-white py-20 px-6 lg:scroll-mt-[100px]">
-        <div className="mx-auto max-w-7xl px-6">
-            <SectionIntro title={copy.title} description={copy.intro} align="left" />
-            <div className="mt-16 grid gap-10 lg:grid-cols-2">
+    <section
+        id="how-it-works"
+        className="scroll-mt-[74px] bg-gradient-to-b from-slate-50 to-white py-12 px-4 sm:px-6 md:py-16 lg:py-20 lg:scroll-mt-[100px]"
+    >
+        <div className="mx-auto max-w-5xl">
+            <SectionIntro title={copy.title} description={copy.intro} />
+            <div className="mt-12 space-y-6 md:mt-16 md:space-y-8">
                 {copy.steps.map((step, index) => (
                     <motion.article
                         key={step.title}
-                        initial={{ opacity: 0, y: 24 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.2 }}
-                        transition={{ duration: 0.5, delay: index * 0.05 }}
-                        className="relative rounded-3xl border border-slate-100 bg-white p-8 shadow-lg shadow-slate-200/50"
+                        initial={{ opacity: 0, x: -32 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        className="group relative rounded-2xl border border-slate-100 bg-white p-6 shadow-lg transition hover:shadow-xl md:rounded-3xl md:p-8"
                     >
-                        <div className="flex items-center gap-4">
-                            <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-lg font-semibold text-brand-600">
-                                {(index + 1).toString().padStart(2, '0')}
-                            </span>
-                            <h3 className="text-xl font-semibold text-slate-900">{step.title}</h3>
-                        </div>
-                        <p className="mt-4 text-base text-slate-600">{step.description}</p>
-                        {index < copy.steps.length - 1 && (
-                            <span className="pointer-events-none absolute -right-5 top-1/2 hidden h-px w-10 translate-y-1/2 bg-gradient-to-r from-brand-200 to-transparent lg:block" />
-                        )}
+                        <div className="absolute inset-y-0 left-0 w-1 rounded-l-2xl bg-gradient-to-b from-brand-400 via-brand-500 to-brand-600 opacity-0 transition group-hover:opacity-100 md:rounded-l-3xl" />
+                        <h3 className="text-lg font-semibold text-slate-900 md:text-xl">{step.title}</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-slate-600 md:mt-3 md:text-base">{step.description}</p>
                     </motion.article>
                 ))}
             </div>

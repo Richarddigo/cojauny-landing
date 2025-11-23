@@ -74,7 +74,7 @@ export const blogPosts: BlogPost[] = [
     ],
     tags: ['airport ride', 'travel planning'],
     categories: ['operations'],
-    published: '2025-11-10T08:00:00.000Z',
+    publishedAt: '2025-11-10T08:00:00.000Z',
     updatedAt: '2025-11-10T08:00:00.000Z',
     author: 'Cojauny Team',
     readingTimeMinutes: 6

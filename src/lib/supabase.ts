@@ -1,7 +1,7 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import { env } from './env';
 
-export const supabaseUrl = env.NEXT_PUBLIC_BASE_URL ?? env.BASE_URL ?? '';
+export const supabaseUrl = env.NEXT_PUBLIC_BASE_URL ?? env.NEXT_PUBLIC_BASE_URL ?? env.BASE_URL ?? '';
 export const supabaseAnonKey = env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '';
 
 if (!supabaseUrl) {

@@ -1,71 +1,44 @@
 "use client";
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import type { FaqCopy } from '@/locales/copy';
+import { Disclosure } from '@headlessui/react';
+import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import type { LandingCopy } from '@/locales/copy';
 import SectionIntro from '@/components/SectionIntro';
 
 interface FaqSectionProps {
-    copy: FaqCopy;
+    copy: LandingCopy['faq'];
 }
 
-const FaqSection = ({ copy }: FaqSectionProps) => {
-    const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-    const toggleFaq = (index: number) => {
-        setOpenIndex(openIndex === index ? null : index);
-    };
-
-    return (
-        <section id="faq" className="scroll-mt-[84px] py-20 mx-auto max-w-7xl px-6 lg:scroll-mt-[100px]">
+const FaqSection = ({ copy }: FaqSectionProps) => (
+    <section
+        id="faq"
+        className="scroll-mt-[74px] bg-white py-12 px-4 sm:px-6 md:py-16 lg:py-20 lg:scroll-mt-[100px]"
+    >
+        <div className="mx-auto max-w-4xl">
             <SectionIntro title={copy.title} description={copy.subtitle} />
-
-            <div className="mt-12 space-y-4">
+            <dl className="mt-10 space-y-4 md:mt-12 md:space-y-6">
                 {copy.items.map((item, index) => (
-                    <motion.div
-                        key={item.question}
-                        initial={{ opacity: 0, y: 12 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.2 }}
-                        transition={{ duration: 0.4, delay: index * 0.05 }}
-                        className="overflow-hidden rounded-3xl border border-slate-100 bg-white/90 shadow-lg shadow-slate-200/60"
-                    >
-                        <button
-                            onClick={() => toggleFaq(index)}
-                            className="flex w-full items-center justify-between px-6 py-5 text-left"
-                            aria-expanded={openIndex === index}
-                            aria-controls={`faq-panel-${index}`}
-                        >
-                            <span className="text-lg font-semibold text-slate-900">{item.question}</span>
-                            <svg
-                                className={`h-5 w-5 flex-shrink-0 text-slate-500 transition-transform ${openIndex === index ? 'rotate-180' : ''}`}
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                aria-hidden
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-                        <AnimatePresence initial={false}>
-                            {openIndex === index && (
-                                <motion.div
-                                    id={`faq-panel-${index}`}
-                                    initial={{ height: 0, opacity: 0 }}
-                                    animate={{ height: 'auto', opacity: 1 }}
-                                    exit={{ height: 0, opacity: 0 }}
-                                    transition={{ duration: 0.3 }}
-                                    className="border-t border-slate-100 bg-slate-50/80 px-6"
+                    <Disclosure as="div" key={`faq-${index}`} className="rounded-2xl border border-slate-100 bg-white shadow-sm md:rounded-3xl">
+                        {({ open }) => (
+                            <>
+                                <Disclosure.Button
+                                    className="flex w-full items-start justify-between rounded-2xl px-5 py-4 text-left transition hover:bg-slate-50 md:rounded-3xl md:px-6 md:py-5"
                                 >
-                                    <p className="py-4 text-base text-slate-600">{item.answer}</p>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
-                    </motion.div>
+                                    <span className="text-base font-semibold text-slate-900 md:text-lg">{item.question}</span>
+                                    <ChevronDownIcon
+                                        className={`ml-4 h-5 w-5 flex-shrink-0 text-brand-600 transition-transform ${open ? 'rotate-180' : ''}`}
+                                    />
+                                </Disclosure.Button>
+                                <Disclosure.Panel className="px-5 pb-4 md:px-6 md:pb-5">
+                                    <p className="text-sm leading-relaxed text-slate-600 md:text-base">{item.answer}</p>
+                                </Disclosure.Panel>
+                            </>
+                        )}
+                    </Disclosure>
                 ))}
-            </div>
-        </section>
-    );
-};
+            </dl>
+        </div>
+    </section>
+);
 
 export default FaqSection;

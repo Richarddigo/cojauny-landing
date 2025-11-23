@@ -28,7 +28,7 @@ const envSchema = z.object({
   NEXT_PUBLIC_ANALYTICS_ID: z.string().optional(),
   EMAIL_FROM_ADDRESS: z.string().email().optional(),
   EMAIL_ADMIN_RECIPIENT: z.string().email().optional(),
-  SUPABASE_PROJECT_ID: z.string().optional()
+  SUPABASE_PROJECT_ID: z.string().optional(),
 });
 
 export type AppEnv = z.infer<typeof envSchema>;
@@ -47,5 +47,5 @@ export const env: AppEnv = envSchema.parse({
   NEXT_PUBLIC_ANALYTICS_ID: process.env.NEXT_PUBLIC_ANALYTICS_ID,
   EMAIL_FROM_ADDRESS: process.env.EMAIL_FROM_ADDRESS,
   EMAIL_ADMIN_RECIPIENT: process.env.EMAIL_ADMIN_RECIPIENT,
-  SUPABASE_PROJECT_ID: process.env.SUPABASE_PROJECT_ID
+  SUPABASE_PROJECT_ID: process.env.SUPABASE_PROJECT_ID,
 });

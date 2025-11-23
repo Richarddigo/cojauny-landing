@@ -21,7 +21,7 @@ const LandingPageContent = ({ copy, locale }: LandingPageContentProps) => (
     <main className="relative overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(90,103,242,0.08),_transparent_60%)]">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,_rgba(90,103,242,0.08),_transparent_30%),_radial-gradient(circle_at_80%_0%,_rgba(18,23,84,0.08),_transparent_35%)]" aria-hidden />
         <Hero copy={copy.hero} />
-        <section id="demo" className="mx-auto max-w-7xl scroll-mt-[84px] py-20 px-6 lg:scroll-mt-[100px]">
+        <section id="demo" className="mx-auto max-w-7xl scroll-mt-[74px] py-12 px-4 sm:px-6 md:py-16 lg:py-20 lg:scroll-mt-[100px]">
             <Mockups className="h-full" copy={copy.mockups} />
         </section>
         <ValuePropsSection copy={copy.value} />
@@ -29,14 +29,22 @@ const LandingPageContent = ({ copy, locale }: LandingPageContentProps) => (
         <Features copy={copy.features} />
         <WorkflowSection copy={copy.workflow} />
         <PricingSection copy={copy.pricing} />
-        <section id="beta" className="mx-auto max-w-7xl scroll-mt-[84px] py-20 px-6 lg:scroll-mt-[100px]">
+        <section id="beta" className="mx-auto max-w-7xl scroll-mt-[74px] py-12 px-4 sm:px-6 md:py-16 lg:py-20 lg:scroll-mt-[100px]">
             <BetaSignupForm copy={copy.forms.beta} referralPanelCopy={copy.referralPanel} locale={locale} />
         </section>
         <FaqSection copy={copy.faq} />
-        <section className="mx-auto max-w-7xl py-20 px-6">
+        <section id="feedback" className="mx-auto max-w-7xl scroll-mt-[74px] py-12 px-4 sm:px-6 md:py-16 lg:py-20 lg:scroll-mt-[100px]">
+            <div className="mb-12 text-center md:mb-16">
+                <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl">
+                    {copy.forms.feedback.heading}
+                </h2>
+                <p className="mt-3 text-base leading-8 text-slate-300 sm:mt-4 sm:text-lg">
+                    {copy.forms.feedback.subheading}
+                </p>
+            </div>
             <FeedbackForm copy={copy.forms.feedback} locale={locale} />
         </section>
-        <section className="mx-auto max-w-7xl py-20 px-6">
+        <section className="mx-auto max-w-7xl py-12 px-4 sm:px-6 md:py-16 lg:py-20">
             <IntegrationCTA copy={copy.ctaStrip} locale={locale} />
         </section>
     </main>

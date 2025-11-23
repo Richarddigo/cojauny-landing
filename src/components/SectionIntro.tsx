@@ -8,6 +8,7 @@ interface SectionIntroProps {
     description?: string;
     align?: 'left' | 'center';
     tone?: 'light' | 'dark';
+    isDark?: boolean;
     className?: string;
 }
 
@@ -22,13 +23,16 @@ const SectionIntro = ({
     description,
     align = 'center',
     tone = 'dark',
+    isDark,
     className = ''
 }: SectionIntroProps) => {
+    // isDark overrides tone if provided for backwards compatibility
+    const effectiveTone = isDark !== undefined ? (isDark ? 'dark' : 'light') : tone;
     const alignmentClasses = align === 'center' ? 'mx-auto text-center' : 'text-left';
     const widthClasses = align === 'center' ? 'max-w-3xl' : 'max-w-2xl';
-    const titleClasses = tone === 'dark' ? 'text-slate-900' : 'text-white';
-    const descriptionClasses = tone === 'dark' ? 'text-slate-600' : 'text-white/80';
-    const eyebrowClasses = tone === 'dark' ? 'text-brand-400' : 'text-white/70';
+    const titleClasses = effectiveTone === 'dark' ? 'text-slate-900' : 'text-white';
+    const descriptionClasses = effectiveTone === 'dark' ? 'text-slate-600' : 'text-white/80';
+    const eyebrowClasses = effectiveTone === 'dark' ? 'text-brand-400' : 'text-white/70';
 
     return (
         <motion.div
