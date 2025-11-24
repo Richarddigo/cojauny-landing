@@ -370,20 +370,26 @@ async function sendViaSmtp(
       content: logoBase64,
       contentType: 'image/png',
       disposition: 'inline',
-      headers: { 'Content-ID': '<cojauny_logo>' }
+        headers: {
+          'Content-ID': '<cojauny_logo>',
+          'Content-Transfer-Encoding': 'base64',
+          'Content-Disposition': 'inline; filename="mountain_black.png"'
+        }
     });
   }
 
   await client.send({
-    from: `${sender.name} <${sender.email}>`,
+    from: `${sender.name} <${sender.authEmail}>`,
     to: recipient,
     subject: rendered.subject,
     content: rendered.text,
     html: htmlToSend,
     attachments: attachments.length ? attachments : undefined,
     headers: {
+      'MIME-Version': '1.0',
       'Reply-To': `${sender.name} <${sender.email}>`,
-      'X-Sender': sender.email
+      'X-Sender': sender.authEmail,
+      'X-Mailer': 'Cojauny Mailer'
     }
   });
 
@@ -427,6 +433,7 @@ async function sendWithSmtpFallback(recipient: string, rendered: ReturnType<type
       }
 
       await client.send({
+        // Use authenticated From to avoid relay restrictions, Reply-To is the visible address
         from: `${fallbackSender.name} <${fallbackSender.authEmail}>`,
         to: recipient,
         subject: rendered.subject,
@@ -464,7 +471,7 @@ async function sendViaResend(
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      from: `${sender.name} <${sender.email}>`,
+      from: `${sender.name} <${sender.authEmail}>`,
       to: [recipient],
       subject: rendered.subject,
       html: rendered.html,
