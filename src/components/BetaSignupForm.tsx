@@ -18,18 +18,11 @@ type BetaSignupFormState = Omit<BetaSignupInput, 'flightFrequency'> & {
     flightFrequency: BetaSignupInput['flightFrequency'] | '';
 };
 
-const localeDefaultCountry: Record<Locale, BetaSignupInput['country']> = {
-    es: 'es',
-    en: 'uk',
-    de: 'de',
-    fr: 'fr'
-};
-
 const buildInitialState = (locale: Locale, referralCode?: string): BetaSignupFormState => ({
     email: '',
     fullName: '',
     useCase: '',
-    country: localeDefaultCountry[locale] ?? 'other',
+    country: '' as BetaSignupInput['country'],
     flightFrequency: '',
     homeAirport: '',
     updatesOptIn: false,
@@ -48,7 +41,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
     const [error, setError] = useState<string | null>(null);
     const [userEmail, setUserEmail] = useState<string | null>(null);
     const [showReferralPanel, setShowReferralPanel] = useState(false);
-    const [confirmationToken, setConfirmationToken] = useState<string>('');
+    const [referralLink, setReferralLink] = useState<string>('');
 
     // Capture referral code from URL / Capturar código de referral desde URL
     // Empfehlungscode von URL erfassen / Capturer le code de parrainage depuis l'URL
@@ -140,7 +133,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
             }
 
             const result = await response.json();
-            setConfirmationToken(result.confirmationToken || '');
+            setReferralLink(result.referralLink || '');
             setUserEmail(form.email);
             setForm(buildInitialState(locale, referralCode));
             setSuccess(copy.success);
@@ -367,7 +360,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
             {/* Empfehlungs-Panel nach erfolgreicher Anmeldung anzeigen / Afficher le panneau de parrainage après inscription */}
             {showReferralPanel && userEmail && (
                 <div className="mt-8">
-                    <ReferralPanel copy={referralPanelCopy} email={userEmail} confirmationToken={confirmationToken} />
+                    <ReferralPanel copy={referralPanelCopy} email={userEmail} referralLink={referralLink} />
                 </div>
             )}
         </div>

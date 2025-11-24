@@ -601,10 +601,10 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         description:
           '🌟 Acceso anticipado · 💰 Tarifas preferentes · 🏆 Distintivo early adopter · 🛠️ Canal directo con producto · 🚀 Soporte prioritario',
         success:
-          'Gracias por confiar en Cojauny. Enviaremos tu código y siguientes pasos desde support@cojauny.com.',
-        error: 'No pudimos registrar tu solicitud. Revisa los datos o inténtalo en unos minutos.',
+          'Genial, estas en la lista de espera. Te avisaremos por email cuando la beta este lista.',
+        error: 'No pudimos registrar tu solicitud. Revisa los datos o intentalo en unos minutos.',
         duplicateError:
-          'Este correo ya está registrado en la beta. Revisa tu bandeja o escríbenos a support@cojauny.com.',
+          'Ya estas en nuestra lista de espera. Te notificaremos cuando la beta este disponible.',
         submit: 'Enviar solicitud',
         checkboxLabel: 'He leído y acepto la {privacyLink} de Cojauny.',
         privacyLinkLabel: 'política de privacidad',
@@ -683,23 +683,23 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       }
     },
     referralPanel: {
-      title: '🎁 Comparte Cojauny y gana acceso prioritario',
-      subtitle: 'Invita a otros profesionales y obtén beneficios exclusivos',
-      yourLink: 'Tu enlace único de invitación',
+      title: 'Te avisaremos cuando la beta este lista',
+      subtitle: 'Mientras tanto, comparte Cojauny con tu red y avanza en la lista de espera',
+      yourLink: 'Tu enlace unico de invitacion',
       copyButton: 'Copiar enlace',
-      copiedButton: '✓ Copiado',
+      copiedButton: 'Copiado',
       stats: {
         visits: 'Visitas',
         signups: 'Registros'
       },
       instructions: {
-        title: 'Cómo compartir tu enlace',
+        title: 'Como funciona',
         step1: 'Comparte este enlace con colegas, amigos y en redes sociales.',
-        step2: 'Cada vez que alguien visite tu enlace, contaremos una visita anónima.',
-        step3: 'Si se registran en la beta, contaremos un nuevo registro asociado a ti.'
+        step2: 'Cada vez que alguien visite tu enlace, contaremos una visita anonima.',
+        step3: 'Si se registran, contaremos un nuevo registro asociado a ti y avanzaras en la cola.'
       },
       privacy:
-        'Solo contamos visitas y registros de forma anónima. No recopilamos datos personales de quienes hacen clic en tu enlace.'
+        'Solo contamos visitas y registros de forma anonima. No recopilamos datos personales de quienes hacen clic en tu enlace.'
     },
     cookie: {
       message:
