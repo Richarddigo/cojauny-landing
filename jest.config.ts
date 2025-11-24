@@ -16,7 +16,7 @@ const customJestConfig: Config = {
     '\\.(svg)$': '<rootDir>/__mocks__/svgMock.ts'
   },
   testEnvironment: 'jest-environment-jsdom',
-  testPathIgnorePatterns: ['<rootDir>/__tests__/mocks/']
+  testPathIgnorePatterns: ['<rootDir>/__tests__/mocks/', '<rootDir>/e2e/']
 };
 
 export default createJestConfig(customJestConfig);

@@ -99,7 +99,7 @@ const Mockups = ({ className, copy }: MockupsProps) => {
         <section
             ref={sectionRef}
             id="demo"
-            className={`relative mt-8 w-full md:mt-12 lg:mt-16 ${className ?? ''}`.trim()}
+            className={`relative mt-6 w-full md:mt-10 lg:mt-16 ${className ?? ''}`.trim()}
             aria-labelledby="mockups-title"
         >
             <div className="text-center">
@@ -108,8 +108,8 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                 </h2>
                 <p className="mt-3 text-base leading-relaxed text-slate-600 sm:mt-4 sm:text-lg">{copy.description}</p>
             </div>
-            <div className="relative mt-12 flex flex-col gap-8 md:mt-16 lg:mt-20 lg:flex-row lg:gap-12 xl:gap-16">
-                <div ref={cardsContainerRef} className="flex flex-1 flex-col gap-4 text-left md:gap-5 md:max-w-2xl lg:max-w-3xl">
+            <div className="relative mt-8 flex flex-col gap-6 md:mt-12 lg:mt-20 lg:flex-row lg:gap-10 xl:gap-12">
+                <div ref={cardsContainerRef} className="flex flex-1 flex-col gap-3 text-left md:gap-4 md:max-w-2xl lg:max-w-3xl">
                     {screenOptions.map((screen, index) => {
                         const isActive = screen.id === activeScreenId;
                         const isFirst = index === 0;
@@ -122,34 +122,34 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                                 onMouseEnter={() => setActiveScreenId(screen.id)}
                                 onFocus={() => setActiveScreenId(screen.id)}
                                 onClick={() => setActiveScreenId(screen.id)}
-                                className={`group rounded-2xl border bg-white p-6 text-left shadow-lg transition focus-visible:outline-none md:rounded-3xl md:p-8 ${isActive
-                                        ? 'border-brand-300 shadow-soft-glow ring-2 ring-brand-100'
-                                        : 'border-slate-100 hover:border-brand-100 hover:shadow-xl'
+                                className={`group rounded-2xl border bg-white p-4 text-left shadow-lg transition focus-visible:outline-none md:rounded-3xl md:p-6 ${isActive
+                                    ? 'border-brand-300 shadow-soft-glow ring-2 ring-brand-100'
+                                    : 'border-slate-100 hover:border-brand-100 hover:shadow-xl'
                                     }`}
                             >
-                                <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">
-                                    <span className="rounded-full bg-brand-50 px-3 py-1.5 text-[11px] text-brand-600">
+                                <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-600">
+                                    <span className="rounded-full bg-brand-50 px-2 py-1 text-[10px] text-brand-600">
                                         {screen.badge}
                                     </span>
                                 </span>
-                                <h3 className="mt-4 text-xl font-semibold text-slate-900 sm:mt-5 sm:text-2xl">{screen.title}</h3>
+                                <h3 className="mt-3 text-lg font-semibold text-slate-900 sm:mt-4 sm:text-xl">{screen.title}</h3>
                                 <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:mt-3 sm:text-base">{screen.description}</p>
                             </button>
                         );
                     })}
                 </div>
-                <div className="relative flex flex-1 items-center justify-center min-h-[480px] sm:min-h-[520px] lg:sticky lg:top-24 lg:self-start lg:h-[640px]">
+                <div className="relative flex flex-1 items-center justify-center min-h-[220px] sm:min-h-[320px] lg:sticky lg:top-24 lg:self-start lg:h-[640px]">
                     <div
                         ref={phoneRef}
                         style={
-                            prefersReducedMotion
+                            prefersReducedMotion || typeof window !== 'undefined' && window.innerWidth < 1024
                                 ? undefined
                                 : {
-                                    transform: `translateY(${parallaxOffset}px)`,
+                                    transform: `translateY(${Math.max(0, Math.min(parallaxOffset, 220))}px)`,
                                     willChange: 'transform'
                                 }
                         }
-                        className="relative mx-auto w-[260px] max-w-full sm:w-[300px] lg:w-[340px]"
+                        className="relative mx-auto w-[clamp(220px,22vw,340px)] max-w-full sm:w-[300px] lg:w-[340px]"
                     >
                         <motion.div
                             key={activeScreen?.id}

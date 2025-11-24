@@ -26,34 +26,39 @@ describe('BetaSignupForm', () => {
 
         render(<BetaSignupForm copy={copy.forms.beta} referralPanelCopy={copy.referralPanel} locale="es" />);
 
-        fireEvent.change(screen.getByLabelText(/nombre completo/i), {
+        const formCopy = copy.forms.beta;
+
+        fireEvent.change(screen.getByLabelText(new RegExp(formCopy.fields.fullName, 'i')), {
             target: { value: 'Juan Pérez' }
         });
-        fireEvent.change(screen.getByLabelText(/correo electrónico/i), {
+        fireEvent.change(screen.getByLabelText(new RegExp(formCopy.fields.email, 'i')), {
             target: { value: 'juan@example.com' }
         });
-        fireEvent.change(screen.getByLabelText(/país de residencia/i), {
+        fireEvent.change(screen.getByLabelText(new RegExp(formCopy.fields.country, 'i')), {
             target: { value: 'es' }
         });
-        fireEvent.change(screen.getByLabelText(/ciudad o aeropuerto habitual/i), {
+        // Fill home airport using the field label (placeholder is not label)
+        fireEvent.change(screen.getByLabelText(new RegExp(formCopy.fields.homeAirport, 'i')), {
             target: { value: 'Madrid (MAD)' }
         });
-        fireEvent.click(screen.getByLabelText(/2–5 veces al año/i));
-        fireEvent.change(screen.getByLabelText(/cómo usarás cojauny/i), {
+        // Select flight frequency option by role (radio) using visible label
+        const freqLabel = formCopy.flightFrequencyOptions?.[1]?.label ?? '2–5 veces al año';
+        fireEvent.click(screen.getByRole('radio', { name: new RegExp(freqLabel, 'i') }));
+        fireEvent.change(screen.getByLabelText(new RegExp(formCopy.fields.useCase, 'i')), {
             target: { value: 'Gestionar beta testers' }
         });
-        fireEvent.click(screen.getByRole('checkbox', { name: /novedades del desarrollo/i }));
-        fireEvent.click(screen.getByRole('checkbox', { name: /política de privacidad/i }));
-        fireEvent.click(
-            screen.getByRole('checkbox', {
-                name: /acepto que se almacenen mis datos para participar en la beta/i
-            })
-        );
+        // Click updates opt-in checkbox (label text)
+        fireEvent.click(screen.getByRole('checkbox', { name: new RegExp(formCopy.fields.updatesOptIn || 'Quiero recibir novedades del desarrollo', 'i') }));
+        // privacy acceptance checkbox (label uses copy.fields.privacyAcceptance)
+        fireEvent.click(screen.getByRole('checkbox', { name: new RegExp(formCopy.fields.privacyAcceptance, 'i') }));
+        // terms/checkbox with privacy link is rendered as copy.checkboxLabel; match part of it
+        const checkboxLabelSnippet = formCopy.checkboxLabel?.split('{privacyLink}')[0].trim() || 'He leído y acepto la';
+        fireEvent.click(screen.getByRole('checkbox', { name: new RegExp(checkboxLabelSnippet, 'i') }));
 
         fireEvent.submit(screen.getByRole('button', { name: /Enviar solicitud/i }));
 
         await waitFor(() => {
-            expect(screen.getByText(/Enviaremos tu código/i)).toBeInTheDocument();
+            expect(screen.getByText(new RegExp(formCopy.success, 'i'))).toBeInTheDocument();
         });
 
         expect(mockFetch).toHaveBeenCalledWith(

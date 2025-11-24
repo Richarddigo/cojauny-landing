@@ -8,10 +8,11 @@ describe('Hero', () => {
 
         render(<Hero copy={copy.hero} />);
 
+        // Use copy values so tests don't break when copy changes
         expect(
-            screen.getByRole('heading', { name: /Comparte transporte al aeropuerto con quien ya viaja contigo/i })
+            screen.getByRole('heading', { name: new RegExp(copy.hero.title, 'i') })
         ).toBeInTheDocument();
-        expect(screen.getByRole('link', { name: /Solicitar acceso beta/i })).toBeInTheDocument();
-        expect(screen.getByRole('link', { name: /Ver demo interactiva/i })).toBeInTheDocument();
+        expect(screen.getByRole('link', { name: new RegExp(copy.hero.primaryCta, 'i') })).toBeInTheDocument();
+        expect(screen.getByRole('link', { name: new RegExp(copy.hero.secondaryCta, 'i') })).toBeInTheDocument();
     });
 });

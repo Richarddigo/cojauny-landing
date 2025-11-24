@@ -49,14 +49,16 @@ const SectionIntro = ({
             className={`${alignmentClasses} ${widthClasses} ${className}`.trim()}
         >
             {eyebrow && (
-                <p className={`text-xs font-semibold uppercase tracking-[0.3em] ${eyebrowClasses}`}>
+                <p
+                    className={`text-[10px] sm:text-xs font-semibold uppercase tracking-[0.25em] ${eyebrowClasses} inline-block max-w-full break-words`}
+                >
                     {eyebrow}
                 </p>
             )}
-            <h2 className={`mt-4 text-3xl font-bold tracking-tight ${titleClasses} sm:text-4xl`}>
+            <h2 className={`mt-2 text-2xl font-bold tracking-tight ${titleClasses} sm:mt-4 sm:text-3xl`}>
                 {title}
             </h2>
-            {description && <p className={`mt-4 text-lg ${descriptionClasses}`}>{description}</p>}
+            {description && <p className={`mt-2 text-base sm:mt-4 sm:text-lg ${descriptionClasses}`}>{description}</p>}
         </motion.div>
     );
 };

@@ -23,16 +23,18 @@ module.exports = {
                 }
             },
             fontFamily: {
-                // SF Pro Display and Text (iPhone system font) with optimal fallbacks
+                // Use iPhone system font first, then fonts closest to it, then fallbacks and Inter as a last-resort webfont
                 sans: [
-                    'var(--font-inter)',
                     '-apple-system',
-                    'BlinkMacSystemFont',
-                    'SF Pro Display',
                     'SF Pro Text',
+                    'SF Pro Display',
+                    'BlinkMacSystemFont',
+                    'Segoe UI',
+                    'Roboto',
                     'Helvetica Neue',
                     'Helvetica',
                     'Arial',
+                    'var(--font-inter)',
                     ...defaultTheme.fontFamily.sans
                 ]
             },
