@@ -30,11 +30,13 @@ const SavingsSection = ({ copy }: SavingsSectionProps) => (
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className="group relative rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition hover:bg-white/10 md:rounded-3xl md:p-8"
+                        className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition hover:bg-white/10 md:rounded-3xl md:p-8"
                     >
-                        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-400 via-brand-300 to-brand-500 opacity-0 transition group-hover:opacity-100" />
+                        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-400 via-brand-500 to-brand-300 opacity-0 transition group-hover:opacity-100"></div>
                         <p className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">{metric.value}</p>
-                        <p className="mt-2 text-sm font-semibold uppercase tracking-wider text-brand-200 sm:mt-3 sm:text-base">{metric.label}</p>
+                        <span className="mt-2 block text-sm font-semibold uppercase tracking-wider text-[rgb(196,204,255)] sm:mt-3 sm:text-base">
+                            {metric.label}
+                        </span>
                         <p className="mt-3 text-sm leading-relaxed text-slate-300 sm:mt-4 sm:text-base">{metric.description}</p>
                     </motion.article>
                 ))}

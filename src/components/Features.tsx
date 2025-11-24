@@ -51,7 +51,10 @@ const Features = ({ copy }: FeaturesProps) => (
                             </span>
                             <h3 className="mt-5 text-lg font-semibold text-slate-900 md:mt-6 md:text-xl">{feature.title}</h3>
                             <p className="mt-3 text-sm leading-relaxed text-slate-600 md:mt-4 md:text-base">{feature.description}</p>
-                            <div className="mt-5 h-px w-full bg-gradient-to-r from-brand-200/0 via-brand-200/60 to-brand-200/0 opacity-0 transition group-hover:opacity-100 md:mt-6" />
+                            <div className="pointer-events-none absolute bottom-0 left-1/2 z-10 flex h-3 w-full -translate-x-1/2 flex-col items-center justify-end mb-[15px]">
+                                <div className="h-0.5 w-3/4 rounded-full bg-gradient-to-r from-brand-400 via-brand-500 to-brand-300 opacity-0 transition group-hover:opacity-100"></div>
+                                <div className="mt-1 h-0.5 w-[55%] rounded-full bg-gradient-to-r from-brand-400 via-brand-500 to-brand-300 opacity-0 transition group-hover:opacity-100"></div>
+                            </div>
                         </motion.article>
                     );
                 })}

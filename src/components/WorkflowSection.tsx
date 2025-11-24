@@ -23,7 +23,7 @@ const WorkflowSection = ({ copy }: WorkflowSectionProps) => (
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className="group relative rounded-2xl border border-slate-100 bg-white p-6 shadow-lg transition hover:shadow-xl md:rounded-3xl md:p-8"
+                        className="group relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-6 shadow-lg transition hover:shadow-xl md:rounded-3xl md:p-8"
                     >
                         <div className="absolute inset-y-0 left-0 w-1 rounded-l-2xl bg-gradient-to-b from-brand-400 via-brand-500 to-brand-600 opacity-0 transition group-hover:opacity-100 md:rounded-l-3xl" />
                         <h3 className="text-lg font-semibold text-slate-900 md:text-xl">{step.title}</h3>
