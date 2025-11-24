@@ -35,10 +35,10 @@ const LandingPageContent = ({ copy, locale }: LandingPageContentProps) => (
         <FaqSection copy={copy.faq} />
         <section id="feedback" className="mx-auto max-w-7xl scroll-mt-[74px] py-12 px-4 sm:px-6 md:py-16 lg:py-20 lg:scroll-mt-[100px]">
             <div className="mb-12 text-center md:mb-16">
-                <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl">
+                <h2 className="text-2xl font-bold tracking-tight text-black sm:text-3xl md:text-4xl">
                     {copy.forms.feedback.heading}
                 </h2>
-                <p className="mt-3 text-base leading-8 text-slate-300 sm:mt-4 sm:text-lg">
+                <p className="mt-3 text-base leading-8 text-[rgb(71,85,105)] sm:mt-4 sm:text-lg">
                     {copy.forms.feedback.subheading}
                 </p>
             </div>

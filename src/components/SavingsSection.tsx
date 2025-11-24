@@ -15,7 +15,13 @@ const SavingsSection = ({ copy }: SavingsSectionProps) => (
     >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,_rgba(139,92,246,0.15),_transparent_50%)]" aria-hidden />
         <div className="relative mx-auto max-w-7xl">
-            <SectionIntro title={copy.title} description={copy.caption} isDark />
+            <SectionIntro
+                title={copy.title}
+                description={copy.caption}
+                isDark
+                titleClassName="text-white"
+                descriptionClassName="text-[rgb(196,204,255)]"
+            />
             <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 md:mt-16 lg:grid-cols-4 lg:gap-10">
                 {copy.metrics.map((metric, index) => (
                     <motion.article
