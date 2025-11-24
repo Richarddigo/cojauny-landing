@@ -102,8 +102,9 @@ const supabase = createClient(supabaseUrl, supabaseKey, {
   }
 });
 
-// Build canonical site URL
-const _rawSite = Deno.env.get('CURRENT_SITE_URL') || Deno.env.get('BASE_URL') || Deno.env.get('BASE_URL') || 'https://www.cojauny.com';
+// Build canonical site URL — prefer explicit CURRENT_SITE_URL only to avoid
+// leaking internal service URLs (e.g. Supabase project URLs) into emails.
+const _rawSite = Deno.env.get('CURRENT_SITE_URL') ?? 'https://www.cojauny.com';
 const siteUrlFromEnv = (_rawSite.startsWith('http') ? _rawSite : `https://${_rawSite}`).replace(/\/$/, '');
 // Prefer PNG for email clients (better compatibility with some providers)
 // Prefer public PNG hosted under the site public assets. Place the PNG at
@@ -127,55 +128,102 @@ try {
   logoBase64 = null;
 }
 
-// Professional email signature
-const emailSignatureHtml = (locale: Locale) => `
-  <div style="margin-top:32px;padding-top:24px;border-top:2px solid #e5e7eb;">
-    <table cellpadding="0" cellspacing="0" border="0" style="font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;">
-      <tr>
-        <td style="padding-right:16px;vertical-align:top;">
-          <img src="${logoUrl}" width="48" height="48" alt="Cojauny" style="display:block;border:0;" />
-        </td>
-        <td style="vertical-align:top;">
-          <div style="font-weight:700;font-size:16px;color:#0f172a;margin-bottom:4px;">Cojauny</div>
-        </td>
-      </tr>
-    </table>
-    <div style="margin-top:16px;font-size:12px;color:#9ca3af;">
-      Need help? Contact us at <a href="mailto:support@cojauny.com" style="color:#0ea5e9;text-decoration:none;">support@cojauny.com</a>
+// Localized professional email signature (no Supabase info).
+const emailSignatureHtml = (locale: Locale) => {
+  const lines: Record<Locale, { tagline: string; contactHtml: string }> = {
+    es: {
+      tagline: 'Cojauny — Comparte taxi al aeropuerto',
+      contactHtml: '¿Necesitas ayuda? Escríbenos a <a href="mailto:support@cojauny.com" style="color:#0ea5e9;text-decoration:none;">support@cojauny.com</a>'
+    },
+    en: {
+      tagline: 'Cojauny — Share airport taxi',
+      contactHtml: 'Need help? Contact us at <a href="mailto:support@cojauny.com" style="color:#0ea5e9;text-decoration:none;">support@cojauny.com</a>'
+    },
+    de: {
+      tagline: 'Cojauny — Taxi zum Flughafen teilen',
+      contactHtml: 'Brauchen Sie Hilfe? Kontaktieren Sie uns unter <a href="mailto:support@cojauny.com" style="color:#0ea5e9;text-decoration:none;">support@cojauny.com</a>'
+    },
+    fr: {
+      tagline: "Cojauny — Partagez un taxi vers l'aéroport",
+      contactHtml: 'Besoin d\'aide ? Contactez-nous à <a href="mailto:support@cojauny.com" style="color:#0ea5e9;text-decoration:none;">support@cojauny.com</a>'
+    }
+  };
+
+  const pick = lines[locale] ?? lines.es;
+
+  const privacyUrl = `${siteUrlFromEnv}/${locale}/legal/privacy`;
+  const termsUrl = `${siteUrlFromEnv}/${locale}/legal/terms`;
+
+  const labels: Record<Locale, { privacy: string; terms: string }> = {
+    es: { privacy: 'Privacidad', terms: 'Términos' },
+    en: { privacy: 'Privacy', terms: 'Terms' },
+    de: { privacy: 'Datenschutz', terms: 'Nutzungsbedingungen' },
+    fr: { privacy: 'Confidentialité', terms: 'Conditions' }
+  };
+
+  const pickLabels = labels[locale] ?? labels.es;
+
+  return `
+    <div style="margin-top:32px;padding-top:24px;border-top:2px solid #e5e7eb;">
+      <table cellpadding="0" cellspacing="0" border="0" style="font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;">
+        <tr>
+          <td style="padding-right:16px;vertical-align:top;">
+            <img src="${logoUrl}" width="48" height="48" alt="Cojauny" style="display:block;border:0;" />
+          </td>
+          <td style="vertical-align:top;">
+            <div style="font-weight:700;font-size:16px;color:#0f172a;margin-bottom:4px;">${pick.tagline}</div>
+            <div style="font-size:12px;color:#9ca3af;margin-top:4px;">${pick.contactHtml}</div>
+            <div style="font-size:12px;color:#9ca3af;margin-top:6px;"><a href="${privacyUrl}" style="color:#0ea5e9;text-decoration:none;">${pickLabels.privacy}</a> · <a href="${termsUrl}" style="color:#0ea5e9;text-decoration:none;">${pickLabels.terms}</a></div>
+          </td>
+        </tr>
+      </table>
     </div>
-  </div>
-`;
+  `;
+};
 
-const emailSignatureText = `
+const emailSignatureText = (locale: Locale) => {
+  const lines: Record<Locale, { tagline: string; contact: string }> = {
+    es: { tagline: 'Cojauny — Comparte taxi al aeropuerto', contact: '¿Necesitas ayuda? Escríbenos a support@cojauny.com' },
+    en: { tagline: 'Cojauny — Share airport taxi', contact: 'Need help? Contact us at support@cojauny.com' },
+    de: { tagline: 'Cojauny — Taxi zum Flughafen teilen', contact: 'Brauchen Sie Hilfe? Kontaktieren Sie uns unter support@cojauny.com' },
+    fr: { tagline: "Cojauny — Partagez un taxi vers l'aéroport", contact: "Besoin d'aide ? Contactez-nous à support@cojauny.com" }
+  };
 
---
-Cojauny
-Productivity tools for creative teams
-${siteUrlFromEnv}
-Support: support@cojauny.com
-`;
+  const pick = lines[locale] ?? lines.es;
+
+  const privacyUrl = `${siteUrlFromEnv}/${locale}/legal/privacy`;
+  const termsUrl = `${siteUrlFromEnv}/${locale}/legal/terms`;
+  const labels: Record<Locale, { privacy: string; terms: string }> = {
+    es: { privacy: 'Privacidad', terms: 'Términos' },
+    en: { privacy: 'Privacy', terms: 'Terms' },
+    de: { privacy: 'Datenschutz', terms: 'Nutzungsbedingungen' },
+    fr: { privacy: 'Confidentialité', terms: 'Conditions' }
+  };
+  const pickLabels = labels[locale] ?? labels.es;
+  return `\n---\n${pick.tagline}\n${siteUrlFromEnv}\n${pick.contact}\n${pickLabels.privacy}: ${privacyUrl}\n${pickLabels.terms}: ${termsUrl}\n`;
+};
 
 const localizedTemplates: Record<Extract<TemplateKey, 'beta-confirmation' | 'feedback-thanks' | 'contact-thanks'>, Record<Locale, TemplateContent>> = {
   'beta-confirmation': {
     es: {
       subject: 'Bienvenido a la lista de espera de Cojauny',
-      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hola <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Gracias por unirte a la lista de espera de <strong style=\"color:#0ea5e9;\">Cojauny</strong>. Te avisaremos por email cuando la beta esté disponible.</p><div style=\"background:linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);border-left:4px solid #0ea5e9;padding:20px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 12px 0;font-weight:600;color:#0c4a6e;font-size:15px;\">Avanza en la lista compartiendo tu enlace:</p><div style=\"background:#ffffff;padding:14px;border-radius:6px;margin-top:12px;\"><a href=\"{{referral_link}}\" style=\"color:#0369a1;font-weight:600;font-size:14px;word-break:break-all;text-decoration:none;\">{{referral_link}}</a></div><p style=\"margin:12px 0 0 0;font-size:13px;color:#475569;\">Cuantos más amigos se registren con tu enlace, antes tendrás acceso a la beta.</p></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">¿Preguntas? Responde a este correo.</p></div>" + emailSignatureHtml('es'),
-      text: 'Hola {{name}},\n\nGracias por unirte a la lista de espera de Cojauny. Te avisaremos por email cuando la beta esté disponible.\n\nAVANZA EN LA LISTA:\nComparte tu enlace personal:\n{{referral_link}}\n\nCuantos más amigos se registren con tu enlace, antes tendrás acceso.\n\n¿Preguntas? Responde a este correo.' + emailSignatureText
+        html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hola <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Gracias por unirte a la lista de espera de <strong style=\"color:#0ea5e9;\">Cojauny</strong>. Te avisaremos por email cuando la beta esté disponible.</p><div style=\"background:linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);border-left:4px solid #0ea5e9;padding:20px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 12px 0;font-weight:600;color:#0c4a6e;font-size:15px;\">Avanza en la lista compartiendo tu enlace:</p><div style=\"background:#ffffff;padding:14px;border-radius:6px;margin-top:12px;\"><a href=\"{{referral_link}}\" style=\"color:#0369a1;font-weight:600;font-size:14px;word-break:break-all;text-decoration:none;\">{{referral_link}}</a></div><p style=\"margin:12px 0 0 0;font-size:13px;color:#475569;\">Cuantos más amigos se registren con tu enlace, antes tendrás acceso a la beta.</p></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">¿Preguntas? Responde a este correo.</p></div>",
+      text: 'Hola {{name}},\n\nGracias por unirte a la lista de espera de Cojauny. Te avisaremos por email cuando la beta esté disponible.\n\nAVANZA EN LA LISTA:\nComparte tu enlace personal:\n{{referral_link}}\n\nCuantos más amigos se registren con tu enlace, antes tendrás acceso.\n\n¿Preguntas? Responde a este correo.'
     },
     en: {
       subject: 'Welcome to the Cojauny Waitlist',
-      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hi <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Thanks for joining the <strong style=\"color:#0ea5e9;\">Cojauny</strong> waitlist. We'll email you when the beta is ready.</p><div style=\"background:linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);border-left:4px solid #0ea5e9;padding:20px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 12px 0;font-weight:600;color:#0c4a6e;font-size:15px;\">Move up the list by sharing your link:</p><div style=\"background:#ffffff;padding:14px;border-radius:6px;margin-top:12px;\"><a href=\"{{referral_link}}\" style=\"color:#0369a1;font-weight:600;font-size:14px;word-break:break-all;text-decoration:none;\">{{referral_link}}</a></div><p style=\"margin:12px 0 0 0;font-size:13px;color:#475569;\">The more friends sign up with your link, the sooner you'll get beta access.</p></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Questions? Just reply to this email.</p></div>" + emailSignatureHtml('en'),
-      text: 'Hi {{name}},\n\nThanks for joining the Cojauny waitlist. We\'ll email you when the beta is ready.\n\nMOVE UP THE LIST:\nShare your personal link:\n{{referral_link}}\n\nThe more friends sign up with your link, the sooner you\'ll get access.\n\nQuestions? Reply to this email.' + emailSignatureText
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hi <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Thanks for joining the <strong style=\"color:#0ea5e9;\">Cojauny</strong> waitlist. We'll email you when the beta is ready.</p><div style=\"background:linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);border-left:4px solid #0ea5e9;padding:20px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 12px 0;font-weight:600;color:#0c4a6e;font-size:15px;\">Move up the list by sharing your link:</p><div style=\"background:#ffffff;padding:14px;border-radius:6px;margin-top:12px;\"><a href=\"{{referral_link}}\" style=\"color:#0369a1;font-weight:600;font-size:14px;word-break:break-all;text-decoration:none;\">{{referral_link}}</a></div><p style=\"margin:12px 0 0 0;font-size:13px;color:#475569;\">The more friends sign up with your link, the sooner you'll get beta access.</p></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Questions? Just reply to this email.</p></div>",
+      text: 'Hi {{name}},\n\nThanks for joining the Cojauny waitlist. We\'ll email you when the beta is ready.\n\nMOVE UP THE LIST:\nShare your personal link:\n{{referral_link}}\n\nThe more friends sign up with your link, the sooner you\'ll get access.\n\nQuestions? Reply to this email.'
     },
     de: {
       subject: 'Willkommen auf der Cojauny-Warteliste',
-      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hallo <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Danke, dass du der <strong style=\"color:#0ea5e9;\">Cojauny</strong>-Warteliste beigetreten bist. Wir senden dir eine E-Mail, wenn die Beta bereit ist.</p><div style=\"background:linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);border-left:4px solid #0ea5e9;padding:20px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 12px 0;font-weight:600;color:#0c4a6e;font-size:15px;\">Rücke in der Liste nach vorne:</p><div style=\"background:#ffffff;padding:14px;border-radius:6px;margin-top:12px;\"><a href=\"{{referral_link}}\" style=\"color:#0369a1;font-weight:600;font-size:14px;word-break:break-all;text-decoration:none;\">{{referral_link}}</a></div><p style=\"margin:12px 0 0 0;font-size:13px;color:#475569;\">Je mehr Freunde sich über deinen Link registrieren, desto früher erhältst du Beta-Zugang.</p></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Fragen? Antworte einfach auf diese E-Mail.</p></div>" + emailSignatureHtml('de'),
-      text: 'Hallo {{name}},\n\nDanke für die Anmeldung zur Cojauny-Warteliste. Wir benachrichtigen dich, wenn die Beta bereit ist.\n\nRÜCKE NACH VORNE:\nTeile deinen persönlichen Link:\n{{referral_link}}\n\nJe mehr Freunde sich registrieren, desto schneller erhältst du Zugang.\n\nFragen? Antworte auf diese E-Mail.' + emailSignatureText
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hallo <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Danke, dass du der <strong style=\"color:#0ea5e9;\">Cojauny</strong>-Warteliste beigetreten bist. Wir senden dir eine E-Mail, wenn die Beta bereit ist.</p><div style=\"background:linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);border-left:4px solid #0ea5e9;padding:20px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 12px 0;font-weight:600;color:#0c4a6e;font-size:15px;\">Rücke in der Liste nach vorne:</p><div style=\"background:#ffffff;padding:14px;border-radius:6px;margin-top:12px;\"><a href=\"{{referral_link}}\" style=\"color:#0369a1;font-weight:600;font-size:14px;word-break:break-all;text-decoration:none;\">{{referral_link}}</a></div><p style=\"margin:12px 0 0 0;font-size:13px;color:#475569;\">Je mehr Freunde sich über deinen Link registrieren, desto früher erhältst du Beta-Zugang.</p></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Fragen? Antworte einfach auf diese E-Mail.</p></div>",
+      text: 'Hallo {{name}},\n\nDanke für die Anmeldung zur Cojauny-Warteliste. Wir benachrichtigen dich, wenn die Beta bereit ist.\n\nRÜCKE NACH VORNE:\nTeile deinen persönlichen Link:\n{{referral_link}}\n\nJe mehr Freunde sich registrieren, desto schneller erhältst du Zugang.\n\nFragen? Antworte auf diese E-Mail.'
     },
     fr: {
       subject: 'Bienvenue sur la liste d\'attente Cojauny',
-      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Bonjour <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Merci de rejoindre la liste d'attente <strong style=\"color:#0ea5e9;\">Cojauny</strong>. Nous vous enverrons un email lorsque la bêta sera prête.</p><div style=\"background:linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);border-left:4px solid #0ea5e9;padding:20px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 12px 0;font-weight:600;color:#0c4a6e;font-size:15px;\">Avancez dans la liste en partageant votre lien:</p><div style=\"background:#ffffff;padding:14px;border-radius:6px;margin-top:12px;\"><a href=\"{{referral_link}}\" style=\"color:#0369a1;font-weight:600;font-size:14px;word-break:break-all;text-decoration:none;\">{{referral_link}}</a></div><p style=\"margin:12px 0 0 0;font-size:13px;color:#475569;\">Plus vos amis s'inscrivent via votre lien, plus vite vous aurez accès à la bêta.</p></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Des questions? Répondez simplement à cet email.</p></div>" + emailSignatureHtml('fr'),
-      text: 'Bonjour {{name}},\n\nMerci de rejoindre la liste d\'attente Cojauny. Nous vous préviendrons quand la bêta sera prête.\n\nAVANCEZ DANS LA LISTE:\nPartagez votre lien personnel:\n{{referral_link}}\n\nPlus d\'inscriptions = accès plus rapide.\n\nQuestions? Répondez à cet email.' + emailSignatureText
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Bonjour <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Merci de rejoindre la liste d'attente <strong style=\"color:#0ea5e9;\">Cojauny</strong>. Nous vous enverrons un email lorsque la bêta sera prête.</p><div style=\"background:linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);border-left:4px solid #0ea5e9;padding:20px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 12px 0;font-weight:600;color:#0c4a6e;font-size:15px;\">Avancez dans la liste en partageant votre lien:</p><div style=\"background:#ffffff;padding:14px;border-radius:6px;margin-top:12px;\"><a href=\"{{referral_link}}\" style=\"color:#0369a1;font-weight:600;font-size:14px;word-break:break-all;text-decoration:none;\">{{referral_link}}</a></div><p style=\"margin:12px 0 0 0;font-size:13px;color:#475569;\">Plus vos amis s'inscrivent via votre lien, plus vite vous aurez accès à la bêta.</p></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Des questions? Répondez simplement à cet email.</p></div>",
+      text: 'Bonjour {{name}},\n\nMerci de rejoindre la liste d\'attente Cojauny. Nous vous préviendrons quand la bêta sera prête.\n\nAVANCEZ DANS LA LISTE:\nPartagez votre lien personnel:\n{{referral_link}}\n\nPlus d\'inscriptions = accès plus rapide.\n\nQuestions? Répondez à cet email.'
     }
   },
   'feedback-thanks': {
@@ -506,7 +554,11 @@ serve(async (req) => {
     const locale = normalizeLocale(payload.locale);
     const templateContent = resolveTemplate(payload.template, locale);
     const rendered = render(templateContent, payload.variables ?? {});
+    // Append localized signature to both html and text outputs
+    const htmlWithSignature = (rendered.html ?? '') + emailSignatureHtml(locale);
+    const textWithSignature = (rendered.text ?? '') + emailSignatureText(locale);
     const sender = resolveSender(payload.template);
+    const renderedWithSignature = { ...rendered, html: htmlWithSignature, text: textWithSignature } as ReturnType<typeof render>;
 
     // If in test capture mode, dump rendered HTML/text and metadata to tmp/email-samples
     try {
@@ -518,10 +570,10 @@ serve(async (req) => {
           const base = `${outDir}/${payload.template}_${locale}_${ts}`;
           // If logoBase64 is present we will send using CID, so capture the final HTML that references CID
           const htmlToCapture = logoBase64
-            ? rendered.html.replace(new RegExp(logoUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), 'cid:cojauny_logo')
-            : rendered.html;
+            ? htmlWithSignature.replace(new RegExp(logoUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), 'cid:cojauny_logo')
+            : htmlWithSignature;
           await Deno.writeTextFile(base + '.html', htmlToCapture);
-          await Deno.writeTextFile(base + '.txt', rendered.text);
+          await Deno.writeTextFile(base + '.txt', textWithSignature);
           const meta = {
             template: payload.template,
             locale,
@@ -544,9 +596,9 @@ serve(async (req) => {
     const useResend = Deno.env.get('USE_RESEND') === 'true';
 
     if (useResend) {
-      await sendViaResend(payload.email, rendered, sender);
+      await sendViaResend(payload.email, renderedWithSignature, sender);
     } else {
-      await sendWithSmtpFallback(payload.email, rendered, sender);
+      await sendWithSmtpFallback(payload.email, renderedWithSignature, sender);
     }
 
     // Log email sent

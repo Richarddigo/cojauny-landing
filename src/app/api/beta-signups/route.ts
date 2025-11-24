@@ -91,11 +91,33 @@ export async function POST(request: NextRequest) {
     insertPayload.referral_code_used = data.referralCode;
   }
 
-  const insertResult = await supabase
-    .from(WAITLIST_TABLE)
-    .insert(insertPayload)
-    .select()
-    .single();
+  let insertResult = await supabase.from(WAITLIST_TABLE).insert(insertPayload).select().single();
+
+  if (insertResult.error) {
+    console.error('Error insertando beta signup', insertResult.error);
+    // If PostgREST returns PGRST204 about a missing column in the schema cache
+    // (this can happen right after a migration), retry without the optional
+    // confirmation_token field as a safe fallback.
+    try {
+      if (
+        insertResult.error.code === 'PGRST204' &&
+        typeof insertResult.error.message === 'string' &&
+        insertResult.error.message.includes("'confirmation_token'")
+      ) {
+        console.warn('Schema cache missing confirmation_token — retrying insert without that field');
+        const fallbackPayload = { ...insertPayload };
+        delete (fallbackPayload as Record<string, unknown>).confirmation_token;
+        const retry = await supabase.from(WAITLIST_TABLE).insert(fallbackPayload).select().single();
+        if (!retry.error) {
+          insertResult = retry;
+        } else {
+          console.error('Retry without confirmation_token also failed', retry.error);
+        }
+      }
+    } catch (e) {
+      console.error('Unexpected error during fallback insert', e);
+    }
+  }
 
   if (insertResult.error) {
     console.error('Error insertando beta signup', insertResult.error);
