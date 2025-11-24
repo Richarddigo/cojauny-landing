@@ -94,7 +94,6 @@ export interface PlanFeature {
   free: string | boolean;
   premium: string | boolean;
 }
-
 export interface PricingCopy {
   title: string;
   subtitle: string;
@@ -102,15 +101,18 @@ export interface PricingCopy {
     free: {
       name: string;
       price: string;
-      description: string;
-      cta: string;
+      description?: string;
+      cta?: string;
+      badge?: string;
+      features?: string[];
     };
     premium: {
       name: string;
       price: string;
-      description: string;
-      cta: string;
+      description?: string;
+      cta?: string;
       badge?: string;
+      features?: string[];
     };
   };
   comparison: {
@@ -662,9 +664,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         subheading: '¿Tienes una sugerencia para mejorar Cojauny? ¿Quieres compartir una idea innovadora o explorar oportunidades de negocio? Estamos aqui para escucharte.',
         title: 'Comparte tu propuesta',
         description:
-          '¿Gestionas transfer colectivos o programas corporativos? Cuéntanos tu escenario para ayudarte mejor desde support@cojauny.com.',
+          '¿Gestionas transfer colectivos o programas corporativos? Cuéntanos tu escenario para ayudarte mejor desde feedback@cojauny.com.',
         success: 'Gracias por tu mensaje. Si necesitamos ampliar información te contactaremos pronto.',
-        error: 'No fue posible enviar el formulario. Inténtalo de nuevo en breve.',
+        error: "El campo 'Mensaje' debe tener al menos 10 caracteres.",
         submit: 'Enviar mensaje',
         optionalLabel: '(opcional)',
         optionalHint: 'Todos los campos son obligatorios salvo que veas "(opcional)".',
@@ -672,12 +674,12 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           fullName: 'Nombre',
           email: 'Correo',
           message: 'Cuéntanos tu caso',
-          sentiment: 'Tipo de mensaje',
+          sentiment: 'Caso',
           selectPlaceholder: 'Selecciona una opción'
         },
         sentimentOptions: [
           { value: 'positive', label: 'Feedback' },
-          { value: 'neutral', label: 'Ideas' },
+          { value: 'neutral', label: 'Idea' },
           { value: 'negative', label: 'Propuesta de negocio' }
         ]
       }
@@ -1165,10 +1167,10 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         subheading: 'Have a suggestion to improve Cojauny? Want to share an innovative idea or explore business opportunities? We are here to listen.',
         title: 'Share your proposal',
         description:
-          'Managing group transfers or premium passengers? Tell us more and we will reply from support@cojauny.com.',
+          'Managing group transfers or premium passengers? Tell us more and we will reply from feedback@cojauny.com.',
         success:
           'Thanks for the feedback. We will reach out using the same address if we need more context.',
-        error: 'We could not submit your feedback. Check the fields and try again.',
+        error: "The 'Message' field must be at least 10 characters long.",
         submit: 'Send message',
         optionalLabel: '(optional)',
         optionalHint: 'Every field is required unless you see "(optional)" next to the label.',
@@ -1176,7 +1178,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           fullName: 'Name',
           email: 'Email',
           message: 'Tell us about your case',
-          sentiment: 'Message type',
+          sentiment: 'Case',
           selectPlaceholder: 'Select an option'
         },
         sentimentOptions: [
@@ -1671,9 +1673,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         subheading: 'Haben Sie einen Vorschlag zur Verbesserung von Cojauny? Möchten Sie eine innovative Idee teilen oder Geschäftsmöglichkeiten erkunden? Wir sind hier, um zuzuhören.',
         title: 'Teilen Sie Ihren Vorschlag',
         description:
-          'Du organisierst Sammeltransfers oder Premium-Reisende? Teile Details, wir melden uns von support@cojauny.com.',
+          'Du organisierst Sammeltransfers oder Premium-Reisende? Teile Details, wir melden uns von feedback@cojauny.com.',
         success: 'Danke für dein Feedback. Wir kontaktieren dich bei Rückfragen über dieselbe Adresse.',
-        error: 'Feedback konnte nicht übermittelt werden. Bitte überprüfe die Angaben.',
+        error: "Das Feld 'Nachricht' muss mindestens 10 Zeichen enthalten.",
         submit: 'Nachricht senden',
         optionalLabel: '(optional)',
         optionalHint: 'Alle Felder sind Pflicht, außer sie sind mit „(optional)“ markiert.',
@@ -1681,7 +1683,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           fullName: 'Name',
           email: 'E-Mail',
           message: 'Erzähl uns deinen Fall',
-          sentiment: 'Nachrichtentyp',
+          sentiment: 'Fall',
           selectPlaceholder: 'Option auswählen'
         },
         sentimentOptions: [
@@ -2141,10 +2143,10 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         subheading: 'Vous avez une suggestion pour améliorer Cojauny? Vous souhaitez partager une idée innovante ou explorer des opportunités commerciales? Nous sommes là pour vous écouter.',
         title: 'Partagez votre scénario',
         description:
-          'Vous gérez des transferts collectifs ou des voyageurs premium ? Donnez-nous des détails et nous répondrons depuis support@cojauny.com.',
+          'Vous gérez des transferts collectifs ou des voyageurs premium ? Donnez-nous des détails et nous répondrons depuis feedback@cojauny.com.',
         success:
           'Merci pour votre retour. Nous vous contacterons par ce même e-mail si besoin.',
-        error: 'Impossible d’envoyer le feedback. Vérifiez les informations.',
+        error: "Le champ 'Message' doit contenir au moins 10 caractères.",
         submit: 'Envoyer',
         optionalLabel: '(Optionnel)',
         optionalHint: 'Tous les champs sont requis sauf indication « (Optionnel) ». ',

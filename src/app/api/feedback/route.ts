@@ -48,25 +48,48 @@ async function checkRateLimit(ipAddress: string): Promise<{ allowed: boolean; co
 
 
 export async function POST(request: Request) {
-  try {
-    const body = await request.json();
-    const result = feedbackSchema.safeParse(body);
+  const requestId = generateRequestId();
+  console.log(`[${requestId}] Feedback form submission started`);
 
-    if (!result.success) {
+  try {
+    const body = await request.json().catch(() => null);
+    if (!body) {
+      console.error(`[${requestId}] Invalid JSON payload received`);
       return NextResponse.json(
-        { error: 'Datos inválidos', details: result.error.errors },
+        { error: 'El formato de los datos es inválido. Por favor, inténtalo de nuevo.', requestId },
         { status: 400 }
       );
     }
 
-    const data = result.data;
-    const ipAddress = request.headers.get('x-forwarded-for') || 'unknown';
+    const validation = feedbackSchema.safeParse(body);
+    if (!validation.success) {
+      console.warn(`[${requestId}] Validation failed:`, validation.error);
+      return NextResponse.json(
+        { error: 'Datos inválidos', details: validation.error.errors, requestId },
+        { status: 400 }
+      );
+    }
+
+    const data = validation.data as FeedbackInput;
+
+    // Bot detection
+    if (!isHuman(data.honeypot)) {
+      console.warn(`[${requestId}] Bot detected via honeypot`);
+      return NextResponse.json(
+        { error: 'Tu solicitud no pudo ser procesada. Si crees que esto es un error, contacta a support@cojauny.com.', requestId },
+        { status: 403 }
+      );
+    }
+
+    const ipAddress = getClientIp((request as any).headers) ?? '0.0.0.0';
+    console.log(`[${requestId}] Request from IP: ${ipAddress}, User: ${data.email}`);
 
     // Rate limiting
     const rateLimitResult = await checkRateLimit(ipAddress);
     if (!rateLimitResult.allowed) {
+      console.warn(`[${requestId}] Rate limit exceeded`);
       return NextResponse.json(
-        { error: 'Demasiados intentos. Por favor espera unos minutos.' },
+        { error: 'Demasiados intentos. Por favor espera unos minutos.', requestId },
         { status: 429 }
       );
     }
@@ -75,7 +98,7 @@ export async function POST(request: Request) {
     const supabase = createServiceRoleClient();
 
     // Insert into Supabase
-    const { error: insertError } = await supabase
+    const insert = await supabase
       .from('feedback')
       .insert({
         email: data.email,
@@ -84,36 +107,34 @@ export async function POST(request: Request) {
         sentiment: data.sentiment,
         language: data.locale,
         ip_address: ipAddress,
-        user_agent: request.headers.get('user-agent') ?? ''
-      });
+        user_agent: (request as any).headers.get('user-agent') ?? ''
+      })
+      .select()
+      .single();
 
-    if (insertError) {
-      console.error('Feedback insert error:', insertError);
+    if (insert.error) {
+      console.error(`[${requestId}] Feedback insert error:`, insert.error);
       return NextResponse.json(
-        { error: 'No se pudo guardar el feedback.' },
+        { error: 'No se pudo guardar el feedback.', requestId },
         { status: 500 }
       );
     }
 
-    // Trigger email notifications via Edge Function
+    // Trigger emails (non-blocking)
     try {
       const adminRecipient = env.EMAIL_ADMIN_RECIPIENT || INTERNAL_FEEDBACK_EMAIL;
 
-      // 1. Send confirmation to user
       await triggerEdgeEmailFunction({
         email: data.email,
         template: 'feedback-thanks',
         locale: data.locale,
-        variables: {
-          name: data.name
-        }
+        variables: { name: data.name }
       });
 
-      // 2. Send notification to admin
       await triggerEdgeEmailFunction({
         email: adminRecipient,
         template: 'internal-notification',
-        locale: 'es',
+        locale: data.locale ?? 'es',
         variables: {
           type: 'Feedback',
           name: data.name,
@@ -123,16 +144,16 @@ export async function POST(request: Request) {
           locale: data.locale
         }
       });
-    } catch (error) {
-      console.error('Email notification failed:', error);
-      // Continue execution, email failure shouldn't block success response
+    } catch (err) {
+      console.error(`[${requestId}] Email notification failed (non-critical):`, err);
     }
 
-    return NextResponse.json({ success: true });
-  } catch (error: any) {
-    console.error('Feedback API error:', error);
+    console.log(`[${requestId}] Feedback form submission completed successfully`);
+    return NextResponse.json({ success: true }, { status: 201 });
+  } catch (err: any) {
+    console.error(`[${requestId}] Unhandled error processing feedback form:`, err);
     return NextResponse.json(
-      { error: 'Error interno del servidor.' },
+      { error: 'Error interno del servidor.', requestId, details: err.message ?? String(err) },
       { status: 500 }
     );
   }

@@ -8,7 +8,7 @@ describe('triggerEdgeEmailFunction', () => {
   beforeEach(() => {
     process.env = {
       ...originalEnv,
-      SUPABASE_PROJECT_ID: 'mi-proyecto-supabase',
+      BASE_PROJECT_ID: 'mi-proyecto-supabase',
       BASE_SERVICE_ROLE_KEY: 'service-role-key'
     };
 

@@ -71,22 +71,30 @@ const senderProfiles: Record<SenderKey, SenderProfile> = {
   beta: {
     email: Deno.env.get('SMTP_USER_BETA') ?? undefined,
     password: Deno.env.get('SMTP_PASS_BETA') ?? undefined,
-    name: Deno.env.get('SMTP_FROM_NAME_BETA') ?? 'Cojauny'
+    name: Deno.env.get('SMTP_FROM_NAME_BETA') ?? 'Cojauny Beta'
   },
   feedback: {
     email: Deno.env.get('SMTP_USER_FEEDBACK') ?? undefined,
     password: Deno.env.get('SMTP_PASS_FEEDBACK') ?? undefined,
-    name: Deno.env.get('SMTP_FROM_NAME_FEEDBACK') ?? 'Cojauny'
+    name: Deno.env.get('SMTP_FROM_NAME_FEEDBACK') ?? 'Cojauny Feedback'
   },
   support: {
     email: Deno.env.get('SMTP_USER_SUPPORT') ?? undefined,
     password: Deno.env.get('SMTP_PASS_SUPPORT') ?? undefined,
-    name: Deno.env.get('SMTP_FROM_NAME_SUPPORT') ?? 'Cojauny Support'
+    name: Deno.env.get('SMTP_FROM_NAME_SUPPORT') ?? 'Cojauny Contact'
   }
 };
 
-const supabaseUrl = Deno.env.get('SUPABASE_URL') ?? '';
-const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '';
+const supabaseUrl = Deno.env.get('BASE_URL') ?? '';
+// Accept multiple possible env names for the service role key
+const supabaseKey = Deno.env.get('BASE_SERVICE_ROLE_KEY') ?? Deno.env.get('BASE_SERVICE_ROLE_KEY') ?? Deno.env.get('BASE_SERVICE_KEY') ?? '';
+
+// Debugging: print presence (not values) to help diagnose env issues when running locally
+try {
+  console.log('manage-forms starting. BASE_URL present:', !!supabaseUrl, 'BASE_KEY present:', !!supabaseKey, 'USE_RESEND:', Deno.env.get('USE_RESEND'));
+} catch (_e) {
+  // ignore
+}
 
 const supabase = createClient(supabaseUrl, supabaseKey, {
   auth: {
@@ -95,9 +103,29 @@ const supabase = createClient(supabaseUrl, supabaseKey, {
 });
 
 // Build canonical site URL
-const _rawSite = Deno.env.get('CURRENT_SITE_URL') || Deno.env.get('BASE_URL') || 'https://www.cojauny.com';
+const _rawSite = Deno.env.get('CURRENT_SITE_URL') || Deno.env.get('BASE_URL') || Deno.env.get('BASE_URL') || 'https://www.cojauny.com';
 const siteUrlFromEnv = (_rawSite.startsWith('http') ? _rawSite : `https://${_rawSite}`).replace(/\/$/, '');
-const logoUrl = `${siteUrlFromEnv}/assets/logo/mountain_black.svg`;
+// Prefer PNG for email clients (better compatibility with some providers)
+// Prefer public PNG hosted under the site public assets. Place the PNG at
+// `public/assets/logo/mountain_black.png` so the signature image loads from the public site URL.
+const logoUrl = `${siteUrlFromEnv}/assets/logo/mountain_black.png`;
+
+// Load local logo file (base64) for inline attachments if available
+let logoBase64: string | null = null;
+try {
+  const logoPath = 'public/assets/logo/mountain_black.png';
+  const bytes = await Deno.readFile(logoPath);
+  // Convert to base64
+  let binary = '';
+  const chunk = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunk) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + chunk));
+  }
+  logoBase64 = btoa(binary);
+  console.log('Loaded local logo for inline attachment');
+} catch (_e) {
+  logoBase64 = null;
+}
 
 // Professional email signature
 const emailSignatureHtml = (locale: Locale) => `
@@ -109,12 +137,6 @@ const emailSignatureHtml = (locale: Locale) => `
         </td>
         <td style="vertical-align:top;">
           <div style="font-weight:700;font-size:16px;color:#0f172a;margin-bottom:4px;">Cojauny</div>
-          <div style="font-size:13px;color:#64748b;line-height:1.5;">
-            Productivity tools for creative teams
-          </div>
-          <div style="margin-top:8px;">
-            <a href="${siteUrlFromEnv}" style="color:#0ea5e9;text-decoration:none;font-size:13px;font-weight:500;">${siteUrlFromEnv.replace(/^https?:\/\//, '')}</a>
-          </div>
         </td>
       </tr>
     </table>
@@ -181,23 +203,23 @@ const localizedTemplates: Record<Extract<TemplateKey, 'beta-confirmation' | 'fee
   'contact-thanks': {
     es: {
       subject: 'Hemos recibido tu solicitud, {{name}}',
-      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hola <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Hemos recibido tu mensaje y un miembro del equipo de soporte lo revisará en menos de 48 horas.</p><p style=\"font-size:15px;line-height:1.6;\">Responderemos desde <a href=\"mailto:support@cojauny.com\" style=\"color:#0ea5e9;text-decoration:none;\">support@cojauny.com</a>.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Responde a este correo si necesitas añadir más información o archivos.</p></div>" + emailSignatureHtml('es'),
-      text: 'Hola {{name}},\n\nHemos recibido tu solicitud y la revisaremos en menos de 48 h.\n\nResponderemos desde support@cojauny.com.\n\nResponde a este correo si necesitas añadir más información.' + emailSignatureText
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hola <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Hemos recibido tu mensaje y un miembro del equipo de soporte lo revisará en menos de 48 horas.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Responde a este correo si necesitas añadir más información o archivos.</p></div>" + emailSignatureHtml('es'),
+      text: 'Hola {{name}},\n\nHemos recibido tu solicitud y la revisaremos en menos de 48 h.\n\nResponde a este correo si necesitas añadir más información.' + emailSignatureText
     },
     en: {
       subject: 'We received your request, {{name}}',
-      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hi <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">We received your message. Our support team will review it and reply within 48 hours.</p><p style=\"font-size:15px;line-height:1.6;\">We'll respond from <a href=\"mailto:support@cojauny.com\" style=\"color:#0ea5e9;text-decoration:none;\">support@cojauny.com</a>.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">If you want to add attachments or more details, reply to this email.</p></div>" + emailSignatureHtml('en'),
-      text: 'Hi {{name}},\n\nThanks — we received your request and will respond within 48 hours.\n\nWe\'ll reply from support@cojauny.com.\n\nReply to add more details or attachments.' + emailSignatureText
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hi <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">We received your message. Our support team will review it and reply within 48 hours.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">If you want to add attachments or more details, reply to this email.</p></div>" + emailSignatureHtml('en'),
+      text: 'Hi {{name}},\n\nThanks — we received your request and will respond within 48 hours.\n\nReply to add more details or attachments.' + emailSignatureText
     },
     de: {
       subject: 'Wir haben deine Anfrage erhalten, {{name}}',
-      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hallo <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Wir haben deine Nachricht erhalten. Unser Support-Team prüft sie und meldet sich innerhalb von 48 Stunden.</p><p style=\"font-size:15px;line-height:1.6;\">Wir antworten von <a href=\"mailto:support@cojauny.com\" style=\"color:#0ea5e9;text-decoration:none;\">support@cojauny.com</a>.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Antworte auf diese E-Mail, um Anhänge oder weitere Informationen zu senden.</p></div>" + emailSignatureHtml('de'),
-      text: 'Hallo {{name}},\n\nWir haben deine Anfrage erhalten und melden uns innerhalb von 48 Stunden.\n\nWir antworten von support@cojauny.com.\n\nAntworte auf diese E-Mail, um zusätzliche Informationen hinzuzufügen.' + emailSignatureText
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hallo <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Wir haben deine Nachricht erhalten. Unser Support-Team prüft sie und meldet sich innerhalb von 48 Stunden.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Antworte auf diese E-Mail, um Anhänge oder weitere Informationen zu senden.</p></div>" + emailSignatureHtml('de'),
+      text: 'Hallo {{name}},\n\nWir haben deine Anfrage erhalten und melden uns innerhalb von 48 Stunden.\n\nAntworte auf diese E-Mail, um zusätzliche Informationen hinzuzufügen.' + emailSignatureText
     },
     fr: {
       subject: 'Nous avons bien reçu votre demande, {{name}}',
-      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Bonjour <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Votre message est bien arrivé. Notre équipe support vous répondra sous 48 heures.</p><p style=\"font-size:15px;line-height:1.6;\">Nous répondrons depuis <a href=\"mailto:support@cojauny.com\" style=\"color:#0ea5e9;text-decoration:none;\">support@cojauny.com</a>.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Répondez à cet e-mail pour ajouter des pièces jointes ou des informations supplémentaires.</p></div>" + emailSignatureHtml('fr'),
-      text: 'Bonjour {{name}},\n\nMerci — nous avons bien reçu votre message.\n\nNous vous répondrons sous 48 heures depuis support@cojauny.com.\n\nRépondez pour ajouter des précisions ou des pièces jointes.' + emailSignatureText
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Bonjour <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Votre message est bien arrivé. Notre équipe support vous répondra sous 48 heures.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Répondez à cet e-mail pour ajouter des pièces jointes ou des informations supplémentaires.</p></div>" + emailSignatureHtml('fr'),
+      text: 'Bonjour {{name}},\n\nMerci — nous avons bien reçu votre message.\n\nRépondez pour ajouter des précisions ou des pièces jointes.' + emailSignatureText
     }
   }
 };
@@ -266,6 +288,25 @@ function resolveTemplate(key: TemplateKey, locale: Locale): TemplateContent {
 }
 
 function resolveSender(key: TemplateKey): ResolvedSender {
+  // If sending contact confirmation, force the visible sender to contact@cojauny.com
+  if (key === 'contact-thanks') {
+    const contactProfile: SenderProfile = {
+      email: 'contact@cojauny.com',
+      password: undefined,
+      name: 'Cojauny Contact'
+    };
+    // If a specific SMTP user for support/contact is configured, use it for auth
+    const authEmail = Deno.env.get('SMTP_USER_SUPPORT') ?? Deno.env.get('SMTP_USER') ?? undefined;
+    const authPassword = Deno.env.get('SMTP_PASS_SUPPORT') ?? Deno.env.get('SMTP_PASS') ?? undefined;
+    if (authEmail && authPassword) {
+      return { email: contactProfile.email, name: contactProfile.name, authEmail, authPassword };
+    }
+    if (!defaultUser || !defaultPassword) {
+      throw new Error('No hay credenciales SMTP predeterminadas configuradas');
+    }
+    return { email: contactProfile.email, name: contactProfile.name, authEmail: defaultUser, authPassword: defaultPassword };
+  }
+
   const profileKey = templateSenders[key];
   const profile = senderProfiles[profileKey];
 
@@ -318,12 +359,28 @@ async function sendViaSmtp(
     password: sender.authPassword
   });
 
+  // If we have a local logo, attach it inline (CID) and rewrite the HTML to reference it
+  const attachments = [];
+  let htmlToSend = rendered.html;
+  if (logoBase64) {
+    // Replace occurrences of the public logo URL with cid reference
+    htmlToSend = htmlToSend.replace(new RegExp(logoUrl.replace(/[.*+?^${}()|[\]\\]/g, '\$&'), 'g'), 'cid:cojauny_logo');
+    attachments.push({
+      filename: 'mountain_black.png',
+      content: logoBase64,
+      contentType: 'image/png',
+      disposition: 'inline',
+      headers: { 'Content-ID': '<cojauny_logo>' }
+    });
+  }
+
   await client.send({
     from: `${sender.name} <${sender.email}>`,
     to: recipient,
     subject: rendered.subject,
     content: rendered.text,
-    html: rendered.html,
+    html: htmlToSend,
+    attachments: attachments.length ? attachments : undefined,
     headers: {
       'Reply-To': `${sender.name} <${sender.email}>`,
       'X-Sender': sender.email
@@ -331,6 +388,63 @@ async function sendViaSmtp(
   });
 
   await client.close();
+}
+
+// Enhanced SMTP send with fallback for relay errors
+async function sendWithSmtpFallback(recipient: string, rendered: ReturnType<typeof render>, sender: ResolvedSender) {
+  try {
+    await sendViaSmtp(recipient, rendered, sender);
+    return;
+  } catch (err) {
+    // If SMTP server rejects the sender (common 553 relay error), retry using auth email as From and set Reply-To
+    const msg = (err && err.message) ? err.message : String(err);
+    console.warn('sendViaSmtp failed:', msg);
+    if (msg.includes('553') || /relay/i.test(msg)) {
+      console.info('Retrying send with authenticated From address to avoid relay restrictions');
+      const fallbackSender: ResolvedSender = {
+        email: sender.authEmail,
+        name: sender.name,
+        authEmail: sender.authEmail,
+        authPassword: sender.authPassword
+      };
+
+      const { SmtpClient } = await import('https://deno.land/x/smtp@v0.7.0/mod.ts');
+      const client = new SmtpClient();
+      await client.connectTLS({ hostname: smtpHost, port: smtpPort, username: fallbackSender.authEmail, password: fallbackSender.authPassword });
+
+      // Fallback path: also attach inline logo if available
+      let htmlToSend = rendered.html;
+      const attachments = [];
+      if (logoBase64) {
+        htmlToSend = htmlToSend.replace(new RegExp(logoUrl.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&'), 'g'), 'cid:cojauny_logo');
+        attachments.push({
+          filename: 'mountain_black.png',
+          content: logoBase64,
+          contentType: 'image/png',
+          disposition: 'inline',
+          headers: { 'Content-ID': '<cojauny_logo>' }
+        });
+      }
+
+      await client.send({
+        from: `${fallbackSender.name} <${fallbackSender.authEmail}>`,
+        to: recipient,
+        subject: rendered.subject,
+        content: rendered.text,
+        html: htmlToSend,
+        attachments: attachments.length ? attachments : undefined,
+        headers: {
+          'Reply-To': `${sender.name} <${sender.email}>`,
+          'X-Sender': fallbackSender.authEmail
+        }
+      });
+
+      await client.close();
+      return;
+    }
+
+    throw err;
+  }
 }
 
 async function sendViaResend(
@@ -387,12 +501,45 @@ serve(async (req) => {
     const rendered = render(templateContent, payload.variables ?? {});
     const sender = resolveSender(payload.template);
 
+    // If in test capture mode, dump rendered HTML/text and metadata to tmp/email-samples
+    try {
+      if (Deno.env.get('TEST_CAPTURE') === 'true') {
+        try {
+          const outDir = 'tmp/email-samples';
+          await Deno.mkdir(outDir, { recursive: true });
+          const ts = Date.now();
+          const base = `${outDir}/${payload.template}_${locale}_${ts}`;
+          // If logoBase64 is present we will send using CID, so capture the final HTML that references CID
+          const htmlToCapture = logoBase64
+            ? rendered.html.replace(new RegExp(logoUrl.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'), 'cid:cojauny_logo')
+            : rendered.html;
+          await Deno.writeTextFile(base + '.html', htmlToCapture);
+          await Deno.writeTextFile(base + '.txt', rendered.text);
+          const meta = {
+            template: payload.template,
+            locale,
+            recipient: payload.email,
+            sender: sender.email,
+            senderName: sender.name,
+            useResend: Deno.env.get('USE_RESEND') === 'true',
+            attachments: !!logoBase64
+          };
+          await Deno.writeTextFile(base + '.json', JSON.stringify(meta, null, 2));
+          console.log('[TEST_CAPTURE] Wrote sample files for', payload.template, locale, base);
+        } catch (capErr) {
+          console.error('TEST_CAPTURE write failed:', capErr);
+        }
+      }
+    } catch (_e) {
+      // ignore
+    }
+
     const useResend = Deno.env.get('USE_RESEND') === 'true';
 
     if (useResend) {
       await sendViaResend(payload.email, rendered, sender);
     } else {
-      await sendViaSmtp(payload.email, rendered, sender);
+      await sendWithSmtpFallback(payload.email, rendered, sender);
     }
 
     // Log email sent

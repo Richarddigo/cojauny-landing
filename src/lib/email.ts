@@ -16,10 +16,10 @@ export interface EmailEdgePayload {
 }
 
 export function getEdgeEmailUrl() {
-  // Prefer explicit project id, otherwise try to derive it from SUPABASE_URL or BASE_URL
-  const projectId = env.SUPABASE_PROJECT_ID ?? (() => {
+  // Prefer explicit project id, otherwise try to derive it from BASE_URL or BASE_URL
+  const projectId = env.BASE_PROJECT_ID ?? (() => {
     try {
-      const candidate = process.env.SUPABASE_URL ?? process.env.BASE_URL ?? process.env.NEXT_PUBLIC_BASE_URL;
+      const candidate = process.env.BASE_URL ?? process.env.BASE_URL ?? process.env.NEXT_PUBLIC_BASE_URL;
       if (!candidate) return undefined;
       const parsed = new URL(candidate);
       const hostParts = parsed.hostname.split('.');
@@ -31,7 +31,7 @@ export function getEdgeEmailUrl() {
   })();
 
   if (!projectId) {
-    throw new Error('SUPABASE_PROJECT_ID no está configurado y no se pudo derivar a partir de SUPABASE_URL');
+    throw new Error('BASE_PROJECT_ID no está configurado y no se pudo derivar a partir de BASE_URL');
   }
 
   return `https://${projectId}.functions.supabase.co/send-beta-email`;

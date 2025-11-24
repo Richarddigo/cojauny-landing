@@ -36,10 +36,9 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
       description:
         'Cuéntanos en qué podemos ayudarte y deja tu correo para que podamos responderte. El nombre y el email son obligatorios.',
       success: 'Gracias por escribirnos. Te responderemos desde support@cojauny.com muy pronto.',
-      error: 'No hemos podido enviar tu mensaje. Inténtalo de nuevo en unos minutos.',
+      error: "El campo 'Mensaje' debe tener al menos 10 caracteres.",
       submit: 'Enviar mensaje',
       optionalLabel: '(opcional)',
-      optionalHint: 'Todos los campos son obligatorios salvo que veas "(opcional)" en la etiqueta.',
       fields: {
         name: 'Nombre',
         email: 'Email',
@@ -59,10 +58,9 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
       description:
         "Tell us how we can help and leave your email so we can get back to you. Name and email are mandatory.",
       success: 'Thanks for reaching out. We will reply from support@cojauny.com shortly.',
-      error: 'We could not send your message. Please try again in a few minutes.',
+      error: "The 'Message' field must be at least 10 characters long.",
       submit: 'Send message',
       optionalLabel: '(optional)',
-      optionalHint: 'Every field is required unless you see "(optional)" next to the label.',
       fields: {
         name: 'Name',
         email: 'Email',
@@ -82,10 +80,9 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
       description:
         'Erzähl uns, wobei wir helfen können, und hinterlasse deine E-Mail-Adresse. Name und E-Mail sind Pflichtfelder.',
       success: 'Vielen Dank für deine Nachricht. Wir antworten dir bald von support@cojauny.com.',
-      error: 'Deine Nachricht konnte nicht gesendet werden. Versuch es in ein paar Minuten erneut.',
+      error: "Das Feld 'Nachricht' muss mindestens 10 Zeichen enthalten.",
       submit: 'Nachricht senden',
       optionalLabel: '(optional)',
-      optionalHint: 'Alle Felder sind Pflicht, außer sie sind mit „(optional)“ markiert.',
       fields: {
         name: 'Name',
         email: 'Email',
@@ -105,10 +102,9 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
       description:
         'Expliquez comment nous pouvons vous aider et laissez votre e-mail pour que nous puissions répondre. Le nom et l\'e-mail sont obligatoires.',
       success: 'Merci de nous avoir écrit. Nous vous répondrons très vite depuis support@cojauny.com.',
-      error: "Nous n'avons pas pu envoyer votre message. Veuillez réessayer dans quelques minutes.",
+      error: "Le champ 'Message' doit contenir au moins 10 caractères.",
       submit: 'Envoyer le message',
       optionalLabel: '(Optionnel)',
-      optionalHint: 'Tous les champs sont requis sauf indication « (Optionnel) ».',
       fields: {
         name: 'Nom',
         email: 'Email',

@@ -26,6 +26,7 @@ const ContactForm = ({ locale, copy }: ContactFormProps) => {
     const [submitting, setSubmitting] = useState(false);
     const [success, setSuccess] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [messageError, setMessageError] = useState<string | null>(null);
 
     useEffect(() => {
         setForm(buildInitialState(locale));
@@ -50,8 +51,15 @@ const ContactForm = ({ locale, copy }: ContactFormProps) => {
 
         const parseResult = contactSchema.safeParse(form);
         if (!parseResult.success) {
+            console.warn('Contact form client-side validation failed', parseResult.error);
             setSubmitting(false);
-            setError(copy.error);
+            // If the failure is the message min length, show inline message
+            const msgIssue = parseResult.error.issues?.find((i) => i.path?.[0] === 'message');
+            if (msgIssue) {
+                setMessageError(copy.error);
+            } else {
+                setError(copy.error);
+            }
             return;
         }
 
@@ -72,7 +80,8 @@ const ContactForm = ({ locale, copy }: ContactFormProps) => {
                 const details = payload?.details
                     ? `\nDetails: ${typeof payload.details === 'string' ? payload.details : JSON.stringify(payload.details, null, 2)}`
                     : '';
-                setError(`${serverError}${details}`);
+                const requestId = payload?.requestId ? ` (ref: ${payload.requestId})` : '';
+                setError(`${serverError}${requestId}${details}`);
                 return;
             }
 
@@ -145,15 +154,26 @@ const ContactForm = ({ locale, copy }: ContactFormProps) => {
             <label className="flex flex-col gap-2">
                 <span className="text-sm font-medium text-slate-700">{copy.fields.message}</span>
                 <textarea
+                    id="contact-message"
                     name="message"
                     value={form.message}
-                    onChange={handleChange}
+                    onChange={(e) => {
+                        handleChange(e as any);
+                        setMessageError(null);
+                    }}
                     rows={5}
                     required
                     minLength={10}
                     aria-label={copy.fields.message}
-                    className="resize-none rounded-xl border border-slate-200 bg-white/50 px-4 py-3 text-base text-slate-900 shadow-sm transition-all placeholder:text-slate-400 focus:border-brand-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-500/10"
+                    aria-invalid={!!messageError}
+                    aria-describedby={messageError ? 'contact-message-error' : undefined}
+                    className={`resize-none rounded-xl px-4 py-3 text-base shadow-sm transition-all placeholder:text-slate-400 focus:outline-none ${messageError ? 'border-red-500 bg-red-50 text-slate-900 ring-2 ring-red-200' : 'border border-slate-200 bg-white/50 text-slate-900 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10'}`}
                 />
+                {messageError && (
+                    <p id="contact-message-error" className="mt-2 text-sm text-red-600" role="alert">
+                        {messageError}
+                    </p>
+                )}
             </label>
 
             <div className="sr-only" aria-hidden>

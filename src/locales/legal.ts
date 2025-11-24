@@ -42,7 +42,7 @@ const legalCopy: Record<Locale, LegalCopy> = {
         },
         {
           heading: 'Destinatarios y transferencias',
-          body: 'Solo compartimos datos con proveedores que nos ayudan a prestar el servicio: infraestructura y base de datos (Supabase Europe), alojamiento web (Vercel), correo transaccional (Resend) y analítica (Google Analytics 4). Todos operan desde la Unión Europea o aplican Cláusulas Contractuales Tipo cuando es necesario transferir datos fuera del EEE. No vendemos ni cedemos tus datos a terceros con fines comerciales.'
+          body: 'Solo compartimos datos con proveedores que nos ayudan a prestar el servicio: infraestructura y base de datos (nuestro proveedor de base de datos), alojamiento web (Vercel), correo transaccional (Resend) y analítica (Google Analytics 4). Todos operan desde la Unión Europea o aplican Cláusulas Contractuales Tipo cuando es necesario transferir datos fuera del EEE. No vendemos ni cedemos tus datos a terceros con fines comerciales.'
         },
         {
           heading: 'Plazos de conservación',
@@ -143,7 +143,7 @@ const legalCopy: Record<Locale, LegalCopy> = {
         },
         {
           heading: 'Recipients and transfers',
-          body: 'We only share data with providers that help us deliver the service: infrastructure and database (Supabase Europe), hosting (Vercel), transactional email (Resend) and analytics (Google Analytics 4). They operate from the European Union or rely on Standard Contractual Clauses when data leaves the EEA. We never sell or exchange your data for advertising purposes.'
+          body: 'We only share data with providers that help us deliver the service: infrastructure and database (our database provider), hosting (Vercel), transactional email (Resend) and analytics (Google Analytics 4). They operate from the European Union or rely on Standard Contractual Clauses when data leaves the EEA. We never sell or exchange your data for advertising purposes.'
         },
         {
           heading: 'Retention period',
@@ -244,7 +244,7 @@ const legalCopy: Record<Locale, LegalCopy> = {
         },
         {
           heading: 'Empfänger und Übermittlungen',
-          body: 'Wir teilen Daten nur mit Dienstleistern, die uns bei der Bereitstellung unterstützen: Infrastruktur und Datenbank (Supabase Europe), Hosting (Vercel), Transaktionsmails (Resend) sowie Analytik (Google Analytics 4). Diese Anbieter agieren innerhalb der EU oder setzen Standardvertragsklauseln ein, wenn Daten den EWR verlassen. Eine Weitergabe zu Werbezwecken findet nicht statt.'
+          body: 'Wir teilen Daten nur mit Dienstleistern, die uns bei der Bereitstellung unterstützen: Infrastruktur und Datenbank (unser Datenbankanbieter), Hosting (Vercel), Transaktionsmails (Resend) sowie Analytik (Google Analytics 4). Diese Anbieter agieren innerhalb der EU oder setzen Standardvertragsklauseln ein, wenn Daten den EWR verlassen. Eine Weitergabe zu Werbezwecken findet nicht statt.'
         },
         {
           heading: 'Aufbewahrungsdauer',
@@ -345,7 +345,7 @@ const legalCopy: Record<Locale, LegalCopy> = {
         },
         {
           heading: 'Destinataires et transferts',
-          body: 'Nous partageons les données uniquement avec les prestataires qui nous aident à fournir le service : infrastructure et base de données (Supabase Europe), hébergement (Vercel), e-mails transactionnels (Resend) et analytique (Google Analytics 4). Ces prestataires opèrent dans l’Union européenne ou appliquent des Clauses Contractuelles Types lorsqu’une exportation hors EEE est nécessaire. Nous ne vendons ni n’échangeons vos données à des fins publicitaires.'
+          body: 'Nous partageons les données uniquement avec les prestataires qui nous aident à fournir le service : infrastructure et base de données (notre prestataire de base de données), hébergement (Vercel), e-mails transactionnels (Resend) et analytique (Google Analytics 4). Ces prestataires opèrent dans l’Union européenne ou appliquent des Clauses Contractuelles Types lorsqu’une exportation hors EEE est nécessaire. Nous ne vendons ni n’échangeons vos données à des fins publicitaires.'
         },
         {
           heading: 'Durées de conservation',

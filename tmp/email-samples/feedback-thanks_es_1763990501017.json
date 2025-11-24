@@ -1,0 +1,8 @@
+{
+  "template": "feedback-thanks",
+  "locale": "es",
+  "recipient": "richarddigo@gmail.com",
+  "sender": "feedback@cojauny.com",
+  "useResend": false,
+  "attachments": true
+}

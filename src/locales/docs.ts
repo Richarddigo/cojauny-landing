@@ -28,7 +28,7 @@ const docsCopy: Record<Locale, DocsCopy> = {
           description: 'Define esquemas universales en iOS y Android y reserva rutas exclusivas para invitaciones Cojauny.'
         },
         {
-          title: 'Configurar Supabase',
+          title: 'Configurar el proveedor de base de datos',
           description:
             'Crea tablas de invitaciones, habilita RLS por proyecto y despliega la función `send-beta-email` con tus credenciales.'
         },
@@ -50,7 +50,7 @@ const docsCopy: Record<Locale, DocsCopy> = {
           description: 'Define universal link schemes for iOS and Android and reserve paths for Cojauny invitations.'
         },
         {
-          title: 'Configure Supabase',
+          title: 'Configure your database provider',
           description:
             'Create invitation tables, enable per-project RLS rules and deploy the `send-beta-email` function with your credentials.'
         },
@@ -72,7 +72,7 @@ const docsCopy: Record<Locale, DocsCopy> = {
           description: 'Definiere universelle Link-Schemata für iOS und Android und reserviere Pfade für Cojauny-Einladungen.'
         },
         {
-          title: 'Supabase konfigurieren',
+          title: 'Datenbankanbieter konfigurieren',
           description:
             'Erstelle Einladungstabellen, aktiviere projektspezifische RLS-Regeln und deploye die Funktion `send-beta-email` mit deinen Zugangsdaten.'
         },
@@ -94,7 +94,7 @@ const docsCopy: Record<Locale, DocsCopy> = {
           description: 'Définissez des schémas de liens universels pour iOS et Android et réservez des routes dédiées aux invitations Cojauny.'
         },
         {
-          title: 'Configurer Supabase',
+          title: 'Configurer le fournisseur de base de données',
           description:
             'Créez les tables d’invitations, activez les règles RLS par projet et déployez la fonction `send-beta-email` avec vos identifiants.'
         },

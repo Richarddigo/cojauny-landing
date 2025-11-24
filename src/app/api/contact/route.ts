@@ -23,15 +23,16 @@ export async function POST(request: NextRequest) {
   const requestId = generateRequestId();
   console.log(`[${requestId}] Contact form submission started`);
 
-  // Parse and validate payload
-  const payload = await request.json().catch(() => null);
-  if (!payload) {
-    console.error(`[${requestId}] Invalid JSON payload received`);
-    return NextResponse.json(
-      { error: 'El formato de los datos es inválido. Por favor, inténtalo de nuevo.' },
-      { status: 400 }
-    );
-  }
+  try {
+    // Parse and validate payload
+    const payload = await request.json().catch(() => null);
+    if (!payload) {
+      console.error(`[${requestId}] Invalid JSON payload received`);
+      return NextResponse.json(
+        { error: 'El formato de los datos es inválido. Por favor, inténtalo de nuevo.', requestId },
+        { status: 400 }
+      );
+    }
 
   // Validate with Zod schema
   const validation = contactSchema.safeParse(payload);
@@ -88,7 +89,7 @@ export async function POST(request: NextRequest) {
   if (recent.error) {
     console.error(`[${requestId}] Rate limit check failed:`, recent.error);
     return NextResponse.json(
-      { error: 'No se pudo verificar el límite de envíos. Por favor, inténtalo de nuevo.' },
+      { error: 'No se pudo verificar el límite de envíos. Por favor, inténtalo de nuevo.', requestId },
       { status: 500 }
     );
   }
@@ -125,7 +126,7 @@ export async function POST(request: NextRequest) {
   if (insertResult.error) {
     console.error(`[${requestId}] Database insert failed:`, insertResult.error);
     return NextResponse.json(
-      { error: 'No se pudo guardar tu mensaje. Por favor, inténtalo de nuevo en unos minutos.' },
+      { error: 'No se pudo guardar tu mensaje. Por favor, inténtalo de nuevo en unos minutos.', requestId },
       { status: 500 }
     );
   }
@@ -166,6 +167,17 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     // Log error but don't fail the request since the data is already saved
     console.error(`[${requestId}] Email notification failed (non-critical):`, error);
+  }
+
+  console.log(`[${requestId}] Contact form submission completed successfully`);
+  return NextResponse.json({ success: true }, { status: 201 });
+  } catch (err: any) {
+    // Catch any unexpected error and always return JSON so frontend can show helpful info
+    console.error(`[${requestId}] Unhandled error processing contact form:`, err);
+    return NextResponse.json(
+      { error: 'No fue posible enviar el formulario. Inténtalo de nuevo en breve.', requestId, details: err.message ?? String(err) },
+      { status: 500 }
+    );
   }
 
   console.log(`[${requestId}] Contact form submission completed successfully`);

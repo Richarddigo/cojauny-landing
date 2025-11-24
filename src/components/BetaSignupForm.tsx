@@ -10,7 +10,7 @@ import ReferralPanel from './ReferralPanel';
 
 interface BetaSignupFormProps {
     copy: LandingCopy['forms']['beta'];
-    referralPanelCopy: LandingCopy['referralPanel'];
+    referralPanelCopy?: LandingCopy['referralPanel'];
     locale: Locale;
 }
 
@@ -358,7 +358,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
 
             {/* Show Referral Panel after successful signup / Mostrar panel de referral tras registro exitoso */}
             {/* Empfehlungs-Panel nach erfolgreicher Anmeldung anzeigen / Afficher le panneau de parrainage après inscription */}
-            {showReferralPanel && userEmail && (
+            {showReferralPanel && userEmail && referralPanelCopy && (
                 <div className="mt-8">
                     <ReferralPanel copy={referralPanelCopy} email={userEmail} referralLink={referralLink} />
                 </div>
