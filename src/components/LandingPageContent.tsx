@@ -3,7 +3,7 @@ import FeedbackForm from '@/components/FeedbackForm';
 import Features from '@/components/Features';
 import Hero from '@/components/Hero';
 import IntegrationCTA from '@/components/IntegrationCTA';
-import Mockups from '@/components/Mockups';
+import DemoSection from '@/components/DemoSection';
 import ValuePropsSection from '@/components/ValuePropsSection';
 import SavingsSection from '@/components/SavingsSection';
 import WorkflowSection from '@/components/WorkflowSection';
@@ -21,9 +21,7 @@ const LandingPageContent = ({ copy, locale }: LandingPageContentProps) => (
     <main className="relative overflow-hidden bg-[radial-gradient(circle_at_top,_rgba(90,103,242,0.08),_transparent_60%)]">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,_rgba(90,103,242,0.08),_transparent_30%),_radial-gradient(circle_at_80%_0%,_rgba(18,23,84,0.08),_transparent_35%)]" aria-hidden />
         <Hero copy={copy.hero} />
-        <section id="demo" className="mx-auto max-w-7xl scroll-mt-[74px] py-12 px-4 sm:px-6 md:py-16 lg:py-20 lg:scroll-mt-[100px]">
-            <Mockups className="h-full" copy={copy.mockups} />
-        </section>
+        <DemoSection copy={copy.mockups} />
         <ValuePropsSection copy={copy.value} />
         <SavingsSection copy={copy.savings} />
         <Features copy={copy.features} />
