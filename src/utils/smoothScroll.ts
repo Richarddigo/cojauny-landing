@@ -1,15 +1,10 @@
 // Utility for smooth scrolling with proper offset
 export const smoothScrollTo = (targetId: string) => {
-    const headerHeight = 74; // Header height in pixels
     const element = document.getElementById(targetId);
-    
     if (!element) return;
-    
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-    
-    window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-    });
+    const header = document.querySelector('header');
+    const headerHeight = header ? header.getBoundingClientRect().height : 0;
+    const elementTop = element.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = Math.max(0, elementTop - headerHeight);
+    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
 };

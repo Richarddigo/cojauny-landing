@@ -132,7 +132,8 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                 const payload = await response.json().catch(() => null);
                 console.error('Beta signup error response', payload);
                 if (payload?.errorCode === 'beta_duplicate_email') {
-                    setError('This email is already registered for beta access. Please check your inbox (including spam folder) for your confirmation email and referral link.');
+                    // Use localized duplicate error message when available
+                    setError(copy.duplicateError ?? copy.error);
                 } else {
                     setError(copy.error);
                 }

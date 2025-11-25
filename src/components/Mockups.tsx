@@ -55,9 +55,11 @@ const Mockups = ({ className, copy }: MockupsProps) => {
             const lastCardBottom = lastRect.bottom;
             const totalScrollRange = lastCardBottom - firstCardTop;
             const phoneHeight = phoneRect.height;
-            const availableSpace = totalScrollRange - phoneHeight;
+            const availableSpace = Math.max(1, totalScrollRange - phoneHeight);
             const scrollProgress = Math.max(0, Math.min(1, (-firstCardTop + 120) / availableSpace));
-            const offset = scrollProgress * availableSpace + 66;
+            // scale progress down to avoid extreme jumps and clamp to a sensible pixel range
+            const maxOffset = Math.min(400, Math.max(200, phoneHeight * 0.6));
+            const offset = Math.round(scrollProgress * maxOffset);
 
             setParallaxOffset(offset);
             tickingRef.current = false;
@@ -145,7 +147,7 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                             prefersReducedMotion || typeof window !== 'undefined' && window.innerWidth < 1024
                                 ? undefined
                                 : {
-                                    transform: `translateY(${Math.max(0, Math.min(parallaxOffset, 220))}px)`,
+                                    transform: `translateY(${Math.max(0, parallaxOffset)}px)`,
                                     willChange: 'transform'
                                 }
                         }

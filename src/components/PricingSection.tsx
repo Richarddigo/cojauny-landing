@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { smoothScrollTo } from '@/utils/smoothScroll';
 
 import SectionIntro from '@/components/SectionIntro';
 import type { PricingCopy } from '@/locales/copy';
@@ -47,8 +48,8 @@ const PricingSection = ({ copy }: PricingSectionProps) => {
                                 }
                             } : { duration: 0.5, delay: index * 0.1 }}
                             className={`relative rounded-2xl border p-6 md:rounded-3xl md:p-8 ${isPremium
-                                    ? 'border-brand-300 bg-gradient-to-br from-white via-brand-50/50 to-brand-100/30 shadow-2xl ring-2 ring-brand-200/50'
-                                    : 'border-slate-100 bg-white shadow-xl'
+                                ? 'border-brand-300 bg-gradient-to-br from-white via-brand-50/50 to-brand-100/30 shadow-2xl ring-2 ring-brand-200/50'
+                                : 'border-slate-100 bg-white shadow-xl'
                                 }`}
                         >
                             {badgeLabel && (
@@ -63,17 +64,17 @@ const PricingSection = ({ copy }: PricingSectionProps) => {
                                 </div>
                                 <p className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">{plan.price}</p>
                             </div>
-                            <Link
+                            <a
                                 href="#beta"
-                                prefetch={false}
+                                onClick={(e) => { e.preventDefault(); smoothScrollTo('beta'); }}
                                 className={`mt-6 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-base font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 sm:mt-8 ${isPremium
-                                        ? 'bg-gradient-to-r from-brand-600 to-brand-500 text-white shadow-lg shadow-brand-600/30 hover:shadow-xl hover:shadow-brand-600/40 hover:scale-105'
-                                        : 'border-2 border-slate-200 text-slate-900 hover:border-slate-300 hover:bg-slate-50'
+                                    ? 'bg-gradient-to-r from-brand-600 to-brand-500 text-white shadow-lg shadow-brand-600/30 hover:shadow-xl hover:shadow-brand-600/40 hover:scale-105'
+                                    : 'border-2 border-slate-200 text-slate-900 hover:border-slate-300 hover:bg-slate-50'
                                     }`}
                                 aria-label={`${plan.name} - ${ctaLabel}`}
                             >
                                 {ctaLabel}
-                            </Link>
+                            </a>
                         </motion.article>
                     );
                 })}

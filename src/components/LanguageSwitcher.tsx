@@ -213,16 +213,7 @@ const LanguageSwitcherInner = ({ currentLocale, label, dropdownDirection = 'down
                 <ChevronDownIcon className="h-4 w-4 text-white/60" aria-hidden />
             </button>
 
-            <Transition
-                as={Fragment}
-                show={open}
-                enter="transition ease-out duration-100"
-                enterFrom="transform opacity-0 scale-95"
-                enterTo="transform opacity-100 scale-100"
-                leave="transition ease-in duration-75"
-                leaveFrom="transform opacity-100 scale-100"
-                leaveTo="transform opacity-0 scale-95"
-            >
+            {open && (
                 <div role="menu" aria-label="Language selector" className={`absolute z-50 left-1/2 transform -translate-x-1/2 sm:left-auto sm:right-0 sm:translate-x-0 min-w-max w-auto overflow-hidden rounded-3xl border border-white/10 bg-slate-900/95 p-2 shadow-soft-glow backdrop-blur ${dropdownDirection === 'up' ? 'bottom-full mb-2 origin-bottom-right' : 'mt-2 origin-top-right'}`}
                     onTouchStart={(e) => {
                         (e.currentTarget as any)._touchStartX = e.touches?.[0]?.clientX ?? 0;
@@ -260,7 +251,7 @@ const LanguageSwitcherInner = ({ currentLocale, label, dropdownDirection = 'down
                         );
                     })}
                 </div>
-            </Transition>
+            )}
         </div>
     );
 };

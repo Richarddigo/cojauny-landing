@@ -204,20 +204,21 @@ const Header = ({ locale, copy }: HeaderProps) => {
 
     const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    const getHeaderOffset = () => {
+        const hdr = document.querySelector('header');
+        // if header exists and is fixed, use its actual height
+        return hdr ? hdr.getBoundingClientRect().height : 0;
+    };
+
     const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
         e.preventDefault();
         const targetId = href.replace('#', '');
         const element = document.getElementById(targetId);
         if (element) {
-            // Adjusted: Home 90px, Others 110px (+20px down for all)
-            const offset = targetId === 'home' ? 90 : 110;
-            const elementPosition = element.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.scrollY - offset;
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
+            const headerHeight = getHeaderOffset();
+            const elementTop = element.getBoundingClientRect().top + window.scrollY;
+            const offsetPosition = Math.max(0, elementTop - headerHeight);
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
         }
     };
 
@@ -226,9 +227,9 @@ const Header = ({ locale, copy }: HeaderProps) => {
             <header className="fixed left-0 right-0 top-0 z-50 bg-slate-900/95 shadow-lg backdrop-blur-sm">
                 <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8" aria-label="Global">
                     <div className="flex lg:flex-1">
-                        <Link href={`/${locale}`} className="-m-1.5 flex items-center gap-2 p-1.5 sm:gap-3">
+                        <a href={`/${locale}`} className="-m-1.5 flex items-center gap-2 p-1.5 sm:gap-3">
                             <Image
-                                src="/images/logo.svg"
+                                src="/assets/logo/mountain_white.svg"
                                 alt="Cojauny"
                                 width={32}
                                 height={32}
@@ -236,7 +237,7 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                 priority
                             />
                             <span className="text-lg font-bold text-white sm:text-xl">Cojauny™</span>
-                        </Link>
+                        </a>
                     </div>
 
                     <div className="flex lg:hidden">
@@ -277,7 +278,23 @@ const Header = ({ locale, copy }: HeaderProps) => {
                 <AnimatePresence>
                     {mobileMenuOpen && (
                         <div className="fixed inset-0 z-[9999] flex justify-end" aria-modal="true" role="dialog">
-                            {/* Sin overlay translúcido, solo el panel */}
+                            {/* overlay: captura click/touch fuera del panel para cerrar */}
+                            <div
+                                className="flex-1"
+                                data-testid="menu-overlay"
+                                onClick={() => setMobileMenuOpen(false)}
+                                onTouchStart={(e) => {
+                                    // allow touch events to register on overlay
+                                    (e.currentTarget as any)._touchStartX = e.touches?.[0]?.clientX ?? 0;
+                                }}
+                                onTouchEnd={(e) => {
+                                    const touchEndX = e.changedTouches?.[0]?.clientX ?? 0;
+                                    const touchStartX = (e.currentTarget as any)._touchStartX ?? 0;
+                                    const delta = touchEndX - touchStartX;
+                                    // if swiped right enough, close as well
+                                    if (delta > 50) setMobileMenuOpen(false);
+                                }}
+                            />
                             <motion.div
                                 ref={menuRef}
                                 initial={prefersReducedMotion ? undefined : { x: '100%' }}
@@ -299,10 +316,10 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                 }}
                             >
                                 <div className="flex items-center justify-between gap-4">
-                                    <Link href={`/${locale}`} className="-m-1.5 flex items-center gap-2 p-1.5 sm:gap-3" onClick={() => setMobileMenuOpen(false)}>
-                                        <Image src="/images/logo.svg" alt="Cojauny" width={32} height={32} className="h-7 w-auto sm:h-8" />
+                                    <a href={`/${locale}`} className="-m-1.5 flex items-center gap-2 p-1.5 sm:gap-3" onClick={() => setMobileMenuOpen(false)}>
+                                        <Image src="/assets/logo/mountain_white.svg" alt="Cojauny" width={32} height={32} className="h-7 w-auto sm:h-8" />
                                         <span className="text-lg font-bold text-white sm:text-xl">Cojauny™</span>
-                                    </Link>
+                                    </a>
                                     <button
                                         ref={closeButtonRef}
                                         type="button"
@@ -338,14 +355,11 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                                     setTimeout(() => {
                                                         const element = document.getElementById(targetId);
                                                         if (element) {
-                                                            // Adjusted: Home 90px, Others 110px (+20px down for all)
-                                                            const offset = targetId === 'home' ? 90 : 110;
-                                                            const elementPosition = element.getBoundingClientRect().top;
-                                                            const offsetPosition = elementPosition + window.scrollY - offset;
-                                                            window.scrollTo({
-                                                                top: offsetPosition,
-                                                                behavior: 'smooth'
-                                                            });
+                                                            const header = document.querySelector('header');
+                                                            const headerHeight = header ? header.getBoundingClientRect().height : 0;
+                                                            const elementTop = element.getBoundingClientRect().top + window.scrollY;
+                                                            const offsetPosition = Math.max(0, elementTop - headerHeight);
+                                                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                                                         }
                                                     }, 300);
                                                 }}
