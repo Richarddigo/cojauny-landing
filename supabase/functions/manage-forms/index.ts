@@ -81,7 +81,7 @@ const senderProfiles: Record<SenderKey, SenderProfile> = {
   support: {
     email: Deno.env.get('SMTP_USER_SUPPORT') ?? undefined,
     password: Deno.env.get('SMTP_PASS_SUPPORT') ?? undefined,
-    name: Deno.env.get('SMTP_FROM_NAME_SUPPORT') ?? 'Cojauny Contact'
+    name: Deno.env.get('SMTP_FROM_NAME_SUPPORT') ?? 'Cojauny Support Team'
   }
 };
 
@@ -221,45 +221,45 @@ const localizedTemplates: Record<Extract<TemplateKey, 'beta-confirmation' | 'fee
   'feedback-thanks': {
     es: {
       subject: 'Gracias por tu feedback, {{name}}',
-      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hola <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Gracias por tu comentario — lo hemos recibido y el equipo de producto lo está revisando.</p><p style=\"font-size:15px;line-height:1.6;\">Tus ideas nos ayudan a priorizar qué construir a continuación.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Si quieres agregar contexto adicional, simplemente responde a este correo.</p></div>" + emailSignatureHtml('es'),
-      text: 'Hola {{name}},\n\nGracias por tu feedback — lo recibimos y el equipo de producto lo está revisando.\n\nTus ideas nos ayudan a decidir qué construir a continuación.\n\nResponde a este correo para añadir más contexto.' + emailSignatureText
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hola <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Gracias por tu comentario — lo hemos recibido y el equipo de producto lo está revisando.</p><p style=\"font-size:15px;line-height:1.6;\">Tus ideas nos ayudan a priorizar qué construir a continuación.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Si quieres agregar contexto adicional, simplemente responde a este correo.</p></div>",
+      text: 'Hola {{name}},\n\nGracias por tu feedback — lo recibimos y el equipo de producto lo está revisando.\n\nTus ideas nos ayudan a decidir qué construir a continuación.\n\nResponde a este correo para añadir más contexto.'
     },
     en: {
       subject: 'Thanks for your feedback, {{name}}',
-      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hi <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Thanks for your note — it landed in our product queue and the team is reviewing it.</p><p style=\"font-size:15px;line-height:1.6;\">Feedback like yours helps us decide what to build next.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Reply to this email if you want to add more details.</p></div>" + emailSignatureHtml('en'),
-      text: 'Hi {{name}},\n\nThanks for your feedback — our product team has received it and is reviewing it.\n\nFeedback like yours helps us decide what to build next.\n\nReply here to add more details.' + emailSignatureText
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hi <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Thanks for your note — it landed in our product queue and the team is reviewing it.</p><p style=\"font-size:15px;line-height:1.6;\">Feedback like yours helps us decide what to build next.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Reply to this email if you want to add more details.</p></div>",
+      text: 'Hi {{name}},\n\nThanks for your feedback — our product team has received it and is reviewing it.\n\nFeedback like yours helps us decide what to build next.\n\nReply here to add more details.'
     },
     de: {
       subject: 'Danke für dein Feedback, {{name}}',
-      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hallo <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Danke für dein Feedback — wir haben es erhalten und unser Produktteam prüft es.</p><p style=\"font-size:15px;line-height:1.6;\">Solche Rückmeldungen sind sehr wertvoll für unsere Planung.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Antworte auf diese E-Mail, um weitere Details hinzuzufügen.</p></div>" + emailSignatureHtml('de'),
-      text: 'Hallo {{name}},\n\nDanke für dein Feedback — wir haben deine Nachricht erhalten und unser Team prüft sie.\n\nSolche Rückmeldungen helfen uns bei der Planung.\n\nAntworte auf diese E-Mail, um weitere Informationen hinzuzufügen.' + emailSignatureText
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hallo <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Danke für dein Feedback — wir haben es erhalten und unser Produktteam prüft es.</p><p style=\"font-size:15px;line-height:1.6;\">Solche Rückmeldungen sind sehr wertvoll für unsere Planung.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Antworte auf diese E-Mail, um weitere Details hinzuzufügen.</p></div>",
+      text: 'Hallo {{name}},\n\nDanke für dein Feedback — wir haben deine Nachricht erhalten und unser Team prüft sie.\n\nSolche Rückmeldungen helfen uns bei der Planung.\n\nAntworte auf diese E-Mail, um weitere Informationen hinzuzufügen.'
     },
     fr: {
       subject: 'Merci pour votre retour, {{name}}',
-      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Bonjour <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Merci — votre message a bien été reçu et notre équipe produit l'examine.</p><p style=\"font-size:15px;line-height:1.6;\">Vos retours nous aident à prioriser les améliorations.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Répondez à cet e-mail pour ajouter un complément d'information.</p></div>" + emailSignatureHtml('fr'),
-      text: 'Bonjour {{name}},\n\nMerci pour votre retour — nous avons bien reçu votre message et notre équipe produit l\'examine.\n\nVos retours nous aident à prioriser les améliorations.\n\nRépondez pour ajouter des précisions.' + emailSignatureText
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Bonjour <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Merci — votre message a bien été reçu et notre équipe produit l'examine.</p><p style=\"font-size:15px;line-height:1.6;\">Vos retours nous aident à prioriser les améliorations.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Répondez à cet e-mail pour ajouter un complément d'information.</p></div>",
+      text: 'Bonjour {{name}},\n\nMerci pour votre retour — nous avons bien reçu votre message et notre équipe produit l\'examine.\n\nVos retours nous aident à prioriser les améliorations.\n\nRépondez pour ajouter des précisions.'
     }
   },
   'contact-thanks': {
     es: {
       subject: 'Hemos recibido tu solicitud, {{name}}',
-      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hola <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Hemos recibido tu mensaje y un miembro del equipo de soporte lo revisará en menos de 48 horas.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Responde a este correo si necesitas añadir más información o archivos.</p></div>" + emailSignatureHtml('es'),
-      text: 'Hola {{name}},\n\nHemos recibido tu solicitud y la revisaremos en menos de 48 h.\n\nResponde a este correo si necesitas añadir más información.' + emailSignatureText
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hola <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Hemos recibido tu mensaje y un miembro del equipo de soporte lo revisará en menos de 48 horas.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Responde a este correo si necesitas añadir más información o archivos.</p></div>",
+      text: 'Hola {{name}},\n\nHemos recibido tu solicitud y la revisaremos en menos de 48 h.\n\nResponde a este correo si necesitas añadir más información.'
     },
     en: {
       subject: 'We received your request, {{name}}',
-      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hi <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">We received your message. Our support team will review it and reply within 48 hours.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">If you want to add attachments or more details, reply to this email.</p></div>" + emailSignatureHtml('en'),
-      text: 'Hi {{name}},\n\nThanks — we received your request and will respond within 48 hours.\n\nReply to add more details or attachments.' + emailSignatureText
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hi <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">We received your message. Our support team will review it and reply within 48 hours.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">If you want to add attachments or more details, reply to this email.</p></div>",
+      text: 'Hi {{name}},\n\nThanks — we received your request and will respond within 48 hours.\n\nReply to add more details or attachments.'
     },
     de: {
       subject: 'Wir haben deine Anfrage erhalten, {{name}}',
-      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hallo <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Wir haben deine Nachricht erhalten. Unser Support-Team prüft sie und meldet sich innerhalb von 48 Stunden.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Antworte auf diese E-Mail, um Anhänge oder weitere Informationen zu senden.</p></div>" + emailSignatureHtml('de'),
-      text: 'Hallo {{name}},\n\nWir haben deine Anfrage erhalten und melden uns innerhalb von 48 Stunden.\n\nAntworte auf diese E-Mail, um zusätzliche Informationen hinzuzufügen.' + emailSignatureText
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hallo <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Wir haben deine Nachricht erhalten. Unser Support-Team prüft sie und meldet sich innerhalb von 48 Stunden.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Antworte auf diese E-Mail, um Anhänge oder weitere Informationen zu senden.</p></div>",
+      text: 'Hallo {{name}},\n\nWir haben deine Anfrage erhalten und melden uns innerhalb von 48 Stunden.\n\nAntworte auf diese E-Mail, um zusätzliche Informationen hinzuzufügen.'
     },
     fr: {
       subject: 'Nous avons bien reçu votre demande, {{name}}',
-      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Bonjour <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Votre message est bien arrivé. Notre équipe support vous répondra sous 48 heures.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Répondez à cet e-mail pour ajouter des pièces jointes ou des informations supplémentaires.</p></div>" + emailSignatureHtml('fr'),
-      text: 'Bonjour {{name}},\n\nMerci — nous avons bien reçu votre message.\n\nRépondez pour ajouter des précisions ou des pièces jointes.' + emailSignatureText
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Bonjour <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Votre message est bien arrivé. Notre équipe support vous répondra sous 48 heures.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Répondez à cet e-mail pour ajouter des pièces jointes ou des informations supplémentaires.</p></div>",
+      text: 'Bonjour {{name}},\n\nMerci — nous avons bien reçu votre message.\n\nRépondez pour ajouter des précisions ou des pièces jointes.'
     }
   }
 };

@@ -34,7 +34,7 @@ export function getEdgeEmailUrl() {
     throw new Error('BASE_PROJECT_ID no está configurado y no se pudo derivar a partir de BASE_URL');
   }
 
-  return `https://${projectId}.functions.supabase.co/send-beta-email`;
+  return `https://${projectId}.functions.supabase.co/manage-forms`;
 }
 
 export async function triggerEdgeEmailFunction(event: EmailEdgePayload) {

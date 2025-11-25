@@ -242,7 +242,7 @@ begin
     new_code := public.generate_referral_code();
     
     -- Get base URL from environment or use default
-    base_url := coalesce(current_setting('app.base_url', true), 'https://cojauny.com');
+    base_url := 'https://www.cojauny.com';
     
     -- Insert referral stats / Insertar estadísticas de referral
     -- Insérer les statistiques de parrainage / Empfehlungsstatistiken einfügen

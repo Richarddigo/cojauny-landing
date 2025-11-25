@@ -36,7 +36,7 @@ describe('triggerEdgeEmailFunction', () => {
     });
 
     expect(mockFetch).toHaveBeenCalledWith(
-      expect.stringContaining('mi-proyecto-supabase.functions.supabase.co/send-beta-email'),
+      expect.stringContaining('mi-proyecto-supabase.functions.supabase.co/manage-forms'),
       expect.objectContaining({
         method: 'POST',
         headers: expect.objectContaining({ Authorization: expect.stringContaining('service-role') })
