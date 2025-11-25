@@ -48,6 +48,14 @@ const ContactForm = ({ locale, copy }: ContactFormProps) => {
         setSubmitting(true);
         setSuccess(null);
         setError(null);
+        setMessageError(null);
+
+        // Validate email doesn't contain '+'
+        if (form.email.includes('+')) {
+            setSubmitting(false);
+            setError('Email addresses with "+" symbol are not allowed.');
+            return;
+        }
 
         const parseResult = contactSchema.safeParse(form);
         if (!parseResult.success) {
@@ -56,7 +64,7 @@ const ContactForm = ({ locale, copy }: ContactFormProps) => {
             // If the failure is the message min length, show inline message
             const msgIssue = parseResult.error.issues?.find((i) => i.path?.[0] === 'message');
             if (msgIssue) {
-                setMessageError(copy.error);
+                setMessageError('Please enter a message of at least 10 characters');
             } else {
                 setError(copy.error);
             }

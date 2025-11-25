@@ -717,7 +717,7 @@ export const blogPosts: BlogPost[] = [
       '## 1. Enregistrer les dépenses sur le moment',
       'La mémoire est faillible. Depuis l\'événement, appuyez sur "Ajouter une dépense", saisissez le montant et sélectionnez les participants. Le faire en temps réel évite d\'oublier les petites dépenses.',
       '## 2. Division intelligente et flexible',
-      'Notre outil permet de diviser également ou d\'attribuer des pourcentages personnalisés. Cette flexibilité évite les ressentiments et assure que chacun paie sa juste part.',
+      'Notre outil permet de diviser également ou d\'attribuer des pourcentages personnalisés. Cette flexibilité évite les rescases et assure que chacun paie sa juste part.',
       '## Conclusion : Transparence financière',
       'Les équipes économisent des heures de comptabilité et évitent les malentendus. Avec Cojauny, les bons comptes font les bons amis.'
     ],

@@ -108,7 +108,7 @@ const faqEntries: Record<Locale, FaqEntry[]> = {
     {
       question: 'How does the reputation and rating system work?',
       answer:
-        'After completing each event, all participants can rate each other in three dimensions: punctuality (arrived on time), communication (responded quickly in chat), and friendliness (was pleasant during the trip). You use a 5-star system with optional comment. These ratings are averaged and appear on your public profile along with special badges (Gold Traveler 100+ trips, Eco-Warrior 5 tons CO₂ saved, etc.). A high reputation (4.5+ stars) automatically positions you in the top results when others search for travel companions. Negative ratings are analyzed by our moderation team to detect abuse.'
+        'After completing each event, all participants can rate each other in three dimensions: punctuality (arrived on time), communication (responded quickly in chat), and friendliness (was pleasant during the trip). You use a 5-star system with optional comment. These ratings are averaged and appear on your public profile along with special badges (Gold Traveler 100+ trips, Eco-Warrior 5 tons CO₂ saved, etc.). A high reputation (4.5+ stars) automatically positions you in the top results when others search for travel companions. business_proposal ratings are analyzed by our moderation team to detect abuse.'
     }
   ],
   de: [
@@ -160,7 +160,7 @@ const faqEntries: Record<Locale, FaqEntry[]> = {
     {
       question: 'Wie funktioniert das Reputations- und Bewertungssystem?',
       answer:
-        'Nach Abschluss jedes Events können alle Teilnehmer einander in drei Dimensionen bewerten: Pünktlichkeit (kam pünktlich an), Kommunikation (antwortete schnell im Chat) und Freundlichkeit (war angenehm während der Reise). Du verwendest ein 5-Sterne-System mit optionalem Kommentar. Diese Bewertungen werden gemittelt und erscheinen in deinem öffentlichen Profil zusammen mit speziellen Abzeichen (Gold-Reisender 100+ Fahrten, Öko-Krieger 5 Tonnen CO₂ gespart usw.). Eine hohe Reputation (4,5+ Sterne) positioniert dich automatisch in den Top-Ergebnissen, wenn andere nach Reisebegleitern suchen. Negative Bewertungen werden von unserem Moderationsteam analysiert, um Missbrauch zu erkennen.'
+        'Nach Abschluss jedes Events können alle Teilnehmer einander in drei Dimensionen bewerten: Pünktlichkeit (kam pünktlich an), Kommunikation (antwortete schnell im Chat) und Freundlichkeit (war angenehm während der Reise). Du verwendest ein 5-Sterne-System mit optionalem Kommentar. Diese Bewertungen werden gemittelt und erscheinen in deinem öffentlichen Profil zusammen mit speziellen Abzeichen (Gold-Reisender 100+ Fahrten, Öko-Krieger 5 Tonnen CO₂ gespart usw.). Eine hohe Reputation (4,5+ Sterne) positioniert dich automatisch in den Top-Ergebnissen, wenn andere nach Reisebegleitern suchen. business_proposal Bewertungen werden von unserem Moderationsteam analysiert, um Missbrauch zu erkennen.'
     }
   ],
   fr: [

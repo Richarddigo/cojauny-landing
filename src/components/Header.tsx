@@ -49,27 +49,34 @@ const Header = ({ locale, copy }: HeaderProps) => {
         const applyInertToSiblings = async (apply: boolean) => {
             await ensurePolyfill();
             const portal = portalElRef.current;
-            const bodyChildren = Array.from(document.body.children) as HTMLElement[];
-            bodyChildren.forEach((child) => {
+            const children = document.body.children;
+
+            for (let i = 0; i < children.length; i++) {
+                const child = children[i];
                 // keep the portal and any scripts/styles untouched
-                if (child === portal) return;
-                if (child.tagName === 'SCRIPT' || child.tagName === 'STYLE' || child.tagName === 'LINK') return;
-                try {
-                    // prefer inert when available
-                    // @ts-ignore
-                    if ('inert' in child) {
-                        // @ts-ignore
-                        child.inert = apply;
-                    } else if (apply) {
-                        child.setAttribute('aria-hidden', 'true');
-                    } else {
-                        child.removeAttribute('aria-hidden');
+                if (child === portal) continue;
+                if (child.tagName === 'SCRIPT' || child.tagName === 'STYLE' || child.tagName === 'LINK') continue;
+
+                if (child instanceof HTMLElement) {
+                    try {
+                        // prefer inert when available
+                        if ('inert' in child) {
+                            // @ts-ignore
+                            child.inert = apply;
+                        } else {
+                            const fallbackChild = child as unknown as HTMLElement;
+                            if (apply) {
+                                fallbackChild.setAttribute('aria-hidden', 'true');
+                            } else {
+                                fallbackChild.removeAttribute('aria-hidden');
+                            }
+                        }
+                    } catch (e) {
+                        if (apply) child.setAttribute('aria-hidden', 'true');
+                        else child.removeAttribute('aria-hidden');
                     }
-                } catch (e) {
-                    if (apply) child.setAttribute('aria-hidden', 'true');
-                    else child.removeAttribute('aria-hidden');
                 }
-            });
+            }
         };
 
         if (mobileMenuOpen) {
@@ -197,6 +204,23 @@ const Header = ({ locale, copy }: HeaderProps) => {
 
     const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
+        e.preventDefault();
+        const targetId = href.replace('#', '');
+        const element = document.getElementById(targetId);
+        if (element) {
+            // Adjusted: Home 90px, Others 110px (+20px down for all)
+            const offset = targetId === 'home' ? 90 : 110;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.scrollY - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    };
+
     return (
         <>
             <header className="fixed left-0 right-0 top-0 z-50 bg-slate-900/95 shadow-lg backdrop-blur-sm">
@@ -204,7 +228,7 @@ const Header = ({ locale, copy }: HeaderProps) => {
                     <div className="flex lg:flex-1">
                         <Link href={`/${locale}`} className="-m-1.5 flex items-center gap-2 p-1.5 sm:gap-3">
                             <Image
-                                src="/assets/logo/mountain_white.svg"
+                                src="/images/logo.svg"
                                 alt="Cojauny"
                                 width={32}
                                 height={32}
@@ -229,20 +253,22 @@ const Header = ({ locale, copy }: HeaderProps) => {
                     </div>
 
                     <div className="hidden lg:flex lg:gap-x-3 xl:gap-x-4">
-                        <Link href={`/${locale}#home`} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm">{copy.home}</Link>
-                        <Link href={`/${locale}#demo`} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm">{copy.demo}</Link>
-                        <Link href={`/${locale}#benefits`} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm">{copy.benefits}</Link>
-                        <Link href={`/${locale}#impact`} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm">{copy.impact}</Link>
-                        <Link href={`/${locale}#features`} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm">{copy.features}</Link>
-                        <Link href={`/${locale}#how-it-works`} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm">{copy.workflow}</Link>
-                        <Link href={`/${locale}#pricing`} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm">{copy.pricing}</Link>
-                        <Link href={`/${locale}#beta`} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm">{copy.beta}</Link>
-                        <Link href={`/${locale}#faq`} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm">{copy.faq}</Link>
-                        <Link href={`/${locale}#feedback`} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm">{copy.feedback}</Link>
+                        <a href="#home" onClick={(e) => handleScroll(e, '#home')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.home}</a>
+                        <a href="#demo" onClick={(e) => handleScroll(e, '#demo')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.demo}</a>
+                        <a href="#benefits" onClick={(e) => handleScroll(e, '#benefits')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.benefits}</a>
+                        <a href="#impact" onClick={(e) => handleScroll(e, '#impact')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.impact}</a>
+                        <a href="#features" onClick={(e) => handleScroll(e, '#features')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.features}</a>
+                        <a href="#how-it-works" onClick={(e) => handleScroll(e, '#how-it-works')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.workflow}</a>
+                        <a href="#pricing" onClick={(e) => handleScroll(e, '#pricing')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.pricing}</a>
+                        <a href="#beta" onClick={(e) => handleScroll(e, '#beta')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.beta}</a>
+                        <a href="#faq" onClick={(e) => handleScroll(e, '#faq')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.faq}</a>
+                        <a href="#feedback" onClick={(e) => handleScroll(e, '#feedback')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.feedback}</a>
                     </div>
 
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                        <LanguageSwitcher currentLocale={locale} />
+                        <div className="hidden sm:block">
+                            <LanguageSwitcher currentLocale={locale} />
+                        </div>
                     </div>
                 </nav>
             </header>
@@ -274,7 +300,7 @@ const Header = ({ locale, copy }: HeaderProps) => {
                             >
                                 <div className="flex items-center justify-between gap-4">
                                     <Link href={`/${locale}`} className="-m-1.5 flex items-center gap-2 p-1.5 sm:gap-3" onClick={() => setMobileMenuOpen(false)}>
-                                        <Image src="/assets/logo/mountain_white.svg" alt="Cojauny" width={32} height={32} className="h-7 w-auto sm:h-8" />
+                                        <Image src="/images/logo.svg" alt="Cojauny" width={32} height={32} className="h-7 w-auto sm:h-8" />
                                         <span className="text-lg font-bold text-white sm:text-xl">Cojauny™</span>
                                     </Link>
                                     <button
@@ -302,14 +328,31 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                             { href: '#faq', label: copy.faq },
                                             { href: '#feedback', label: copy.feedback }
                                         ].map((item) => (
-                                            <Link
+                                            <a
                                                 key={item.href}
-                                                href={`/${locale}${item.href}`}
-                                                className="block w-full px-3 py-2 text-base font-semibold leading-6 text-white text-right transition-colors hover:bg-white/10 active:bg-white/20"
-                                                onClick={() => setMobileMenuOpen(false)}
+                                                href={item.href}
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    setMobileMenuOpen(false);
+                                                    const targetId = item.href.replace('#', '');
+                                                    setTimeout(() => {
+                                                        const element = document.getElementById(targetId);
+                                                        if (element) {
+                                                            // Adjusted: Home 90px, Others 110px (+20px down for all)
+                                                            const offset = targetId === 'home' ? 90 : 110;
+                                                            const elementPosition = element.getBoundingClientRect().top;
+                                                            const offsetPosition = elementPosition + window.scrollY - offset;
+                                                            window.scrollTo({
+                                                                top: offsetPosition,
+                                                                behavior: 'smooth'
+                                                            });
+                                                        }
+                                                    }, 300);
+                                                }}
+                                                className="block w-full px-3 py-2 text-base font-semibold leading-6 text-white text-right transition-colors hover:bg-white/10 active:bg-white/20 cursor-pointer"
                                             >
                                                 {item.label}
-                                            </Link>
+                                            </a>
                                         ))}
                                     </div>
                                     <div className="py-6 w-full flex flex-col items-end pr-6">

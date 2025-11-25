@@ -97,6 +97,13 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
         setSuccess(null);
         setError(null);
 
+        // Validate email doesn't contain '+'
+        if (form.email.includes('+')) {
+            setSubmitting(false);
+            setError(copy.invalidEmailError || 'Email addresses with "+" symbol are not allowed.');
+            return;
+        }
+
         const normalizedPayload: BetaSignupInput = {
             ...form,
             country: normalizeOptionalField(form.country) as BetaSignupInput['country'],
@@ -125,7 +132,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                 const payload = await response.json().catch(() => null);
                 console.error('Beta signup error response', payload);
                 if (payload?.errorCode === 'beta_duplicate_email') {
-                    setError(copy.duplicateError ?? copy.error);
+                    setError('This email is already registered for beta access. Please check your inbox (including spam folder) for your confirmation email and referral link.');
                 } else {
                     setError(copy.error);
                 }

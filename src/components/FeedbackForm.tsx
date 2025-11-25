@@ -17,7 +17,7 @@ const buildInitialState = (locale: Locale): FeedbackInput => ({
     email: '',
     message: '',
     name: '',
-    sentiment: 'positive',
+    case: 'feedback',
     honeypot: '',
     locale
 });
@@ -49,13 +49,21 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
         setSubmitting(true);
         setSuccess(null);
         setError(null);
+        setMessageError(null);
+
+        // Validate email doesn't contain '+'
+        if (form.email.includes('+')) {
+            setSubmitting(false);
+            setError('Email addresses with "+" symbol are not allowed.');
+            return;
+        }
 
         const parseResult = feedbackSchema.safeParse(form);
         if (!parseResult.success) {
             setSubmitting(false);
             const msgIssue = parseResult.error.issues?.find((i) => i.path?.[0] === 'message');
             if (msgIssue) {
-                setMessageError(copy.error);
+                setMessageError('Please enter a message of at least 10 characters');
             } else {
                 setError(copy.error);
             }
@@ -132,28 +140,28 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
             </div>
 
             <label className="flex flex-col gap-2">
-                <span className="text-sm font-medium text-slate-700">{copy.fields.sentiment}</span>
+                <span className="text-sm font-medium text-slate-700">{copy.fields.case}</span>
                 <div className="flex gap-4">
-                    {copy.sentimentOptions?.map((option) => (
+                    {copy.caseOptions?.map((option) => (
                         <label
                             key={option.value}
-                            className={`flex flex-1 cursor-pointer flex-col items-center gap-2 rounded-xl border p-4 transition-all hover:bg-slate-50 ${form.sentiment === option.value
+                            className={`flex flex-1 cursor-pointer flex-col items-center gap-2 rounded-xl border p-4 transition-all hover:bg-slate-50 ${form.case === option.value
                                 ? 'border-brand-500 bg-brand-50/50 ring-2 ring-brand-500/20'
                                 : 'border-slate-200 bg-white/50'
                                 }`}
                         >
                             <input
                                 type="radio"
-                                name="sentiment"
+                                name="case"
                                 value={option.value}
-                                checked={form.sentiment === option.value}
+                                checked={form.case === option.value}
                                 onChange={handleChange}
                                 className="sr-only"
                             />
                             <span className="text-brand-600">
-                                {option.value === 'positive' && <ChatBubbleBottomCenterTextIcon className="h-8 w-8" />}
-                                {option.value === 'neutral' && <LightBulbIcon className="h-8 w-8" />}
-                                {option.value === 'negative' && <BriefcaseIcon className="h-8 w-8" />}
+                                {option.value === 'feedback' && <ChatBubbleBottomCenterTextIcon className="h-8 w-8" />}
+                                {option.value === 'idea' && <LightBulbIcon className="h-8 w-8" />}
+                                {option.value === 'business_proposal' && <BriefcaseIcon className="h-8 w-8" />}
                             </span>
                             <span className="text-xs font-medium capitalize text-slate-600">
                                 {option.label}

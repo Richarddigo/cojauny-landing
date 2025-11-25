@@ -40,7 +40,7 @@ create table if not exists public.feedback (
   email text not null,
   name text not null,
   message text not null,
-  sentiment text not null default 'neutral',
+  case text not null default 'idea',
   topic text,
   language text not null default 'es',
   ip_address inet,
@@ -48,12 +48,12 @@ create table if not exists public.feedback (
   created_at timestamptz not null default timezone('utc', now())
 );
 
--- Ensure allowed sentiments
-alter table if exists public.feedback drop constraint if exists feedback_sentiment_check;
-alter table if exists public.feedback add constraint feedback_sentiment_check
-  check (sentiment in ('positive','neutral','negative','contact'));
+-- Ensure allowed cases
+alter table if exists public.feedback drop constraint if exists feedback_case_check;
+alter table if exists public.feedback add constraint feedback_case_check
+  check (case in ('feedback','idea','business_proposal','contact'));
 
-create index if not exists feedback_sentiment_idx on public.feedback (sentiment);
+create index if not exists feedback_case_idx on public.feedback (case);
 create index if not exists feedback_created_idx on public.feedback (created_at);
 
 -- Emails log

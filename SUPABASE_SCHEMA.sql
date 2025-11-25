@@ -52,7 +52,7 @@ create table if not exists public.feedback (
     email text not null,
     name text not null,
     message text not null,
-    sentiment text not null check (sentiment in ('positive', 'neutral', 'negative', 'contact')),
+    case text not null check (case in ('feedback', 'idea', 'business_proposal', 'contact')),
     topic text,
     language text not null default 'es',
     ip_address inet,
@@ -60,19 +60,19 @@ create table if not exists public.feedback (
     created_at timestamptz not null default timezone('utc', now())
 );
 
-alter table if exists public.feedback add column if not exists sentiment text;
-alter table if exists public.feedback alter column sentiment set default 'neutral';
-update public.feedback set sentiment = 'neutral' where sentiment is null;
-alter table if exists public.feedback alter column sentiment set not null;
+alter table if exists public.feedback add column if not exists case text;
+alter table if exists public.feedback alter column case set default 'idea';
+update public.feedback set case = 'idea' where case is null;
+alter table if exists public.feedback alter column case set not null;
 alter table if exists public.feedback add column if not exists topic text;
 alter table if exists public.feedback add column if not exists language text not null default 'es';
 alter table if exists public.feedback add column if not exists ip_address inet;
 alter table if exists public.feedback add column if not exists user_agent text;
-alter table if exists public.feedback drop constraint if exists feedback_sentiment_check;
-alter table if exists public.feedback add constraint feedback_sentiment_check
-    check (sentiment in ('positive', 'neutral', 'negative', 'contact'));
+alter table if exists public.feedback drop constraint if exists feedback_case_check;
+alter table if exists public.feedback add constraint feedback_case_check
+    check (case in ('feedback', 'idea', 'business_proposal', 'contact'));
 
-create index if not exists feedback_sentiment_idx on public.feedback (sentiment);
+create index if not exists feedback_case_idx on public.feedback (case);
 create index if not exists feedback_created_idx on public.feedback (created_at);
 
 create table if not exists public.emails_sent (

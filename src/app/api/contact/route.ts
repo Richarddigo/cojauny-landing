@@ -114,7 +114,7 @@ export async function POST(request: NextRequest) {
       email: data.email,
       name: data.name,
       message: data.message,
-      sentiment: 'contact',
+      case: 'contact',
       topic: data.topic,
       language: data.locale,
       ip_address: ipAddress,

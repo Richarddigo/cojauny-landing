@@ -36,7 +36,7 @@ export interface FormCopy {
     email: string;
     company?: string;
     useCase?: string;
-    sentiment?: string;
+    case?: string;
     message?: string;
     selectPlaceholder?: string;
     country?: string;
@@ -45,7 +45,7 @@ export interface FormCopy {
     updatesOptIn?: string;
     privacyAcceptance?: string;
   };
-  sentimentOptions?: Array<{ value: string; label: string }>;
+  caseOptions?: Array<{ value: string; label: string }>;
   placeholders?: {
     homeAirport?: string;
     useCase?: string;
@@ -256,7 +256,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         'Conecta con pasajeros de tu vuelo para compartir taxi, van o parking al aeropuerto. Perfiles verificados, chat temporal y ahorro medible. Ya en +120 aeropuertos.'
     },
     hero: {
-      eyebrow: '🌍 Ahorra hasta 75% en cada traslado al aeropuerto',
+      eyebrow: 'Ahorra hasta 75% en cada traslado al aeropuerto',
       title: 'Comparte taxi con pasajeros de tu mismo vuelo',
       subtitle:
         'Cojauny conecta automáticamente a viajeros que comparten vuelo para organizar taxis, vans o parking compartido. Divide el coste entre 3-4 personas, reduce tu huella de carbono y viaja con perfiles verificados. Todo desde una app segura con chat temporal.',
@@ -674,13 +674,13 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           fullName: 'Nombre',
           email: 'Correo',
           message: 'Cuéntanos tu caso',
-          sentiment: 'Caso',
+          case: 'Caso',
           selectPlaceholder: 'Selecciona una opción'
         },
-        sentimentOptions: [
-          { value: 'positive', label: 'Feedback' },
-          { value: 'neutral', label: 'Idea' },
-          { value: 'negative', label: 'Propuesta de negocio' }
+        caseOptions: [
+          { value: 'feedback', label: 'Feedback' },
+          { value: 'idea', label: 'Idea' },
+          { value: 'business_proposal', label: 'Propuesta de negocio' }
         ]
       }
     },
@@ -1178,13 +1178,13 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           fullName: 'Name',
           email: 'Email',
           message: 'Tell us about your case',
-          sentiment: 'Case',
+          case: 'Case',
           selectPlaceholder: 'Select an option'
         },
-        sentimentOptions: [
-          { value: 'positive', label: 'Feedback' },
-          { value: 'neutral', label: 'Idea' },
-          { value: 'negative', label: 'Business proposal' }
+        caseOptions: [
+          { value: 'feedback', label: 'Feedback' },
+          { value: 'idea', label: 'Idea' },
+          { value: 'business_proposal', label: 'Business proposal' }
         ]
       }
     },
@@ -1683,13 +1683,13 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           fullName: 'Name',
           email: 'E-Mail',
           message: 'Erzähl uns deinen Fall',
-          sentiment: 'Fall',
+          case: 'Fall',
           selectPlaceholder: 'Option auswählen'
         },
-        sentimentOptions: [
-          { value: 'positive', label: 'Feedback' },
-          { value: 'neutral', label: 'Idee' },
-          { value: 'negative', label: 'Geschäftsvorschlag' }
+        caseOptions: [
+          { value: 'feedback', label: 'Feedback' },
+          { value: 'idea', label: 'Idee' },
+          { value: 'business_proposal', label: 'Geschäftsvorschlag' }
         ]
       }
     },
@@ -2154,13 +2154,13 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           fullName: 'Nom',
           email: 'Email',
           message: 'Parlez-nous de votre cas',
-          sentiment: 'Type de retour',
+          case: 'Type de retour',
           selectPlaceholder: 'Choisissez une option'
         },
-        sentimentOptions: [
-          { value: 'positive', label: 'Prêt pour un pilote' },
-          { value: 'neutral', label: 'Besoin de précisions' },
-          { value: 'negative', label: 'J’ai des freins' }
+        caseOptions: [
+          { value: 'feedback', label: 'Prêt pour un pilote' },
+          { value: 'idea', label: 'Besoin de précisions' },
+          { value: 'business_proposal', label: 'J’ai des freins' }
         ]
       }
     },

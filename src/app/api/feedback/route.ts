@@ -104,7 +104,7 @@ export async function POST(request: Request) {
         email: data.email,
         name: data.name,
         message: data.message,
-        sentiment: data.sentiment,
+        case: data.case,
         language: data.locale,
         ip_address: ipAddress,
         user_agent: (request as any).headers.get('user-agent') ?? ''
@@ -140,7 +140,7 @@ export async function POST(request: Request) {
           name: data.name,
           email: data.email,
           message: data.message,
-          sentiment: data.sentiment,
+          case: data.case,
           locale: data.locale
         }
       });

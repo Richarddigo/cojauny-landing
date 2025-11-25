@@ -25,7 +25,7 @@ const IPhoneMockup = ({ screen, className, priority = false }: { screen: any, cl
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.95 }}
                                 transition={{ duration: 0.5, ease: "easeInOut" }}
-                                className="relative h-full w-full pt-[5px] pb-[35px]"
+                                className="relative h-full w-full pt-[10px] pb-[35px]"
                             >
                                 <Image
                                     src={screen.image}
@@ -73,6 +73,7 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
     const cardsContainerRef = useRef<HTMLDivElement>(null);
     const [isMobile, setIsMobile] = useState(false);
     const [isLocked, setIsLocked] = useState(false);
+    const [phoneTop, setPhoneTop] = useState(96);
 
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth < 1024);
@@ -93,6 +94,46 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
         document.addEventListener('click', handleClickOutside);
         return () => document.removeEventListener('click', handleClickOutside);
     }, [isMobile, isLocked]);
+
+    useEffect(() => {
+        if (isMobile) return;
+
+        const handleScroll = () => {
+            if (!containerRef.current) return;
+
+            const containerRect = containerRef.current.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+            const phoneHeight = 720;
+            const topMargin = 96;
+            const bottomMargin = 96;
+
+            const availableSpace = viewportHeight - phoneHeight - topMargin - bottomMargin;
+
+            if (availableSpace < 0) {
+                setPhoneTop((viewportHeight - phoneHeight) / 2);
+                return;
+            }
+
+            if (containerRect.top >= topMargin) {
+                setPhoneTop(topMargin);
+            } else if (containerRect.bottom <= viewportHeight - bottomMargin) {
+                const relativeBottom = containerRect.bottom - phoneHeight - bottomMargin;
+                setPhoneTop(Math.max(topMargin, relativeBottom));
+            } else {
+                const sectionHeight = containerRect.height;
+                const scrollRange = sectionHeight - viewportHeight;
+                const scrolled = Math.abs(containerRect.top - topMargin);
+                const progress = Math.min(1, scrolled / scrollRange);
+
+                const newTop = topMargin + (progress * availableSpace);
+                setPhoneTop(newTop);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [isMobile]);
 
     useEffect(() => {
         if (isMobile || cardsRef.current.length === 0 || isLocked) return;
@@ -226,7 +267,7 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                                         : 'opacity-50 scale-95 hover:opacity-75 hover:scale-98'
                                     }`}
                             >
-                                <div className={`bg-white rounded-3xl p-8 xl:p-10 shadow-xl border-2 transition-all duration-700 ${activeStep === idx
+                                <div className={`bg-white rounded-3xl p-8 xl:p-10 shadow-xl border-2 transition-all duration-700 ${activeStep === activeStep
                                         ? 'border-blue-200 shadow-2xl'
                                         : 'border-slate-100'
                                     }`}>
@@ -252,13 +293,14 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                         ))}
                     </div>
 
-                    <div className="sticky top-24 bottom-24 h-fit self-start max-h-[calc(100vh-12rem)]">
+                    <div className="relative h-full">
                         <motion.div
                             initial={{ opacity: 0, x: 30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
-                            className="w-full"
+                            className="w-full sticky transition-all duration-200 ease-out will-change-transform"
+                            style={{ top: `${phoneTop}px` }}
                         >
                             <IPhoneMockup screen={copy.screens[activeStep]} priority={true} />
                         </motion.div>

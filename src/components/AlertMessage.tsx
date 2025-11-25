@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ReactNode } from 'react';
 import {
@@ -16,6 +17,8 @@ interface AlertMessageProps {
     message: string | ReactNode;
     className?: string;
     onClose?: () => void;
+    autoDismiss?: boolean;
+    autoDismissDelay?: number;
 }
 
 const alertConfig: Record<
@@ -45,9 +48,26 @@ const alertConfig: Record<
     }
 };
 
-export default function AlertMessage({ type, message, className = '', onClose }: AlertMessageProps) {
+export default function AlertMessage({
+    type,
+    message,
+    className = '',
+    onClose,
+    autoDismiss = true,
+    autoDismissDelay = 5000
+}: AlertMessageProps) {
     const config = alertConfig[type];
     const Icon = config.icon;
+
+    useEffect(() => {
+        if (autoDismiss && onClose) {
+            const timer = setTimeout(() => {
+                onClose();
+            }, autoDismissDelay);
+
+            return () => clearTimeout(timer);
+        }
+    }, [autoDismiss, autoDismissDelay, onClose]);
 
     return (
         <AnimatePresence>
