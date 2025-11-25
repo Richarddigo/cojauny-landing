@@ -100,7 +100,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
         // Validate email doesn't contain '+'
         if (form.email.includes('+')) {
             setSubmitting(false);
-            setError(copy.invalidEmailError || 'Email addresses with "+" symbol are not allowed.');
+            setError(copy.duplicateError || 'Email addresses with "+" symbol are not allowed.');
             return;
         }
 

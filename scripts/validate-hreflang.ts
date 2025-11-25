@@ -104,8 +104,6 @@ if (report.summary.pagesWithIssues > 0) {
     .filter(v => v.issues.length > 0)
     .forEach(v => {
     });
-  
-}
   process.exit(1);
 }
 

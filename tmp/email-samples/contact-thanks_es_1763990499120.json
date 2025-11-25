@@ -1,8 +1,0 @@
-{
-  "template": "contact-thanks",
-  "locale": "es",
-  "recipient": "richarddigo@gmail.com",
-  "sender": "contact@cojauny.com",
-  "useResend": false,
-  "attachments": true
-}

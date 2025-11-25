@@ -289,7 +289,7 @@ const staticTemplates: Record<Extract<TemplateKey, 'contact-notification' | 'int
       "<p style=\"margin-top:24px;font-size:12px;color:#9ca3af;\">Responde directamente al usuario en: {{email}}</p>" +
       "</div>",
     text:
-      '=== NUEVO FEEDBACK ===\n\nDe: {{name}}\nEmail: {{email}}\nUsecase: {{useCase}}\nIdioma: {{locale}}\n\n--- MENSAJE ---\n{{message}}\n\nResponde a: {{email}}\n\nCojauny · ' + siteUrlFromEnv
+      '=== NUEVO FEEDBACK ===\n\nDe: {{name}}\nEmail: {{email}}\nUsecase: {{usecase}}\nIdioma: {{locale}}\n\n--- MENSAJE ---\n{{message}}\n\nResponde a: {{email}}\n\nCojauny · ' + siteUrlFromEnv
   }
 };
 

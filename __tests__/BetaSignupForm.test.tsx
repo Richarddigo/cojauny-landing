@@ -28,29 +28,29 @@ describe('BetaSignupForm', () => {
 
         const formCopy = copy.forms.beta;
 
-        fireEvent.change(screen.getByLabelText(new RegExp(formCopy.fields.fullName, 'i')), {
+        fireEvent.change(screen.getByLabelText(new RegExp(formCopy.fields.fullName || 'Nombre completo', 'i')), {
             target: { value: 'Juan Pérez' }
         });
-        fireEvent.change(screen.getByLabelText(new RegExp(formCopy.fields.email, 'i')), {
+        fireEvent.change(screen.getByLabelText(new RegExp(formCopy.fields.email || 'Email', 'i')), {
             target: { value: 'juan@example.com' }
         });
-        fireEvent.change(screen.getByLabelText(new RegExp(formCopy.fields.country, 'i')), {
+        fireEvent.change(screen.getByLabelText(new RegExp(formCopy.fields.country || 'País', 'i')), {
             target: { value: 'es' }
         });
         // Fill home airport using the field label (placeholder is not label)
-        fireEvent.change(screen.getByLabelText(new RegExp(formCopy.fields.homeAirport, 'i')), {
+        fireEvent.change(screen.getByLabelText(new RegExp(formCopy.fields.homeAirport || 'Aeropuerto de origen', 'i')), {
             target: { value: 'Madrid (MAD)' }
         });
         // Select flight frequency option by role (radio) using visible label
         const freqLabel = formCopy.flightFrequencyOptions?.[1]?.label ?? '2–5 veces al año';
         fireEvent.click(screen.getByRole('radio', { name: new RegExp(freqLabel, 'i') }));
-        fireEvent.change(screen.getByLabelText(new RegExp(formCopy.fields.useCase, 'i')), {
+        fireEvent.change(screen.getByLabelText(new RegExp(formCopy.fields.useCase || '¿Cómo usarás Cojauny?', 'i')), {
             target: { value: 'Gestionar beta testers' }
         });
         // Click updates opt-in checkbox (label text)
         fireEvent.click(screen.getByRole('checkbox', { name: new RegExp(formCopy.fields.updatesOptIn || 'Quiero recibir novedades del desarrollo', 'i') }));
         // privacy acceptance checkbox (label uses copy.fields.privacyAcceptance)
-        fireEvent.click(screen.getByRole('checkbox', { name: new RegExp(formCopy.fields.privacyAcceptance, 'i') }));
+        fireEvent.click(screen.getByRole('checkbox', { name: new RegExp(formCopy.fields.privacyAcceptance || 'Acepto la política de privacidad', 'i') }));
         // terms/checkbox with privacy link is rendered as copy.checkboxLabel; match part of it
         const checkboxLabelSnippet = formCopy.checkboxLabel?.split('{privacyLink}')[0].trim() || 'He leído y acepto la';
         fireEvent.click(screen.getByRole('checkbox', { name: new RegExp(checkboxLabelSnippet, 'i') }));

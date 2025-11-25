@@ -19,6 +19,16 @@ function generateRequestId(): string {
   return `feedback_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
 }
 
+function getLanguageName(locale: string): string {
+  const names: Record<string, string> = {
+    es: 'Español',
+    en: 'English',
+    de: 'Deutsch',
+    fr: 'Français'
+  };
+  return names[locale] ?? locale;
+}
+
 // Helper function for rate limiting (assuming it's defined elsewhere or will be added)
 // For the purpose of this edit, we'll include a basic placeholder if not present.
 async function checkRateLimit(ipAddress: string): Promise<{ allowed: boolean; count?: number }> {
@@ -96,8 +106,8 @@ export async function POST(request: Request) {
         email: data.email,
         name: data.name,
         message: data.message,
-        usecase: data.case,
-        language: data.locale,
+        usecase: data.usecase,
+        language: getLanguageName(data.locale),
         ip_address: ipAddress,
         user_agent: (request as any).headers.get('user-agent') ?? ''
       })
@@ -131,8 +141,8 @@ export async function POST(request: Request) {
           name: data.name,
           email: data.email,
           message: data.message,
-          usecase: data.case,
-          locale: data.locale
+          usecase: data.usecase,
+          locale: getLanguageName(data.locale)
         }
       });
     } catch (err) {

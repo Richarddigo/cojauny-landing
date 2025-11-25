@@ -37,7 +37,7 @@ describe('FeedbackForm', () => {
         // select case radio by its visible option label to avoid ambiguity with other labels
         const caseLabel = formCopy.caseOptions?.[0]?.label || 'Feedback';
         fireEvent.click(screen.getByRole('radio', { name: new RegExp(caseLabel, 'i') }));
-        fireEvent.change(screen.getByLabelText(new RegExp(formCopy.fields.message, 'i')), {
+        fireEvent.change(screen.getByLabelText(new RegExp(formCopy.fields.message || 'Mensaje', 'i')), {
             target: { value: 'Me encanta la interfaz y la velocidad.' }
         });
 
