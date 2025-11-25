@@ -19,6 +19,16 @@ function generateRequestId(): string {
   return `contact_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
 }
 
+function getLanguageName(locale: string): string {
+  const names: Record<string, string> = {
+    es: 'Español',
+    en: 'English',
+    de: 'Deutsch',
+    fr: 'Français'
+  };
+  return names[locale] ?? locale;
+}
+
 export async function POST(request: NextRequest) {
   const requestId = generateRequestId();
 
@@ -106,7 +116,7 @@ export async function POST(request: NextRequest) {
       message: data.message,
       usecase: 'contact',
       topic: data.topic,
-      language: data.locale,
+      language: getLanguageName(data.locale),
       ip_address: ipAddress,
       user_agent: request.headers.get('user-agent') ?? ''
     })
@@ -144,7 +154,7 @@ export async function POST(request: NextRequest) {
         email: data.email,
         message: data.message,
         topic: data.topic,
-        locale: data.locale
+        locale: getLanguageName(data.locale)
       }
     });
 
