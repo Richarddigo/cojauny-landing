@@ -56,9 +56,7 @@ function waitForListening(proc, timeout = 15000) {
             req.write(payload);
             req.end();
         });
-        console.log('CONTACT TEST', JSON.stringify(res));
     } catch (e) {
-        console.error('Error during contact test:', e.message || e);
     } finally {
         deno.kill();
     }

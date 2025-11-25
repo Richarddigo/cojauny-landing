@@ -62,7 +62,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ referralCode: refParam })
-            }).catch(err => console.error('Failed to track referral visit:', err));
+            }).catch(err => { });
         }
     }, []);
 
@@ -130,7 +130,6 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
 
             if (!response.ok) {
                 const payload = await response.json().catch(() => null);
-                console.error('Beta signup error response', payload);
                 if (payload?.errorCode === 'beta_duplicate_email') {
                     // Use localized duplicate error message when available
                     setError(copy.duplicateError ?? copy.error);

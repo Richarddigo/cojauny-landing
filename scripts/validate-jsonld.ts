@@ -92,34 +92,19 @@ const report = schemas.map(({ name, schema }) => {
 const outputPath = join(process.cwd(), 'docs', 'jsonld-validation-report.json');
 writeFileSync(outputPath, JSON.stringify(report, null, 2));
 
-console.log('✅ JSON-LD validation complete');
-console.log(`📄 Report saved to: ${outputPath}`);
-
 // Summary
 const totalSchemas = report.length;
 const validSchemas = report.filter(r => r.valid).length;
 const totalPlaceholders = report.reduce((acc, r) => acc + r.placeholders.length, 0);
 
-console.log(`\n📊 Summary:`);
-console.log(`   Total schemas: ${totalSchemas}`);
-console.log(`   Valid: ${validSchemas}`);
-console.log(`   Invalid: ${totalSchemas - validSchemas}`);
-console.log(`   Placeholders to replace: ${totalPlaceholders}`);
-
 if (totalPlaceholders > 0) {
-  console.log(`\n⚠️  Placeholders found:`);
   report.forEach(r => {
     if (r.placeholders.length > 0) {
-      console.log(`   ${r.name}: ${r.placeholders.join(', ')}`);
     }
   });
 }
 
 // Exit with error if any schema is invalid
 if (validSchemas < totalSchemas) {
-  console.error('\n❌ Some schemas are invalid. Fix errors before deploying.');
   process.exit(1);
 }
-
-console.log('\n✨ All schemas are valid!');
-console.log('💡 Next step: Replace placeholders with real data from App Store/Play Store');

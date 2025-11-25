@@ -99,27 +99,14 @@ const report = {
 const outputPath = join(process.cwd(), 'docs', 'hreflang-validation-report.json');
 writeFileSync(outputPath, JSON.stringify(report, null, 2));
 
-console.log('✅ Hreflang validation complete');
-console.log(`📄 Report saved to: ${outputPath}`);
-
-// Summary
-console.log(`\n📊 Summary:`);
-console.log(`   Total pages validated: ${report.summary.totalPages}`);
-console.log(`   Pages with issues: ${report.summary.pagesWithIssues}`);
-console.log(`   Locales: ${report.summary.locales.join(', ')}`);
-
 if (report.summary.pagesWithIssues > 0) {
-  console.log(`\n⚠️  Issues found:`);
   validations
     .filter(v => v.issues.length > 0)
     .forEach(v => {
-      console.log(`   ${v.page}:`);
-      v.issues.forEach(issue => console.log(`      - ${issue}`));
     });
   
-  console.error('\n❌ Fix hreflang issues before deploying.');
+}
   process.exit(1);
 }
 
-console.log('\n✨ All hreflang tags are valid!');
-console.log('💡 Next step: Deploy and verify in Google Search Console > International Targeting');
+

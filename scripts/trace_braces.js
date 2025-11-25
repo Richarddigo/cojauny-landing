@@ -3,7 +3,7 @@ const path = 'c:/Users/rdiaz/Documents/Development/cojauny-landing/supabase/func
 const s = fs.readFileSync(path, 'utf8');
 const start = s.indexOf('const localizedTemplates');
 const end = s.indexOf('const staticTemplates');
-if (start === -1 || end === -1) { console.log('could not find slice'); process.exit(1); }
+if (start === -1 || end === -1) { process.exit(1); }
 const c = s.slice(start, end);
 let depth = 0;
 let line = 1;
@@ -14,12 +14,7 @@ for (let i = 0; i < c.length; i++) {
     if (ch === '{') {
         depth++;
         if (depth > maxDepth) maxDepth = depth;
-        if (depth >= 4) {
-            console.log('line', line, 'found { depth', depth, 'context:', c.slice(Math.max(0, i - 40), i + 40).replace(/\n/g, ' '));
-        }
     } else if (ch === '}') {
-        if (depth >= 4) console.log('line', line, 'found } depth', depth, 'context:', c.slice(Math.max(0, i - 40), i + 40).replace(/\n/g, ' '));
         depth--;
     }
 }
-console.log('final depth', depth, 'max depth', maxDepth);

@@ -51,7 +51,6 @@ export async function POST(request: NextRequest) {
     .eq('ip_address', ipAddress);
 
   if (recentAttempts.error) {
-    console.error('Error comprobando rate limit', recentAttempts.error);
     return NextResponse.json({ error: 'No se pudo validar el rate limit' }, { status: 500 });
   }
 
@@ -80,7 +79,7 @@ export async function POST(request: NextRequest) {
   } as Record<string, unknown>;
 
   if (data.useCase) {
-    insertPayload.use_case = data.useCase;
+    insertPayload.usecase = data.useCase;
   }
 
   if (data.country) {
@@ -94,7 +93,6 @@ export async function POST(request: NextRequest) {
   let insertResult = await supabase.from(WAITLIST_TABLE).insert(insertPayload).select().single();
 
   if (insertResult.error) {
-    console.error('Error insertando beta signup', insertResult.error);
     // If PostgREST returns PGRST204 about a missing column in the schema cache
     // (this can happen right after a migration), retry without the optional
     // confirmation_token field as a safe fallback.
@@ -104,23 +102,19 @@ export async function POST(request: NextRequest) {
         typeof insertResult.error.message === 'string' &&
         insertResult.error.message.includes("'confirmation_token'")
       ) {
-        console.warn('Schema cache missing confirmation_token — retrying insert without that field');
         const fallbackPayload = { ...insertPayload };
         delete (fallbackPayload as Record<string, unknown>).confirmation_token;
         const retry = await supabase.from(WAITLIST_TABLE).insert(fallbackPayload).select().single();
         if (!retry.error) {
           insertResult = retry;
         } else {
-          console.error('Retry without confirmation_token also failed', retry.error);
         }
       }
     } catch (e) {
-      console.error('Unexpected error during fallback insert', e);
     }
   }
 
   if (insertResult.error) {
-    console.error('Error insertando beta signup', insertResult.error);
     if (insertResult.error.code === '23505') {
       return NextResponse.json({ errorCode: 'beta_duplicate_email' }, { status: 409 });
     }
@@ -137,7 +131,6 @@ export async function POST(request: NextRequest) {
         ref_code: data.referralCode
       });
     } catch (error) {
-      console.error('Error incrementing referral signups', error);
     }
   }
 
@@ -156,7 +149,6 @@ export async function POST(request: NextRequest) {
       referralLink = referralData.referral_link;
     }
   } catch (error) {
-    console.error('Error fetching referral link', error);
   }
 
   try {
@@ -171,7 +163,6 @@ export async function POST(request: NextRequest) {
       }
     });
   } catch (error: any) {
-    console.error('Error invocando función de email', error);
     // Return 502 with error details for easier debugging in dev
     return NextResponse.json(
       { error: 'Error invocando función de email', details: { message: error.message, status: error.status ?? null, body: error.body ?? null } },

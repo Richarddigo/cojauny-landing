@@ -24,10 +24,7 @@ try {
                 body: JSON.stringify({ email: 'richarddigo+852@gmail.com', template: t.template, locale: 'es', variables: t.vars })
             });
             const text = await res.text();
-            console.log('TEMPLATE', t.template, 'STATUS', res.status);
-            console.log(text);
         } catch (e) {
-            console.error('ERR', e.message || e);
         }
         await new Promise(r => setTimeout(r, 700));
     }

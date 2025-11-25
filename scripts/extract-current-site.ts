@@ -26,7 +26,6 @@ async function fetchCurrentSite(): Promise<string | null> {
     }
     return await response.text();
   } catch (error) {
-    console.error(`No se pudo obtener el HTML desde ${url}:`, error);
     return null;
   }
 }
@@ -73,19 +72,14 @@ async function main() {
   const html = (await fetchCurrentSite()) ?? (await getHtmlFromEnv());
 
   if (!html) {
-    console.warn(
-      'No se encontró CURRENT_SITE_URL ni CURRENT_SITE_HTML. No se generará archivo de contenido.'
-    );
     return;
   }
 
   const content = extractContent(html);
   await mkdir(OUTPUT_DIR, { recursive: true });
   await writeFile(OUTPUT_FILE, JSON.stringify(content, null, 2), 'utf-8');
-  console.log(`Contenido extraído y guardado en ${OUTPUT_FILE}`);
 }
 
 main().catch((error) => {
-  console.error('Error al extraer el sitio actual:', error);
   process.exit(1);
 });

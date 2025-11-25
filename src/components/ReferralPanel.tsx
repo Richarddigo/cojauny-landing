@@ -33,7 +33,6 @@ const ReferralPanel = ({ copy, email, referralLink: propReferralLink }: Referral
         const data = await response.json();
         setStats(data.data);
       } catch (err) {
-        console.error('Error fetching referral stats:', err);
         setError('Could not load referral stats');
       } finally {
         setLoading(false);
@@ -52,7 +51,6 @@ const ReferralPanel = ({ copy, email, referralLink: propReferralLink }: Referral
       setCopiedLink(true);
       setTimeout(() => setCopiedLink(false), 3000);
     } catch (err) {
-      console.error('Failed to copy link:', err);
     }
   };
 

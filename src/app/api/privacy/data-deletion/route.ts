@@ -32,7 +32,6 @@ export async function POST(request: NextRequest) {
   });
 
   if (error) {
-    console.error('Error ejecutando anonymize_user_data', error);
     return NextResponse.json({ error: 'No se pudo procesar la solicitud' }, { status: 500 });
   }
 

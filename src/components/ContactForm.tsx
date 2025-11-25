@@ -59,7 +59,6 @@ const ContactForm = ({ locale, copy }: ContactFormProps) => {
 
         const parseResult = contactSchema.safeParse(form);
         if (!parseResult.success) {
-            console.warn('Contact form client-side validation failed', parseResult.error);
             setSubmitting(false);
             // If the failure is the message min length, show inline message
             const msgIssue = parseResult.error.issues?.find((i) => i.path?.[0] === 'message');
@@ -83,7 +82,6 @@ const ContactForm = ({ locale, copy }: ContactFormProps) => {
             const payload = await response.json().catch(() => null);
 
             if (!response.ok) {
-                console.error('Contact submission error response', payload);
                 const serverError = payload?.error || copy.error;
                 const details = payload?.details
                     ? `\nDetails: ${typeof payload.details === 'string' ? payload.details : JSON.stringify(payload.details, null, 2)}`
@@ -96,7 +94,6 @@ const ContactForm = ({ locale, copy }: ContactFormProps) => {
             setForm(buildInitialState(locale));
             setSuccess(copy.success);
         } catch (err: any) {
-            console.error('Contact submission error', err);
             setError(err.message || copy.error);
         } finally {
             setSubmitting(false);

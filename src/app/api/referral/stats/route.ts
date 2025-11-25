@@ -37,7 +37,6 @@ export async function GET(request: NextRequest) {
       .single();
 
     if (referralError) {
-      console.error('Error fetching referral stats:', referralError);
       return NextResponse.json({ error: 'Failed to fetch referral stats' }, { status: 500 });
     }
 
@@ -46,7 +45,6 @@ export async function GET(request: NextRequest) {
       data: referralData
     });
   } catch (error) {
-    console.error('Unexpected error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

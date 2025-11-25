@@ -89,13 +89,6 @@ const supabaseUrl = Deno.env.get('BASE_URL') ?? '';
 // Accept multiple possible env names for the service role key
 const supabaseKey = Deno.env.get('BASE_SERVICE_ROLE_KEY') ?? Deno.env.get('BASE_SERVICE_ROLE_KEY') ?? Deno.env.get('BASE_SERVICE_KEY') ?? '';
 
-// Debugging: print presence (not values) to help diagnose env issues when running locally
-try {
-  console.log('manage-forms starting. BASE_URL present:', !!supabaseUrl, 'BASE_KEY present:', !!supabaseKey, 'USE_RESEND:', Deno.env.get('USE_RESEND'));
-} catch (_e) {
-  // ignore
-}
-
 const supabase = createClient(supabaseUrl, supabaseKey, {
   auth: {
     persistSession: false
@@ -123,7 +116,6 @@ try {
     binary += String.fromCharCode(...bytes.subarray(i, i + chunk));
   }
   logoBase64 = btoa(binary);
-  console.log('Loaded local logo for inline attachment');
 } catch (_e) {
   logoBase64 = null;
 }
@@ -292,12 +284,12 @@ const staticTemplates: Record<Extract<TemplateKey, 'contact-notification' | 'int
       "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;\">" +
       `<div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;padding-bottom:16px;border-bottom:2px solid #e5e7eb;"><img src="${logoUrl}" width="48" alt="Cojauny" style="display:block;border:0" /><div style="font-weight:700;font-size:18px;">Cojauny — Feedback</div></div>` +
       "<p style=\"font-size:15px;font-weight:600;color:#0f172a;\">Nuevo feedback del producto</p>" +
-      "<table style=\"width:100%;border-collapse:collapse;margin:16px 0;\"><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">De:</td><td style=\"padding:8px 0;font-size:14px;\">{{name}}</td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Email:</td><td style=\"padding:8px 0;font-size:14px;\"><a href=\"mailto:{{email}}\" style=\"color:#0ea5e9;text-decoration:none;\">{{email}}</a></td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Sentimiento:</td><td style=\"padding:8px 0;font-size:14px;\">{{case}}</td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Idioma:</td><td style=\"padding:8px 0;font-size:14px;\">{{locale}}</td></tr></table>" +
+      "<table style=\"width:100%;border-collapse:collapse;margin:16px 0;\"><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">De:</td><td style=\"padding:8px 0;font-size:14px;\">{{name}}</td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Email:</td><td style=\"padding:8px 0;font-size:14px;\"><a href=\"mailto:{{email}}\" style=\"color:#0ea5e9;text-decoration:none;\">{{email}}</a></td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Usecase:</td><td style=\"padding:8px 0;font-size:14px;\">{{case}}</td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Idioma:</td><td style=\"padding:8px 0;font-size:14px;\">{{locale}}</td></tr></table>" +
       "<div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:4px;margin:16px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">Mensaje:</p><pre style=\"white-space:pre-wrap;font-family:'Courier New',monospace;font-size:14px;margin:0;color:#1f2937;\">{{message}}</pre></div>" +
       "<p style=\"margin-top:24px;font-size:12px;color:#9ca3af;\">Responde directamente al usuario en: {{email}}</p>" +
       "</div>",
     text:
-      '=== NUEVO FEEDBACK ===\n\nDe: {{name}}\nEmail: {{email}}\nSentimiento: {{case}}\nIdioma: {{locale}}\n\n--- MENSAJE ---\n{{message}}\n\nResponde a: {{email}}\n\nCojauny · ' + siteUrlFromEnv
+      '=== NUEVO FEEDBACK ===\n\nDe: {{name}}\nEmail: {{email}}\nUsecase: {{useCase}}\nIdioma: {{locale}}\n\n--- MENSAJE ---\n{{message}}\n\nResponde a: {{email}}\n\nCojauny · ' + siteUrlFromEnv
   }
 };
 
@@ -372,9 +364,6 @@ function resolveSender(key: TemplateKey): ResolvedSender {
   }
 
   if (profile.email && !profile.password) {
-    console.warn(
-      `SMTP_PASS_${profileKey.toUpperCase()} no está configurada. Autenticando con la cuenta predeterminada.`
-    );
     return {
       email: profile.email,
       name: profile.name,
@@ -383,7 +372,6 @@ function resolveSender(key: TemplateKey): ResolvedSender {
     };
   }
 
-  console.warn(`SMTP_USER_${profileKey.toUpperCase()} no está configurada. Se usará la cuenta predeterminada.`);
   return {
     email: defaultUser,
     name: profile.name,
@@ -452,9 +440,7 @@ async function sendWithSmtpFallback(recipient: string, rendered: ReturnType<type
   } catch (err) {
     // If SMTP server rejects the sender (common 553 relay error), retry using auth email as From and set Reply-To
     const msg = (err && err.message) ? err.message : String(err);
-    console.warn('sendViaSmtp failed:', msg);
     if (msg.includes('553') || /relay/i.test(msg)) {
-      console.info('Retrying send with authenticated From address to avoid relay restrictions');
       const fallbackSender: ResolvedSender = {
         email: sender.authEmail,
         name: sender.name,
@@ -584,9 +570,7 @@ serve(async (req) => {
             attachments: !!logoBase64
           };
           await Deno.writeTextFile(base + '.json', JSON.stringify(meta, null, 2));
-          console.log('[TEST_CAPTURE] Wrote sample files for', payload.template, locale, base);
         } catch (capErr) {
-          console.error('TEST_CAPTURE write failed:', capErr);
         }
       }
     } catch (_e) {
@@ -610,7 +594,6 @@ serve(async (req) => {
         metadata: { locale, variables: payload.variables }
       });
     } catch (logError) {
-      console.error('Failed to log email:', logError);
     }
 
     return new Response(
@@ -618,7 +601,6 @@ serve(async (req) => {
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
   } catch (error: any) {
-    console.error('Email sending error:', error);
     
     // Try to log the error
     try {
@@ -631,7 +613,6 @@ serve(async (req) => {
         metadata: { locale: payload.locale, variables: payload.variables }
       });
     } catch (logError) {
-      console.error('Failed to log error:', logError);
     }
 
     return new Response(

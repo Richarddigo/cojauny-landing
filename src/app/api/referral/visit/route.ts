@@ -23,7 +23,6 @@ export async function POST(request: NextRequest) {
     });
 
     if (error) {
-      console.error('Error incrementing referral visits:', error);
       return NextResponse.json({ error: 'Failed to track visit' }, { status: 500 });
     }
 
@@ -36,7 +35,6 @@ export async function POST(request: NextRequest) {
       data
     });
   } catch (error) {
-    console.error('Unexpected error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

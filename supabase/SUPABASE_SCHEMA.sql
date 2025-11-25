@@ -9,7 +9,7 @@ create table if not exists public.waitlist (
     email text not null,
     name text not null,
     company text,
-    use_case text,
+    usecase text,
     flight text,
     country text not null default 'es',
     flight_frequency text not null default 'once',
@@ -27,7 +27,7 @@ create table if not exists public.waitlist (
 );
 
 alter table if exists public.waitlist add column if not exists company text;
-alter table if exists public.waitlist add column if not exists use_case text;
+alter table if exists public.waitlist add column if not exists usecase text;
 alter table if exists public.waitlist add column if not exists flight text;
 alter table if exists public.waitlist add column if not exists country text not null default 'es';
 alter table if exists public.waitlist add column if not exists flight_frequency text not null default 'once';
@@ -52,7 +52,7 @@ create table if not exists public.feedback (
     email text not null,
     name text not null,
     message text not null,
-    case text not null check (case in ('feedback', 'idea', 'business_proposal', 'contact')),
+    usecase text not null check (usecase in ('feedback', 'idea', 'business_proposal', 'contact')),
     topic text,
     language text not null default 'es',
     ip_address inet,
@@ -60,19 +60,19 @@ create table if not exists public.feedback (
     created_at timestamptz not null default timezone('utc', now())
 );
 
-alter table if exists public.feedback add column if not exists case text;
-alter table if exists public.feedback alter column case set default 'idea';
-update public.feedback set case = 'idea' where case is null;
-alter table if exists public.feedback alter column case set not null;
+alter table if exists public.feedback add column if not exists usecase text;
+alter table if exists public.feedback alter column usecase set default 'idea';
+update public.feedback set usecase = 'idea' where usecase is null;
+alter table if exists public.feedback alter column usecase set not null;
 alter table if exists public.feedback add column if not exists topic text;
 alter table if exists public.feedback add column if not exists language text not null default 'es';
 alter table if exists public.feedback add column if not exists ip_address inet;
 alter table if exists public.feedback add column if not exists user_agent text;
 alter table if exists public.feedback drop constraint if exists feedback_case_check;
 alter table if exists public.feedback add constraint feedback_case_check
-    check (case in ('feedback', 'idea', 'business_proposal', 'contact'));
+    check (usecase in ('feedback', 'idea', 'business_proposal', 'contact'));
 
-create index if not exists feedback_case_idx on public.feedback (case);
+create index if not exists feedback_usecase_idx on public.feedback (usecase);
 create index if not exists feedback_created_idx on public.feedback (created_at);
 
 create table if not exists public.emails_sent (
@@ -142,7 +142,7 @@ begin
     set email = concat('anon-', md5(email || now()) , '@example.com'),
         name = 'Eliminado',
         company = null,
-        use_case = null,
+        usecase = null,
         confirmation_token = null
     where lower(email) = lower(target_email)
     returning 1 into deleted_beta;
@@ -175,7 +175,7 @@ grant insert on public.feedback to cojauny_beta_writer;
 
 -- Create referral_stats table / Crear tabla referral_stats / Tabelle referral_stats erstellen / Créer la table referral_stats
 create table if not exists public.referral_stats (
-    user_id bigint primary key references public.waitlist(id) on delete cascade,
+    uuid uuid primary key references public.waitlist(id) on delete cascade,
     referral_code text not null unique,
     referral_link text not null,
     visits integer not null default 0,
@@ -185,7 +185,7 @@ create table if not exists public.referral_stats (
 );
 
 create unique index if not exists referral_stats_code_idx on public.referral_stats (referral_code);
-create index if not exists referral_stats_user_idx on public.referral_stats (user_id);
+create index if not exists referral_stats_uuidx on public.referral_stats (uuid);
 
 -- Enable RLS on referral_stats / Habilitar RLS en referral_stats / RLS aktivieren / Activer RLS
 alter table public.referral_stats enable row level security;
@@ -246,7 +246,7 @@ begin
     
     -- Insert referral stats / Insertar estadísticas de referral
     -- Insérer les statistiques de parrainage / Empfehlungsstatistiken einfügen
-    insert into public.referral_stats (user_id, referral_code, referral_link, visits, signups)
+    insert into public.referral_stats (uuid, referral_code, referral_link, visits, signups)
     values (
         NEW.id,
         new_code,

@@ -60,7 +60,6 @@ serve(async (request) => {
     });
 
     if (error) {
-      console.error('Error incrementing visits:', error);
       return new Response(JSON.stringify({ error: 'Failed to track visit' }), {
         status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' }
@@ -79,7 +78,6 @@ serve(async (request) => {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' }
     });
   } catch (error) {
-    console.error('Unexpected error:', error);
     return new Response(JSON.stringify({ error: 'Internal server error' }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' }

@@ -37,62 +37,24 @@ const Mockups = ({ className, copy }: MockupsProps) => {
     useEffect(() => {
         if (prefersReducedMotion) return;
 
-        const sectionEl = sectionRef.current;
-        const phoneEl = phoneRef.current;
-        const firstCardEl = firstCardRef.current;
-        const lastCardEl = lastCardRef.current;
-
-        if (!sectionEl || !phoneEl || !firstCardEl || !lastCardEl) return;
-
         const updateParallax = () => {
-            if (!phoneRef.current || !firstCardRef.current || !lastCardRef.current) return;
-
-            const firstRect = firstCardEl.getBoundingClientRect();
-            const lastRect = lastCardEl.getBoundingClientRect();
-            const phoneRect = phoneEl.getBoundingClientRect();
-
-            const firstCardTop = firstRect.top;
-            const lastCardBottom = lastRect.bottom;
-            const totalScrollRange = lastCardBottom - firstCardTop;
-            const phoneHeight = phoneRect.height;
-            const availableSpace = Math.max(1, totalScrollRange - phoneHeight);
-            const scrollProgress = Math.max(0, Math.min(1, (-firstCardTop + 120) / availableSpace));
-            // scale progress down to avoid extreme jumps and clamp to a sensible pixel range
-            const maxOffset = Math.min(400, Math.max(200, phoneHeight * 0.6));
-            const offset = Math.round(scrollProgress * maxOffset);
+            const sectionRect = sectionRef.current?.getBoundingClientRect();
+            if (!sectionRect) return;
+            const sectionTop = sectionRect.top + window.scrollY;
+            const progress = Math.max(0, Math.min(1, (window.scrollY - sectionTop + window.innerHeight) / (sectionRef.current!.offsetHeight + window.innerHeight)));
+            const offset = Math.round(progress * 400);
 
             setParallaxOffset(offset);
-            tickingRef.current = false;
         };
 
         const onScroll = () => {
-            if (!tickingRef.current) {
-                window.requestAnimationFrame(updateParallax);
-                tickingRef.current = true;
-            }
+            requestAnimationFrame(updateParallax);
         };
 
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        window.addEventListener('scroll', onScroll, { passive: true });
-                        updateParallax();
-                    } else {
-                        window.removeEventListener('scroll', onScroll);
-                    }
-                });
-            },
-            {
-                root: null,
-                threshold: [0, 1.0]
-            }
-        );
-
-        observer.observe(sectionEl);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        updateParallax(); // initial
 
         return () => {
-            observer.disconnect();
             window.removeEventListener('scroll', onScroll);
         };
     }, [prefersReducedMotion]);
@@ -144,10 +106,10 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                     <div
                         ref={phoneRef}
                         style={
-                            prefersReducedMotion || typeof window !== 'undefined' && window.innerWidth < 1024
+                            prefersReducedMotion
                                 ? undefined
                                 : {
-                                    transform: `translateY(${Math.max(0, parallaxOffset)}px)`,
+                                    transform: `translateY(-${Math.max(0, parallaxOffset)}px)`,
                                     willChange: 'transform'
                                 }
                         }

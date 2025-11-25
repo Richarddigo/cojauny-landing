@@ -101,32 +101,25 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
         const handleScroll = () => {
             if (!containerRef.current) return;
 
-            const containerRect = containerRef.current.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
-            const phoneHeight = 720;
-            const topMargin = 96;
-            const bottomMargin = 96;
+            const sectionRect = containerRef.current.getBoundingClientRect();
+            const sectionTop = sectionRect.top + window.scrollY;
+            const topMargin = -115;
 
-            const availableSpace = viewportHeight - phoneHeight - topMargin - bottomMargin;
-
-            if (availableSpace < 0) {
-                setPhoneTop((viewportHeight - phoneHeight) / 2);
-                return;
-            }
-
-            if (containerRect.top >= topMargin) {
+            if (sectionTop - window.scrollY > 50) {
                 setPhoneTop(topMargin);
-            } else if (containerRect.bottom <= viewportHeight - bottomMargin) {
-                const relativeBottom = containerRect.bottom - phoneHeight - bottomMargin;
-                setPhoneTop(Math.max(topMargin, relativeBottom));
             } else {
-                const sectionHeight = containerRect.height;
-                const scrollRange = sectionHeight - viewportHeight;
-                const scrolled = Math.abs(containerRect.top - topMargin);
-                const progress = Math.min(1, scrolled / scrollRange);
+                const progress = Math.max(0, Math.min(1, (window.scrollY - sectionTop + window.innerHeight) / (containerRef.current.offsetHeight + window.innerHeight)));
+                const offset = Math.round(progress * 1000);
 
-                const newTop = topMargin + (progress * availableSpace);
-                setPhoneTop(newTop);
+                const viewportHeight = window.innerHeight;
+                const phoneHeight = 720;
+                const availableSpace = viewportHeight - phoneHeight - topMargin;
+
+                if (availableSpace < 0) {
+                    setPhoneTop((viewportHeight - phoneHeight) / 2);
+                } else {
+                    setPhoneTop(topMargin + offset);
+                }
             }
         };
 
@@ -263,18 +256,18 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                                 onMouseEnter={() => handleCardHover(idx)}
                                 onClick={() => handleCardClick(idx)}
                                 className={`demo-card transition-all duration-700 cursor-pointer ${activeStep === idx
-                                        ? 'opacity-100 scale-100'
-                                        : 'opacity-50 scale-95 hover:opacity-75 hover:scale-98'
+                                    ? 'opacity-100 scale-100'
+                                    : 'opacity-50 scale-95 hover:opacity-75 hover:scale-98'
                                     }`}
                             >
                                 <div className={`bg-white rounded-3xl p-8 xl:p-10 shadow-xl border-2 transition-all duration-700 ${activeStep === activeStep
-                                        ? 'border-blue-200 shadow-2xl'
-                                        : 'border-slate-100'
+                                    ? 'border-blue-200 shadow-2xl'
+                                    : 'border-slate-100'
                                     }`}>
                                     <div className="inline-flex items-center gap-2 mb-5">
                                         <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors duration-700 ${activeStep === idx
-                                                ? 'bg-blue-600 text-white'
-                                                : 'bg-slate-100 text-slate-400'
+                                            ? 'bg-blue-600 text-white'
+                                            : 'bg-slate-100 text-slate-400'
                                             }`}>
                                             {idx + 1}
                                         </div>
@@ -299,8 +292,8 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
-                            className="w-full sticky transition-all duration-200 ease-out will-change-transform"
-                            style={{ top: `${phoneTop}px` }}
+                            className="w-full transition-all duration-200 ease-out will-change-transform"
+                            style={{ position: 'absolute', top: `${phoneTop}px` }}
                         >
                             <IPhoneMockup screen={copy.screens[activeStep]} priority={true} />
                         </motion.div>
@@ -323,14 +316,14 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                                     layout="position"
                                     ref={el => { cardsRef.current[idx] = el; }}
                                     className={`bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 shadow-lg border-2 transition-all duration-700 ${activeStep === idx
-                                            ? 'border-blue-200 shadow-xl mb-4'
-                                            : 'border-slate-100 mb-8'
+                                        ? 'border-blue-200 shadow-xl mb-4'
+                                        : 'border-slate-100 mb-8'
                                         }`}
                                 >
                                     <div className="inline-flex items-center gap-2 mb-3">
                                         <div className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors duration-700 ${activeStep === idx
-                                                ? 'bg-blue-600 text-white'
-                                                : 'bg-slate-100 text-slate-400'
+                                            ? 'bg-blue-600 text-white'
+                                            : 'bg-slate-100 text-slate-400'
                                             }`}>
                                             {idx + 1}
                                         </div>

@@ -43,13 +43,11 @@ async function sendTests() {
             req.write(payload);
             req.end();
         });
-        console.log('TEST', t.template, JSON.stringify(res));
         await new Promise(r => setTimeout(r, 500));
     }
 }
 
 (async () => {
-    console.log('Spawning deno...');
     // Load .env.production and .env.local if present to pass to child process
     const fs = require('fs');
     const path = require('path');
@@ -81,12 +79,9 @@ async function sendTests() {
     const deno = spawn('deno', denoArgs, { env: childEnv });
     try {
         await waitForListening(deno, 20000);
-        console.log('Deno listening, sending tests...');
         await sendTests();
     } catch (e) {
-        console.error('Error during test run:', e.message || e);
     } finally {
-        console.log('Killing deno...');
         deno.kill();
     }
 })();

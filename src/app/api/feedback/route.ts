@@ -37,7 +37,6 @@ async function checkRateLimit(ipAddress: string): Promise<{ allowed: boolean; co
     .eq('ip_address', ipAddress);
 
   if (error) {
-    console.error('Rate limit check failed:', error);
     // Fail safe: allow if DB check fails to avoid blocking legitimate users
     return { allowed: true };
   }
@@ -49,12 +48,10 @@ async function checkRateLimit(ipAddress: string): Promise<{ allowed: boolean; co
 
 export async function POST(request: Request) {
   const requestId = generateRequestId();
-  console.log(`[${requestId}] Feedback form submission started`);
 
   try {
     const body = await request.json().catch(() => null);
     if (!body) {
-      console.error(`[${requestId}] Invalid JSON payload received`);
       return NextResponse.json(
         { error: 'El formato de los datos es inválido. Por favor, inténtalo de nuevo.', requestId },
         { status: 400 }
@@ -63,7 +60,6 @@ export async function POST(request: Request) {
 
     const validation = feedbackSchema.safeParse(body);
     if (!validation.success) {
-      console.warn(`[${requestId}] Validation failed:`, validation.error);
       return NextResponse.json(
         { error: 'Datos inválidos', details: validation.error.errors, requestId },
         { status: 400 }
@@ -74,7 +70,6 @@ export async function POST(request: Request) {
 
     // Bot detection
     if (!isHuman(data.honeypot)) {
-      console.warn(`[${requestId}] Bot detected via honeypot`);
       return NextResponse.json(
         { error: 'Tu solicitud no pudo ser procesada. Si crees que esto es un error, contacta a support@cojauny.com.', requestId },
         { status: 403 }
@@ -82,12 +77,9 @@ export async function POST(request: Request) {
     }
 
     const ipAddress = getClientIp((request as any).headers) ?? '0.0.0.0';
-    console.log(`[${requestId}] Request from IP: ${ipAddress}, User: ${data.email}`);
-
     // Rate limiting
     const rateLimitResult = await checkRateLimit(ipAddress);
     if (!rateLimitResult.allowed) {
-      console.warn(`[${requestId}] Rate limit exceeded`);
       return NextResponse.json(
         { error: 'Demasiados intentos. Por favor espera unos minutos.', requestId },
         { status: 429 }
@@ -104,7 +96,7 @@ export async function POST(request: Request) {
         email: data.email,
         name: data.name,
         message: data.message,
-        case: data.case,
+        usecase: data.case,
         language: data.locale,
         ip_address: ipAddress,
         user_agent: (request as any).headers.get('user-agent') ?? ''
@@ -113,7 +105,6 @@ export async function POST(request: Request) {
       .single();
 
     if (insert.error) {
-      console.error(`[${requestId}] Feedback insert error:`, insert.error);
       return NextResponse.json(
         { error: 'No se pudo guardar el feedback.', requestId },
         { status: 500 }
@@ -140,18 +131,15 @@ export async function POST(request: Request) {
           name: data.name,
           email: data.email,
           message: data.message,
-          case: data.case,
+          usecase: data.case,
           locale: data.locale
         }
       });
     } catch (err) {
-      console.error(`[${requestId}] Email notification failed (non-critical):`, err);
     }
 
-    console.log(`[${requestId}] Feedback form submission completed successfully`);
     return NextResponse.json({ success: true }, { status: 201 });
   } catch (err: any) {
-    console.error(`[${requestId}] Unhandled error processing feedback form:`, err);
     return NextResponse.json(
       { error: 'Error interno del servidor.', requestId, details: err.message ?? String(err) },
       { status: 500 }

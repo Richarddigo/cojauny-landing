@@ -53,5 +53,3 @@ ${chunks.join('\n')}
 const outDir = join(process.cwd(), 'public');
 mkdirSync(outDir, { recursive: true });
 writeFileSync(join(outDir, 'sitemap-manual.xml'), xml.trim());
-
-console.log('Sitemap saved to public/sitemap-manual.xml');

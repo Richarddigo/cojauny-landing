@@ -22,7 +22,7 @@ export const feedbackSchema = z
     email: z.string().email('Introduce un correo válido'),
     message: z.string().min(10, 'Cuéntanos un poco más sobre tu experiencia'),
     name: z.string().min(2, 'Incluye tu nombre'),
-    case: z.enum(['feedback', 'idea', 'business_proposal']),
+    usecase: z.enum(['feedback', 'idea', 'business_proposal']),
     locale: z.enum(localeValues),
     honeypot: z.string().optional()
   })

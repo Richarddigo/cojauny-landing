@@ -5,11 +5,9 @@ export const supabaseUrl = env.NEXT_PUBLIC_BASE_URL ?? env.NEXT_PUBLIC_BASE_URL 
 export const supabaseAnonKey = env.NEXT_PUBLIC_BASE_ANON_KEY ?? '';
 
 if (!supabaseUrl) {
-  console.warn('No se encontró NEXT_PUBLIC_BASE_URL ni BASE_URL para conectar con Supabase');
 }
 
 if (!supabaseAnonKey) {
-  console.warn('NEXT_PUBLIC_BASE_ANON_KEY no está configurado');
 }
 
 let browserClient: SupabaseClient | undefined;

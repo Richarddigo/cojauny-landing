@@ -17,7 +17,7 @@ const buildInitialState = (locale: Locale): FeedbackInput => ({
     email: '',
     message: '',
     name: '',
-    case: 'feedback',
+    usecase: 'feedback',
     honeypot: '',
     locale
 });
@@ -82,7 +82,6 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
             const payload = await response.json().catch(() => null);
 
             if (!response.ok) {
-                console.error('Feedback submission error response', payload);
                 const serverError = payload?.error || copy.error;
                 const requestId = payload?.requestId ? ` (ref: ${payload.requestId})` : '';
                 setError(`${serverError}${requestId}`);
@@ -92,7 +91,6 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
             setForm(buildInitialState(locale));
             setSuccess(copy.success);
         } catch (err: any) {
-            console.error('Feedback submission error', err);
             setError(err.message || copy.error);
         } finally {
             setSubmitting(false);
@@ -145,16 +143,16 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
                     {copy.caseOptions?.map((option) => (
                         <label
                             key={option.value}
-                            className={`flex flex-1 cursor-pointer flex-col items-center gap-2 rounded-xl border p-4 transition-all hover:bg-slate-50 ${form.case === option.value
+                            className={`flex flex-1 cursor-pointer flex-col items-center gap-2 rounded-xl border p-4 transition-all hover:bg-slate-50 ${form.usecase === option.value
                                 ? 'border-brand-500 bg-brand-50/50 ring-2 ring-brand-500/20'
                                 : 'border-slate-200 bg-white/50'
                                 }`}
                         >
                             <input
                                 type="radio"
-                                name="case"
+                                name="usecase"
                                 value={option.value}
-                                checked={form.case === option.value}
+                                checked={form.usecase === option.value}
                                 onChange={handleChange}
                                 className="sr-only"
                             />

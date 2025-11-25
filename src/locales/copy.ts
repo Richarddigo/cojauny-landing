@@ -674,7 +674,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           fullName: 'Nombre',
           email: 'Correo',
           message: 'Cuéntanos tu caso',
-          case: 'Caso',
+          useCase: 'Caso',
           selectPlaceholder: 'Selecciona una opción'
         },
         caseOptions: [
@@ -1178,7 +1178,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           fullName: 'Name',
           email: 'Email',
           message: 'Tell us about your case',
-          case: 'Case',
+          useCase: 'Case',
           selectPlaceholder: 'Select an option'
         },
         caseOptions: [
@@ -1683,7 +1683,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           fullName: 'Name',
           email: 'E-Mail',
           message: 'Erzähl uns deinen Fall',
-          case: 'Fall',
+          useCase: 'Fall',
           selectPlaceholder: 'Option auswählen'
         },
         caseOptions: [
@@ -2154,7 +2154,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           fullName: 'Nom',
           email: 'Email',
           message: 'Parlez-nous de votre cas',
-          case: 'Type de retour',
+          useCase: 'Type de retour',
           selectPlaceholder: 'Choisissez une option'
         },
         caseOptions: [

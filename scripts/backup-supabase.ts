@@ -50,10 +50,8 @@ async function main() {
     files.push(filePath);
   }
 
-  console.log('Export completado:', files);
 }
 
 main().catch((error) => {
-  console.error('Error exportando datos de Supabase:', error);
   process.exit(1);
 });
