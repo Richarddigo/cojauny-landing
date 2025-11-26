@@ -156,11 +156,12 @@ const Header = ({ locale, copy }: HeaderProps) => {
         document.addEventListener('keydown', handleKeyDown);
         document.addEventListener('focusin', handleFocusIn);
 
+        const opener = openButtonRef.current;
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
             document.removeEventListener('focusin', handleFocusIn);
-            // restore focus to open button
-            openButtonRef.current?.focus();
+            // restore focus to open button (captured value)
+            try { opener?.focus(); } catch (e) { /* ignore */ }
             clearTimeout(focusTimer);
         };
     }, [mobileMenuOpen]);
@@ -282,7 +283,17 @@ const Header = ({ locale, copy }: HeaderProps) => {
                             <div
                                 className="flex-1"
                                 data-testid="menu-overlay"
+                                role="button"
+                                tabIndex={0}
                                 onClick={() => setMobileMenuOpen(false)}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        setMobileMenuOpen(false);
+                                    } else if (e.key === 'Escape') {
+                                        setMobileMenuOpen(false);
+                                    }
+                                }}
                                 onTouchStart={(e) => {
                                     // allow touch events to register on overlay
                                     (e.currentTarget as any)._touchStartX = e.touches?.[0]?.clientX ?? 0;
