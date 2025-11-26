@@ -137,7 +137,7 @@ export async function POST(request: NextRequest) {
     // 1. Send confirmation to user
     await triggerEdgeEmailFunction({
       email: data.email,
-      template: 'contact-thanks',
+      template: 'contact-confirmation',
       locale: data.locale,
       variables: {
         name: data.name
@@ -147,7 +147,7 @@ export async function POST(request: NextRequest) {
     // 2. Send notification to admin
     await triggerEdgeEmailFunction({
       email: adminRecipient,
-      template: 'contact-notification',
+      template: 'contact-internal',
       locale: 'es',
       variables: {
         name: data.name,

@@ -125,16 +125,26 @@ export async function POST(request: Request) {
     try {
       const adminRecipient = env.EMAIL_ADMIN_RECIPIENT || INTERNAL_FEEDBACK_EMAIL;
 
+      // Select user-facing confirmation template based on usecase
+      let userTemplate: 'feedback-confirmation' | 'idea-confirmation' | 'business-proposal-confirmation' = 'feedback-confirmation';
+      if (data.usecase === 'idea') userTemplate = 'idea-confirmation';
+      if (data.usecase === 'business_proposal' || data.usecase === 'business-proposal') userTemplate = 'business-proposal-confirmation';
+
       await triggerEdgeEmailFunction({
         email: data.email,
-        template: 'feedback-thanks',
+        template: userTemplate,
         locale: data.locale,
-        variables: { name: data.name }
+        variables: { name: data.name, usecase: data.usecase }
       });
+
+      // send admin a usecase-specific internal template
+      let adminTemplate: 'feedback-internal' | 'idea-internal' | 'business-proposal-internal' = 'feedback-internal';
+      if (data.usecase === 'idea') adminTemplate = 'idea-internal';
+      if (data.usecase === 'business_proposal' || data.usecase === 'business-proposal') adminTemplate = 'business-proposal-internal';
 
       await triggerEdgeEmailFunction({
         email: adminRecipient,
-        template: 'internal-notification',
+        template: adminTemplate,
         locale: data.locale ?? 'es',
         variables: {
           type: 'Feedback',

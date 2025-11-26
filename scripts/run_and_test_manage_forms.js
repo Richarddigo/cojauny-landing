@@ -20,14 +20,14 @@ function waitForListening(proc, timeout = 15000) {
 async function sendTests() {
     const tests = [
         { template: 'beta-confirmation', vars: { name: 'Prueba Beta 1', confirmation_token: 'BETA1' } },
-        { template: 'contact-thanks', vars: { name: 'Prueba Contacto 1' } },
-        { template: 'feedback-thanks', vars: { name: 'Prueba Feedback 1' } },
+        { template: 'contact-confirmation', vars: { name: 'Prueba Contacto 1' } },
+        { template: 'feedback-confirmation', vars: { name: 'Prueba Feedback 1', usecase: 'feedback' } },
         { template: 'beta-confirmation', vars: { name: 'Prueba Beta 2', confirmation_token: 'BETA2' } },
-        { template: 'contact-thanks', vars: { name: 'Prueba Contacto 2' } },
-        { template: 'feedback-thanks', vars: { name: 'Prueba Feedback 2' } },
+        { template: 'contact-confirmation', vars: { name: 'Prueba Contacto 2' } },
+        { template: 'idea-confirmation', vars: { name: 'Prueba Feedback 2', usecase: 'idea' } },
         { template: 'beta-confirmation', vars: { name: 'Prueba Beta 3', confirmation_token: 'BETA3' } },
-        { template: 'contact-thanks', vars: { name: 'Prueba Contacto 3' } },
-        { template: 'feedback-thanks', vars: { name: 'Prueba Feedback 3' } }
+        { template: 'contact-confirmation', vars: { name: 'Prueba Contacto 3' } },
+        { template: 'business-proposal-confirmation', vars: { name: 'Prueba Feedback 3', usecase: 'business_proposal' } }
     ];
 
     const recipient = process.env.TEST_RECIPIENT || 'richarddigo@gmail.com';

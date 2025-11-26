@@ -44,8 +44,8 @@ function waitForListening(proc, timeout = 15000) {
     const deno = spawn('deno', ['run', '--allow-net', '--allow-env', '--allow-read', 'supabase/functions/manage-forms/index.ts'], { env: childEnv });
     try {
         await waitForListening(deno, 20000);
-        // send contact-thanks
-        const payload = JSON.stringify({ email: 'richarddigo+852@gmail.com', template: 'contact-thanks', locale: 'es', variables: { name: 'Prueba Contacto' } });
+        // send contact-confirmation
+        const payload = JSON.stringify({ email: 'richarddigo+852@gmail.com', template: 'contact-confirmation', locale: 'es', variables: { name: 'Prueba Contacto' } });
         const res = await new Promise((resolve) => {
             const req = http.request({ hostname: '127.0.0.1', port: 8000, path: '/', method: 'POST', headers: { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(payload) } }, (res) => {
                 let body = '';

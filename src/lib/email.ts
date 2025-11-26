@@ -3,10 +3,14 @@ import type { Locale } from '@/locales/config';
 
 export type EmailTemplateName =
   | 'beta-confirmation'
-  | 'feedback-thanks'
-  | 'internal-notification'
-  | 'contact-thanks'
-  | 'contact-notification';
+  | 'feedback-confirmation'
+  | 'idea-confirmation'
+  | 'business-proposal-confirmation'
+  | 'feedback-internal'
+  | 'idea-internal'
+  | 'business-proposal-internal'
+  | 'contact-confirmation'
+  | 'contact-internal';
 
 export interface EmailEdgePayload {
   email: string;
@@ -72,16 +76,28 @@ export const emailTemplateMap: Record<EmailTemplateName, { description: string }
   'beta-confirmation': {
     description: 'Envía el token de acceso a la beta con el remitente beta@cojauny.com.'
   },
-  'feedback-thanks': {
-    description: 'Agradece el feedback recibido desde feedback@cojauny.com en el idioma del usuario.'
+  'feedback-confirmation': {
+    description: 'Confirmación localizada para feedback general.'
   },
-  'contact-thanks': {
-    description: 'Confirma la recepción de solicitudes de soporte desde support@cojauny.com.'
+  'idea-confirmation': {
+    description: 'Confirmación localizada para ideas de producto.'
   },
-  'contact-notification': {
-    description: 'Notifica al equipo de soporte cada vez que llega un nuevo mensaje.'
+  'business-proposal-confirmation': {
+    description: 'Confirmación localizada para propuestas comerciales.'
   },
-  'internal-notification': {
-    description: 'Envía un resumen interno cuando se recibe feedback destacado.'
+  'feedback-internal': {
+    description: 'Notificación interna para feedback (admin).'
+  },
+  'idea-internal': {
+    description: 'Notificación interna para ideas (admin).'
+  },
+  'business-proposal-internal': {
+    description: 'Notificación interna para propuestas comerciales (admin).'
+  },
+  'contact-confirmation': {
+    description: 'Confirma la recepción de solicitudes de soporte al usuario.'
+  },
+  'contact-internal': {
+    description: 'Notificación interna con detalles de la solicitud de soporte.'
   }
 };

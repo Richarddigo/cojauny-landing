@@ -40,10 +40,14 @@ type Locale = 'es' | 'en' | 'de' | 'fr';
 type SenderKey = 'beta' | 'feedback' | 'support';
 type TemplateKey =
   | 'beta-confirmation'
-  | 'feedback-thanks'
-  | 'contact-thanks'
-  | 'contact-notification'
-  | 'internal-notification'
+  | 'contact-confirmation'
+  | 'contact-internal'
+  | 'feedback-confirmation'
+  | 'idea-confirmation'
+  | 'business-proposal-confirmation'
+  | 'feedback-internal'
+  | 'idea-internal'
+  | 'business-proposal-internal'
   | 'beta-internal';
 
 interface Payload {
@@ -110,7 +114,7 @@ let logoBase64: string | null = null;
 try {
   const response = await fetch(logoUrl);
   if (response.ok) {
-    const arrayBuffer = await response.arrayBuffer();
+      text: "Bonjour {{name}},\n\nMerci pour votre retour sur Cojauny. Nous l'avons bien reçu et notre équipe produit l'examinera.\n\nRépondez pour ajouter des précisions."
     const bytes = new Uint8Array(arrayBuffer);
     // Convert to base64
     let binary = '';
@@ -199,7 +203,7 @@ const emailSignatureText = (locale: Locale) => {
   return `\n---\n${pick.tagline}\n${siteUrlFromEnv}\n${pick.contact}\n${pickLabels.privacy}: ${privacyUrl}\n${pickLabels.terms}: ${termsUrl}\n`;
 };
 
-const localizedTemplates: Record<Extract<TemplateKey, 'beta-confirmation' | 'feedback-thanks' | 'contact-thanks'>, Record<Locale, TemplateContent>> = {
+const localizedTemplates: Record<Extract<TemplateKey, 'beta-confirmation' | 'contact-confirmation' | 'feedback-confirmation' | 'idea-confirmation' | 'business-proposal-confirmation'>, Record<Locale, TemplateContent>> = {
   'beta-confirmation': {
     es: {
       subject: 'Bienvenido a la lista de espera de Cojauny',
@@ -222,11 +226,12 @@ const localizedTemplates: Record<Extract<TemplateKey, 'beta-confirmation' | 'fee
       text: 'Bonjour {{name}},\n\nMerci de rejoindre la liste d\'attente Cojauny. Nous vous préviendrons quand la bêta sera prête.\n\nAVANCEZ DANS LA LISTE:\nPartagez votre lien personnel:\n{{referral_link}}\n\nPlus d\'inscriptions = accès plus rapide.\n\nQuestions? Répondez à cet email.'
     }
   },
-  'feedback-thanks': {
+  // legacy 'feedback-thanks' removed; use specific confirmation templates
+  'contact-confirmation': {
     es: {
       subject: 'Gracias por tu feedback, {{name}}',
       html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hola <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Gracias por tu comentario — lo hemos recibido y el equipo de producto lo está revisando.</p><p style=\"font-size:15px;line-height:1.6;\">Tus ideas nos ayudan a priorizar qué construir a continuación.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Si quieres agregar contexto adicional, simplemente responde a este correo.</p></div>",
-      text: 'Hola {{name}},\n\nGracias por tu feedback — lo recibimos y el equipo de producto lo está revisando.\n\nTus ideas nos ayudan a decidir qué construir a continuación.\n\nResponde a este correo para añadir más contexto.'
+      text: "Hola {{name}},\n\nGracias por tu feedback — lo hemos recibido y nuestro equipo de producto lo está revisando.\n\nTus ideas nos ayudan a priorizar qué construir a continuación.\n\nResponde a este correo para añadir más contexto."
     },
     en: {
       subject: 'Thanks for your feedback, {{name}}',
@@ -244,7 +249,7 @@ const localizedTemplates: Record<Extract<TemplateKey, 'beta-confirmation' | 'fee
       text: 'Bonjour {{name}},\n\nMerci pour votre retour — nous avons bien reçu votre message et notre équipe produit l\'examine.\n\nVos retours nous aident à prioriser les améliorations.\n\nRépondez pour ajouter des précisions.'
     }
   },
-  'contact-thanks': {
+  'feedback-confirmation': {
     es: {
       subject: 'Hemos recibido tu solicitud, {{name}}',
       html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hola <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Hemos recibido tu mensaje y un miembro del equipo de soporte lo revisará en menos de 48 horas.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Responde a este correo si necesitas añadir más información o archivos.</p></div>",
@@ -266,10 +271,77 @@ const localizedTemplates: Record<Extract<TemplateKey, 'beta-confirmation' | 'fee
       text: 'Bonjour {{name}},\n\nMerci — nous avons bien reçu votre message.\n\nRépondez pour ajouter des précisions ou des pièces jointes.'
     }
   }
+  ,
+  'feedback-confirmation': {
+    es: {
+      subject: 'Gracias por tu feedback, {{name}}',
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hola <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Gracias por tu comentario sobre Cojauny. Lo hemos recibido y nuestro equipo de producto lo está revisando para mejorar la experiencia.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Si quieres añadir más contexto o ejemplos, responde a este correo.</p></div>",
+      text: "Hola {{name}},\n\nGracias por tu comentario sobre Cojauny. Lo hemos recibido y nuestro equipo de producto lo está revisando para mejorar la experiencia.\n\nResponde a este correo para añadir más información."
+    },
+    en: {
+      subject: 'Thanks for your feedback, {{name}}',
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hi <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Thanks for your feedback about Cojauny. We've received it and our product team will review it to help improve the experience.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Reply to this email if you'd like to add more context.</p></div>",
+      text: 'Hi {{name}},\n\nThanks for your feedback about Cojauny. We received it and our product team will review it.\n\nReply to this email to add more details.'
+    },
+    de: {
+      subject: 'Danke für dein Feedback, {{name}}',
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hallo <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Danke für dein Feedback zu Cojauny. Wir haben es erhalten und unser Produktteam prüft es, um die Nutzererfahrung zu verbessern.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Antworte auf diese E-Mail, wenn du weitere Details hinzufügen möchtest.</p></div>",
+      text: 'Hallo {{name}},\n\nDanke für dein Feedback zu Cojauny. Wir haben es erhalten und unser Produktteam prüft es.\n\nAntworte auf diese E-Mail, um weitere Details hinzuzufügen.'
+    },
+    fr: {
+      subject: 'Merci pour votre retour, {{name}}',
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Bonjour <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Merci pour votre retour sur Cojauny. Nous l'avons bien reçu et notre équipe produit l'examinera pour améliorer le service.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Répondez à cet e-mail si vous souhaitez ajouter des précisions.</p></div>",
+      text: "Bonjour {{name}},\n\nMerci pour votre retour sur Cojauny. Nous l'avons bien reçu et notre équipe produit l'examinera.\n\nRépondez pour ajouter des précisions."
+    }
+  },
+  'idea-confirmation': {
+    es: {
+      subject: 'Gracias por tu idea, {{name}}',
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hola <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Gracias por compartir tu idea para Cojauny. La hemos recibido y la incluiremos en nuestro proceso de evaluación de nuevas funcionalidades.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Si puedes compartir casos de uso o métricas, responde a este correo.</p></div>",
+      text: "Hola {{name}},\n\nGracias por compartir tu idea para Cojauny. La hemos recibido y la incluiremos en nuestro proceso de evaluación de nuevas funcionalidades.\n\nResponde a este correo para añadir información adicional."
+    },
+    en: {
+      subject: 'Thanks for your idea, {{name}}',
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hi <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Thanks for sharing your idea for Cojauny. We received it and will consider it in our roadmap discussions.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Reply with any additional examples or metrics.</p></div>",
+      text: 'Hi {{name}},\n\nThanks for sharing your idea for Cojauny. We received it and will consider it in our roadmap.\n\nReply to add examples or metrics.'
+    },
+    de: {
+      subject: 'Danke für deine Idee, {{name}}',
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hallo <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Danke, dass du deine Idee für Cojauny geteilt hast. Wir haben sie erhalten und werden sie in unsere Produktplanung einbeziehen.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Antworte, um weitere Beispiele oder Metriken zu teilen.</p></div>",
+      text: 'Hallo {{name}},\n\nDanke für deine Idee für Cojauny. Wir haben sie erhalten und prüfen sie.\n\nAntworte, um Beispiele oder Metriken hinzuzufügen.'
+    },
+    fr: {
+      subject: 'Merci pour votre idée, {{name}}',
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Bonjour <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Merci d'avoir partagé votre idée pour Cojauny. Nous l'avons reçue et l'intégrerons à notre réflexion produit.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Répondez pour ajouter des exemples ou des métriques.</p></div>",
+      text: "Bonjour {{name}},\n\nMerci pour votre idée pour Cojauny. Nous l'avons reçue et l'examinerons.\n\nRépondez pour ajouter des exemples."
+    }
+  },
+  'business-proposal-confirmation': {
+    es: {
+      subject: 'Gracias por tu propuesta comercial, {{name}}',
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hola <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Gracias por enviarnos tu propuesta comercial. Nuestro equipo de partnerships la revisará y contactará si hay interés para avanzar.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Si quieres adjuntar documentación adicional, responde a este correo.</p></div>",
+      text: "Hola {{name}},\n\nGracias por tu propuesta comercial. Nuestro equipo de partnerships la revisará y contactará si hay interés para avanzar.\n\nResponde para adjuntar documentación."
+    },
+    en: {
+      subject: 'Thanks for your business proposal, {{name}}',
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hi <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Thanks for sending us your business proposal. Our partnerships team will review it and reach out if there's interest to proceed.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Reply to attach additional documents.</p></div>",
+      text: 'Hi {{name}},\n\nThanks for your business proposal. Our team will review it and reach out if we want to proceed.\n\nReply to attach documents.'
+    },
+    de: {
+      subject: 'Danke für Ihren Geschäftsvorschlag, {{name}}',
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hallo <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Danke für Ihren Geschäftsvorschlag. Unser Partnerships-Team wird diesen prüfen und sich melden, wenn Interesse besteht.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Antworten Sie, um zusätzliche Dokumente anzuhängen.</p></div>",
+      text: 'Hallo {{name}},\n\nDanke für Ihren Geschäftsvorschlag. Unser Team prüft ihn und meldet sich, falls wir weitergehen möchten.\n\nAntworten Sie, um Dokumente anzuhängen.'
+    },
+    fr: {
+      subject: 'Merci pour votre proposition commerciale, {{name}}',
+      html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Bonjour <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Merci pour votre proposition commerciale. Notre équipe partnerships l'examinera et vous contactera si nous souhaitons poursuivre.</p><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Répondez pour joindre des documents supplémentaires.</p></div>",
+      text: "Bonjour {{name}},\n\nMerci pour votre proposition commerciale. Notre équipe l'examinera et vous contactera si nous souhaitons avancer.\n\nRépondez pour joindre des documents."
+    }
+  }
 };
 
-const staticTemplates: Record<Extract<TemplateKey, 'contact-notification' | 'internal-notification'>, TemplateContent> = {
-  'contact-notification': {
+const staticTemplates: Record<Extract<TemplateKey, 'contact-internal' | 'feedback-internal' | 'idea-internal' | 'business-proposal-internal' | 'beta-internal'>, TemplateContent> = {
+  'contact-internal': {
     subject: 'Nueva solicitud de soporte',
     html:
       "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;\">" +
@@ -282,7 +354,7 @@ const staticTemplates: Record<Extract<TemplateKey, 'contact-notification' | 'int
     text:
       '=== NUEVA SOLICITUD DE SOPORTE ===\n\nDe: {{name}}\nEmail: {{email}}\nAsunto: {{topic}}\nIdioma: {{locale}}\n\n--- MENSAJE ---\n{{message}}\n\nResponde a: {{email}}\n\nCojauny · ' + siteUrlFromEnv
   },
-  'internal-notification': {
+  'feedback-internal': {
     subject: 'Nuevo feedback recibido',
     html:
       "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;\">" +
@@ -294,7 +366,18 @@ const staticTemplates: Record<Extract<TemplateKey, 'contact-notification' | 'int
       "</div>",
     text:
       '=== NUEVO FEEDBACK ===\n\nDe: {{name}}\nEmail: {{email}}\nUsecase: {{usecase}}\nIdioma: {{locale}}\n\n--- MENSAJE ---\n{{message}}\n\nResponde a: {{email}}\n\nCojauny · ' + siteUrlFromEnv
-  }
+  },
+  'idea-internal': {
+    subject: 'Nueva idea recibida',
+    html: staticTemplates['feedback-internal'].html.replace('Feedback', 'Idea'),
+    text: staticTemplates['feedback-internal'].text.replace('FEEDBACK', 'IDEA')
+  },
+  'business-proposal-internal': {
+    subject: 'Nueva propuesta comercial recibida',
+    html: staticTemplates['feedback-internal'].html.replace('Feedback', 'Propuesta comercial'),
+    text: staticTemplates['feedback-internal'].text.replace('FEEDBACK', 'PROPUESTA COMERCIAL')
+  },
+  'contact-internal': staticTemplates['contact-internal'] ?? staticTemplates['contact-internal']
 };
 
 // Add beta-internal template for internal notifications sent from beta@cojauny.com
@@ -313,10 +396,12 @@ staticTemplates['beta-internal'] = {
 
 const templateSenders: Record<TemplateKey, SenderKey> = {
   'beta-confirmation': 'beta',
-  'feedback-thanks': 'feedback',
-  'contact-thanks': 'support',
-  'contact-notification': 'support',
-  'internal-notification': 'feedback',
+  'feedback-confirmation': 'feedback',
+  'contact-confirmation': 'support',
+  'contact-internal': 'support',
+  'feedback-internal': 'feedback',
+  'idea-internal': 'feedback',
+  'business-proposal-internal': 'feedback',
   'beta-internal': 'beta'
 };
 
@@ -339,6 +424,12 @@ function render(content: TemplateContent, variables: Record<string, string>) {
 }
 
 function resolveTemplate(key: TemplateKey, locale: Locale): TemplateContent {
+  // Support legacy incoming key 'feedback-thanks' by resolving to the proper confirmation
+  if (key === 'feedback-thanks' || key === 'feedback-confirmation') {
+    const pick = localizedTemplates['feedback-confirmation'];
+    return pick[locale] ?? pick.es;
+  }
+
   if (key in localizedTemplates) {
     const localized = localizedTemplates[key as keyof typeof localizedTemplates];
     return localized[locale] ?? localized.es;
@@ -348,7 +439,7 @@ function resolveTemplate(key: TemplateKey, locale: Locale): TemplateContent {
 
 function resolveSender(key: TemplateKey): ResolvedSender {
   // If sending contact confirmation, force the visible sender to contact@cojauny.com
-  if (key === 'contact-thanks') {
+  if (key === 'contact-confirmation' || key === 'contact-thanks') {
     const contactProfile: SenderProfile = {
       email: 'contact@cojauny.com',
       password: undefined,
@@ -541,6 +632,28 @@ async function sendViaResend(
   return await response.json();
 }
 
+function mapTemplateForStorage(original: TemplateKey, variables: Record<string, any> | undefined) {
+  // For feedback flows we need to store template names that reflect the usecase
+  // Support legacy originals like 'feedback-thanks' and 'internal-notification'
+  const usecase = (variables && variables.usecase) || (variables && variables.type) || undefined;
+  // Normalize common variants
+  const normalized = typeof usecase === 'string' ? usecase.replace(/\s+/g, '_').toLowerCase() : undefined;
+
+  if (original === 'feedback-thanks' || original === 'feedback-confirmation') {
+    if (normalized === 'idea') return 'idea-confirmation';
+    if (normalized === 'business_proposal' || normalized === 'business-proposal') return 'business-proposal-confirmation';
+    return 'feedback-confirmation';
+  }
+
+  if (original === 'internal-notification' || original === 'feedback-internal' || original === 'idea-internal' || original === 'business-proposal-internal') {
+    if (normalized === 'idea') return 'idea-internal';
+    if (normalized === 'business_proposal' || normalized === 'business-proposal') return 'business-proposal-internal';
+    return 'feedback-internal';
+  }
+
+  return original;
+}
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: { 'Access-Control-Allow-Origin': '*' } });
@@ -606,9 +719,10 @@ serve(async (req) => {
 
     // Log email sent
     try {
+      const storedTemplate = mapTemplateForStorage(payload.template, payload.variables as any);
       await supabase.from('emails_sent').insert({
         recipient: payload.email,
-        template: payload.template,
+        template: storedTemplate,
         status: 'sent',
         metadata: { locale, variables: payload.variables }
       });
@@ -624,9 +738,10 @@ serve(async (req) => {
     // Try to log the error
     try {
       const payload: Payload = await req.clone().json();
+      const storedTemplate = mapTemplateForStorage(payload.template, payload.variables as any);
       await supabase.from('emails_sent').insert({
         recipient: payload.email,
-        template: payload.template,
+        template: storedTemplate,
         status: 'failed',
         error_message: error.message ?? 'Unknown error',
         metadata: { locale: payload.locale, variables: payload.variables }
