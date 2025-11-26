@@ -218,7 +218,11 @@ const Header = ({ locale, copy }: HeaderProps) => {
         if (element) {
             const headerHeight = getHeaderOffset();
             const elementTop = element.getBoundingClientRect().top + window.scrollY;
-            const offsetPosition = Math.max(0, elementTop - headerHeight);
+            // aplicamos un offset base de +50px para bajar un poco más
+            // y un ajuste especial para #home que debe subir 20px
+            const baseOffset = 50;
+            const homeAdjustment = targetId === 'home' ? -80 : 0;
+            const offsetPosition = Math.max(0, elementTop - headerHeight + baseOffset + homeAdjustment);
             window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
         }
     };
@@ -369,7 +373,9 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                                             const header = document.querySelector('header');
                                                             const headerHeight = header ? header.getBoundingClientRect().height : 0;
                                                             const elementTop = element.getBoundingClientRect().top + window.scrollY;
-                                                            const offsetPosition = Math.max(0, elementTop - headerHeight);
+                                                            const baseOffset = 50;
+                                                            const homeAdjustment = targetId === 'home' ? -20 : 0;
+                                                            const offsetPosition = Math.max(0, elementTop - headerHeight + baseOffset + homeAdjustment);
                                                             window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                                                         }
                                                     }, 300);
