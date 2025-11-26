@@ -70,6 +70,7 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
     // Flags de UI
     const [isMobile, setIsMobile] = useState(false);
     const [isLocked, setIsLocked] = useState(false); // Desktop: after click, evita cambios por hover/observer
+    const [lockedIndex, setLockedIndex] = useState<number | null>(null);
 
     // Posición del iPhone (desktop) y control de transición
     const [phoneTop, setPhoneTop] = useState(0);
@@ -199,15 +200,39 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
 
     /* ---------- Handlers UI ---------- */
     const handleCardClick = (index: number) => {
-        if (isMobile) return; // click no cambia en mobile
-        setActiveStep(index);
-        setIsLocked(true);
+        if (isLocked && lockedIndex === index) {
+            // Desanclar si ya está anclada y se hace clic sobre ella
+            setIsLocked(false);
+            setLockedIndex(null);
+            setActiveStep(index); // Asegurar que se actualice el estado
+        } else {
+            // Anclar la tarjeta
+            setIsLocked(true);
+            setLockedIndex(index);
+            setActiveStep(index);
+        }
     };
 
     const handleCardHover = (index: number) => {
         if (isMobile || isLocked) return;
         setActiveStep(index);
     };
+
+    // Desanclar tarjeta al hacer click fuera de todas las tarjetas
+    useEffect(() => {
+        if (!isLocked || lockedIndex === null) return;
+
+        const handleClickOutside = (event: MouseEvent) => {
+            const clickedInsideAnyCard = cardsRef.current.some(card => card?.contains(event.target as Node));
+            if (!clickedInsideAnyCard) {
+                setIsLocked(false);
+                setLockedIndex(null);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, [isLocked, lockedIndex]);
 
 
 
@@ -239,11 +264,18 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true, margin: '-100px' }}
                                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                                onMouseEnter={() => handleCardHover(idx)}
                                 onClick={() => handleCardClick(idx)}
-                                className={`demo-card transition-all duration-700 cursor-pointer ${activeStep === idx ? 'opacity-100 scale-100' : 'opacity-50 scale-95 hover:opacity-75 hover:scale-98'}`}
+                                onMouseEnter={() => handleCardHover(idx)}
+                                className={`demo-card transition-all duration-700 cursor-pointer ${activeStep === idx ? 'opacity-100 scale-100' : 'opacity-50 scale-95 hover:opacity-75 hover:scale-98'} relative`}
                             >
-                                <div className={`bg-white rounded-3xl p-8 xl:p-10 shadow-xl border-2 transition-all duration-700 ${activeStep === idx ? 'border-blue-200 shadow-2xl' : 'border-slate-100'}`}>
+                                {isLocked && lockedIndex === idx && (
+                                    <div className="absolute top-2 right-2 bg-white rounded-full p-1 shadow-md border-2 border-blue-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 text-blue-500">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                        </svg>
+                                    </div>
+                                )}
+                                <div className={`bg-white rounded-3xl p-8 xl:p-10 shadow-xl border-4 transition-all duration-700 ${isLocked && lockedIndex === idx ? 'border-blue-500' : activeStep === idx ? 'border-blue-200 shadow-2xl' : 'border-slate-100'}`}>
                                     <div className="inline-flex items-center gap-2 mb-5">
                                         <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors duration-700 ${activeStep === idx ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-400'}`}>{idx + 1}</div>
                                         <span className="px-3 py-1.5 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider">{screen.badge}</span>
