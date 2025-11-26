@@ -7,6 +7,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { usePathname, useRouter } from 'next/navigation';
 import type { Locale } from '@/locales/config';
 import type { LandingCopy } from '@/locales/copy';
 
@@ -210,21 +211,43 @@ const Header = ({ locale, copy }: HeaderProps) => {
         // if header exists and is fixed, use its actual height
         return hdr ? hdr.getBoundingClientRect().height : 0;
     };
+    const pathname = usePathname();
+    const router = useRouter();
+
+    const scrollToElementById = (targetId: string) => {
+        const element = document.getElementById(targetId);
+        if (!element) return false;
+        const headerHeight = getHeaderOffset();
+        const elementTop = element.getBoundingClientRect().top + window.scrollY;
+        // aplicamos un offset base de +50px para bajar un poco más
+        // y un ajuste especial para #home que debe subir 20px
+        const baseOffset = 50;
+        const homeAdjustment = targetId === 'home' ? -80 : 0;
+        const offsetPosition = Math.max(0, elementTop - headerHeight + baseOffset + homeAdjustment);
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        return true;
+    };
 
     const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
         e.preventDefault();
         const targetId = href.replace('#', '');
-        const element = document.getElementById(targetId);
-        if (element) {
-            const headerHeight = getHeaderOffset();
-            const elementTop = element.getBoundingClientRect().top + window.scrollY;
-            // aplicamos un offset base de +50px para bajar un poco más
-            // y un ajuste especial para #home que debe subir 20px
-            const baseOffset = 50;
-            const homeAdjustment = targetId === 'home' ? -80 : 0;
-            const offsetPosition = Math.max(0, elementTop - headerHeight + baseOffset + homeAdjustment);
-            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+
+        // si el elemento existe en esta página, hacemos scroll
+        if (scrollToElementById(targetId)) return;
+
+        // si no existe, navegamos al home con hash
+        // comprobamos si ya estamos en la ruta del home
+        const homePath = `/${locale}`;
+        try {
+            router.push(`${homePath}#${targetId}`);
+        } catch (err) {
+            // ignore push errors
         }
+
+        // intentar hacer scroll después de la navegación/local hash update
+        setTimeout(() => {
+            scrollToElementById(targetId);
+        }, 250);
     };
 
     return (
@@ -377,6 +400,15 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                                             const homeAdjustment = targetId === 'home' ? -20 : 0;
                                                             const offsetPosition = Math.max(0, elementTop - headerHeight + baseOffset + homeAdjustment);
                                                             window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                                                            return;
+                                                        }
+
+                                                        // si no existe el elemento en esta página, navegamos al home con hash
+                                                        try {
+                                                            const homePath = `/${locale}`;
+                                                            router.push(`${homePath}#${targetId}`);
+                                                        } catch (err) {
+                                                            // ignore
                                                         }
                                                     }, 300);
                                                 }}

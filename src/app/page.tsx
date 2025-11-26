@@ -2,6 +2,7 @@ import AccessibilitySkipLink from '@/components/AccessibilitySkipLink';
 import CookieBanner from '@/components/CookieBanner';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import HashScrollHandler from '@/components/HashScrollHandler';
 import LandingPageContent from '@/components/LandingPageContent';
 import { getLandingCopy } from '@/locales/copy';
 import { defaultLocale } from '@/locales/config';
@@ -16,6 +17,7 @@ export default function Page() {
         <>
             <AccessibilitySkipLink label={copy.skipLink} />
             <Header locale={locale} copy={copy.header} />
+            <HashScrollHandler />
             <main id="main-content" className="relative pt-24">
                 <LandingPageContent copy={copy} locale={locale} />
             </main>
