@@ -43,7 +43,8 @@ type TemplateKey =
   | 'feedback-thanks'
   | 'contact-thanks'
   | 'contact-notification'
-  | 'internal-notification';
+  | 'internal-notification'
+  | 'beta-internal';
 
 interface Payload {
   email: string;
@@ -296,12 +297,27 @@ const staticTemplates: Record<Extract<TemplateKey, 'contact-notification' | 'int
   }
 };
 
+// Add beta-internal template for internal notifications sent from beta@cojauny.com
+staticTemplates['beta-internal'] = {
+  subject: 'New beta signup - {{email}}',
+  html:
+    "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;\">" +
+    `<div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;padding-bottom:16px;border-bottom:2px solid #e5e7eb;"><img src="${logoUrl}" width="48" alt="Cojauny" style="display:block;border:0" /><div style="font-weight:700;font-size:18px;">Cojauny — Beta</div></div>` +
+    "<p style=\"font-size:15px;font-weight:600;color:#0f172a;\">New beta signup</p>" +
+    "<table style=\"width:100%;border-collapse:collapse;margin:16px 0;\"><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Email:</td><td style=\"padding:8px 0;font-size:14px;\">{{email}}</td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Name:</td><td style=\"padding:8px 0;font-size:14px;\">{{name}}</td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Usecase:</td><td style=\"padding:8px 0;font-size:14px;\">{{usecase}}</td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Language:</td><td style=\"padding:8px 0;font-size:14px;\">{{language}}</td></tr></table>" +
+    "<div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:4px;margin:16px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">Saved data (JSON):</p><pre style=\"white-space:pre-wrap;font-family:'Courier New',monospace;font-size:12px;margin:0;color:#1f2937;\">{{message}}</pre></div>" +
+    "</div>",
+  text:
+    'New beta signup\n\nEmail: {{email}}\nName: {{name}}\nUsecase: {{usecase}}\nLanguage: {{language}}\n\nData: {{message}}\n\nCojauny · ' + siteUrlFromEnv
+};
+
 const templateSenders: Record<TemplateKey, SenderKey> = {
   'beta-confirmation': 'beta',
   'feedback-thanks': 'feedback',
   'contact-thanks': 'support',
   'contact-notification': 'support',
-  'internal-notification': 'feedback'
+  'internal-notification': 'feedback',
+  'beta-internal': 'beta'
 };
 
 function normalizeLocale(requested?: string): Locale {

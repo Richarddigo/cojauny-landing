@@ -33,7 +33,7 @@ export async function GET(request: NextRequest) {
     const { data: referralData, error: referralError } = await supabase
       .from('referral_stats')
       .select('referral_code, referral_link, visits, signups')
-      .eq('user_id', userData.id)
+      .eq('uuid', userData.id)
       .single();
 
     if (referralError) {

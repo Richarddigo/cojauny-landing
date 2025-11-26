@@ -31,7 +31,15 @@ const ReferralPanel = ({ copy, email, referralLink: propReferralLink }: Referral
           throw new Error('Failed to fetch referral stats');
         }
         const data = await response.json();
-        setStats(data.data);
+        // API may return object or array; normalize to object
+        const payload = data.data;
+        if (Array.isArray(payload) && payload.length > 0) {
+          setStats(payload[0]);
+        } else if (payload && typeof payload === 'object') {
+          setStats(payload);
+        } else {
+          setStats(null);
+        }
       } catch (err) {
         setError('Could not load referral stats');
       } finally {

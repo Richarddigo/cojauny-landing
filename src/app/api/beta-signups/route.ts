@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { betaSignupSchema, type BetaSignupInput } from '@/lib/validation';
 import { createServiceRoleClient } from '@/lib/supabase';
+import { countryMap, languageMap } from '@/lib/localeMap';
 import { getClientIp, isHuman } from '@/lib/utils';
 import { triggerEdgeEmailFunction } from '@/lib/email';
 
@@ -66,7 +67,6 @@ export async function POST(request: NextRequest) {
   const insertPayload = {
     email: data.email,
     name: data.fullName,
-    flight_frequency: data.flightFrequency,
     home_airport: data.homeAirport ?? null,
     marketing_opt_in: Boolean(data.updatesOptIn),
     beta_tester: true,
@@ -82,8 +82,16 @@ export async function POST(request: NextRequest) {
     insertPayload.usecase = data.useCase;
   }
 
+  // Map country code to full name if possible
   if (data.country) {
-    insertPayload.country = data.country;
+    const mapped = countryMap[data.country as string] ?? data.country;
+    insertPayload.country = mapped;
+  }
+
+  // Map locale to language name for storage
+  if (data.locale) {
+    const mappedLang = languageMap[data.locale as string] ?? data.locale;
+    insertPayload.language = mappedLang;
   }
 
   if (data.referralCode) {
@@ -142,7 +150,7 @@ export async function POST(request: NextRequest) {
     const { data: referralData, error: referralError } = await supabase
       .from('referral_stats')
       .select('referral_link')
-      .eq('user_id', insertResult.data.id)
+      .eq('uuid', insertResult.data.id)
       .single();
 
     if (!referralError && referralData) {
@@ -162,6 +170,23 @@ export async function POST(request: NextRequest) {
         referral_link: referralLink
       }
     });
+    // Send internal copy to beta@cojauny.com with saved data (best-effort)
+    try {
+      await triggerEdgeEmailFunction({
+        email: 'beta@cojauny.com',
+        template: 'beta-internal',
+        locale: data.locale,
+        variables: {
+          name: data.fullName,
+          email: data.email,
+          usecase: data.useCase ?? '',
+          language: insertPayload.language as string ?? data.locale,
+          message: JSON.stringify(insertResult.data)
+        }
+      });
+    } catch (_err) {
+      // Do not fail user flow if internal email fails
+    }
   } catch (error: any) {
     // Return 502 with error details for easier debugging in dev
     return NextResponse.json(
@@ -180,3 +205,5 @@ export async function POST(request: NextRequest) {
     { status: 201 }
   );
 }
+
+

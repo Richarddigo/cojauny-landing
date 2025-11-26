@@ -133,6 +133,19 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                 if (payload?.errorCode === 'beta_duplicate_email') {
                     // Use localized duplicate error message when available
                     setError(copy.duplicateError ?? copy.error);
+                    try {
+                        // Attempt to fetch referral stats for this email and show panel
+                        const statsResp = await fetch(`/api/referral/stats?email=${encodeURIComponent(form.email)}`);
+                        if (statsResp.ok) {
+                            const statsJson = await statsResp.json().catch(() => null);
+                            const referralLinkFromApi = statsJson?.data?.[0]?.referral_link || '';
+                            setReferralLink(referralLinkFromApi);
+                            setUserEmail(form.email);
+                            setShowReferralPanel(true);
+                        }
+                    } catch (e) {
+                        // ignore
+                    }
                 } else {
                     setError(copy.error);
                 }
@@ -365,9 +378,9 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
 
             {/* Show Referral Panel after successful signup / Mostrar panel de referral tras registro exitoso */}
             {/* Empfehlungs-Panel nach erfolgreicher Anmeldung anzeigen / Afficher le panneau de parrainage après inscription */}
-            {showReferralPanel && userEmail && referralPanelCopy && (
+            {showReferralPanel && userEmail && (
                 <div className="mt-8">
-                    <ReferralPanel copy={referralPanelCopy} email={userEmail} referralLink={referralLink} />
+                    <ReferralPanel copy={referralPanelCopy ?? (copy as any).referralPanel} email={userEmail} referralLink={referralLink} />
                 </div>
             )}
         </div>

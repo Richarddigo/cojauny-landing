@@ -8,9 +8,7 @@ create table if not exists public.waitlist (
     id uuid primary key default uuid_generate_v4(),
     email text not null,
     name text not null,
-    company text,
     usecase text,
-    flight text,
     country text not null default 'es',
     flight_frequency text not null default 'once',
     home_airport text,
@@ -26,9 +24,7 @@ create table if not exists public.waitlist (
     created_at timestamptz not null default timezone('utc', now())
 );
 
-alter table if exists public.waitlist add column if not exists company text;
 alter table if exists public.waitlist add column if not exists usecase text;
-alter table if exists public.waitlist add column if not exists flight text;
 alter table if exists public.waitlist add column if not exists country text not null default 'es';
 alter table if exists public.waitlist add column if not exists flight_frequency text not null default 'once';
 alter table if exists public.waitlist add column if not exists home_airport text;
@@ -39,7 +35,6 @@ alter table if exists public.waitlist add column if not exists terms_accepted bo
 alter table if exists public.waitlist add column if not exists privacy_accepted boolean not null default false;
 alter table if exists public.waitlist add column if not exists language text not null default 'es';
 alter table if exists public.waitlist add column if not exists confirmation_token text;
-alter table if exists public.waitlist add column if not exists confirmed_at timestamptz;
 alter table if exists public.waitlist add column if not exists ip_address inet;
 alter table if exists public.waitlist add column if not exists user_agent text;
 alter table if exists public.waitlist add column if not exists referral_code_used text;
