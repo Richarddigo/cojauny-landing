@@ -128,19 +128,19 @@ try {
 const emailSignatureHtml = (locale: Locale) => {
   const lines: Record<Locale, { tagline: string; contactHtml: string }> = {
     es: {
-      tagline: 'Cojauny — Comparte taxi al aeropuerto',
+      tagline: 'Cojauny — Ahorra en cada viaje al aeropuerto',
       contactHtml: '¿Necesitas ayuda? Escríbenos a <a href="mailto:support@cojauny.com" style="color:#0ea5e9;text-decoration:none;">support@cojauny.com</a>'
     },
     en: {
-      tagline: 'Cojauny — Share airport taxi',
+      tagline: 'Cojauny — Save on every trip to the airport',
       contactHtml: 'Need help? Contact us at <a href="mailto:support@cojauny.com" style="color:#0ea5e9;text-decoration:none;">support@cojauny.com</a>'
     },
     de: {
-      tagline: 'Cojauny — Taxi zum Flughafen teilen',
+      tagline: 'Cojauny — Spare bei jeder Fahrt zum Flughafen',
       contactHtml: 'Brauchen Sie Hilfe? Kontaktieren Sie uns unter <a href="mailto:support@cojauny.com" style="color:#0ea5e9;text-decoration:none;">support@cojauny.com</a>'
     },
     fr: {
-      tagline: "Cojauny — Partagez un taxi vers l'aéroport",
+      tagline: "Cojauny — Économise sur chaque trajet vers l'aéroport",
       contactHtml: 'Besoin d\'aide ? Contactez-nous à <a href="mailto:support@cojauny.com" style="color:#0ea5e9;text-decoration:none;">support@cojauny.com</a>'
     }
   };
@@ -179,10 +179,10 @@ const emailSignatureHtml = (locale: Locale) => {
 
 const emailSignatureText = (locale: Locale) => {
   const lines: Record<Locale, { tagline: string; contact: string }> = {
-    es: { tagline: 'Cojauny — Comparte taxi al aeropuerto', contact: '¿Necesitas ayuda? Escríbenos a support@cojauny.com' },
-    en: { tagline: 'Cojauny — Share airport taxi', contact: 'Need help? Contact us at support@cojauny.com' },
-    de: { tagline: 'Cojauny — Taxi zum Flughafen teilen', contact: 'Brauchen Sie Hilfe? Kontaktieren Sie uns unter support@cojauny.com' },
-    fr: { tagline: "Cojauny — Partagez un taxi vers l'aéroport", contact: "Besoin d'aide ? Contactez-nous à support@cojauny.com" }
+    es: { tagline: 'Cojauny — Ahorra en cada viaje al aeropuerto', contact: '¿Necesitas ayuda? Escríbenos a support@cojauny.com' },
+    en: { tagline: 'Cojauny — Save on every trip to the airport', contact: 'Need help? Contact us at support@cojauny.com' },
+    de: { tagline: 'Cojauny — Spare bei jeder Fahrt zum Flughafen', contact: 'Brauchen Sie Hilfe? Kontaktieren Sie uns unter support@cojauny.com' },
+    fr: { tagline: "Cojauny — Économise sur chaque trajet vers l'aéroport", contact: "Besoin d'aide ? Contactez-nous à support@cojauny.com" }
   };
 
   const pick = lines[locale] ?? lines.es;

@@ -236,7 +236,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       feedback: 'Propuesta'
     },
     seo: {
-      title: 'Cojauny: Comparte Taxi al Aeropuerto con tu Vuelo | Ahorra hasta 75%',
+      title: 'Cojauny: Comparte taxi al aeropuerto y ahorra hasta un 75%',
       description:
         'App para compartir taxi al aeropuerto con pasajeros de tu mismo vuelo. Matching automático, perfiles verificados, chat seguro y ahorro real de 50-75% por trayecto. Disponible en +120 aeropuertos. Descarga gratis para iOS y Android.',
       keywords: [
@@ -251,12 +251,12 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         'coordinar taxi con vuelo',
         'transporte aeropuerto barato'
       ],
-      ogTitle: 'Cojauny: Comparte Taxi al Aeropuerto y Ahorra 50-75% | App Gratuita',
+      ogTitle: 'Cojauny: Comparte taxi al aeropuerto y ahorra 50-75% | App gratuita',
       ogDescription:
         'Conecta con pasajeros de tu vuelo para compartir taxi, van o parking al aeropuerto. Perfiles verificados, chat temporal y ahorro medible. Ya en +120 aeropuertos.'
     },
     hero: {
-      eyebrow: 'Ahorra hasta 75% en cada traslado al aeropuerto',
+      eyebrow: 'Ahorra hasta un 75% en tus traslados al aeropuerto',
       title: 'Comparte taxi con pasajeros de tu mismo vuelo',
       subtitle:
         'Cojauny conecta automáticamente a viajeros que comparten vuelo para organizar taxis, vans o parking compartido. Divide el coste entre 3-4 personas, reduce tu huella de carbono y viaja con perfiles verificados. Todo desde una app segura con chat temporal.',
@@ -739,7 +739,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       feedback: 'Proposal'
     },
     seo: {
-      title: 'Cojauny: Share Airport Taxi with Your Flight | Save up to 75%',
+      title: 'Cojauny: Share airport taxi and save up to 75% on trips',
       description:
         'Connect with passengers on your flight to share airport taxis, vans or parking. Automatic matching, verified profiles, secure chat and real savings of 50-75% per trip. Available at 120+ airports worldwide.',
       keywords: [
@@ -754,12 +754,12 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         'split taxi with travelers',
         'airport transportation app'
       ],
-      ogTitle: 'Cojauny: Share Airport Taxi & Save 50-75% | Free App',
+      ogTitle: 'Cojauny: Share airport taxi & save 50-75% | Free app',
       ogDescription:
         'Match with verified travelers on your flight to share airport transfers. Secure chat, automatic cost splitting, and measurable savings. Now at 120+ airports.'
     },
     hero: {
-      eyebrow: 'Smart coordination for every crew',
+      eyebrow: 'Save up to 75% on your airport transfers',
       title: 'Your shared ride starts before boarding',
       subtitle:
         'Cojauny aligns passengers on the same flight so they can book shared taxis, vans or parking, keep everyone updated and log savings automatically.',
@@ -1244,7 +1244,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       feedback: 'Vorschlag'
     },
     seo: {
-      title: 'Cojauny: Flughafen-Taxi mit Mitreisenden teilen | Bis zu 75% sparen',
+      title: 'Cojauny: Teile dein Flughafentaxi und spare bis zu 75%',
       description:
         'Verbinden Sie sich mit Passagieren Ihres Fluges, um Flughafen-Taxis, Shuttles oder Parkplätze zu teilen. Automatisches Matching, verifizierte Profile, sicherer Chat und echte Ersparnisse von 50-75% pro Fahrt. Verfügbar an 120+ Flughäfen.',
       keywords: [
@@ -1264,7 +1264,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         'Finden Sie verifizierte Mitreisende auf Ihrem Flug zum Teilen von Flughafen-Transfers. Sicherer Chat, automatische Kostenteilung und messbare Ersparnisse. Jetzt an 120+ Flughäfen.'
     },
     hero: {
-      eyebrow: 'Intelligente Koordination für deinen Flug',
+      eyebrow: 'Spare bis zu 75% bei deinen Flughafentransfers',
       title: 'Teile die Fahrt zum Flughafen mit deinen Mitreisenden',
       subtitle:
         'Cojauny bringt Passagiere desselben Tickets zusammen, damit sie in Minuten Taxi, Ride-Sharing oder Parkplätze organisieren. Keine dauerhaften Gruppen, nur das Wesentliche zum Sparen.',
@@ -1749,7 +1749,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       feedback: 'Proposition'
     },
     seo: {
-      title: 'Cojauny : Partagez un Taxi d\'Aéroport avec Votre Vol | Économisez jusqu\'à 75%',
+      title: 'Cojauny : Partagez un taxi d\'aéroport et économisez jusqu\'à 75%',
       description:
         'Connectez-vous avec des passagers de votre vol pour partager des taxis, navettes ou parkings d\'aéroport. Matching automatique, profils vérifiés, chat sécurisé et économies réelles de 50-75% par trajet. Disponible dans 120+ aéroports.',
       keywords: [
@@ -1764,12 +1764,12 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         'trajet partagé aéroport',
         'app transport aéroport'
       ],
-      ogTitle: 'Cojauny : Partagez un Taxi d\'Aéroport & Économisez 50-75% | App Gratuite',
+      ogTitle: 'Cojauny : Partagez un taxi d\'aéroport & économisez 50-75% | App gratuite',
       ogDescription:
         'Trouvez des voyageurs vérifiés sur votre vol pour partager les transferts aéroport. Chat sécurisé, partage automatique des coûts et économies mesurables. Maintenant dans 120+ aéroports.'
     },
     hero: {
-      eyebrow: 'Coordination intelligente pour votre vol',
+      eyebrow: 'Économisez jusqu\'à 75% sur vos transferts aéroportuaires',
       title: 'Partagez votre transport vers l’aéroport avec vos co-passagers',
       subtitle:
         'Cojauny connecte les voyageurs d’un même billet afin d’organiser taxi, VTC ou stationnement en quelques minutes. Pas de réseau social, uniquement ce qu’il faut pour économiser.',

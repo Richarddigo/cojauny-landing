@@ -80,9 +80,9 @@ const emailSignatureHtml = (locale)=>`
           <img src="${logoUrl}" width="48" height="48" alt="Cojauny" style="display:block;border:0;" />
         </td>
         <td style="vertical-align:top;">
-          <div style="font-weight:700;font-size:16px;color:#0f172a;margin-bottom:4px;">Cojauny</div>
+          <div style="font-weight:700;font-size:16px;color:#0f172a;margin-bottom:4px;">Cojauny — Ahorra en cada viaje al aeropuerto</div>
           <div style="font-size:13px;color:#64748b;line-height:1.5;">
-            Productivity tools for creative teams
+            Ahorra en cada viaje al aeropuerto con pasajeros de tu mismo vuelo
           </div>
           <div style="margin-top:8px;">
             <a href="${siteUrlFromEnv}" style="color:#0ea5e9;text-decoration:none;font-size:13px;font-weight:500;">${siteUrlFromEnv.replace(/^https?:\/\//, '')}</a>
@@ -98,8 +98,7 @@ const emailSignatureHtml = (locale)=>`
 const emailSignatureText = `
 
 --
-Cojauny
-Productivity tools for creative teams
+Cojauny — Ahorra en cada viaje al aeropuerto
 ${siteUrlFromEnv}
 Support: support@cojauny.com
 `;
