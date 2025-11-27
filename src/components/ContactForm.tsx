@@ -27,6 +27,7 @@ const ContactForm = ({ locale, copy }: ContactFormProps) => {
     const [success, setSuccess] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [messageError, setMessageError] = useState<string | null>(null);
+    const MAX_CHARS = 1000;
 
     useEffect(() => {
         setForm(buildInitialState(locale));
@@ -43,8 +44,22 @@ const ContactForm = ({ locale, copy }: ContactFormProps) => {
         setSuccess(null);
     };
 
+    // Auto-resize textarea to grow with content
+    const autoResize = (el?: HTMLTextAreaElement | EventTarget | null) => {
+        try {
+            const ta = el instanceof HTMLTextAreaElement ? el : (el as any)?.target ?? null;
+            if (!ta) return;
+            ta.style.height = 'auto';
+            ta.style.height = `${ta.scrollHeight}px`;
+        } catch (e) { }
+    };
+
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        if (form.message && form.message.length > MAX_CHARS) {
+            setMessageError(`El mensaje excede el límite de ${MAX_CHARS} caracteres.`);
+            return;
+        }
         setSubmitting(true);
         setSuccess(null);
         setError(null);
@@ -166,19 +181,24 @@ const ContactForm = ({ locale, copy }: ContactFormProps) => {
                         handleChange(e as any);
                         setMessageError(null);
                     }}
+                    onInput={(e) => autoResize(e)}
                     rows={5}
                     required
                     minLength={10}
+                    maxLength={MAX_CHARS}
                     aria-label={copy.fields.message}
                     aria-invalid={!!messageError}
                     aria-describedby={messageError ? 'contact-message-error' : undefined}
                     className={`resize-none rounded-xl px-4 py-3 text-base shadow-sm transition-all placeholder:text-slate-400 focus:outline-none ${messageError ? 'border-red-500 bg-red-50 text-slate-900 ring-2 ring-red-200' : 'border border-slate-200 bg-white/50 text-slate-900 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10'}`}
                 />
-                {messageError && (
-                    <p id="contact-message-error" className="mt-2 text-sm text-red-600" role="alert">
-                        {messageError}
-                    </p>
-                )}
+                <div className="flex justify-between items-center mt-2">
+                    <p className="text-xs text-slate-500">{form.message.length}/{MAX_CHARS}</p>
+                    {messageError && (
+                        <p id="contact-message-error" className="text-sm text-red-600" role="alert">
+                            {messageError}
+                        </p>
+                    )}
+                </div>
             </label>
 
             <div className="sr-only" aria-hidden>

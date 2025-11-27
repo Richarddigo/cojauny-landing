@@ -42,6 +42,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
     const [userEmail, setUserEmail] = useState<string | null>(null);
     const [showReferralPanel, setShowReferralPanel] = useState(false);
     const [referralLink, setReferralLink] = useState<string>('');
+    const MAX_CHARS = 1000;
 
     // Capture referral code from URL / Capturar código de referral desde URL
     // Empfehlungscode von URL erfassen / Capturer le code de parrainage depuis l'URL
@@ -83,6 +84,16 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
         setSuccess(null);
     };
 
+    // Auto-resize helper for textareas
+    const autoResize = (el?: HTMLTextAreaElement | EventTarget | null) => {
+        try {
+            const ta = el instanceof HTMLTextAreaElement ? el : (el as any)?.target ?? null;
+            if (!ta) return;
+            ta.style.height = 'auto';
+            ta.style.height = `${ta.scrollHeight}px`;
+        } catch (e) { }
+    };
+
     const normalizeOptionalField = (value?: string | null) => {
         if (typeof value !== 'string') {
             return undefined;
@@ -93,6 +104,10 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        if (form.useCase && form.useCase.length > MAX_CHARS) {
+            setError(`El campo de caso excede el límite de ${MAX_CHARS} caracteres.`);
+            return;
+        }
         setSubmitting(true);
         setSuccess(null);
         setError(null);
@@ -293,11 +308,14 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                         name="useCase"
                         value={form.useCase ?? ''}
                         onChange={handleChange}
+                        onInput={(e) => autoResize(e)}
                         rows={3}
+                        maxLength={MAX_CHARS}
                         aria-label={copy.fields.useCase}
                         placeholder={copy.placeholders?.useCase}
                         className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20 resize-none placeholder:text-slate-400"
                     />
+                    <div className="mt-2 text-xs text-slate-500">{(form.useCase ?? '').length}/{MAX_CHARS}</div>
                 </label>
                 <label className="flex items-start gap-3">
                     <input
