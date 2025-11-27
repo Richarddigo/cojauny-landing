@@ -135,10 +135,10 @@ export default function BlogPostPage({ params }: BlogPageProps) {
                 </ReactMarkdown>
             </div>
             <footer className="mt-12 flex flex-col gap-2 text-sm text-slate-500">
-                <span>
+                <span suppressHydrationWarning>
                     {new Date(post.publishedAt).toLocaleDateString(locale)} · {post.author}
                 </span>
-                <span>
+                <span suppressHydrationWarning>
                     {copy.updatedLabel}:{' '}
                     <time dateTime={post.updatedAt}>{new Date(post.updatedAt).toLocaleDateString(locale)}</time>
                 </span>

@@ -180,7 +180,7 @@ const Footer = ({ copy, locale }: FooterProps) => (
                     </Link>
                 </nav>
                 <LanguageSwitcher currentLocale={locale} label={copy.languageLabel} dropdownDirection="up" />
-                <p className="text-xs text-white/60">© {new Date().getFullYear()} Cojauny™. {copy.rights}</p>
+                <p className="text-xs text-white/60" suppressHydrationWarning>© {new Date().getFullYear()} Cojauny™. {copy.rights}</p>
             </div>
         </div>
     </footer>
