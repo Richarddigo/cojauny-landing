@@ -172,6 +172,15 @@ const Footer = ({ copy, locale }: FooterProps) => (
                     <Link href={`/${locale}/legal/terms`} className="hover:text-brand-200">
                         {copy.terms}
                     </Link>
+                    <Link href={`/${locale}/legal/acceptable-use`} className="hover:text-brand-200">
+                        {copy.acceptableUse ?? 'Uso Aceptable'}
+                    </Link>
+                    <Link href={`/${locale}/legal/faq`} className="hover:text-brand-200">
+                        {copy.faq ?? 'FAQ'}
+                    </Link>
+                    <Link href={`/${locale}/legal/subprocessors`} className="hover:text-brand-200">
+                        {copy.subprocessors ?? 'Subprocesadores'}
+                    </Link>
                     <Link href={`/${locale}/blog`} className="hover:text-brand-200">
                         {copy.blog}
                     </Link>

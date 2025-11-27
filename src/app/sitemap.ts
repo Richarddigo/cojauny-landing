@@ -5,7 +5,7 @@ import { locales } from '@/locales/config';
 import { blogPosts } from '@/content/blog/posts';
 
 const localeAwarePaths = ['/', '/contact', '/docs/sdk-plan'];
-const legalPaths = ['/legal/privacy', '/legal/cookies', '/legal/terms'];
+const legalPaths = ['/legal/privacy', '/legal/cookies', '/legal/terms', '/legal/acceptable-use', '/legal/faq', '/legal/subprocessors'];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteMetadata.url.replace(/\/$/, '');
@@ -28,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // Maintain legacy static routes for backwards compatibility
-  const legacyRoutes = ['/legal/privacidad', '/legal/cookies', '/legal/terminos'].map((route) => ({
+  const legacyRoutes = ['/legal/privacidad', '/legal/cookies', '/legal/terminos', '/legal/uso-aceptable', '/legal/faq', '/legal/subprocesadores'].map((route) => ({
     url: `${base}${route}`,
     lastModified,
     changeFrequency: 'monthly' as const,

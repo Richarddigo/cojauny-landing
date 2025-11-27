@@ -213,6 +213,9 @@ export interface LandingCopy {
     privacy: string;
     cookies: string;
     terms: string;
+    acceptableUse?: string;
+    faq?: string;
+    subprocessors?: string;
     contact: string;
     blog: string;
     languageLabel: string;
@@ -718,6 +721,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       privacy: 'Privacidad',
       cookies: 'Cookies',
       terms: 'Términos',
+      acceptableUse: 'Uso Aceptable',
+      faq: 'FAQ',
+      subprocessors: 'Subprocesadores',
       contact: 'Contacto',
       blog: 'Blog',
       languageLabel: 'Idioma'
@@ -1223,6 +1229,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       privacy: 'Privacy',
       cookies: 'Cookies',
       terms: 'Terms',
+      acceptableUse: 'Acceptable Use',
+      faq: 'FAQ',
+      subprocessors: 'Subprocessors',
       contact: 'Contact',
       blog: 'Blog',
       languageLabel: 'Language'
