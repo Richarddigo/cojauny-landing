@@ -3,6 +3,7 @@ import type { Locale } from '@/locales/config';
 
 export type EmailTemplateName =
   | 'beta-confirmation'
+  | 'beta-internal'
   | 'feedback-confirmation'
   | 'idea-confirmation'
   | 'business-proposal-confirmation'
@@ -87,6 +88,9 @@ export const emailTemplateMap: Record<EmailTemplateName, { description: string }
   },
   'feedback-internal': {
     description: 'Notificación interna para feedback (admin).'
+  },
+  'beta-internal': {
+    description: 'Notificación interna para nuevos signups de la beta (admin).'
   },
   'idea-internal': {
     description: 'Notificación interna para ideas (admin).'

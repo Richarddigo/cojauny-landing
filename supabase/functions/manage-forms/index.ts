@@ -40,6 +40,7 @@ type Locale = 'es' | 'en' | 'de' | 'fr';
 type SenderKey = 'beta' | 'feedback' | 'support';
 type TemplateKey =
   | 'beta-confirmation'
+  | 'beta-internal'
   | 'contact-confirmation'
   | 'contact-internal'
   | 'feedback-confirmation'
@@ -47,8 +48,7 @@ type TemplateKey =
   | 'business-proposal-confirmation'
   | 'feedback-internal'
   | 'idea-internal'
-  | 'business-proposal-internal'
-  | 'beta-internal';
+  | 'business-proposal-internal';
 
 interface Payload {
   email: string;

@@ -181,7 +181,7 @@ const ContactForm = ({ locale, copy }: ContactFormProps) => {
                         handleChange(e as any);
                         setMessageError(null);
                     }}
-                    onInput={(e) => autoResize(e)}
+                    onInput={(e) => autoResize(e.currentTarget)}
                     rows={5}
                     required
                     minLength={10}

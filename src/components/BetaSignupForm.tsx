@@ -308,7 +308,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                         name="useCase"
                         value={form.useCase ?? ''}
                         onChange={handleChange}
-                        onInput={(e) => autoResize(e)}
+                        onInput={(e) => autoResize(e.currentTarget)}
                         rows={3}
                         maxLength={MAX_CHARS}
                         aria-label={copy.fields.useCase}

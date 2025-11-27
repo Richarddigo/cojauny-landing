@@ -78,6 +78,9 @@ export async function POST(request: Request) {
 
     const data = validation.data as FeedbackInput;
 
+    // Normalize usecase to a predictable string for template selection
+    const normalizedUsecase = String(data.usecase).replace('_', '-');
+
     // Bot detection
     if (!isHuman(data.honeypot)) {
       return NextResponse.json(
@@ -127,8 +130,8 @@ export async function POST(request: Request) {
 
       // Select user-facing confirmation template based on usecase
       let userTemplate: 'feedback-confirmation' | 'idea-confirmation' | 'business-proposal-confirmation' = 'feedback-confirmation';
-      if (data.usecase === 'idea') userTemplate = 'idea-confirmation';
-      if (data.usecase === 'business_proposal' || data.usecase === 'business-proposal') userTemplate = 'business-proposal-confirmation';
+      if (normalizedUsecase === 'idea') userTemplate = 'idea-confirmation';
+      if (normalizedUsecase === 'business-proposal') userTemplate = 'business-proposal-confirmation';
 
       await triggerEdgeEmailFunction({
         email: data.email,
@@ -139,8 +142,8 @@ export async function POST(request: Request) {
 
       // send admin a usecase-specific internal template
       let adminTemplate: 'feedback-internal' | 'idea-internal' | 'business-proposal-internal' = 'feedback-internal';
-      if (data.usecase === 'idea') adminTemplate = 'idea-internal';
-      if (data.usecase === 'business_proposal' || data.usecase === 'business-proposal') adminTemplate = 'business-proposal-internal';
+      if (normalizedUsecase === 'idea') adminTemplate = 'idea-internal';
+      if (normalizedUsecase === 'business-proposal') adminTemplate = 'business-proposal-internal';
 
       await triggerEdgeEmailFunction({
         email: adminRecipient,

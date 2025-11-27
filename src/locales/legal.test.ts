@@ -1,19 +1,19 @@
-import legalCopy from './legal';
+import { getLegalCopy } from './legal';
+
+const legalCopy = getLegalCopy('es');
 
 describe('legalCopy (ES)', () => {
   it('debe tener las claves principales', () => {
-    expect(legalCopy).toHaveProperty('es');
-    const es = legalCopy.es;
-    expect(es).toHaveProperty('privacy');
-    expect(es).toHaveProperty('cookies');
-    expect(es).toHaveProperty('terms');
-    expect(es).toHaveProperty('acceptableUse');
-    expect(es).toHaveProperty('faq');
-    expect(es).toHaveProperty('subprocessors');
+    expect(legalCopy).toHaveProperty('privacy');
+    expect(legalCopy).toHaveProperty('cookies');
+    expect(legalCopy).toHaveProperty('terms');
+    expect(legalCopy).toHaveProperty('acceptableUse');
+    expect(legalCopy).toHaveProperty('faq');
+    expect(legalCopy).toHaveProperty('subprocessors');
   });
 
   it('debe tener secciones y contactos en privacidad', () => {
-    const priv = legalCopy.es.privacy;
+    const priv = legalCopy.privacy;
     expect(priv).toHaveProperty('title');
     expect(priv).toHaveProperty('intro');
     expect(priv).toHaveProperty('updatedAt');
@@ -23,14 +23,14 @@ describe('legalCopy (ES)', () => {
   });
 
   it('cada sección de privacidad debe tener heading y body', () => {
-    for (const section of legalCopy.es.privacy.sections) {
+    for (const section of legalCopy.privacy.sections) {
       expect(section).toHaveProperty('heading');
       expect(section).toHaveProperty('body');
     }
   });
 
   it('debe tener secciones y contacto en cookies', () => {
-    const cookies = legalCopy.es.cookies;
+    const cookies = legalCopy.cookies;
     expect(cookies).toHaveProperty('title');
     expect(cookies).toHaveProperty('intro');
     expect(cookies).toHaveProperty('updatedAt');
@@ -40,7 +40,7 @@ describe('legalCopy (ES)', () => {
   });
 
   it('debe tener secciones y contacto en términos', () => {
-    const terms = legalCopy.es.terms;
+    const terms = legalCopy.terms;
     expect(terms).toHaveProperty('title');
     expect(terms).toHaveProperty('intro');
     expect(terms).toHaveProperty('updatedAt');
@@ -50,7 +50,7 @@ describe('legalCopy (ES)', () => {
   });
 
   it('debe tener preguntas frecuentes y contacto en faq', () => {
-    const faq = legalCopy.es.faq;
+    const faq = legalCopy.faq;
     expect(faq).toHaveProperty('title');
     expect(faq).toHaveProperty('intro');
     expect(faq).toHaveProperty('updatedAt');
@@ -69,7 +69,7 @@ describe('legalCopy (ES)', () => {
   });
 
   it('debe tener proveedores y contacto en subprocessors', () => {
-    const sub = legalCopy.es.subprocessors;
+    const sub = legalCopy.subprocessors;
     expect(sub).toHaveProperty('title');
     expect(sub).toHaveProperty('intro');
     expect(sub).toHaveProperty('updatedAt');
