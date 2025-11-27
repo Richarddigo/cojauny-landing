@@ -82,14 +82,19 @@ export default function BlogIndex({ params }: BlogIndexProps) {
                         className="group relative flex flex-col overflow-hidden rounded-3xl border border-white/20 bg-white/80 p-8 shadow-soft-glow backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-2xl hover:shadow-brand-500/10"
                     >
                         <div className="mb-8 flex items-center justify-center">
-                            <div className="relative flex h-24 w-24 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-50 to-white shadow-inner transition-transform duration-500 group-hover:scale-110">
+                            <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-50 to-white shadow-inner transition-transform duration-500 group-hover:scale-110">
                                 <Image
                                     src="/assets/logo/mountain_black.svg"
                                     alt="Cojauny"
-                                    width={64}
-                                    height={64}
-                                    className="h-16 w-16 opacity-80 transition-opacity duration-300 group-hover:opacity-100"
+                                    width={32}
+                                    height={32}
+                                    className="h-8 w-8 opacity-80 transition-opacity duration-300 group-hover:opacity-100"
                                 />
+                            </div>
+                            <div className="ml-3 text-xs text-slate-700">
+                                <strong>
+                                    {locale === 'es' ? 'Ahorra en cada viaje al aeropuerto' : locale === 'de' ? 'Spare bei jeder Fahrt zum Flughafen' : locale === 'fr' ? "Économise sur chaque trajet vers l'aéroport" : 'Save on every trip to the airport'}
+                                </strong>
                             </div>
                         </div>
 

@@ -339,7 +339,7 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                 animate={prefersReducedMotion ? undefined : { x: 0 }}
                                 exit={prefersReducedMotion ? undefined : { x: '100%' }}
                                 transition={prefersReducedMotion ? { duration: 0 } : { type: 'spring', stiffness: 300, damping: 30 }}
-                                className="relative h-full w-auto min-w-max max-w-[95vw] bg-slate-900 px-4 py-6 sm:px-6 sm:ring-1 sm:ring-white/10 flex flex-col"
+                                className="relative h-full w-auto min-w-max max-w-[95vw] bg-slate-900 px-4 py-6 sm:px-6 sm:ring-1 sm:ring-white/10 flex flex-col overflow-y-auto max-h-screen"
                                 onTouchStart={(e) => {
                                     (e.currentTarget as any)._touchStartX = e.touches?.[0]?.clientX ?? 0;
                                 }}
@@ -396,6 +396,12 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                                             const header = document.querySelector('header');
                                                             const headerHeight = header ? header.getBoundingClientRect().height : 0;
                                                             const elementTop = element.getBoundingClientRect().top + window.scrollY;
+                                                            // On mobile, when clicking 'home' we want to ensure we land at the very top
+                                                            const isMobile = typeof window !== 'undefined' ? window.matchMedia('(max-width: 767px)').matches : false;
+                                                            if (isMobile && targetId === 'home') {
+                                                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                                                                return;
+                                                            }
                                                             const baseOffset = 50;
                                                             const homeAdjustment = targetId === 'home' ? -20 : 0;
                                                             const offsetPosition = Math.max(0, elementTop - headerHeight + baseOffset + homeAdjustment);

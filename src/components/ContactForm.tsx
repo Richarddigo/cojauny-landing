@@ -192,7 +192,7 @@ const ContactForm = ({ locale, copy }: ContactFormProps) => {
                     className={`resize-none rounded-xl px-4 py-3 text-base shadow-sm transition-all placeholder:text-slate-400 focus:outline-none ${messageError ? 'border-red-500 bg-red-50 text-slate-900 ring-2 ring-red-200' : 'border border-slate-200 bg-white/50 text-slate-900 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10'}`}
                 />
                 <div className="flex justify-between items-center mt-2">
-                    <p className="text-xs text-slate-500">{form.message.length}/{MAX_CHARS}</p>
+                    <p className="text-sm text-slate-600">{form.message.length}/{MAX_CHARS}</p>
                     {messageError && (
                         <p id="contact-message-error" className="text-sm text-red-600" role="alert">
                             {messageError}

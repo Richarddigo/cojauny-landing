@@ -120,6 +120,27 @@ const LanguageSwitcherInner = ({ currentLocale, label, dropdownDirection = 'down
         };
     }, [open]);
 
+    // When used inside the mobile menu (fullWidth), ensure the menu container becomes scrollable when the dropdown opens
+    useEffect(() => {
+        if (!open || !fullWidth) return;
+        try {
+            // find closest ancestor with role=dialog (mobile menu portal)
+            const el = buttonRef.current?.closest('[role="dialog"]') as HTMLElement | null;
+            if (!el) return;
+            // store original overflow to restore later
+            const prevOverflow = el.style.overflowY;
+            const prevMax = el.style.maxHeight;
+            el.style.overflowY = 'auto';
+            el.style.maxHeight = '100vh';
+            return () => {
+                el.style.overflowY = prevOverflow;
+                el.style.maxHeight = prevMax;
+            };
+        } catch (e) {
+            // ignore
+        }
+    }, [open, fullWidth]);
+
     // keyboard handling + focus trap
     useEffect(() => {
         if (!open) return;
@@ -227,29 +248,32 @@ const LanguageSwitcherInner = ({ currentLocale, label, dropdownDirection = 'down
                         }
                     }}
                 >
-                    {options.map((option) => {
-                        const isActive = option.value === currentLocale;
-                        return (
-                            <button
-                                key={option.value}
-                                type="button"
-                                role="menuitem"
-                                onClick={() => {
-                                    navigateToLocale(option.value);
-                                    setOpen(false);
-                                }}
-                                className={`flex w-full items-center justify-between gap-3 rounded-2xl px-3 py-2 text-left text-sm transition ${isActive ? 'bg-white/10 text-white' : 'text-white/80'}`}
-                            >
-                                <span className="flex items-center gap-3">
-                                    <span aria-hidden className="flex h-8 w-8 items-center justify-center">
-                                        <option.flag className="h-6 w-6 rounded-sm" />
+                    {/* Ensure the dropdown itself never causes page overflow on small screens. Limit its height. */}
+                    <div className="max-h-[40vh] overflow-y-auto">
+                        {options.map((option) => {
+                            const isActive = option.value === currentLocale;
+                            return (
+                                <button
+                                    key={option.value}
+                                    type="button"
+                                    role="menuitem"
+                                    onClick={() => {
+                                        navigateToLocale(option.value);
+                                        setOpen(false);
+                                    }}
+                                    className={`flex w-full items-center justify-between gap-3 rounded-2xl px-3 py-2 text-left text-sm transition ${isActive ? 'bg-white/10 text-white' : 'text-white/80'}`}
+                                >
+                                    <span className="flex items-center gap-3">
+                                        <span aria-hidden className="flex h-8 w-8 items-center justify-center">
+                                            <option.flag className="h-6 w-6 rounded-sm" />
+                                        </span>
+                                        <span className="font-medium">{option.label}</span>
                                     </span>
-                                    <span className="font-medium">{option.label}</span>
-                                </span>
-                                {isActive ? <CheckIcon className="h-4 w-4 text-brand-200" aria-hidden /> : null}
-                            </button>
-                        );
-                    })}
+                                    {isActive ? <CheckIcon className="h-4 w-4 text-brand-200" aria-hidden /> : null}
+                                </button>
+                            );
+                        })}
+                    </div>
                 </div>
             )}
         </div>

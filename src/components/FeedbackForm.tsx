@@ -158,7 +158,7 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
                     {copy.caseOptions?.map((option) => (
                         <label
                             key={option.value}
-                            className={`flex flex-1 cursor-pointer flex-col items-center gap-2 rounded-xl border p-4 transition-all hover:bg-slate-50 ${form.usecase === option.value
+                            className={`flex min-w-0 flex-1 cursor-pointer flex-col items-center gap-1 rounded-xl border p-2 sm:p-4 transition-all hover:bg-slate-50 ${form.usecase === option.value
                                 ? 'border-brand-500 bg-brand-50/50 ring-2 ring-brand-500/20'
                                 : 'border-slate-200 bg-white/50'
                                 }`}
@@ -176,8 +176,9 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
                                 {option.value === 'idea' && <LightBulbIcon className="h-8 w-8" />}
                                 {option.value === 'business_proposal' && <BriefcaseIcon className="h-8 w-8" />}
                             </span>
-                            <span className="text-xs font-medium capitalize text-slate-600">
-                                {option.label}
+                            <span className="text-xs sm:text-xs font-medium capitalize text-slate-600 text-center break-words whitespace-normal max-w-full px-1">
+                                <span className="sm:hidden text-[12px]">{option.label}</span>
+                                <span className="hidden sm:inline">{option.label}</span>
                             </span>
                         </label>
                     ))}
@@ -205,7 +206,7 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
                     className={`resize-none rounded-xl px-4 py-3 text-base shadow-sm transition-all placeholder:text-slate-400 focus:outline-none ${messageError ? 'border-red-500 bg-red-50 text-slate-900 ring-2 ring-red-200' : 'border border-slate-200 bg-white/50 text-slate-900 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10'}`}
                 />
                 <div className="flex justify-between items-center mt-2">
-                    <p className="text-xs text-slate-500">{form.message.length}/{MAX_CHARS}</p>
+                    <p className="text-sm text-slate-600">{form.message.length}/{MAX_CHARS}</p>
                     {messageError && (
                         <p id="feedback-message-error" className="text-sm text-red-600" role="alert">
                             {messageError}
