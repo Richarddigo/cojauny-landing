@@ -114,15 +114,21 @@ let logoBase64: string | null = null;
 try {
   const response = await fetch(logoUrl);
   if (response.ok) {
-      text: "Bonjour {{name}},\n\nMerci pour votre retour sur Cojauny. Nous l'avons bien reçu et notre équipe produit l'examinera.\n\nRépondez pour ajouter des précisions."
+    const arrayBuffer = await response.arrayBuffer();
     const bytes = new Uint8Array(arrayBuffer);
-    // Convert to base64
+    // Convert to base64 in chunks to avoid call stack limits
     let binary = '';
     const chunk = 0x8000;
     for (let i = 0; i < bytes.length; i += chunk) {
       binary += String.fromCharCode(...bytes.subarray(i, i + chunk));
     }
-    logoBase64 = btoa(binary);
+    // btoa is available in Deno runtime; fallback to Buffer if not
+    try {
+      logoBase64 = typeof btoa === 'function' ? btoa(binary) : Buffer.from(binary, 'binary').toString('base64');
+    } catch (e) {
+      // As a last resort, set null and continue; inline logo is optional
+      logoBase64 = null;
+    }
   }
 } catch (_e) {
   logoBase64 = null;
@@ -340,6 +346,20 @@ const localizedTemplates: Record<Extract<TemplateKey, 'beta-confirmation' | 'con
   }
 };
 
+const feedbackInternalContent: TemplateContent = {
+  subject: 'Nuevo feedback recibido',
+  html:
+    "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;\">" +
+    `<div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;padding-bottom:16px;border-bottom:2px solid #e5e7eb;"><img src="${logoUrl}" width="48" alt="Cojauny" style="display:block;border:0" /><div style="font-weight:700;font-size:18px;">Cojauny — Feedback</div></div>` +
+    "<p style=\"font-size:15px;font-weight:600;color:#0f172a;\">Nuevo feedback del producto</p>" +
+    "<table style=\"width:100%;border-collapse:collapse;margin:16px 0;\"><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">De:</td><td style=\"padding:8px 0;font-size:14px;\">{{name}}</td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Email:</td><td style=\"padding:8px 0;font-size:14px;\"><a href=\"mailto:{{email}}\" style=\"color:#0ea5e9;text-decoration:none;\">{{email}}</a></td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Usecase:</td><td style=\"padding:8px 0;font-size:14px;\">{{usecase}}</td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Idioma:</td><td style=\"padding:8px 0;font-size:14px;\">{{locale}}</td></tr></table>" +
+    "<div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:4px;margin:16px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">Mensaje:</p><pre style=\"white-space:pre-wrap;font-family:'Courier New',monospace;font-size:14px;margin:0;color:#1f2937;\">{{message}}</pre></div>" +
+    "<p style=\"margin-top:24px;font-size:12px;color:#9ca3af;\">Responde directamente al usuario en: {{email}}</p>" +
+    "</div>",
+  text:
+    '=== NUEVO FEEDBACK ===\n\nDe: {{name}}\nEmail: {{email}}\nUsecase: {{usecase}}\nIdioma: {{locale}}\n\n--- MENSAJE ---\n{{message}}\n\nResponde a: {{email}}\n\nCojauny · ' + siteUrlFromEnv
+};
+
 const staticTemplates: Record<Extract<TemplateKey, 'contact-internal' | 'feedback-internal' | 'idea-internal' | 'business-proposal-internal' | 'beta-internal'>, TemplateContent> = {
   'contact-internal': {
     subject: 'Nueva solicitud de soporte',
@@ -354,30 +374,17 @@ const staticTemplates: Record<Extract<TemplateKey, 'contact-internal' | 'feedbac
     text:
       '=== NUEVA SOLICITUD DE SOPORTE ===\n\nDe: {{name}}\nEmail: {{email}}\nAsunto: {{topic}}\nIdioma: {{locale}}\n\n--- MENSAJE ---\n{{message}}\n\nResponde a: {{email}}\n\nCojauny · ' + siteUrlFromEnv
   },
-  'feedback-internal': {
-    subject: 'Nuevo feedback recibido',
-    html:
-      "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;\">" +
-      `<div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;padding-bottom:16px;border-bottom:2px solid #e5e7eb;"><img src="${logoUrl}" width="48" alt="Cojauny" style="display:block;border:0" /><div style="font-weight:700;font-size:18px;">Cojauny — Feedback</div></div>` +
-      "<p style=\"font-size:15px;font-weight:600;color:#0f172a;\">Nuevo feedback del producto</p>" +
-      "<table style=\"width:100%;border-collapse:collapse;margin:16px 0;\"><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">De:</td><td style=\"padding:8px 0;font-size:14px;\">{{name}}</td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Email:</td><td style=\"padding:8px 0;font-size:14px;\"><a href=\"mailto:{{email}}\" style=\"color:#0ea5e9;text-decoration:none;\">{{email}}</a></td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Usecase:</td><td style=\"padding:8px 0;font-size:14px;\">{{usecase}}</td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Idioma:</td><td style=\"padding:8px 0;font-size:14px;\">{{locale}}</td></tr></table>" +
-      "<div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:4px;margin:16px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">Mensaje:</p><pre style=\"white-space:pre-wrap;font-family:'Courier New',monospace;font-size:14px;margin:0;color:#1f2937;\">{{message}}</pre></div>" +
-      "<p style=\"margin-top:24px;font-size:12px;color:#9ca3af;\">Responde directamente al usuario en: {{email}}</p>" +
-      "</div>",
-    text:
-      '=== NUEVO FEEDBACK ===\n\nDe: {{name}}\nEmail: {{email}}\nUsecase: {{usecase}}\nIdioma: {{locale}}\n\n--- MENSAJE ---\n{{message}}\n\nResponde a: {{email}}\n\nCojauny · ' + siteUrlFromEnv
-  },
+  'feedback-internal': feedbackInternalContent,
   'idea-internal': {
     subject: 'Nueva idea recibida',
-    html: staticTemplates['feedback-internal'].html.replace('Feedback', 'Idea'),
-    text: staticTemplates['feedback-internal'].text.replace('FEEDBACK', 'IDEA')
+    html: feedbackInternalContent.html.replace('Feedback', 'Idea'),
+    text: feedbackInternalContent.text.replace('FEEDBACK', 'IDEA')
   },
   'business-proposal-internal': {
     subject: 'Nueva propuesta comercial recibida',
-    html: staticTemplates['feedback-internal'].html.replace('Feedback', 'Propuesta comercial'),
-    text: staticTemplates['feedback-internal'].text.replace('FEEDBACK', 'PROPUESTA COMERCIAL')
-  },
-  'contact-internal': staticTemplates['contact-internal'] ?? staticTemplates['contact-internal']
+    html: feedbackInternalContent.html.replace('Feedback', 'Propuesta comercial'),
+    text: feedbackInternalContent.text.replace('FEEDBACK', 'PROPUESTA COMERCIAL')
+  }
 };
 
 // Add beta-internal template for internal notifications sent from beta@cojauny.com
@@ -397,6 +404,8 @@ staticTemplates['beta-internal'] = {
 const templateSenders: Record<TemplateKey, SenderKey> = {
   'beta-confirmation': 'beta',
   'feedback-confirmation': 'feedback',
+  'idea-confirmation': 'feedback',
+  'business-proposal-confirmation': 'feedback',
   'contact-confirmation': 'support',
   'contact-internal': 'support',
   'feedback-internal': 'feedback',
@@ -470,7 +479,7 @@ function resolveSender(key: TemplateKey): ResolvedSender {
   }
 
   if (!defaultUser || !defaultPassword) {
-    throw new Error('No hay credenciales SMTP predeterminadas configuradas');
+    throw new Error('No hay credenciales SMTP predeterminadas configuradas. Configure SMTP_USER and SMTP_PASS o las variables específicas por remitente.');
   }
 
   if (profile.email && !profile.password) {
@@ -710,6 +719,13 @@ serve(async (req) => {
     }
 
     const useResend = Deno.env.get('USE_RESEND') === 'true';
+    const debug = Deno.env.get('DEBUG_EMAIL') === 'true' || Deno.env.get('TEST_CAPTURE') === 'true';
+
+    if (debug) {
+      try {
+        await Deno.writeTextFile && Deno.writeTextFile('tmp/email-log.txt', `${new Date().toISOString()} - Sending ${payload.template} to ${payload.email} using ${useResend ? 'Resend' : 'SMTP'}\n`, { create: true, append: true });
+      } catch (_e) {}
+    }
 
     if (useResend) {
       await sendViaResend(payload.email, renderedWithSignature, sender);

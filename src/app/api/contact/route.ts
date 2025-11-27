@@ -132,7 +132,12 @@ export async function POST(request: NextRequest) {
 
   // Trigger email notifications via Edge Function
   try {
-    const adminRecipient = env.EMAIL_ADMIN_RECIPIENT || INTERNAL_CONTACT_EMAIL;
+    // Ensure internal contact notifications always go to support@cojauny.com
+    // Ignore any EMAIL_ADMIN_RECIPIENT that points to feedback@cojauny.com
+    let adminRecipient = env.EMAIL_ADMIN_RECIPIENT ?? INTERNAL_CONTACT_EMAIL;
+    if (!adminRecipient || adminRecipient === 'feedback@cojauny.com') {
+      adminRecipient = INTERNAL_CONTACT_EMAIL;
+    }
 
     // 1. Send confirmation to user
     await triggerEdgeEmailFunction({

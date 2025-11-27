@@ -1,0 +1,9 @@
+{
+  "template": "contact-confirmation",
+  "locale": "es",
+  "recipient": "richarddigo@gmail.com",
+  "sender": "contact@cojauny.com",
+  "senderName": "Cojauny Contact",
+  "useResend": false,
+  "attachments": true
+}
