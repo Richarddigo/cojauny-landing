@@ -264,7 +264,7 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                 className="h-7 w-auto sm:h-8"
                                 priority
                             />
-                            <span className="text-lg font-bold text-white sm:text-xl">Cojauny™</span>
+                            <span className="text-lg font-bold text-white sm:text-xl">Cojauny</span>
                         </a>
                     </div>
 
@@ -356,7 +356,7 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                 <div className="flex items-center justify-between gap-4">
                                     <a href={`/${locale}`} className="-m-1.5 flex items-center gap-2 p-1.5 sm:gap-3" onClick={() => setMobileMenuOpen(false)}>
                                         <Image src="/assets/logo/mountain_white.svg" alt="Cojauny" width={32} height={32} className="h-7 w-auto sm:h-8" />
-                                        <span className="text-lg font-bold text-white sm:text-xl">Cojauny™</span>
+                                        <span className="text-lg font-bold text-white sm:text-xl">Cojauny</span>
                                     </a>
                                     <button
                                         ref={closeButtonRef}

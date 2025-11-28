@@ -1,9 +1,0 @@
-{
-  "template": "beta-confirmation",
-  "locale": "es",
-  "recipient": "richarddigo@gmail.com",
-  "sender": "beta@cojauny.com",
-  "senderName": "Cojauny Beta",
-  "useResend": false,
-  "attachments": true
-}

@@ -126,7 +126,7 @@ const Footer = ({ copy, locale }: FooterProps) => (
     <footer className="border-t border-white/10 bg-slate-900">
         <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 md:flex-row md:items-center md:justify-between">
             <div>
-                <p className="text-lg font-semibold text-white">Cojauny™</p>
+                <p className="text-lg font-semibold text-white">Cojauny</p>
                 <p className="mt-2 max-w-xs text-sm text-white/80">{copy.description}</p>
                 <div className="mt-4 flex gap-4">
                     <Link
@@ -189,7 +189,7 @@ const Footer = ({ copy, locale }: FooterProps) => (
                     </Link>
                 </nav>
                 <LanguageSwitcher currentLocale={locale} label={copy.languageLabel} dropdownDirection="up" />
-                <p className="text-xs text-white/60" suppressHydrationWarning>© {new Date().getFullYear()} Cojauny™. {copy.rights}</p>
+                <p className="text-xs text-white/60" suppressHydrationWarning>© {new Date().getFullYear()} Cojauny. {copy.rights}</p>
             </div>
         </div>
     </footer>

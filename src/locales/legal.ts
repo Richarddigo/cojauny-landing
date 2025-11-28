@@ -161,7 +161,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
         },
         {
           heading: 'Propiedad Intelectual y Licencias Limitadas',
-          body: 'Cojauny™, el código subyacente, diseños de interfaz, documentación técnica y metodologías de coordinación son propiedad del Equipo Cojauny o sus licenciantes. Se concede licencia limitada no exclusiva para uso personal durante la beta. Prohibida la reproducción, distribución o creación de obras derivadas sin autorización por escrito.'
+          body: 'Cojauny, el código subyacente, diseños de interfaz, documentación técnica y metodologías de coordinación son propiedad del Equipo Cojauny o sus licenciantes. Se concede licencia limitada no exclusiva para uso personal durante la beta. Prohibida la reproducción, distribución o creación de obras derivadas sin autorización por escrito.'
         },
         {
           heading: 'Estructura de Responsabilidad en Entorno Beta',
@@ -412,7 +412,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
         },
         {
           heading: "Intellectual Property and Limited Licenses",
-          body: "Cojauny™, underlying code, interface designs, technical documentation, and coordination methodologies are property of the Cojauny Team or its licensors. A limited non-exclusive license is granted for personal use during beta. Reproduction, distribution, or derivative works are prohibited without written authorization."
+          body: "Cojauny, underlying code, interface designs, technical documentation, and coordination methodologies are property of the Cojauny Team or its licensors. A limited non-exclusive license is granted for personal use during beta. Reproduction, distribution, or derivative works are prohibited without written authorization."
         },
         {
           heading: "Liability Structure in Beta Environment",
@@ -663,7 +663,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
         },
         {
           heading: "Geistiges Eigentum und beschränkte Lizenzen",
-          body: "Cojauny™, zugrundeliegender Code, Interface-Designs, technische Dokumentation und Koordinationsmethodologien sind Eigentum des Cojauny Teams oder seiner Lizenzgeber. Eine beschränkte, nicht-exklusive Lizenz wird für persönliche Nutzung während der Beta gewährt. Reproduktion, Distribution oder abgeleitete Werke sind ohne schriftliche Autorisierung verboten."
+          body: "Cojauny, zugrundeliegender Code, Interface-Designs, technische Dokumentation und Koordinationsmethodologien sind Eigentum des Cojauny Teams oder seiner Lizenzgeber. Eine beschränkte, nicht-exklusive Lizenz wird für persönliche Nutzung während der Beta gewährt. Reproduktion, Distribution oder abgeleitete Werke sind ohne schriftliche Autorisierung verboten."
         },
         {
           heading: "Haftungsstruktur in Beta-Umgebung",
@@ -912,7 +912,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
         },
         {
           heading: "Propriété Intellectuelle et Licences Limitées",
-          body: "Cojauny™, le code sous-jacent, designs d'interface, documentation technique et méthodologies de coordination sont propriété de l'Équipe Cojauny ou de ses concédants. Une licence limitée non exclusive est concédée pour usage personnel pendant la bêta. Reproduction, distribution ou création d'œuvres dérivées interdites sans autorisation écrite."
+          body: "Cojauny, le code sous-jacent, designs d'interface, documentation technique et méthodologies de coordination sont propriété de l'Équipe Cojauny ou de ses concédants. Une licence limitée non exclusive est concédée pour usage personnel pendant la bêta. Reproduction, distribution ou création d'œuvres dérivées interdites sans autorisation écrite."
         },
         {
           heading: "Structure de Responsabilité en Environnement Bêta",
