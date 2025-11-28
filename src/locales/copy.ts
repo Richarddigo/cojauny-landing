@@ -1736,7 +1736,10 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       playStoreSoon: 'Google Play (bald verfügbar)',
       privacy: 'Datenschutz',
       cookies: 'Cookies',
-      terms: 'AGB',
+      terms: 'Bedingungen',
+      acceptableUse: 'Zulässige Nutzung',
+      faq: 'FAQ',
+      subprocessors: 'Unterauftragsverarbeiter',
       contact: 'Kontakt',
       blog: 'Blog',
       languageLabel: 'Sprache'
@@ -2208,6 +2211,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       privacy: 'Confidentialité',
       cookies: 'Cookies',
       terms: 'Conditions',
+      acceptableUse: 'Utilisation Acceptable',
+      faq: 'FAQ',
+      subprocessors: 'Sous-traitants',
       contact: 'Contact',
       blog: 'Blog',
       languageLabel: 'Langue'
