@@ -2,6 +2,8 @@
 
 import { Fragment, useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
 import AlertMessage from '@/components/AlertMessage';
+import { apiClient, ApiError } from '@/lib/api-client';
+
 
 import { betaSignupSchema, type BetaSignupInput } from '@/lib/validation';
 import type { LandingCopy } from '@/locales/copy';
@@ -44,8 +46,8 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
     const [referralLink, setReferralLink] = useState<string>('');
     const MAX_CHARS = 1000;
 
-    // Capture referral code from URL / Capturar código de referral desde URL
-    // Empfehlungscode von URL erfassen / Capturer le code de parrainage depuis l'URL
+
+    // Capture referral code from URL
     useEffect(() => {
         if (typeof window === 'undefined') return;
 
@@ -54,37 +56,27 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
 
         if (refParam) {
             setReferralCode(refParam);
-
-            // Track the visit anonymously / Rastrear la visita de forma anónima
-            // Besuch anonym verfolgen / Suivre la visite de manière anonyme
-            fetch('/api/referral/visit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ referralCode: refParam })
-            }).catch(err => { });
+            // Track visit
+            apiClient.referral.visit(refParam).catch(() => { });
         }
     }, []);
-
-    useEffect(() => {
-        setForm(buildInitialState(locale, referralCode));
-        setSuccess(null);
-        setError(null);
-    }, [locale, referralCode]);
 
     const handleChange = (
         event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
     ) => {
-        const target = event.target;
-        const { name, value } = target;
-        const nextValue = target instanceof HTMLInputElement && target.type === 'checkbox' ? target.checked : value;
-        setForm((prev) => ({ ...prev, [name]: nextValue }));
+        const { name, value, type } = event.target;
+
+        if (type === 'checkbox') {
+            const checked = (event.target as HTMLInputElement).checked;
+            setForm((prev) => ({ ...prev, [name]: checked }));
+        } else {
+            setForm((prev) => ({ ...prev, [name]: value }));
+        }
         setError(null);
         setSuccess(null);
     };
 
-    // Auto-resize helper for textareas
+    // Auto-resize textarea to fit content and avoid scrollbars
     const autoResize = (el?: HTMLTextAreaElement | EventTarget | null) => {
         try {
             const ta = el instanceof HTMLTextAreaElement ? el : (el as any)?.target ?? null;
@@ -94,40 +86,14 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
         } catch (e) { }
     };
 
-    const normalizeOptionalField = (value?: string | null) => {
-        if (typeof value !== 'string') {
-            return undefined;
-        }
-        const trimmed = value.trim();
-        return trimmed.length > 0 ? trimmed : undefined;
-    };
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if (form.useCase && form.useCase.length > MAX_CHARS) {
-            setError(`El campo de caso excede el límite de ${MAX_CHARS} caracteres.`);
-            return;
-        }
         setSubmitting(true);
         setSuccess(null);
         setError(null);
 
-        // Validate email doesn't contain '+'
-        if (form.email.includes('+')) {
-            setSubmitting(false);
-            setError(copy.duplicateError || 'Email addresses with "+" symbol are not allowed.');
-            return;
-        }
-
-        const normalizedPayload: BetaSignupInput = {
-            ...form,
-            country: normalizeOptionalField(form.country) as BetaSignupInput['country'],
-            useCase: normalizeOptionalField(form.useCase),
-            homeAirport: normalizeOptionalField(form.homeAirport),
-            flightFrequency: form.flightFrequency as BetaSignupInput['flightFrequency']
-        };
-
-        const parseResult = betaSignupSchema.safeParse(normalizedPayload);
+        const parseResult = betaSignupSchema.safeParse(form);
         if (!parseResult.success) {
             setSubmitting(false);
             setError(copy.error);
@@ -135,50 +101,32 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
         }
 
         try {
-            const response = await fetch('/api/beta-signups', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(parseResult.data)
-            });
-
-            if (!response.ok) {
-                const payload = await response.json().catch(() => null);
-                if (payload?.errorCode === 'beta_duplicate_email') {
-                    // Use localized duplicate error message when available
-                    setError(copy.duplicateError ?? copy.error);
-                    try {
-                        // Attempt to fetch referral stats for this email and show panel
-                        const statsResp = await fetch(`/api/referral/stats?email=${encodeURIComponent(form.email)}`);
-                        if (statsResp.ok) {
-                            const statsJson = await statsResp.json().catch(() => null);
-                            const referralLinkFromApi = statsJson?.data?.[0]?.referral_link || '';
-                            setReferralLink(referralLinkFromApi);
-                            setUserEmail(form.email);
-                            setShowReferralPanel(true);
-                        }
-                    } catch (e) {
-                        // ignore
-                    }
-                } else {
-                    setError(copy.error);
-                }
-                return;
-            }
-
-            const result = await response.json();
+            const result = await apiClient.beta.signup(parseResult.data);
             setReferralLink(result.referralLink || '');
             setUserEmail(form.email);
             setForm(buildInitialState(locale, referralCode));
             setSuccess(copy.success);
             setShowReferralPanel(true);
-        } catch (err) {
-            setError(copy.error);
+        } catch (err: any) {
+            if (err instanceof ApiError && err.code === 'beta_duplicate_email') {
+                setError(copy.duplicateError ?? copy.error);
+                try {
+                    const statsJson = await apiClient.referral.stats(form.email);
+                    const referralLinkFromApi = (statsJson as any)?.data?.[0]?.referral_link || '';
+                    setReferralLink(referralLinkFromApi);
+                    setUserEmail(form.email);
+                    setShowReferralPanel(true);
+                } catch (e) {
+                    // ignore
+                }
+            } else {
+                setError(copy.error);
+            }
         } finally {
             setSubmitting(false);
         }
     };
+
 
     return (
         <div className="scroll-mt-16 lg:scroll-mt-20">

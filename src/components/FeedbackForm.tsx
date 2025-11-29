@@ -3,6 +3,7 @@
 import { useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
 import { ChatBubbleBottomCenterTextIcon, LightBulbIcon, BriefcaseIcon } from '@heroicons/react/24/outline';
 import AlertMessage from '@/components/AlertMessage';
+import { apiClient } from '@/lib/api-client';
 
 import { feedbackSchema, type FeedbackInput } from '@/lib/validation';
 import type { LandingCopy } from '@/locales/copy';
@@ -85,24 +86,12 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
             return;
         }
 
+        // import removed
+
+
+
         try {
-            const response = await fetch('/api/feedback', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(parseResult.data)
-            });
-
-            const payload = await response.json().catch(() => null);
-
-            if (!response.ok) {
-                const serverError = payload?.error || copy.error;
-                const requestId = payload?.requestId ? ` (ref: ${payload.requestId})` : '';
-                setError(`${serverError}${requestId}`);
-                return;
-            }
-
+            await apiClient.feedback.submit(parseResult.data);
             setForm(buildInitialState(locale));
             setSuccess(copy.success);
         } catch (err: any) {

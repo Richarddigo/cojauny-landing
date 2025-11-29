@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
 import AlertMessage from '@/components/AlertMessage';
+import { apiClient } from '@/lib/api-client';
 
 import { contactSchema, type ContactInput } from '@/lib/validation';
 import type { Locale } from '@/locales/config';
@@ -85,27 +86,12 @@ const ContactForm = ({ locale, copy }: ContactFormProps) => {
             return;
         }
 
+        // import removed
+
+
+
         try {
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(parseResult.data)
-            });
-
-            const payload = await response.json().catch(() => null);
-
-            if (!response.ok) {
-                const serverError = payload?.error || copy.error;
-                const details = payload?.details
-                    ? `\nDetails: ${typeof payload.details === 'string' ? payload.details : JSON.stringify(payload.details, null, 2)}`
-                    : '';
-                const requestId = payload?.requestId ? ` (ref: ${payload.requestId})` : '';
-                setError(`${serverError}${requestId}${details}`);
-                return;
-            }
-
+            await apiClient.contact.submit(parseResult.data);
             setForm(buildInitialState(locale));
             setSuccess(copy.success);
         } catch (err: any) {

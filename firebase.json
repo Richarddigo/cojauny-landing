@@ -1,45 +1,38 @@
 {
   "hosting": {
     "site": "cl-coride",
-    "public": "public",
+    "public": "out",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
     "cleanUrls": true,
-    "rewrites": [],
-    "headers": [
+    "rewrites": [
       {
-        "source": "**/*.@(jpg|jpeg|gif|png|svg|webp|ico|woff|woff2|ttf|eot)",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "public, max-age=31536000, immutable"
-          }
-        ]
+        "source": "/api/contact",
+        "function": "submitContactForm"
       },
       {
-        "source": "**/*.@(js|css)",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "public, max-age=31536000, immutable"
-          }
-        ]
+        "source": "/api/feedback",
+        "function": "submitFeedback"
       },
       {
-        "source": "**/*.@(html|json)",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "public, max-age=3600, must-revalidate"
-          }
-        ]
+        "source": "/api/beta-signups",
+        "function": "submitBetaSignup"
+      },
+      {
+        "source": "/api/referral/visit",
+        "function": "trackReferralVisit"
+      },
+      {
+        "source": "/api/referral/stats",
+        "function": "getReferralStats"
       }
     ]
   },
   "functions": {
-    "source": ".firebase/functions"
+    "source": "functions",
+    "runtime": "nodejs20"
   }
 }
