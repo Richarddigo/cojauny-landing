@@ -1,18 +1,23 @@
 const { createClient } = require('@supabase/supabase-js');
-const functions = require('firebase-functions');
+const { supabaseUrl, supabaseKey } = require('../config');
 
-const supabaseUrl = functions.config().supabase.url;
-const supabaseKey = functions.config().supabase.key;
+// Lazy initialization to avoid errors during module load
+let supabaseClient = null;
 
-if (!supabaseUrl || !supabaseKey) {
-    console.warn('Supabase credentials not found in functions config.');
+function getSupabase() {
+    if (!supabaseClient) {
+        supabaseClient = createClient(
+            supabaseUrl.value(),
+            supabaseKey.value(),
+            {
+                auth: {
+                    autoRefreshToken: false,
+                    persistSession: false,
+                },
+            }
+        );
+    }
+    return supabaseClient;
 }
 
-const supabase = createClient(supabaseUrl, supabaseKey, {
-    auth: {
-        autoRefreshToken: false,
-        persistSession: false,
-    },
-});
-
-module.exports = { supabase };
+module.exports = { getSupabase };

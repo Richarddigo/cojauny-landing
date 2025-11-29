@@ -1,42 +1,42 @@
 const nodemailer = require('nodemailer');
-const functions = require('firebase-functions');
+const config = require('../config');
 const { resolveTemplate, render, emailSignatureHtml, emailSignatureText, templateSenders, normalizeLocale } = require('./email-templates');
 
-// Default credentials
-const defaultUser = functions.config().smtp.user;
-const defaultPass = functions.config().smtp.pass;
-const smtpHost = functions.config().smtp.host || 'smtppro.zoho.eu'; // Fallback or config
-const smtpPort = parseInt(functions.config().smtp.port || '465');
-const smtpSecure = functions.config().smtp.secure === 'true' || true;
-
-// Sender profiles configuration
-const senderProfiles = {
-    beta: {
-        email: functions.config().email.beta,
-        password: functions.config().smtp.pass, // Usually same pass, or add specific config if needed
-        name: 'Cojauny Beta'
-    },
-    feedback: {
-        email: functions.config().email.feedback,
-        password: functions.config().smtp.pass,
-        name: 'Cojauny Feedback'
-    },
-    support: {
-        email: functions.config().email.support,
-        password: functions.config().smtp.pass,
-        name: 'Cojauny Support Team'
+// Lazy getters to avoid errors during module load
+const getSMTPConfig = () => ({
+    host: config.smtpHost.value(),
+    port: parseInt(config.smtpPort.value()),
+    secure: true,
+    auth: {
+        user: config.smtpUser.value(),
+        pass: config.smtpPass.value()
     }
-};
+});
+
+const getEmailAliases = () => ({
+    beta: config.emailBeta.value(),
+    feedback: config.emailFeedback.value(),
+    support: config.emailSupport.value()
+});
 
 function resolveSender(key) {
+    const aliases = getEmailAliases();
+    const smtpConfig = getSMTPConfig();
+
+    const senderProfiles = {
+        beta: { email: aliases.beta, name: 'Cojauny Beta' },
+        feedback: { email: aliases.feedback, name: 'Cojauny Feedback' },
+        support: { email: aliases.support, name: 'Cojauny Support Team' }
+    };
+
     // Special case for contact confirmation to force visible sender
     if (key === 'contact-confirmation') {
         const contactProfile = {
             email: 'contact@cojauny.com',
             name: 'Cojauny Contact'
         };
-        const authEmail = senderProfiles.support.email || defaultUser;
-        const authPassword = senderProfiles.support.password || defaultPass;
+        const authEmail = aliases.support || smtpConfig.auth.user;
+        const authPassword = smtpConfig.auth.pass;
 
         if (authEmail && authPassword) {
             return { email: contactProfile.email, name: contactProfile.name, authEmail, authPassword };
@@ -52,20 +52,20 @@ function resolveSender(key) {
             email: profile.email,
             name: profile.name,
             authEmail: profile.email,
-            authPassword: profile.password || defaultPass // Use default pass if specific not set
+            authPassword: smtpConfig.auth.pass
         };
     }
 
-    if (!defaultUser || !defaultPass) {
+    if (!smtpConfig.auth.user || !smtpConfig.auth.pass) {
         throw new Error('No default SMTP credentials configured');
     }
 
     // Fallback to default credentials if specific ones aren't set
     return {
-        email: (profile && profile.email) || defaultUser,
+        email: (profile && profile.email) || smtpConfig.auth.user,
         name: (profile && profile.name) || 'Cojauny',
-        authEmail: defaultUser,
-        authPassword: defaultPass
+        authEmail: smtpConfig.auth.user,
+        authPassword: smtpConfig.auth.pass
     };
 }
 
@@ -94,10 +94,11 @@ async function sendEmail({ to, template, locale, variables }) {
     const sender = resolveSender(template);
 
     // Create transporter with resolved credentials
+    const smtpConfig = getSMTPConfig();
     const transporter = nodemailer.createTransport({
-        host: smtpHost,
-        port: smtpPort,
-        secure: smtpSecure,
+        host: smtpConfig.host,
+        port: smtpConfig.port,
+        secure: smtpConfig.secure,
         auth: {
             user: sender.authEmail,
             pass: sender.authPassword,

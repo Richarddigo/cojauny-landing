@@ -1,4 +1,5 @@
-const { supabase } = require('../../lib/supabase');
+const { getSupabase } = require('../../lib/supabase');
+
 
 exports.trackReferralVisit = async (req, res) => {
     if (req.method !== 'POST') {
@@ -11,6 +12,7 @@ exports.trackReferralVisit = async (req, res) => {
             return res.status(400).json({ error: 'referralCode is required' });
         }
 
+        const supabase = getSupabase();
         const { data, error } = await supabase.rpc('increment_referral_visits', {
             ref_code: referralCode
         });
@@ -42,6 +44,7 @@ exports.getReferralStats = async (req, res) => {
             return res.status(400).json({ error: 'Email is required' });
         }
 
+        const supabase = getSupabase();
         // 1. Find user
         const { data: userData, error: userError } = await supabase
             .from('waitlist')

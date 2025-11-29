@@ -1,7 +1,8 @@
 const { z } = require('zod');
-const { supabase } = require('../../lib/supabase');
+const { getSupabase } = require('../../lib/supabase');
 const { sendEmail } = require('../../lib/email');
-const functions = require('firebase-functions');
+const config = require('../../config');
+
 
 const feedbackSchema = z.object({
     email: z.string().email(),
@@ -39,6 +40,7 @@ exports.submitFeedback = async (req, res) => {
         }
 
         // 1. Save to Supabase
+        const supabase = getSupabase();
         const { error: dbError } = await supabase
             .from('feedback')
             .insert({
@@ -83,7 +85,7 @@ exports.submitFeedback = async (req, res) => {
 
         // Internal Notification
         await sendEmail({
-            to: functions.config().email.feedback || 'feedback@cojauny.com',
+            to: config.emailFeedback.value(),
             template: internalTemplateKey,
             locale: 'es',
             variables: {

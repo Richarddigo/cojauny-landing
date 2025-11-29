@@ -1,6 +1,8 @@
 const { z } = require('zod');
-const { supabase } = require('../../lib/supabase');
+const { getSupabase } = require('../../lib/supabase');
 const { sendEmail } = require('../../lib/email');
+const config = require('../../config');
+
 
 const betaSignupSchema = z.object({
     email: z.string().email(),
@@ -35,6 +37,7 @@ exports.submitBetaSignup = async (req, res) => {
         const confirmationToken = require('crypto').randomUUID();
 
         // 1. Save to Supabase
+        const supabase = getSupabase();
         const { data: insertedData, error: dbError } = await supabase
             .from('waitlist')
             .insert({
@@ -93,7 +96,7 @@ exports.submitBetaSignup = async (req, res) => {
 
         // Internal Notification
         await sendEmail({
-            to: 'beta@cojauny.com',
+            to: config.emailBeta.value(),
             template: 'beta-internal',
             locale: 'en',
             variables: {

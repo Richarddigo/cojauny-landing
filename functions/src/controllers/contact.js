@@ -1,7 +1,8 @@
 const { z } = require('zod');
-const { supabase } = require('../../lib/supabase');
+const { getSupabase } = require('../../lib/supabase');
 const { sendEmail } = require('../../lib/email');
-const functions = require('firebase-functions');
+const config = require('../../config');
+
 
 const contactSchema = z.object({
     email: z.string().email(),
@@ -39,6 +40,7 @@ exports.submitContactForm = async (req, res) => {
         }
 
         // 1. Save to Supabase
+        const supabase = getSupabase();
         const { error: dbError } = await supabase
             .from('feedback')
             .insert({
@@ -71,7 +73,7 @@ exports.submitContactForm = async (req, res) => {
 
         // Internal Notification
         await sendEmail({
-            to: functions.config().email.support || 'support@cojauny.com',
+            to: config.emailSupport.value(),
             template: 'contact-internal',
             locale: 'es', // Internal emails usually in default lang or fixed
             variables: {
