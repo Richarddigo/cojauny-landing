@@ -11,9 +11,8 @@ describe('getLegalCopy', () => {
     expect(es.subprocessors.title).toContain('Subprocesadores');
   });
 
-  it('devuelve el objeto legal por defecto si el locale no existe', () => {
-    const fallback = getLegalCopy('en');
-    const def = getLegalCopy('es');
-    expect(fallback.privacy.title).toBe(def.privacy.title);
+  it('devuelve el objeto legal en inglés para locale en', () => {
+    const en = getLegalCopy('en');
+    expect(en.privacy.title).toContain('Privacy');
   });
 });

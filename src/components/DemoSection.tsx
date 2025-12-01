@@ -21,11 +21,11 @@ const IPhoneMockup = ({ screen, className, priority = false }: { screen: any; cl
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={screen.id}
-                            initial={{ opacity: 0, scale: 1.05 }}
+                            initial={{ opacity: 0, scale: 1.02 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.95 }}
-                            transition={{ duration: 0.5, ease: 'easeInOut' }}
-                            className="relative h-full w-full pt-[10px] pb-[35px]"
+                            exit={{ opacity: 0, scale: 0.98 }}
+                            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                            className="relative h-full w-full pt-[28px] md:pt-[32px] lg:pt-[36px] pb-[35px]"
                         >
                             <Image src={screen.image} alt={screen.title} fill className="object-cover object-top" sizes="(max-width: 640px) 220px, (max-width: 768px) 260px, (max-width: 1024px) 280px, 380px" priority={priority} />
                         </motion.div>
@@ -171,11 +171,18 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
 
     /* ---------- Efectos mobile ---------- */
     // Para mobile, calculamos la tarjeta más cercana a `viewportTop` al hacer scroll
+    // y hacemos scroll automático para alinear la tarjeta activa con el top
     useEffect(() => {
         if (!isMobile) return;
 
+        let scrollTimeout: NodeJS.Timeout | null = null;
+        let lastActiveStep = activeStep;
+        let isAutoScrolling = false;
+
         const onScroll = () => {
-            const viewportTop = 80;
+            if (isAutoScrolling) return;
+
+            const headerHeight = 80;
             let newActive = 0;
             let minDistance = Infinity;
 
@@ -183,19 +190,44 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                 const card = cardsRef.current[i];
                 if (!card) continue;
                 const rect = card.getBoundingClientRect();
-                const distance = Math.abs(rect.top - viewportTop);
+                const distance = Math.abs(rect.top - headerHeight);
                 if (distance < minDistance) {
                     minDistance = distance;
                     newActive = i;
                 }
             }
 
-            if (newActive !== activeStep) setActiveStep(newActive);
+            if (newActive !== activeStep) {
+                setActiveStep(newActive);
+            }
+
+            // Auto-scroll para alinear la tarjeta cuando el usuario deja de hacer scroll
+            if (scrollTimeout) clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                const card = cardsRef.current[newActive];
+                if (card && newActive !== lastActiveStep) {
+                    lastActiveStep = newActive;
+                    isAutoScrolling = true;
+                    const cardTop = card.getBoundingClientRect().top + window.scrollY;
+                    const targetScroll = cardTop - headerHeight;
+                    window.scrollTo({
+                        top: targetScroll,
+                        behavior: 'smooth'
+                    });
+                    // Reset flag after animation
+                    setTimeout(() => {
+                        isAutoScrolling = false;
+                    }, 600);
+                }
+            }, 150);
         };
 
         window.addEventListener('scroll', onScroll, { passive: true });
         onScroll();
-        return () => window.removeEventListener('scroll', onScroll);
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+            if (scrollTimeout) clearTimeout(scrollTimeout);
+        };
     }, [isMobile, activeStep]);
 
     /* ---------- Handlers UI ---------- */
@@ -266,7 +298,7 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                                 onClick={() => handleCardClick(idx)}
                                 onMouseEnter={() => handleCardHover(idx)}
-                                className={`demo-card transition-all duration-700 cursor-pointer ${activeStep === idx ? 'opacity-100 scale-100' : 'opacity-50 scale-95 hover:opacity-75 hover:scale-98'} relative`}
+                                className={`demo-card transition-all duration-500 ease-out cursor-pointer ${activeStep === idx ? 'opacity-100 scale-100' : 'opacity-50 scale-95 hover:opacity-75 hover:scale-98'} relative`}
                             >
                                 {isLocked && lockedIndex === idx && (
                                     <div className="absolute top-2 right-2 bg-white rounded-full p-1 shadow-md border-2 border-blue-500">
@@ -275,9 +307,9 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                                         </svg>
                                     </div>
                                 )}
-                                <div className={`bg-white rounded-3xl p-8 xl:p-10 shadow-xl border-4 transition-all duration-700 ${isLocked && lockedIndex === idx ? 'border-blue-500' : activeStep === idx ? 'border-blue-200 shadow-2xl' : 'border-slate-100'}`}>
+                                <div className={`bg-white rounded-3xl p-8 xl:p-10 shadow-xl border-4 transition-all duration-500 ease-out ${isLocked && lockedIndex === idx ? 'border-blue-500' : activeStep === idx ? 'border-blue-200 shadow-2xl' : 'border-slate-100'}`}>
                                     <div className="inline-flex items-center gap-2 mb-5">
-                                        <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors duration-700 ${activeStep === idx ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-400'}`}>{idx + 1}</div>
+                                        <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors duration-500 ${activeStep === idx ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-400'}`}>{idx + 1}</div>
                                         <span className="px-3 py-1.5 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider">{screen.badge}</span>
                                     </div>
                                     <h3 className="text-2xl xl:text-3xl font-bold text-slate-900 mb-4">{screen.title}</h3>
@@ -297,7 +329,7 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                             style={{
                                 position: 'absolute',
                                 top: `${phoneTop - 328}px`,
-                                transition: enablePhoneTransition ? 'top 200ms cubic-bezier(.2,.9,.3,1)' : 'none',
+                                transition: enablePhoneTransition ? 'top 400ms cubic-bezier(0.25, 0.1, 0.25, 1)' : 'none',
                                 left: 0,
                                 right: 0,
                                 margin: '0 auto',
@@ -312,10 +344,10 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                 <LayoutGroup>
                     <div className="lg:hidden flex flex-col">
                         {copy.screens.map((screen, idx) => (
-                            <motion.div key={screen.id} layout initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.5 }} className="flex flex-col">
-                                <motion.div layout="position" ref={el => { cardsRef.current[idx] = el; }} className={`bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 shadow-lg border-2 transition-all duration-700 ${activeStep === idx ? 'border-blue-200 shadow-xl mb-4' : 'border-slate-100 mb-8'}`}>
+                            <motion.div key={screen.id} layout initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }} className="flex flex-col scroll-mt-20">
+                                <motion.div layout="position" ref={el => { cardsRef.current[idx] = el; }} className={`bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 shadow-lg border-2 transition-all duration-500 ease-out ${activeStep === idx ? 'border-blue-200 shadow-xl mb-4' : 'border-slate-100 mb-8'}`}>
                                     <div className="inline-flex items-center gap-2 mb-3">
-                                        <div className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors duration-700 ${activeStep === idx ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-400'}`}>{idx + 1}</div>
+                                        <div className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors duration-500 ${activeStep === idx ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-400'}`}>{idx + 1}</div>
                                         <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider">{screen.badge}</span>
                                     </div>
                                     <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2">{screen.title}</h3>
@@ -323,7 +355,7 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                                 </motion.div>
 
                                 {activeStep === idx && (
-                                    <motion.div layoutId="mobile-iphone" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} transition={{ layout: { type: 'spring', stiffness: 200, damping: 35, mass: 1 }, opacity: { duration: 0.5, ease: 'easeInOut' }, scale: { duration: 0.5, ease: 'easeInOut' } }} className="w-full max-w-[220px] md:max-w-[260px] mx-auto mb-8">
+                                    <motion.div layoutId="mobile-iphone" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ layout: { type: 'spring', stiffness: 120, damping: 25, mass: 1.2 }, opacity: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }, scale: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } }} className="w-full max-w-[220px] md:max-w-[260px] mx-auto mb-8">
                                         <IPhoneMockup screen={copy.screens[activeStep]} priority={true} />
                                     </motion.div>
                                 )}

@@ -97,8 +97,9 @@ describe('BetaSignupForm', () => {
         fireEvent.submit(screen.getByRole('button', { name: /Enviar solicitud/i }));
 
         await waitFor(() => {
+            // Match key part of the error message (handles accents differences)
             expect(
-                screen.getByText(copy.forms.beta.duplicateError ?? copy.forms.beta.error)
+                screen.getByText(/ya est[aá]s en nuestra lista de espera/i)
             ).toBeInTheDocument();
         });
     });

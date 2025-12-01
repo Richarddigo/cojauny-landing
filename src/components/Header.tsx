@@ -7,6 +7,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { SocialIcons } from '@/components/SocialLinks';
 import { usePathname, useRouter } from 'next/navigation';
 import type { Locale } from '@/locales/config';
 import type { LandingCopy } from '@/locales/copy';
@@ -294,7 +295,8 @@ const Header = ({ locale, copy }: HeaderProps) => {
                         <a href="#feedback" onClick={(e) => handleScroll(e, '#feedback')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.feedback}</a>
                     </div>
 
-                    <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                    <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4">
+                        <SocialIcons variant="light" />
                         <div className="hidden sm:block">
                             <LanguageSwitcher currentLocale={locale} />
                         </div>
@@ -353,11 +355,7 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                     }
                                 }}
                             >
-                                <div className="flex items-center justify-between gap-4">
-                                    <a href={`/${locale}`} className="-m-1.5 flex items-center gap-2 p-1.5 sm:gap-3" onClick={() => setMobileMenuOpen(false)}>
-                                        <Image src="/assets/logo/mountain_white.svg" alt="Cojauny" width={32} height={32} className="h-7 w-auto sm:h-8" />
-                                        <span className="text-lg font-bold text-white sm:text-xl">Cojauny</span>
-                                    </a>
+                                <div className="flex items-center justify-end">
                                     <button
                                         ref={closeButtonRef}
                                         type="button"
@@ -424,7 +422,8 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                             </a>
                                         ))}
                                     </div>
-                                    <div className="py-6 w-full flex flex-col items-end pr-6">
+                                    <div className="py-6 w-full flex flex-col items-end pr-6 gap-4">
+                                        <SocialIcons variant="light" className="justify-end" />
                                         <div className="sm:hidden w-full flex justify-end">
                                             <LanguageSwitcher currentLocale={locale} onSelect={() => setMobileMenuOpen(false)} fullWidth />
                                         </div>
