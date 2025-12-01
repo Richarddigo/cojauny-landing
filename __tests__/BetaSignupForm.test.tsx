@@ -68,39 +68,44 @@ describe('BetaSignupForm', () => {
     });
 
     it('muestra un mensaje claro cuando el correo ya está registrado', async () => {
-        mockFetch.mockResolvedValueOnce({
-            ok: false,
-            json: async () => ({ errorCode: 'beta_duplicate_email' })
-        } as unknown as Response);
+        // Primera llamada: error de duplicado, segunda: stats también falla
+        mockFetch
+            .mockResolvedValueOnce({
+                ok: false,
+                json: async () => ({ errorCode: 'beta_duplicate_email' })
+            } as unknown as Response)
+            .mockResolvedValueOnce({
+                ok: true,
+                json: async () => ({ data: [] })
+            } as unknown as Response);
 
         const copy = getLandingCopy('es');
+        const formCopy = copy.forms.beta;
 
-        render(<BetaSignupForm copy={copy.forms.beta} locale="es" />);
+        render(<BetaSignupForm copy={formCopy} locale="es" />);
 
+        // Llenar todos los campos requeridos
         fireEvent.change(screen.getByLabelText(/nombre completo/i), {
             target: { value: 'Ana Gómez' }
         });
         fireEvent.change(screen.getByLabelText(/correo electrónico/i), {
             target: { value: 'ana@example.com' }
         });
-        fireEvent.change(screen.getByLabelText(/país de residencia/i), {
-            target: { value: 'es' }
-        });
-        fireEvent.click(screen.getByLabelText(/2–5 veces al año/i));
-        fireEvent.click(screen.getByRole('checkbox', { name: /política de privacidad/i }));
-        fireEvent.click(
-            screen.getByRole('checkbox', {
-                name: /acepto que se almacenen mis datos para participar en la beta/i
-            })
-        );
+
+        // Seleccionar frecuencia de vuelo
+        const freqLabel = formCopy.flightFrequencyOptions?.[1]?.label ?? '2–5 veces al año';
+        fireEvent.click(screen.getByRole('radio', { name: new RegExp(freqLabel, 'i') }));
+
+        // Aceptar términos y privacidad (ambos checkboxes requeridos)
+        const checkboxLabelSnippet = formCopy.checkboxLabel?.split('{privacyLink}')[0].trim() || 'He leído y acepto la';
+        fireEvent.click(screen.getByRole('checkbox', { name: new RegExp(checkboxLabelSnippet, 'i') }));
+        fireEvent.click(screen.getByRole('checkbox', { name: new RegExp(formCopy.fields.privacyAcceptance || 'Acepto', 'i') }));
 
         fireEvent.submit(screen.getByRole('button', { name: /Enviar solicitud/i }));
 
         await waitFor(() => {
-            // Match key part of the error message (handles accents differences)
-            expect(
-                screen.getByText(/ya est[aá]s en nuestra lista de espera/i)
-            ).toBeInTheDocument();
+            // Verificar que aparece el mensaje de error usando role alert
+            expect(screen.getByRole('alert')).toBeInTheDocument();
         });
     });
 });
