@@ -15,7 +15,7 @@ const IntegrationCTA = ({ copy, locale }: IntegrationCTAProps) => {
     const isInternal = href.startsWith('/');
 
     return (
-        <section className="overflow-hidden rounded-[3rem] bg-gradient-to-br from-slate-900 via-brand-700 to-slate-900 py-20 px-6 text-white">
+        <div className="overflow-hidden rounded-[3rem] bg-gradient-to-br from-slate-900 via-brand-700 to-slate-900 py-20 px-6 text-white">
             <div className="relative mx-auto max-w-6xl px-6 text-center">
                 <div className="absolute inset-0 -z-10 blur-3xl" aria-hidden>
                     <div className="mx-auto h-64 w-64 rounded-full bg-brand-400/30" />
@@ -39,7 +39,7 @@ const IntegrationCTA = ({ copy, locale }: IntegrationCTAProps) => {
                     )}
                 </div>
             </div>
-        </section>
+        </div>
     );
 };
 

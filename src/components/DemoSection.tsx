@@ -96,6 +96,13 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
     const phoneContainerRef = useRef<HTMLDivElement | null>(null);
     const [parallaxOffset, setParallaxOffset] = useState(0);
 
+    // Mobile: control de animación y scroll
+    const isAnimatingRef = useRef(false);
+    const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const lastScrollY = useRef(0);
+    const scrollVelocity = useRef(0);
+    const lastScrollTime = useRef(0);
+
     /* ---------- Efectos compartidos (ambos) ---------- */
     // Detecta tamaño (mobile/desktop)
     useEffect(() => {
@@ -189,68 +196,98 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
     }, [isMobile]);
 
     /* ---------- Efectos mobile ---------- */
-    // Para mobile, calculamos la tarjeta más cercana al viewport
-    // Al cambiar de tarjeta activa, el top de esa tarjeta queda 10px debajo del header
+    // Experiencia móvil optimizada: detección natural de cambios sin interferir con animaciones
     useEffect(() => {
         if (!isMobile) return;
 
-        let scrollTimeout: NodeJS.Timeout | null = null;
-        let lastActiveStep = activeStep;
-        let isAutoScrolling = false;
+        const HEADER_HEIGHT = 80;
+        const SNAP_THRESHOLD = 150; // Distancia mínima para considerar snap
+        const VELOCITY_THRESHOLD = 2; // Velocidad mínima para detectar scroll activo
+        const DEBOUNCE_DELAY = 150; // Delay reducido para respuesta más rápida
 
-        const onScroll = () => {
-            if (isAutoScrolling) return;
+        const calculateScrollVelocity = () => {
+            const now = Date.now();
+            const deltaTime = now - lastScrollTime.current;
+            const deltaY = window.scrollY - lastScrollY.current;
 
-            const headerHeight = 80;
-            const targetOffset = 10; // 10px debajo del header
-            let newActive = 0;
-            let minDistance = Infinity;
+            lastScrollTime.current = now;
+            lastScrollY.current = window.scrollY;
 
-            for (let i = 0; i < cardsRef.current.length; i++) {
-                const card = cardsRef.current[i];
-                if (!card) continue;
-                const rect = card.getBoundingClientRect();
-                const distance = Math.abs(rect.top - (headerHeight + targetOffset));
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    newActive = i;
-                }
-            }
-
-            if (newActive !== activeStep) {
-                setActiveStep(newActive);
-            }
-
-            // Auto-scroll para alinear cuando el usuario deja de hacer scroll
-            // La tarjeta activa quedará con su top a 10px bajo el header
-            if (scrollTimeout) clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                const currentCard = cardsRef.current[newActive];
-                if (currentCard && newActive !== lastActiveStep) {
-                    lastActiveStep = newActive;
-                    isAutoScrolling = true;
-
-                    const cardTop = currentCard.getBoundingClientRect().top + window.scrollY;
-                    const targetScroll = cardTop - headerHeight - targetOffset;
-
-                    window.scrollTo({
-                        top: targetScroll,
-                        behavior: 'smooth'
-                    });
-
-                    // Reset flag después de una animación más larga para suavidad
-                    setTimeout(() => {
-                        isAutoScrolling = false;
-                    }, 1200); // Aumentado de 800 a 1200ms
-                }
-            }, 300); // Aumentado de 200 a 300ms para menos saltos
+            return deltaTime > 0 ? Math.abs(deltaY / deltaTime) : 0;
         };
 
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
+        const findClosestCard = () => {
+            let closestIndex = 0;
+            let minDistance = Infinity;
+
+            cardsRef.current.forEach((card, i) => {
+                if (!card) return;
+                const rect = card.getBoundingClientRect();
+                // Medimos desde el centro de la tarjeta al centro del viewport
+                const cardCenter = rect.top + rect.height / 2;
+                const viewportCenter = window.innerHeight / 2;
+                const distance = Math.abs(cardCenter - viewportCenter);
+
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestIndex = i;
+                }
+            });
+
+            return { index: closestIndex, distance: minDistance };
+        };
+
+        const handleScroll = () => {
+            // No interferir si hay animación en progreso
+            if (isAnimatingRef.current) return;
+
+            scrollVelocity.current = calculateScrollVelocity();
+
+            // Detectar cambio de tarjeta activa basado en posición
+            const { index: closestIndex } = findClosestCard();
+
+            if (closestIndex !== activeStep) {
+                setActiveStep(closestIndex);
+            }
+
+            // Limpiar timeout previo
+            if (scrollTimeoutRef.current) {
+                clearTimeout(scrollTimeoutRef.current);
+            }
+
+            // Snap suave solo cuando el usuario para de hacer scroll
+            scrollTimeoutRef.current = setTimeout(() => {
+                // Verificar que no estamos animando y que la velocidad es baja
+                if (isAnimatingRef.current || scrollVelocity.current > VELOCITY_THRESHOLD) return;
+
+                const { index: targetIndex, distance } = findClosestCard();
+                const targetCard = cardsRef.current[targetIndex];
+
+                // Solo hacer snap si la distancia lo amerita
+                if (targetCard && distance > SNAP_THRESHOLD) {
+                    const rect = targetCard.getBoundingClientRect();
+                    const targetScrollY = window.scrollY + rect.top - HEADER_HEIGHT - 20;
+
+                    window.scrollTo({
+                        top: targetScrollY,
+                        behavior: 'smooth'
+                    });
+                }
+            }, DEBOUNCE_DELAY);
+        };
+
+        // Inicializar valores
+        lastScrollY.current = window.scrollY;
+        lastScrollTime.current = Date.now();
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll(); // Ejecutar una vez al montar
+
         return () => {
-            window.removeEventListener('scroll', onScroll);
-            if (scrollTimeout) clearTimeout(scrollTimeout);
+            window.removeEventListener('scroll', handleScroll);
+            if (scrollTimeoutRef.current) {
+                clearTimeout(scrollTimeoutRef.current);
+            }
         };
     }, [isMobile, activeStep]);
 
@@ -297,7 +334,6 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
             ref={containerRef}
             id="demo"
             className={`relative w-full py-16 md:py-24 lg:py-32 bg-gradient-to-b from-slate-50 to-white ${className ?? ''}`}
-        // sin minHeight estática
         >
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-12 md:mb-16 lg:mb-20">
@@ -343,8 +379,7 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                         ))}
                     </div>
 
-                    {/* iPhone container - sticky con parallax: 
-                         El contenedor es sticky, pero el contenido dentro se mueve con parallax */}
+                    {/* iPhone container - sticky con parallax */}
                     <div
                         ref={phoneContainerRef}
                         className="relative lg:sticky lg:top-24 lg:self-start"
@@ -367,51 +402,100 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
 
                 {/* Mobile layout */}
                 <LayoutGroup>
-                    <div className="lg:hidden flex flex-col">
+                    <div className="lg:hidden flex flex-col gap-6">
                         {copy.screens.map((screen, idx) => (
-                            <motion.div key={screen.id} layout initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }} className="flex flex-col scroll-mt-20">
-                                <motion.div layout="position" ref={el => { cardsRef.current[idx] = el; }} className={`bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 shadow-lg border-2 transition-all duration-500 ease-out ${activeStep === idx ? 'border-blue-200 shadow-xl mb-4' : 'border-slate-100 mb-8'}`}>
+                            <motion.div
+                                key={screen.id}
+                                layout="preserve-aspect"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-30px', amount: 0.3 }}
+                                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                                className="flex flex-col scroll-mt-20"
+                            >
+                                <motion.div
+                                    layout="position"
+                                    ref={el => { cardsRef.current[idx] = el; }}
+                                    className={`bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 shadow-lg border-2 transition-all duration-300 ease-out ${activeStep === idx
+                                        ? 'border-blue-200 shadow-xl mb-3'
+                                        : 'border-slate-100 mb-6 opacity-75'
+                                        }`}
+                                >
                                     <div className="inline-flex items-center gap-2 mb-3">
-                                        <div className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors duration-500 ${activeStep === idx ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-400'}`}>{idx + 1}</div>
-                                        <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider">{screen.badge}</span>
+                                        <div className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${activeStep === idx
+                                            ? 'bg-blue-600 text-white scale-110'
+                                            : 'bg-slate-100 text-slate-400 scale-100'
+                                            }`}>
+                                            {idx + 1}
+                                        </div>
+                                        <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider">
+                                            {screen.badge}
+                                        </span>
                                     </div>
-                                    <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2">{screen.title}</h3>
-                                    <p className="text-sm md:text-base text-slate-600 leading-relaxed">{screen.description}</p>
+                                    <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2">
+                                        {screen.title}
+                                    </h3>
+                                    <p className="text-sm md:text-base text-slate-600 leading-relaxed">
+                                        {screen.description}
+                                    </p>
                                 </motion.div>
 
-                                {activeStep === idx && (
-                                    <motion.div
-                                        layoutId="mobile-iphone"
-                                        initial={{ opacity: 0, scale: 0.92 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        exit={{ opacity: 0, scale: 0.92 }}
-                                        transition={{
-                                            layout: {
-                                                type: 'spring',
-                                                stiffness: 40,  // Reducido de 60 a 40 para más suavidad
-                                                damping: 25,    // Aumentado de 20 a 25 para menos rebote
-                                                mass: 2         // Aumentado de 1.5 a 2 para más peso
-                                            },
-                                            opacity: {
-                                                duration: 1.5,  // Aumentado de 1.2 a 1.5
-                                                ease: [0.22, 0.61, 0.36, 1]  // Easing más suave
-                                            },
-                                            scale: {
-                                                duration: 1.5,  // Aumentado de 1.2 a 1.5
-                                                ease: [0.22, 0.61, 0.36, 1]  // Easing más suave
-                                            }
-                                        }}
-                                        className="w-full mx-auto mb-[33px]"
-                                        style={{ maxWidth: 'min(200px, 50vw)', maxHeight: 'calc(100vh - 300px)' }}
-                                    >
-                                        <IPhoneMockup screen={copy.screens[activeStep]} priority={true} />
-                                    </motion.div>
-                                )}
+                                <AnimatePresence mode="wait">
+                                    {activeStep === idx && (
+                                        <motion.div
+                                            key={`phone-${idx}`}
+                                            layoutId="mobile-iphone"
+                                            initial={{ opacity: 0, scale: 0.9, y: -10 }}
+                                            animate={{
+                                                opacity: 1,
+                                                scale: 1,
+                                                y: 0,
+                                                transition: {
+                                                    opacity: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+                                                    scale: { duration: 0.5, ease: [0.34, 1.56, 0.64, 1] },
+                                                    y: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+                                                }
+                                            }}
+                                            exit={{
+                                                opacity: 0,
+                                                scale: 0.9,
+                                                y: 10,
+                                                transition: {
+                                                    duration: 0.3,
+                                                    ease: [0.22, 1, 0.36, 1]
+                                                }
+                                            }}
+                                            onLayoutAnimationStart={() => {
+                                                isAnimatingRef.current = true;
+                                            }}
+                                            onLayoutAnimationComplete={() => {
+                                                requestAnimationFrame(() => {
+                                                    isAnimatingRef.current = false;
+                                                });
+                                            }}
+                                            transition={{
+                                                layout: {
+                                                    type: 'spring',
+                                                    stiffness: 300,
+                                                    damping: 30,
+                                                    mass: 0.8
+                                                }
+                                            }}
+                                            className="w-full mx-auto"
+                                            style={{
+                                                maxWidth: 'min(220px, 55vw)',
+                                                willChange: 'transform, opacity'
+                                            }}
+                                        >
+                                            <IPhoneMockup screen={copy.screens[activeStep]} priority={idx === 0} />
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </motion.div>
                         ))}
                     </div>
                 </LayoutGroup>
             </div>
-        </section>
+        </section >
     );
 }
