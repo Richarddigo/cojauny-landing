@@ -1,98 +1,474 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 780" fill="none">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 360 780"
+   fill="none"
+   version="1.1"
+   id="svg37"
+   sodipodi:docname="mockup-profile.svg"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs37" />
+  <sodipodi:namedview
+     id="namedview37"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.0192308"
+     inkscape:cx="180.03774"
+     inkscape:cy="390"
+     inkscape:window-width="1920"
+     inkscape:window-height="1013"
+     inkscape:window-x="1129"
+     inkscape:window-y="1341"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g36" />
   <!-- Background -->
-  <rect width="360" height="780" fill="#F8FAFC"/>
-  
+  <rect
+     width="360"
+     height="780"
+     fill="#F8FAFC"
+     id="rect1" />
   <!-- Header -->
-  <rect width="360" height="60" fill="#0F172A"/>
-  <text x="40" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#FFFFFF">←</text>
-  <text x="180" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#FFFFFF" text-anchor="middle">Perfil</text>
-  <text x="320" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="#FFFFFF">⋯</text>
-  
+  <rect
+     width="360"
+     height="60"
+     fill="#0F172A"
+     id="rect2" />
+  <text
+     x="40"
+     y="38"
+     font-family="system-ui, -apple-system, sans-serif"
+     font-size="24"
+     fill="#FFFFFF"
+     id="text2">←</text>
+  <text
+     x="180"
+     y="38"
+     font-family="system-ui, -apple-system, sans-serif"
+     font-size="18"
+     font-weight="600"
+     fill="#FFFFFF"
+     text-anchor="middle"
+     id="text3">Perfil</text>
+  <text
+     x="320"
+     y="38"
+     font-family="system-ui, -apple-system, sans-serif"
+     font-size="20"
+     fill="#FFFFFF"
+     id="text4">⋯</text>
   <!-- Profile Picture -->
-  <circle cx="180" cy="125" r="55" fill="#3B82F6"/>
-  <text x="180" y="145" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="600" fill="#FFFFFF" text-anchor="middle">AM</text>
-  
+  <circle
+     cx="180"
+     cy="125"
+     r="55"
+     fill="#3B82F6"
+     id="circle4" />
+  <text
+     x="180"
+     y="145"
+     font-family="system-ui, -apple-system, sans-serif"
+     font-size="36"
+     font-weight="600"
+     fill="#FFFFFF"
+     text-anchor="middle"
+     id="text5">AM</text>
   <!-- Verified Badge -->
-  <circle cx="220" cy="155" r="16" fill="#10B981"/>
-  <text x="220" y="163" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#FFFFFF" text-anchor="middle">✓</text>
-  
+  <circle
+     cx="220"
+     cy="155"
+     r="16"
+     fill="#10B981"
+     id="circle5" />
+  <text
+     x="220"
+     y="163"
+     font-family="system-ui, -apple-system, sans-serif"
+     font-size="18"
+     fill="#FFFFFF"
+     text-anchor="middle"
+     id="text6">✓</text>
   <!-- Name and Stats -->
-  <text x="180" y="210" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#0F172A" text-anchor="middle">Ana María González</text>
-  <text x="180" y="235" font-family="system-ui, -apple-system, sans-serif" font-size="15" fill="#64748B" text-anchor="middle">Miembro desde 2024 • ✓ Verificado</text>
-  
+  <text
+     x="180"
+     y="210"
+     font-family="system-ui, -apple-system, sans-serif"
+     font-size="24"
+     font-weight="700"
+     fill="#0F172A"
+     text-anchor="middle"
+     id="text7">Ana María González</text>
+  <text
+     x="180"
+     y="235"
+     font-family="system-ui, -apple-system, sans-serif"
+     font-size="15"
+     fill="#64748B"
+     text-anchor="middle"
+     id="text8">Miembro desde 2024 • ✓ Verificado</text>
   <!-- Stats Row -->
-  <g transform="translate(40, 260)">
-    <g>
-      <text x="45" y="10" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#0F172A" text-anchor="middle">23</text>
-      <text x="45" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">Viajes</text>
+  <g
+     transform="translate(40, 260)"
+     id="g15">
+    <g
+       id="g10">
+      <text
+         x="45"
+         y="10"
+         font-family="system-ui, -apple-system, sans-serif"
+         font-size="24"
+         font-weight="700"
+         fill="#0F172A"
+         text-anchor="middle"
+         id="text9">23</text>
+      <text
+         x="45"
+         y="32"
+         font-family="system-ui, -apple-system, sans-serif"
+         font-size="13"
+         fill="#64748B"
+         text-anchor="middle"
+         id="text10">Viajes</text>
     </g>
-    <g transform="translate(95, 0)">
-      <text x="45" y="10" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#0F172A" text-anchor="middle">4.8</text>
-      <text x="45" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">Rating</text>
+    <g
+       transform="translate(95, 0)"
+       id="g12">
+      <text
+         x="45"
+         y="10"
+         font-family="system-ui, -apple-system, sans-serif"
+         font-size="24"
+         font-weight="700"
+         fill="#0F172A"
+         text-anchor="middle"
+         id="text11">4.8</text>
+      <text
+         x="45"
+         y="32"
+         font-family="system-ui, -apple-system, sans-serif"
+         font-size="13"
+         fill="#64748B"
+         text-anchor="middle"
+         id="text12">Rating</text>
     </g>
-    <g transform="translate(190, 0)">
-      <text x="45" y="10" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#0F172A" text-anchor="middle">180kg</text>
-      <text x="45" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748B" text-anchor="middle">CO₂ ahorrado</text>
+    <g
+       transform="translate(190, 0)"
+       id="g14">
+      <text
+         x="45"
+         y="10"
+         font-family="system-ui, -apple-system, sans-serif"
+         font-size="24"
+         font-weight="700"
+         fill="#0F172A"
+         text-anchor="middle"
+         id="text13">180kg</text>
+      <text
+         x="45"
+         y="32"
+         font-family="system-ui, -apple-system, sans-serif"
+         font-size="13"
+         fill="#64748B"
+         text-anchor="middle"
+         id="text14">CO₂ ahorrado</text>
     </g>
   </g>
-  
   <!-- About Section -->
-  <g transform="translate(20, 330)">
-    <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#0F172A">Sobre mí</text>
-    <rect x="0" y="10" width="320" height="80" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
-    <text x="15" y="35" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#475569">Viajo frecuentemente por trabajo entre</text>
-    <text x="15" y="55" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#475569">Madrid y Barcelona. Me encanta compartir</text>
-    <text x="15" y="75" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#475569">viaje y conocer gente nueva 🌍</text>
+  <g
+     transform="translate(20, 330)"
+     id="g18">
+    <text
+       x="0"
+       y="0"
+       font-family="system-ui, -apple-system, sans-serif"
+       font-size="16"
+       font-weight="700"
+       fill="#0F172A"
+       id="text15">Sobre mí</text>
+    <rect
+       x="0"
+       y="10"
+       width="320"
+       height="80"
+       rx="12"
+       fill="#FFFFFF"
+       stroke="#E2E8F0"
+       stroke-width="1"
+       id="rect15" />
+    <text
+       x="15"
+       y="35"
+       font-family="system-ui, -apple-system, sans-serif"
+       font-size="14"
+       fill="#475569"
+       id="text16">Viajo frecuentemente por trabajo entre</text>
+    <text
+       x="15"
+       y="55"
+       font-family="system-ui, -apple-system, sans-serif"
+       font-size="14"
+       fill="#475569"
+       id="text17">Madrid y Barcelona. Me encanta compartir</text>
+    <text
+       x="15"
+       y="75"
+       font-family="system-ui, -apple-system, sans-serif"
+       font-size="14"
+       fill="#475569"
+       id="text18">viaje y conocer gente nueva 🌍</text>
   </g>
-  
   <!-- Badges Section -->
-  <g transform="translate(20, 440)">
-    <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#0F172A">Insignias</text>
-    <g transform="translate(0, 15)">
+  <g
+     transform="translate(20, 440)"
+     id="g30">
+    <text
+       x="0"
+       y="6"
+       font-family="system-ui, '-apple-system', sans-serif"
+       font-size="16px"
+       font-weight="700"
+       fill="#0f172a"
+       id="text19">Insignias</text>
+    <g
+       transform="translate(0, 15)"
+       id="g29">
       <!-- Badge 1 -->
-      <g>
-        <rect x="0" y="0" width="100" height="100" rx="12" fill="#FFFFFF" stroke="#F59E0B" stroke-width="2"/>
-        <text x="50" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="32" text-anchor="middle">🌟</text>
-        <text x="50" y="65" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0F172A" text-anchor="middle">Early</text>
-        <text x="50" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0F172A" text-anchor="middle">Adopter</text>
+      <g
+         id="g22">
+        <rect
+           x="0"
+           y="0"
+           width="100"
+           height="100"
+           rx="12"
+           fill="#FFFFFF"
+           stroke="#F59E0B"
+           stroke-width="2"
+           id="rect19" />
+        <text
+           x="50"
+           y="40"
+           font-family="system-ui, -apple-system, sans-serif"
+           font-size="32"
+           text-anchor="middle"
+           id="text20">🌟</text>
+        <text
+           x="50"
+           y="65"
+           font-family="system-ui, -apple-system, sans-serif"
+           font-size="11"
+           font-weight="600"
+           fill="#0F172A"
+           text-anchor="middle"
+           id="text21">Early</text>
+        <text
+           x="50"
+           y="80"
+           font-family="system-ui, -apple-system, sans-serif"
+           font-size="11"
+           font-weight="600"
+           fill="#0F172A"
+           text-anchor="middle"
+           id="text22">Adopter</text>
       </g>
       <!-- Badge 2 -->
-      <g transform="translate(110, 0)">
-        <rect x="0" y="0" width="100" height="100" rx="12" fill="#FFFFFF" stroke="#10B981" stroke-width="2"/>
-        <text x="50" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="32" text-anchor="middle">🌱</text>
-        <text x="50" y="65" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0F172A" text-anchor="middle">Eco</text>
-        <text x="50" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0F172A" text-anchor="middle">Warrior</text>
+      <g
+         transform="translate(110, 0)"
+         id="g25">
+        <rect
+           x="0"
+           y="0"
+           width="100"
+           height="100"
+           rx="12"
+           fill="#FFFFFF"
+           stroke="#10B981"
+           stroke-width="2"
+           id="rect22" />
+        <text
+           x="50"
+           y="40"
+           font-family="system-ui, -apple-system, sans-serif"
+           font-size="32"
+           text-anchor="middle"
+           id="text23">🌱</text>
+        <text
+           x="50"
+           y="65"
+           font-family="system-ui, -apple-system, sans-serif"
+           font-size="11"
+           font-weight="600"
+           fill="#0F172A"
+           text-anchor="middle"
+           id="text24">Eco</text>
+        <text
+           x="50"
+           y="80"
+           font-family="system-ui, -apple-system, sans-serif"
+           font-size="11"
+           font-weight="600"
+           fill="#0F172A"
+           text-anchor="middle"
+           id="text25">Warrior</text>
       </g>
       <!-- Badge 3 -->
-      <g transform="translate(220, 0)">
-        <rect x="0" y="0" width="100" height="100" rx="12" fill="#FFFFFF" stroke="#3B82F6" stroke-width="2"/>
-        <text x="50" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="32" text-anchor="middle">⭐</text>
-        <text x="50" y="65" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0F172A" text-anchor="middle">Super</text>
-        <text x="50" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#0F172A" text-anchor="middle">Host</text>
+      <g
+         transform="translate(220, 0)"
+         id="g28">
+        <rect
+           x="0"
+           y="0"
+           width="100"
+           height="100"
+           rx="12"
+           fill="#FFFFFF"
+           stroke="#3B82F6"
+           stroke-width="2"
+           id="rect25" />
+        <text
+           x="50"
+           y="40"
+           font-family="system-ui, -apple-system, sans-serif"
+           font-size="32"
+           text-anchor="middle"
+           id="text26">⭐</text>
+        <text
+           x="50"
+           y="65"
+           font-family="system-ui, -apple-system, sans-serif"
+           font-size="11"
+           font-weight="600"
+           fill="#0F172A"
+           text-anchor="middle"
+           id="text27">Super</text>
+        <text
+           x="50"
+           y="80"
+           font-family="system-ui, -apple-system, sans-serif"
+           font-size="11"
+           font-weight="600"
+           fill="#0F172A"
+           text-anchor="middle"
+           id="text28">Host</text>
       </g>
     </g>
   </g>
-  
   <!-- Reviews Section -->
-  <g transform="translate(20, 570)">
-    <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#0F172A">Reseñas (18)</text>
-    
+  <g
+     transform="translate(20, 570)"
+     id="g36">
+    <text
+       x="0"
+       y="8"
+       font-family="system-ui, '-apple-system', sans-serif"
+       font-size="16px"
+       font-weight="700"
+       fill="#0f172a"
+       id="text30">Reseñas (18)</text>
     <!-- Review 1 -->
-    <g transform="translate(0, 15)">
-      <rect x="0" y="0" width="320" height="85" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
-      <circle cx="25" cy="25" r="18" fill="#8B5CF6"/>
-      <text x="25" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF" text-anchor="middle">CR</text>
-      <text x="55" y="23" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#0F172A">Carlos Rodríguez</text>
-      <text x="55" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748B">⭐⭐⭐⭐⭐</text>
-      <text x="15" y="63" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#475569">Muy puntual y amable. Gran experiencia</text>
-      <text x="305" y="25" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#94A3B8" text-anchor="end">Hace 2 días</text>
+    <g
+       transform="translate(0, 15)"
+       id="g35">
+      <rect
+         x="0"
+         y="0"
+         width="320"
+         height="85"
+         rx="12"
+         fill="#FFFFFF"
+         stroke="#E2E8F0"
+         stroke-width="1"
+         id="rect30" />
+      <circle
+         cx="25"
+         cy="25"
+         r="18"
+         fill="#8B5CF6"
+         id="circle30" />
+      <text
+         x="25"
+         y="32"
+         font-family="system-ui, -apple-system, sans-serif"
+         font-size="14"
+         font-weight="600"
+         fill="#FFFFFF"
+         text-anchor="middle"
+         id="text31">CR</text>
+      <text
+         x="55"
+         y="23"
+         font-family="system-ui, -apple-system, sans-serif"
+         font-size="14"
+         font-weight="600"
+         fill="#0F172A"
+         id="text32">Carlos Rodríguez</text>
+      <text
+         x="55"
+         y="40"
+         font-family="system-ui, -apple-system, sans-serif"
+         font-size="13"
+         fill="#64748B"
+         id="text33">⭐⭐⭐⭐⭐</text>
+      <text
+         x="15"
+         y="63"
+         font-family="system-ui, -apple-system, sans-serif"
+         font-size="13"
+         fill="#475569"
+         id="text34">Muy puntual y amable. Gran experiencia</text>
+      <text
+         x="305"
+         y="25"
+         font-family="system-ui, -apple-system, sans-serif"
+         font-size="11"
+         fill="#94A3B8"
+         text-anchor="end"
+         id="text35">Hace 2 días</text>
     </g>
   </g>
-  
   <!-- Action Buttons -->
-  <rect x="20" y="690" width="150" height="48" rx="12" fill="#FFFFFF" stroke="#3B82F6" stroke-width="2"/>
-  <text x="95" y="719" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#3B82F6" text-anchor="middle">💬 Mensaje</text>
-  
-  <rect x="190" y="690" width="150" height="48" rx="12" fill="#EF4444"/>
-  <text x="265" y="719" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="middle">🚫 Reportar</text>
+  <rect
+     x="20"
+     y="690"
+     width="150"
+     height="48"
+     rx="12"
+     fill="#FFFFFF"
+     stroke="#3B82F6"
+     stroke-width="2"
+     id="rect36" />
+  <text
+     x="95"
+     y="719"
+     font-family="system-ui, -apple-system, sans-serif"
+     font-size="15"
+     font-weight="600"
+     fill="#3B82F6"
+     text-anchor="middle"
+     id="text36">💬 Mensaje</text>
+  <rect
+     x="190"
+     y="690"
+     width="150"
+     height="48"
+     rx="12"
+     fill="#EF4444"
+     id="rect37" />
+  <text
+     x="265"
+     y="719"
+     font-family="system-ui, -apple-system, sans-serif"
+     font-size="15"
+     font-weight="600"
+     fill="#FFFFFF"
+     text-anchor="middle"
+     id="text37">🚫 Reportar</text>
 </svg>
