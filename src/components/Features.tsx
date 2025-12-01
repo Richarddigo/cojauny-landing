@@ -74,11 +74,11 @@ const Features = ({ copy }: FeaturesProps) => {
     return (
         <section
             id="features"
-            className="relative scroll-mt-[74px] border-y border-transparent bg-gradient-to-b from-white to-slate-50 py-12 px-4 sm:px-6 md:py-16 lg:py-20 lg:scroll-mt-[100px]"
+            className="relative w-full scroll-mt-[74px] border-y border-transparent bg-gradient-to-b from-white to-slate-50 py-12 md:py-16 lg:py-20 lg:scroll-mt-[100px]"
         >
             <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
-            <div className="mx-auto max-w-7xl">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6">
                 <SectionIntro title={copy.title} description={copy.subtitle} />
                 <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 md:mt-16 lg:grid-cols-3">
                     {copy.items.map((feature, index) => {
@@ -93,8 +93,8 @@ const Features = ({ copy }: FeaturesProps) => {
                                 viewport={{ once: true, amount: 0.2 }}
                                 transition={{ duration: 0.5, delay: index * 0.05 }}
                                 className={`group relative rounded-2xl border bg-white/90 p-6 shadow-xl backdrop-blur md:rounded-3xl md:p-8 transition-all duration-500 ${isActive
-                                        ? 'border-blue-300 shadow-2xl scale-105 lg:scale-100 lg:border-white/70'
-                                        : 'border-white/70 shadow-slate-200/60'
+                                    ? 'border-blue-300 shadow-2xl scale-105 lg:scale-100 lg:border-white/70'
+                                    : 'border-white/70 shadow-slate-200/60'
                                     }`}
                             >
                                 <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-50 text-brand-600">

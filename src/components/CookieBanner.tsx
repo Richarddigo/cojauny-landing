@@ -33,8 +33,8 @@ const CookieBanner = ({ copy, locale }: CookieBannerProps) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
         >
-            <div className="fixed bottom-4 left-1/2 z-50 w-[95%] max-w-2xl -translate-x-1/2 rounded-2xl bg-white p-6 shadow-soft-glow">
-                <p className="mb-4 text-sm text-slate-600">{copy.message}</p>
+            <div className="fixed bottom-4 left-1/2 z-50 w-[95%] max-w-2xl -translate-x-1/2 rounded-2xl bg-slate-900/95 backdrop-blur-sm p-6 shadow-lg border border-white/10">
+                <p className="mb-4 text-sm text-white/80">{copy.message}</p>
                 <div className="flex flex-wrap gap-3">
                     <button
                         type="button"
@@ -42,7 +42,7 @@ const CookieBanner = ({ copy, locale }: CookieBannerProps) => {
                             accept();
                             setOpen(false);
                         }}
-                        className="rounded-full bg-brand-600 px-4 py-2 text-sm font-semibold text-white shadow-soft-glow transition hover:bg-brand-500 focus-visible:bg-brand-700"
+                        className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-white/90 focus-visible:bg-white/80"
                     >
                         {copy.acceptAll}
                     </button>
@@ -52,13 +52,13 @@ const CookieBanner = ({ copy, locale }: CookieBannerProps) => {
                             reject();
                             setOpen(false);
                         }}
-                        className="rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100"
+                        className="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
                     >
                         {copy.reject}
                     </button>
                     <a
                         href={`/${locale}/legal/cookies`}
-                        className="ml-auto text-sm font-medium text-brand-600 underline-offset-4 hover:underline"
+                        className="ml-auto text-sm font-medium text-white/70 underline-offset-4 hover:text-white hover:underline"
                     >
                         {copy.moreInfo}
                     </a>

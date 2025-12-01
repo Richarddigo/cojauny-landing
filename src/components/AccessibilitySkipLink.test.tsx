@@ -24,7 +24,7 @@ describe('AccessibilitySkipLink', () => {
     it('tiene clases de accesibilidad para focus', () => {
         render(<AccessibilitySkipLink />);
         const link = screen.getByText('Skip to main content');
-        expect(link.className).toContain('focus-visible:opacity-100');
-        expect(link.className).toContain('opacity-0');
+        expect(link).toHaveClass('focus-visible:opacity-100');
+        expect(link).toHaveClass('opacity-0');
     });
 });

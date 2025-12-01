@@ -9,6 +9,10 @@ interface SubprocessorsPageProps {
     params: { locale: string };
 }
 
+export function generateStaticParams() {
+    return locales.map((locale) => ({ locale }));
+}
+
 export function generateMetadata({ params }: SubprocessorsPageProps): Metadata {
     const locale = params.locale as Locale;
     if (!locales.includes(locale)) {

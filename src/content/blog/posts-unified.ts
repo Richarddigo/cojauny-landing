@@ -84,7 +84,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'navette-aeroport-partagee',
     locale: 'fr',
     title: 'Navette aéroport partagée entre passagers du même vol',
-    summary: 'Conseils pour réduire les coûts en partageant taxi, VTC ou parking longue durée avec Cojauny.',
+    summary: 'Conseils pour réduire les coûts en partageant taxi, VTC ou voiture privée durée avec Cojauny.',
     heroImage: '/images/og-default.svg',
     heroAlt: 'Voyageurs français organisant une navette partagée',
     heroWidth: 1280,

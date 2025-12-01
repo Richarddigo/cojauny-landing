@@ -57,9 +57,9 @@ const WorkflowSection = ({ copy }: WorkflowSectionProps) => {
     return (
         <section
             id="how-it-works"
-            className="scroll-mt-[74px] bg-gradient-to-b from-slate-50 to-white py-12 px-4 sm:px-6 md:py-16 lg:py-20 lg:scroll-mt-[100px]"
+            className="w-full scroll-mt-[74px] bg-gradient-to-b from-slate-50 to-white py-12 md:py-16 lg:py-20 lg:scroll-mt-[100px]"
         >
-            <div className="mx-auto max-w-5xl">
+            <div className="mx-auto max-w-5xl px-4 sm:px-6">
                 <SectionIntro title={copy.title} description={copy.intro} />
                 <div className="mt-12 space-y-6 md:mt-16 md:space-y-8">
                     {copy.steps.map((step, index) => {
@@ -73,8 +73,8 @@ const WorkflowSection = ({ copy }: WorkflowSectionProps) => {
                                 viewport={{ once: true, amount: 0.3 }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                 className={`group relative overflow-hidden rounded-2xl border bg-white p-6 shadow-lg transition-all duration-500 md:rounded-3xl md:p-8 ${isActive
-                                        ? 'border-blue-300 shadow-2xl scale-105 lg:scale-100 lg:border-slate-100 lg:hover:shadow-xl'
-                                        : 'border-slate-100 hover:shadow-xl'
+                                    ? 'border-blue-300 shadow-2xl scale-105 lg:scale-100 lg:border-slate-100 lg:hover:shadow-xl'
+                                    : 'border-slate-100 hover:shadow-xl'
                                     }`}
                             >
                                 <div className={`absolute inset-y-0 left-0 w-1 rounded-l-2xl bg-gradient-to-b from-brand-400 via-brand-500 to-brand-600 md:rounded-l-3xl transition ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'

@@ -22,14 +22,14 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="1.0192308"
-     inkscape:cx="180.03774"
-     inkscape:cy="390"
+     inkscape:cx="180.03773"
+     inkscape:cy="390.98112"
      inkscape:window-width="1920"
      inkscape:window-height="1013"
      inkscape:window-x="1129"
      inkscape:window-y="1341"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg30" />
+     inkscape:current-layer="g29" />
   <!-- Background -->
   <rect
      width="360"
@@ -419,11 +419,11 @@
       <text
          x="15"
          y="25"
-         font-family="system-ui, -apple-system, sans-serif"
-         font-size="13"
+         font-family="system-ui, '-apple-system', sans-serif"
+         font-size="13px"
          font-weight="600"
-         fill="#64748B"
-         id="text26">PERSONAS CONOCIDAS</text>
+         fill="#64748b"
+         id="text26">CONOCIDOS</text>
       <text
          x="15"
          y="59"

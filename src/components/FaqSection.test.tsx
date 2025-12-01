@@ -88,9 +88,9 @@ describe('FaqSection', () => {
     });
 
     it('tiene id para navegación por ancla', () => {
-        render(<FaqSection copy={mockCopy} />);
-
-        const section = document.getElementById('faq');
+        const { container } = render(<FaqSection copy={mockCopy} />);
+        // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
+        const section = container.querySelector('#faq');
         expect(section).toBeInTheDocument();
     });
 });

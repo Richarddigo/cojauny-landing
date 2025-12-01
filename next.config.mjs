@@ -64,7 +64,8 @@ const cacheHeaders = [
 const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
-    output: 'export',
+    // Solo usar export estático en producción para evitar bugs de Next.js en desarrollo
+    ...(process.env.NODE_ENV === 'production' && { output: 'export' }),
     poweredByHeader: false,
     compress: true,
 

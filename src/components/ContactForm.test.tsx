@@ -194,9 +194,9 @@ describe('ContactForm', () => {
     });
 
     it('usa locale correcta en hidden input', () => {
-        render(<ContactForm locale="fr" copy={mockCopy} />);
-
-        const hiddenInput = document.querySelector('input[name="locale"]') as HTMLInputElement;
+        const { container } = render(<ContactForm locale="fr" copy={mockCopy} />);
+        // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
+        const hiddenInput = container.querySelector('input[name="locale"]') as HTMLInputElement;
         expect(hiddenInput.value).toBe('fr');
     });
 });

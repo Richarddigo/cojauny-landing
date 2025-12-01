@@ -57,9 +57,9 @@ const ValuePropsSection = ({ copy }: ValuePropsSectionProps) => {
     return (
         <section
             id="benefits"
-            className="scroll-mt-[74px] bg-gradient-to-b from-white via-slate-50 to-white py-12 px-4 sm:px-6 md:py-16 lg:py-24 lg:scroll-mt-[100px]"
+            className="w-full scroll-mt-[74px] bg-gradient-to-b from-white via-slate-50 to-white py-12 md:py-16 lg:py-24 lg:scroll-mt-[100px]"
         >
-            <div className="mx-auto max-w-7xl">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6">
                 <SectionIntro title={copy.title} description={copy.subtitle} />
                 <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 md:mt-16 lg:grid-cols-3">
                     {copy.items.map((item, index) => {
@@ -73,8 +73,8 @@ const ValuePropsSection = ({ copy }: ValuePropsSectionProps) => {
                                 viewport={{ once: true, amount: 0.3 }}
                                 transition={{ duration: 0.4, delay: index * 0.05 }}
                                 className={`group relative overflow-hidden rounded-2xl border bg-white/80 p-6 shadow-lg backdrop-blur-sm md:rounded-3xl md:p-8 transition-all duration-500 ${isActive
-                                        ? 'border-blue-300 shadow-2xl scale-105 lg:scale-100 lg:border-white/70'
-                                        : 'border-white/70 shadow-slate-200/60'
+                                    ? 'border-blue-300 shadow-2xl scale-105 lg:scale-100 lg:border-white/70'
+                                    : 'border-white/70 shadow-slate-200/60'
                                     }`}
                             >
                                 <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-400 via-brand-500 to-brand-300 transition ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'

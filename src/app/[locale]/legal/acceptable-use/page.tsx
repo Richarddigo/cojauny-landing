@@ -9,6 +9,10 @@ interface AcceptableUsePageProps {
     params: { locale: string };
 }
 
+export function generateStaticParams() {
+    return locales.map((locale) => ({ locale }));
+}
+
 export function generateMetadata({ params }: AcceptableUsePageProps): Metadata {
     const locale = params.locale as Locale;
     if (!locales.includes(locale)) {

@@ -34,7 +34,7 @@ describe('HashScrollHandler', () => {
 
     it('no renderiza nada visible', () => {
         const { container } = render(<HashScrollHandler />);
-        expect(container.firstChild).toBeNull();
+        expect(container).toBeEmptyDOMElement();
     });
 
     it('no hace scroll si no hay hash', () => {

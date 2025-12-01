@@ -65,9 +65,9 @@ describe('Features', () => {
     });
 
     it('tiene id para navegación por ancla', () => {
-        render(<Features copy={mockCopy} />);
-
-        const section = document.getElementById('features');
+        const { container } = render(<Features copy={mockCopy} />);
+        // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
+        const section = container.querySelector('#features');
         expect(section).toBeInTheDocument();
     });
 
@@ -80,9 +80,9 @@ describe('Features', () => {
     });
 
     it('aplica clases de gradiente al fondo', () => {
-        render(<Features copy={mockCopy} />);
-
-        const section = document.getElementById('features');
-        expect(section?.className).toContain('bg-gradient-to-b');
+        const { container } = render(<Features copy={mockCopy} />);
+        // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
+        const section = container.querySelector('#features');
+        expect(section).toHaveClass('bg-gradient-to-b');
     });
 });

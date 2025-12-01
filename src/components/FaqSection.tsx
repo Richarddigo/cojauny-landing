@@ -12,9 +12,9 @@ interface FaqSectionProps {
 const FaqSection = ({ copy }: FaqSectionProps) => (
     <section
         id="faq"
-        className="scroll-mt-[74px] bg-white py-12 px-4 sm:px-6 md:py-16 lg:py-20 lg:scroll-mt-[100px]"
+        className="w-full scroll-mt-[74px] bg-white py-12 md:py-16 lg:py-20 lg:scroll-mt-[100px]"
     >
-        <div className="mx-auto max-w-4xl">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6">
             <SectionIntro title={copy.title} description={copy.subtitle} />
             <dl className="mt-10 space-y-4 md:mt-12 md:space-y-6">
                 {copy.items.map((item, index) => (

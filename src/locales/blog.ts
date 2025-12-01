@@ -60,7 +60,7 @@ const blogCopy: Record<Locale, BlogCopy> = {
     meta: {
       title: 'Cojauny Blog · Flughafentransfers gemeinsam optimieren',
       description:
-        'Praxisnahe Tipps, wie Reisende desselben Fluges Taxi, Shuttle oder Parking gemeinsam planen und Kosten senken.',
+        'Praxisnahe Tipps, wie Reisende desselben Fluges Taxi, Shuttle oder Privatwagen gemeinsam planen und Kosten senken.',
       ogTitle: 'Cojauny Blog · Effiziente Flughafentransfers',
       ogDescription:
         'Fallstudien, Prozess-Tipps und Produkt-News für Teams, die Fahrten rund um den Flug koordinieren.'

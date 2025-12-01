@@ -256,13 +256,13 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ],
       ogTitle: 'Cojauny: Comparte taxi al aeropuerto y ahorra 50-75% | App gratuita',
       ogDescription:
-        'Conecta con pasajeros de tu vuelo para compartir taxi, van o parking al aeropuerto. Perfiles verificados, chat temporal y ahorro medible. Ya en +120 aeropuertos.'
+        'Conecta con pasajeros de tu vuelo para compartir taxi, van o coche privado al aeropuerto. Perfiles verificados, chat temporal y ahorro medible. Ya en +120 aeropuertos.'
     },
     hero: {
       eyebrow: 'Ahorra hasta un 75% en tus traslados al aeropuerto',
       title: 'Comparte taxi con pasajeros de tu mismo vuelo',
       subtitle:
-        'Cojauny conecta automáticamente a viajeros que comparten vuelo para organizar taxis, vans o parking compartido. Divide el coste entre 3-4 personas, reduce tu huella de carbono y viaja con perfiles verificados. Todo desde una app segura con chat temporal.',
+        'Cojauny conecta automáticamente a viajeros que comparten vuelo para organizar taxis, vans o coche privado. Divide el coste entre 3-4 personas, reduce tu huella de carbono y viaja con perfiles verificados. Todo desde una app segura con chat temporal.',
       primaryCta: 'Solicitar acceso beta',
       secondaryCta: 'Ver cómo funciona',
       imageAlt: 'App Cojauny mostrando matching automático por vuelo, chat seguro y ahorro en tiempo real'
@@ -330,7 +330,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: '💸 Ahorro visible en cada trayecto',
           description:
-            'Divide traslados premium, vans corporativas o parkings de larga estancia y controla cuánto ahorras frente a tomar un taxi individual.'
+            'Divide traslados premium, vans corporativas o coches privados y controla cuánto ahorras frente a tomar un taxi individual.'
         },
         {
           title: '🌱 Impacto ambiental cuantificable',
@@ -371,7 +371,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           value: '50-75%',
           label: 'Ahorro proyectado',
-          description: 'Rango promedio de ahorro por trayecto terrestre cuando se comparte taxi, van o parking.'
+          description: 'Rango promedio de ahorro por trayecto terrestre cuando se comparte taxi, van o coche privado.'
         },
         {
           value: '1,000+ t',
@@ -566,7 +566,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: '¿Qué tipos de eventos puedo crear o unirme?',
-          answer: 'Cojauny soporta múltiples categorías de eventos: Traslados compartidos al aeropuerto de salida, recogidas desde aeropuerto de llegada, servicios de van corporativa para equipos empresariales, parkings de larga duración compartidos (especialmente útil en aeropuertos caros), alojamientos compartidos en el destino (hostel o apartamento completo), y actividades sociales posteriores al vuelo. Los usuarios Premium pueden crear eventos personalizados para cualquier tipo de necesidad de viaje compartido.'
+          answer: 'Cojauny soporta múltiples categorías de eventos: Traslados compartidos al aeropuerto de salida, recogidas desde aeropuerto de llegada, servicios de van corporativa para equipos empresariales, coches privados compartidos, alojamientos compartidos en el destino (hostel o apartamento completo), y actividades sociales posteriores al vuelo. Los usuarios Premium pueden crear eventos personalizados para cualquier tipo de necesidad de viaje compartido.'
         },
         {
           question: '¿En qué aeropuertos está disponible Cojauny?',
@@ -716,8 +716,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     footer: {
       description: 'Cojauny conecta viajeros del mismo vuelo para compartir transporte, reducir costos y crear comunidad. Disponible en iOS 14+ y Android 8+.',
       rights: 'Todos los derechos reservados.',
-      appStoreSoon: 'Descargar en App Store',
-      playStoreSoon: 'Descargar en Google Play',
+      appStoreSoon: 'App Store (próximamente)',
+      playStoreSoon: 'Google Play (próximamente)',
       privacy: 'Privacidad',
       cookies: 'Cookies',
       terms: 'Términos',
@@ -747,7 +747,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     seo: {
       title: 'Cojauny: Share airport taxi and save up to 75% on trips',
       description:
-        'Connect with passengers on your flight to share airport taxis, vans or parking. Automatic matching, verified profiles, secure chat and real savings of 50-75% per trip. Available at 120+ airports worldwide.',
+        'Connect with passengers on your flight to share airport taxis, vans or private cars. Automatic matching, verified profiles, secure chat and real savings of 50-75% per trip. Available at 120+ airports worldwide.',
       keywords: [
         'shared airport taxi',
         'airport ride sharing',
@@ -768,7 +768,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       eyebrow: 'Save up to 75% on your airport transfers',
       title: 'Your shared ride starts before boarding',
       subtitle:
-        'Cojauny aligns passengers on the same flight so they can book shared taxis, vans or parking, keep everyone updated and log savings automatically.',
+        'Cojauny aligns passengers on the same flight so they can book shared taxis, vans or private cars, keep everyone updated and log savings automatically.',
       primaryCta: 'Request beta access',
       secondaryCta: 'Explore the demo',
       imageAlt: 'Cojauny interface showing flight matching, chat and savings cards'
@@ -793,7 +793,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Transparent savings',
           description:
-            'Show how much each passenger saves compared with travelling alone—taxi, Uber, private car or long-term parking.',
+            'Show how much each passenger saves compared with travelling alone—taxi, Uber or private car.',
           iconName: 'users'
         },
         {
@@ -1072,7 +1072,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: 'What types of events can I create or join?',
-          answer: 'Various types: shared transport to departure airport, transport from arrival airport, shared taxi, shared private car, shared long-term parking, meals at destination, and post-flight social activities. Premium users can create any type.'
+          answer: 'Various types: shared transport to departure airport, transport from arrival airport, shared taxi, shared private car, meals at destination, and post-flight social activities. Premium users can create any type.'
         },
         {
           question: 'Does Cojauny work at all airports?',
@@ -1255,7 +1255,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     seo: {
       title: 'Cojauny: Teile dein Flughafentaxi und spare bis zu 75%',
       description:
-        'Verbinden Sie sich mit Passagieren Ihres Fluges, um Flughafen-Taxis, Shuttles oder Parkplätze zu teilen. Automatisches Matching, verifizierte Profile, sicherer Chat und echte Ersparnisse von 50-75% pro Fahrt. Verfügbar an 120+ Flughäfen.',
+        'Verbinden Sie sich mit Passagieren Ihres Fluges, um Flughafen-Taxis, Shuttles oder Privatwagen zu teilen. Automatisches Matching, verifizierte Profile, sicherer Chat und echte Ersparnisse von 50-75% pro Fahrt. Verfügbar an 120+ Flughäfen.',
       keywords: [
         'flughafen taxi teilen',
         'airport ride sharing',
@@ -1276,7 +1276,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       eyebrow: 'Spare bis zu 75% bei deinen Flughafentransfers',
       title: 'Teile die Fahrt zum Flughafen mit deinen Mitreisenden',
       subtitle:
-        'Cojauny bringt Passagiere desselben Tickets zusammen, damit sie in Minuten Taxi, Ride-Sharing oder Parkplätze organisieren. Keine dauerhaften Gruppen, nur das Wesentliche zum Sparen.',
+        'Cojauny bringt Passagiere desselben Tickets zusammen, damit sie in Minuten Taxi, Ride-Sharing oder Privatwagen organisieren. Keine dauerhaften Gruppen, nur das Wesentliche zum Sparen.',
       primaryCta: 'Beta-Zugang anfragen',
       secondaryCta: 'Interaktive Demo ansehen',
       imageAlt: 'Cojauny-Oberflächen mit Einsparungen auf einem iPhone'
@@ -1301,7 +1301,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Transparente Ersparnis',
           description:
-            'Zeige, wie viel jeder Passagier im Vergleich zur Einzelfahrt spart – Taxi, Uber, Privatwagen oder Langzeitparkplatz.',
+            'Zeige, wie viel jeder Passagier im Vergleich zur Einzelfahrt spart – Taxi, Uber oder Privatwagen.',
           iconName: 'users'
         },
         {
@@ -1580,7 +1580,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: 'Welche Arten von Events kann ich erstellen oder beitreten?',
-          answer: 'Verschiedene Typen: gemeinsamer Transport zum Abflughafen, Transport vom Ankunftsflughafen, geteiltes Taxi, geteilter Privatwagen, geteilter Langzeitparkplatz, Mahlzeiten am Zielort und soziale Aktivitäten nach dem Flug. Premium-Benutzer können jeden Typ erstellen.'
+          answer: 'Verschiedene Typen: gemeinsamer Transport zum Abflughafen, Transport vom Ankunftsflughafen, geteiltes Taxi, geteilter Privatwagen, Mahlzeiten am Zielort und soziale Aktivitäten nach dem Flug. Premium-Benutzer können jeden Typ erstellen.'
         },
         {
           question: 'Funktioniert Cojauny an allen Flughäfen?',
@@ -1763,7 +1763,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     seo: {
       title: 'Cojauny : Partagez un taxi d\'aéroport et économisez jusqu\'à 75%',
       description:
-        'Connectez-vous avec des passagers de votre vol pour partager des taxis, navettes ou parkings d\'aéroport. Matching automatique, profils vérifiés, chat sécurisé et économies réelles de 50-75% par trajet. Disponible dans 120+ aéroports.',
+        'Connectez-vous avec des passagers de votre vol pour partager des taxis, navettes ou voiture privée. Matching automatique, profils vérifiés, chat sécurisé et économies réelles de 50-75% par trajet. Disponible dans 120+ aéroports.',
       keywords: [
         'partage taxi aéroport',
         'covoiturage aéroport',
@@ -1809,7 +1809,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Économies claires',
           description:
-            'Affichez les économies par passager par rapport à un trajet individuel — taxi, VTC, voiture privée ou parking longue durée.',
+            'Affichez les économies par passager par rapport à un trajet individuel — taxi, VTC ou voiture privée.',
           iconName: 'users'
         },
         {
@@ -2053,7 +2053,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: 'Quels types d\'événements puis-je créer ou rejoindre ?',
-          answer: 'Différents types : transport partagé vers l\'aéroport de départ, transport depuis l\'aéroport d\'arrivée, taxi partagé, voiture privée partagée, parking longue durée partagé, repas à destination et activités sociales post-vol. Les utilisateurs Premium peuvent créer tous les types.'
+          answer: 'Différents types : transport partagé vers l\'aéroport de départ, transport depuis l\'aéroport d\'arrivée, taxi partagé, voiture privée partagée, repas à destination et activités sociales post-vol. Les utilisateurs Premium peuvent créer tous les types.'
         },
         {
           question: 'Cojauny fonctionne-t-il dans tous les aéroports ?',

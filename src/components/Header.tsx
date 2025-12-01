@@ -7,7 +7,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
-import { SocialIcons } from '@/components/SocialLinks';
 import { usePathname, useRouter } from 'next/navigation';
 import type { Locale } from '@/locales/config';
 import type { LandingCopy } from '@/locales/copy';
@@ -296,10 +295,7 @@ const Header = ({ locale, copy }: HeaderProps) => {
                     </div>
 
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4">
-                        <SocialIcons variant="light" />
-                        <div className="hidden sm:block">
-                            <LanguageSwitcher currentLocale={locale} />
-                        </div>
+                        <LanguageSwitcher currentLocale={locale} />
                     </div>
                 </nav>
             </header>
@@ -423,7 +419,6 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                         ))}
                                     </div>
                                     <div className="py-6 w-full flex flex-col items-end pr-6 gap-4">
-                                        <SocialIcons variant="light" className="justify-end" />
                                         <div className="sm:hidden w-full flex justify-end">
                                             <LanguageSwitcher currentLocale={locale} onSelect={() => setMobileMenuOpen(false)} fullWidth />
                                         </div>

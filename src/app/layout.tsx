@@ -9,6 +9,7 @@ import { defaultLocale, locales } from '@/locales/config';
 import { siteMetadata, ogImages } from '@/lib/site';
 import StructuredData from '@/components/StructuredData';
 import DetectLocale from '@/components/DetectLocale';
+import FloatingSocialBar from '@/components/FloatingSocialBar';
 import { buildOrganizationJsonLd, buildWebsiteJsonLd } from '@/lib/jsonld';
 
 const inter = Inter({
@@ -104,6 +105,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             </head>
             <body className="bg-white font-sans antialiased" data-prefers-reduced-motion="dynamic">
                 <DetectLocale />
+                <FloatingSocialBar />
                 {children}
             </body>
         </html>

@@ -11,11 +11,14 @@ interface DemoSectionProps {
 }
 
 // Presenta la maqueta de iPhone con animación de cambio de pantalla.
+// El mockup se adapta para mostrar el contenido completo sin que la Dynamic Island oculte el título
+// Bordes del iPhone: 5px en todos los lados para maximizar el espacio del mockup
 const IPhoneMockup = ({ screen, className, priority = false }: { screen: any; className?: string; priority?: boolean }) => (
-    <div className={`relative aspect-[360/720] w-full mx-auto ${className ?? ''}`}>
+    <div className={`relative aspect-[9/19.5] w-full mx-auto ${className ?? ''}`}>
         <div className="absolute inset-0 z-10 pointer-events-none">
-            <div className="relative h-full w-full rounded-[2rem] md:rounded-[2.5rem] lg:rounded-[3rem] border-[4px] md:border-[6px] lg:border-[8px] border-slate-900 bg-slate-900 shadow-2xl overflow-hidden">
-                <div className="absolute left-1/2 top-0 z-20 h-[18px] md:h-[24px] lg:h-[28px] w-[80px] md:w-[120px] lg:w-[140px] -translate-x-1/2 rounded-b-[0.8rem] md:rounded-b-[1rem] lg:rounded-b-[1.2rem] bg-slate-900" />
+            <div className="relative h-full w-full rounded-[2rem] md:rounded-[2.5rem] lg:rounded-[3rem] border-[5px] border-slate-900 bg-slate-900 shadow-2xl overflow-hidden">
+                {/* Dynamic Island */}
+                <div className="absolute left-1/2 top-[0.5%] z-20 h-[4%] w-[26%] -translate-x-1/2 rounded-full bg-slate-900" />
 
                 <div className="relative h-full w-full overflow-hidden">
                     <AnimatePresence mode="wait">
@@ -25,34 +28,51 @@ const IPhoneMockup = ({ screen, className, priority = false }: { screen: any; cl
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.98 }}
                             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-                            className="relative h-full w-full pt-[28px] md:pt-[32px] lg:pt-[36px] pb-[35px]"
+                            className="relative h-full w-full"
                         >
-                            <Image src={screen.image} alt={screen.title} fill className="object-cover object-top" sizes="(max-width: 640px) 220px, (max-width: 768px) 260px, (max-width: 1024px) 280px, 380px" priority={priority} />
+                            {/* Fondo de la barra superior del mockup - color #1b2335 */}
+                            <div className="absolute inset-0 bg-[#1b2335]" />
+                            <div className="absolute inset-[1px] top-[15px] bottom-[1px]">
+                                <div className="relative h-full w-full">
+                                    <Image
+                                        src={screen.image}
+                                        alt={screen.title}
+                                        fill
+                                        className="object-cover object-top"
+                                        sizes="(max-width: 640px) 180px, (max-width: 768px) 220px, (max-width: 1024px) 260px, 340px"
+                                        priority={priority}
+                                    />
+                                </div>
+                            </div>
                         </motion.div>
                     </AnimatePresence>
                 </div>
 
-                <div className="absolute top-0 left-0 right-0 h-[18px] md:h-[24px] lg:h-[28px] z-30 flex items-center justify-between px-3 md:px-5 text-[8px] md:text-[10px] lg:text-[11px] font-semibold text-white pointer-events-none">
+                {/* Status bar icons - bajados 5px (top-[1.5%] en vez de top-[0%]) */}
+                <div className="absolute top-[1.5%] left-0 right-0 h-[4%] z-30 flex items-center justify-between px-[6%] text-[8px] md:text-[9px] lg:text-[10px] font-semibold text-white pointer-events-none">
                     <div className="flex items-center gap-1">
                         <span className="drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">9:41</span>
                     </div>
-                    <div className="flex items-center gap-1 md:gap-1.5">
-                        <svg className="w-3 h-2 md:w-3.5 md:h-2.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]" viewBox="0 0 17 12" fill="none">
+                    <div className="flex items-center gap-1">
+                        <svg className="w-3 h-2 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]" viewBox="0 0 17 12" fill="none">
                             <rect x="0" y="7" width="3" height="5" rx="1" fill="currentColor" />
                             <rect x="4.5" y="5" width="3" height="7" rx="1" fill="currentColor" />
                             <rect x="9" y="2" width="3" height="10" rx="1" fill="currentColor" />
                             <rect x="13.5" y="0" width="3" height="12" rx="1" fill="currentColor" />
                         </svg>
-                        <svg className="w-3 h-2.5 md:w-3.5 md:h-3 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]" viewBox="0 0 15 11" fill="none">
+                        <svg className="w-3 h-2.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]" viewBox="0 0 15 11" fill="none">
                             <path fillRule="evenodd" clipRule="evenodd" d="M7.5 3.5C9.433 3.5 11.183 4.283 12.45 5.55L13.5 4.5C11.933 2.933 9.817 2 7.5 2C5.183 2 3.067 2.933 1.5 4.5L2.55 5.55C3.817 4.283 5.567 3.5 7.5 3.5ZM7.5 6.5C8.433 6.5 9.283 6.883 9.917 7.517L11 6.433C10.083 5.517 8.85 5 7.5 5C6.15 5 4.917 5.517 4 6.433L5.083 7.517C5.717 6.883 6.567 6.5 7.5 6.5ZM9 9C9 9.828 8.328 10.5 7.5 10.5C6.672 10.5 6 9.828 6 9C6 8.172 6.672 7.5 7.5 7.5C8.328 7.5 9 8.172 9 9Z" fill="currentColor" />
                         </svg>
-                        <svg className="w-5 h-2.5 md:w-6 md:h-3 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]" viewBox="0 0 25 12" fill="none">
+                        <svg className="w-5 h-2.5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]" viewBox="0 0 25 12" fill="none">
                             <rect x="0.5" y="0.5" width="18" height="11" rx="2.5" stroke="currentColor" strokeOpacity="0.8" />
                             <rect x="2" y="2" width="15" height="8" rx="1.5" fill="currentColor" />
                             <path d="M20 4V8C20.833 7.667 21.5 6.933 21.5 6C21.5 5.067 20.833 4.333 20 4Z" fill="currentColor" fillOpacity="0.8" />
                         </svg>
                     </div>
                 </div>
+
+                {/* Home indicator */}
+                <div className="absolute bottom-[1%] left-1/2 -translate-x-1/2 w-[35%] h-[0.6%] bg-white/80 rounded-full z-30" />
             </div>
         </div>
     </div>
@@ -72,9 +92,9 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
     const [isLocked, setIsLocked] = useState(false); // Desktop: after click, evita cambios por hover/observer
     const [lockedIndex, setLockedIndex] = useState<number | null>(null);
 
-    // Posición del iPhone (desktop) y control de transición
-    const [phoneTop, setPhoneTop] = useState(0);
-    const [enablePhoneTransition, setEnablePhoneTransition] = useState(false);
+    // Ref para el contenedor del iPhone en desktop (para parallax behavior)
+    const phoneContainerRef = useRef<HTMLDivElement | null>(null);
+    const [parallaxOffset, setParallaxOffset] = useState(0);
 
     /* ---------- Efectos compartidos (ambos) ---------- */
     // Detecta tamaño (mobile/desktop)
@@ -84,60 +104,6 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
         window.addEventListener('resize', onResize);
         return () => window.removeEventListener('resize', onResize);
     }, []);
-
-    /* ---------- Efectos desktop ---------- */
-    // Maneja la posición del iPhone conforme el usuario hace scroll (solo desktop)
-    useEffect(() => {
-        if (isMobile) return;
-
-        let enableTimeout: number | undefined;
-
-        const computePhonePosition = () => {
-            const container = containerRef.current;
-            const phoneContainer = container?.querySelector('.relative.h-full.overflow-visible');
-            const phoneMockup = phoneContainer?.querySelector('.w-full.will-change-transform');
-            if (!container || !phoneContainer || !phoneMockup) return;
-
-            const sectionRect = container.getBoundingClientRect();
-            const phoneRect = phoneContainer.getBoundingClientRect();
-            const minTop = phoneRect.top - sectionRect.top;
-            const maxTop = phoneRect.bottom - sectionRect.top;
-
-            // Altura real del mockup
-            const phoneHeight = (phoneMockup instanceof HTMLElement) ? phoneMockup.offsetHeight : 0;
-
-            // Calcula el centro del viewport relativo al contenedor
-            const scrollY = window.scrollY;
-            const sectionTop = sectionRect.top + scrollY;
-            let desiredTop = scrollY - sectionTop + (window.innerHeight / 2) - (phoneHeight / 2);
-
-            // Ajuste: si el mockup es más alto que el contenedor, mostrar la mayor parte posible
-            const visibleHeight = maxTop - minTop;
-            if (phoneHeight > visibleHeight) {
-                // Centrar la parte visible del mockup dentro del contenedor
-                desiredTop = minTop;
-            } else {
-                // Clamp normal
-                if (desiredTop < minTop) desiredTop = minTop;
-                if (desiredTop > maxTop - phoneHeight) desiredTop = maxTop - phoneHeight;
-            }
-            setPhoneTop(desiredTop);
-        };
-
-        const onScroll = () => computePhonePosition();
-        window.addEventListener('scroll', onScroll, { passive: true });
-
-        // inicializa sin animación y luego habilita la transición
-        // En el primer render, forzar top 0
-        setPhoneTop(0);
-        computePhonePosition();
-        enableTimeout = window.setTimeout(() => setEnablePhoneTransition(true), 80);
-
-        return () => {
-            window.removeEventListener('scroll', onScroll);
-            if (enableTimeout) window.clearTimeout(enableTimeout);
-        };
-    }, [isMobile]);
 
     // Observador para actualizar `activeStep` según la carta más arriba visible (desktop)
     useEffect(() => {
@@ -169,9 +135,62 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
         return () => observer.disconnect();
     }, [isMobile, isLocked, activeStep]);
 
+    // Parallax effect para desktop: mueve el iPhone para que siempre esté visible
+    // entre el top de la primera tarjeta y el bottom de la última
+    useEffect(() => {
+        if (isMobile || !cardsContainerRef.current || !phoneContainerRef.current) return;
+
+        const handleScroll = () => {
+            const cardsContainer = cardsContainerRef.current;
+            const phoneContainer = phoneContainerRef.current;
+            if (!cardsContainer || !phoneContainer) return;
+
+            const firstCard = cardsRef.current[0];
+            const lastCard = cardsRef.current[cardsRef.current.length - 1];
+            if (!firstCard || !lastCard) return;
+
+            const firstCardRect = firstCard.getBoundingClientRect();
+            const lastCardRect = lastCard.getBoundingClientRect();
+            const phoneRect = phoneContainer.getBoundingClientRect();
+
+            const headerOffset = 96; // top-24 = 6rem = 96px
+            const firstCardTop = firstCardRect.top;
+            const lastCardBottom = lastCardRect.bottom;
+
+            // Calculamos el espacio disponible para el iPhone
+            const availableSpace = lastCardBottom - firstCardTop;
+            const phoneHeight = phoneRect.height;
+
+            // Si el espacio es mayor que el alto del iPhone, calculamos el offset
+            if (availableSpace > phoneHeight) {
+                const maxScroll = availableSpace - phoneHeight;
+
+                // Progreso basado en qué tan abajo está la primera tarjeta
+                const viewportTop = headerOffset;
+                const scrollProgress = Math.max(0, Math.min(1,
+                    (viewportTop - firstCardTop) / maxScroll
+                ));
+
+                const offset = scrollProgress * maxScroll;
+                setParallaxOffset(offset);
+            } else {
+                setParallaxOffset(0);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('resize', handleScroll, { passive: true });
+        handleScroll(); // Inicializar
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('resize', handleScroll);
+        };
+    }, [isMobile]);
+
     /* ---------- Efectos mobile ---------- */
-    // Para mobile, calculamos la tarjeta más cercana a `viewportTop` al hacer scroll
-    // y hacemos scroll automático para alinear la tarjeta activa con el top
+    // Para mobile, calculamos la tarjeta más cercana al viewport
+    // Al cambiar de tarjeta activa, el top de esa tarjeta queda 10px debajo del header
     useEffect(() => {
         if (!isMobile) return;
 
@@ -183,6 +202,7 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
             if (isAutoScrolling) return;
 
             const headerHeight = 80;
+            const targetOffset = 10; // 10px debajo del header
             let newActive = 0;
             let minDistance = Infinity;
 
@@ -190,7 +210,7 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                 const card = cardsRef.current[i];
                 if (!card) continue;
                 const rect = card.getBoundingClientRect();
-                const distance = Math.abs(rect.top - headerHeight);
+                const distance = Math.abs(rect.top - (headerHeight + targetOffset));
                 if (distance < minDistance) {
                     minDistance = distance;
                     newActive = i;
@@ -201,25 +221,29 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                 setActiveStep(newActive);
             }
 
-            // Auto-scroll para alinear la tarjeta cuando el usuario deja de hacer scroll
+            // Auto-scroll para alinear cuando el usuario deja de hacer scroll
+            // La tarjeta activa quedará con su top a 10px bajo el header
             if (scrollTimeout) clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(() => {
-                const card = cardsRef.current[newActive];
-                if (card && newActive !== lastActiveStep) {
+                const currentCard = cardsRef.current[newActive];
+                if (currentCard && newActive !== lastActiveStep) {
                     lastActiveStep = newActive;
                     isAutoScrolling = true;
-                    const cardTop = card.getBoundingClientRect().top + window.scrollY;
-                    const targetScroll = cardTop - headerHeight;
+
+                    const cardTop = currentCard.getBoundingClientRect().top + window.scrollY;
+                    const targetScroll = cardTop - headerHeight - targetOffset;
+
                     window.scrollTo({
                         top: targetScroll,
                         behavior: 'smooth'
                     });
-                    // Reset flag after animation
+
+                    // Reset flag después de una animación más larga para suavidad
                     setTimeout(() => {
                         isAutoScrolling = false;
-                    }, 600);
+                    }, 1200); // Aumentado de 800 a 1200ms
                 }
-            }, 150);
+            }, 300); // Aumentado de 200 a 300ms para menos saltos
         };
 
         window.addEventListener('scroll', onScroll, { passive: true });
@@ -285,8 +309,8 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                     </motion.p>
                 </div>
 
-                {/* Desktop layout */}
-                <div className="hidden lg:grid lg:grid-cols-[1fr,400px] lg:gap-16 xl:gap-20 items-start">
+                {/* Desktop layout - el grid necesita items-stretch para que sticky funcione */}
+                <div className="hidden lg:grid lg:grid-cols-[1fr,400px] lg:gap-16 xl:gap-20">
                     <div ref={cardsContainerRef} className="flex flex-col gap-8">
                         {copy.screens.map((screen, idx) => (
                             <motion.div
@@ -319,20 +343,21 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                         ))}
                     </div>
 
-                    <div className="relative h-full overflow-visible">
+                    {/* iPhone container - sticky con parallax: 
+                         El contenedor es sticky, pero el contenido dentro se mueve con parallax */}
+                    <div
+                        ref={phoneContainerRef}
+                        className="relative lg:sticky lg:top-24 lg:self-start"
+                    >
                         <motion.div
                             initial={{ opacity: 0, x: 30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
-                            className="w-full will-change-transform"
+                            className="w-full max-w-[340px] mx-auto"
                             style={{
-                                position: 'absolute',
-                                top: `${phoneTop - 328}px`,
-                                transition: enablePhoneTransition ? 'top 400ms cubic-bezier(0.25, 0.1, 0.25, 1)' : 'none',
-                                left: 0,
-                                right: 0,
-                                margin: '0 auto',
+                                transform: `translateY(${parallaxOffset}px)`,
+                                transition: 'transform 0.1s ease-out'
                             }}
                         >
                             <IPhoneMockup screen={copy.screens[activeStep]} priority={true} />
@@ -344,7 +369,7 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                 <LayoutGroup>
                     <div className="lg:hidden flex flex-col">
                         {copy.screens.map((screen, idx) => (
-                            <motion.div key={screen.id} layout initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }} className="flex flex-col scroll-mt-20">
+                            <motion.div key={screen.id} layout initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }} className="flex flex-col scroll-mt-20">
                                 <motion.div layout="position" ref={el => { cardsRef.current[idx] = el; }} className={`bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 shadow-lg border-2 transition-all duration-500 ease-out ${activeStep === idx ? 'border-blue-200 shadow-xl mb-4' : 'border-slate-100 mb-8'}`}>
                                     <div className="inline-flex items-center gap-2 mb-3">
                                         <div className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors duration-500 ${activeStep === idx ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-400'}`}>{idx + 1}</div>
@@ -355,7 +380,30 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                                 </motion.div>
 
                                 {activeStep === idx && (
-                                    <motion.div layoutId="mobile-iphone" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ layout: { type: 'spring', stiffness: 120, damping: 25, mass: 1.2 }, opacity: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }, scale: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } }} className="w-full max-w-[220px] md:max-w-[260px] mx-auto mb-8">
+                                    <motion.div
+                                        layoutId="mobile-iphone"
+                                        initial={{ opacity: 0, scale: 0.92 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0.92 }}
+                                        transition={{
+                                            layout: {
+                                                type: 'spring',
+                                                stiffness: 40,  // Reducido de 60 a 40 para más suavidad
+                                                damping: 25,    // Aumentado de 20 a 25 para menos rebote
+                                                mass: 2         // Aumentado de 1.5 a 2 para más peso
+                                            },
+                                            opacity: {
+                                                duration: 1.5,  // Aumentado de 1.2 a 1.5
+                                                ease: [0.22, 0.61, 0.36, 1]  // Easing más suave
+                                            },
+                                            scale: {
+                                                duration: 1.5,  // Aumentado de 1.2 a 1.5
+                                                ease: [0.22, 0.61, 0.36, 1]  // Easing más suave
+                                            }
+                                        }}
+                                        className="w-full mx-auto mb-[33px]"
+                                        style={{ maxWidth: 'min(200px, 50vw)', maxHeight: 'calc(100vh - 300px)' }}
+                                    >
                                         <IPhoneMockup screen={copy.screens[activeStep]} priority={true} />
                                     </motion.div>
                                 )}

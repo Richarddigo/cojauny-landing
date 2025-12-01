@@ -19,22 +19,26 @@ const Footer = ({ copy, locale }: FooterProps) => (
                 <p className="text-lg font-semibold text-white">Cojauny</p>
                 <p className="mt-2 max-w-xs text-sm text-white/80">{copy.description}</p>
                 <div className="mt-4 flex gap-4">
-                    <Link
-                        href="https://cojauny.com/app-store"
+                    <a
+                        href="#beta"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            document.getElementById('beta')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
                         className="text-sm text-brand-200 underline hover:text-white"
-                        target="_blank"
-                        rel="noreferrer"
                     >
                         {copy.appStoreSoon}
-                    </Link>
-                    <Link
-                        href="https://cojauny.com/google-play"
+                    </a>
+                    <a
+                        href="#beta"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            document.getElementById('beta')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
                         className="text-sm text-brand-200 underline hover:text-white"
-                        target="_blank"
-                        rel="noreferrer"
                     >
                         {copy.playStoreSoon}
-                    </Link>
+                    </a>
                 </div>
             </div>
             <div className="flex flex-col items-start gap-4 md:items-end">
