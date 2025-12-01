@@ -81,6 +81,15 @@ create table if not exists public.emails_sent (
 );
 
 alter table if exists public.emails_sent add column if not exists metadata jsonb;
+alter table if exists public.emails_sent add column if not exists subject text;
+alter table if exists public.emails_sent add column if not exists smtp_host text;
+alter table if exists public.emails_sent add column if not exists message_id text;
+alter table if exists public.emails_sent add column if not exists locale text default 'es';
+
+create index if not exists emails_sent_recipient_idx on public.emails_sent (recipient);
+create index if not exists emails_sent_template_idx on public.emails_sent (template);
+create index if not exists emails_sent_status_idx on public.emails_sent (status);
+create index if not exists emails_sent_created_idx on public.emails_sent (created_at);
 
 alter table public.waitlist enable row level security;
 alter table public.feedback enable row level security;

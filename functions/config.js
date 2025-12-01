@@ -5,7 +5,7 @@ exports.supabaseUrl = defineString('SUPABASE_URL');
 exports.supabaseKey = defineSecret('SUPABASE_KEY');
 
 // SMTP
-exports.smtpHost = defineString('SMTP_HOST', { default: 'smtppro.zoho.eu' });
+exports.smtpHost = defineString('SMTP_HOST', { default: 'smtp.zeptomail.eu' });
 exports.smtpPort = defineString('SMTP_PORT', { default: '465' });
 exports.smtpUser = defineString('SMTP_USER');
 exports.smtpPass = defineSecret('SMTP_PASS');

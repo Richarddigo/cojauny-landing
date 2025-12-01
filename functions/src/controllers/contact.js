@@ -1,7 +1,6 @@
 const { z } = require('zod');
 const { getSupabase } = require('../../lib/supabase');
 const { sendEmail } = require('../../lib/email');
-const config = require('../../config');
 
 
 const contactSchema = z.object({
@@ -59,29 +58,15 @@ exports.submitContactForm = async (req, res) => {
             return res.status(500).json({ error: 'Database error' });
         }
 
-        // 2. Send Emails
-
-        // User Confirmation
+        // 2. Send User Confirmation Email (with BCC to support alias)
         await sendEmail({
             to: data.email,
             template: 'contact-confirmation',
             locale: data.locale,
             variables: {
-                name: data.name
-            }
-        });
-
-        // Internal Notification
-        await sendEmail({
-            to: config.emailSupport.value(),
-            template: 'contact-internal',
-            locale: 'es', // Internal emails usually in default lang or fixed
-            variables: {
                 name: data.name,
-                email: data.email,
                 topic: data.topic,
-                message: data.message,
-                locale: data.locale
+                message: data.message
             }
         });
 

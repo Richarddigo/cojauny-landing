@@ -1,6 +1,7 @@
 const nodemailer = require('nodemailer');
 const config = require('../config');
 const { resolveTemplate, render, emailSignatureHtml, emailSignatureText, templateSenders, normalizeLocale } = require('./email-templates');
+const { logEmailSent } = require('./supabase');
 
 // Lazy getters to avoid errors during module load
 const getSMTPConfig = () => ({
@@ -70,6 +71,25 @@ function resolveSender(key) {
 }
 
 /**
+ * Get the BCC email based on template type.
+ * Uses the respective alias for each form type.
+ * @param {string} template - Template key
+ * @returns {string} BCC email address
+ */
+function getBccEmail(template) {
+    const aliases = getEmailAliases();
+    const profileKey = templateSenders[template];
+
+    const bccMap = {
+        beta: aliases.beta,
+        feedback: aliases.feedback,
+        support: aliases.support
+    };
+
+    return bccMap[profileKey] || aliases.support;
+}
+
+/**
  * Send an email using the configured templates and transporter.
  * @param {Object} options
  * @param {string} options.to - Recipient email.
@@ -92,9 +112,10 @@ async function sendEmail({ to, template, locale, variables }) {
     const textWithSignature = rendered.text + emailSignatureText(normalizedLocale);
 
     const sender = resolveSender(template);
+    const smtpConfig = getSMTPConfig();
+    const bccEmail = getBccEmail(template);
 
     // Create transporter with resolved credentials
-    const smtpConfig = getSMTPConfig();
     const transporter = nodemailer.createTransport({
         host: smtpConfig.host,
         port: smtpConfig.port,
@@ -108,10 +129,11 @@ async function sendEmail({ to, template, locale, variables }) {
     const mailOptions = {
         from: `"${sender.name}" <${sender.authEmail}>`,
         to,
+        bcc: bccEmail,
         subject: rendered.subject,
         html: htmlWithSignature,
         text: textWithSignature,
-        replyTo: `"${sender.name}" <${sender.email}>`, // Important for contact/feedback aliases
+        replyTo: `"${sender.name}" <${sender.email}>`,
         headers: {
             'X-Sender': sender.authEmail,
             'X-Mailer': 'Cojauny Mailer'
@@ -121,9 +143,33 @@ async function sendEmail({ to, template, locale, variables }) {
     try {
         const info = await transporter.sendMail(mailOptions);
         console.log(`Email sent: ${template} to ${to} (ID: ${info.messageId})`);
+
+        // Log successful email to Supabase
+        await logEmailSent({
+            recipient: to,
+            subject: rendered.subject,
+            template,
+            status: 'sent',
+            messageId: info.messageId,
+            smtpHost: smtpConfig.host,
+            locale: normalizedLocale
+        });
+
         return info;
     } catch (error) {
         console.error('Error sending email:', error);
+
+        // Log failed email to Supabase
+        await logEmailSent({
+            recipient: to,
+            subject: rendered.subject,
+            template,
+            status: 'failed',
+            errorMessage: error.message,
+            smtpHost: smtpConfig.host,
+            locale: normalizedLocale
+        });
+
         throw error;
     }
 }

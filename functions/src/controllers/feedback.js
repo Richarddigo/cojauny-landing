@@ -1,7 +1,6 @@
 const { z } = require('zod');
 const { getSupabase } = require('../../lib/supabase');
 const { sendEmail } = require('../../lib/email');
-const config = require('../../config');
 
 
 const feedbackSchema = z.object({
@@ -60,40 +59,22 @@ exports.submitFeedback = async (req, res) => {
 
         // Determine template based on usecase
         let templateKey = 'feedback-confirmation';
-        let internalTemplateKey = 'feedback-internal';
 
         const normalizedUsecase = data.usecase.toLowerCase().replace(/\s+/g, '_');
         if (normalizedUsecase.includes('idea')) {
             templateKey = 'idea-confirmation';
-            internalTemplateKey = 'idea-internal';
         } else if (normalizedUsecase.includes('business') || normalizedUsecase.includes('proposal')) {
             templateKey = 'business-proposal-confirmation';
-            internalTemplateKey = 'business-proposal-internal';
         }
 
-        // 2. Send Emails
-
-        // User Confirmation
+        // 2. Send User Confirmation Email (with BCC to feedback alias)
         await sendEmail({
             to: data.email,
             template: templateKey,
             locale: data.locale,
             variables: {
-                name: data.name
-            }
-        });
-
-        // Internal Notification
-        await sendEmail({
-            to: config.emailFeedback.value(),
-            template: internalTemplateKey,
-            locale: 'es',
-            variables: {
                 name: data.name,
-                email: data.email,
-                usecase: data.usecase,
-                message: data.message,
-                locale: data.locale
+                message: data.message
             }
         });
 

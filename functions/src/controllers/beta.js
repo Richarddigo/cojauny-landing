@@ -1,7 +1,6 @@
 const { z } = require('zod');
 const { getSupabase } = require('../../lib/supabase');
 const { sendEmail } = require('../../lib/email');
-const config = require('../../config');
 
 
 const betaSignupSchema = z.object({
@@ -76,12 +75,8 @@ exports.submitBetaSignup = async (req, res) => {
             }
         }
 
-        // 2. Send Emails
-
-        // User Confirmation
-        // Construct referral link for the email
-        // Assuming siteUrl is available or constructed from origin
-        const siteUrl = 'https://www.cojauny.com'; // Or from config
+        // 2. Send User Confirmation Email (with BCC to beta alias)
+        const siteUrl = 'https://www.cojauny.com';
         const referralLink = insertedData.referral_code ? `${siteUrl}/${data.locale}?ref=${insertedData.referral_code}` : siteUrl;
 
         await sendEmail({
@@ -91,20 +86,6 @@ exports.submitBetaSignup = async (req, res) => {
             variables: {
                 name: data.fullName,
                 referral_link: referralLink
-            }
-        });
-
-        // Internal Notification
-        await sendEmail({
-            to: config.emailBeta.value(),
-            template: 'beta-internal',
-            locale: 'en',
-            variables: {
-                email: data.email,
-                name: data.fullName,
-                usecase: data.useCase || 'N/A',
-                language: data.locale,
-                message: JSON.stringify(data, null, 2)
             }
         });
 
