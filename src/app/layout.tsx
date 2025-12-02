@@ -33,6 +33,13 @@ export const metadata: Metadata = {
         'movilidad colaborativa'
     ],
     authors: [{ name: siteMetadata.author }],
+    icons: {
+        icon: [
+            { url: '/favicon.ico', sizes: 'any' },
+            { url: '/icon.svg', type: 'image/svg+xml' }
+        ],
+        apple: '/apple-icon.png'
+    },
     openGraph: {
         title: `${siteMetadata.name} · Traslados compartidos coordinados por vuelo`,
         description: siteMetadata.description,
