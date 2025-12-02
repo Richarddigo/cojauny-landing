@@ -171,7 +171,9 @@ function sanitizeForZeptoMail(content) {
     if (!content) return '';
     // Ensure UTF-8 compatibility and remove problematic characters
     return content
-        .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, '') // Remove control characters
+        .split('')
+        .filter(char => char.charCodeAt(0) > 31 || char.charCodeAt(0) === 9)
+        .join('')
         .trim();
 }
 
