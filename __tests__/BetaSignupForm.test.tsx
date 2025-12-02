@@ -11,7 +11,12 @@ describe('BetaSignupForm', () => {
     beforeEach(() => {
         mockFetch.mockResolvedValue({
             ok: true,
-            json: async () => ({ success: true })
+            json: async () => ({
+                success: true,
+                id: 'test-id',
+                confirmationToken: 'test-token',
+                referralLink: 'https://test.com/ref/abc123'
+            })
         } as unknown as Response);
         global.fetch = mockFetch as unknown as typeof fetch;
     });
@@ -107,5 +112,37 @@ describe('BetaSignupForm', () => {
             // Verificar que aparece el mensaje de error usando role alert
             expect(screen.getByRole('alert')).toBeInTheDocument();
         });
+    });
+
+    it('permite enviar el formulario sin el campo useCase (opcional)', async () => {
+        const copy = getLandingCopy('es');
+        const formCopy = copy.forms.beta;
+
+        render(<BetaSignupForm copy={formCopy} referralPanelCopy={copy.referralPanel} locale="es" />);
+
+        // Llenar solo los campos requeridos, sin useCase
+        fireEvent.change(screen.getByLabelText(/nombre completo/i), {
+            target: { value: 'Pedro Sánchez' }
+        });
+        fireEvent.change(screen.getByLabelText(/correo electrónico/i), {
+            target: { value: 'pedro@example.com' }
+        });
+
+        // Aceptar términos y privacidad (ambos checkboxes requeridos)
+        const checkboxLabelSnippet = formCopy.checkboxLabel?.split('{privacyLink}')[0].trim() || 'He leído y acepto la';
+        fireEvent.click(screen.getByRole('checkbox', { name: new RegExp(checkboxLabelSnippet, 'i') }));
+        fireEvent.click(screen.getByRole('checkbox', { name: new RegExp(formCopy.fields.privacyAcceptance || 'Acepto', 'i') }));
+
+        // Enviar el formulario sin rellenar useCase
+        fireEvent.submit(screen.getByRole('button', { name: /Enviar solicitud/i }));
+
+        await waitFor(() => {
+            expect(screen.getByText(new RegExp(formCopy.success, 'i'))).toBeInTheDocument();
+        });
+
+        expect(mockFetch).toHaveBeenCalledWith(
+            '/api/beta-signups',
+            expect.objectContaining({ method: 'POST' })
+        );
     });
 });

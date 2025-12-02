@@ -93,7 +93,15 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
         setSuccess(null);
         setError(null);
 
-        const parseResult = betaSignupSchema.safeParse(form);
+        // Convert empty strings to undefined for optional fields
+        const formData = {
+            ...form,
+            country: form.country || undefined,
+            homeAirport: form.homeAirport || undefined,
+            useCase: form.useCase || undefined,
+        };
+
+        const parseResult = betaSignupSchema.safeParse(formData);
         if (!parseResult.success) {
             setSubmitting(false);
             setError(copy.error);
