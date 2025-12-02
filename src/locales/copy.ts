@@ -227,16 +227,16 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     skipLink: 'Saltar al contenido principal',
     header: {
       home: 'Inicio',
-      features: 'Características',
-      demo: 'Demo',
-      pricing: 'Precios',
-      beta: 'Beta',
+      features: 'Funciones',
+      demo: 'App',
+      pricing: 'Planes',
+      beta: 'Acceso Beta',
       blog: 'Blog',
-      benefits: 'Beneficios',
+      benefits: 'Ventajas',
       impact: 'Impacto',
       workflow: 'Cómo funciona',
-      faq: 'FAQ',
-      feedback: 'Propuesta'
+      faq: 'Preguntas',
+      feedback: 'Contacto'
     },
     seo: {
       title: 'Cojauny: Comparte taxi al aeropuerto y ahorra hasta un 75%',
@@ -259,11 +259,11 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         'Conecta con pasajeros de tu vuelo para compartir taxi, van o coche privado al aeropuerto. Perfiles verificados, chat temporal y ahorro medible. Ya en +120 aeropuertos.'
     },
     hero: {
-      eyebrow: 'Ahorra hasta un 75% en tus traslados al aeropuerto',
+      eyebrow: '¿Vuelas pronto? Ahorra hasta un 75% en tu traslado',
       title: 'Comparte taxi con pasajeros de tu mismo vuelo',
       subtitle:
-        'Cojauny conecta automáticamente a viajeros que comparten vuelo para organizar taxis, vans o coche privado. Divide el coste entre 3-4 personas, reduce tu huella de carbono y viaja con perfiles verificados. Todo desde una app segura con chat temporal.',
-      primaryCta: 'Solicitar acceso beta',
+        'Cojauny conecta automáticamente a viajeros del mismo vuelo para dividir taxi, van o coche privado al aeropuerto. Ahorra 50-75%, reduce tu huella de carbono y viaja con perfiles verificados. Regístrate gratis y prueba con tu próximo vuelo.',
+      primaryCta: 'Probar gratis',
       secondaryCta: 'Ver cómo funciona',
       imageAlt: 'App Cojauny mostrando matching automático por vuelo, chat seguro y ahorro en tiempo real'
     },
@@ -323,7 +323,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     value: {
-      title: '¿Por qué +15.000 viajeros eligen Cojauny cada mes?',
+      title: '¿Por qué los viajeros inteligentes eligen Cojauny?',
       subtitle:
         'Resolvemos los 3 problemas principales del transporte al aeropuerto: coste excesivo de taxis individuales (60-80€ por trayecto), coordinación caótica por WhatsApp y falta de confianza al compartir con desconocidos. Cojauny ofrece matching verificado, chat temporal y ahorro medible.',
       items: [
@@ -437,7 +437,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           badge: 'Detalle',
           title: 'Toda la información del evento',
           description:
-            'Ve organizador, participantes confirmados, cupos disponibles, punto de encuentro, hora y costos estimados. Dale like o comenta.',
+            'Consulta organizador, participantes confirmados, cupos disponibles, punto de encuentro, hora y costos estimados. Únete con un clic.',
           image: '/images/mockups/es/mockup-event-detail.svg'
         },
         {
@@ -474,32 +474,32 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     pricing: {
       title: 'Planes pensados para cada tipo de viajero',
-      subtitle: 'Empieza gratis y desbloquea funciones avanzadas cuando necesites operar varios vuelos a la vez.',
+      subtitle: 'Empieza gratis y desbloquea funciones avanzadas cuando necesites gestionar varios vuelos a la vez.',
       plans: {
         free: {
           name: 'Free',
           price: 'Gratis',
-          description: 'Ideal para probar Cojauny, crear tu primer evento y validar con un grupo reducido.',
+          description: 'Gestiona 1 vuelo y 1 evento a la vez. Sin límite de viajes totales: cuando terminas uno, puedes añadir otro.',
           cta: 'Crear cuenta gratuita'
         },
         premium: {
           name: 'Premium',
           price: '4,99 €/mes',
-          description: 'Viajes, eventos y chat ilimitados, métricas avanzadas y soporte prioritario. 49 €/año (ahorra 17%).',
-          cta: 'Actualizar plan'
+          description: 'Gestiona múltiples vuelos y eventos simultáneamente. Chat grupal, estadísticas avanzadas y soporte prioritario. 49 €/año (ahorra 17%).',
+          cta: 'Actualizar a Premium'
         }
       },
       comparison: {
         title: 'Comparativa rápida',
         features: [
           {
-            feature: 'Viajes que puedes añadir',
-            free: '1 viaje',
+            feature: 'Vuelos activos simultáneos',
+            free: '1 a la vez',
             premium: 'Ilimitados'
           },
           {
-            feature: 'Eventos a los que puedes unirte',
-            free: '1 evento',
+            feature: 'Eventos activos simultáneos',
+            free: '1 a la vez',
             premium: 'Ilimitados'
           },
           {
@@ -558,7 +558,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: '¿Qué diferencia hay entre la versión Free y Premium?',
-          answer: 'La versión Free te permite gestionar 1 viaje activo y unirte a 1 evento simultáneamente, con chat directo solo con el organizador del evento. Es perfecta para probar la plataforma. Premium desbloquea viajes y eventos ilimitados, chats grupales completos, estadísticas detalladas de ahorro y CO₂, eventos recurrentes para viajeros frecuentes, soporte técnico prioritario en menos de 2 horas, y acceso anticipado a nuevas funcionalidades. Cuesta 4,99€/mes o 49€/año con 17% de descuento.'
+          answer: 'La versión Free te permite gestionar 1 vuelo activo y 1 evento a la vez. Importante: no es un límite total de viajes. Cuando completas un viaje, puedes añadir otro sin restricciones. El chat directo solo funciona con el organizador del evento. Premium desbloquea múltiples vuelos y eventos simultáneos, chat grupal con todos los participantes, estadísticas detalladas de ahorro y CO₂, eventos recurrentes para viajeros frecuentes, soporte técnico prioritario (menos de 2 horas) y acceso anticipado a nuevas funcionalidades. Cuesta 4,99€/mes o 49€/año (17% de descuento).'
         },
         {
           question: '¿Cómo funcionan los pagos entre participantes?',
@@ -734,15 +734,15 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     header: {
       home: 'Home',
       features: 'Features',
-      demo: 'Demo',
-      pricing: 'Pricing',
-      beta: 'Beta',
+      demo: 'App',
+      pricing: 'Plans',
+      beta: 'Get Early Access',
       blog: 'Blog',
-      benefits: 'Benefits',
+      benefits: 'Why Cojauny',
       impact: 'Impact',
-      workflow: 'Workflow',
+      workflow: 'How It Works',
       faq: 'FAQ',
-      feedback: 'Proposal'
+      feedback: 'Contact'
     },
     seo: {
       title: 'Cojauny: Share airport taxi and save up to 75% on trips',
@@ -765,12 +765,12 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         'Match with verified travelers on your flight to share airport transfers. Secure chat, automatic cost splitting, and measurable savings. Now at 120+ airports.'
     },
     hero: {
-      eyebrow: 'Save up to 75% on your airport transfers',
-      title: 'Your shared ride starts before boarding',
+      eyebrow: 'Flying soon? Save up to 75% on your airport transfer',
+      title: 'Share your ride with passengers on your flight',
       subtitle:
-        'Cojauny aligns passengers on the same flight so they can book shared taxis, vans or private cars, keep everyone updated and log savings automatically.',
-      primaryCta: 'Request beta access',
-      secondaryCta: 'Explore the demo',
+        'Cojauny automatically connects travelers on the same flight to share taxis, vans or private cars to the airport. Save 50-75%, reduce your carbon footprint and travel with verified profiles. Sign up free and try it on your next flight.',
+      primaryCta: 'Try free',
+      secondaryCta: 'See how it works',
       imageAlt: 'Cojauny interface showing flight matching, chat and savings cards'
     },
     features: {
@@ -829,9 +829,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     value: {
-      title: 'A control tower for shared ground transport',
+      title: 'Why smart travelers choose Cojauny',
       subtitle:
-        'Cojauny removes spreadsheets and scattered chats so your ops team knows who is sharing a ride, how much it costs and what passengers experience.',
+        'We solve the 3 main problems of airport transport: expensive individual taxis ($60-80 per trip), chaotic WhatsApp coordination, and lack of trust when sharing with strangers. Cojauny offers verified matching, temporary chat, and measurable savings.',
       items: [
         {
           title: 'No more back-and-forth emails',
@@ -943,7 +943,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           badge: 'Detail',
           title: 'Complete event information',
           description:
-            'View organizer, confirmed participants, available spots, meeting point, time and estimated costs. Like or comment.',
+            'View organizer, confirmed participants, available spots, meeting point, time and estimated costs. Join with one tap.',
           image: '/images/mockups/en/mockup-event-detail.svg'
         },
         {
@@ -979,19 +979,19 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       linkLabel: 'Join Beta Now'
     },
     pricing: {
-      title: 'Choose the perfect plan for you',
+      title: 'Choose the plan that fits your travel style',
       subtitle: 'Start free and upgrade when ready to unlock Cojauny’s full potential.',
       plans: {
         free: {
           name: 'Free',
           price: 'Free',
-          description: 'Perfect for trying Cojauny and your first shared ride',
+          description: 'Manage 1 flight and 1 event at a time. No lifetime limit: when you complete one trip, add another.',
           cta: 'Start Free'
         },
         premium: {
           name: 'Premium',
           price: '$4.99/month',
-          description: 'For travelers who want full access and unlimited trips. $49/year (save 17%)',
+          description: 'Manage multiple flights and events simultaneously. Group chat, advanced stats and priority support. $49/year (save 17%).',
           cta: 'Upgrade to Premium'
         }
       },
@@ -999,13 +999,13 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         title: 'Plan Comparison',
         features: [
           {
-            feature: 'Trips you can add',
-            free: '1 trip',
+            feature: 'Active flights at once',
+            free: '1 at a time',
             premium: 'Unlimited'
           },
           {
-            feature: 'Events you can join',
-            free: '1 event',
+            feature: 'Active events at once',
+            free: '1 at a time',
             premium: 'Unlimited'
           },
           {
@@ -1064,7 +1064,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: 'What’s the difference between Free and Premium?',
-          answer: 'With Free you can add 1 trip and join 1 event, perfect for trying. You can only chat with organizers, not the group. With Premium you get unlimited trips, unlimited events, group chats, recurring events, and complete statistics.'
+          answer: 'Free lets you manage 1 active flight and 1 event at a time. Important: this is not a total trip limit—when you complete a trip, you can add another without restrictions. Direct chat only works with the event organizer. Premium unlocks multiple simultaneous flights and events, group chat with all participants, detailed savings and CO₂ statistics, recurring events for frequent travelers, priority support (under 2 hours), and early access to new features.'
         },
         {
           question: 'How are shared transport payments handled?',
@@ -1240,17 +1240,17 @@ export const landingCopy: Record<Locale, LandingCopy> = {
   de: {
     skipLink: 'Zum Hauptinhalt springen',
     header: {
-      home: 'Startseite',
+      home: 'Start',
       features: 'Funktionen',
-      demo: 'Demo',
-      pricing: 'Preise',
-      beta: 'Beta',
+      demo: 'App',
+      pricing: 'Pläne',
+      beta: 'Früher Zugang',
       blog: 'Blog',
       benefits: 'Vorteile',
-      impact: 'Impact',
-      workflow: 'Ablauf',
+      impact: 'Wirkung',
+      workflow: 'So funktioniert\'s',
       faq: 'FAQ',
-      feedback: 'Vorschlag'
+      feedback: 'Kontakt'
     },
     seo: {
       title: 'Cojauny: Teile dein Flughafentaxi und spare bis zu 75%',
@@ -1273,12 +1273,12 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         'Finden Sie verifizierte Mitreisende auf Ihrem Flug zum Teilen von Flughafen-Transfers. Sicherer Chat, automatische Kostenteilung und messbare Ersparnisse. Jetzt an 120+ Flughäfen.'
     },
     hero: {
-      eyebrow: 'Spare bis zu 75% bei deinen Flughafentransfers',
-      title: 'Teile die Fahrt zum Flughafen mit deinen Mitreisenden',
+      eyebrow: 'Fliegst du bald? Spare bis zu 75% bei deinem Flughafentransfer',
+      title: 'Teile die Fahrt mit Passagieren deines Fluges',
       subtitle:
-        'Cojauny bringt Passagiere desselben Tickets zusammen, damit sie in Minuten Taxi, Ride-Sharing oder Privatwagen organisieren. Keine dauerhaften Gruppen, nur das Wesentliche zum Sparen.',
-      primaryCta: 'Beta-Zugang anfragen',
-      secondaryCta: 'Interaktive Demo ansehen',
+        'Cojauny verbindet automatisch Reisende desselben Fluges, um Taxi, Van oder Privatwagen zum Flughafen zu teilen. Spare 50-75%, reduziere deinen CO₂-Fußabdruck und reise mit verifizierten Profilen. Registriere dich kostenlos und teste es bei deinem nächsten Flug.',
+      primaryCta: 'Kostenlos testen',
+      secondaryCta: 'So funktioniert\'s',
       imageAlt: 'Cojauny-Oberflächen mit Einsparungen auf einem iPhone'
     },
     features: {
@@ -1337,9 +1337,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     value: {
-      title: 'Die Leitstelle für geteilte Flughafentransfers',
+      title: 'Warum clevere Reisende Cojauny wählen',
       subtitle:
-        'Cojauny ersetzt Excel-Listen und verstreute Chats. Dein Team sieht auf einen Blick, wer mit wem fährt, welche Kosten entstehen und wie die Reise erlebt wird.',
+        'Wir lösen die 3 Hauptprobleme des Flughafentransports: teure Einzeltaxis (60-80€ pro Fahrt), chaotische WhatsApp-Koordination und mangelndes Vertrauen beim Teilen mit Fremden. Cojauny bietet verifiziertes Matching, temporären Chat und messbare Ersparnisse.',
       items: [
         {
           title: 'Weniger manuelle Abstimmung',
@@ -1451,7 +1451,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           badge: 'Details',
           title: 'Alle Event-Informationen',
           description:
-            'Siehe Organisator, bestätigte Teilnehmer, verfügbare Plätze, Treffpunkt, Zeit und geschätzte Kosten. Liken oder kommentieren.',
+            'Siehe Organisator, bestätigte Teilnehmer, verfügbare Plätze, Treffpunkt, Zeit und geschätzte Kosten. Mit einem Klick beitreten.',
           image: '/images/mockups/de/mockup-event-detail.svg'
         },
         {
@@ -1487,13 +1487,13 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       linkLabel: 'Beta jetzt beitreten'
     },
     pricing: {
-      title: 'Wähle den perfekten Plan für dich',
-      subtitle: 'Start kostenlos und upgrade, wenn du bereit bist, Cojaunys volles Potenzial freizuschalten.',
+      title: 'Wähle den Plan, der zu deinem Reisestil passt',
+      subtitle: 'Starte kostenlos und upgrade, wenn du mehrere Reisen gleichzeitig verwalten möchtest.',
       plans: {
         free: {
           name: 'Free',
           price: 'Kostenlos',
-          description: 'Perfekt zum Ausprobieren von Cojauny und deiner ersten gemeinsamen Fahrt',
+          description: 'Verwalte 1 Flug und 1 Event gleichzeitig. Kein Gesamtlimit: Wenn du eine Reise abschließt, kannst du eine neue hinzufügen.',
           cta: 'Kostenlos starten'
         },
         premium: {
@@ -1507,13 +1507,13 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         title: 'Plan-Vergleich',
         features: [
           {
-            feature: 'Reisen, die du hinzufügen kannst',
-            free: '1 Reise',
+            feature: 'Gleichzeitig aktive Flüge',
+            free: '1 gleichzeitig',
             premium: 'Unbegrenzt'
           },
           {
-            feature: 'Events, denen du beitreten kannst',
-            free: '1 Event',
+            feature: 'Gleichzeitig aktive Events',
+            free: '1 gleichzeitig',
             premium: 'Unbegrenzt'
           },
           {
@@ -1572,7 +1572,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: 'Was ist der Unterschied zwischen Free und Premium?',
-          answer: 'Mit Free kannst du 1 Reise hinzufügen und an 1 Event teilnehmen, perfekt zum Ausprobieren. Du kannst nur mit Organisatoren chatten, nicht mit der Gruppe. Mit Premium erhältst du unbegrenzte Reisen, unbegrenzte Events, Gruppenchats, wiederkehrende Events und vollständige Statistiken.'
+          answer: 'Free ermöglicht dir, 1 aktiven Flug und 1 Event gleichzeitig zu verwalten. Wichtig: Das ist kein Gesamtlimit—wenn du eine Reise abschließt, kannst du ohne Einschränkungen eine neue hinzufügen. Der direkte Chat funktioniert nur mit dem Event-Organisator. Premium schaltet mehrere gleichzeitige Flüge und Events frei, Gruppenchat mit allen Teilnehmern, detaillierte Einsparungs- und CO₂-Statistiken, wiederkehrende Events für Vielreisende, Prioritätssupport (unter 2 Stunden) und frühzeitigen Zugang zu neuen Funktionen.'
         },
         {
           question: 'Wie werden Zahlungen für gemeinsame Fahrten abgewickelt?',
@@ -1749,16 +1749,16 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     skipLink: 'Aller au contenu principal',
     header: {
       home: 'Accueil',
-      features: 'Fonctionnalités',
-      demo: 'Démo',
+      features: 'Fonctions',
+      demo: 'App',
       pricing: 'Tarifs',
-      beta: 'Beta',
+      beta: 'Accès Anticipé',
       blog: 'Blog',
       benefits: 'Avantages',
       impact: 'Impact',
-      workflow: 'Parcours',
+      workflow: 'Comment ça marche',
       faq: 'FAQ',
-      feedback: 'Proposition'
+      feedback: 'Contact'
     },
     seo: {
       title: 'Cojauny : Partagez un taxi d\'aéroport et économisez jusqu\'à 75%',
@@ -1786,7 +1786,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       subtitle:
         'Cojauny connecte les voyageurs d’un même billet afin d’organiser taxi, VTC ou stationnement en quelques minutes. Pas de réseau social, uniquement ce qu’il faut pour économiser.',
       primaryCta: 'Demander l’accès beta',
-      secondaryCta: 'Voir la démo interactive',
+      secondaryCta: 'Voir comment ça marche',
       imageAlt: 'Maquettes Cojauny affichées sur un iPhone avec comparaison d’économies'
     },
     features: {
@@ -1845,9 +1845,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     value: {
-      title: 'Le cockpit de vos transferts partagés',
+      title: 'Pourquoi les voyageurs malins choisissent Cojauny',
       subtitle:
-        'Cojauny supprime les feuilles de calcul et les groupes dispersés. Vos équipes savent qui partage un trajet, quel est le coût et comment se déroule l’expérience passager.',
+        'Nous résolvons les 3 problèmes principaux du transport aéroportuaire: taxis individuels coûteux (60-80€ par trajet), coordination chaotique par WhatsApp et manque de confiance pour partager avec des inconnus. Cojauny offre un matching vérifié, un chat temporaire et des économies mesurables.',
       items: [
         {
           title: 'Moins de coordination manuelle',
@@ -1959,7 +1959,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           badge: 'Détail',
           title: 'Informations complètes de l\'événement',
           description:
-            'Voir l\'organisateur, les participants confirmés, les places disponibles, le point de rencontre, l\'heure et les coûts estimés. Liker ou commenter.',
+            'Voir l\'organisateur, les participants confirmés, les places disponibles, le point de rencontre, l\'heure et les coûts estimés. Rejoignez en un clic.',
           image: '/images/mockups/fr/mockup-event-detail.svg'
         },
         {
@@ -2002,7 +2002,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         free: {
           name: 'Free',
           price: 'Gratuit',
-          description: 'Parfait pour essayer Cojauny et votre premier trajet partagé',
+          description: 'Gérez 1 vol et 1 événement à la fois. Pas de limite totale: quand vous terminez un voyage, ajoutez-en un autre.',
           cta: 'Commencer gratuitement'
         },
         premium: {
@@ -2015,8 +2015,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       comparison: {
         title: 'Comparaison des plans',
         features: [
-          { feature: 'Voyages que vous pouvez ajouter', free: '1 voyage', premium: 'Illimités' },
-          { feature: 'Événements auxquels vous pouvez participer', free: '1 événement', premium: 'Illimités' },
+          { feature: 'Vols actifs simultanés', free: '1 à la fois', premium: 'Illimités' },
+          { feature: 'Événements actifs simultanés', free: '1 à la fois', premium: 'Illimités' },
           { feature: 'Créer de nouveaux événements', free: false, premium: true },
           { feature: 'Chat avec organisateurs', free: true, premium: true },
           { feature: 'Chat de groupe avec participants', free: false, premium: true },
@@ -2045,7 +2045,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: 'Quelle est la différence entre Free et Premium ?',
-          answer: 'Avec Free, vous pouvez ajouter 1 voyage et participer à 1 événement, parfait pour essayer. Vous pouvez seulement chatter avec les organisateurs, pas le groupe. Avec Premium, vous obtenez des voyages illimités, des événements illimités, des chats de groupe, des événements récurrents et des statistiques complètes.'
+          answer: 'Free vous permet de gérer 1 vol actif et 1 événement à la fois. Important: ce n\'est pas une limite totale—quand vous terminez un voyage, vous pouvez en ajouter un autre sans restrictions. Le chat direct fonctionne uniquement avec l\'organisateur de l\'événement. Premium débloque plusieurs vols et événements simultanés, le chat de groupe avec tous les participants, des statistiques détaillées d\'économies et de CO₂, des événements récurrents pour les voyageurs fréquents, un support prioritaire (moins de 2 heures) et un accès anticipé aux nouvelles fonctionnalités.'
         },
         {
           question: 'Comment sont gérés les paiements des transports partagés ?',
@@ -2073,7 +2073,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: 'Existe-t-il un plan annuel ? Combien j\'économise ?',
-          answer: 'Oui. Premium coûte 3,99€/mois ou 39€/an. Avec le plan annuel, vous économisez 8,88€ (18% de réduction). Si vous voyagez régulièrement, le plan annuel est rentabilisé avec seulement 2-3 trajets partagés par an.'
+          answer: 'Oui. Premium coûte 4,99€/mois ou 49€/an. Avec le plan annuel, vous économisez 10,88€ (17% de réduction). Si vous voyagez régulièrement, le plan annuel est rentabilisé avec seulement 2-3 trajets partagés par an.'
         },
         {
           question: 'Que se passe-t-il si mon vol est retardé ou annulé ?',
