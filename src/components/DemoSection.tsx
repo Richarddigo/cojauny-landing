@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import Image from 'next/image';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { LandingCopy } from '@/locales/copy';
 
 interface DemoSectionProps {
@@ -27,7 +27,7 @@ const IPhoneMockup = ({ screen, className, priority = false }: { screen: any; cl
                             initial={{ opacity: 0, scale: 1.02 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.98 }}
-                            transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+                            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
                             className="relative h-full w-full"
                         >
                             {/* Fondo de la barra superior del mockup - color #1b2335 */}
@@ -96,9 +96,13 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
     const phoneContainerRef = useRef<HTMLDivElement | null>(null);
     const [parallaxOffset, setParallaxOffset] = useState(0);
 
-    // Mobile: IntersectionObserver robusto
-    const mobileObserverRef = useRef<IntersectionObserver | null>(null);
-    const visibleCardsRef = useRef<Set<number>>(new Set());
+    // Mobile: control de animación
+    const isAnimatingRef = useRef(false);
+
+    // Mobile: cooldown y dirección de scroll para evitar saltos en cadena
+    const lastChangeTimeRef = useRef(0);
+    const lastScrollYRef = useRef(0);
+    const COOLDOWN_MS = 700; // Tiempo mínimo entre cambios de tarjeta
 
     /* ---------- Efectos compartidos (ambos) ---------- */
     // Detecta tamaño (mobile/desktop)
@@ -192,125 +196,104 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
         };
     }, [isMobile]);
 
-    /* ---------- Mobile: IntersectionObserver robusto ---------- */
-    // Callback estable para actualizar la tarjeta activa
-    const updateActiveCard = useCallback(() => {
-        if (visibleCardsRef.current.size === 0) return;
-
-        const viewportHeight = window.innerHeight;
-        const viewportCenter = viewportHeight / 2;
-
-        let bestIndex = activeStep;
-        let minDistance = Infinity;
-
-        visibleCardsRef.current.forEach((idx) => {
-            const card = cardsRef.current[idx];
-            if (!card) return;
-
-            const rect = card.getBoundingClientRect();
-            const cardCenter = rect.top + rect.height / 2;
-            const distance = Math.abs(cardCenter - viewportCenter);
-
-            if (distance < minDistance) {
-                minDistance = distance;
-                bestIndex = idx;
-            }
-        });
-
-        if (bestIndex !== activeStep) {
-            setActiveStep(bestIndex);
-        }
-    }, [activeStep]);
-
-    // Experiencia móvil: IntersectionObserver para detectar tarjetas visibles
-    useEffect(() => {
-        if (!isMobile) {
-            // Limpiar observer cuando cambiamos a desktop
-            if (mobileObserverRef.current) {
-                mobileObserverRef.current.disconnect();
-                mobileObserverRef.current = null;
-            }
-            visibleCardsRef.current.clear();
-            return;
-        }
-
-        // Crear IntersectionObserver con zona central del viewport
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    const cardIndex = cardsRef.current.findIndex(card => card === entry.target);
-                    if (cardIndex === -1) return;
-
-                    if (entry.isIntersecting) {
-                        visibleCardsRef.current.add(cardIndex);
-                    } else {
-                        visibleCardsRef.current.delete(cardIndex);
-                    }
-                });
-
-                // Actualizar tarjeta activa basándose en las visibles
-                updateActiveCard();
-            },
-            {
-                root: null,
-                // Zona de detección: 30% desde arriba, 40% desde abajo
-                rootMargin: '-30% 0px -40% 0px',
-                threshold: [0, 0.25, 0.5, 0.75, 1]
-            }
-        );
-
-        mobileObserverRef.current = observer;
-
-        // Observar todas las tarjetas
-        cardsRef.current.forEach(card => {
-            if (card) observer.observe(card);
-        });
-
-        return () => {
-            observer.disconnect();
-            mobileObserverRef.current = null;
-            visibleCardsRef.current.clear();
-        };
-    }, [isMobile, updateActiveCard]);
-
-    // Mobile: Scroll listener adicional para mayor responsividad
+    /* ---------- Efectos mobile ---------- */
+    // Experiencia móvil: detecta cambios con cooldown, centrado en viewport y dirección de scroll
+    // Evita saltos en cadena cuando el viewport es alto
     useEffect(() => {
         if (!isMobile) return;
 
-        let rafId: number | null = null;
+        // Inicializar posición de scroll
+        lastScrollYRef.current = window.scrollY;
+
+        // Verificar si la sección demo está visible en el viewport
+        const isSectionInView = () => {
+            const container = containerRef.current;
+            if (!container) return false;
+
+            const rect = container.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+
+            // La sección está "activa" si al menos 40% del viewport está ocupado por ella
+            const visibleTop = Math.max(0, rect.top);
+            const visibleBottom = Math.min(viewportHeight, rect.bottom);
+            const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+
+            return visibleHeight > viewportHeight * 0.4;
+        };
+
+        // Encontrar la tarjeta cuyo centro está más cerca del centro del viewport
+        // Solo considera cambios en la dirección del scroll
+        const findCenteredCard = (scrollDirection: 'up' | 'down') => {
+            const viewportHeight = window.innerHeight;
+            const viewportCenter = viewportHeight / 2;
+
+            let bestIndex = activeStep; // Mantener el actual por defecto
+            let minDistanceToCenter = Infinity;
+
+            cardsRef.current.forEach((card, i) => {
+                if (!card) return;
+                const rect = card.getBoundingClientRect();
+
+                // Centro de la tarjeta
+                const cardCenter = rect.top + rect.height / 2;
+                const distanceToCenter = Math.abs(cardCenter - viewportCenter);
+
+                // Verificar que la tarjeta esté en la "zona central" del viewport (35%-65%)
+                const isInCenterZone = cardCenter > viewportHeight * 0.35 && cardCenter < viewportHeight * 0.65;
+
+                // Solo permitir cambios en la dirección del scroll
+                const isValidDirection =
+                    (scrollDirection === 'down' && i >= activeStep) ||
+                    (scrollDirection === 'up' && i <= activeStep);
+
+                if (isInCenterZone && isValidDirection && distanceToCenter < minDistanceToCenter) {
+                    minDistanceToCenter = distanceToCenter;
+                    bestIndex = i;
+                }
+            });
+
+            return bestIndex;
+        };
+
+        let ticking = false;
 
         const handleScroll = () => {
-            if (rafId !== null) return;
+            if (ticking || isAnimatingRef.current) return;
 
-            rafId = requestAnimationFrame(() => {
-                updateActiveCard();
-                rafId = null;
+            // Verificar cooldown
+            const now = Date.now();
+            if (now - lastChangeTimeRef.current < COOLDOWN_MS) return;
+
+            ticking = true;
+            requestAnimationFrame(() => {
+                // Solo actuar si la sección está realmente visible
+                if (isSectionInView()) {
+                    // Determinar dirección del scroll
+                    const currentScrollY = window.scrollY;
+                    const scrollDirection = currentScrollY > lastScrollYRef.current ? 'down' : 'up';
+                    lastScrollYRef.current = currentScrollY;
+
+                    const centeredIndex = findCenteredCard(scrollDirection);
+                    if (centeredIndex !== activeStep) {
+                        setActiveStep(centeredIndex);
+                        lastChangeTimeRef.current = Date.now(); // Activar cooldown
+                    }
+                }
+                ticking = false;
             });
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
 
+        // NO ejecutar handleScroll al montar - esto causaba el salto inicial
+
         return () => {
             window.removeEventListener('scroll', handleScroll);
-            if (rafId !== null) {
-                cancelAnimationFrame(rafId);
-            }
         };
-    }, [isMobile, updateActiveCard]);
+    }, [isMobile, activeStep]);
 
     /* ---------- Handlers UI ---------- */
-    // Mobile: handler de tap en tarjetas
-    const handleMobileCardTap = useCallback((index: number) => {
-        if (!isMobile) return;
-        setActiveStep(index);
-    }, [isMobile]);
-
     const handleCardClick = (index: number) => {
-        if (isMobile) {
-            handleMobileCardTap(index);
-            return;
-        }
-
         if (isLocked && lockedIndex === index) {
             // Desanclar si ya está anclada y se hace clic sobre ella
             setIsLocked(false);
@@ -419,75 +402,100 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                 </div>
 
                 {/* Mobile layout */}
-                <div className="lg:hidden flex flex-col gap-4">
-                    {copy.screens.map((screen, idx) => (
-                        <motion.div
-                            key={screen.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: '-30px', amount: 0.2 }}
-                            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                            className="flex flex-col"
-                        >
-                            {/* Card */}
-                            <div
-                                ref={el => { cardsRef.current[idx] = el; }}
-                                onClick={() => handleCardClick(idx)}
-                                className={`
-                                    bg-white rounded-2xl p-4 shadow-lg border-2 
-                                    transition-all duration-[900ms] ease-out cursor-pointer
-                                    ${activeStep === idx
-                                        ? 'border-blue-300 shadow-xl'
-                                        : 'border-slate-100 opacity-80'
-                                    }
-                                `}
+                <LayoutGroup>
+                    <div className="lg:hidden flex flex-col gap-6">
+                        {copy.screens.map((screen, idx) => (
+                            <motion.div
+                                key={screen.id}
+                                layout="preserve-aspect"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-30px', amount: 0.3 }}
+                                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                                className="flex flex-col scroll-mt-20"
                             >
-                                <div className="inline-flex items-center gap-2 mb-2">
-                                    <div className={`
-                                        w-7 h-7 rounded-full flex items-center justify-center 
-                                        font-bold text-sm transition-all duration-[900ms]
-                                        ${activeStep === idx
-                                            ? 'bg-blue-600 text-white'
-                                            : 'bg-slate-100 text-slate-400'
-                                        }
-                                    `}>
-                                        {idx + 1}
+                                <motion.div
+                                    layout="position"
+                                    ref={el => { cardsRef.current[idx] = el; }}
+                                    className={`bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 shadow-lg border-2 transition-all duration-300 ease-out ${activeStep === idx
+                                        ? 'border-blue-200 shadow-xl mb-3'
+                                        : 'border-slate-100 mb-6 opacity-75'
+                                        }`}
+                                >
+                                    <div className="inline-flex items-center gap-2 mb-3">
+                                        <div className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${activeStep === idx
+                                            ? 'bg-blue-600 text-white scale-110'
+                                            : 'bg-slate-100 text-slate-400 scale-100'
+                                            }`}>
+                                            {idx + 1}
+                                        </div>
+                                        <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider">
+                                            {screen.badge}
+                                        </span>
                                     </div>
-                                    <span className="px-2 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider">
-                                        {screen.badge}
-                                    </span>
-                                </div>
-                                <h3 className="text-lg font-bold text-slate-900 mb-1">
-                                    {screen.title}
-                                </h3>
-                                <p className="text-sm text-slate-600 leading-relaxed">
-                                    {screen.description}
-                                </p>
-                            </div>
+                                    <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2">
+                                        {screen.title}
+                                    </h3>
+                                    <p className="text-sm md:text-base text-slate-600 leading-relaxed">
+                                        {screen.description}
+                                    </p>
+                                </motion.div>
 
-                            {/* iPhone Mockup - animación simple y estable */}
-                            <div
-                                className={`
-                                    w-full mx-auto overflow-hidden
-                                    transition-all duration-[1200ms] ease-out
-                                    ${activeStep === idx
-                                        ? 'max-h-[500px] opacity-100 mt-4 scale-100'
-                                        : 'max-h-0 opacity-0 mt-0 scale-95'
-                                    }
-                                `}
-                                style={{
-                                    maxWidth: 'min(200px, 50vw)',
-                                    transitionProperty: 'max-height, opacity, margin-top, transform'
-                                }}
-                            >
-                                <IPhoneMockup
-                                    screen={screen}
-                                    priority={idx === 0}
-                                />
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
+                                <AnimatePresence mode="wait">
+                                    {activeStep === idx && (
+                                        <motion.div
+                                            key={`phone-${idx}`}
+                                            layoutId="mobile-iphone"
+                                            initial={{ opacity: 0, scale: 0.9, y: -10 }}
+                                            animate={{
+                                                opacity: 1,
+                                                scale: 1,
+                                                y: 0,
+                                                transition: {
+                                                    opacity: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+                                                    scale: { duration: 0.5, ease: [0.34, 1.56, 0.64, 1] },
+                                                    y: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+                                                }
+                                            }}
+                                            exit={{
+                                                opacity: 0,
+                                                scale: 0.9,
+                                                y: 10,
+                                                transition: {
+                                                    duration: 0.3,
+                                                    ease: [0.22, 1, 0.36, 1]
+                                                }
+                                            }}
+                                            onLayoutAnimationStart={() => {
+                                                isAnimatingRef.current = true;
+                                            }}
+                                            onLayoutAnimationComplete={() => {
+                                                requestAnimationFrame(() => {
+                                                    isAnimatingRef.current = false;
+                                                });
+                                            }}
+                                            transition={{
+                                                layout: {
+                                                    type: 'spring',
+                                                    stiffness: 300,
+                                                    damping: 30,
+                                                    mass: 0.8
+                                                }
+                                            }}
+                                            className="w-full mx-auto"
+                                            style={{
+                                                maxWidth: 'min(220px, 55vw)',
+                                                willChange: 'transform, opacity'
+                                            }}
+                                        >
+                                            <IPhoneMockup screen={copy.screens[activeStep]} priority={idx === 0} />
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </motion.div>
+                        ))}
+                    </div>
+                </LayoutGroup>
             </div>
         </section >
     );
