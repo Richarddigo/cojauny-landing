@@ -25,7 +25,7 @@ const buildInitialState = (locale: Locale, referralCode?: string): BetaSignupFor
     fullName: '',
     useCase: '',
     country: '' as BetaSignupInput['country'],
-    flightFrequency: '',
+    flightFrequency: undefined,
     homeAirport: '',
     updatesOptIn: false,
     termsAccepted: false,
