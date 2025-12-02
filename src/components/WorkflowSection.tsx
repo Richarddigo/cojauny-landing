@@ -59,7 +59,7 @@ const WorkflowSection = ({ copy }: WorkflowSectionProps) => {
             id="how-it-works"
             className="w-full scroll-mt-[74px] bg-gradient-to-b from-slate-50 to-white py-12 md:py-16 lg:py-20 lg:scroll-mt-[100px]"
         >
-            <div className="mx-auto max-w-5xl px-4 sm:px-6">
+            <div className="mx-auto max-w-5xl px-4 sm:px-6" style={{ paddingLeft: 'calc(var(--social-bar-offset) + 1rem)' }}>
                 <SectionIntro title={copy.title} description={copy.intro} />
                 <div className="mt-12 space-y-6 md:mt-16 md:space-y-8">
                     {copy.steps.map((step, index) => {

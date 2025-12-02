@@ -59,7 +59,7 @@ const ValuePropsSection = ({ copy }: ValuePropsSectionProps) => {
             id="benefits"
             className="w-full scroll-mt-[74px] bg-gradient-to-b from-white via-slate-50 to-white py-12 md:py-16 lg:py-24 lg:scroll-mt-[100px]"
         >
-            <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6" style={{ paddingLeft: 'calc(var(--social-bar-offset) + 1rem)' }}>
                 <SectionIntro title={copy.title} description={copy.subtitle} />
                 <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 md:mt-16 lg:grid-cols-3">
                     {copy.items.map((item, index) => {

@@ -72,7 +72,7 @@ export default function LocaleLayout({ children, params }: LocaleLayoutProps) {
         <>
             <AccessibilitySkipLink label={copy.skipLink} />
             <Header locale={locale} copy={copy.header} />
-            <main id="main-content" className="relative pt-24 pl-12 sm:pl-14 lg:pl-0">
+            <main id="main-content" className="relative pt-24">
                 {children}
             </main>
             <Footer copy={copy.footer} locale={locale} />

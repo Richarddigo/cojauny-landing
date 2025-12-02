@@ -14,7 +14,7 @@ const SavingsSection = ({ copy }: SavingsSectionProps) => (
         className="relative w-full scroll-mt-[74px] overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-12 md:py-16 lg:py-24 lg:scroll-mt-[100px]"
     >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,_rgba(139,92,246,0.15),_transparent_50%)]" aria-hidden />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6" style={{ paddingLeft: 'calc(var(--social-bar-offset) + 1rem)' }}>
             <SectionIntro
                 title={copy.title}
                 description={copy.caption}

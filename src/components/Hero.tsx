@@ -28,6 +28,7 @@ const Hero = ({ copy }: HeroProps) => (
             animate="visible"
             transition={{ staggerChildren: 0.15, delayChildren: 0.2 }}
             className="mx-auto max-w-4xl px-4 sm:px-6"
+            style={{ paddingLeft: 'calc(var(--social-bar-offset) + 1rem)' }}
         >
             <motion.span
                 variants={heroVariants}

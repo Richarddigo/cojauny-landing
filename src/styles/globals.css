@@ -5,6 +5,30 @@
 :root {
     color-scheme: light;
     scroll-behavior: smooth;
+    /* Offset para la barra social flotante */
+    --social-bar-offset: 2.5rem;
+    /* 40px en móvil */
+}
+
+@media (min-width: 640px) {
+    :root {
+        --social-bar-offset: 3rem;
+        /* 48px en sm */
+    }
+}
+
+@media (min-width: 768px) {
+    :root {
+        --social-bar-offset: 3.5rem;
+        /* 56px en md+ */
+    }
+}
+
+@media (min-width: 1024px) {
+    :root {
+        --social-bar-offset: 0rem;
+        /* Sin offset en lg+ (la barra queda fuera del contenido) */
+    }
 }
 
 body {

@@ -18,7 +18,7 @@ export default function Page() {
             <AccessibilitySkipLink label={copy.skipLink} />
             <Header locale={locale} copy={copy.header} />
             <HashScrollHandler />
-            <main id="main-content" className="relative pt-24 lg:pl-0">
+            <main id="main-content" className="relative pt-24">
                 <LandingPageContent copy={copy} locale={locale} />
             </main>
             <Footer copy={copy.footer} locale={locale} />

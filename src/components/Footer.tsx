@@ -14,7 +14,7 @@ interface FooterProps {
 
 const Footer = ({ copy, locale }: FooterProps) => (
     <footer className="border-t border-white/10 bg-slate-900">
-        <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 md:flex-row md:items-center md:justify-between">
+        <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 md:flex-row md:items-center md:justify-between" style={{ paddingLeft: 'calc(var(--social-bar-offset) + 1.5rem)' }}>
             <div>
                 <p className="text-lg font-semibold text-white">Cojauny</p>
                 <p className="mt-2 max-w-xs text-sm text-white/80">{copy.description}</p>

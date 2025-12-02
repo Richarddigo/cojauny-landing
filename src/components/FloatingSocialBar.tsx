@@ -26,7 +26,7 @@ export default function FloatingSocialBar() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="fixed left-2 md:left-3 top-20 z-40 flex flex-col gap-1 bg-slate-900/95 backdrop-blur-sm rounded-full py-2 px-1.5 shadow-lg border border-white/10"
+            className="fixed left-1.5 sm:left-2 md:left-3 top-20 z-40 flex flex-col gap-1 bg-slate-900/95 backdrop-blur-sm rounded-full py-2 px-1.5 shadow-lg border border-white/10"
         >
             {socialLinks.map((link, index) => (
                 <motion.a
