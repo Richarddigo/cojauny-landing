@@ -102,7 +102,7 @@ describe('ContactForm', () => {
         fireEvent.submit(screen.getByRole('button', { name: mockCopy.submit }));
 
         await waitFor(() => {
-            expect(screen.getByText(/at least 10 characters/i)).toBeInTheDocument();
+            expect(screen.getByText(mockCopy.error)).toBeInTheDocument();
         });
     });
 
@@ -125,7 +125,7 @@ describe('ContactForm', () => {
         fireEvent.submit(screen.getByRole('button', { name: mockCopy.submit }));
 
         await waitFor(() => {
-            expect(screen.getByText(/\+.*not allowed/i)).toBeInTheDocument();
+            expect(screen.getByText(mockCopy.error)).toBeInTheDocument();
         });
     });
 

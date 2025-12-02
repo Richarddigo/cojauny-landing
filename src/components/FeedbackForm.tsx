@@ -59,7 +59,7 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (form.message && form.message.length > MAX_CHARS) {
-            setMessageError(`El mensaje excede el límite de ${MAX_CHARS} caracteres.`);
+            setMessageError(copy.error);
             return;
         }
         setSubmitting(true);
@@ -70,7 +70,7 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
         // Validate email doesn't contain '+'
         if (form.email.includes('+')) {
             setSubmitting(false);
-            setError('Email addresses with "+" symbol are not allowed.');
+            setError(copy.error);
             return;
         }
 
@@ -79,7 +79,7 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
             setSubmitting(false);
             const msgIssue = parseResult.error.issues?.find((i) => i.path?.[0] === 'message');
             if (msgIssue) {
-                setMessageError('Please enter a message of at least 10 characters');
+                setMessageError(copy.error);
             } else {
                 setError(copy.error);
             }

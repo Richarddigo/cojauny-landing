@@ -1,254 +1,271 @@
-// Email templates and helpers ported from Supabase Edge Function
+// Email templates and helpers - Optimized for ZeptoMail EU
+// All templates maintain consistent formatting across ES, EN, DE, FR
 
 const supportedLocales = ['es', 'en', 'de', 'fr'];
-const siteUrl = 'https://www.cojauny.com'; // Hardcoded or from config
+const siteUrl = 'https://www.cojauny.com';
 const logoUrl = `${siteUrl}/assets/logo/mountain_black.png`;
 
+/**
+ * Normalize locale to supported values.
+ * @param {string} requested - Requested locale
+ * @returns {string} Normalized locale (defaults to 'es')
+ */
 function normalizeLocale(requested) {
     if (!requested) return 'es';
-    if (supportedLocales.includes(requested)) {
-        return requested;
-    }
-    return 'es';
+    const normalized = requested.toLowerCase().slice(0, 2);
+    return supportedLocales.includes(normalized) ? normalized : 'es';
 }
 
-const emailSignatureHtml = (locale) => {
-    const lines = {
-        es: {
-            tagline: 'Cojauny — Ahorra en cada viaje al aeropuerto',
-            contactHtml: '¿Necesitas ayuda? Escríbenos a <a href="mailto:support@cojauny.com" style="color:#0ea5e9;text-decoration:none;">support@cojauny.com</a>'
-        },
-        en: {
-            tagline: 'Cojauny — Save on every trip to the airport',
-            contactHtml: 'Need help? Contact us at <a href="mailto:support@cojauny.com" style="color:#0ea5e9;text-decoration:none;">support@cojauny.com</a>'
-        },
-        de: {
-            tagline: 'Cojauny — Spare bei jeder Fahrt zum Flughafen',
-            contactHtml: 'Brauchen Sie Hilfe? Kontaktieren Sie uns unter <a href="mailto:support@cojauny.com" style="color:#0ea5e9;text-decoration:none;">support@cojauny.com</a>'
-        },
-        fr: {
-            tagline: "Cojauny — Économise sur chaque trajet vers l'aéroport",
-            contactHtml: 'Besoin d\'aide ? Contactez-nous à <a href="mailto:support@cojauny.com" style="color:#0ea5e9;text-decoration:none;">support@cojauny.com</a>'
-        }
-    };
+// ============================================================================
+// EMAIL SIGNATURE - Consistent footer for all emails
+// ============================================================================
 
-    const pick = lines[locale] ?? lines.es;
+const signatureContent = {
+    es: {
+        tagline: 'Cojauny — Comparte traslados al aeropuerto y ahorra hasta un 75%',
+        contact: '¿Necesitas ayuda? Escríbenos a',
+        privacy: 'Privacidad',
+        terms: 'Términos'
+    },
+    en: {
+        tagline: 'Cojauny — Share airport transfers and save up to 75%',
+        contact: 'Need help? Contact us at',
+        privacy: 'Privacy',
+        terms: 'Terms'
+    },
+    de: {
+        tagline: 'Cojauny — Flughafentransfers teilen und bis zu 75% sparen',
+        contact: 'Brauchen Sie Hilfe? Kontaktieren Sie uns unter',
+        privacy: 'Datenschutz',
+        terms: 'AGB'
+    },
+    fr: {
+        tagline: 'Cojauny — Partagez vos transferts aéroport et économisez jusqu\'à 75%',
+        contact: 'Besoin d\'aide ? Contactez-nous à',
+        privacy: 'Confidentialité',
+        terms: 'CGU'
+    }
+};
+
+const emailSignatureHtml = (locale) => {
+    const content = signatureContent[locale] || signatureContent.es;
     const privacyUrl = `${siteUrl}/${locale}/legal/privacy`;
     const termsUrl = `${siteUrl}/${locale}/legal/terms`;
 
-    const labels = {
-        es: { privacy: 'Privacidad', terms: 'Términos' },
-        en: { privacy: 'Privacy', terms: 'Terms' },
-        de: { privacy: 'Datenschutz', terms: 'Nutzungsbedingungen' },
-        fr: { privacy: 'Confidentialité', terms: 'Conditions' }
-    };
-
-    const pickLabels = labels[locale] ?? labels.es;
-
     return `
-    <div style="margin-top:32px;padding-top:24px;border-top:2px solid #e5e7eb;">
-      <table cellpadding="0" cellspacing="0" border="0" style="font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;">
+    <div style="margin-top:32px;padding-top:24px;border-top:2px solid #e2e8f0;">
+      <table cellpadding="0" cellspacing="0" border="0" width="100%" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:#334155;">
         <tr>
-          <td style="padding-right:16px;vertical-align:top;">
-            <img src="${logoUrl}" width="48" height="48" alt="Cojauny" style="display:block;border:0;" />
+          <td style="padding-right:16px;vertical-align:top;width:56px;">
+            <img src="${logoUrl}" width="48" height="48" alt="Cojauny" style="display:block;border:0;border-radius:8px;" />
           </td>
           <td style="vertical-align:top;">
-            <div style="font-weight:700;font-size:16px;color:#0f172a;margin-bottom:4px;">${pick.tagline}</div>
-            <div style="font-size:12px;color:#9ca3af;margin-top:4px;">${pick.contactHtml}</div>
-            <div style="font-size:12px;color:#9ca3af;margin-top:6px;"><a href="${privacyUrl}" style="color:#0ea5e9;text-decoration:none;">${pickLabels.privacy}</a> · <a href="${termsUrl}" style="color:#0ea5e9;text-decoration:none;">${pickLabels.terms}</a></div>
+            <p style="margin:0 0 8px 0;font-weight:600;font-size:14px;color:#0f172a;">${content.tagline}</p>
+            <p style="margin:0 0 8px 0;font-size:13px;color:#64748b;">${content.contact} <a href="mailto:support@cojauny.com" style="color:#0284c7;text-decoration:none;">support@cojauny.com</a></p>
+            <p style="margin:0;font-size:12px;color:#94a3b8;"><a href="${privacyUrl}" style="color:#0284c7;text-decoration:none;">${content.privacy}</a> · <a href="${termsUrl}" style="color:#0284c7;text-decoration:none;">${content.terms}</a> · <a href="${siteUrl}" style="color:#0284c7;text-decoration:none;">cojauny.com</a></p>
           </td>
         </tr>
       </table>
-    </div>
-  `;
+    </div>`;
 };
 
 const emailSignatureText = (locale) => {
-    const lines = {
-        es: { tagline: 'Cojauny — Ahorra en cada viaje al aeropuerto', contact: '¿Necesitas ayuda? Escríbenos a support@cojauny.com' },
-        en: { tagline: 'Cojauny — Save on every trip to the airport', contact: 'Need help? Contact us at support@cojauny.com' },
-        de: { tagline: 'Cojauny — Spare bei jeder Fahrt zum Flughafen', contact: 'Brauchen Sie Hilfe? Kontaktieren Sie uns unter support@cojauny.com' },
-        fr: { tagline: "Cojauny — Économise sur chaque trajet vers l'aéroport", contact: "Besoin d'aide ? Contactez-nous à support@cojauny.com" }
-    };
-
-    const pick = lines[locale] ?? lines.es;
+    const content = signatureContent[locale] || signatureContent.es;
     const privacyUrl = `${siteUrl}/${locale}/legal/privacy`;
     const termsUrl = `${siteUrl}/${locale}/legal/terms`;
-    const labels = {
-        es: { privacy: 'Privacidad', terms: 'Términos' },
-        en: { privacy: 'Privacy', terms: 'Terms' },
-        de: { privacy: 'Datenschutz', terms: 'Nutzungsbedingungen' },
-        fr: { privacy: 'Confidentialité', terms: 'Conditions' }
-    };
-    const pickLabels = labels[locale] ?? labels.es;
-    return `\n---\n${pick.tagline}\n${siteUrl}\n${pick.contact}\n${pickLabels.privacy}: ${privacyUrl}\n${pickLabels.terms}: ${termsUrl}\n`;
+
+    return `
+---
+${content.tagline}
+${content.contact} support@cojauny.com
+
+${content.privacy}: ${privacyUrl}
+${content.terms}: ${termsUrl}
+Web: ${siteUrl}
+`;
 };
+
+// ============================================================================
+// COMMON HTML HELPERS
+// ============================================================================
+
+const htmlWrapper = (content) => `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:#1e293b;max-width:600px;margin:0 auto;line-height:1.6;">${content}</div>`;
+
+const messageBox = (icon, label, content, bgColor) => {
+    const bg = bgColor || '#f8fafc';
+    return `<div style="background:${bg};border-left:4px solid #0284c7;padding:16px 20px;border-radius:0 8px 8px 0;margin:24px 0;"><p style="margin:0 0 12px 0;color:#475569;font-size:13px;font-weight:600;">${icon} ${label}</p><div style="background:#ffffff;padding:16px;border-radius:6px;border:1px solid #e2e8f0;"><pre style="white-space:pre-wrap;word-wrap:break-word;font-family:inherit;font-size:14px;margin:0;color:#1e293b;">${content}</pre></div></div>`;
+};
+
+const referralBoxes = {
+    es: { title: '🚀 Avanza en la lista de espera', subtitle: 'Comparte tu enlace personal y obtén acceso prioritario:', cta: 'Cuantos más amigos se registren con tu enlace, antes tendrás acceso a la beta.' },
+    en: { title: '🚀 Move up the waitlist', subtitle: 'Share your personal link to get priority access:', cta: 'The more friends sign up with your link, the sooner you\'ll get beta access.' },
+    de: { title: '🚀 Rücke auf der Warteliste vor', subtitle: 'Teile deinen persönlichen Link für prioritären Zugang:', cta: 'Je mehr Freunde sich über deinen Link registrieren, desto früher erhältst du Beta-Zugang.' },
+    fr: { title: '🚀 Avancez sur la liste d\'attente', subtitle: 'Partagez votre lien personnel pour un accès prioritaire:', cta: 'Plus vos amis s\'inscrivent via votre lien, plus vite vous aurez accès à la bêta.' }
+};
+
+const referralBox = (locale, link) => {
+    const l = referralBoxes[locale] || referralBoxes.es;
+    return `<div style="background:linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 100%);border-left:4px solid #0284c7;padding:20px;border-radius:0 12px 12px 0;margin:24px 0;"><p style="margin:0 0 8px 0;font-weight:700;color:#0c4a6e;font-size:16px;">${l.title}</p><p style="margin:0 0 16px 0;font-size:14px;color:#334155;">${l.subtitle}</p><div style="background:#ffffff;padding:14px 16px;border-radius:8px;border:1px solid #bae6fd;"><a href="${link}" style="color:#0369a1;font-weight:600;font-size:14px;word-break:break-all;text-decoration:none;">${link}</a></div><p style="margin:16px 0 0 0;font-size:13px;color:#475569;">${l.cta}</p></div>`;
+};
+
+// ============================================================================
+// LOCALIZED USER-FACING TEMPLATES
+// ============================================================================
 
 const localizedTemplates = {
     'beta-confirmation': {
         es: {
-            subject: 'Bienvenido a la lista de espera de Cojauny',
-            html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hola <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Gracias por unirte a la lista de espera de <strong style=\"color:#0ea5e9;\">Cojauny</strong>. Te avisaremos por email cuando la beta esté disponible.</p><div style=\"background:linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);border-left:4px solid #0ea5e9;padding:20px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 12px 0;font-weight:600;color:#0c4a6e;font-size:15px;\">Avanza en la lista compartiendo tu enlace:</p><div style=\"background:#ffffff;padding:14px;border-radius:6px;margin-top:12px;\"><a href=\"{{referral_link}}\" style=\"color:#0369a1;font-weight:600;font-size:14px;word-break:break-all;text-decoration:none;\">{{referral_link}}</a></div><p style=\"margin:12px 0 0 0;font-size:13px;color:#475569;\">Cuantos más amigos se registren con tu enlace, antes tendrás acceso a la beta.</p></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">¿Preguntas? Responde a este correo.</p></div>",
-            text: 'Hola {{name}},\n\nGracias por unirte a la lista de espera de Cojauny. Te avisaremos por email cuando la beta esté disponible.\n\nAVANZA EN LA LISTA:\nComparte tu enlace personal:\n{{referral_link}}\n\nCuantos más amigos se registren con tu enlace, antes tendrás acceso.\n\n¿Preguntas? Responde a este correo.'
+            subject: '¡Estás en la lista de espera de Cojauny, {{name}}!',
+            html: htmlWrapper(`<p style="font-size:17px;margin:0 0 16px 0;">Hola <strong>{{name}}</strong>,</p><p style="font-size:15px;color:#475569;margin:0 0 24px 0;">Gracias por unirte a la lista de espera de <strong style="color:#0284c7;">Cojauny</strong>. Te avisaremos por email en cuanto la beta esté disponible para ti.</p>${referralBox('es', '{{referral_link}}')}<p style="font-size:14px;color:#64748b;margin:24px 0 0 0;">¿Tienes preguntas? Responde directamente a este email.</p>`),
+            text: 'Hola {{name}},\n\nGracias por unirte a la lista de espera de Cojauny. Te avisaremos por email en cuanto la beta esté disponible para ti.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🚀 AVANZA EN LA LISTA DE ESPERA\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nComparte tu enlace personal:\n{{referral_link}}\n\nCuantos más amigos se registren con tu enlace, antes tendrás acceso a la beta.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n¿Tienes preguntas? Responde directamente a este email.'
         },
         en: {
-            subject: 'Welcome to the Cojauny Waitlist',
-            html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hi <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Thanks for joining the <strong style=\"color:#0ea5e9;\">Cojauny</strong> waitlist. We'll email you when the beta is ready.</p><div style=\"background:linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);border-left:4px solid #0ea5e9;padding:20px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 12px 0;font-weight:600;color:#0c4a6e;font-size:15px;\">Move up the list by sharing your link:</p><div style=\"background:#ffffff;padding:14px;border-radius:6px;margin-top:12px;\"><a href=\"{{referral_link}}\" style=\"color:#0369a1;font-weight:600;font-size:14px;word-break:break-all;text-decoration:none;\">{{referral_link}}</a></div><p style=\"margin:12px 0 0 0;font-size:13px;color:#475569;\">The more friends sign up with your link, the sooner you'll get beta access.</p></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Questions? Just reply to this email.</p></div>",
-            text: 'Hi {{name}},\n\nThanks for joining the Cojauny waitlist. We\'ll email you when the beta is ready.\n\nMOVE UP THE LIST:\nShare your personal link:\n{{referral_link}}\n\nThe more friends sign up with your link, the sooner you\'ll get access.\n\nQuestions? Reply to this email.'
+            subject: 'You\'re on the Cojauny waitlist, {{name}}!',
+            html: htmlWrapper(`<p style="font-size:17px;margin:0 0 16px 0;">Hi <strong>{{name}}</strong>,</p><p style="font-size:15px;color:#475569;margin:0 0 24px 0;">Thanks for joining the <strong style="color:#0284c7;">Cojauny</strong> waitlist. We'll email you as soon as the beta is available for you.</p>${referralBox('en', '{{referral_link}}')}<p style="font-size:14px;color:#64748b;margin:24px 0 0 0;">Have questions? Reply directly to this email.</p>`),
+            text: 'Hi {{name}},\n\nThanks for joining the Cojauny waitlist. We\'ll email you as soon as the beta is available for you.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🚀 MOVE UP THE WAITLIST\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nShare your personal link:\n{{referral_link}}\n\nThe more friends sign up with your link, the sooner you\'ll get beta access.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nHave questions? Reply directly to this email.'
         },
         de: {
-            subject: 'Willkommen auf der Cojauny-Warteliste',
-            html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hallo <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Danke, dass du der <strong style=\"color:#0ea5e9;\">Cojauny</strong>-Warteliste beigetreten bist. Wir senden dir eine E-Mail, wenn die Beta bereit ist.</p><div style=\"background:linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);border-left:4px solid #0ea5e9;padding:20px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 12px 0;font-weight:600;color:#0c4a6e;font-size:15px;\">Rücke in der Liste nach vorne:</p><div style=\"background:#ffffff;padding:14px;border-radius:6px;margin-top:12px;\"><a href=\"{{referral_link}}\" style=\"color:#0369a1;font-weight:600;font-size:14px;word-break:break-all;text-decoration:none;\">{{referral_link}}</a></div><p style=\"margin:12px 0 0 0;font-size:13px;color:#475569;\">Je mehr Freunde sich über deinen Link registrieren, desto früher erhältst du Beta-Zugang.</p></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Fragen? Antworte einfach auf diese E-Mail.</p></div>",
-            text: 'Hallo {{name}},\n\nDanke für die Anmeldung zur Cojauny-Warteliste. Wir benachrichtigen dich, wenn die Beta bereit ist.\n\nRÜCKE NACH VORNE:\nTeile deinen persönlichen Link:\n{{referral_link}}\n\nJe mehr Freunde sich registrieren, desto schneller erhältst du Zugang.\n\nFragen? Antworte auf diese E-Mail.'
+            subject: 'Du bist auf der Cojauny-Warteliste, {{name}}!',
+            html: htmlWrapper(`<p style="font-size:17px;margin:0 0 16px 0;">Hallo <strong>{{name}}</strong>,</p><p style="font-size:15px;color:#475569;margin:0 0 24px 0;">Danke, dass du dich für die <strong style="color:#0284c7;">Cojauny</strong>-Warteliste angemeldet hast. Wir informieren dich per E-Mail, sobald die Beta für dich verfügbar ist.</p>${referralBox('de', '{{referral_link}}')}<p style="font-size:14px;color:#64748b;margin:24px 0 0 0;">Hast du Fragen? Antworte einfach auf diese E-Mail.</p>`),
+            text: 'Hallo {{name}},\n\nDanke, dass du dich für die Cojauny-Warteliste angemeldet hast. Wir informieren dich per E-Mail, sobald die Beta für dich verfügbar ist.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🚀 RÜCKE AUF DER WARTELISTE VOR\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nTeile deinen persönlichen Link:\n{{referral_link}}\n\nJe mehr Freunde sich über deinen Link registrieren, desto früher erhältst du Beta-Zugang.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nHast du Fragen? Antworte einfach auf diese E-Mail.'
         },
         fr: {
-            subject: 'Bienvenue sur la liste d\'attente Cojauny',
-            html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Bonjour <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Merci de rejoindre la liste d'attente <strong style=\"color:#0ea5e9;\">Cojauny</strong>. Nous vous enverrons un email lorsque la bêta sera prête.</p><div style=\"background:linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);border-left:4px solid #0ea5e9;padding:20px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 12px 0;font-weight:600;color:#0c4a6e;font-size:15px;\">Avancez dans la liste en partageant votre lien:</p><div style=\"background:#ffffff;padding:14px;border-radius:6px;margin-top:12px;\"><a href=\"{{referral_link}}\" style=\"color:#0369a1;font-weight:600;font-size:14px;word-break:break-all;text-decoration:none;\">{{referral_link}}</a></div><p style=\"margin:12px 0 0 0;font-size:13px;color:#475569;\">Plus vos amis s'inscrivent via votre lien, plus vite vous aurez accès à la bêta.</p></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Des questions? Répondez simplement à cet email.</p></div>",
-            text: 'Bonjour {{name}},\n\nMerci de rejoindre la liste d\'attente Cojauny. Nous vous préviendrons quand la bêta sera prête.\n\nAVANCEZ DANS LA LISTE:\nPartagez votre lien personnel:\n{{referral_link}}\n\nPlus d\'inscriptions = accès plus rapide.\n\nQuestions? Répondez à cet email.'
+            subject: 'Vous êtes sur la liste d\'attente Cojauny, {{name}} !',
+            html: htmlWrapper(`<p style="font-size:17px;margin:0 0 16px 0;">Bonjour <strong>{{name}}</strong>,</p><p style="font-size:15px;color:#475569;margin:0 0 24px 0;">Merci de rejoindre la liste d'attente <strong style="color:#0284c7;">Cojauny</strong>. Nous vous enverrons un email dès que la bêta sera disponible pour vous.</p>${referralBox('fr', '{{referral_link}}')}<p style="font-size:14px;color:#64748b;margin:24px 0 0 0;">Des questions ? Répondez directement à cet email.</p>`),
+            text: 'Bonjour {{name}},\n\nMerci de rejoindre la liste d\'attente Cojauny. Nous vous enverrons un email dès que la bêta sera disponible pour vous.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🚀 AVANCEZ SUR LA LISTE D\'ATTENTE\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nPartagez votre lien personnel:\n{{referral_link}}\n\nPlus vos amis s\'inscrivent via votre lien, plus vite vous aurez accès à la bêta.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nDes questions ? Répondez directement à cet email.'
         }
     },
+
     'contact-confirmation': {
         es: {
             subject: 'Hemos recibido tu mensaje, {{name}}',
-            html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hola <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Gracias por contactarnos. Hemos recibido tu mensaje y te responderemos pronto.</p><div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">📋 Tu mensaje:</p><p style=\"margin:0 0 8px 0;color:#475569;font-size:13px;\"><strong>Asunto:</strong> {{topic}}</p><pre style=\"white-space:pre-wrap;font-family:inherit;font-size:14px;margin:0;color:#1f2937;background:#ffffff;padding:12px;border-radius:6px;\">{{message}}</pre></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Responde directamente a este correo para continuar la conversación.</p></div>",
-            text: "Hola {{name}},\n\nGracias por contactarnos. Hemos recibido tu mensaje y te responderemos pronto.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📋 TU MENSAJE:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nAsunto: {{topic}}\n\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nResponde directamente a este correo para continuar la conversación."
+            html: htmlWrapper(`<p style="font-size:17px;margin:0 0 16px 0;">Hola <strong>{{name}}</strong>,</p><p style="font-size:15px;color:#475569;margin:0 0 8px 0;">Gracias por contactarnos. Hemos recibido tu mensaje y nuestro equipo te responderá en un plazo de 24-48 horas laborables.</p>${messageBox('📋', 'Tu mensaje:', '<strong>Asunto:</strong> {{topic}}\n\n{{message}}')}<p style="font-size:14px;color:#64748b;margin:24px 0 0 0;">Responde directamente a este email si necesitas añadir información adicional.</p>`),
+            text: 'Hola {{name}},\n\nGracias por contactarnos. Hemos recibido tu mensaje y nuestro equipo te responderá en un plazo de 24-48 horas laborables.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📋 TU MENSAJE\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nAsunto: {{topic}}\n\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nResponde directamente a este email si necesitas añadir información adicional.'
         },
         en: {
             subject: 'We received your message, {{name}}',
-            html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hi <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Thanks for reaching out. We've received your message and will get back to you soon.</p><div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">📋 Your message:</p><p style=\"margin:0 0 8px 0;color:#475569;font-size:13px;\"><strong>Subject:</strong> {{topic}}</p><pre style=\"white-space:pre-wrap;font-family:inherit;font-size:14px;margin:0;color:#1f2937;background:#ffffff;padding:12px;border-radius:6px;\">{{message}}</pre></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Reply directly to this email to continue the conversation.</p></div>",
-            text: "Hi {{name}},\n\nThanks for reaching out. We've received your message and will get back to you soon.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📋 YOUR MESSAGE:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nSubject: {{topic}}\n\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nReply directly to this email to continue the conversation."
+            html: htmlWrapper(`<p style="font-size:17px;margin:0 0 16px 0;">Hi <strong>{{name}}</strong>,</p><p style="font-size:15px;color:#475569;margin:0 0 8px 0;">Thanks for reaching out. We've received your message and our team will respond within 24-48 business hours.</p>${messageBox('📋', 'Your message:', '<strong>Subject:</strong> {{topic}}\n\n{{message}}')}<p style="font-size:14px;color:#64748b;margin:24px 0 0 0;">Reply directly to this email if you need to add more information.</p>`),
+            text: 'Hi {{name}},\n\nThanks for reaching out. We\'ve received your message and our team will respond within 24-48 business hours.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📋 YOUR MESSAGE\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nSubject: {{topic}}\n\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nReply directly to this email if you need to add more information.'
         },
         de: {
             subject: 'Wir haben deine Nachricht erhalten, {{name}}',
-            html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hallo <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Danke für deine Nachricht. Wir haben sie erhalten und werden uns bald bei dir melden.</p><div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">📋 Deine Nachricht:</p><p style=\"margin:0 0 8px 0;color:#475569;font-size:13px;\"><strong>Betreff:</strong> {{topic}}</p><pre style=\"white-space:pre-wrap;font-family:inherit;font-size:14px;margin:0;color:#1f2937;background:#ffffff;padding:12px;border-radius:6px;\">{{message}}</pre></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Antworte direkt auf diese E-Mail, um das Gespräch fortzusetzen.</p></div>",
-            text: "Hallo {{name}},\n\nDanke für deine Nachricht. Wir haben sie erhalten und werden uns bald bei dir melden.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📋 DEINE NACHRICHT:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nBetreff: {{topic}}\n\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nAntworte direkt auf diese E-Mail, um das Gespräch fortzusetzen."
+            html: htmlWrapper(`<p style="font-size:17px;margin:0 0 16px 0;">Hallo <strong>{{name}}</strong>,</p><p style="font-size:15px;color:#475569;margin:0 0 8px 0;">Danke für deine Nachricht. Wir haben sie erhalten und unser Team wird sich innerhalb von 24-48 Geschäftsstunden bei dir melden.</p>${messageBox('📋', 'Deine Nachricht:', '<strong>Betreff:</strong> {{topic}}\n\n{{message}}')}<p style="font-size:14px;color:#64748b;margin:24px 0 0 0;">Antworte direkt auf diese E-Mail, wenn du weitere Informationen hinzufügen möchtest.</p>`),
+            text: 'Hallo {{name}},\n\nDanke für deine Nachricht. Wir haben sie erhalten und unser Team wird sich innerhalb von 24-48 Geschäftsstunden bei dir melden.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📋 DEINE NACHRICHT\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nBetreff: {{topic}}\n\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nAntworte direkt auf diese E-Mail, wenn du weitere Informationen hinzufügen möchtest.'
         },
         fr: {
             subject: 'Nous avons reçu votre message, {{name}}',
-            html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Bonjour <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Merci de nous avoir contactés. Nous avons bien reçu votre message et vous répondrons bientôt.</p><div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">📋 Votre message:</p><p style=\"margin:0 0 8px 0;color:#475569;font-size:13px;\"><strong>Sujet:</strong> {{topic}}</p><pre style=\"white-space:pre-wrap;font-family:inherit;font-size:14px;margin:0;color:#1f2937;background:#ffffff;padding:12px;border-radius:6px;\">{{message}}</pre></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Répondez directement à cet e-mail pour continuer la conversation.</p></div>",
-            text: "Bonjour {{name}},\n\nMerci de nous avoir contactés. Nous avons bien reçu votre message et vous répondrons bientôt.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📋 VOTRE MESSAGE:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nSujet: {{topic}}\n\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nRépondez directement à cet e-mail pour continuer la conversation."
+            html: htmlWrapper(`<p style="font-size:17px;margin:0 0 16px 0;">Bonjour <strong>{{name}}</strong>,</p><p style="font-size:15px;color:#475569;margin:0 0 8px 0;">Merci de nous avoir contactés. Nous avons bien reçu votre message et notre équipe vous répondra sous 24 à 48 heures ouvrées.</p>${messageBox('📋', 'Votre message:', '<strong>Sujet:</strong> {{topic}}\n\n{{message}}')}<p style="font-size:14px;color:#64748b;margin:24px 0 0 0;">Répondez directement à cet email si vous souhaitez ajouter des informations.</p>`),
+            text: 'Bonjour {{name}},\n\nMerci de nous avoir contactés. Nous avons bien reçu votre message et notre équipe vous répondra sous 24 à 48 heures ouvrées.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📋 VOTRE MESSAGE\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nSujet: {{topic}}\n\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nRépondez directement à cet email si vous souhaitez ajouter des informations.'
         }
     },
+
     'feedback-confirmation': {
         es: {
             subject: 'Gracias por tu feedback, {{name}}',
-            html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hola <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Gracias por tu comentario sobre Cojauny. Lo hemos recibido y nuestro equipo de producto lo está revisando.</p><div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">📋 Tu feedback:</p><pre style=\"white-space:pre-wrap;font-family:inherit;font-size:14px;margin:0;color:#1f2937;background:#ffffff;padding:12px;border-radius:6px;\">{{message}}</pre></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Si quieres añadir más contexto, responde a este correo.</p></div>",
-            text: "Hola {{name}},\n\nGracias por tu comentario sobre Cojauny. Lo hemos recibido y nuestro equipo de producto lo está revisando.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📋 TU FEEDBACK:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nSi quieres añadir más contexto, responde a este correo."
+            html: htmlWrapper(`<p style="font-size:17px;margin:0 0 16px 0;">Hola <strong>{{name}}</strong>,</p><p style="font-size:15px;color:#475569;margin:0 0 8px 0;">Gracias por compartir tu opinión sobre Cojauny. Tu feedback es muy valioso para nosotros y nuestro equipo de producto lo revisará con atención.</p>${messageBox('💬', 'Tu feedback:', '{{message}}')}<p style="font-size:14px;color:#64748b;margin:24px 0 0 0;">Si deseas añadir más contexto o detalles, responde a este email.</p>`),
+            text: 'Hola {{name}},\n\nGracias por compartir tu opinión sobre Cojauny. Tu feedback es muy valioso para nosotros y nuestro equipo de producto lo revisará con atención.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💬 TU FEEDBACK\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nSi deseas añadir más contexto o detalles, responde a este email.'
         },
         en: {
             subject: 'Thanks for your feedback, {{name}}',
-            html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hi <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Thanks for your feedback about Cojauny. We've received it and our product team is reviewing it.</p><div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">📋 Your feedback:</p><pre style=\"white-space:pre-wrap;font-family:inherit;font-size:14px;margin:0;color:#1f2937;background:#ffffff;padding:12px;border-radius:6px;\">{{message}}</pre></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Reply to this email if you'd like to add more context.</p></div>",
-            text: "Hi {{name}},\n\nThanks for your feedback about Cojauny. We've received it and our product team is reviewing it.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📋 YOUR FEEDBACK:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nReply to this email if you'd like to add more context."
+            html: htmlWrapper(`<p style="font-size:17px;margin:0 0 16px 0;">Hi <strong>{{name}}</strong>,</p><p style="font-size:15px;color:#475569;margin:0 0 8px 0;">Thanks for sharing your thoughts about Cojauny. Your feedback is invaluable to us and our product team will carefully review it.</p>${messageBox('💬', 'Your feedback:', '{{message}}')}<p style="font-size:14px;color:#64748b;margin:24px 0 0 0;">Want to add more context or details? Reply to this email.</p>`),
+            text: 'Hi {{name}},\n\nThanks for sharing your thoughts about Cojauny. Your feedback is invaluable to us and our product team will carefully review it.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💬 YOUR FEEDBACK\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nWant to add more context or details? Reply to this email.'
         },
         de: {
             subject: 'Danke für dein Feedback, {{name}}',
-            html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hallo <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Danke für dein Feedback zu Cojauny. Wir haben es erhalten und unser Produktteam prüft es.</p><div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">📋 Dein Feedback:</p><pre style=\"white-space:pre-wrap;font-family:inherit;font-size:14px;margin:0;color:#1f2937;background:#ffffff;padding:12px;border-radius:6px;\">{{message}}</pre></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Antworte auf diese E-Mail, um mehr Kontext hinzuzufügen.</p></div>",
-            text: "Hallo {{name}},\n\nDanke für dein Feedback zu Cojauny. Wir haben es erhalten und unser Produktteam prüft es.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📋 DEIN FEEDBACK:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nAntworte auf diese E-Mail, um mehr Kontext hinzuzufügen."
+            html: htmlWrapper(`<p style="font-size:17px;margin:0 0 16px 0;">Hallo <strong>{{name}}</strong>,</p><p style="font-size:15px;color:#475569;margin:0 0 8px 0;">Danke, dass du deine Meinung zu Cojauny geteilt hast. Dein Feedback ist uns sehr wichtig und unser Produktteam wird es sorgfältig prüfen.</p>${messageBox('💬', 'Dein Feedback:', '{{message}}')}<p style="font-size:14px;color:#64748b;margin:24px 0 0 0;">Möchtest du mehr Kontext hinzufügen? Antworte auf diese E-Mail.</p>`),
+            text: 'Hallo {{name}},\n\nDanke, dass du deine Meinung zu Cojauny geteilt hast. Dein Feedback ist uns sehr wichtig und unser Produktteam wird es sorgfältig prüfen.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💬 DEIN FEEDBACK\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nMöchtest du mehr Kontext hinzufügen? Antworte auf diese E-Mail.'
         },
         fr: {
             subject: 'Merci pour votre retour, {{name}}',
-            html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Bonjour <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Merci pour votre retour sur Cojauny. Nous l'avons bien reçu et notre équipe produit l'examine.</p><div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">📋 Votre retour:</p><pre style=\"white-space:pre-wrap;font-family:inherit;font-size:14px;margin:0;color:#1f2937;background:#ffffff;padding:12px;border-radius:6px;\">{{message}}</pre></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Répondez à cet e-mail pour ajouter plus de contexte.</p></div>",
-            text: "Bonjour {{name}},\n\nMerci pour votre retour sur Cojauny. Nous l'avons bien reçu et notre équipe produit l'examine.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📋 VOTRE RETOUR:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nRépondez à cet e-mail pour ajouter plus de contexte."
+            html: htmlWrapper(`<p style="font-size:17px;margin:0 0 16px 0;">Bonjour <strong>{{name}}</strong>,</p><p style="font-size:15px;color:#475569;margin:0 0 8px 0;">Merci d'avoir partagé votre avis sur Cojauny. Votre retour est précieux pour nous et notre équipe produit l'examinera attentivement.</p>${messageBox('💬', 'Votre retour:', '{{message}}')}<p style="font-size:14px;color:#64748b;margin:24px 0 0 0;">Vous souhaitez ajouter plus de contexte ? Répondez à cet email.</p>`),
+            text: 'Bonjour {{name}},\n\nMerci d\'avoir partagé votre avis sur Cojauny. Votre retour est précieux pour nous et notre équipe produit l\'examinera attentivement.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💬 VOTRE RETOUR\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nVous souhaitez ajouter plus de contexte ? Répondez à cet email.'
         }
     },
+
     'idea-confirmation': {
         es: {
             subject: 'Gracias por tu idea, {{name}}',
-            html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hola <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Gracias por compartir tu idea para Cojauny. La hemos recibido y la incluiremos en nuestro proceso de evaluación.</p><div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">💡 Tu idea:</p><pre style=\"white-space:pre-wrap;font-family:inherit;font-size:14px;margin:0;color:#1f2937;background:#ffffff;padding:12px;border-radius:6px;\">{{message}}</pre></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Si puedes compartir casos de uso o métricas, responde a este correo.</p></div>",
-            text: "Hola {{name}},\n\nGracias por compartir tu idea para Cojauny. La hemos recibido y la incluiremos en nuestro proceso de evaluación.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💡 TU IDEA:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nResponde a este correo para añadir información adicional."
+            html: htmlWrapper(`<p style="font-size:17px;margin:0 0 16px 0;">Hola <strong>{{name}}</strong>,</p><p style="font-size:15px;color:#475569;margin:0 0 8px 0;">Gracias por compartir tu idea para Cojauny. La hemos recibido y la incluiremos en nuestras discusiones de roadmap.</p>${messageBox('💡', 'Tu idea:', '{{message}}', '#fefce8')}<p style="font-size:14px;color:#64748b;margin:24px 0 0 0;">Si tienes ejemplos de uso o métricas que compartirnos, responde a este email.</p>`),
+            text: 'Hola {{name}},\n\nGracias por compartir tu idea para Cojauny. La hemos recibido y la incluiremos en nuestras discusiones de roadmap.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💡 TU IDEA\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nSi tienes ejemplos de uso o métricas que compartirnos, responde a este email.'
         },
         en: {
             subject: 'Thanks for your idea, {{name}}',
-            html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hi <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Thanks for sharing your idea for Cojauny. We received it and will consider it in our roadmap discussions.</p><div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">💡 Your idea:</p><pre style=\"white-space:pre-wrap;font-family:inherit;font-size:14px;margin:0;color:#1f2937;background:#ffffff;padding:12px;border-radius:6px;\">{{message}}</pre></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Reply with any additional examples or metrics.</p></div>",
-            text: "Hi {{name}},\n\nThanks for sharing your idea for Cojauny. We received it and will consider it in our roadmap.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💡 YOUR IDEA:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nReply to add examples or metrics."
+            html: htmlWrapper(`<p style="font-size:17px;margin:0 0 16px 0;">Hi <strong>{{name}}</strong>,</p><p style="font-size:15px;color:#475569;margin:0 0 8px 0;">Thanks for sharing your idea for Cojauny. We've received it and will include it in our roadmap discussions.</p>${messageBox('💡', 'Your idea:', '{{message}}', '#fefce8')}<p style="font-size:14px;color:#64748b;margin:24px 0 0 0;">Have use cases or metrics to share? Reply to this email.</p>`),
+            text: 'Hi {{name}},\n\nThanks for sharing your idea for Cojauny. We\'ve received it and will include it in our roadmap discussions.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💡 YOUR IDEA\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nHave use cases or metrics to share? Reply to this email.'
         },
         de: {
             subject: 'Danke für deine Idee, {{name}}',
-            html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hallo <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Danke, dass du deine Idee für Cojauny geteilt hast. Wir haben sie erhalten und werden sie in unsere Produktplanung einbeziehen.</p><div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">💡 Deine Idee:</p><pre style=\"white-space:pre-wrap;font-family:inherit;font-size:14px;margin:0;color:#1f2937;background:#ffffff;padding:12px;border-radius:6px;\">{{message}}</pre></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Antworte, um weitere Beispiele oder Metriken zu teilen.</p></div>",
-            text: "Hallo {{name}},\n\nDanke für deine Idee für Cojauny. Wir haben sie erhalten und prüfen sie.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💡 DEINE IDEE:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nAntworte, um Beispiele oder Metriken hinzuzufügen."
+            html: htmlWrapper(`<p style="font-size:17px;margin:0 0 16px 0;">Hallo <strong>{{name}}</strong>,</p><p style="font-size:15px;color:#475569;margin:0 0 8px 0;">Danke, dass du deine Idee für Cojauny geteilt hast. Wir haben sie erhalten und werden sie in unsere Roadmap-Diskussionen einbeziehen.</p>${messageBox('💡', 'Deine Idee:', '{{message}}', '#fefce8')}<p style="font-size:14px;color:#64748b;margin:24px 0 0 0;">Hast du Anwendungsfälle oder Metriken? Antworte auf diese E-Mail.</p>`),
+            text: 'Hallo {{name}},\n\nDanke, dass du deine Idee für Cojauny geteilt hast. Wir haben sie erhalten und werden sie in unsere Roadmap-Diskussionen einbeziehen.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💡 DEINE IDEE\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nHast du Anwendungsfälle oder Metriken? Antworte auf diese E-Mail.'
         },
         fr: {
             subject: 'Merci pour votre idée, {{name}}',
-            html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Bonjour <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Merci d'avoir partagé votre idée pour Cojauny. Nous l'avons reçue et l'intégrerons à notre réflexion produit.</p><div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">💡 Votre idée:</p><pre style=\"white-space:pre-wrap;font-family:inherit;font-size:14px;margin:0;color:#1f2937;background:#ffffff;padding:12px;border-radius:6px;\">{{message}}</pre></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Répondez pour ajouter des exemples ou des métriques.</p></div>",
-            text: "Bonjour {{name}},\n\nMerci pour votre idée pour Cojauny. Nous l'avons reçue et l'examinerons.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💡 VOTRE IDÉE:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nRépondez pour ajouter des exemples."
+            html: htmlWrapper(`<p style="font-size:17px;margin:0 0 16px 0;">Bonjour <strong>{{name}}</strong>,</p><p style="font-size:15px;color:#475569;margin:0 0 8px 0;">Merci d'avoir partagé votre idée pour Cojauny. Nous l'avons reçue et l'intégrerons à nos discussions de roadmap.</p>${messageBox('💡', 'Votre idée:', '{{message}}', '#fefce8')}<p style="font-size:14px;color:#64748b;margin:24px 0 0 0;">Vous avez des cas d'usage ou métriques à partager ? Répondez à cet email.</p>`),
+            text: 'Bonjour {{name}},\n\nMerci d\'avoir partagé votre idée pour Cojauny. Nous l\'avons reçue et l\'intégrerons à nos discussions de roadmap.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💡 VOTRE IDÉE\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nVous avez des cas d\'usage ou métriques à partager ? Répondez à cet email.'
         }
     },
+
     'business-proposal-confirmation': {
         es: {
             subject: 'Gracias por tu propuesta comercial, {{name}}',
-            html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hola <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Gracias por enviarnos tu propuesta comercial. Nuestro equipo de partnerships la revisará y contactará si hay interés.</p><div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">📊 Tu propuesta:</p><pre style=\"white-space:pre-wrap;font-family:inherit;font-size:14px;margin:0;color:#1f2937;background:#ffffff;padding:12px;border-radius:6px;\">{{message}}</pre></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Si quieres adjuntar documentación adicional, responde a este correo.</p></div>",
-            text: "Hola {{name}},\n\nGracias por tu propuesta comercial. Nuestro equipo de partnerships la revisará y contactará si hay interés.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📊 TU PROPUESTA:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nResponde para adjuntar documentación."
+            html: htmlWrapper(`<p style="font-size:17px;margin:0 0 16px 0;">Hola <strong>{{name}}</strong>,</p><p style="font-size:15px;color:#475569;margin:0 0 8px 0;">Gracias por enviarnos tu propuesta comercial. Nuestro equipo de partnerships la revisará y se pondrá en contacto contigo si hay oportunidad de colaboración.</p>${messageBox('📊', 'Tu propuesta:', '{{message}}', '#f0fdf4')}<p style="font-size:14px;color:#64748b;margin:24px 0 0 0;">Si deseas adjuntar documentación adicional, responde a este email.</p>`),
+            text: 'Hola {{name}},\n\nGracias por enviarnos tu propuesta comercial. Nuestro equipo de partnerships la revisará y se pondrá en contacto contigo si hay oportunidad de colaboración.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📊 TU PROPUESTA\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nSi deseas adjuntar documentación adicional, responde a este email.'
         },
         en: {
             subject: 'Thanks for your business proposal, {{name}}',
-            html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hi <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Thanks for sending us your business proposal. Our partnerships team will review it and reach out if there's interest.</p><div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">📊 Your proposal:</p><pre style=\"white-space:pre-wrap;font-family:inherit;font-size:14px;margin:0;color:#1f2937;background:#ffffff;padding:12px;border-radius:6px;\">{{message}}</pre></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Reply to attach additional documents.</p></div>",
-            text: "Hi {{name}},\n\nThanks for your business proposal. Our team will review it and reach out if we want to proceed.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📊 YOUR PROPOSAL:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nReply to attach documents."
+            html: htmlWrapper(`<p style="font-size:17px;margin:0 0 16px 0;">Hi <strong>{{name}}</strong>,</p><p style="font-size:15px;color:#475569;margin:0 0 8px 0;">Thanks for sending us your business proposal. Our partnerships team will review it and reach out if there's an opportunity to collaborate.</p>${messageBox('📊', 'Your proposal:', '{{message}}', '#f0fdf4')}<p style="font-size:14px;color:#64748b;margin:24px 0 0 0;">Want to attach additional documentation? Reply to this email.</p>`),
+            text: 'Hi {{name}},\n\nThanks for sending us your business proposal. Our partnerships team will review it and reach out if there\'s an opportunity to collaborate.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📊 YOUR PROPOSAL\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nWant to attach additional documentation? Reply to this email.'
         },
         de: {
             subject: 'Danke für Ihren Geschäftsvorschlag, {{name}}',
-            html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Hallo <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Danke für Ihren Geschäftsvorschlag. Unser Partnerships-Team wird diesen prüfen und sich melden, wenn Interesse besteht.</p><div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">📊 Ihr Vorschlag:</p><pre style=\"white-space:pre-wrap;font-family:inherit;font-size:14px;margin:0;color:#1f2937;background:#ffffff;padding:12px;border-radius:6px;\">{{message}}</pre></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Antworten Sie, um zusätzliche Dokumente anzuhängen.</p></div>",
-            text: "Hallo {{name}},\n\nDanke für Ihren Geschäftsvorschlag. Unser Team prüft ihn und meldet sich, falls wir weitergehen möchten.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📊 IHR VORSCHLAG:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nAntworten Sie, um Dokumente anzuhängen."
+            html: htmlWrapper(`<p style="font-size:17px;margin:0 0 16px 0;">Hallo <strong>{{name}}</strong>,</p><p style="font-size:15px;color:#475569;margin:0 0 8px 0;">Danke für Ihren Geschäftsvorschlag. Unser Partnerships-Team wird ihn prüfen und sich bei Ihnen melden, wenn es eine Möglichkeit zur Zusammenarbeit gibt.</p>${messageBox('📊', 'Ihr Vorschlag:', '{{message}}', '#f0fdf4')}<p style="font-size:14px;color:#64748b;margin:24px 0 0 0;">Möchten Sie zusätzliche Dokumentation anhängen? Antworten Sie auf diese E-Mail.</p>`),
+            text: 'Hallo {{name}},\n\nDanke für Ihren Geschäftsvorschlag. Unser Partnerships-Team wird ihn prüfen und sich bei Ihnen melden, wenn es eine Möglichkeit zur Zusammenarbeit gibt.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📊 IHR VORSCHLAG\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nMöchten Sie zusätzliche Dokumentation anhängen? Antworten Sie auf diese E-Mail.'
         },
         fr: {
             subject: 'Merci pour votre proposition commerciale, {{name}}',
-            html: "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;max-width:600px;\"><p style=\"font-size:16px;line-height:1.6;\">Bonjour <strong>{{name}}</strong>,</p><p style=\"font-size:15px;line-height:1.6;\">Merci pour votre proposition commerciale. Notre équipe partnerships l'examinera et vous contactera si nous souhaitons poursuivre.</p><div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:8px;margin:24px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">📊 Votre proposition:</p><pre style=\"white-space:pre-wrap;font-family:inherit;font-size:14px;margin:0;color:#1f2937;background:#ffffff;padding:12px;border-radius:6px;\">{{message}}</pre></div><p style=\"font-size:14px;line-height:1.6;color:#64748b;\">Répondez pour joindre des documents supplémentaires.</p></div>",
-            text: "Bonjour {{name}},\n\nMerci pour votre proposition commerciale. Notre équipe l'examinera et vous contactera si nous souhaitons avancer.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📊 VOTRE PROPOSITION:\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nRépondez pour joindre des documents."
+            html: htmlWrapper(`<p style="font-size:17px;margin:0 0 16px 0;">Bonjour <strong>{{name}}</strong>,</p><p style="font-size:15px;color:#475569;margin:0 0 8px 0;">Merci pour votre proposition commerciale. Notre équipe partnerships l'examinera et vous contactera s'il y a une opportunité de collaboration.</p>${messageBox('📊', 'Votre proposition:', '{{message}}', '#f0fdf4')}<p style="font-size:14px;color:#64748b;margin:24px 0 0 0;">Vous souhaitez joindre de la documentation ? Répondez à cet email.</p>`),
+            text: 'Bonjour {{name}},\n\nMerci pour votre proposition commerciale. Notre équipe partnerships l\'examinera et vous contactera s\'il y a une opportunité de collaboration.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📊 VOTRE PROPOSITION\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nVous souhaitez joindre de la documentation ? Répondez à cet email.'
         }
     }
 };
 
-const feedbackInternalContent = {
-    subject: 'Nuevo feedback recibido',
-    html:
-        "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;\">" +
-        `<div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;padding-bottom:16px;border-bottom:2px solid #e5e7eb;"><img src="${logoUrl}" width="48" alt="Cojauny" style="display:block;border:0" /><div style="font-weight:700;font-size:18px;">Cojauny — Feedback</div></div>` +
-        "<p style=\"font-size:15px;font-weight:600;color:#0f172a;\">Nuevo feedback del producto</p>" +
-        "<table style=\"width:100%;border-collapse:collapse;margin:16px 0;\"><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">De:</td><td style=\"padding:8px 0;font-size:14px;\">{{name}}</td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Email:</td><td style=\"padding:8px 0;font-size:14px;\"><a href=\"mailto:{{email}}\" style=\"color:#0ea5e9;text-decoration:none;\">{{email}}</a></td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Usecase:</td><td style=\"padding:8px 0;font-size:14px;\">{{usecase}}</td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Idioma:</td><td style=\"padding:8px 0;font-size:14px;\">{{locale}}</td></tr></table>" +
-        "<div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:4px;margin:16px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">Mensaje:</p><pre style=\"white-space:pre-wrap;font-family:'Courier New',monospace;font-size:14px;margin:0;color:#1f2937;\">{{message}}</pre></div>" +
-        "<p style=\"margin-top:24px;font-size:12px;color:#9ca3af;\">Responde directamente al usuario en: {{email}}</p>" +
-        "</div>",
-    text:
-        '=== NUEVO FEEDBACK ===\n\nDe: {{name}}\nEmail: {{email}}\nUsecase: {{usecase}}\nIdioma: {{locale}}\n\n--- MENSAJE ---\n{{message}}\n\nResponde a: {{email}}\n\nCojauny · ' + siteUrl
-};
+// ============================================================================
+// INTERNAL TEMPLATES (Team notifications)
+// ============================================================================
+
+const internalHeader = (title) => `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:#1e293b;"><div style="margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid #e2e8f0;"><img src="${logoUrl}" width="40" height="40" alt="Cojauny" style="display:inline-block;vertical-align:middle;border:0;border-radius:6px;margin-right:12px;" /><span style="font-weight:700;font-size:18px;color:#0f172a;vertical-align:middle;">${title}</span></div>`;
 
 const staticTemplates = {
     'contact-internal': {
-        subject: 'Nueva solicitud de soporte',
-        html:
-            "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;\">" +
-            `<div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;padding-bottom:16px;border-bottom:2px solid #e5e7eb;"><img src="${logoUrl}" width="48" alt="Cojauny" style="display:block;border:0" /><div style="font-weight:700;font-size:18px;">Cojauny — Soporte</div></div>` +
-            "<p style=\"font-size:15px;font-weight:600;color:#0f172a;\">Nueva solicitud de contacto</p>" +
-            "<table style=\"width:100%;border-collapse:collapse;margin:16px 0;\"><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">De:</td><td style=\"padding:8px 0;font-size:14px;\">{{name}}</td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Email:</td><td style=\"padding:8px 0;font-size:14px;\"><a href=\"mailto:{{email}}\" style=\"color:#0ea5e9;text-decoration:none;\">{{email}}</a></td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Asunto:</td><td style=\"padding:8px 0;font-size:14px;\">{{topic}}</td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Idioma:</td><td style=\"padding:8px 0;font-size:14px;\">{{locale}}</td></tr></table>" +
-            "<div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:4px;margin:16px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">Mensaje:</p><pre style=\"white-space:pre-wrap;font-family:'Courier New',monospace;font-size:14px;margin:0;color:#1f2937;\">{{message}}</pre></div>" +
-            "<p style=\"margin-top:24px;font-size:12px;color:#9ca3af;\">Responde directamente al usuario en: {{email}}</p>" +
-            "</div>",
-        text:
-            '=== NUEVA SOLICITUD DE SOPORTE ===\n\nDe: {{name}}\nEmail: {{email}}\nAsunto: {{topic}}\nIdioma: {{locale}}\n\n--- MENSAJE ---\n{{message}}\n\nResponde a: {{email}}\n\nCojauny · ' + siteUrl
+        subject: '📬 Nueva solicitud de contacto - {{name}}',
+        html: `${internalHeader('Cojauny — Contacto')}<p style="font-size:15px;margin:0 0 16px 0;color:#475569;">Nueva solicitud de contacto recibida.</p><table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;"><tr><td style="padding:10px 12px 10px 0;color:#64748b;font-weight:600;width:100px;">Nombre:</td><td style="padding:10px 0;color:#1e293b;">{{name}}</td></tr><tr><td style="padding:10px 12px 10px 0;color:#64748b;font-weight:600;">Email:</td><td style="padding:10px 0;"><a href="mailto:{{email}}" style="color:#0284c7;">{{email}}</a></td></tr><tr><td style="padding:10px 12px 10px 0;color:#64748b;font-weight:600;">Asunto:</td><td style="padding:10px 0;color:#1e293b;">{{topic}}</td></tr><tr><td style="padding:10px 12px 10px 0;color:#64748b;font-weight:600;">Idioma:</td><td style="padding:10px 0;color:#1e293b;">{{locale}}</td></tr></table><div style="background:#f8fafc;border-left:4px solid #0284c7;padding:16px 20px;border-radius:0 8px 8px 0;margin:16px 0;"><p style="margin:0 0 12px 0;color:#64748b;font-size:13px;font-weight:600;">📝 Mensaje:</p><pre style="white-space:pre-wrap;font-family:monospace;font-size:13px;margin:0;color:#1e293b;background:#fff;padding:12px;border-radius:4px;border:1px solid #e2e8f0;">{{message}}</pre></div><p style="margin-top:24px;font-size:13px;color:#64748b;">📧 Responder a: <a href="mailto:{{email}}" style="color:#0284c7;">{{email}}</a></p></div>`,
+        text: '📬 NUEVA SOLICITUD DE CONTACTO\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nNombre: {{name}}\nEmail: {{email}}\nAsunto: {{topic}}\nIdioma: {{locale}}\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📝 MENSAJE\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n📧 Responder a: {{email}}\n\n--\nCojauny · ' + siteUrl
     },
-    'feedback-internal': feedbackInternalContent,
+    'feedback-internal': {
+        subject: '💬 Nuevo feedback - {{name}}',
+        html: `${internalHeader('Cojauny — Feedback')}<p style="font-size:15px;margin:0 0 16px 0;color:#475569;">Nuevo feedback del producto recibido.</p><table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;"><tr><td style="padding:10px 12px 10px 0;color:#64748b;font-weight:600;width:100px;">Nombre:</td><td style="padding:10px 0;color:#1e293b;">{{name}}</td></tr><tr><td style="padding:10px 12px 10px 0;color:#64748b;font-weight:600;">Email:</td><td style="padding:10px 0;"><a href="mailto:{{email}}" style="color:#0284c7;">{{email}}</a></td></tr><tr><td style="padding:10px 12px 10px 0;color:#64748b;font-weight:600;">Tipo:</td><td style="padding:10px 0;color:#1e293b;">{{usecase}}</td></tr><tr><td style="padding:10px 12px 10px 0;color:#64748b;font-weight:600;">Idioma:</td><td style="padding:10px 0;color:#1e293b;">{{locale}}</td></tr></table><div style="background:#f8fafc;border-left:4px solid #0284c7;padding:16px 20px;border-radius:0 8px 8px 0;margin:16px 0;"><p style="margin:0 0 12px 0;color:#64748b;font-size:13px;font-weight:600;">📝 Mensaje:</p><pre style="white-space:pre-wrap;font-family:monospace;font-size:13px;margin:0;color:#1e293b;background:#fff;padding:12px;border-radius:4px;border:1px solid #e2e8f0;">{{message}}</pre></div><p style="margin-top:24px;font-size:13px;color:#64748b;">📧 Responder a: <a href="mailto:{{email}}" style="color:#0284c7;">{{email}}</a></p></div>`,
+        text: '💬 NUEVO FEEDBACK\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nNombre: {{name}}\nEmail: {{email}}\nTipo: {{usecase}}\nIdioma: {{locale}}\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📝 MENSAJE\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n📧 Responder a: {{email}}\n\n--\nCojauny · ' + siteUrl
+    },
     'idea-internal': {
-        subject: 'Nueva idea recibida',
-        html: feedbackInternalContent.html.replace('Feedback', 'Idea'),
-        text: feedbackInternalContent.text.replace('FEEDBACK', 'IDEA')
+        subject: '💡 Nueva idea - {{name}}',
+        html: `${internalHeader('Cojauny — Idea')}<p style="font-size:15px;margin:0 0 16px 0;color:#475569;">Nueva idea para el producto recibida.</p><table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;"><tr><td style="padding:10px 12px 10px 0;color:#64748b;font-weight:600;width:100px;">Nombre:</td><td style="padding:10px 0;color:#1e293b;">{{name}}</td></tr><tr><td style="padding:10px 12px 10px 0;color:#64748b;font-weight:600;">Email:</td><td style="padding:10px 0;"><a href="mailto:{{email}}" style="color:#0284c7;">{{email}}</a></td></tr><tr><td style="padding:10px 12px 10px 0;color:#64748b;font-weight:600;">Tipo:</td><td style="padding:10px 0;color:#1e293b;">Idea</td></tr><tr><td style="padding:10px 12px 10px 0;color:#64748b;font-weight:600;">Idioma:</td><td style="padding:10px 0;color:#1e293b;">{{locale}}</td></tr></table><div style="background:#f8fafc;border-left:4px solid #0284c7;padding:16px 20px;border-radius:0 8px 8px 0;margin:16px 0;"><p style="margin:0 0 12px 0;color:#64748b;font-size:13px;font-weight:600;">📝 Mensaje:</p><pre style="white-space:pre-wrap;font-family:monospace;font-size:13px;margin:0;color:#1e293b;background:#fff;padding:12px;border-radius:4px;border:1px solid #e2e8f0;">{{message}}</pre></div><p style="margin-top:24px;font-size:13px;color:#64748b;">📧 Responder a: <a href="mailto:{{email}}" style="color:#0284c7;">{{email}}</a></p></div>`,
+        text: '💡 NUEVA IDEA\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nNombre: {{name}}\nEmail: {{email}}\nTipo: Idea\nIdioma: {{locale}}\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📝 MENSAJE\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n📧 Responder a: {{email}}\n\n--\nCojauny · ' + siteUrl
     },
     'business-proposal-internal': {
-        subject: 'Nueva propuesta comercial recibida',
-        html: feedbackInternalContent.html.replace('Feedback', 'Propuesta comercial'),
-        text: feedbackInternalContent.text.replace('FEEDBACK', 'PROPUESTA COMERCIAL')
+        subject: '📊 Nueva propuesta comercial - {{name}}',
+        html: `${internalHeader('Cojauny — Propuesta comercial')}<p style="font-size:15px;margin:0 0 16px 0;color:#475569;">Nueva propuesta de negocio recibida.</p><table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;"><tr><td style="padding:10px 12px 10px 0;color:#64748b;font-weight:600;width:100px;">Nombre:</td><td style="padding:10px 0;color:#1e293b;">{{name}}</td></tr><tr><td style="padding:10px 12px 10px 0;color:#64748b;font-weight:600;">Email:</td><td style="padding:10px 0;"><a href="mailto:{{email}}" style="color:#0284c7;">{{email}}</a></td></tr><tr><td style="padding:10px 12px 10px 0;color:#64748b;font-weight:600;">Tipo:</td><td style="padding:10px 0;color:#1e293b;">Propuesta comercial</td></tr><tr><td style="padding:10px 12px 10px 0;color:#64748b;font-weight:600;">Idioma:</td><td style="padding:10px 0;color:#1e293b;">{{locale}}</td></tr></table><div style="background:#f8fafc;border-left:4px solid #0284c7;padding:16px 20px;border-radius:0 8px 8px 0;margin:16px 0;"><p style="margin:0 0 12px 0;color:#64748b;font-size:13px;font-weight:600;">📝 Mensaje:</p><pre style="white-space:pre-wrap;font-family:monospace;font-size:13px;margin:0;color:#1e293b;background:#fff;padding:12px;border-radius:4px;border:1px solid #e2e8f0;">{{message}}</pre></div><p style="margin-top:24px;font-size:13px;color:#64748b;">📧 Responder a: <a href="mailto:{{email}}" style="color:#0284c7;">{{email}}</a></p></div>`,
+        text: '📊 NUEVA PROPUESTA COMERCIAL\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nNombre: {{name}}\nEmail: {{email}}\nTipo: Propuesta comercial\nIdioma: {{locale}}\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📝 MENSAJE\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n📧 Responder a: {{email}}\n\n--\nCojauny · ' + siteUrl
     },
     'beta-internal': {
-        subject: 'New beta signup - {{email}}',
-        html:
-            "<div style=\"font-family:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:#1f2937;\">" +
-            `<div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;padding-bottom:16px;border-bottom:2px solid #e5e7eb;"><img src="${logoUrl}" width="48" alt="Cojauny" style="display:block;border:0" /><div style="font-weight:700;font-size:18px;">Cojauny — Beta</div></div>` +
-            "<p style=\"font-size:15px;font-weight:600;color:#0f172a;\">New beta signup</p>" +
-            "<table style=\"width:100%;border-collapse:collapse;margin:16px 0;\"><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Email:</td><td style=\"padding:8px 0;font-size:14px;\">{{email}}</td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Name:</td><td style=\"padding:8px 0;font-size:14px;\">{{name}}</td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Usecase:</td><td style=\"padding:8px 0;font-size:14px;\">{{usecase}}</td></tr><tr><td style=\"padding:8px 0;color:#64748b;font-size:13px;font-weight:600;\">Language:</td><td style=\"padding:8px 0;font-size:14px;\">{{language}}</td></tr></table>" +
-            "<div style=\"background:#f8fafc;border-left:4px solid #0ea5e9;padding:16px;border-radius:4px;margin:16px 0;\"><p style=\"margin:0 0 8px 0;color:#64748b;font-size:13px;font-weight:600;\">Saved data (JSON):</p><pre style=\"white-space:pre-wrap;font-family:'Courier New',monospace;font-size:12px;margin:0;color:#1f2937;\">{{message}}</pre></div>" +
-            "</div>",
-        text:
-            'New beta signup\n\nEmail: {{email}}\nName: {{name}}\nUsecase: {{usecase}}\nLanguage: {{language}}\n\nData: {{message}}\n\nCojauny · ' + siteUrl
+        subject: '🚀 Nuevo registro beta - {{email}}',
+        html: `${internalHeader('Cojauny — Beta')}<p style="font-size:15px;margin:0 0 16px 0;color:#475569;">Nuevo usuario registrado en la lista de espera.</p><table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;"><tr><td style="padding:10px 12px 10px 0;color:#64748b;font-weight:600;width:100px;">Email:</td><td style="padding:10px 0;"><a href="mailto:{{email}}" style="color:#0284c7;">{{email}}</a></td></tr><tr><td style="padding:10px 12px 10px 0;color:#64748b;font-weight:600;">Nombre:</td><td style="padding:10px 0;color:#1e293b;">{{name}}</td></tr><tr><td style="padding:10px 12px 10px 0;color:#64748b;font-weight:600;">Caso de uso:</td><td style="padding:10px 0;color:#1e293b;">{{usecase}}</td></tr><tr><td style="padding:10px 12px 10px 0;color:#64748b;font-weight:600;">Idioma:</td><td style="padding:10px 0;color:#1e293b;">{{language}}</td></tr></table><div style="background:#f8fafc;border-left:4px solid #0284c7;padding:16px 20px;border-radius:0 8px 8px 0;margin:16px 0;"><p style="margin:0 0 12px 0;color:#64748b;font-size:13px;font-weight:600;">📦 Datos (JSON):</p><pre style="white-space:pre-wrap;font-family:monospace;font-size:11px;margin:0;color:#1e293b;background:#fff;padding:12px;border-radius:4px;border:1px solid #e2e8f0;">{{message}}</pre></div></div>`,
+        text: '🚀 NUEVO REGISTRO BETA\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nEmail: {{email}}\nNombre: {{name}}\nCaso de uso: {{usecase}}\nIdioma: {{language}}\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📦 DATOS (JSON)\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n{{message}}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n--\nCojauny · ' + siteUrl
     }
 };
+
+// ============================================================================
+// TEMPLATE SENDER MAPPING
+// ============================================================================
 
 const templateSenders = {
     'beta-confirmation': 'beta',
@@ -263,17 +280,26 @@ const templateSenders = {
     'beta-internal': 'beta'
 };
 
+// ============================================================================
+// TEMPLATE RESOLUTION AND RENDERING
+// ============================================================================
+
 function resolveTemplate(key, locale) {
     if (key in localizedTemplates) {
         const localized = localizedTemplates[key];
-        return localized[locale] ?? localized.es;
+        return localized[locale] || localized.es;
     }
     return staticTemplates[key];
 }
 
 function render(content, variables) {
-    const replace = (input) =>
-        input.replace(/{{(\w+)}}/g, (_, key) => variables[key] ?? '');
+    const replace = (input) => {
+        if (!input) return '';
+        return input.replace(/\{\{(\w+)\}\}/g, (_, key) => {
+            const value = variables[key];
+            return value !== undefined && value !== null ? String(value) : '';
+        });
+    };
     return {
         subject: replace(content.subject),
         html: replace(content.html),
