@@ -12,12 +12,7 @@ export default function FloatingSocialBar() {
         e.preventDefault();
         const betaSection = document.getElementById('beta');
         if (betaSection) {
-            const headerHeight = 80;
-            const elementPosition = betaSection.getBoundingClientRect().top + window.scrollY;
-            window.scrollTo({
-                top: elementPosition - headerHeight,
-                behavior: 'smooth'
-            });
+            betaSection.scrollIntoView({ behavior: 'smooth' });
         }
     };
 

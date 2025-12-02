@@ -129,13 +129,12 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
 
 
     return (
-        <div className="scroll-mt-16 lg:scroll-mt-20">
+        <div id="beta" className="scroll-mt-16 lg:scroll-mt-20">
             <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{copy.heading}</h2>
                 <p className="mt-4 text-lg text-slate-600 mx-auto max-w-2xl">{copy.subheading}</p>
             </div>
             <form
-                id="beta"
                 onSubmit={handleSubmit}
                 className="space-y-6 rounded-3xl border border-slate-100 bg-white p-8 shadow-xl"
                 aria-describedby="beta-form-help"
@@ -222,7 +221,12 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                     </label>
                 </div>
                 <div>
-                    <p className="text-sm font-medium text-slate-700 mb-3">{copy.fields.flightFrequency}</p>
+                    <p className="text-sm font-medium text-slate-700 mb-3">
+                        {copy.fields.flightFrequency}
+                        {copy.optionalLabel && (
+                            <span className="ml-2 text-xs font-normal text-slate-500">{copy.optionalLabel}</span>
+                        )}
+                    </p>
                     <div className="grid gap-3 md:grid-cols-2">
                         {(copy.flightFrequencyOptions ?? []).map((option) => (
                             <label

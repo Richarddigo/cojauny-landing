@@ -632,6 +632,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           useCase: 'Comparte retos, KPIs o hipótesis que quieras validar'
         },
         countryOptions: [
+          { value: '', label: 'Selecciona tu país' },
           { value: 'es', label: 'España' },
           { value: 'de', label: 'Alemania' },
           { value: 'fr', label: 'Francia' },
@@ -1138,6 +1139,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           useCase: 'Share the goals, KPIs or hypotheses you hope to validate'
         },
         countryOptions: [
+          { value: '', label: 'Select your country' },
           { value: 'es', label: 'Spain' },
           { value: 'de', label: 'Germany' },
           { value: 'fr', label: 'France' },
@@ -1647,6 +1649,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           useCase: 'Welche Ziele, KPIs oder Hypothesen willst du überprüfen?'
         },
         countryOptions: [
+          { value: '', label: 'Wähle dein Land' },
           { value: 'es', label: 'Spanien' },
           { value: 'de', label: 'Deutschland' },
           { value: 'fr', label: 'Frankreich' },
@@ -2120,6 +2123,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           useCase: 'Précisez les objectifs, KPI ou hypothèses à valider'
         },
         countryOptions: [
+          { value: '', label: 'Sélectionnez votre pays' },
           { value: 'es', label: 'Espagne' },
           { value: 'de', label: 'Allemagne' },
           { value: 'fr', label: 'France' },
