@@ -96,12 +96,8 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
     const phoneContainerRef = useRef<HTMLDivElement | null>(null);
     const [parallaxOffset, setParallaxOffset] = useState(0);
 
-    // Mobile: control de animación y scroll
+    // Mobile: control de animación
     const isAnimatingRef = useRef(false);
-    const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-    const lastScrollY = useRef(0);
-    const scrollVelocity = useRef(0);
-    const lastScrollTime = useRef(0);
 
     /* ---------- Efectos compartidos (ambos) ---------- */
     // Detecta tamaño (mobile/desktop)
@@ -196,98 +192,77 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
     }, [isMobile]);
 
     /* ---------- Efectos mobile ---------- */
-    // Experiencia móvil optimizada: detección natural de cambios sin interferir con animaciones
+    // Experiencia móvil: solo detecta cambios cuando el usuario está DENTRO de la sección demo
+    // No hace auto-scroll ni snap - solo cambia la tarjeta activa basado en visibilidad
     useEffect(() => {
         if (!isMobile) return;
 
-        const HEADER_HEIGHT = 80;
-        const SNAP_THRESHOLD = 150; // Distancia mínima para considerar snap
-        const VELOCITY_THRESHOLD = 2; // Velocidad mínima para detectar scroll activo
-        const DEBOUNCE_DELAY = 150; // Delay reducido para respuesta más rápida
+        // Verificar si la sección demo está visible en el viewport
+        const isSectionInView = () => {
+            const container = containerRef.current;
+            if (!container) return false;
 
-        const calculateScrollVelocity = () => {
-            const now = Date.now();
-            const deltaTime = now - lastScrollTime.current;
-            const deltaY = window.scrollY - lastScrollY.current;
+            const rect = container.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
 
-            lastScrollTime.current = now;
-            lastScrollY.current = window.scrollY;
+            // La sección está "activa" si al menos 40% del viewport está ocupado por ella
+            const visibleTop = Math.max(0, rect.top);
+            const visibleBottom = Math.min(viewportHeight, rect.bottom);
+            const visibleHeight = Math.max(0, visibleBottom - visibleTop);
 
-            return deltaTime > 0 ? Math.abs(deltaY / deltaTime) : 0;
+            return visibleHeight > viewportHeight * 0.4;
         };
 
-        const findClosestCard = () => {
-            let closestIndex = 0;
-            let minDistance = Infinity;
+        // Encontrar la tarjeta más visible dentro de la sección
+        const findMostVisibleCard = () => {
+            let bestIndex = activeStep; // Mantener el actual por defecto
+            let maxVisibility = 0;
 
             cardsRef.current.forEach((card, i) => {
                 if (!card) return;
                 const rect = card.getBoundingClientRect();
-                // Medimos desde el centro de la tarjeta al centro del viewport
-                const cardCenter = rect.top + rect.height / 2;
-                const viewportCenter = window.innerHeight / 2;
-                const distance = Math.abs(cardCenter - viewportCenter);
+                const viewportHeight = window.innerHeight;
 
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    closestIndex = i;
+                // Calcular cuánto de la tarjeta es visible
+                const visibleTop = Math.max(0, rect.top);
+                const visibleBottom = Math.min(viewportHeight, rect.bottom);
+                const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+                const visibility = visibleHeight / rect.height;
+
+                // Solo considerar tarjetas que están mayormente en el viewport
+                if (visibility > maxVisibility && visibility > 0.5) {
+                    maxVisibility = visibility;
+                    bestIndex = i;
                 }
             });
 
-            return { index: closestIndex, distance: minDistance };
+            return bestIndex;
         };
+
+        let ticking = false;
 
         const handleScroll = () => {
-            // No interferir si hay animación en progreso
-            if (isAnimatingRef.current) return;
+            if (ticking || isAnimatingRef.current) return;
 
-            scrollVelocity.current = calculateScrollVelocity();
-
-            // Detectar cambio de tarjeta activa basado en posición
-            const { index: closestIndex } = findClosestCard();
-
-            if (closestIndex !== activeStep) {
-                setActiveStep(closestIndex);
-            }
-
-            // Limpiar timeout previo
-            if (scrollTimeoutRef.current) {
-                clearTimeout(scrollTimeoutRef.current);
-            }
-
-            // Snap suave solo cuando el usuario para de hacer scroll
-            scrollTimeoutRef.current = setTimeout(() => {
-                // Verificar que no estamos animando y que la velocidad es baja
-                if (isAnimatingRef.current || scrollVelocity.current > VELOCITY_THRESHOLD) return;
-
-                const { index: targetIndex, distance } = findClosestCard();
-                const targetCard = cardsRef.current[targetIndex];
-
-                // Solo hacer snap si la distancia lo amerita
-                if (targetCard && distance > SNAP_THRESHOLD) {
-                    const rect = targetCard.getBoundingClientRect();
-                    const targetScrollY = window.scrollY + rect.top - HEADER_HEIGHT - 20;
-
-                    window.scrollTo({
-                        top: targetScrollY,
-                        behavior: 'smooth'
-                    });
+            ticking = true;
+            requestAnimationFrame(() => {
+                // Solo actuar si la sección está realmente visible
+                if (isSectionInView()) {
+                    const mostVisibleIndex = findMostVisibleCard();
+                    if (mostVisibleIndex !== activeStep) {
+                        setActiveStep(mostVisibleIndex);
+                    }
                 }
-            }, DEBOUNCE_DELAY);
+                ticking = false;
+            });
         };
 
-        // Inicializar valores
-        lastScrollY.current = window.scrollY;
-        lastScrollTime.current = Date.now();
-
         window.addEventListener('scroll', handleScroll, { passive: true });
-        handleScroll(); // Ejecutar una vez al montar
+
+        // NO ejecutar handleScroll al montar - esto causaba el salto inicial
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
-            if (scrollTimeoutRef.current) {
-                clearTimeout(scrollTimeoutRef.current);
-            }
         };
     }, [isMobile, activeStep]);
 
