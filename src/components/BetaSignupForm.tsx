@@ -16,7 +16,7 @@ interface BetaSignupFormProps {
     locale: Locale;
 }
 
-type BetaSignupFormState = Omit<BetaSignupInput, 'flightFrequency'> & {
+type BetaSignupFormState = BetaSignupInput & {
     flightFrequency: BetaSignupInput['flightFrequency'] | '';
 };
 

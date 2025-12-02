@@ -60,7 +60,7 @@ export const betaSignupSchema = z
       .optional(),
     flightFrequency: z.enum(betaFrequencyValues, {
       errorMap: () => ({ message: 'Selecciona tu frecuencia de vuelo' })
-    }),
+    }).optional(),
     homeAirport: z.string().max(120).optional(),
     updatesOptIn: z.boolean().optional(),
     termsAccepted: z
