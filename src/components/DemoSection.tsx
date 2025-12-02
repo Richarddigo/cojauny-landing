@@ -99,6 +99,11 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
     // Mobile: control de animación
     const isAnimatingRef = useRef(false);
 
+    // Mobile: cooldown y dirección de scroll para evitar saltos en cadena
+    const lastChangeTimeRef = useRef(0);
+    const lastScrollYRef = useRef(0);
+    const COOLDOWN_MS = 700; // Tiempo mínimo entre cambios de tarjeta
+
     /* ---------- Efectos compartidos (ambos) ---------- */
     // Detecta tamaño (mobile/desktop)
     useEffect(() => {
@@ -192,10 +197,13 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
     }, [isMobile]);
 
     /* ---------- Efectos mobile ---------- */
-    // Experiencia móvil: solo detecta cambios cuando el usuario está DENTRO de la sección demo
-    // No hace auto-scroll ni snap - solo cambia la tarjeta activa basado en visibilidad
+    // Experiencia móvil: detecta cambios con cooldown, centrado en viewport y dirección de scroll
+    // Evita saltos en cadena cuando el viewport es alto
     useEffect(() => {
         if (!isMobile) return;
+
+        // Inicializar posición de scroll
+        lastScrollYRef.current = window.scrollY;
 
         // Verificar si la sección demo está visible en el viewport
         const isSectionInView = () => {
@@ -213,25 +221,33 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
             return visibleHeight > viewportHeight * 0.4;
         };
 
-        // Encontrar la tarjeta más visible dentro de la sección
-        const findMostVisibleCard = () => {
+        // Encontrar la tarjeta cuyo centro está más cerca del centro del viewport
+        // Solo considera cambios en la dirección del scroll
+        const findCenteredCard = (scrollDirection: 'up' | 'down') => {
+            const viewportHeight = window.innerHeight;
+            const viewportCenter = viewportHeight / 2;
+
             let bestIndex = activeStep; // Mantener el actual por defecto
-            let maxVisibility = 0;
+            let minDistanceToCenter = Infinity;
 
             cardsRef.current.forEach((card, i) => {
                 if (!card) return;
                 const rect = card.getBoundingClientRect();
-                const viewportHeight = window.innerHeight;
 
-                // Calcular cuánto de la tarjeta es visible
-                const visibleTop = Math.max(0, rect.top);
-                const visibleBottom = Math.min(viewportHeight, rect.bottom);
-                const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-                const visibility = visibleHeight / rect.height;
+                // Centro de la tarjeta
+                const cardCenter = rect.top + rect.height / 2;
+                const distanceToCenter = Math.abs(cardCenter - viewportCenter);
 
-                // Solo considerar tarjetas que están mayormente en el viewport
-                if (visibility > maxVisibility && visibility > 0.5) {
-                    maxVisibility = visibility;
+                // Verificar que la tarjeta esté en la "zona central" del viewport (35%-65%)
+                const isInCenterZone = cardCenter > viewportHeight * 0.35 && cardCenter < viewportHeight * 0.65;
+
+                // Solo permitir cambios en la dirección del scroll
+                const isValidDirection =
+                    (scrollDirection === 'down' && i >= activeStep) ||
+                    (scrollDirection === 'up' && i <= activeStep);
+
+                if (isInCenterZone && isValidDirection && distanceToCenter < minDistanceToCenter) {
+                    minDistanceToCenter = distanceToCenter;
                     bestIndex = i;
                 }
             });
@@ -244,13 +260,23 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
         const handleScroll = () => {
             if (ticking || isAnimatingRef.current) return;
 
+            // Verificar cooldown
+            const now = Date.now();
+            if (now - lastChangeTimeRef.current < COOLDOWN_MS) return;
+
             ticking = true;
             requestAnimationFrame(() => {
                 // Solo actuar si la sección está realmente visible
                 if (isSectionInView()) {
-                    const mostVisibleIndex = findMostVisibleCard();
-                    if (mostVisibleIndex !== activeStep) {
-                        setActiveStep(mostVisibleIndex);
+                    // Determinar dirección del scroll
+                    const currentScrollY = window.scrollY;
+                    const scrollDirection = currentScrollY > lastScrollYRef.current ? 'down' : 'up';
+                    lastScrollYRef.current = currentScrollY;
+
+                    const centeredIndex = findCenteredCard(scrollDirection);
+                    if (centeredIndex !== activeStep) {
+                        setActiveStep(centeredIndex);
+                        lastChangeTimeRef.current = Date.now(); // Activar cooldown
                     }
                 }
                 ticking = false;
