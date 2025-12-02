@@ -33,7 +33,8 @@ export const buildOrganizationJsonLd = () => ({
   name: siteMetadata.name,
   legalName: siteMetadata.legalName,
   url: siteMetadata.url,
-  logo: `${siteMetadata.url}/assets/logo/mountain_white.svg`,
+  // Usar imagen PNG generada dinámicamente para Google (SVG no soportado)
+  logo: `${siteMetadata.url}/icon`,
   sameAs: siteMetadata.socialProfiles,
   contactPoint: [
     {
@@ -143,7 +144,7 @@ export const buildArticleJsonLd = (
     name: siteMetadata.name,
     logo: {
       '@type': 'ImageObject',
-        url: `${siteMetadata.url}/assets/logo/mountain_white.svg`
+        url: `${siteMetadata.url}/icon`
     }
   },
   datePublished: params.publishedAt,

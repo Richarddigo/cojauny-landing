@@ -22,13 +22,18 @@ export const siteMetadata = {
   ]
 };
 
+// Las imágenes OG ahora se generan dinámicamente por idioma en:
+// - src/app/opengraph-image.tsx (raíz)
+// - src/app/[locale]/opengraph-image.tsx (por idioma)
+// Next.js las inyecta automáticamente en los metadatos
+
 export const ogImages = [
   {
-    url: `${siteMetadata.url}/images/og-default.svg`,
+    url: `${siteMetadata.url}/opengraph-image`,
     width: 1200,
     height: 630,
     alt: 'Cojauny - movilidad colaborativa',
-    type: 'image/svg+xml'
+    type: 'image/png'
   }
 ];
 

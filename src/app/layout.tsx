@@ -63,18 +63,10 @@ export const metadata: Metadata = {
         follow: true,
         'max-image-preview': 'large',
         'max-snippet': -1
-    },
-    icons: {
-        icon: '/assets/logo/mountain_black.svg',
-        apple: '/assets/logo/mountain_black.svg',
-        other: [
-            {
-                rel: 'mask-icon',
-                url: '/icons/icon-mask.svg',
-                color: siteMetadata.primaryColor
-            }
-        ]
     }
+    // Los iconos se generan automáticamente desde:
+    // - src/app/icon.tsx (favicon 32x32)
+    // - src/app/apple-icon.tsx (apple-touch-icon 180x180)
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
