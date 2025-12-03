@@ -1,6 +1,35 @@
 const { onRequest } = require('firebase-functions/v2/https');
 const { setGlobalOptions } = require('firebase-functions/v2');
-const cors = require('cors')({ origin: true });
+
+// Lista blanca de dominios permitidos para CORS
+const ALLOWED_ORIGINS = [
+    'https://cl-coride.web.app',
+    'https://cl-coride.firebaseapp.com',
+    'https://cojauny.com',
+    'https://www.cojauny.com'
+];
+
+// Configuración CORS segura - solo permite orígenes autorizados
+const cors = require('cors')({
+    origin: function (origin, callback) {
+        // Permitir requests sin origin (como curl, Postman en desarrollo)
+        // En producción, considera rechazar estos también
+        if (!origin) {
+            return callback(null, true);
+        }
+
+        if (ALLOWED_ORIGINS.includes(origin)) {
+            callback(null, true);
+        } else {
+            console.warn(`CORS blocked request from unauthorized origin: ${origin}`);
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+    maxAge: 86400 // Cache preflight por 24 horas
+});
 
 const { submitContactForm } = require('./src/controllers/contact');
 const { submitFeedback } = require('./src/controllers/feedback');

@@ -27,6 +27,7 @@ lerna-debug.log*
 
 # Local env files
 .env
+.env*
 .env*.local
 .env.local
 .env.development.local
@@ -36,6 +37,8 @@ lerna-debug.log*
 .env.staging
 .env.preview
 *.env.secret
+functions/.env*
+supabase/.env*
 
 # Supabase/Firebase secrets
 .supabase/secrets.json
