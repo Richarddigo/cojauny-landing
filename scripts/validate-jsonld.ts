@@ -56,9 +56,9 @@ schemas.push({
 schemas.push({
   name: 'Article-example',
   schema: buildArticleJsonLd('es', {
-    title: 'Cómo coordinar un taxi compartido antes de despegar',
+    title: 'Cómo coordinar un transporte compartido antes de despegar',
     description: 'Checklist operativo para agrupar pasajeros del mismo vuelo',
-    slug: 'coordinacion-taxi-aeropuerto-compartido',
+    slug: 'coordinacion-transporte-aeropuerto-compartido',
     categories: ['operations', 'product'],
     heroImage: { src: '/images/blog/shared-ride.svg', width: 1280, height: 720 },
     publishedAt: '2025-10-12T08:00:00.000Z',

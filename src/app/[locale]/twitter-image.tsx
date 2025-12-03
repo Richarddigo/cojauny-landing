@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 import { locales, type Locale } from '@/locales/config';
 
-// Configuración de la imagen para Twitter
+// Configuración de la imagen Twitter
 export const runtime = 'edge';
 export const alt = 'Cojauny - Share airport rides';
 export const size = { width: 1200, height: 630 };

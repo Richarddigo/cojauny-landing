@@ -46,7 +46,7 @@ const faqEntries: Record<Locale, FaqEntry[]> = {
     {
       question: '¿Cuánto dinero puedo ahorrar realmente usando Cojauny?',
       answer:
-        'El ahorro promedio es del 50-75% en transporte aeroportuario. Ejemplo concreto: un taxi desde el centro de Madrid al Aeropuerto T4 cuesta aproximadamente 30-35€. Si viajas solo, pagas el total. Compartiendo con 3 pasajeros más del mismo vuelo, tu parte es solo 7,50-9€, ahorrando 22-25€ por trayecto. Viajeros frecuentes que hacen 2 viajes mensuales ahorran aproximadamente 500-600€ al año. El panel de impacto en tu perfil muestra estadísticas detalladas de ahorro acumulado, CO₂ evitado y número de conexiones realizadas.'
+        'El ahorro promedio es del 50-75% en transporte aeroportuario. Ejemplo concreto: un traslado desde el centro de Madrid al Aeropuerto T4 cuesta aproximadamente 30-35€. Si viajas solo, pagas el total. Compartiendo con 3 pasajeros más del mismo vuelo, tu parte es solo 7,50-9€, ahorrando 22-25€ por trayecto. Viajeros frecuentes que hacen 2 viajes mensuales ahorran aproximadamente 500-600€ al año. El panel de impacto en tu perfil muestra estadísticas detalladas de ahorro acumulado, CO₂ evitado y número de conexiones realizadas.'
     },
     {
       question: '¿Qué sucede si mi vuelo se retrasa o cancela?',

@@ -24,7 +24,7 @@ const blogCopy: Record<Locale, BlogCopy> = {
     meta: {
       title: 'Blog de Cojauny · Guías para coordinar traslados a aeropuertos',
       description:
-        'Consejos prácticos para compartir taxis, coordinar ride-sharing entre pasajeros de un mismo vuelo y reducir costes puerta a puerta.',
+        'Consejos prácticos para compartir transporte, coordinar ride-sharing entre pasajeros de un mismo vuelo y reducir costes puerta a puerta.',
       ogTitle: 'Blog Cojauny · Movilidad colaborativa para vuelos',
       ogDescription:
         'Lee casos reales, tácticas de operación y novedades del producto para coordinar traslados con tu vuelo.'

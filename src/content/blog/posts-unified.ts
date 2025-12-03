@@ -27,13 +27,13 @@ export interface BlogPost {
  */
 export const blogPosts: BlogPost[] = [
   // ============================================================================
-  // POST-001: Airport Taxi Coordination
+  // POST-001: Airport Transport Coordination
   // ============================================================================
   {
     postId: 'post-001',
-    slug: 'coordinacion-taxi-aeropuerto',
+    slug: 'coordinacion-transporte-aeropuerto',
     locale: 'es',
-    title: 'Coordina tu taxi al aeropuerto con tu mismo vuelo',
+    title: 'Coordina tu traslado al aeropuerto con tu mismo vuelo',
     summary: 'Guía completa para organizar traslados compartidos al aeropuerto: cómo crear eventos, invitar pasajeros, negociar tarifas y dividir costos sin fricciones.',
     heroImage: '/images/og-default.svg',
     heroAlt: 'Pasajeros compartiendo taxi rumbo al aeropuerto',
@@ -58,7 +58,7 @@ export const blogPosts: BlogPost[] = [
     postId: 'post-001',
     slug: 'share-airport-ride',
     locale: 'en',
-    title: 'How to share airport rides with your same flight',
+    title: 'How to share airport transfers with your same flight',
     summary: 'Actionable framework to align passengers, lock the pickup point and split transfers before the trip begins.',
     heroImage: '/images/og-default.svg',
     heroAlt: 'Travelers organizing airport ride on their phones',
@@ -108,7 +108,7 @@ export const blogPosts: BlogPost[] = [
     postId: 'post-001',
     slug: 'flughafenfahrt-teilen',
     locale: 'de',
-    title: 'So teilst du die Fahrt zum Flughafen mit deinem Flug',
+    title: 'So teilst du den Transfer zum Flughafen mit deinem Flug',
     summary: 'Best Practices für Teams, die am selben Flug teilnehmen und ihre Transfers bündeln möchten.',
     heroImage: '/images/og-default.svg',
     heroAlt: 'Deutsche Reisende stimmen ihren Transfer ab',

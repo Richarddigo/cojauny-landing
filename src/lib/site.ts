@@ -4,7 +4,7 @@ export const siteMetadata = {
   name: 'Cojauny',
   shortName: 'Cojauny',
   legalName: 'Equipo fundador de Cojauny',
-  description: 'Plataforma para coordinar pasajeros del mismo vuelo, compartir taxis o vans y medir ahorro y CO₂ evitado en cada trayecto.',
+  description: 'Plataforma para coordinar pasajeros del mismo vuelo, compartir transporte o vans y medir ahorro y CO₂ evitado en cada trayecto.',
   url: 'https://cojauny.com',
   currentSiteUrl: env.CURRENT_SITE_URL ?? 'https://ejemplo.com',
   locale: 'es_ES',

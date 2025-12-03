@@ -239,28 +239,28 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       feedback: 'Contacto'
     },
     seo: {
-      title: 'Cojauny: Comparte taxi al aeropuerto y ahorra hasta un 75%',
+      title: 'Cojauny: Comparte transporte al aeropuerto y ahorra hasta un 75%',
       description:
-        'App para compartir taxi al aeropuerto con pasajeros de tu mismo vuelo. Matching automático, perfiles verificados, chat seguro y ahorro real de 50-75% por trayecto. Disponible en +120 aeropuertos. Descarga gratis para iOS y Android.',
+        'App para compartir transporte al aeropuerto con pasajeros de tu mismo vuelo. Matching automático, perfiles verificados, chat seguro y ahorro real de 50-75% por trayecto. Disponible en +120 aeropuertos. Descarga gratis para iOS y Android.',
       keywords: [
-        'compartir taxi aeropuerto',
-        'taxi compartido al aeropuerto',
+        'compartir transporte aeropuerto',
+        'transporte compartido al aeropuerto',
         'app viajes compartidos aeropuerto',
         'carpool aeropuerto',
         'ahorro transporte aeropuerto',
         'blablacar aeropuerto',
         'uber compartido aeropuerto',
         'viaje compartido vuelo',
-        'coordinar taxi con vuelo',
+        'coordinar transporte con vuelo',
         'transporte aeropuerto barato'
       ],
-      ogTitle: 'Cojauny: Comparte taxi al aeropuerto y ahorra 50-75% | App gratuita',
+      ogTitle: 'Cojauny: Comparte transporte al aeropuerto y ahorra 50-75% | App gratuita',
       ogDescription:
         'Conecta con pasajeros de tu vuelo para compartir taxi, van o coche privado al aeropuerto. Perfiles verificados, chat temporal y ahorro medible. Ya en +120 aeropuertos.'
     },
     hero: {
       eyebrow: '¿Vuelas pronto? Ahorra hasta un 75% en tu traslado',
-      title: 'Comparte taxi con pasajeros de tu mismo vuelo',
+      title: 'Comparte transporte con pasajeros de tu mismo vuelo',
       subtitle:
         'Cojauny conecta automáticamente a viajeros del mismo vuelo para dividir taxi, van o coche privado al aeropuerto. Ahorra 50-75%, reduce tu huella de carbono y viaja con perfiles verificados. Regístrate gratis y prueba con tu próximo vuelo.',
       primaryCta: 'Probar gratis',
@@ -325,12 +325,12 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     value: {
       title: '¿Por qué los viajeros inteligentes eligen Cojauny?',
       subtitle:
-        'Resolvemos los 3 problemas principales del transporte al aeropuerto: coste excesivo de taxis individuales (60-80€ por trayecto), coordinación caótica por WhatsApp y falta de confianza al compartir con desconocidos. Cojauny ofrece matching verificado, chat temporal y ahorro medible.',
+        'Resolvemos los 3 problemas principales del transporte al aeropuerto: coste excesivo de traslados individuales (60-80€ por trayecto), coordinación caótica por WhatsApp y falta de confianza al compartir con desconocidos. Cojauny ofrece matching verificado, chat temporal y ahorro medible.',
       items: [
         {
           title: '💸 Ahorro visible en cada trayecto',
           description:
-            'Divide traslados premium, vans corporativas o coches privados y controla cuánto ahorras frente a tomar un taxi individual.'
+            'Divide traslados premium, vans corporativas o coches privados y controla cuánto ahorras frente a tomar un traslado individual.'
         },
         {
           title: '🌱 Impacto ambiental cuantificable',
@@ -429,7 +429,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           badge: 'Eventos',
           title: 'Eventos de tu vuelo',
           description:
-            'Ve todos los eventos disponibles para tu vuelo: "Compartir taxi aeropuerto A a ciudad B", "Cena en ciudad destino", etc. Con cupos y participantes en tiempo real.',
+            'Ve todos los eventos disponibles para tu vuelo: "Compartir transporte aeropuerto A a ciudad B", "Cena en ciudad destino", etc. Con cupos y participantes en tiempo real.',
           image: '/images/mockups/es/mockup-events-list.svg'
         },
         {
@@ -582,7 +582,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: '¿Cuánto dinero puedo ahorrar realmente usando Cojauny?',
-          answer: 'El ahorro promedio es del 50-75% en transporte aeroportuario. Ejemplo concreto: Un taxi desde el centro de Madrid al Aeropuerto T4 cuesta aproximadamente 30-35€. Si viajas solo, pagas el total. Compartiendo con 3 pasajeros más del mismo vuelo, tu parte es solo 7,50-9€, ahorrando 22-25€ por trayecto. Viajeros frecuentes que hacen 2 viajes mensuales ahorran aproximadamente 500-600€ al año. El panel de impacto en tu perfil muestra estadísticas detalladas de ahorro acumulado, CO₂ evitado y número de conexiones realizadas.'
+          answer: 'El ahorro promedio es del 50-75% en transporte aeroportuario. Ejemplo concreto: Un traslado desde el centro de Madrid al Aeropuerto T4 cuesta aproximadamente 30-35€. Si viajas solo, pagas el total. Compartiendo con 3 pasajeros más del mismo vuelo, tu parte es solo 7,50-9€, ahorrando 22-25€ por trayecto. Viajeros frecuentes que hacen 2 viajes mensuales ahorran aproximadamente 500-600€ al año. El panel de impacto en tu perfil muestra estadísticas detalladas de ahorro acumulado, CO₂ evitado y número de conexiones realizadas.'
         },
         {
           question: '¿Ofrecen plan de suscripción anual con descuento?',
@@ -746,9 +746,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       feedback: 'Contact'
     },
     seo: {
-      title: 'Cojauny: Share airport taxi and save up to 75% on trips',
+      title: 'Cojauny: Share airport transport and save up to 75% on trips',
       description:
-        'Connect with passengers on your flight to share airport taxis, vans or private cars. Automatic matching, verified profiles, secure chat and real savings of 50-75% per trip. Available at 120+ airports worldwide.',
+        'Connect with passengers on your flight to share airport transfers, vans or private cars. Automatic matching, verified profiles, secure chat and real savings of 50-75% per trip. Available at 120+ airports worldwide.',
       keywords: [
         'shared airport taxi',
         'airport ride sharing',
@@ -761,7 +761,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         'split taxi with travelers',
         'airport transportation app'
       ],
-      ogTitle: 'Cojauny: Share airport taxi & save 50-75% | Free app',
+      ogTitle: 'Cojauny: Share airport transport & save 50-75% | Free app',
       ogDescription:
         'Match with verified travelers on your flight to share airport transfers. Secure chat, automatic cost splitting, and measurable savings. Now at 120+ airports.'
     },
@@ -769,7 +769,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       eyebrow: 'Flying soon? Save up to 75% on your airport transfer',
       title: 'Share your ride with passengers on your flight',
       subtitle:
-        'Cojauny automatically connects travelers on the same flight to share taxis, vans or private cars to the airport. Save 50-75%, reduce your carbon footprint and travel with verified profiles. Sign up free and try it on your next flight.',
+        'Cojauny automatically connects travelers on the same flight to share transfers, vans or private cars to the airport. Save 50-75%, reduce your carbon footprint and travel with verified profiles. Sign up free and try it on your next flight.',
       primaryCta: 'Try free',
       secondaryCta: 'See how it works',
       imageAlt: 'Cojauny interface showing flight matching, chat and savings cards'
@@ -832,7 +832,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     value: {
       title: 'Why smart travelers choose Cojauny',
       subtitle:
-        'We solve the 3 main problems of airport transport: expensive individual taxis ($60-80 per trip), chaotic WhatsApp coordination, and lack of trust when sharing with strangers. Cojauny offers verified matching, temporary chat, and measurable savings.',
+        'We solve the 3 main problems of airport transport: expensive individual transfers ($60-80 per trip), chaotic WhatsApp coordination, and lack of trust when sharing with strangers. Cojauny offers verified matching, temporary chat, and measurable savings.',
       items: [
         {
           title: 'No more back-and-forth emails',
@@ -936,7 +936,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           badge: 'Events',
           title: 'Events for your flight',
           description:
-            'See all available events for your flight: "Share taxi from airport A to city B", "Dinner at destination", etc. With real-time capacity and participants.',
+            'See all available events for your flight: "Share transport from airport A to city B", "Dinner at destination", etc. With real-time capacity and participants.',
           image: '/images/mockups/en/mockup-events-list.svg'
         },
         {
@@ -1073,7 +1073,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: 'What types of events can I create or join?',
-          answer: 'Various types: shared transport to departure airport, transport from arrival airport, shared taxi, shared private car, meals at destination, and post-flight social activities. Premium users can create any type.'
+          answer: 'Various types: shared transport to departure airport, transport from arrival airport, shared transfers, shared private car, meals at destination, and post-flight social activities. Premium users can create any type.'
         },
         {
           question: 'Does Cojauny work at all airports?',
@@ -1089,7 +1089,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: 'How much can I really save?',
-          answer: 'Savings depend on the route and how many people share. On average, our users save 50-75% on airport transport. For example, a $60 taxi split among 4 people is only $15 per person.'
+          answer: 'Savings depend on the route and how many people share. On average, our users save 50-75% on airport transport. For example, a $60 transfer split among 4 people is only $15 per person.'
         },
         {
           question: 'Is there an annual plan? How much do I save?',

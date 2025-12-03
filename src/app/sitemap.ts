@@ -4,6 +4,8 @@ import { siteMetadata } from '@/lib/site';
 import { locales } from '@/locales/config';
 import { blogPosts } from '@/content/blog/posts';
 
+export const dynamic = 'force-static';
+
 const localeAwarePaths = ['/', '/contact', '/docs/sdk-plan'];
 const legalPaths = ['/legal/privacy', '/legal/cookies', '/legal/terms', '/legal/acceptable-use', '/legal/faq', '/legal/subprocessors'];
 
