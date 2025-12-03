@@ -24,29 +24,37 @@ const WorkflowSection = ({ copy }: WorkflowSectionProps) => {
     useEffect(() => {
         if (!isMobile) return;
 
+        let ticking = false;
         const handleScroll = () => {
-            const cards = cardsRef.current;
-            const viewportTop = 150;
+            if (ticking) return;
+            ticking = true;
 
-            let newActive = 0;
-            let minDistance = Infinity;
+            requestAnimationFrame(() => {
+                const cards = cardsRef.current;
+                const viewportCenter = window.innerHeight * 0.4;
 
-            for (let i = 0; i < cards.length; i++) {
-                const card = cards[i];
-                if (!card) continue;
+                let newActive = 0;
+                let minDistance = Infinity;
 
-                const rect = card.getBoundingClientRect();
-                const distance = Math.abs(rect.top - viewportTop);
+                for (let i = 0; i < cards.length; i++) {
+                    const card = cards[i];
+                    if (!card) continue;
 
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    newActive = i;
+                    const rect = card.getBoundingClientRect();
+                    const cardCenter = rect.top + rect.height / 2;
+                    const distance = Math.abs(cardCenter - viewportCenter);
+
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        newActive = i;
+                    }
                 }
-            }
 
-            if (newActive !== activeCard) {
-                setActiveCard(newActive);
-            }
+                if (newActive !== activeCard) {
+                    setActiveCard(newActive);
+                }
+                ticking = false;
+            });
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
@@ -68,13 +76,13 @@ const WorkflowSection = ({ copy }: WorkflowSectionProps) => {
                             <motion.article
                                 key={step.title}
                                 ref={el => { cardsRef.current[index] = el; }}
-                                initial={{ opacity: 0, x: -32 }}
+                                initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true, amount: 0.3 }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className={`group relative overflow-hidden rounded-2xl border bg-white p-6 shadow-lg transition-all duration-500 md:rounded-3xl md:p-8 ${isActive
-                                    ? 'border-blue-300 shadow-2xl scale-105 lg:scale-100 lg:border-slate-100 lg:hover:shadow-xl'
-                                    : 'border-slate-100 hover:shadow-xl'
+                                transition={{ duration: 0.35, delay: index * 0.05 }}
+                                className={`group relative overflow-hidden rounded-2xl border bg-white p-6 shadow-lg transition-all duration-200 md:rounded-3xl md:p-8 ${isActive
+                                    ? 'border-brand-300 shadow-2xl lg:border-slate-100'
+                                    : 'border-slate-100 hover:shadow-xl hover:border-brand-100'
                                     }`}
                             >
                                 <div className={`absolute inset-y-0 left-0 w-1 rounded-l-2xl bg-gradient-to-b from-brand-400 via-brand-500 to-brand-600 md:rounded-l-3xl transition ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'

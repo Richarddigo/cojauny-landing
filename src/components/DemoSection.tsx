@@ -25,10 +25,10 @@ const IPhoneMockup = ({ screen, className, priority = false, animate = true }: {
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={screen.id}
-                                initial={{ opacity: 0, scale: 1.02 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.98 }}
-                                transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.3, ease: 'easeOut' }}
                                 className="relative h-full w-full"
                             >
                                 {/* Fondo de la barra superior del mockup - color #1b2335 */}
@@ -124,34 +124,52 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
         return () => window.removeEventListener('resize', onResize);
     }, []);
 
-    // Observador para actualizar `activeStep` según la carta más arriba visible (desktop)
+    // Scroll handler para actualizar `activeStep` (desktop >= 768px)
+    // Puntos de activación progresivos: 33%, 41%, 49%, 57%, 65%
     useEffect(() => {
         if (isMobile || isLocked || cardsRef.current.length === 0) return;
 
-        const observerOptions = { root: null, rootMargin: '-20% 0px -60% 0px', threshold: 0 };
+        let ticking = false;
+        const handleScroll = () => {
+            if (ticking) return;
+            ticking = true;
 
-        const observer = new IntersectionObserver((entries) => {
-            const intersecting = entries.filter(e => e.isIntersecting);
-            if (!intersecting.length) return;
+            requestAnimationFrame(() => {
+                const cards = cardsRef.current;
+                // Puntos de activación progresivos para cada tarjeta
+                const activationPoints = [0.33, 0.33, 0.43, 0.53, 0.63, 0.73];
 
-            let topmostIndex: number | null = null;
-            let topmostTop = Infinity;
+                let newActive = 0;
+                let minDistance = Infinity;
 
-            intersecting.forEach(entry => {
-                const cardIndex = cardsRef.current.findIndex(card => card === entry.target);
-                if (cardIndex === -1) return;
-                const rectTop = entry.boundingClientRect.top;
-                if (rectTop < topmostTop) {
-                    topmostTop = rectTop;
-                    topmostIndex = cardIndex;
+                for (let i = 0; i < cards.length; i++) {
+                    const card = cards[i];
+                    if (!card) continue;
+
+                    const rect = card.getBoundingClientRect();
+                    const cardCenter = rect.top + rect.height / 2;
+
+                    // Usar el punto de activación correspondiente o el último si hay más tarjetas
+                    const pointIndex = Math.min(i, activationPoints.length - 1);
+                    const activationPoint = window.innerHeight * activationPoints[pointIndex];
+                    const distance = Math.abs(cardCenter - activationPoint);
+
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        newActive = i;
+                    }
                 }
+
+                if (newActive !== activeStep) {
+                    setActiveStep(newActive);
+                }
+                ticking = false;
             });
+        };
 
-            if (topmostIndex !== null && topmostIndex !== activeStep) setActiveStep(topmostIndex);
-        }, observerOptions);
-
-        cardsRef.current.forEach(card => card && observer.observe(card));
-        return () => observer.disconnect();
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll(); // Inicializar
+        return () => window.removeEventListener('scroll', handleScroll);
     }, [isMobile, isLocked, activeStep]);
 
     // Parallax effect para desktop: mueve el iPhone para que siempre esté visible
@@ -159,42 +177,55 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
     useEffect(() => {
         if (isMobile || !cardsContainerRef.current || !phoneContainerRef.current) return;
 
+        let ticking = false;
         const handleScroll = () => {
-            const cardsContainer = cardsContainerRef.current;
-            const phoneContainer = phoneContainerRef.current;
-            if (!cardsContainer || !phoneContainer) return;
+            if (ticking) return;
+            ticking = true;
 
-            const firstCard = cardsRef.current[0];
-            const lastCard = cardsRef.current[cardsRef.current.length - 1];
-            if (!firstCard || !lastCard) return;
+            requestAnimationFrame(() => {
+                const cardsContainer = cardsContainerRef.current;
+                const phoneContainer = phoneContainerRef.current;
+                if (!cardsContainer || !phoneContainer) {
+                    ticking = false;
+                    return;
+                }
 
-            const firstCardRect = firstCard.getBoundingClientRect();
-            const lastCardRect = lastCard.getBoundingClientRect();
-            const phoneRect = phoneContainer.getBoundingClientRect();
+                const firstCard = cardsRef.current[0];
+                const lastCard = cardsRef.current[cardsRef.current.length - 1];
+                if (!firstCard || !lastCard) {
+                    ticking = false;
+                    return;
+                }
 
-            const headerOffset = 96; // top-24 = 6rem = 96px
-            const firstCardTop = firstCardRect.top;
-            const lastCardBottom = lastCardRect.bottom;
+                const firstCardRect = firstCard.getBoundingClientRect();
+                const lastCardRect = lastCard.getBoundingClientRect();
+                const phoneRect = phoneContainer.getBoundingClientRect();
 
-            // Calculamos el espacio disponible para el iPhone
-            const availableSpace = lastCardBottom - firstCardTop;
-            const phoneHeight = phoneRect.height;
+                const headerOffset = 96; // top-24 = 6rem = 96px
+                const firstCardTop = firstCardRect.top;
+                const lastCardBottom = lastCardRect.bottom;
 
-            // Si el espacio es mayor que el alto del iPhone, calculamos el offset
-            if (availableSpace > phoneHeight) {
-                const maxScroll = availableSpace - phoneHeight;
+                // Calculamos el espacio disponible para el iPhone
+                const availableSpace = lastCardBottom - firstCardTop;
+                const phoneHeight = phoneRect.height;
 
-                // Progreso basado en qué tan abajo está la primera tarjeta
-                const viewportTop = headerOffset;
-                const scrollProgress = Math.max(0, Math.min(1,
-                    (viewportTop - firstCardTop) / maxScroll
-                ));
+                // Si el espacio es mayor que el alto del iPhone, calculamos el offset
+                if (availableSpace > phoneHeight) {
+                    const maxScroll = availableSpace - phoneHeight;
 
-                const offset = scrollProgress * maxScroll;
-                setParallaxOffset(offset);
-            } else {
-                setParallaxOffset(0);
-            }
+                    // Progreso basado en qué tan abajo está la primera tarjeta
+                    const viewportTop = headerOffset;
+                    const scrollProgress = Math.max(0, Math.min(1,
+                        (viewportTop - firstCardTop) / maxScroll
+                    ));
+
+                    const offset = scrollProgress * maxScroll;
+                    setParallaxOffset(offset);
+                } else {
+                    setParallaxOffset(0);
+                }
+                ticking = false;
+            });
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
@@ -220,11 +251,6 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
             setLockedIndex(index);
             setActiveStep(index);
         }
-    };
-
-    const handleCardHover = (index: number) => {
-        if (isMobile || isLocked) return;
-        setActiveStep(index);
     };
 
     // Desanclar tarjeta al hacer click fuera de todas las tarjetas
@@ -253,10 +279,10 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
         >
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" style={{ paddingLeft: 'calc(var(--social-bar-offset) + 1rem)' }}>
                 <div className="text-center mb-12 md:mb-16 lg:mb-20">
-                    <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+                    <motion.h2 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
                         {copy.heading}
                     </motion.h2>
-                    <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }} className="mt-4 text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">
+                    <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.1 }} className="mt-4 text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">
                         {copy.description}
                     </motion.p>
                 </div>
@@ -268,24 +294,23 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                             <motion.div
                                 key={screen.id}
                                 ref={el => { cardsRef.current[idx] = el; }}
-                                initial={{ opacity: 0, x: -30 }}
+                                initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true, margin: '-100px' }}
-                                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                                viewport={{ once: true, margin: '-50px' }}
+                                transition={{ duration: 0.35, delay: idx * 0.05 }}
                                 onClick={() => handleCardClick(idx)}
-                                onMouseEnter={() => handleCardHover(idx)}
-                                className={`demo-card transition-all duration-500 ease-out cursor-pointer ${activeStep === idx ? 'opacity-100 scale-100' : 'opacity-50 scale-95 hover:opacity-75 hover:scale-98'} relative`}
+                                className={`demo-card transition-all duration-200 ease-out cursor-pointer ${activeStep === idx ? 'opacity-100' : 'opacity-60'} relative`}
                             >
                                 {isLocked && lockedIndex === idx && (
-                                    <div className="absolute top-2 right-2 bg-white rounded-full p-1 shadow-md border-2 border-blue-500">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 text-blue-500">
+                                    <div className="absolute top-2 right-2 bg-white rounded-full p-1 shadow-md border-2 border-brand-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 text-brand-500">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                                         </svg>
                                     </div>
                                 )}
-                                <div className={`bg-white rounded-3xl p-8 xl:p-10 shadow-xl border-4 transition-all duration-500 ease-out ${isLocked && lockedIndex === idx ? 'border-blue-500' : activeStep === idx ? 'border-blue-200 shadow-2xl' : 'border-slate-100'}`}>
+                                <div className={`bg-white rounded-3xl p-8 xl:p-10 shadow-xl border-2 transition-all duration-200 ease-out ${isLocked && lockedIndex === idx ? 'border-brand-500 shadow-2xl' : activeStep === idx ? 'border-brand-200 shadow-2xl' : 'border-slate-100'}`}>
                                     <div className="inline-flex items-center gap-2 mb-5">
-                                        <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors duration-500 ${activeStep === idx ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-400'}`}>{idx + 1}</div>
+                                        <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors duration-150 ${activeStep === idx ? 'bg-brand-600 text-white' : 'bg-slate-100 text-slate-400'}`}>{idx + 1}</div>
                                         <span className="px-3 py-1.5 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider">{screen.badge}</span>
                                     </div>
                                     <h3 className="text-2xl xl:text-3xl font-bold text-slate-900 mb-4">{screen.title}</h3>
@@ -301,10 +326,10 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                         className="relative md:sticky md:top-24 md:self-start"
                     >
                         <motion.div
-                            initial={{ opacity: 0, x: 30 }}
+                            initial={{ opacity: 0, x: 20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
+                            transition={{ duration: 0.4 }}
                             className="w-full max-w-[340px] mx-auto"
                             style={{
                                 transform: `translateY(${parallaxOffset}px)`,

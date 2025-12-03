@@ -26,11 +26,11 @@ const SavingsSection = ({ copy }: SavingsSectionProps) => (
                 {copy.metrics.map((metric, index) => (
                     <motion.article
                         key={metric.label}
-                        initial={{ opacity: 0, y: 32 }}
+                        initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.3 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition hover:bg-white/10 md:rounded-3xl md:p-8"
+                        transition={{ duration: 0.35, delay: index * 0.05 }}
+                        className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all duration-200 hover:bg-white/10 md:rounded-3xl md:p-8"
                     >
                         <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-400 via-brand-500 to-brand-300 opacity-0 transition group-hover:opacity-100"></div>
                         <p className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">{metric.value}</p>

@@ -16,7 +16,7 @@ interface SectionIntroProps {
 }
 
 const baseVariants = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 16 },
     visible: { opacity: 1, y: 0 }
 };
 
@@ -45,7 +45,7 @@ const SectionIntro = ({
             initial={baseVariants.hidden}
             whileInView={baseVariants.visible}
             viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.4 }}
             className={`${alignmentClasses} ${widthClasses} ${className}`.trim()}
         >
             {eyebrow && (

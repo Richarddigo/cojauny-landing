@@ -27,27 +27,25 @@ const PricingSection = ({ copy }: PricingSectionProps) => {
                         return (
                             <motion.article
                                 key={plan.name}
-                                initial={{ opacity: 0, y: 32 }}
+                                initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, amount: 0.3 }}
                                 animate={isPremium ? {
-                                    opacity: 1,
-                                    y: 0,
                                     boxShadow: [
                                         "0 20px 50px -12px rgba(79, 70, 229, 0.25)",
                                         "0 20px 60px -12px rgba(79, 70, 229, 0.35)",
                                         "0 20px 50px -12px rgba(79, 70, 229, 0.25)"
                                     ]
-                                } : { opacity: 1, y: 0 }}
+                                } : undefined}
                                 transition={isPremium ? {
-                                    opacity: { duration: 0.5, delay: index * 0.1 },
-                                    y: { duration: 0.5, delay: index * 0.1 },
+                                    opacity: { duration: 0.35, delay: index * 0.05 },
+                                    y: { duration: 0.35, delay: index * 0.05 },
                                     boxShadow: {
-                                        duration: 3,
+                                        duration: 4,
                                         repeat: Infinity,
                                         ease: "easeInOut"
                                     }
-                                } : { duration: 0.5, delay: index * 0.1 }}
+                                } : { duration: 0.35, delay: index * 0.05 }}
                                 className={`relative rounded-2xl border p-6 md:rounded-3xl md:p-8 ${isPremium
                                     ? 'border-brand-300 bg-gradient-to-br from-white via-brand-50/50 to-brand-100/30 shadow-2xl ring-2 ring-brand-200/50'
                                     : 'border-slate-100 bg-white shadow-xl'
@@ -68,8 +66,8 @@ const PricingSection = ({ copy }: PricingSectionProps) => {
                                 <a
                                     href="#beta"
                                     onClick={(e) => { e.preventDefault(); smoothScrollTo('beta'); }}
-                                    className={`mt-6 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-base font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 sm:mt-8 ${isPremium
-                                        ? 'bg-gradient-to-r from-brand-600 to-brand-500 text-white shadow-lg shadow-brand-600/30 hover:shadow-xl hover:shadow-brand-600/40 hover:scale-105'
+                                    className={`mt-6 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-base font-semibold transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 sm:mt-8 ${isPremium
+                                        ? 'bg-gradient-to-r from-brand-600 to-brand-500 text-white shadow-lg shadow-brand-600/30 hover:shadow-xl hover:shadow-brand-600/40 hover:scale-[1.02]'
                                         : 'border-2 border-slate-200 text-slate-900 hover:border-slate-300 hover:bg-slate-50'
                                         }`}
                                     aria-label={`${plan.name} - ${ctaLabel}`}

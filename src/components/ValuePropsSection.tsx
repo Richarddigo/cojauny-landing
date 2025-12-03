@@ -24,29 +24,37 @@ const ValuePropsSection = ({ copy }: ValuePropsSectionProps) => {
     useEffect(() => {
         if (!isMobile) return;
 
+        let ticking = false;
         const handleScroll = () => {
-            const cards = cardsRef.current;
-            const viewportTop = 150;
+            if (ticking) return;
+            ticking = true;
 
-            let newActive = 0;
-            let minDistance = Infinity;
+            requestAnimationFrame(() => {
+                const cards = cardsRef.current;
+                const viewportCenter = window.innerHeight * 0.4;
 
-            for (let i = 0; i < cards.length; i++) {
-                const card = cards[i];
-                if (!card) continue;
+                let newActive = 0;
+                let minDistance = Infinity;
 
-                const rect = card.getBoundingClientRect();
-                const distance = Math.abs(rect.top - viewportTop);
+                for (let i = 0; i < cards.length; i++) {
+                    const card = cards[i];
+                    if (!card) continue;
 
-                if (distance < minDistance) {
-                    minDistance = distance;
-                    newActive = i;
+                    const rect = card.getBoundingClientRect();
+                    const cardCenter = rect.top + rect.height / 2;
+                    const distance = Math.abs(cardCenter - viewportCenter);
+
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        newActive = i;
+                    }
                 }
-            }
 
-            if (newActive !== activeCard) {
-                setActiveCard(newActive);
-            }
+                if (newActive !== activeCard) {
+                    setActiveCard(newActive);
+                }
+                ticking = false;
+            });
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
@@ -68,13 +76,13 @@ const ValuePropsSection = ({ copy }: ValuePropsSectionProps) => {
                             <motion.article
                                 key={item.title}
                                 ref={el => { cardsRef.current[index] = el; }}
-                                initial={{ opacity: 0, y: 24 }}
+                                initial={{ opacity: 0, y: 16 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, amount: 0.3 }}
-                                transition={{ duration: 0.4, delay: index * 0.05 }}
-                                className={`group relative overflow-hidden rounded-2xl border bg-white/80 p-6 shadow-lg backdrop-blur-sm md:rounded-3xl md:p-8 transition-all duration-500 ${isActive
-                                    ? 'border-blue-300 shadow-2xl scale-105 lg:scale-100 lg:border-white/70'
-                                    : 'border-white/70 shadow-slate-200/60'
+                                transition={{ duration: 0.3, delay: index * 0.03 }}
+                                className={`group relative overflow-hidden rounded-2xl border bg-white/80 p-6 shadow-lg backdrop-blur-sm md:rounded-3xl md:p-8 transition-all duration-200 ${isActive
+                                    ? 'border-brand-300 shadow-2xl lg:border-white/70'
+                                    : 'border-white/70 shadow-slate-200/60 hover:shadow-xl hover:border-brand-100'
                                     }`}
                             >
                                 <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-400 via-brand-500 to-brand-300 transition ${isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'

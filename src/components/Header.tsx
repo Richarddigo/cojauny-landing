@@ -336,7 +336,7 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                 initial={prefersReducedMotion ? undefined : { x: '100%' }}
                                 animate={prefersReducedMotion ? undefined : { x: 0 }}
                                 exit={prefersReducedMotion ? undefined : { x: '100%' }}
-                                transition={prefersReducedMotion ? { duration: 0 } : { type: 'spring', stiffness: 300, damping: 30 }}
+                                transition={prefersReducedMotion ? { duration: 0 } : { type: 'spring', stiffness: 400, damping: 35 }}
                                 className="relative h-full w-auto min-w-max max-w-[95vw] bg-slate-900 px-4 py-6 sm:px-6 sm:ring-1 sm:ring-white/10 flex flex-col overflow-y-auto max-h-screen"
                                 onTouchStart={(e) => {
                                     (e.currentTarget as any)._touchStartX = e.touches?.[0]?.clientX ?? 0;
