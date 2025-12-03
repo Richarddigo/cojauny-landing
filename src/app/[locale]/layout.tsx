@@ -13,15 +13,16 @@ import { buildLocaleAlternates, buildRobotsMeta } from '@/lib/jsonld';
 
 interface LocaleLayoutProps {
     children: ReactNode;
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
 }
 
 export function generateStaticParams() {
     return locales.map((locale) => ({ locale }));
 }
 
-export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
-    const locale = params.locale as Locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale: localeParam } = await params;
+    const locale = localeParam as Locale;
 
     if (!locales.includes(locale)) {
         notFound();
@@ -59,8 +60,9 @@ export function generateMetadata({ params }: { params: { locale: string } }): Me
 
 export const dynamicParams = false;
 
-export default function LocaleLayout({ children, params }: LocaleLayoutProps) {
-    const locale = params.locale as Locale;
+export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
+    const { locale: localeParam } = await params;
+    const locale = localeParam as Locale;
 
     if (!locales.includes(locale)) {
         notFound();

@@ -31,8 +31,9 @@ const ogTexts: Record<Locale, { title: string; tagline: string; cta: string }> =
     }
 };
 
-export default async function Image({ params }: { params: { locale: string } }) {
-    const locale = (locales.includes(params.locale as Locale) ? params.locale : 'es') as Locale;
+export default async function Image({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale: localeParam } = await params;
+    const locale = (locales.includes(localeParam as Locale) ? localeParam : 'es') as Locale;
     const texts = ogTexts[locale];
 
     return new ImageResponse(

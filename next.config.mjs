@@ -73,6 +73,15 @@ const nextConfig = {
         optimizePackageImports: ['@heroicons/react', '@headlessui/react']
     },
 
+    // Allow cross-origin dev requests from known local development origins.
+    // Next.js will warn in future versions unless these are explicitly allowed.
+    // Add your local machine IP and localhost (with port) used for testing.
+    allowedDevOrigins: [
+        'http://localhost:3000',
+        'http://127.0.0.1:3000',
+        'http://192.168.0.169:3000'
+    ],
+
     images: {
         unoptimized: true,
         formats: ['image/avif', 'image/webp'],
