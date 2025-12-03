@@ -1,18 +1,35 @@
 "use client";
 
+import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { socialLinks } from './SocialLinks';
+import { locales } from '@/locales/config';
 
 /**
  * Barra vertical flotante fija con iconos de redes sociales + enlace al formulario beta.
  * Se posiciona justo debajo del logo de Cojauny en el lado izquierdo.
  */
 export default function FloatingSocialBar() {
+    const pathname = usePathname();
+
+    // Detectar el locale actual de la URL
+    const currentLocale = locales.find(loc => pathname?.startsWith(`/${loc}`)) || 'en';
+
+    // Determinar si estamos en la página principal del locale
+    const isMainPage = pathname === `/${currentLocale}` || pathname === '/';
+
     const handleBetaClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
-        const betaSection = document.getElementById('beta');
-        if (betaSection) {
-            betaSection.scrollIntoView({ behavior: 'smooth' });
+
+        if (isMainPage) {
+            // Si estamos en la página principal, solo hacer scroll
+            const betaSection = document.getElementById('beta');
+            if (betaSection) {
+                betaSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        } else {
+            // Si estamos en otra página, navegar a la página principal con el hash
+            window.location.href = `/${currentLocale}#beta`;
         }
     };
 

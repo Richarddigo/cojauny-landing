@@ -1,5 +1,6 @@
 import AccessibilitySkipLink from '@/components/AccessibilitySkipLink';
 import CookieBanner from '@/components/CookieBanner';
+import DetectLocaleRedirect from '@/components/DetectLocaleRedirect';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import HashScrollHandler from '@/components/HashScrollHandler';
@@ -15,6 +16,8 @@ export default function Page() {
 
     return (
         <>
+            {/* Detecta el idioma del navegador y redirige a /{locale} */}
+            <DetectLocaleRedirect />
             <AccessibilitySkipLink label={copy.skipLink} />
             <Header locale={locale} copy={copy.header} />
             <HashScrollHandler />
