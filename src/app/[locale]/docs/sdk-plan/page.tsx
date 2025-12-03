@@ -5,15 +5,16 @@ import { locales, type Locale } from '@/locales/config';
 import { getDocsCopy } from '@/locales/docs';
 
 interface SdkPlanPageProps {
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
 }
 
 export function generateStaticParams() {
     return locales.map((locale) => ({ locale }));
 }
 
-export function generateMetadata({ params }: SdkPlanPageProps): Metadata {
-    const locale = params.locale as Locale;
+export async function generateMetadata({ params }: SdkPlanPageProps): Promise<Metadata> {
+    const { locale: localeParam } = await params;
+    const locale = localeParam as Locale;
     if (!locales.includes(locale)) {
         notFound();
     }
@@ -26,8 +27,9 @@ export function generateMetadata({ params }: SdkPlanPageProps): Metadata {
     };
 }
 
-const SdkPlanPage = ({ params }: SdkPlanPageProps) => {
-    const locale = params.locale as Locale;
+const SdkPlanPage = async ({ params }: SdkPlanPageProps) => {
+    const { locale: localeParam } = await params;
+    const locale = localeParam as Locale;
     if (!locales.includes(locale)) {
         notFound();
     }

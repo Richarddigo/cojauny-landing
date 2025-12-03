@@ -6,15 +6,16 @@ import { locales, type Locale } from '@/locales/config';
 import { getLegalCopy } from '@/locales/legal';
 
 interface CookiesPageProps {
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
 }
 
 export function generateStaticParams() {
     return locales.map((locale) => ({ locale }));
 }
 
-export function generateMetadata({ params }: CookiesPageProps): Metadata {
-    const locale = params.locale as Locale;
+export async function generateMetadata({ params }: CookiesPageProps): Promise<Metadata> {
+    const { locale: localeParam } = await params;
+    const locale = localeParam as Locale;
     if (!locales.includes(locale)) {
         notFound();
     }
@@ -27,8 +28,9 @@ export function generateMetadata({ params }: CookiesPageProps): Metadata {
     };
 }
 
-const CookiesPage = ({ params }: CookiesPageProps) => {
-    const locale = params.locale as Locale;
+const CookiesPage = async ({ params }: CookiesPageProps) => {
+    const { locale: localeParam } = await params;
+    const locale = localeParam as Locale;
     if (!locales.includes(locale)) {
         notFound();
     }

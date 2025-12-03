@@ -6,7 +6,7 @@ import { locales, type Locale } from '@/locales/config';
 import { getContactCopy } from '@/locales/contact';
 
 interface ContactPageProps {
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
 }
 
 export const revalidate = 1800;
@@ -15,8 +15,9 @@ export function generateStaticParams() {
     return locales.map((locale) => ({ locale }));
 }
 
-export function generateMetadata({ params }: ContactPageProps): Metadata {
-    const locale = params.locale as Locale;
+export async function generateMetadata({ params }: ContactPageProps): Promise<Metadata> {
+    const { locale: localeParam } = await params;
+    const locale = localeParam as Locale;
     const copy = getContactCopy(locales.includes(locale) ? locale : locales[0]);
 
     return {
@@ -24,8 +25,9 @@ export function generateMetadata({ params }: ContactPageProps): Metadata {
     };
 }
 
-export default function ContactPage({ params }: ContactPageProps) {
-    const locale = params.locale as Locale;
+export default async function ContactPage({ params }: ContactPageProps) {
+    const { locale: localeParam } = await params;
+    const locale = localeParam as Locale;
 
     if (!locales.includes(locale)) {
         notFound();

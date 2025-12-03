@@ -13,7 +13,7 @@ import { buildArticleJsonLd, buildBreadcrumbJsonLd, buildLocaleAlternates } from
 import StructuredData from '@/components/StructuredData';
 
 interface BlogPageProps {
-    params: { locale: string; slug: string };
+    params: Promise<{ locale: string; slug: string }>;
 }
 
 export const revalidate = 3600;
@@ -22,9 +22,9 @@ export function generateStaticParams() {
     return blogPosts.map((post) => ({ locale: post.locale, slug: post.slug }));
 }
 
-export function generateMetadata({ params }: BlogPageProps): Metadata {
-    const locale = params.locale as Locale;
-    const { slug } = params;
+export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
+    const { locale: localeParam, slug } = await params;
+    const locale = localeParam as Locale;
     if (!locales.includes(locale)) {
         notFound();
     }
@@ -64,9 +64,9 @@ export function generateMetadata({ params }: BlogPageProps): Metadata {
     };
 }
 
-export default function BlogPostPage({ params }: BlogPageProps) {
-    const locale = params.locale as Locale;
-    const { slug } = params;
+export default async function BlogPostPage({ params }: BlogPageProps) {
+    const { locale: localeParam, slug } = await params;
+    const locale = localeParam as Locale;
 
     if (!locales.includes(locale)) {
         notFound();

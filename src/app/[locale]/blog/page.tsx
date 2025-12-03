@@ -11,7 +11,7 @@ import { buildBreadcrumbJsonLd, buildLocaleAlternates } from '@/lib/jsonld';
 import StructuredData from '@/components/StructuredData';
 
 interface BlogIndexProps {
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
 }
 
 export const revalidate = 3600;
@@ -20,8 +20,9 @@ export function generateStaticParams() {
     return locales.map((locale) => ({ locale }));
 }
 
-export function generateMetadata({ params }: BlogIndexProps): Metadata {
-    const locale = params.locale as Locale;
+export async function generateMetadata({ params }: BlogIndexProps): Promise<Metadata> {
+    const { locale: localeParam } = await params;
+    const locale = localeParam as Locale;
     if (!locales.includes(locale)) {
         notFound();
     }
@@ -52,8 +53,9 @@ export function generateMetadata({ params }: BlogIndexProps): Metadata {
     };
 }
 
-export default function BlogIndex({ params }: BlogIndexProps) {
-    const locale = params.locale as Locale;
+export default async function BlogIndex({ params }: BlogIndexProps) {
+    const { locale: localeParam } = await params;
+    const locale = localeParam as Locale;
 
     if (!locales.includes(locale)) {
         notFound();

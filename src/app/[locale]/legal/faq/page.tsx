@@ -6,15 +6,16 @@ import { locales, type Locale } from '@/locales/config';
 import { getLegalCopy } from '@/locales/legal';
 
 interface FaqPageProps {
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
 }
 
 export function generateStaticParams() {
     return locales.map((locale) => ({ locale }));
 }
 
-export function generateMetadata({ params }: FaqPageProps): Metadata {
-    const locale = params.locale as Locale;
+export async function generateMetadata({ params }: FaqPageProps): Promise<Metadata> {
+    const { locale: localeParam } = await params;
+    const locale = localeParam as Locale;
     if (!locales.includes(locale)) {
         notFound();
     }
@@ -27,8 +28,9 @@ export function generateMetadata({ params }: FaqPageProps): Metadata {
     };
 }
 
-const FaqPage = ({ params }: FaqPageProps) => {
-    const locale = params.locale as Locale;
+const FaqPage = async ({ params }: FaqPageProps) => {
+    const { locale: localeParam } = await params;
+    const locale = localeParam as Locale;
     if (!locales.includes(locale)) {
         notFound();
     }
