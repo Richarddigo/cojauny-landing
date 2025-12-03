@@ -236,7 +236,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       impact: 'Impacto',
       workflow: 'Cómo funciona',
       faq: 'Preguntas',
-      feedback: 'Contacto'
+      feedback: 'Feedback'
     },
     seo: {
       title: 'Cojauny: Comparte transporte al aeropuerto y ahorra hasta un 75%',
@@ -743,7 +743,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       impact: 'Impact',
       workflow: 'How It Works',
       faq: 'FAQ',
-      feedback: 'Contact'
+      feedback: 'Feedback'
     },
     seo: {
       title: 'Cojauny: Share airport transport and save up to 75% on trips',
@@ -1252,7 +1252,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       impact: 'Wirkung',
       workflow: 'So funktioniert\'s',
       faq: 'FAQ',
-      feedback: 'Kontakt'
+      feedback: 'Feedback'
     },
     seo: {
       title: 'Cojauny: Teile dein Flughafentaxi und spare bis zu 75%',
@@ -1761,7 +1761,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       impact: 'Impact',
       workflow: 'Comment ça marche',
       faq: 'FAQ',
-      feedback: 'Contact'
+      feedback: 'Feedback'
     },
     seo: {
       title: 'Cojauny : Partagez un taxi d\'aéroport et économisez jusqu\'à 75%',
