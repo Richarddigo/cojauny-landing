@@ -5,9 +5,12 @@
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "**/__next*",
+      "**/*.txt"
     ],
     "cleanUrls": true,
+    "trailingSlash": false,
     "rewrites": [
       {
         "source": "/api/contact",

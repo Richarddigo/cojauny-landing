@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 // Configuración del icono para Apple (180x180) con el logo real de Cojauny
-export const runtime = 'edge';
+export const dynamic = 'force-static';
 export const size = { width: 180, height: 180 };
 export const contentType = 'image/png';
 

@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 // Configuración del icono/favicon con el logo real de Cojauny
-export const runtime = 'edge';
+export const dynamic = 'force-static';
 export const size = { width: 32, height: 32 };
 export const contentType = 'image/png';
 

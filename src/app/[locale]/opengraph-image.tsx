@@ -2,10 +2,15 @@ import { ImageResponse } from 'next/og';
 import { locales, type Locale } from '@/locales/config';
 
 // Configuración de la imagen OG
-export const runtime = 'edge';
+export const dynamic = 'force-static';
 export const alt = 'Cojauny - Share airport rides';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
+
+// Generar para cada locale
+export function generateStaticParams() {
+    return locales.map((locale) => ({ locale }));
+}
 
 // Textos por idioma para la imagen OG
 const ogTexts: Record<Locale, { title: string; tagline: string; cta: string }> = {

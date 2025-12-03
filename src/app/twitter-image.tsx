@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 // Configuración de la imagen Twitter para la página raíz
-export const runtime = 'edge';
+export const dynamic = 'force-static';
 export const alt = 'Cojauny - Comparte taxi al aeropuerto';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';

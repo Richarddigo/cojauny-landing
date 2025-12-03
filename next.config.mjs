@@ -63,7 +63,8 @@ const cacheHeaders = [
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
-    // No forzar export estático en producción: permite runtime 'edge' y API routes
+    // Generar export estático para Firebase Hosting
+    output: 'export',
     poweredByHeader: false,
     compress: true,
 
