@@ -262,7 +262,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       eyebrow: '¿Vuelas pronto? Ahorra hasta un 75% en tu traslado',
       title: 'Comparte transporte con pasajeros de tu mismo vuelo',
       subtitle:
-        'Cojauny conecta automáticamente a viajeros del mismo vuelo para dividir taxi, van o coche privado al aeropuerto. Ahorra 50-75%, reduce tu huella de carbono y viaja con perfiles verificados. Regístrate gratis y prueba con tu próximo vuelo.',
+        'Cojauny conecta automáticamente a viajeros del mismo vuelo para compartir taxi, van o coche privado al aeropuerto. Ahorra 50-75%, reduce tu huella de carbono y viaja con perfiles verificados. Regístrate gratis y prueba con tu próximo vuelo.',
       primaryCta: 'Probar gratis',
       secondaryCta: 'Ver cómo funciona',
       imageAlt: 'App Cojauny mostrando matching automático por vuelo, chat seguro y ahorro en tiempo real'

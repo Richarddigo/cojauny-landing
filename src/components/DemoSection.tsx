@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import type { LandingCopy } from '@/locales/copy';
@@ -13,7 +13,7 @@ interface DemoSectionProps {
 // Presenta la maqueta de iPhone con animación de cambio de pantalla.
 // El mockup se adapta para mostrar el contenido completo sin que la Dynamic Island oculte el título
 // Bordes del iPhone: 5px en todos los lados para maximizar el espacio del mockup
-const IPhoneMockup = ({ screen, className, priority = false }: { screen: any; className?: string; priority?: boolean }) => (
+const IPhoneMockup = ({ screen, className, priority = false, animate = true }: { screen: any; className?: string; priority?: boolean; animate?: boolean }) => (
     <div className={`relative aspect-[9/19.5] w-full mx-auto ${className ?? ''}`}>
         <div className="absolute inset-0 z-10 pointer-events-none">
             <div className="relative h-full w-full rounded-[2rem] md:rounded-[2.5rem] lg:rounded-[3rem] border-[5px] border-slate-900 bg-slate-900 shadow-2xl overflow-hidden">
@@ -21,15 +21,34 @@ const IPhoneMockup = ({ screen, className, priority = false }: { screen: any; cl
                 <div className="absolute left-1/2 top-[0.5%] z-20 h-[4%] w-[26%] -translate-x-1/2 rounded-full bg-slate-900" />
 
                 <div className="relative h-full w-full overflow-hidden">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={screen.id}
-                            initial={{ opacity: 0, scale: 1.02 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.98 }}
-                            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-                            className="relative h-full w-full"
-                        >
+                    {animate ? (
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={screen.id}
+                                initial={{ opacity: 0, scale: 1.02 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.98 }}
+                                transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+                                className="relative h-full w-full"
+                            >
+                                {/* Fondo de la barra superior del mockup - color #1b2335 */}
+                                <div className="absolute inset-0 bg-[#1b2335]" />
+                                <div className="absolute inset-[1px] top-[15px] bottom-[1px]">
+                                    <div className="relative h-full w-full">
+                                        <Image
+                                            src={screen.image}
+                                            alt={screen.title}
+                                            fill
+                                            className="object-cover object-top"
+                                            sizes="(max-width: 640px) 180px, (max-width: 768px) 220px, (max-width: 1024px) 260px, 340px"
+                                            priority={priority}
+                                        />
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </AnimatePresence>
+                    ) : (
+                        <div className="relative h-full w-full">
                             {/* Fondo de la barra superior del mockup - color #1b2335 */}
                             <div className="absolute inset-0 bg-[#1b2335]" />
                             <div className="absolute inset-[1px] top-[15px] bottom-[1px]">
@@ -39,13 +58,13 @@ const IPhoneMockup = ({ screen, className, priority = false }: { screen: any; cl
                                         alt={screen.title}
                                         fill
                                         className="object-cover object-top"
-                                        sizes="(max-width: 640px) 180px, (max-width: 768px) 220px, (max-width: 1024px) 260px, 340px"
+                                        sizes="(max-width: 640px) 140px, (max-width: 768px) 160px, (max-width: 1024px) 200px, 280px"
                                         priority={priority}
                                     />
                                 </div>
                             </div>
-                        </motion.div>
-                    </AnimatePresence>
+                        </div>
+                    )}
                 </div>
 
                 {/* Status bar icons - bajados 5px (top-[1.5%] en vez de top-[0%]) */}
@@ -96,18 +115,10 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
     const phoneContainerRef = useRef<HTMLDivElement | null>(null);
     const [parallaxOffset, setParallaxOffset] = useState(0);
 
-    // Mobile: control de animación
-    const isAnimatingRef = useRef(false);
-
-    // Mobile: cooldown y dirección de scroll para evitar saltos en cadena
-    const lastChangeTimeRef = useRef(0);
-    const lastScrollYRef = useRef(0);
-    const COOLDOWN_MS = 700; // Tiempo mínimo entre cambios de tarjeta
-
     /* ---------- Efectos compartidos (ambos) ---------- */
     // Detecta tamaño (mobile/desktop)
     useEffect(() => {
-        const onResize = () => setIsMobile(window.innerWidth < 1024);
+        const onResize = () => setIsMobile(window.innerWidth < 768);
         onResize();
         window.addEventListener('resize', onResize);
         return () => window.removeEventListener('resize', onResize);
@@ -196,102 +207,6 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
         };
     }, [isMobile]);
 
-    /* ---------- Efectos mobile ---------- */
-    // Experiencia móvil: detecta cambios con cooldown, centrado en viewport y dirección de scroll
-    // Evita saltos en cadena cuando el viewport es alto
-    useEffect(() => {
-        if (!isMobile) return;
-
-        // Inicializar posición de scroll
-        lastScrollYRef.current = window.scrollY;
-
-        // Verificar si la sección demo está visible en el viewport
-        const isSectionInView = () => {
-            const container = containerRef.current;
-            if (!container) return false;
-
-            const rect = container.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
-
-            // La sección está "activa" si al menos 40% del viewport está ocupado por ella
-            const visibleTop = Math.max(0, rect.top);
-            const visibleBottom = Math.min(viewportHeight, rect.bottom);
-            const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-
-            return visibleHeight > viewportHeight * 0.4;
-        };
-
-        // Encontrar la tarjeta cuyo centro está más cerca del centro del viewport
-        // Solo considera cambios en la dirección del scroll
-        const findCenteredCard = (scrollDirection: 'up' | 'down') => {
-            const viewportHeight = window.innerHeight;
-            const viewportCenter = viewportHeight / 2;
-
-            let bestIndex = activeStep; // Mantener el actual por defecto
-            let minDistanceToCenter = Infinity;
-
-            cardsRef.current.forEach((card, i) => {
-                if (!card) return;
-                const rect = card.getBoundingClientRect();
-
-                // Centro de la tarjeta
-                const cardCenter = rect.top + rect.height / 2;
-                const distanceToCenter = Math.abs(cardCenter - viewportCenter);
-
-                // Verificar que la tarjeta esté en la "zona central" del viewport (35%-65%)
-                const isInCenterZone = cardCenter > viewportHeight * 0.35 && cardCenter < viewportHeight * 0.65;
-
-                // Solo permitir cambios en la dirección del scroll
-                const isValidDirection =
-                    (scrollDirection === 'down' && i >= activeStep) ||
-                    (scrollDirection === 'up' && i <= activeStep);
-
-                if (isInCenterZone && isValidDirection && distanceToCenter < minDistanceToCenter) {
-                    minDistanceToCenter = distanceToCenter;
-                    bestIndex = i;
-                }
-            });
-
-            return bestIndex;
-        };
-
-        let ticking = false;
-
-        const handleScroll = () => {
-            if (ticking || isAnimatingRef.current) return;
-
-            // Verificar cooldown
-            const now = Date.now();
-            if (now - lastChangeTimeRef.current < COOLDOWN_MS) return;
-
-            ticking = true;
-            requestAnimationFrame(() => {
-                // Solo actuar si la sección está realmente visible
-                if (isSectionInView()) {
-                    // Determinar dirección del scroll
-                    const currentScrollY = window.scrollY;
-                    const scrollDirection = currentScrollY > lastScrollYRef.current ? 'down' : 'up';
-                    lastScrollYRef.current = currentScrollY;
-
-                    const centeredIndex = findCenteredCard(scrollDirection);
-                    if (centeredIndex !== activeStep) {
-                        setActiveStep(centeredIndex);
-                        lastChangeTimeRef.current = Date.now(); // Activar cooldown
-                    }
-                }
-                ticking = false;
-            });
-        };
-
-        window.addEventListener('scroll', handleScroll, { passive: true });
-
-        // NO ejecutar handleScroll al montar - esto causaba el salto inicial
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [isMobile, activeStep]);
-
     /* ---------- Handlers UI ---------- */
     const handleCardClick = (index: number) => {
         if (isLocked && lockedIndex === index) {
@@ -347,7 +262,7 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                 </div>
 
                 {/* Desktop layout - el grid necesita items-stretch para que sticky funcione */}
-                <div className="hidden lg:grid lg:grid-cols-[1fr,400px] lg:gap-16 xl:gap-20">
+                <div className="hidden md:grid md:grid-cols-[1fr,400px] md:gap-12 lg:gap-16 xl:gap-20">
                     <div ref={cardsContainerRef} className="flex flex-col gap-8">
                         {copy.screens.map((screen, idx) => (
                             <motion.div
@@ -383,7 +298,7 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                     {/* iPhone container - sticky con parallax */}
                     <div
                         ref={phoneContainerRef}
-                        className="relative lg:sticky lg:top-24 lg:self-start"
+                        className="relative md:sticky md:top-24 md:self-start"
                     >
                         <motion.div
                             initial={{ opacity: 0, x: 30 }}
@@ -396,107 +311,46 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                                 transition: 'transform 0.1s ease-out'
                             }}
                         >
-                            <IPhoneMockup screen={copy.screens[activeStep]} priority={true} />
+                            <IPhoneMockup screen={copy.screens[activeStep]} priority={true} animate={true} />
                         </motion.div>
                     </div>
                 </div>
 
-                {/* Mobile layout */}
-                <LayoutGroup>
-                    <div className="lg:hidden flex flex-col gap-6">
-                        {copy.screens.map((screen, idx) => (
-                            <motion.div
-                                key={screen.id}
-                                layout="preserve-aspect"
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: '-30px', amount: 0.3 }}
-                                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                                className="flex flex-col scroll-mt-20"
-                            >
-                                <motion.div
-                                    layout="position"
-                                    ref={el => { cardsRef.current[idx] = el; }}
-                                    className={`bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 shadow-lg border-2 transition-all duration-300 ease-out ${activeStep === idx
-                                        ? 'border-blue-200 shadow-xl mb-3'
-                                        : 'border-slate-100 mb-6 opacity-75'
-                                        }`}
-                                >
-                                    <div className="inline-flex items-center gap-2 mb-3">
-                                        <div className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${activeStep === idx
-                                            ? 'bg-blue-600 text-white scale-110'
-                                            : 'bg-slate-100 text-slate-400 scale-100'
-                                            }`}>
-                                            {idx + 1}
-                                        </div>
-                                        <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider">
-                                            {screen.badge}
-                                        </span>
+                {/* Mobile layout - sin animaciones, cada tarjeta con su mockup */}
+                <div className="md:hidden flex flex-col gap-8">
+                    {copy.screens.map((screen, idx) => (
+                        <div
+                            key={screen.id}
+                            className="flex flex-col"
+                        >
+                            {/* Tarjeta */}
+                            <div className="bg-white rounded-2xl p-4 sm:p-5 md:p-6 shadow-lg border-2 border-slate-100">
+                                <div className="inline-flex items-center gap-2 mb-3">
+                                    <div className="w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-sm bg-blue-600 text-white">
+                                        {idx + 1}
                                     </div>
-                                    <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2">
-                                        {screen.title}
-                                    </h3>
-                                    <p className="text-sm md:text-base text-slate-600 leading-relaxed">
-                                        {screen.description}
-                                    </p>
-                                </motion.div>
+                                    <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider">
+                                        {screen.badge}
+                                    </span>
+                                </div>
+                                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2">
+                                    {screen.title}
+                                </h3>
+                                <p className="text-sm md:text-base text-slate-600 leading-relaxed">
+                                    {screen.description}
+                                </p>
+                            </div>
 
-                                <AnimatePresence mode="wait">
-                                    {activeStep === idx && (
-                                        <motion.div
-                                            key={`phone-${idx}`}
-                                            layoutId="mobile-iphone"
-                                            initial={{ opacity: 0, scale: 0.9, y: -10 }}
-                                            animate={{
-                                                opacity: 1,
-                                                scale: 1,
-                                                y: 0,
-                                                transition: {
-                                                    opacity: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
-                                                    scale: { duration: 0.5, ease: [0.34, 1.56, 0.64, 1] },
-                                                    y: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
-                                                }
-                                            }}
-                                            exit={{
-                                                opacity: 0,
-                                                scale: 0.9,
-                                                y: 10,
-                                                transition: {
-                                                    duration: 0.3,
-                                                    ease: [0.22, 1, 0.36, 1]
-                                                }
-                                            }}
-                                            onLayoutAnimationStart={() => {
-                                                isAnimatingRef.current = true;
-                                            }}
-                                            onLayoutAnimationComplete={() => {
-                                                requestAnimationFrame(() => {
-                                                    isAnimatingRef.current = false;
-                                                });
-                                            }}
-                                            transition={{
-                                                layout: {
-                                                    type: 'spring',
-                                                    stiffness: 300,
-                                                    damping: 30,
-                                                    mass: 0.8
-                                                }
-                                            }}
-                                            className="w-full mx-auto"
-                                            style={{
-                                                maxWidth: 'min(220px, 55vw)',
-                                                willChange: 'transform, opacity'
-                                            }}
-                                        >
-                                            <IPhoneMockup screen={copy.screens[activeStep]} priority={idx === 0} />
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </motion.div>
-                        ))}
-                    </div>
-                </LayoutGroup>
+                            {/* Mockup debajo de la tarjeta - sin animaciones */}
+                            <div className="mt-4 w-full flex justify-center">
+                                <div className="w-[50%] max-w-[200px] sm:max-w-[220px]">
+                                    <IPhoneMockup screen={screen} priority={idx < 2} animate={false} />
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
-        </section >
+        </section>
     );
 }
