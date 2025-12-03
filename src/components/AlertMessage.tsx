@@ -19,6 +19,7 @@ interface AlertMessageProps {
     onClose?: () => void;
     autoDismiss?: boolean;
     autoDismissDelay?: number;
+    positioning?: 'fixed' | 'relative';
 }
 
 const alertConfig: Record<
@@ -54,7 +55,8 @@ export default function AlertMessage({
     className = '',
     onClose,
     autoDismiss = true,
-    autoDismissDelay = 5000
+    autoDismissDelay = 5000,
+    positioning = 'fixed'
 }: AlertMessageProps) {
     const config = alertConfig[type];
     const Icon = config.icon;
@@ -69,6 +71,10 @@ export default function AlertMessage({
         }
     }, [autoDismiss, autoDismissDelay, onClose]);
 
+    const positionClasses = positioning === 'fixed'
+        ? 'fixed inset-x-0 top-24 z-[100] mx-auto max-w-2xl px-4'
+        : 'relative';
+
     return (
         <AnimatePresence>
             <motion.div
@@ -79,7 +85,7 @@ export default function AlertMessage({
                 role="alert"
                 aria-live="polite"
                 aria-atomic="true"
-                className={`fixed inset-x-0 top-24 z-[100] mx-auto max-w-2xl px-4 ${className}`}
+                className={`${positionClasses} ${className}`}
             >
                 <div
                     className={`

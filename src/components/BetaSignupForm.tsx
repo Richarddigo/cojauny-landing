@@ -343,15 +343,17 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                     </label>
                 </div>
                 <input type="hidden" name="locale" value={form.locale} />
-                <button
-                    type="submit"
-                    disabled={submitting}
-                    className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-brand-600 to-brand-500 px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-brand-600/30 transition-all duration-200 hover:shadow-xl hover:shadow-brand-600/40 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:scale-100"
-                >
-                    {submitting ? `${copy.submit}…` : copy.submit}
-                </button>
-                {success && <AlertMessage type="success" message={success} onClose={() => setSuccess(null)} />}
-                {error && <AlertMessage type="error" message={error} onClose={() => setError(null)} />}
+                <div className="relative space-y-4">
+                    <button
+                        type="submit"
+                        disabled={submitting}
+                        className="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-brand-600 to-brand-500 px-6 py-3.5 text-base font-semibold text-white shadow-lg shadow-brand-600/30 transition-all duration-200 hover:shadow-xl hover:shadow-brand-600/40 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:scale-100"
+                    >
+                        {submitting ? `${copy.submit}…` : copy.submit}
+                    </button>
+                    {success && <AlertMessage type="success" message={success} onClose={() => setSuccess(null)} positioning="relative" />}
+                    {error && <AlertMessage type="error" message={error} onClose={() => setError(null)} positioning="relative" />}
+                </div>
             </form>
 
             {/* Show Referral Panel after successful signup / Mostrar panel de referral tras registro exitoso */}
