@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 import type { LandingCopy } from '@/locales/copy';
 import type { Locale } from '@/locales/config';
@@ -12,35 +13,42 @@ interface FooterProps {
     locale: Locale;
 }
 
-const Footer = ({ copy, locale }: FooterProps) => (
-    <footer className="border-t border-white/10 bg-slate-900">
-        <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 md:flex-row md:items-center md:justify-between" style={{ paddingLeft: 'calc(var(--social-bar-offset) + 1.5rem)' }}>
-            <div>
-                <p className="text-lg font-semibold text-white">Cojauny</p>
-                <p className="mt-2 max-w-xs text-sm text-white/80">{copy.description}</p>
-                <div className="mt-4 flex gap-4">
-                    <a
-                        href="#beta"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            document.getElementById('beta')?.scrollIntoView({ behavior: 'smooth' });
-                        }}
-                        className="text-sm text-brand-200 underline hover:text-white"
-                    >
-                        {copy.appStoreSoon}
-                    </a>
-                    <a
-                        href="#beta"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            document.getElementById('beta')?.scrollIntoView({ behavior: 'smooth' });
-                        }}
-                        className="text-sm text-brand-200 underline hover:text-white"
-                    >
-                        {copy.playStoreSoon}
-                    </a>
+const Footer = ({ copy, locale }: FooterProps) => {
+    const router = useRouter();
+
+    const handleBetaClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        const element = document.getElementById('beta');
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            router.push(`/${locale}#beta`);
+        }
+    };
+
+    return (
+        <footer className="border-t border-white/10 bg-slate-900">
+            <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 md:flex-row md:items-center md:justify-between" style={{ paddingLeft: 'calc(var(--social-bar-offset) + 1.5rem)' }}>
+                <div>
+                    <p className="text-lg font-semibold text-white">Cojauny</p>
+                    <p className="mt-2 max-w-xs text-sm text-white/80">{copy.description}</p>
+                    <div className="mt-4 flex gap-4">
+                        <a
+                            href={`/${locale}#beta`}
+                            onClick={handleBetaClick}
+                            className="text-sm text-brand-200 underline hover:text-white"
+                        >
+                            {copy.appStoreSoon}
+                        </a>
+                        <a
+                            href={`/${locale}#beta`}
+                            onClick={handleBetaClick}
+                            className="text-sm text-brand-200 underline hover:text-white"
+                        >
+                            {copy.playStoreSoon}
+                        </a>
+                    </div>
                 </div>
-            </div>
             <div className="flex flex-col items-start gap-4 md:items-end">
                 <div className="flex gap-4 text-white/80">
                     {socialLinks.map((link) => (
@@ -87,6 +95,7 @@ const Footer = ({ copy, locale }: FooterProps) => (
             </div>
         </div>
     </footer>
-);
+    );
+};
 
 export default Footer;
