@@ -27,6 +27,8 @@ interface Subprocessor {
   purpose: string;
   location: string;
   security: string;
+  dataTypes: string;
+  policyLink?: string;
 }
 
 interface ExtendedLegalCopy {
@@ -53,1003 +55,786 @@ interface ExtendedLegalCopy {
 const legalCopy: Record<Locale, ExtendedLegalCopy> = {
   es: {
     privacy: {
-      title: 'Arquitectura de Privacidad: Nuestro Compromiso con la Protección de Datos',
-      intro: 'En Cojauny, la privacidad no es una característica adicional—es el fundamento de nuestra arquitectura. Esta política desglosa meticulosamente cómo custodiamos, procesamos y protegemos cada byte de información que nos confías durante tu interacción con nuestra plataforma beta.',
-      updatedAt: 'Última revisión arquitectónica: 17 de noviembre de 2025',
+      title: 'Política de Privacidad y Protección de Datos',
+      intro: 'En Cojauny, nos tomamos su privacidad muy en serio. Esta política detalla cómo recopilamos, utilizamos, protegemos y gestionamos sus datos personales de conformidad con el RGPD y otras normativas aplicables.',
+      updatedAt: 'Última actualización: 4 de diciembre de 2025',
       sections: [
         {
-          heading: 'Responsabilidad Técnica y Operativa',
-          body: 'Durante la fase de constitución de nuestra entidad mercantil definitiva, la gestión de datos recae en el equipo fundador de Cojauny (denominado "Equipo Cojauny" en este contexto). Operamos desde España bajo un modelo de responsabilidad distribuida, manteniendo un canal único de comunicación: support@cojauny.com. Los datos registrales completos se publicarán en esta sección inmediatamente después de su formalización jurídica.'
+          heading: '1. Responsable del Tratamiento',
+          body: 'El responsable del tratamiento de sus datos es el Equipo Fundador de Cojauny ("Cojauny"), con operaciones en España. Domicilio a efectos de notificaciones: [Insertar Dirección Física o Apartado Postal]. Puede contactar con nuestro Delegado de Protección de Datos (DPO) en support@cojauny.com.'
         },
         {
-          heading: 'Taxonomía de Datos: Lo que Realmente Recolectamos',
-          body: 'Nuestro esquema de recolección sigue el principio de minimización extrema: procesamos únicamente datos proporcionados voluntariamente (identificación, contacto, contexto organizacional y comunicaciones) junto con métricas de navegación anonimizadas (patrones de interacción, preferencias lingüísticas, fingerprinting técnico no identificativo) y registros de seguridad indispensables para garantizar la integridad del sistema.'
+          heading: '2. Categorías de Datos Recopilados',
+          body: 'Recopilamos: (a) Datos de Identificación: Nombre, email, ID de usuario; (b) Datos Técnicos: IP, dispositivo, SO, logs; (c) Datos de Uso: Interacciones, preferencias; (d) Datos de Localización: Geolocalización precisa (solo con consentimiento explícito); (e) Datos de Eventos: Información sobre eventos coordinados; (f) Contenido de Usuario: Fotos, descripciones y mensajes.'
         },
         {
-          heading: 'Procesamiento de Datos de Localización',
-          body: 'Durante la coordinación de eventos, procesamos temporalmente datos de ubicación con encriptación end-to-end. Estos datos se auto-destruyen 2 horas después del evento y nunca se almacenan en nuestros servidores de forma permanente. Puedes desactivar esta función en cualquier momento desde la configuración de la aplicación sin afectar funcionalidades core.'
+          heading: '3. Finalidad y Base Jurídica',
+          body: 'Tratamos sus datos para: (i) Prestación del Servicio (Contrato); (ii) Mejora y Seguridad (Interés legítimo); (iii) Comunicaciones (Contrato); (iv) Cumplimiento Legal (Obligación legal); (v) Geolocalización (Consentimiento). No realizamos decisiones automatizadas ni elaboración de perfiles con efectos jurídicos sin su consentimiento explícito.'
         },
         {
-          heading: 'Finalidades y Fundamentos Jurídicos: La Matemática de la Privacidad',
-          body: 'Cada procesamiento de datos responde a una ecuación precisa: gestión de acceso beta (base: consentimiento explícito), optimización del servicio mediante feedback (base: interés legítimo calibrado) y análisis agregado para decisiones de producto (base: consentimiento para cookies analíticas e interés legítimo proporcional para estabilidad y seguridad del sistema).'
+          heading: '4. Conservación de los Datos',
+          body: 'Conservamos datos mientras la cuenta esté activa. Geolocalización: eliminada tras 2 horas. Logs técnicos: 12 meses. Tras el cierre, los datos se bloquean durante el plazo de prescripción legal (hasta 5 años) antes de su borrado total.'
         },
         {
-          heading: 'Flujos de Datos y Fronteras Digitales',
-          body: 'Implementamos un modelo de soberanía de datos donde la información solo transita por proveedores esenciales para la infraestructura, hospedaje, comunicaciones y analítica. Para transferencias extra-EEE aplicamos un protocolo multicapa: Cláusulas Contractuales Tipo reforzadas con evaluaciones de impacto y medidas técnicas suplementarias. Excluimos categóricamente la venta o cesión comercial de datos.'
+          heading: '5. Destinatarios y Transferencias',
+          body: 'Compartimos datos con proveedores (hosting, analítica) bajo contratos de encargado del tratamiento. Transferencias fuera del EEE se protegen mediante Cláusulas Contractuales Tipo (SCC) de la UE.'
         },
         {
-          heading: 'Derechos de Menores',
-          body: 'Nuestro servicio está dirigido exclusivamente a mayores de 18 años. No recopilamos conscientemente información de menores. Si descubrimos que hemos procesado datos de un menor sin verificación de consentimiento parental, eliminaremos inmediatamente dicha información de nuestros sistemas y notificaremos a las autoridades competentes cuando sea requerido.'
+          heading: '6. Derechos del Usuario',
+          body: 'Puede acceder, rectificar, suprimir, limitar, oponerse y portar sus datos escribiendo a support@cojauny.com. Tiene derecho a reclamar ante la AEPD (www.aepd.es).'
         },
         {
-          heading: 'Cronometría de la Conservación',
-          body: 'Los datos persisten exclusivamente durante el ciclo beta activo, con un horizonte máximo de 12 meses post-última interacción. Este plazo se interrumpe únicamente por mandato legal específico o mediante ejercicio temprano de derechos de supresión. Los datos de localización tienen retención máxima de 2 horas.'
+          heading: '7. Seguridad',
+          body: 'Aplicamos encriptación TLS 1.2+ y AES-256, controles de acceso (RBAC) y auditorías. Notificaremos brechas de seguridad en 72h si existe riesgo para sus derechos.'
         },
         {
-          heading: 'Derechos y Mecanismos de Ejecución',
-          body: 'Tu panel de control incluye derechos de acceso, rectificación, oposición, portabilidad, limitación y supresión—ejercitables via support@cojauny.com con respuesta en 72 horas hábiles. El consentimiento es revocable en cualquier punto del journey. Para reclamaciones, la Agencia Española de Protección de Datos (www.aepd.es) actúa como autoridad de supervisión.'
-        },
-        {
-          heading: 'Protocolo de Notificación de Brechas',
-          body: 'En el improbable caso de una violación de seguridad que afecte datos personales, notificaremos a la autoridad competente dentro de 72 horas y a los usuarios afectados sin demora injustificada. Mantenemos registros detallados de todos los incidentes de seguridad para auditoría y mejora continua.'
-        },
-        {
-          heading: 'Evolución de la Política: Transparencia Proactiva',
-          body: 'Revisaremos arquitectónicamente esta política ante cambios sustanciales en procesamiento o formalización jurídica. Notificaremos mediante canales prioritarios y mantendremos versionamiento completo en esta ubicación. Los cambios sustanciales requerirán re-consentimiento para procesamientos basados en esta base jurídica.'
+          heading: '8. App Móvil y Permisos',
+          body: 'La app puede solicitar acceso a: Cámara/Galería (para subir fotos), Ubicación (coordinación), y Notificaciones. Puede revocar estos permisos en los ajustes de su móvil.'
         }
       ],
-      contact: 'Para consultas técnicas sobre privacidad: support@cojauny.com | Respuesta en ≤24h'
+      contact: 'DPO: support@cojauny.com | Respuesta en 24h'
     },
-
     cookies: {
-      title: 'Protocolo de Cookies: Gestión Técnica de Identificadores',
-      intro: 'Este protocolo desgrana la ingeniería detrás de cookies y tecnologías análogas en cojauny.com, funcionando como anexo técnico especializado de nuestra política de privacidad principal.',
-      updatedAt: 'Última calibración técnica: 17 de noviembre de 2025',
+      title: 'Política de Cookies',
+      intro: 'Uso de cookies y tecnologías de rastreo para mejorar la experiencia y seguridad.',
+      updatedAt: '4 de diciembre de 2025',
       sections: [
         {
-          heading: 'Anatomía de las Cookies: Más Allá del Archivo de Texto',
-          body: 'Las cookies operan como registros de estado sesión—pequeños artefactos digitales que el navegador almacena temporalmente para preservar contexto operativo. Extendemos este concepto a tecnologías hermanas como localStorage, sessionStorage y IndexedDB, siempre con la misma filosofía de minimización.'
+          heading: '1. Definición y Uso',
+          body: 'Usamos cookies (archivos de texto) y almacenamiento local para mantener su sesión, recordar preferencias y analizar el tráfico anónimo.'
         },
         {
-          heading: 'Taxonomía de Identificadores Técnicos',
-          body: 'Clasificamos los trackers en tres categorías operativas: cookies esenciales (gestión de sesión, balanceo de carga, preferencia idiomática), cookies de preferencias (memoria de selecciones en banners) y cookies analíticas (Google Analytics 4 con anonimización de IP y truncamiento de datos). Las categorías no esenciales requieren consentimiento explícito mediante opt-in granular.'
+          heading: '2. Tipos de Cookies',
+          body: '(a) Esenciales: Necesarias para login y seguridad (sin consentimiento). (b) Analíticas: Google Analytics (con consentimiento). (c) Funcionales: Preferencias de idioma.'
         },
         {
-          heading: 'Tecnologías de Tracking Avanzadas',
-          body: 'Además de cookies, utilizamos localStorage para preferencias de interfaz y sessionStorage para tokens de autenticación temporal. Implementamos fingerprinting técnico no identificativo únicamente para prevención de fraude y seguridad, excluyendo este análisis del scope de consentimiento por ser esencial para la integridad del servicio.'
-        },
-        {
-          heading: 'Ingeniería del Consentimiento: Control Granular',
-          body: 'Gestiona tu preferencia mediante el banner inicial o el centro de preferencias persistente. Alternativamente, configura tu navegador (Chrome, Safari, Edge, Firefox) para gestión avanzada—aunque esto puede impactar funcionalidades no críticas. Implementamos cookieless tracking para métricas agregadas esenciales de rendimiento.'
-        },
-        {
-          heading: 'Geolocalización y Persistencia de Datos',
-          body: 'Procesamos el 92% de datos de cookies dentro de la UE. Para el 8% restante (proveedores globales), aplicamos Cláusulas Contractuales Tipo con encriptación adicional y evaluaciones de impacto trimestrales. Los identificadores analíticos tienen un TTL máximo de 14 meses con rotación automática y revisión semestral.'
-        },
-        {
-          heading: 'Evolución del Protocolo',
-          body: 'Revisaremos técnicamente este protocolo ante cambios en la stack tecnológica o períodos de retención. Mantendremos changelog público y notificaremos cambios sustanciales via email para usuarios activos. Los cambios que expandan el scope de tracking requerirán nuevo consentimiento.'
+          heading: '3. Control del Usuario',
+          body: 'Puede gestionar sus preferencias desde el banner de cookies o la configuración de la app. Bloquear cookies esenciales puede impedir el uso del servicio.'
         }
       ],
-      contact: 'Consultas técnicas sobre cookies: support@cojauny.com | Especificar "Protocolo Cookies" en asunto'
+      contact: 'Cookies: support@cojauny.com'
     },
-
     terms: {
-      title: 'Marco Contractual: Términos de Servicio para Fase Beta',
-      intro: 'Este marco regula la relación jurídica entre el usuario y Cojauny durante la fase beta precomercial. La navegación y envío de información constituye aceptación expresa de estos términos en su versión vigente.',
-      updatedAt: 'Última actualización contractual: 17 de noviembre de 2025',
+      title: 'Términos y Condiciones de Uso',
+      intro: 'Contrato legal vinculante entre el Usuario y Cojauny para el uso de la plataforma.',
+      updatedAt: '4 de diciembre de 2025',
       sections: [
         {
-          heading: 'Alcance Operativo y Objeto del Servicio',
-          body: 'Cojauny opera como plataforma beta precomercial proporcionando: (i) información corporativa y técnica, (ii) gestión de acceso anticipado, (iii) canal de feedback estructurado. El servicio se presta "as-is" sin garantías de disponibilidad continuada y sujeto a evolución constante durante el periodo beta.'
+          heading: '1. Naturaleza del Servicio y Exención de Responsabilidad Offline',
+          body: 'Cojauny es una herramienta tecnológica para coordinar eventos. NO somos organizadores de eventos ni supervisamos las interacciones en el mundo real. Usted reconoce que Cojauny NO es responsable de la seguridad, conducta o legalidad de los eventos o encuentros offline coordinados a través de la App. Asista a eventos bajo su propia responsabilidad y riesgo.'
         },
         {
-          heading: 'Condiciones Específicas de la Fase Beta',
-          body: 'Al participar en la beta aceptas: (i) posible inestabilidad del servicio, (ii) características limitadas respecto a la versión final, (iii) reinicios periódicos de la base de datos, (iv) comunicación activa de bugs y feedback. Los usuarios beta que proporcionen feedback sustancial podrán acceder a condiciones especiales en el lanzamiento comercial.'
+          heading: '2. Licencia de Contenido del Usuario',
+          body: 'Usted conserva la propiedad de lo que publica. Sin embargo, al subir contenido (fotos, textos), otorga a Cojauny una licencia mundial, no exclusiva, gratuita y transferible para usar, reproducir, mostrar y distribuir dicho contenido únicamente para el funcionamiento y promoción del servicio.'
         },
         {
-          heading: 'Requisitos de Elegibilidad y Calidad de Datos',
-          body: 'Para interactuar con los formularios se requiere: mayoría de edad verificable (18+), veracidad de información proporcionada y autorización explícita para datos de terceros. Prohibimos categóricamente la introducción de datos sensibles (salud, ideología, biometría, etc.) excepto cuando sean estrictamente necesarios y exista base legal adecuada documentada.'
+          heading: '3. Registro y Seguridad',
+          body: 'Debe ser mayor de 18 años. Es responsable de custodiar su contraseña. Notifique cualquier acceso no autorizado inmediatamente.'
         },
         {
-          heading: 'Protocolo de Uso Aceptable',
-          body: 'El marco excluye: actividades ilícitas, interferencia con infraestructura, ingeniería inversa no autorizada, scraping automatizado masivo, introducción de código malicioso y cualquier actividad que comprometa la experiencia de otros usuarios beta. Reservamos derecho de suspensión inmediata ante violaciones de este protocolo.'
+          heading: '4. Indemnización',
+          body: 'Usted acuerda indemnizar y mantener indemne a Cojauny, sus directivos y empleados frente a cualquier reclamación, daño o gasto (incluyendo abogados) derivado de: (a) su incumplimiento de estos Términos; (b) su violación de derechos de terceros; (c) su conducta en eventos offline.'
         },
         {
-          heading: 'Política de Cancelación y Suspensión',
-          body: 'Reservamos el derecho de suspender acceso inmediatamente en casos de: uso malicioso, violación de términos, actividades que comprometan la seguridad de otros usuarios o comportamiento que degrade la experiencia beta. Notificaremos la suspensión vía email y ofreceremos proceso de apelación dentro de 72 horas hábiles.'
+          heading: '5. Propiedad Intelectual de la Plataforma',
+          body: 'El software, diseño y marcas de Cojauny son propiedad exclusiva nuestra. Se prohíbe la ingeniería inversa o copia no autorizada.'
         },
         {
-          heading: 'Propiedad Intelectual y Licencias Limitadas',
-          body: 'Cojauny, el código subyacente, diseños de interfaz, documentación técnica y metodologías de coordinación son propiedad del Equipo Cojauny o sus licenciantes. Se concede licencia limitada no exclusiva para uso personal durante la beta. Prohibida la reproducción, distribución o creación de obras derivadas sin autorización por escrito.'
+          heading: '6. Limitación de Responsabilidad',
+          body: 'En la máxima medida legal, Cojauny no responde por daños indirectos, lucro cesante o daños físicos derivados de eventos. Nuestra responsabilidad total se limita a la cantidad pagada por usted en los últimos 12 meses o 50€.'
         },
         {
-          heading: 'Estructura de Responsabilidad en Entorno Beta',
-          body: 'Al operar en fase beta, excluimos responsabilidad por: (i) interrupciones de servicio, (ii) inexactitudes en contenido, (iii) daños indirectos o lucro cesante, (iv) pérdida de datos durante reinicios programados. Tu interacción con servicios terceros se rige por sus propios términos. Implementamos medidas de seguridad razonables pero no garantizamos protección absoluta.'
+          heading: '7. Modificación y Terminación',
+          body: 'Podemos modificar estos términos notificándole. Podemos suspender su cuenta por incumplimiento sin previo aviso.'
         },
         {
-          heading: 'Cambios de Control y Continuidad del Servicio',
-          body: 'En caso de cambio de control corporativo (fusión, adquisición o venta), notificaremos con 30 días de antelación. Los datos se transferirán bajo los mismos términos de privacidad o se ofrecerá opción de eliminación completa. Los usuarios beta mantendrán sus beneficios adquiridos durante la transición.'
-        },
-        {
-          heading: 'Evolución Contractual y Jurisdicción',
-          body: 'Modificaremos estos términos para reflejar: (i) cambios sustanciales en el servicio, (ii) evoluciones regulatorias, (iii) transición a fase comercial. Notificaremos cambios relevantes via email y mantendremos versionamiento público. La relación se rige por legislación española con jurisdicción exclusiva en tribunales de Madrid capital.'
+          heading: '8. Ley y Jurisdicción',
+          body: 'Rige la ley española. Jurisdicción exclusiva: Tribunales de Madrid, España.'
         }
       ],
-      contact: 'Comunicaciones legales: support@cojauny.com | Especificar "Asunto Legal" en asunto | Respuesta en 72h hábiles'
+      contact: 'Legal: support@cojauny.com'
     },
-
     acceptableUse: {
-      title: 'Política de Uso Aceptable: Límites y Responsabilidades',
-      intro: 'Esta política define los parámetros de uso responsable de Cojauny durante la fase beta, estableciendo expectativas claras y protegiendo la integridad de nuestra plataforma y comunidad.',
-      updatedAt: 'Última revisión: 17 de noviembre de 2025',
+      title: 'Política de Uso Aceptable',
+      intro: 'Normas de convivencia y seguridad para la comunidad Cojauny.',
+      updatedAt: '4 de diciembre de 2025',
       sections: [
         {
-          heading: 'Límites de Uso Comercial',
-          body: 'Durante la fase beta, el servicio se ofrece exclusivamente para evaluación interna y testing. Prohibido su uso para operaciones comerciales en producción sin autorización expresa. Límite operativo de 50 eventos coordinados mensuales por organización durante beta. El uso comercial requerirá migración a plan empresarial post-lanzamiento.'
+          heading: '1. Comportamiento Prohibido',
+          body: 'Se prohíbe: Acoso, amenazas, discurso de odio, contenido sexual explícito, promoción de actividades ilegales, y spam.'
         },
         {
-          heading: 'Restricciones de Contenido y Conducta',
-          body: 'Prohibido utilizar la plataforma para coordinar eventos que involucren: actividades ilegales, contenido ofensivo, acoso, discriminación, violación de derechos de terceros o cualquier actividad que pueda dañar la reputación de Cojauny. Implementamos moderación proactiva y mecanismos de reporte escalable.'
+          heading: '2. Seguridad en Eventos',
+          body: 'Se prohíbe usar la plataforma para organizar eventos que pongan en peligro la seguridad física de las personas, promuevan la violencia o violen leyes locales.'
         },
         {
-          heading: 'Límites Técnicos y de Rendimiento',
-          body: 'Cada organización beta tiene asignado: 10GB de almacenamiento total, 1000 notificaciones mensuales y procesamiento máximo de 100 usuarios simultáneos por evento. Superar estos límites puede resultar en throttling automático o requerir aprobación para expansión.'
+          heading: '3. Integridad Técnica',
+          body: 'Prohibido el scraping de datos, distribución de malware, o ataques DDoS contra la plataforma.'
         },
         {
-          heading: 'Responsabilidades del Usuario Beta',
-          body: 'Como usuario beta aceptas: (i) reportar bugs dentro de 48 horas de detección, (ii) participar en al menos una sesión de feedback mensual, (iii) mantener confidencialidad sobre características no públicas, (iv) no realizar benchmarking público contra competidores durante la fase beta.'
-        },
-        {
-          heading: 'Propiedad de Datos Generados',
-          body: 'Los usuarios mantienen propiedad completa sobre sus datos de evento y contenido. Cojauny retiene derecho a utilizar datos anonimizados y agregados para mejora de producto, pero nunca accederá a contenido específico sin consentimiento explícito excepto por requerimiento legal.'
-        },
-        {
-          heading: 'Mecanismos de Cumplimiento',
-          body: 'Implementamos monitoreo automatizado y revisión manual para asegurar cumplimiento. Las violaciones resultarán en: (i) advertencia formal para infracciones menores, (ii) suspensión temporal para reincidencias, (iii) terminación permanente para violaciones graves. Todos los casos incluyen proceso de apelación documentado.'
+          heading: '4. Consecuencias',
+          body: 'El incumplimiento conllevará la suspensión inmediata de la cuenta y, si procede, denuncia ante las autoridades.'
         }
       ],
-      contact: 'Reportar violaciones de uso: support@cojauny.com | Asunto: "Reporte Uso Aceptable"'
+      contact: 'Reportes: support@cojauny.com'
     },
-
     faq: {
-      title: 'Centro de Transparencia: Preguntas Frecuentes Legales',
-      intro: 'Respuestas claras a las preguntas más comunes sobre nuestros términos, privacidad y políticas durante la fase beta de Cojauny.',
-      updatedAt: 'Actualizado: 17 de noviembre de 2025',
+      title: 'FAQ Legal',
+      intro: 'Dudas frecuentes sobre legalidad y seguridad.',
+      updatedAt: '4 de diciembre de 2025',
       categories: [
         {
-          name: 'Privacidad y Datos',
+          name: 'Responsabilidad',
           questions: [
             {
-              question: '¿Cómo manejan los datos de mis empleados o invitados?',
-              answer: 'Operamos como encargado del tratamiento bajo instrucciones del cliente. Proporcionamos DPAs pre-firmados y herramientas para gestión de consentimiento en cadena. Puedes solicitar nuestro modelo de DPA estándar en support@cojauny.com.'
-            },
-            {
-              question: '¿Qué sucede con mis datos si Cojauny es adquirida?',
-              answer: 'Notificaremos con 30 días de antelación cualquier cambio de control. Los datos personales se transferirán bajo términos equivalentes o se ofrecerá opción de eliminación completa. Los beneficios de usuarios beta se mantendrán durante la transición.'
-            },
-            {
-              question: '¿Realizan profiling o toma de decisiones automatizada?',
-              answer: 'No realizamos profiling con consecuencias legales ni decisiones totalmente automatizadas. El algoritmo de matching para compartir viajes sugiere pero nunca decide automáticamente—siempre requiere confirmación humana.'
+              question: '¿Es Cojauny responsable de los eventos?',
+              answer: 'No. Cojauny es solo la herramienta de coordinación. Los organizadores y asistentes son responsables de sus actos.'
             }
           ]
         },
         {
-          name: 'Términos y Condiciones',
+          name: 'Privacidad',
           questions: [
             {
-              question: '¿Puedo usar Cojauny para eventos de clientes externos?',
-              answer: 'Durante la beta, solo para testing interno. El uso comercial con clientes externos requerirá plan empresarial post-lanzamiento. Contacta para discusión de casos especiales.'
+              question: '¿Venden mis datos?',
+              answer: 'Nunca. Su privacidad es nuestra prioridad.'
             },
             {
-              question: '¿Qué soporte técnico incluye la beta?',
-              answer: 'Soporte comunitario via Discord, respuesta a bugs en 48h, y sesiones mensuales de feedback. Soporte prioritario 24/7 estará disponible en planes empresariales post-lanzamiento.'
-            },
-            {
-              question: '¿Puedo exportar mis datos si decido cancelar?',
-              answer: 'Sí, proporcionamos exportación completa en formatos estándar (JSON, CSV) dentro de 72 horas. Los datos se mantienen 30 días post-cancelación para permitir exportación, luego eliminación permanente.'
-            }
-          ]
-        },
-        {
-          name: 'Seguridad y Cumplimiento',
-          questions: [
-            {
-              question: '¿Cómo manejan las solicitudes de autoridades?',
-              answer: 'Solo proporcionamos datos en respuesta a solicitudes judiciales válidas. Notificamos a los usuarios afectados a menos que esté prohibido legalmente. Mantenemos transparencia reportando solicitudes gubernamentales anualmente.'
-            },
-            {
-              question: '¿Dónde se almacenan físicamente los datos?',
-              answer: 'Utilizamos Supabase con centros de datos en Frankfurt (Alemania) para base de datos y Firebase Hosting en Bélgica para el frontend. Todos los centros cumplen Tier III+ con certificaciones ISO 27001, SOC 2.'
+              question: '¿Cómo borro mi cuenta?',
+              answer: 'Desde los ajustes de la app o escribiendo a soporte.'
             }
           ]
         }
       ],
-      contact: '¿No encuentras tu pregunta? support@cojauny.com | Respuesta en 24h'
+      contact: 'Soporte: support@cojauny.com'
     },
-
     subprocessors: {
-      title: 'Registro de Subprocesadores: Transparencia en la Cadena de Datos',
-      intro: 'Lista completa de proveedores que procesan datos en nombre de Cojauny, actualizada trimestralmente con información sobre su ubicación y medidas de seguridad.',
-      updatedAt: 'Última actualización: 17 de noviembre de 2025',
+      title: 'Subprocesadores',
+      intro: 'Proveedores externos.',
+      updatedAt: '4 de diciembre de 2025',
       providers: [
         {
           name: 'Supabase',
-          purpose: 'Base de datos PostgreSQL, autenticación y almacenamiento',
-          location: 'Frankfurt, Alemania (UE)',
-          security: 'ISO 27001, SOC 2, GDPR Compliance, encriptación AES-256 en reposo'
+          purpose: 'Base de Datos',
+          location: 'Alemania (UE)',
+          security: 'ISO 27001',
+          dataTypes: 'Datos de usuario',
+          policyLink: 'https://supabase.com/privacy'
         },
         {
-          name: 'Firebase Hosting (Google Cloud)',
-          purpose: 'Alojamiento web, CDN y distribución global del frontend',
-          location: 'Bélgica (UE) con edge locations globales',
-          security: 'ISO 27001, SOC 2, GDPR Compliance, SSL/TLS everywhere'
+          name: 'Firebase',
+          purpose: 'Infraestructura',
+          location: 'Bélgica (UE)',
+          security: 'ISO 27001',
+          dataTypes: 'Metadatos técnicos',
+          policyLink: 'https://firebase.google.com/support/privacy'
         },
         {
-          name: 'Zoho Mail',
-          purpose: 'Comunicaciones transaccionales, notificaciones y soporte',
-          location: 'Países Bajos (UE)',
-          security: 'Encriptación end-to-end, GDPR Compliance, autenticación 2FA'
+          name: 'Zoho',
+          purpose: 'Email',
+          location: 'UE',
+          security: 'GDPR',
+          dataTypes: 'Emails',
+          policyLink: 'https://www.zoho.com/privacy.html'
         },
         {
-          name: "Dynadot",
-          purpose: "Servicios DNS y registro de dominios",
-          location: "Estados Unidos",
-          security: "Cumplimiento GDPR mediante Cláusulas Contractuales Estándar, protección de privacidad WHOIS, DNSSEC, cifrado TLS para consultas DNS"
+          name: 'Dynadot',
+          purpose: 'Dominios',
+          location: 'USA',
+          security: 'Privacy Shield',
+          dataTypes: 'Datos de red',
+          policyLink: 'https://www.dynadot.com/privacy_policy.html'
         }
       ],
-      contact: 'Consultas sobre subprocesadores: support@cojauny.com | Actualizaciones trimestrales'
+      contact: 'Legal: support@cojauny.com'
     }
   },
-
   en: {
     privacy: {
-      title: "Privacy Architecture: Our Commitment to Data Protection",
-      intro: "At Cojauny, privacy isn't an added feature—it's the foundation of our architecture. This policy meticulously details how we safeguard, process, and protect every byte of information you entrust to us during your interaction with our beta platform.",
-      updatedAt: "Last architectural review: November 17, 2025",
+      title: 'Privacy and Data Protection Policy',
+      intro: 'At Cojauny, we take your privacy seriously. This policy details how we collect, use, protect, and manage your personal data in compliance with GDPR and other applicable regulations.',
+      updatedAt: 'Last updated: December 4, 2025',
       sections: [
         {
-          heading: "Technical and Operational Responsibility",
-          body: "During the establishment phase of our definitive commercial entity, data management falls to Cojauny's founding team (referred to as the 'Cojauny Team' in this context). We operate from Spain under a distributed responsibility model, maintaining a single communication channel: support@cojauny.com. Complete registration details will be published in this section immediately following legal formalization."
+          heading: '1. Data Controller',
+          body: 'The data controller is the Cojauny Founding Team ("Cojauny"), operating from Spain. Address for notifications: [Insert Physical Address]. You can contact our Data Protection Officer (DPO) at support@cojauny.com.'
         },
         {
-          heading: "Data Taxonomy: What We Actually Collect",
-          body: "Our collection schema follows the principle of extreme minimization: we only process voluntarily provided data (identification, contact, organizational context, and communications) along with anonymized browsing metrics (interaction patterns, language preferences, non-identifying technical fingerprinting) and essential security logs to ensure system integrity."
+          heading: '2. Categories of Data Collected',
+          body: 'We collect: (a) Identity Data: Name, email, user ID; (b) Technical Data: IP, device, OS, logs; (c) Usage Data: Interactions, preferences; (d) Location Data: Precise geolocation (only with explicit consent); (e) Event Data: Information about coordinated events; (f) User Content: Photos, descriptions, and messages.'
         },
         {
-          heading: "Location Data Processing",
-          body: "During event coordination, we temporarily process location data with end-to-end encryption. This data self-destructs 2 hours after the event and is never permanently stored on our servers. You can disable this feature at any time in the application settings without affecting core functionality."
+          heading: '3. Purpose and Legal Basis',
+          body: 'We process data for: (i) Service Provision (Contract); (ii) Improvement & Security (Legitimate Interest); (iii) Communications (Contract); (iv) Legal Compliance (Legal Obligation); (v) Geolocation (Consent). We do not engage in automated decision-making with legal effects without explicit consent.'
         },
         {
-          heading: "Purposes and Legal Bases: The Mathematics of Privacy",
-          body: "Each data processing operation responds to a precise equation: beta access management (basis: explicit consent), service optimization through feedback (basis: calibrated legitimate interest), and aggregated analysis for product decisions (basis: consent for analytical cookies and proportional legitimate interest for system stability and security)."
+          heading: '4. Data Retention',
+          body: 'We retain data while the account is active. Geolocation: deleted after 2 hours. Technical logs: 12 months. After closure, data is blocked during the statute of limitations period (up to 5 years) before total deletion.'
         },
         {
-          heading: "Data Flows and Digital Borders",
-          body: "We implement a data sovereignty model where information only flows through providers essential for infrastructure, hosting, communications, and analytics. For extra-EEA transfers, we apply a multi-layer protocol: Standard Contractual Clauses reinforced with impact assessments and supplementary technical measures. We categorically exclude the sale or commercial transfer of data."
+          heading: '5. Recipients and Transfers',
+          body: 'We share data with providers (hosting, analytics) under data processing agreements. Transfers outside the EEA are protected via EU Standard Contractual Clauses (SCCs).'
         },
         {
-          heading: "Minor's Rights",
-          body: "Our service is exclusively intended for individuals over 18 years of age. We do not knowingly collect information from minors. If we discover that we have processed a minor's data without parental consent verification, we will immediately delete such information from our systems and notify the competent authorities when required."
+          heading: '6. User Rights',
+          body: 'You can access, rectify, erase, restrict, object, and port your data by writing to support@cojauny.com. You have the right to lodge a complaint with the AEPD (www.aepd.es).'
         },
         {
-          heading: "Data Retention Timeline",
-          body: "Data persists exclusively during the active beta cycle, with a maximum horizon of 12 months post-last interaction. This period is only interrupted by specific legal mandate or early exercise of deletion rights. Location data has a maximum retention of 2 hours."
+          heading: '7. Security',
+          body: 'We apply TLS 1.2+ and AES-256 encryption, access controls (RBAC), and audits. We will notify of security breaches within 72h if there is a risk to your rights.'
         },
         {
-          heading: "Rights and Enforcement Mechanisms",
-          body: "Your control panel includes rights to access, rectification, objection, portability, restriction, and deletion—exercisable via support@cojauny.com with responses within 72 business hours. Consent is revocable at any point in the journey. For claims, the Spanish Data Protection Agency (www.aepd.es) acts as the supervisory authority."
-        },
-        {
-          heading: "Breach Notification Protocol",
-          body: "In the unlikely event of a security breach affecting personal data, we will notify the competent authority within 72 hours and affected users without undue delay. We maintain detailed records of all security incidents for audit and continuous improvement."
-        },
-        {
-          heading: "Policy Evolution: Proactive Transparency",
-          body: "We will architecturally review this policy in response to substantial processing changes or legal formalization. We will notify through priority channels and maintain complete versioning in this location. Substantial changes will require re-consent for processings based on this legal basis."
+          heading: '8. Mobile App and Permissions',
+          body: 'The app may request access to: Camera/Gallery (uploading photos), Location (coordination), and Notifications. You can revoke these permissions in your device settings.'
         }
       ],
-      contact: "Technical privacy inquiries: support@cojauny.com | Response within ≤24h"
+      contact: 'DPO: support@cojauny.com | Response within 24h'
     },
-
     cookies: {
-      title: "Cookie Protocol: Technical Management of Identifiers",
-      intro: "This protocol details the engineering behind cookies and analogous technologies on cojauny.com, functioning as a specialized technical annex to our main privacy policy.",
-      updatedAt: "Last technical calibration: November 17, 2025",
+      title: 'Cookie Policy',
+      intro: 'Use of cookies and tracking technologies to improve experience and security.',
+      updatedAt: 'December 4, 2025',
       sections: [
         {
-          heading: "Cookie Anatomy: Beyond the Text File",
-          body: "Cookies operate as session state records—small digital artifacts that the browser temporarily stores to preserve operational context. We extend this concept to sibling technologies like localStorage, sessionStorage, and IndexedDB, always following the same minimization philosophy."
+          heading: '1. Definition and Use',
+          body: 'We use cookies (text files) and local storage to maintain your session, remember preferences, and analyze anonymous traffic.'
         },
         {
-          heading: "Technical Identifier Taxonomy",
-          body: "We classify trackers into three operational categories: essential cookies (session management, load balancing, language preference), preference cookies (memory of banner selections), and analytical cookies (Google Analytics 4 with IP anonymization and data truncation). Non-essential categories require explicit consent through granular opt-in."
+          heading: '2. Types of Cookies',
+          body: '(a) Essential: Necessary for login and security (no consent). (b) Analytics: Google Analytics (with consent). (c) Functional: Language preferences.'
         },
         {
-          heading: "Advanced Tracking Technologies",
-          body: "Beyond cookies, we use localStorage for interface preferences and sessionStorage for temporary authentication tokens. We implement non-identifying technical fingerprinting solely for fraud prevention and security, excluding this analysis from the consent scope as it's essential for service integrity."
-        },
-        {
-          heading: "Consent Engineering: Granular Control",
-          body: "Manage your preferences through the initial banner or persistent preference center. Alternatively, configure your browser (Chrome, Safari, Edge, Firefox) for advanced management—though this may impact non-critical functionality. We implement cookieless tracking for essential aggregated performance metrics."
-        },
-        {
-          heading: "Geolocation and Data Persistence",
-          body: "We process 92% of cookie data within the EU. For the remaining 8% (global providers), we apply Standard Contractual Clauses with additional encryption and quarterly impact assessments. Analytical identifiers have a maximum TTL of 14 months with automatic rotation and semi-annual review."
-        },
-        {
-          heading: "Protocol Evolution",
-          body: "We will technically review this protocol in response to changes in the technology stack or retention periods. We will maintain a public changelog and notify substantial changes via email to active users. Changes expanding the tracking scope will require new consent."
+          heading: '3. User Control',
+          body: 'You can manage preferences from the cookie banner or app settings. Blocking essential cookies may prevent service usage.'
         }
       ],
-      contact: "Technical cookie inquiries: support@cojauny.com | Specify 'Cookie Protocol' in subject"
+      contact: 'Cookies: support@cojauny.com'
     },
-
     terms: {
-      title: "Contractual Framework: Terms of Service for Beta Phase",
-      intro: "This framework regulates the legal relationship between the user and Cojauny during the pre-commercial beta phase. Navigation and information submission constitute express acceptance of these terms in their current version.",
-      updatedAt: "Last contractual update: November 17, 2025",
+      title: 'Terms and Conditions of Use',
+      intro: 'Binding legal contract between the User and Cojauny for platform use.',
+      updatedAt: 'December 4, 2025',
       sections: [
         {
-          heading: "Operational Scope and Service Purpose",
-          body: "Cojauny operates as a pre-commercial beta platform providing: (i) corporate and technical information, (ii) early access management, (iii) structured feedback channel. The service is provided 'as-is' without continuous availability guarantees and subject to constant evolution during the beta period."
+          heading: '1. Nature of Service and Offline Liability Disclaimer',
+          body: 'Cojauny is a tech tool for coordinating events. We are NOT event organizers nor do we supervise real-world interactions. You acknowledge that Cojauny is NOT responsible for the safety, conduct, or legality of offline events or meetings coordinated via the App. Attend events at your own risk.'
         },
         {
-          heading: "Specific Beta Phase Conditions",
-          body: "By participating in the beta, you accept: (i) potential service instability, (ii) limited features compared to the final version, (iii) periodic database resets, (iv) active communication of bugs and feedback. Beta users providing substantial feedback may access special conditions at commercial launch."
+          heading: '2. User Content License',
+          body: 'You retain ownership of what you post. However, by uploading content (photos, text), you grant Cojauny a worldwide, non-exclusive, royalty-free, transferable license to use, reproduce, display, and distribute such content solely for operating and promoting the service.'
         },
         {
-          heading: "Eligibility Requirements and Data Quality",
-          body: "Form interaction requires: verifiable age of majority (18+), truthfulness of provided information, and explicit authorization for third-party data. We categorically prohibit entering sensitive data (health, ideology, biometrics, etc.) except when strictly necessary with properly documented legal basis."
+          heading: '3. Registration and Security',
+          body: 'Must be 18+. You are responsible for safeguarding your password. Notify us of unauthorized access immediately.'
         },
         {
-          heading: "Acceptable Use Protocol",
-          body: "The framework excludes: illegal activities, infrastructure interference, unauthorized reverse engineering, mass automated scraping, malicious code introduction, and any activity compromising other beta users' experience. We reserve the right to immediate suspension for protocol violations."
+          heading: '4. Indemnification',
+          body: 'You agree to indemnify and hold Cojauny, its officers, and employees harmless from any claim, damage, or expense (including legal fees) arising from: (a) your breach of these Terms; (b) your violation of third-party rights; (c) your conduct at offline events.'
         },
         {
-          heading: "Cancellation and Suspension Policy",
-          body: "We reserve the right to immediately suspend access in cases of: malicious use, terms violation, activities compromising other users' security, or behavior degrading the beta experience. We will notify suspensions via email and offer an appeal process within 72 business hours."
+          heading: '5. Platform Intellectual Property',
+          body: 'Cojauny software, design, and trademarks are our exclusive property. Reverse engineering or unauthorized copying is prohibited.'
         },
         {
-          heading: "Intellectual Property and Limited Licenses",
-          body: "Cojauny, underlying code, interface designs, technical documentation, and coordination methodologies are property of the Cojauny Team or its licensors. A limited non-exclusive license is granted for personal use during beta. Reproduction, distribution, or derivative works are prohibited without written authorization."
+          heading: '6. Limitation of Liability',
+          body: 'To the maximum extent legal, Cojauny is not liable for indirect damages, lost profits, or physical damages arising from events. Our total liability is limited to the amount paid by you in the last 12 months or €50.'
         },
         {
-          heading: "Liability Structure in Beta Environment",
-          body: "Operating in beta phase, we exclude liability for: (i) service interruptions, (ii) content inaccuracies, (iii) indirect damages or lost profits, (iv) data loss during scheduled resets. Your interaction with third-party services is governed by their own terms. We implement reasonable security measures but don't guarantee absolute protection."
+          heading: '7. Modification and Termination',
+          body: 'We may modify these terms with notice. We may suspend your account for breach without prior notice.'
         },
         {
-          heading: "Control Changes and Service Continuity",
-          body: "In case of corporate control change (merger, acquisition, or sale), we will notify with 30 days' advance notice. Data will be transferred under the same privacy terms or complete deletion will be offered. Beta users will maintain their acquired benefits during the transition."
-        },
-        {
-          heading: "Contractual Evolution and Jurisdiction",
-          body: "We will modify these terms to reflect: (i) substantial service changes, (ii) regulatory evolution, (iii) transition to commercial phase. We will notify relevant changes via email and maintain public versioning. The relationship is governed by Spanish law with exclusive jurisdiction in Madrid capital courts."
+          heading: '8. Law and Jurisdiction',
+          body: 'Spanish law applies. Exclusive jurisdiction: Courts of Madrid, Spain.'
         }
       ],
-      contact: "Legal communications: support@cojauny.com | Specify 'Legal Matter' in subject | Response within 72 business hours"
+      contact: 'Legal: support@cojauny.com'
     },
-
     acceptableUse: {
-      title: "Acceptable Use Policy: Limits and Responsibilities",
-      intro: "This policy defines the parameters for responsible use of Cojauny during the beta phase, establishing clear expectations and protecting the integrity of our platform and community.",
-      updatedAt: "Last review: November 17, 2025",
+      title: 'Acceptable Use Policy',
+      intro: 'Community standards and safety rules for Cojauny.',
+      updatedAt: 'December 4, 2025',
       sections: [
         {
-          heading: "Commercial Use Limits",
-          body: "During the beta phase, the service is offered exclusively for internal evaluation and testing. Commercial use for production operations is prohibited without express authorization. Operational limit of 50 coordinated events monthly per organization during beta. Commercial use will require migration to enterprise plan post-launch."
+          heading: '1. Prohibited Behavior',
+          body: 'Prohibited: Harassment, threats, hate speech, explicit sexual content, promotion of illegal activities, and spam.'
         },
         {
-          heading: "Content and Conduct Restrictions",
-          body: "Prohibited use of the platform to coordinate events involving: illegal activities, offensive content, harassment, discrimination, third-party rights violation, or any activity that could harm Cojauny's reputation. We implement proactive moderation and scalable reporting mechanisms."
+          heading: '2. Event Safety',
+          body: 'Prohibited to use the platform to organize events that endanger physical safety, promote violence, or violate local laws.'
         },
         {
-          heading: "Technical and Performance Limits",
-          body: "Each beta organization is allocated: 10GB total storage, 1000 monthly notifications, and maximum processing of 100 simultaneous users per event. Exceeding these limits may result in automatic throttling or require expansion approval."
+          heading: '3. Technical Integrity',
+          body: 'Data scraping, malware distribution, or DDoS attacks against the platform are prohibited.'
         },
         {
-          heading: "Beta User Responsibilities",
-          body: "As a beta user, you accept: (i) reporting bugs within 48 hours of detection, (ii) participating in at least one monthly feedback session, (iii) maintaining confidentiality about non-public features, (iv) not conducting public benchmarking against competitors during the beta phase."
-        },
-        {
-          heading: "Generated Data Ownership",
-          body: "Users maintain complete ownership of their event data and content. Cojauny retains the right to use anonymized and aggregated data for product improvement, but will never access specific content without explicit consent except by legal requirement."
-        },
-        {
-          heading: "Compliance Mechanisms",
-          body: "We implement automated monitoring and manual review to ensure compliance. Violations will result in: (i) formal warning for minor infractions, (ii) temporary suspension for repeat offenses, (iii) permanent termination for serious violations. All cases include a documented appeal process."
+          heading: '4. Consequences',
+          body: 'Non-compliance will result in immediate account suspension and, if applicable, reporting to authorities.'
         }
       ],
-      contact: "Report use violations: support@cojauny.com | Subject: 'Acceptable Use Report'"
+      contact: 'Reports: support@cojauny.com'
     },
-
     faq: {
-      title: "Transparency Center: Legal Frequently Asked Questions",
-      intro: "Clear answers to the most common questions about our terms, privacy, and policies during Cojauny's beta phase.",
-      updatedAt: "Updated: November 17, 2025",
+      title: 'Legal FAQ',
+      intro: 'Common questions about legality and safety.',
+      updatedAt: 'December 4, 2025',
       categories: [
         {
-          name: "Privacy and Data",
+          name: 'Liability',
           questions: [
             {
-              question: "How do you handle my employees' or guests' data?",
-              answer: "We operate as data processors under client instructions. We provide pre-signed DPAs and tools for chain-of-consent management. You can request our standard DPA model at support@cojauny.com."
-            },
-            {
-              question: "What happens to my data if Cojauny is acquired?",
-              answer: "We will notify you 30 days in advance of any control change. Personal data will be transferred under equivalent terms or complete deletion will be offered. Beta user benefits will be maintained during the transition."
-            },
-            {
-              question: "Do you perform profiling or automated decision-making?",
-              answer: "We do not perform profiling with legal consequences nor fully automated decisions. The matching algorithm for trip sharing suggests but never automatically decides—it always requires human confirmation."
+              question: 'Is Cojauny responsible for events?',
+              answer: 'No. Cojauny is just the coordination tool. Organizers and attendees are responsible for their actions.'
             }
           ]
         },
         {
-          name: "Terms and Conditions",
+          name: 'Privacy',
           questions: [
             {
-              question: "Can I use Cojauny for external client events?",
-              answer: "During beta, only for internal testing. Commercial use with external clients will require an enterprise plan post-launch. Contact us for special case discussions."
+              question: 'Do you sell my data?',
+              answer: 'Never. Your privacy is our priority.'
             },
             {
-              question: "What technical support does the beta include?",
-              answer: "Community support via Discord, bug responses within 48h, and monthly feedback sessions. Priority 24/7 support will be available in enterprise plans post-launch."
-            },
-            {
-              question: "Can I export my data if I decide to cancel?",
-              answer: "Yes, we provide complete export in standard formats (JSON, CSV) within 72 hours. Data is maintained for 30 days post-cancellation to allow export, then permanently deleted."
-            }
-          ]
-        },
-        {
-          name: "Security and Compliance",
-          questions: [
-            {
-              question: "How do you handle authority requests?",
-              answer: "We only provide data in response to valid judicial requests. We notify affected users unless legally prohibited. We maintain transparency by reporting government requests annually."
-            },
-            {
-              question: "Where is data physically stored?",
-              answer: "We use Supabase with data centers in Frankfurt (Germany) for databases and Firebase Hosting in Belgium for frontend. All centers meet Tier III+ with ISO 27001, SOC 2 certifications."
+              question: 'How do I delete my account?',
+              answer: 'From app settings or by writing to support.'
             }
           ]
         }
       ],
-      contact: "Can't find your question? support@cojauny.com | Response within 24h"
+      contact: 'Support: support@cojauny.com'
     },
-
     subprocessors: {
-      title: "Subprocessor Registry: Transparency in the Data Chain",
-      intro: "Complete list of providers processing data on behalf of Cojauny, updated quarterly with information about their location and security measures.",
-      updatedAt: "Last update: November 17, 2025",
+      title: 'Subprocessors',
+      intro: 'External providers.',
+      updatedAt: 'December 4, 2025',
       providers: [
         {
-          name: "Supabase",
-          purpose: "PostgreSQL database, authentication and storage",
-          location: "Frankfurt, Germany (EU)",
-          security: "ISO 27001, SOC 2, GDPR Compliance, AES-256 encryption at rest"
+          name: 'Supabase',
+          purpose: 'Database',
+          location: 'Germany (EU)',
+          security: 'ISO 27001',
+          dataTypes: 'User data',
+          policyLink: 'https://supabase.com/privacy'
         },
         {
-          name: "Firebase Hosting (Google Cloud)",
-          purpose: "Web hosting, CDN and global frontend distribution",
-          location: "Belgium (EU) with global edge locations",
-          security: "ISO 27001, SOC 2, GDPR Compliance, SSL/TLS everywhere"
+          name: 'Firebase',
+          purpose: 'Infrastructure',
+          location: 'Belgium (EU)',
+          security: 'ISO 27001',
+          dataTypes: 'Technical metadata',
+          policyLink: 'https://firebase.google.com/support/privacy'
         },
         {
-          name: "Zoho Mail",
-          purpose: "Transactional communications, notifications and support",
-          location: "Netherlands (EU)",
-          security: "End-to-end encryption, GDPR Compliance, 2FA authentication"
+          name: 'Zoho',
+          purpose: 'Email',
+          location: 'EU',
+          security: 'GDPR',
+          dataTypes: 'Emails',
+          policyLink: 'https://www.zoho.com/privacy.html'
         },
         {
-          name: "Dynadot",
-          purpose: "DNS services and domain registration",
-          location: "United States",
-          security: "GDPR compliant through Standard Contractual Clauses, WHOIS privacy protection, DNSSEC, TLS encryption for DNS queries"
+          name: 'Dynadot',
+          purpose: 'Domains',
+          location: 'USA',
+          security: 'Privacy Shield',
+          dataTypes: 'Network data',
+          policyLink: 'https://www.dynadot.com/privacy_policy.html'
         }
       ],
-      contact: "Subprocessor inquiries: support@cojauny.com | Quarterly updates"
+      contact: 'Legal: support@cojauny.com'
     }
   },
-  
   de: {
     privacy: {
-      title: "Privacy-Architektur: Unser Engagement für den Datenschutz",
-      intro: "Bei Cojauny ist Datenschutz kein zusätzliches Feature – er ist das Fundament unserer Architektur. Diese Policy erläutert detailliert, wie wir jedes Byte an Informationen, das Sie uns während Ihrer Interaktion mit unserer Beta-Plattform anvertrauen, bewachen, verarbeiten und schützen.",
-      updatedAt: "Letzte architektonische Überprüfung: 17. November 2025",
+      title: 'Datenschutz- und Datensicherheitsrichtlinie',
+      intro: 'Bei Cojauny nehmen wir Ihre Privatsphäre sehr ernst. Diese Richtlinie erläutert, wie wir Ihre personenbezogenen Daten gemäß DSGVO verwalten.',
+      updatedAt: 'Letzte Aktualisierung: 4. Dezember 2025',
       sections: [
         {
-          heading: "Technische und operative Verantwortung",
-          body: "Während der Gründungsphase unserer endgültigen Handelsgesellschaft obliegt das Datenmanagement dem Gründungsteam von Cojauny (in diesem Kontext als 'Cojauny Team' bezeichnet). Wir operieren von Spanien aus unter einem Modell verteilter Verantwortung und unterhalten einen einzigen Kommunikationskanal: support@cojauny.com. Vollständige Registerdaten werden unmittelbar nach der rechtlichen Formalisierung in diesem Abschnitt veröffentlicht."
+          heading: '1. Verantwortlicher',
+          body: 'Verantwortlicher ist das Cojauny-Gründerteam ("Cojauny"), Spanien. Adresse für Benachrichtigungen: [Physische Adresse einfügen]. Kontakt DSB: support@cojauny.com.'
         },
         {
-          heading: "Daten-Taxonomie: Was wir tatsächlich erfassen",
-          body: "Unser Erfassungsschema folgt dem Prinzip extremer Minimierung: Wir verarbeiten nur freiwillig bereitgestellte Daten (Identifikation, Kontakt, organisatorischer Kontext und Kommunikation) zusammen mit anonymisierten Browser-Metriken (Interaktionsmuster, Sprachpräferenzen, nicht identifizierender technischer Fingerabdruck) und unverzichtbaren Sicherheitsprotokollen zur Gewährleistung der Systemintegrität."
+          heading: '2. Erfasste Datenkategorien',
+          body: 'Wir erfassen: (a) Identitätsdaten: Name, E-Mail, ID; (b) Technische Daten: IP, Gerät, Logs; (c) Nutzungsdaten: Interaktionen; (d) Standortdaten: Präzise Geolokalisierung (nur mit Einwilligung); (e) Eventdaten: Infos zu Events; (f) Nutzerinhalte: Fotos, Texte.'
         },
         {
-          heading: "Verarbeitung von Standortdaten",
-          body: "Während der Event-Koordination verarbeiten wir temporär Standortdaten mit End-to-End-Verschlüsselung. Diese Daten löschen sich 2 Stunden nach dem Event selbst und werden niemals dauerhaft auf unseren Servern gespeichert. Sie können diese Funktion jederzeit in den App-Einstellungen deaktivieren, ohne dass Kernfunktionalitäten beeinträchtigt werden."
+          heading: '3. Zweck und Rechtsgrundlage',
+          body: 'Wir verarbeiten für: (i) Leistungserbringung (Vertrag); (ii) Sicherheit (Berechtigtes Interesse); (iii) Kommunikation (Vertrag); (iv) Compliance (Gesetz); (v) Geolokalisierung (Einwilligung). Keine automatisierten Entscheidungen mit Rechtswirkung ohne Einwilligung.'
         },
         {
-          heading: "Zwecke und Rechtsgrundlagen: Die Mathematik des Datenschutzes",
-          body: "Jede Datenverarbeitung folgt einer präzisen Gleichung: Beta-Zugangsmanagement (Grundlage: ausdrückliche Einwilligung), Service-Optimierung durch Feedback (Grundlage: kalibriertes berechtigtes Interesse) und aggregierte Analyse für Produktentscheidungen (Grundlage: Einwilligung für analytische Cookies und proportionales berechtigtes Interesse für Systemstabilität und -sicherheit)."
+          heading: '4. Datenspeicherung',
+          body: 'Speicherung solange Konto aktiv. Geolokalisierung: Löschung nach 2 Std. Logs: 12 Monate. Nach Schließung Sperrung während Verjährungsfrist (bis 5 Jahre).'
         },
         {
-          heading: "Datenflüsse und digitale Grenzen",
-          body: "Wir implementieren ein Datenhoheitsmodell, bei dem Informationen nur über für Infrastruktur, Hosting, Kommunikation und Analytics essentielle Anbieter fließen. Für Extra-EWR-Übermittlungen wenden wir ein mehrschichtiges Protokoll an: Standardvertragsklauseln, verstärkt durch Folgenabschätzungen und ergänzende technische Maßnahmen. Den Verkauf oder die kommerzielle Weitergabe von Daten schließen wir kategorisch aus."
+          heading: '5. Empfänger und Übermittlungen',
+          body: 'Weitergabe an Provider (Hosting) unter Auftragsverarbeitungsverträgen. Transfers außerhalb EWR geschützt durch EU-Standardvertragsklauseln (SCC).'
         },
         {
-          heading: "Rechte Minderjähriger",
-          body: "Unser Service ist ausschließlich für Personen über 18 Jahre bestimmt. Wir erfassen wissentlich keine Informationen von Minderjährigen. Wenn wir feststellen, dass wir Daten eines Minderjährigen ohne elterliche Einwilligungsüberprüfung verarbeitet haben, löschen wir diese Informationen sofort aus unseren Systemen und benachrichtigen die zuständigen Behörden, sofern erforderlich."
+          heading: '6. Nutzerrechte',
+          body: 'Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch und Übertragbarkeit via support@cojauny.com. Beschwerderecht bei der AEPD.'
         },
         {
-          heading: "Aufbewahrungsdauer",
-          body: "Daten bestehen ausschließlich während des aktiven Beta-Zyklus, mit einem maximalen Horizont von 12 Monaten nach der letzten Interaktion. Diese Frist wird nur durch spezifische gesetzliche Verpflichtung oder vorzeitige Ausübung von Löschungsrechten unterbrochen. Standortdaten unterliegen einer maximalen Aufbewahrungsdauer von 2 Stunden."
+          heading: '7. Sicherheit',
+          body: 'TLS 1.2+, AES-256, Zugriffskontrollen und Audits. Meldung von Sicherheitsverletzungen binnen 72h bei Risiko.'
         },
         {
-          heading: "Rechte und Durchsetzungsmechanismen",
-          body: "Ihr Kontrollpanel umfasst Rechte auf Auskunft, Berichtigung, Widerspruch, Übertragbarkeit, Einschränkung und Löschung – ausübbar via support@cojauny.com mit Antwort innerhalb von 72 Geschäftsstunden. Die Einwilligung ist zu jedem Zeitpunkt des Nutzerwegs widerrufbar. Für Beschwerden ist die Spanische Datenschutzbehörde (www.aepd.es) die Aufsichtsbehörde."
-        },
-        {
-          heading: "Verletzungsmeldeverfahren",
-          body: "Im unwahrscheinlichen Fall eines Sicherheitsverstoßes, der personenbezogene Daten betrifft, benachrichtigen wir die zuständige Behörde innerhalb von 72 Stunden und betroffene Nutzer ohne unangemessene Verzögerung. Wir führen detaillierte Aufzeichnungen über alle Sicherheitsvorfälle für Audit- und Kontinuierliche-Verbesserungs-Zwecke."
-        },
-        {
-          heading: "Policy-Entwicklung: Proaktive Transparenz",
-          body: "Wir werden diese Policy architektonisch überprüfen bei wesentlichen Änderungen der Verarbeitung oder rechtlichen Formaliserung. Wir werden über Prioritätskanäle benachrichtigen und eine vollständige Versionierung an diesem Ort pflegen. Wesentliche Änderungen erfordern eine Neueinwilligung für Verarbeitungen, die auf dieser Rechtsgrundlage basieren."
+          heading: '8. App und Berechtigungen',
+          body: 'App fragt nach: Kamera/Galerie (Fotos), Standort (Koordination), Benachrichtigungen. Widerruf in Geräteeinstellungen möglich.'
         }
       ],
-      contact: "Technische Datenschutzanfragen: support@cojauny.com | Antwort innerhalb von ≤24h"
+      contact: 'DSB: support@cojauny.com | Antwort in 24h'
     },
-
     cookies: {
-      title: "Cookie-Protokoll: Technisches Management von Identifikatoren",
-      intro: "Dieses Protokoll erläutert die Technik hinter Cookies und analogen Technologien auf cojauny.com und fungiert als spezialisierter technischer Anhang zu unserer Haupt-Datenschutzrichtlinie.",
-      updatedAt: "Letzte technische Kalibrierung: 17. November 2025",
+      title: 'Cookie-Richtlinie',
+      intro: 'Nutzung von Cookies zur Verbesserung der Erfahrung.',
+      updatedAt: '4. Dezember 2025',
       sections: [
         {
-          heading: "Cookie-Anatomie: Über die Textdatei hinaus",
-          body: "Cookies operieren als Sitzungsstatusaufzeichnungen – kleine digitale Artefakte, die der Browser temporär speichert, um den operationellen Kontext zu erhalten. Wir erweitern dieses Konzept auf verwandte Technologien wie localStorage, sessionStorage und IndexedDB, stets nach derselben Minimierungsphilosophie."
+          heading: '1. Definition',
+          body: 'Wir nutzen Cookies und lokalen Speicher für Sitzungserhalt und Analyse.'
         },
         {
-          heading: "Technische Identifikator-Taxonomie",
-          body: "Wir klassifizieren Tracker in drei operationelle Kategorien: essentielle Cookies (Sitzungsverwaltung, Lastenausgleich, Sprachpräferenz), Präferenz-Cookies (Speicherung von Banner-Auswahlen) und analytische Cookies (Google Analytics 4 mit IP-Anonymisierung und Datenkürzung). Nicht-essentielle Kategorien erfordern ausdrückliche Einwilligung durch granulare Opt-in."
+          heading: '2. Arten',
+          body: '(a) Essenziell: Login/Sicherheit (ohne Einwilligung). (b) Analyse: Google Analytics (mit Einwilligung). (c) Funktional: Sprache.'
         },
         {
-          heading: "Erweiterte Tracking-Technologien",
-          body: "Über Cookies hinaus nutzen wir localStorage für Interface-Präferenzen und sessionStorage für temporäre Authentifizierungstokens. Wir implementieren nicht-identifizierenden technischen Fingerabdruck ausschließlich zur Betrugsprävention und Sicherheit, wobei diese Analyse vom Einwilligungsumfang ausgeschlossen ist, da sie für die Service-Integrität essentiell ist."
-        },
-        {
-          heading: "Einwilligungs-Engineering: Granulare Kontrolle",
-          body: "Verwalten Sie Ihre Präferenzen durch das initiale Banner oder das persistente Präferenz-Center. Alternativ konfigurieren Sie Ihren Browser (Chrome, Safari, Edge, Firefox) für erweitertes Management – was jedoch nicht-kritische Funktionalitäten beeinträchtigen kann. Wir implementieren Cookieless-Tracking für essentielle aggregierte Performance-Metriken."
-        },
-        {
-          heading: "Geolokalisierung und Datenpersistenz",
-          body: "Wir verarbeiten 92 % der Cookie-Daten innerhalb der EU. Für die verbleibenden 8 % (globale Anbieter) wenden wir Standardvertragsklauseln mit zusätzlicher Verschlüsselung und vierteljährlichen Folgenabschätzungen an. Analytische Identifikatoren haben eine maximale TTL von 14 Monaten mit automatischer Rotation und halbjährlicher Überprüfung."
-        },
-        {
-          heading: "Protokoll-Entwicklung",
-          body: "Wir werden dieses Protokoll technisch überprüfen bei Änderungen im Technologie-Stack oder Aufbewahrungsfristen. Wir führen ein öffentliches Changelog und benachrichtigen über wesentliche Änderungen per E-Mail an aktive Nutzer. Änderungen, die den Tracking-Umfang erweitern, erfordern neue Einwilligung."
+          heading: '3. Kontrolle',
+          body: 'Verwaltung über Banner oder App-Einstellungen. Blockieren essenzieller Cookies kann Nutzung verhindern.'
         }
       ],
-      contact: "Technische Cookie-Anfragen: support@cojauny.com | Betreff: 'Cookie-Protokoll'"
+      contact: 'Cookies: support@cojauny.com'
     },
-
     terms: {
-      title: "Vertragsrahmen: Nutzungsbedingungen für die Beta-Phase",
-      intro: "Dieser Rahmen regelt die rechtliche Beziehung zwischen dem Nutzer und Cojauny während der prä-kommerziellen Beta-Phase. Navigation und Übermittlung von Informationen stellen ausdrückliche Annahme dieser Bedingungen in ihrer gültigen Fassung dar.",
-      updatedAt: "Letzte vertragliche Aktualisierung: 17. November 2025",
+      title: 'Allgemeine Geschäftsbedingungen',
+      intro: 'Rechtlich bindender Vertrag zwischen Nutzer und Cojauny.',
+      updatedAt: '4. Dezember 2025',
       sections: [
         {
-          heading: "Operativer Umfang und Service-Zweck",
-          body: "Cojauny operiert als prä-kommerzielle Beta-Plattform, die bereitstellt: (i) Unternehmens- und technische Informationen, (ii) Early-Access-Management, (iii) strukturierten Feedback-Kanal. Der Service wird 'as-is' ohne kontinuierliche Verfügbarkeitsgarantien bereitgestellt und unterliegt während der Beta-Phase konstanter Evolution."
+          heading: '1. Art des Dienstes und Haftungsausschluss Offline',
+          body: 'Cojauny ist ein Tech-Tool zur Event-Koordination. Wir sind KEINE Event-Veranstalter und überwachen keine realen Interaktionen. Cojauny haftet NICHT für Sicherheit, Verhalten oder Legalität von Offline-Events. Teilnahme auf eigenes Risiko.'
         },
         {
-          heading: "Spezifische Beta-Phase-Bedingungen",
-          body: "Durch die Teilnahme an der Beta akzeptieren Sie: (i) potenzielle Service-Instabilität, (ii) eingeschränkte Features im Vergleich zur Finalversion, (iii) periodische Datenbank-Resets, (iv) aktive Kommunikation von Bugs und Feedback. Beta-Nutzer, die substanzielles Feedback liefern, können bei kommerziellem Launch Sonderkonditionen erhalten."
+          heading: '2. Lizenz für Nutzerinhalte',
+          body: 'Sie behalten das Eigentum an Ihren Posts. Mit dem Upload gewähren Sie Cojauny eine weltweite, nicht-exklusive, kostenlose Lizenz zur Nutzung, Anzeige und Verbreitung der Inhalte für den Betrieb des Dienstes.'
         },
         {
-          heading: "Eignungsvoraussetzungen und Datenqualität",
-          body: "Formular-Interaktion erfordert: Volljährigkeit (18+), Wahrhaftigkeit der bereitgestellten Informationen und explizite Autorisierung für Drittparteien-Daten. Wir untersagen kategorisch die Eingabe sensibler Daten (Gesundheit, Ideologie, Biometrie etc.), außer wenn strikt notwendig mit ordnungsgemäß dokumentierter Rechtsgrundlage."
+          heading: '3. Registrierung und Sicherheit',
+          body: 'Mindestalter 18. Sie haften für Ihr Passwort. Melden Sie unbefugten Zugriff sofort.'
         },
         {
-          heading: "Akzeptable Nutzungsrichtlinie",
-          body: "Der Rahmen schließt aus: illegale Aktivitäten, Infrastruktur-Interferenz, nicht-autorisierte Reverse Engineering, massives automatisiertes Scraping, Einführung von Schadcode und jede Aktivität, die die Erfahrung anderer Beta-Nutzer beeinträchtigt. Wir behalten uns das Recht auf sofortige Suspendierung bei Verstößen gegen das Protokoll vor."
+          heading: '4. Schadloshaltung',
+          body: 'Sie stellen Cojauny von allen Ansprüchen, Schäden oder Kosten frei, die entstehen aus: (a) Ihrem Vertragsbruch; (b) Verletzung Dritter; (c) Ihrem Verhalten bei Offline-Events.'
         },
         {
-          heading: "Kündigungs- und Suspendierungsrichtlinie",
-          body: "Wir behalten uns das Recht vor, den Zugang sofort zu suspendieren in Fällen von: böswilliger Nutzung, Verstoß gegen die Bedingungen, Aktivitäten, die die Sicherheit anderer Nutzer gefährden, oder Verhalten, das die Beta-Erfahrung beeinträchtigt. Wir benachrichtigen über Suspendierungen per E-Mail und bieten einen Einspruchsprozess innerhalb von 72 Geschäftsstunden."
+          heading: '5. Geistiges Eigentum der Plattform',
+          body: 'Software und Marken gehören exklusiv Cojauny. Reverse Engineering verboten.'
         },
         {
-          heading: "Geistiges Eigentum und beschränkte Lizenzen",
-          body: "Cojauny, zugrundeliegender Code, Interface-Designs, technische Dokumentation und Koordinationsmethodologien sind Eigentum des Cojauny Teams oder seiner Lizenzgeber. Eine beschränkte, nicht-exklusive Lizenz wird für persönliche Nutzung während der Beta gewährt. Reproduktion, Distribution oder abgeleitete Werke sind ohne schriftliche Autorisierung verboten."
+          heading: '6. Haftungsbeschränkung',
+          body: 'Soweit gesetzlich zulässig, haftet Cojauny nicht für indirekte Schäden oder physische Schäden bei Events. Gesamthaftung beschränkt auf Zahlungen der letzten 12 Monate oder 50€.'
         },
         {
-          heading: "Haftungsstruktur in Beta-Umgebung",
-          body: "Da wir in der Beta-Phase operieren, schließen wir Haftung aus für: (i) Service-Unterbrechungen, (ii) Inhalts-Ungenauigkeiten, (iii) indirekte Schäden oder entgangenen Gewinn, (iv) Datenverlust während geplanter Resets. Ihre Interaktion mit Drittparteien-Services unterliegt deren eigenen Bedingungen. Wir implementieren angemessene Sicherheitsmaßnahmen, garantieren aber keinen absoluten Schutz."
+          heading: '7. Änderung und Kündigung',
+          body: 'Änderungen mit Benachrichtigung. Sperrung bei Verstoß ohne Vorankündigung.'
         },
         {
-          heading: "Kontrolländerungen und Service-Kontinuität",
-          body: "Im Falle eines Unternehmenskontrollwechsels (Fusion, Akquisition oder Verkauf) benachrichtigen wir mit 30 Tagen Vorlauf. Daten werden unter denselben Datenschutzbedingungen transferiert oder komplette Löschung wird angeboten. Beta-Nutzer behalten ihre erworbenen Vorteile während des Übergangs."
-        },
-        {
-          heading: "Vertragliche Evolution und Gerichtsstand",
-          body: "Wir modifizieren diese Bedingungen, um widerzuspiegeln: (i) wesentliche Service-Änderungen, (ii) regulatorische Evolution, (iii) Übergang zur kommerziellen Phase. Wir benachrichtigen über relevante Änderungen per E-Mail und pflegen öffentliche Versionierung. Die Beziehung unterliegt spanischem Recht mit ausschließlichem Gerichtsstand in Gerichten der Hauptstadt Madrid."
+          heading: '8. Recht und Gerichtsstand',
+          body: 'Spanisches Recht. Gerichtsstand: Madrid, Spanien.'
         }
       ],
-      contact: "Rechtliche Kommunikation: support@cojauny.com | Betreff: 'Rechtliche Angelegenheit' | Antwort innerhalb von 72 Geschäftsstunden"
+      contact: 'Recht: support@cojauny.com'
     },
     acceptableUse: {
-      title: "Richtlinie für akzeptable Nutzung: Grenzen und Verantwortlichkeiten",
-      intro: "Diese Richtlinie definiert die Parameter für die verantwortungsvolle Nutzung von Cojauny während der Beta-Phase, stellt klare Erwartungen auf und schützt die Integrität unserer Plattform und Community.",
-      updatedAt: "Letzte Überprüfung: 17. November 2025",
+      title: 'Richtlinie für akzeptable Nutzung',
+      intro: 'Sicherheitsregeln für die Community.',
+      updatedAt: '4. Dezember 2025',
       sections: [
         {
-          heading: "Grenzen der kommerziellen Nutzung",
-          body: "Während der Beta-Phase wird der Service ausschließlich für interne Bewertung und Testing angeboten. Kommerzielle Nutzung für Produktionsbetrieb ist ohne ausdrückliche Autorisierung verboten. Betriebslimit von 50 koordinierten Events monatlich pro Organisation während der Beta. Kommerzielle Nutzung erfordert Migration zum Enterprise-Plan nach dem Launch."
+          heading: '1. Verbotenes Verhalten',
+          body: 'Verboten: Belästigung, Hassrede, explizite sexuelle Inhalte, illegale Aktivitäten, Spam.'
         },
         {
-          heading: "Inhalts- und Verhaltensbeschränkungen",
-          body: "Verboten ist die Nutzung der Plattform zur Koordination von Events, die beinhalten: illegale Aktivitäten, anstößige Inhalte, Belästigung, Diskriminierung, Verletzung von Drittanbieterrechten oder jede Aktivität, die dem Ruf von Cojauny schaden könnte. Wir implementieren proaktive Moderation und skalierbare Meldemechanismen."
+          heading: '2. Event-Sicherheit',
+          body: 'Verboten: Organisation von Events, die Sicherheit gefährden oder Gesetze verletzen.'
         },
         {
-          heading: "Technische und Leistungsgrenzen",
-          body: "Jeder Beta-Organisation wird zugewiesen: 10GB Gesamtspeicher, 1000 monatliche Benachrichtigungen und maximale Verarbeitung von 100 gleichzeitigen Benutzern pro Event. Das Überschreiten dieser Grenzen kann zu automatischem Throttling führen oder eine Erweiterungsgenehmigung erfordern."
+          heading: '3. Technische Integrität',
+          body: 'Scraping, malware, DDoS-Attacken verboten.'
         },
         {
-          heading: "Verantwortlichkeiten der Beta-Nutzer",
-          body: "Als Beta-Nutzer akzeptieren Sie: (i) Meldung von Bugs innerhalb von 48 Stunden nach Erkennung, (ii) Teilnahme an mindestens einer monatlichen Feedback-Session, (iii) Vertraulichkeit über nicht-öffentliche Features, (iv) keine Durchführung von öffentlichem Benchmarking gegen Wettbewerber während der Beta-Phase."
-        },
-        {
-          heading: "Eigentum an generierten Daten",
-          body: "Nutzer behalten das vollständige Eigentum an ihren Event-Daten und Inhalten. Cojauny behält sich das Recht vor, anonymisierte und aggregierte Daten zur Produktverbesserung zu nutzen, wird jedoch niemals auf spezifische Inhalte ohne ausdrückliche Einwilligung zugreifen, außer bei gesetzlicher Anforderung."
-        },
-        {
-          heading: "Compliance-Mechanismen",
-          body: "Wir implementieren automatisiertes Monitoring und manuelle Überprüfung zur Compliance-Sicherung. Verstöße führen zu: (i) formeller Warnung bei geringfügigen Verstößen, (ii) temporärer Suspendierung bei Wiederholungstätern, (iii) dauerhafter Kündigung bei schwerwiegenden Verstößen. Alle Fälle beinhalten einen dokumentierten Beschwerdeprozess."
+          heading: '4. Konsequenzen',
+          body: 'Verstoß führt zu sofortiger Sperrung und ggf. Anzeige.'
         }
       ],
-      contact: "Nutzungsverstöße melden: support@cojauny.com | Betreff: 'Akzeptable Nutzung Melden'"
-    },
-
-    subprocessors: {
-      title: "Auftragsverarbeiter-Register: Transparenz in der Datenkette",
-      intro: "Vollständige Liste der Anbieter, die Daten im Namen von Cojauny verarbeiten, vierteljährlich aktualisiert mit Informationen zu ihrem Standort und Sicherheitsmaßnahmen.",
-      updatedAt: "Letzte Aktualisierung: 17. November 2025",
-      providers: [
-        {
-          name: "Supabase",
-          purpose: "PostgreSQL-Datenbank, Authentifizierung und Speicherung",
-          location: "Frankfurt, Deutschland (EU)",
-          security: "ISO 27001, SOC 2, DSGVO-Konformität, AES-256-Verschlüsselung im Ruhezustand"
-        },
-        {
-          name: "Firebase Hosting (Google Cloud)",
-          purpose: "Web-Hosting, CDN und globale Frontend-Verteilung",
-          location: "Belgien (EU) mit globalen Edge-Standorten",
-          security: "ISO 27001, SOC 2, DSGVO-Konformität, SSL/TLS überall"
-        },
-        {
-          name: "Zoho Mail",
-          purpose: "Transaktionale Kommunikation, Benachrichtigungen und Support",
-          location: "Niederlande (EU)",
-          security: "End-to-End-Verschlüsselung, DSGVO-Konformität, 2FA-Authentifizierung"
-        },
-        {
-          name: "Dynadot",
-          purpose: "DNS-Dienste und Domain-Registrierung",
-          location: "Vereinigte Staaten",
-          security: "DSGVO-konform durch Standardvertragsklauseln, WHOIS-Datenschutz, DNSSEC, TLS-Verschlüsselung für DNS-Abfragen"
-        }
-      ],
-      contact: "Anfragen zu Auftragsverarbeitern: support@cojauny.com | Vierteljährliche Updates"
+      contact: 'Meldungen: support@cojauny.com'
     },
     faq: {
-      title: "Transparenz-Center: Häufig gestellte rechtliche Fragen",
-      intro: "Klar verständliche Antworten auf die häufigsten Fragen zu unseren Nutzungsbedingungen, Datenschutz und Richtlinien während der Cojauny Beta-Phase.",
-      updatedAt: "Aktualisiert: 17. November 2025",
+      title: 'Rechtliche FAQ',
+      intro: 'Häufige Fragen.',
+      updatedAt: '4. Dezember 2025',
       categories: [
         {
-          name: "Privatsphäre und Daten",
+          name: 'Haftung',
           questions: [
             {
-              question: "Wie handhaben Sie die Daten meiner Mitarbeiter oder Gäste?",
-              answer: "Wir agieren als Auftragsverarbeiter gemäß Kundenanweisungen. Wir stellen vorunterschriebene AV-Verträge (DPAs) und Tools für die Einwilligungsmanagement-Kette bereit. Sie können unser standard DPA-Modell unter support@cojauny.com anfordern."
-            },
-            {
-              question: "Was passiert mit meinen Daten, wenn Cojauny übernommen wird?",
-              answer: "Wir werden Sie 30 Tage im Voraus über etwaige Kontrolländerungen informieren. Personenbezogene Daten werden unter gleichwertigen Bedingungen übertragen oder eine vollständige Löschoption wird angeboten. Beta-Nutzer-Vorteile werden während des Übergangs beibehalten."
-            },
-            {
-              question: "Führen Sie Profiling oder automatisierte Entscheidungsfindung durch?",
-              answer: "Wir führen kein Profiling mit rechtlichen Konsequenzen durch und treffen keine vollständig automatisierten Entscheidungen. Der Matching-Algorithmus für die Reiseteilung schlägt vor, entscheidet aber niemals automatisch – er erfordert stets menschliche Bestätigung."
+              question: 'Haftet Cojauny für Events?',
+              answer: 'Nein. Wir sind nur das Tool. Organisatoren haften für ihre Taten.'
             }
           ]
         },
         {
-          name: "Nutzungsbedingungen",
+          name: 'Datenschutz',
           questions: [
             {
-              question: "Kann ich Cojauny für Events externer Kunden nutzen?",
-              answer: "Während der Beta nur für internes Testing. Kommerzielle Nutzung mit externen Kunden erfordert einen Enterprise-Plan nach dem Launch. Kontaktieren Sie uns für die Besprechung von Sonderfällen."
+              question: 'Verkaufen Sie Daten?',
+              answer: 'Niemals.'
             },
             {
-              question: "Welchen technischen Support beinhaltet die Beta?",
-              answer: "Community-Support via Discord, Bug-Antworten innerhalb von 48h und monatliche Feedback-Sessions. Prioritäts-Support 24/7 wird in Enterprise-Plänen nach dem Launch verfügbar sein."
-            },
-            {
-              question: "Kann ich meine Daten exportieren, wenn ich kündige?",
-              answer: "Ja, wir bieten vollständigen Export in Standardformaten (JSON, CSV) innerhalb von 72 Stunden an. Daten werden 30 Tage nach Kündigung aufbewahrt, um Exporte zu ermöglichen, dann erfolgt permanente Löschung."
-            }
-          ]
-        },
-        {
-          name: "Sicherheit und Compliance",
-          questions: [
-            {
-              question: "Wie gehen Sie mit Behördenanfragen um?",
-              answer: "Wir stellen Daten nur als Antwort auf gültige gerichtliche Anfragen bereit. Wir benachrichtigen betroffene Nutzer, sofern nicht gesetzlich verboten. Wir wahren Transparenz durch jährliche Berichterstattung über staatliche Anfragen."
-            },
-            {
-              question: "Wo werden Daten physisch gespeichert?",
-              answer: "Wir nutzen Supabase mit Rechenzentren in Frankfurt (Deutschland) für Datenbanken und Firebase Hosting in Belgien für das Frontend. Alle Zentren erfüllen Tier III+ mit ISO 27001, SOC 2 Zertifizierungen."
+              question: 'Konto löschen?',
+              answer: 'Über App-Einstellungen oder Support.'
             }
           ]
         }
       ],
-      contact: "Ihre Frage nicht gefunden? support@cojauny.com | Antwort innerhalb von 24h"
+      contact: 'Support: support@cojauny.com'
+    },
+    subprocessors: {
+      title: 'Unterauftragsverarbeiter',
+      intro: 'Externe Anbieter.',
+      updatedAt: '4. Dezember 2025',
+      providers: [
+        {
+          name: 'Supabase',
+          purpose: 'Datenbank',
+          location: 'Deutschland (EU)',
+          security: 'ISO 27001',
+          dataTypes: 'Nutzerdaten',
+          policyLink: 'https://supabase.com/privacy'
+        },
+        {
+          name: 'Firebase',
+          purpose: 'Infrastruktur',
+          location: 'Belgien (EU)',
+          security: 'ISO 27001',
+          dataTypes: 'Metadaten',
+          policyLink: 'https://firebase.google.com/support/privacy'
+        },
+        {
+          name: 'Zoho',
+          purpose: 'E-Mail',
+          location: 'EU',
+          security: 'DSGVO',
+          dataTypes: 'E-Mails',
+          policyLink: 'https://www.zoho.com/privacy.html'
+        },
+        {
+          name: 'Dynadot',
+          purpose: 'Domains',
+          location: 'USA',
+          security: 'Privacy Shield',
+          dataTypes: 'Netzwerkdaten',
+          policyLink: 'https://www.dynadot.com/privacy_policy.html'
+        }
+      ],
+      contact: 'Recht: support@cojauny.com'
     }
   },
-
   fr: {
     privacy: {
-      title: "Architecture de Confidentialité : Notre Engagement pour la Protection des Données",
-      intro: "Chez Cojauny, la confidentialité n'est pas une fonctionnalité supplémentaire—c'est le fondement de notre architecture. Cette politique détaille méticuleusement comment nous conservons, traitons et protégeons chaque octet d'information que vous nous confiez lors de votre interaction avec notre plateforme bêta.",
-      updatedAt: "Dernière revue architecturale : 17 novembre 2025",
+      title: 'Politique de Confidentialité',
+      intro: 'Chez Cojauny, nous prenons votre vie privée au sérieux. Cette politique détaille la gestion de vos données selon le RGPD.',
+      updatedAt: 'Dernière mise à jour : 4 décembre 2025',
       sections: [
         {
-          heading: "Responsabilité Technique et Opérationnelle",
-          body: "Pendant la phase de constitution de notre entité commerciale définitive, la gestion des données incombe à l'équipe fondatrice de Cojauny (désignée Équipe Cojauny dans ce contexte). Nous opérons depuis l'Espagne sous un modèle de responsabilité distribuée, en maintenant un canal unique de communication : support@cojauny.com. Les données d'enregistrement complètes seront publiées dans cette section immédiatement après leur formalisation juridique."
+          heading: '1. Responsable du Traitement',
+          body: 'Responsable : Équipe Fondatrice Cojauny ("Cojauny"), Espagne. Adresse : [Insérer Adresse Physique]. Contact DPO : support@cojauny.com.'
         },
         {
-          heading: "Taxonomie des Données : Ce que Nous Collectons Réellement",
-          body: "Notre schéma de collecte suit le principe de minimisation extrême : nous traitons uniquement les données fournies volontairement (identification, contact, contexte organisationnel et communications) ainsi que des métriques de navigation anonymisées (modèles d'interaction, préférences linguistiques, empreinte technique non identificative) et des journaux de sécurité indispensables pour garantir l'intégrité du système."
+          heading: '2. Données Collectées',
+          body: 'Nous collectons : (a) Identité : Nom, email, ID ; (b) Technique : IP, appareil, logs ; (c) Usage : Interactions ; (d) Localisation : Précise (avec consentement) ; (e) Événements : Infos événements ; (f) Contenu : Photos, textes.'
         },
         {
-          heading: "Traitement des Données de Localisation",
-          body: "Pendant la coordination d'événements, nous traitons temporairement les données de localisation avec chiffrement de bout en bout. Ces données s'autodétruisent 2 heures après l'événement et ne sont jamais stockées de façon permanente sur nos serveurs. Vous pouvez désactiver cette fonctionnalité à tout moment depuis les paramètres de l'application sans affecter les fonctionnalités principales."
+          heading: '3. Finalité et Base Légale',
+          body: 'Traitement pour : (i) Service (Contrat) ; (ii) Sécurité (Intérêt légitime) ; (iii) Comms (Contrat) ; (iv) Légal (Obligation) ; (v) Localisation (Consentement). Pas de décision automatisée sans consentement.'
         },
         {
-          heading: "Finalités et Bases Juridiques : Les Mathématiques de la Confidentialité",
-          body: "Chaque traitement de données répond à une équation précise : gestion d'accès bêta (base : consentement explicite), optimisation du service par feedback (base : intérêt légitime calibré) et analyse agrégée pour les décisions produit (base : consentement pour les cookies analytiques et intérêt légitime proportionnel pour la stabilité et sécurité du système)."
+          heading: '4. Conservation',
+          body: 'Tant que le compte est actif. Localisation : supprimée après 2h. Logs : 12 mois. Après fermeture, blocage durant prescription (5 ans).'
         },
         {
-          heading: "Flux de Données et Frontières Numériques",
-          body: "Nous implémentons un modèle de souveraineté des données où l'information ne transite que par des fournisseurs essentiels pour l'infrastructure, l'hébergement, les communications et l'analytique. Pour les transferts extra-EEE, nous appliquons un protocole multicouche : Clauses Contractuelles Types renforcées par des analyses d'impact et mesures techniques supplémentaires. Nous excluons catégoriquement la vente ou cession commerciale de données."
+          heading: '5. Destinataires et Transferts',
+          body: 'Partage avec prestataires (hébergement) sous contrat. Transferts hors EEE protégés par Clauses Contractuelles Types (CCT).'
         },
         {
-          heading: "Droits des Mineurs",
-          body: "Notre service s'adresse exclusivement aux personnes majeures de 18 ans. Nous ne collectons pas sciemment d'informations de mineurs. Si nous découvrons avoir traité des données d'un mineur sans vérification du consentement parental, nous supprimerons immédiatement ces informations de nos systèmes et notifierons les autorités compétentes lorsque requis."
+          heading: '6. Droits',
+          body: 'Accès, rectification, suppression, limitation, opposition, portabilité via support@cojauny.com. Réclamation auprès de l\'AEPD.'
         },
         {
-          heading: "Chronométrie de la Conservation",
-          body: "Les données persistent exclusivement pendant le cycle bêta actif, avec un horizon maximum de 12 mois post-dernière interaction. Ce délai n'est interrompu que par mandat légal spécifique ou exercice anticipé des droits de suppression. Les données de localisation ont une rétention maximale de 2 heures."
+          heading: '7. Sécurité',
+          body: 'TLS 1.2+, AES-256, contrôles d\'accès, audits. Notification de brèche sous 72h si risque.'
         },
         {
-          heading: "Droits et Mécanismes d'Exécution",
-          body: "Votre panneau de contrôle inclut les droits d'accès, de rectification, d'opposition, de portabilité, de limitation et de suppression—exerçables via support@cojauny.com avec réponse sous 72 heures ouvrables. Le consentement est révocable à tout moment du parcours. Pour les réclamations, l'Agence Espagnole de Protection des Données (www.aepd.es) agit comme autorité de supervision."
-        },
-        {
-          heading: "Protocole de Notification de Violation",
-          body: "Dans l'éventualité improbable d'une violation de sécurité affectant des données personnelles, nous notifierons l'autorité compétente sous 72 heures et les utilisateurs concernés sans retard injustifié. Nous maintenons des registres détaillés de tous les incidents de sécurité pour audit et amélioration continue."
-        },
-        {
-          heading: "Évolution de la Politique : Transparence Proactive",
-          body: "Nous réviserons architecturalement cette politique face à des changements substantiels dans le traitement ou la formalisation juridique. Nous notifierons via des canaux prioritaires et maintiendrons un versionnage complet à cet emplacement. Les changements substantiels requerront un re-consentement pour les traitements basés sur cette base juridique."
+          heading: '8. App et Permissions',
+          body: 'L\'app demande : Caméra/Galerie (photos), Localisation (coordination), Notifications. Révocable dans les réglages.'
         }
       ],
-      contact: "Pour les questions techniques sur la confidentialité : support@cojauny.com | Réponse sous ≤24h"
+      contact: 'DPO : support@cojauny.com | Réponse sous 24h'
     },
-
     cookies: {
-      title: "Protocole des Cookies : Gestion Technique des Identifiants",
-      intro: "Ce protocole détaille l'ingénierie derrière les cookies et technologies analogues sur cojauny.com, fonctionnant comme annexe technique spécialisée de notre politique de confidentialité principale.",
-      updatedAt: "Dernier calibrage technique : 17 novembre 2025",
+      title: 'Politique de Cookies',
+      intro: 'Usage de cookies pour améliorer l\'expérience.',
+      updatedAt: '4 décembre 2025',
       sections: [
         {
-          heading: "Anatomie des Cookies : Au-delà du Fichier Texte",
-          body: "Les cookies opèrent comme des registres d'état de session—petits artefacts numériques que le navigateur stocke temporairement pour préserver le contexte opérationnel. Nous étendons ce concept aux technologies sœurs comme localStorage, sessionStorage et IndexedDB, toujours avec la même philosophie de minimisation."
+          heading: '1. Définition',
+          body: 'Cookies et stockage local pour session et analyse.'
         },
         {
-          heading: "Taxonomie des Identifiants Techniques",
-          body: "Nous classons les traceurs en trois catégories opérationnelles : cookies essentiels (gestion de session, répartition de charge, préférence linguistique), cookies de préférences (mémorisation des sélections dans les bannières) et cookies analytiques (Google Analytics 4 avec anonymisation IP et troncation des données). Les catégories non essentielles requièrent un consentement explicite via opt-in granulaire."
+          heading: '2. Types',
+          body: '(a) Essentiels : Login/Sécurité (sans consentement). (b) Analytique : Google Analytics (avec consentement). (c) Fonctionnel : Langue.'
         },
         {
-          heading: "Technologies de Tracking Avancées",
-          body: "Au-delà des cookies, nous utilisons localStorage pour les préférences d'interface et sessionStorage pour les jetons d'authentification temporaires. Nous implémentons l'empreinte technique non identificative uniquement pour la prévention de fraude et la sécurité, excluant cette analyse du champ de consentement car essentielle pour l'intégrité du service."
-        },
-        {
-          heading: "Ingénierie du Consentement : Contrôle Granulaire",
-          body: "Gérez vos préférences via la bannière initiale ou le centre de préférences persistant. Configurez alternativement votre navigateur (Chrome, Safari, Edge, Firefox) pour une gestion avancée—bien que cela puisse impacter les fonctionnalités non critiques. Nous implémentons le tracking sans cookies pour les métriques agrégées essentielles de performance."
-        },
-        {
-          heading: "Géolocalisation et Persistance des Données",
-          body: "Nous traitons 92% des données de cookies dans l'UE. Pour les 8% restants (fournisseurs globaux), nous appliquons des Clauses Contractuelles Types avec chiffrement supplémentaire et évaluations d'impact trimestrielles. Les identifiants analytiques ont une TTL maximale de 14 mois avec rotation automatique et revue semestrielle."
-        },
-        {
-          heading: "Évolution du Protocole",
-          body: "Nous réviserons techniquement ce protocole face à des changements dans la stack technologique ou les périodes de rétention. Nous maintiendrons un changelog public et notifierons les changements substantiels par email aux utilisateurs actifs. Les changements étendant le champ du tracking requerront un nouveau consentement."
+          heading: '3. Contrôle',
+          body: 'Gestion via bannière ou réglages. Bloquer les essentiels peut empêcher l\'usage.'
         }
       ],
-      contact: "Questions techniques sur les cookies : support@cojauny.com | Spécifier Protocole Cookies dans l'objet"
+      contact: 'Cookies : support@cojauny.com'
     },
-
     terms: {
-      title: "Cadre Contractuel : Conditions de Service pour la Phase Bêta",
-      intro: "Ce cadre régit la relation juridique entre l'utilisateur et Cojauny pendant la phase bêta pré-commerciale. La navigation et l'envoi d'information constituent une acceptation expresse de ces conditions dans leur version en vigueur.",
-      updatedAt: "Dernière mise à jour contractuelle : 17 novembre 2025",
+      title: 'Conditions Générales d\'Utilisation',
+      intro: 'Contrat légal entre l\'Utilisateur et Cojauny.',
+      updatedAt: '4 décembre 2025',
       sections: [
         {
-          heading: "Champ Opérationnel et Objet du Service",
-          body: "Cojauny opère comme plateforme bêta pré-commerciale fournissant : (i) informations corporatives et techniques, (ii) gestion d'accès anticipé, (iii) canal de feedback structuré. Le service est fourni tel quel sans garanties de disponibilité continue et sujet à évolution constante pendant la période bêta."
+          heading: '1. Nature du Service et Non-Responsabilité Offline',
+          body: 'Cojauny est un outil tech de coordination. Nous ne sommes PAS organisateurs d\'événements et ne surveillons pas le réel. Cojauny n\'est PAS responsable de la sécurité ou légalité des événements offline. Participation à vos risques.'
         },
         {
-          heading: "Conditions Spécifiques de la Phase Bêta",
-          body: "En participant à la bêta, vous acceptez : (i) instabilité potentielle du service, (ii) fonctionnalités limitées par rapport à la version finale, (iii) réinitialisations périodiques de la base de données, (iv) communication active de bugs et feedback. Les utilisateurs bêta fournissant un feedback substantiel pourront accéder à des conditions spéciales au lancement commercial."
+          heading: '2. Licence Contenu Utilisateur',
+          body: 'Vous gardez la propriété de vos posts. En publiant, vous accordez à Cojauny une licence mondiale, non-exclusive, gratuite pour utiliser, afficher et distribuer le contenu pour le service.'
         },
         {
-          heading: "Exigences d'Éligibilité et Qualité des Données",
-          body: "L'interaction avec les formulaires requiert : majorité vérifiable (18+), véracité des informations fournies et autorisation explicite pour les données tierces. Nous prohibons catégoriquement l'introduction de données sensibles (santé, idéologie, biométrie, etc.) sauf quand strictement nécessaire avec base légale adéquate documentée."
+          heading: '3. Inscription et Sécurité',
+          body: '18 ans min. Vous êtes responsable de votre mot de passe. Signalez tout accès non autorisé.'
         },
         {
-          heading: "Protocole d'Usage Acceptable",
-          body: "Le cadre exclut : activités illicites, interférence avec l'infrastructure, ingénierie inverse non autorisée, scraping automatisé massif, introduction de code malveillant et toute activité compromettant l'expérience d'autres utilisateurs bêta. Nous réservons le droit de suspension immédiate en cas de violation de ce protocole."
+          heading: '4. Indemnisation',
+          body: 'Vous acceptez d\'indemniser Cojauny contre toute réclamation ou dommage découlant de : (a) votre violation des termes ; (b) violation de droits tiers ; (c) votre conduite aux événements.'
         },
         {
-          heading: "Politique d'Annulation et de Suspension",
-          body: "Nous réservons le droit de suspendre l'accès immédiatement en cas de : usage malveillant, violation des conditions, activités compromettant la sécurité d'autres utilisateurs ou comportement dégradant l'expérience bêta. Nous notifierons la suspension par email et offrirons un processus d'appel sous 72 heures ouvrables."
+          heading: '5. Propriété Intellectuelle Plateforme',
+          body: 'Logiciel et marques sont propriété exclusive de Cojauny. Ingénierie inverse interdite.'
         },
         {
-          heading: "Propriété Intellectuelle et Licences Limitées",
-          body: "Cojauny, le code sous-jacent, designs d'interface, documentation technique et méthodologies de coordination sont propriété de l'Équipe Cojauny ou de ses concédants. Une licence limitée non exclusive est concédée pour usage personnel pendant la bêta. Reproduction, distribution ou création d'œuvres dérivées interdites sans autorisation écrite."
+          heading: '6. Limitation de Responsabilité',
+          body: 'Dans la limite légale, Cojauny ne répond pas des dommages indirects ou physiques liés aux événements. Responsabilité limitée aux paiements des 12 derniers mois ou 50€.'
         },
         {
-          heading: "Structure de Responsabilité en Environnement Bêta",
-          body: "En opérant en phase bêta, nous excluons la responsabilité pour : (i) interruptions de service, (ii) inexactitudes dans le contenu, (iii) dommages indirects ou perte de profit, (iv) perte de données pendant les réinitialisations programmées. Votre interaction avec des services tiers est régie par leurs propres conditions. Nous implémentons des mesures de sécurité raisonnables mais ne garantissons pas une protection absolue."
+          heading: '7. Modification et Résiliation',
+          body: 'Modifications avec préavis. Suspension immédiate si violation.'
         },
         {
-          heading: "Changements de Contrôle et Continuité du Service",
-          body: "En cas de changement de contrôle corporatif (fusion, acquisition ou vente), nous notifierons avec 30 jours d'avance. Les données seront transférées sous les mêmes conditions de confidentialité ou l'option de suppression complète sera offerte. Les utilisateurs bêta maintiendront leurs bénéfices acquis pendant la transition."
-        },
-        {
-          heading: "Évolution Contractuelle et Juridiction",
-          body: "Nous modifierons ces conditions pour refléter : (i) changements substantiels dans le service, (ii) évolutions réglementaires, (iii) transition vers la phase commerciale. Nous notifierons les changements pertinents par email et maintiendrons un versionnage public. La relation est régie par la législation espagnole avec juridiction exclusive dans les tribunaux de Madrid capitale."
+          heading: '8. Loi et Juridiction',
+          body: 'Loi espagnole. Tribunaux de Madrid, Espagne.'
         }
       ],
-      contact: "Communications légales : support@cojauny.com | Spécifier Sujet Légal dans l'objet | Réponse sous 72h ouvrables"
+      contact: 'Juridique : support@cojauny.com'
     },
-
     acceptableUse: {
-      title: "Politique d'Usage Acceptable : Limites et Responsabilités",
-      intro: "Cette politique définit les paramètres d'usage responsable de Cojauny pendant la phase bêta, établissant des attentes claires et protégeant l'intégrité de notre plateforme et communauté.",
-      updatedAt: "Dernière revue : 17 novembre 2025",
+      title: 'Politique d\'Usage Acceptable',
+      intro: 'Règles de sécurité pour la communauté.',
+      updatedAt: '4 décembre 2025',
       sections: [
         {
-          heading: "Limites d'Usage Commercial",
-          body: "Pendant la phase bêta, le service est offert exclusivement pour évaluation interne et testing. Usage commercial pour opérations en production interdit sans autorisation expresse. Limite opérationnelle de 50 événements coordonnés mensuels par organisation pendant la bêta. L'usage commercial requerra une migration vers le plan entreprise post-lancement."
+          heading: '1. Comportement Interdit',
+          body: 'Interdit : Harcèlement, haine, contenu sexuel, activités illégales, spam.'
         },
         {
-          heading: "Restrictions de Contenu et de Conduite",
-          body: "Interdit d'utiliser la plateforme pour coordonner des événements impliquant : activités illégales, contenu offensant, harcèlement, discrimination, violation de droits tiers ou toute activité pouvant nuire à la réputation de Cojauny. Nous implémentons une modération proactive et des mécanismes de signalement évolutifs."
+          heading: '2. Sécurité Événements',
+          body: 'Interdit : Organiser des événements dangereux ou illégaux.'
         },
         {
-          heading: "Limites Techniques et de Performance",
-          body: "Chaque organisation bêta dispose de : 10GB de stockage total, 1000 notifications mensuelles et traitement maximum de 100 utilisateurs simultanés par événement. Dépasser ces limites peut résulter en un throttling automatique ou requérir une approbation d'expansion."
+          heading: '3. Intégrité Technique',
+          body: 'Scraping, malware, DDoS interdits.'
         },
         {
-          heading: "Responsabilités de l'Utilisateur Bêta",
-          body: "En tant qu'utilisateur bêta, vous acceptez : (i) reporter les bugs sous 48 heures de détection, (ii) participer à au moins une session de feedback mensuelle, (iii) maintenir la confidentialité sur les caractéristiques non publiques, (iv) ne pas réaliser de benchmarking public contre des concurrents pendant la phase bêta."
-        },
-        {
-          heading: "Propriété des Données Générées",
-          body: "Les utilisateurs conservent la propriété complète de leurs données d'événement et contenu. Cojauny conserve le droit d'utiliser des données anonymisées et agrégées pour l'amélioration du produit, mais n'accédera jamais au contenu spécifique sans consentement explicite sauf requête légale."
-        },
-        {
-          heading: "Mécanismes de Conformité",
-          body: "Nous implémentons un monitoring automatisé et une revue manuelle pour assurer la conformité. Les violations résulteront en : (i) avertissement formel pour infractions mineures, (ii) suspension temporaire pour récidives, (iii) résiliation permanente pour violations graves. Tous les cas incluent un processus d'appel documenté."
+          heading: '4. Conséquences',
+          body: 'Violation entraîne suspension immédiate et signalement aux autorités.'
         }
       ],
-      contact: "Reporter des violations d'usage : support@cojauny.com | Objet : Report Usage Acceptable"
+      contact: 'Signalement : support@cojauny.com'
     },
-
     faq: {
-      title: "Centre de Transparence : Questions Légales Fréquentes",
-      intro: "Réponses claires aux questions les plus courantes sur nos conditions, confidentialité et politiques pendant la phase bêta de Cojauny.",
-      updatedAt: "Mis à jour : 17 novembre 2025",
+      title: 'FAQ Juridique',
+      intro: 'Questions fréquentes.',
+      updatedAt: '4 décembre 2025',
       categories: [
         {
-          name: "Confidentialité et Données",
+          name: 'Responsabilité',
           questions: [
             {
-              question: "Comment gérez-vous les données de mes employés ou invités ?",
-              answer: "Nous opérons comme sous-traitants sous les instructions du client. Nous fournissons des DPAs pré-signés et des outils pour la gestion du consentement en chaîne. Vous pouvez demander notre modèle DPA standard à support@cojauny.com."
-            },
-            {
-              question: "Que advient-il de mes données si Cojauny est acquise ?",
-              answer: "Nous notifierons avec 30 jours d'avance tout changement de contrôle. Les données personnelles seront transférées sous des termes équivalents ou l'option de suppression complète sera offerte. Les bénéfices des utilisateurs bêta seront maintenus pendant la transition."
-            },
-            {
-              question: "Effectuez-vous du profilage ou de la prise de décision automatisée ?",
-              answer: "Nous n'effectuons pas de profilage avec conséquences légales ni de décisions entièrement automatisées. L'algorithme de matching pour le partage de trajets suggère mais ne décide jamais automatiquement—requiert toujours une confirmation humaine."
+              question: 'Cojauny est-il responsable des événements ?',
+              answer: 'Non. Nous sommes l\'outil. Les organisateurs sont responsables.'
             }
           ]
         },
         {
-          name: "Termes et Conditions",
+          name: 'Confidentialité',
           questions: [
             {
-              question: "Puis-je utiliser Cojauny pour des événements de clients externes ?",
-              answer: "Pendant la bêta, uniquement pour testing interne. L'usage commercial avec clients externes requerra un plan entreprise post-lancement. Contactez-nous pour discussion de cas spéciaux."
+              question: 'Vendez-vous mes données ?',
+              answer: 'Jamais.'
             },
             {
-              question: "Quel support technique inclut la bêta ?",
-              answer: "Support communautaire via Discord, réponse aux bugs sous 48h, et sessions mensuelles de feedback. Le support prioritaire 24/7 sera disponible dans les plans entreprise post-lancement."
-            },
-            {
-              question: "Puis-je exporter mes données si je décide d'annuler ?",
-              answer: "Oui, nous fournissons une exportation complète dans des formats standard (JSON, CSV) sous 72 heures. Les données sont maintenues 30 jours post-annulation pour permettre l'exportation, puis suppression permanente."
-            }
-          ]
-        },
-        {
-          name: "Sécurité et Conformité",
-          questions: [
-            {
-              question: "Comment gérez-vous les demandes des autorités ?",
-              answer: "Nous ne fournissons des données qu'en réponse à des demandes judiciaires valides. Nous notifions les utilisateurs affectés sauf interdiction légale. Nous maintenons la transparence en reportant les demandes gouvernementales annuellement."
-            },
-            {
-              question: "Où les données sont-elles stockées physiquement ?",
-              answer: "Nous utilisons Supabase avec des centres de données à Francfort (Allemagne) pour la base de données et Firebase Hosting en Belgique pour le frontend. Tous les centres respectent Tier III+ avec certifications ISO 27001, SOC 2."
+              question: 'Supprimer mon compte ?',
+              answer: 'Via réglages ou support.'
             }
           ]
         }
       ],
-      contact: "Vous ne trouvez pas votre question ? support@cojauny.com | Réponse sous 24h"
+      contact: 'Support : support@cojauny.com'
     },
-
     subprocessors: {
-      title: "Registre des Sous-traitants : Transparence dans la Chaîne de Données",
-      intro: "Liste complète des fournisseurs traitant des données au nom de Cojauny, mise à jour trimestriellement avec informations sur leur localisation et mesures de sécurité.",
-      updatedAt: "Dernière mise à jour : 17 novembre 2025",
+      title: 'Sous-traitants',
+      intro: 'Fournisseurs externes.',
+      updatedAt: '4 décembre 2025',
       providers: [
         {
-          name: "Supabase",
-          purpose: "Base de données PostgreSQL, authentification et stockage",
-          location: "Francfort, Allemagne (UE)",
-          security: "ISO 27001, SOC 2, Conformité GDPR, chiffrement AES-256 au repos"
+          name: 'Supabase',
+          purpose: 'Base de données',
+          location: 'Allemagne (UE)',
+          security: 'ISO 27001',
+          dataTypes: 'Données utilisateur',
+          policyLink: 'https://supabase.com/privacy'
         },
         {
-          name: "Firebase Hosting (Google Cloud)",
-          purpose: "Hébergement web, CDN et distribution globale du frontend",
-          location: "Belgique (UE) avec edge locations globales",
-          security: "ISO 27001, SOC 2, Conformité GDPR, SSL/TLS partout"
+          name: 'Firebase',
+          purpose: 'Infrastructure',
+          location: 'Belgique (UE)',
+          security: 'ISO 27001',
+          dataTypes: 'Métadonnées',
+          policyLink: 'https://firebase.google.com/support/privacy'
         },
         {
-          name: "Zoho Mail",
-          purpose: "Communications transactionnelles, notifications et support",
-          location: "Pays-Bas (UE)",
-          security: "Chiffrement de bout en bout, Conformité GDPR, authentification 2FA"
+          name: 'Zoho',
+          purpose: 'Email',
+          location: 'UE',
+          security: 'RGPD',
+          dataTypes: 'Emails',
+          policyLink: 'https://www.zoho.com/privacy.html'
         },
         {
-          name: "Dynadot",
-          purpose: "Services DNS et enregistrement de domaines",
-          location: "États-Unis",
-          security: "Conformité RGPD via les Clauses Contractuelles Types, protection de la vie privée WHOIS, DNSSEC, chiffrement TLS pour les requêtes DNS"
+          name: 'Dynadot',
+          purpose: 'Domaines',
+          location: 'USA',
+          security: 'Privacy Shield',
+          dataTypes: 'Données réseau',
+          policyLink: 'https://www.dynadot.com/privacy_policy.html'
         }
       ],
-      contact: "Questions sur les sous-traitants : support@cojauny.com | Mises à jour trimestrielles"
+      contact: 'Juridique : support@cojauny.com'
     }
   }
 };

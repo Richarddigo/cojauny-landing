@@ -1,0 +1,20 @@
+Here is the complete and exhaustive list of all files containing text shown on the website, categorized by type:
+
+1. Primary Content Files (Where 99% of text lives)
+src/locales/copy.ts (Landing page, global UI, metadata)
+src/locales/legal.ts (All legal pages: Terms, Privacy, Cookies, etc.)
+src/content/blog/posts.ts (The actual blog articles)
+src/locales/blog.ts (Blog UI text)
+src/locales/contact.ts (Contact page text)
+src/locales/docs.ts (Documentation text)
+
+
+
+
+2. Code Files with Hardcoded Text (Minor snippets)
+src/app/[locale]/blog/page.tsx (Contains "Blog" title, "Read more", and slogan logic)
+src/components/Footer.tsx (Contains fallback text like 'FAQ', 'Uso Aceptable')
+src/components/BetaSignupForm.tsx (Contains hardcoded Spanish honeypot label: "No rellenes este campo...")
+src/components/FeedbackForm.tsx (Contains hardcoded Spanish honeypot label: "No rellenes este campo...")
+src/components/Header.tsx (Contains hardcoded brand name "Cojauny")
+There are no other files with user-facing text.

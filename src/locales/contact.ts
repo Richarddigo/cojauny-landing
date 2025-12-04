@@ -27,16 +27,16 @@ export interface ContactPageCopy {
 
 const contactCopy: Record<Locale, ContactPageCopy> = {
   es: {
-    heading: 'Hablemos sobre tu siguiente movimiento',
+    heading: 'Hablemos de tu proyecto',
     intro:
-      'Si tienes una propuesta de negocio, ideas para mejorar Cojauny o quieres compartir sugerencias, déjanos un mensaje. El equipo fundador responde en menos de dos días laborables.',
-    banner: 'Usa este formulario para propuestas comerciales, mejoras para la app, sugerencias u otros temas.',
+      '¿Tienes una propuesta, ideas para mejorar o sugerencias? Escríbenos y el equipo fundador te responderá en menos de 48 horas.',
+    banner: 'Usa este formulario para propuestas, mejoras o cualquier otro tema.',
     form: {
       title: 'Envíanos un mensaje',
       description:
-        'Cuéntanos en qué podemos ayudarte y deja tu correo para que podamos responderte. El nombre y el email son obligatorios.',
-      success: 'Gracias por escribirnos. Te responderemos desde support@cojauny.com muy pronto.',
-      error: "El campo 'Mensaje' debe tener al menos 10 caracteres.",
+        'Cuéntanos cómo podemos ayudarte. Tu nombre y email son necesarios para responderte.',
+      success: '¡Recibido! Te escribiremos desde support@cojauny.com muy pronto.',
+      error: "El mensaje debe tener al menos 10 caracteres.",
       submit: 'Enviar mensaje',
       optionalLabel: '(opcional)',
       fields: {
@@ -45,20 +45,20 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
         topic: 'Asunto',
         message: 'Mensaje'
       },
-      legalNotice: 'Guardaremos tu mensaje en nuestra base de datos segura para poder responderte. Puedes pedir que lo eliminemos cuando quieras escribiendo a support@cojauny.com.'
+      legalNotice: 'Guardamos tu mensaje para responderte. Pide borrarlo cuando quieras en support@cojauny.com.'
     }
   },
   en: {
-    heading: "Let's talk about your next move",
+    heading: "Let's Talk About Your Project",
     intro:
-      'Have a business proposal, ideas to improve Cojauny or suggestions for future releases? Drop us a message and the founding team will reply within two business days.',
-    banner: 'Use this form for business proposals, product improvements, suggestions or any other topic.',
+      'Got a proposal, improvement ideas, or suggestions? Message us and the founding team will reply within 48 hours.',
+    banner: 'Use this form for proposals, improvements, or any other topic.',
     form: {
       title: 'Send us a message',
       description:
-        "Tell us how we can help and leave your email so we can get back to you. Name and email are mandatory.",
-      success: 'Thanks for reaching out. We will reply from support@cojauny.com shortly.',
-      error: "The 'Message' field must be at least 10 characters long.",
+        "Tell us how we can help. Name and email are required for our response.",
+      success: 'Received! We will reply from support@cojauny.com shortly.',
+      error: "Message must be at least 10 characters long.",
       submit: 'Send message',
       optionalLabel: '(optional)',
       fields: {
@@ -67,51 +67,51 @@ const contactCopy: Record<Locale, ContactPageCopy> = {
         topic: 'Subject',
         message: 'Message'
       },
-      legalNotice: 'We will store your message in our secure database so we can reply. You can request deletion at any time by emailing support@cojauny.com.'
+      legalNotice: 'We store your message to respond. Request deletion anytime at support@cojauny.com.'
     }
   },
   de: {
-    heading: 'Lass uns über deine nächsten Schritte sprechen',
+    heading: 'Lass uns über dein Projekt sprechen',
     intro:
-      'Du hast ein Business-Angebot, Ideen zur Verbesserung von Cojauny oder allgemeine Vorschläge? Sende uns eine Nachricht, das Gründerteam meldet sich innerhalb von zwei Werktagen.',
-    banner: 'Nutze dieses Formular für Geschäftsanfragen, Produktverbesserungen, Vorschläge oder andere Themen.',
+      'Hast du ein Angebot, Ideen oder Vorschläge? Schreib uns, und das Gründerteam antwortet innerhalb von 48 Stunden.',
+    banner: 'Nutze dieses Formular für Angebote, Verbesserungen oder andere Themen.',
     form: {
-      title: 'Schreib uns eine Nachricht',
+      title: 'Schreib uns',
       description:
-        'Erzähl uns, wobei wir helfen können, und hinterlasse deine E-Mail-Adresse. Name und E-Mail sind Pflichtfelder.',
-      success: 'Vielen Dank für deine Nachricht. Wir antworten dir bald von support@cojauny.com.',
-      error: "Das Feld 'Nachricht' muss mindestens 10 Zeichen enthalten.",
+        'Sag uns, wie wir helfen können. Name und E-Mail brauchen wir für die Antwort.',
+      success: 'Erhalten! Wir melden uns bald von support@cojauny.com.',
+      error: "Die Nachricht muss mindestens 10 Zeichen lang sein.",
       submit: 'Nachricht senden',
       optionalLabel: '(optional)',
       fields: {
         name: 'Name',
-        email: 'Email',
+        email: 'E-Mail',
         topic: 'Betreff',
         message: 'Nachricht'
       },
-      legalNotice: 'Wir speichern deine Nachricht in unserer sicheren Datenbank, um dir antworten zu können. Du kannst jederzeit die Löschung beantragen unter support@cojauny.com.'
+      legalNotice: 'Wir speichern deine Nachricht für die Antwort. Löschung jederzeit möglich unter support@cojauny.com.'
     }
   },
   fr: {
-    heading: 'Discutons de votre prochain projet',
+    heading: 'Discutons de Votre Projet',
     intro:
-      "Une proposition commerciale, des idées pour améliorer Cojauny ou des suggestions pour les prochaines versions ? Laissez-nous un message et l'équipe fondatrice vous répondra sous deux jours ouvrables.",
-    banner: 'Utilisez ce formulaire pour les propositions business, les améliorations produit, les suggestions ou tout autre sujet.',
+      "Une proposition, des idées ou des suggestions ? Écrivez-nous et l'équipe fondatrice vous répondra sous 48 heures.",
+    banner: 'Utilisez ce formulaire pour vos propositions, améliorations ou tout autre sujet.',
     form: {
       title: 'Envoyez-nous un message',
       description:
-        'Expliquez comment nous pouvons vous aider et laissez votre e-mail pour que nous puissions répondre. Le nom et l\'e-mail sont obligatoires.',
-      success: 'Merci de nous avoir écrit. Nous vous répondrons très vite depuis support@cojauny.com.',
-      error: "Le champ 'Message' doit contenir au moins 10 caractères.",
+        'Dites-nous comment nous pouvons aider. Nom et e-mail requis pour la réponse.',
+      success: 'Bien reçu ! Nous vous répondrons rapidement depuis support@cojauny.com.',
+      error: "Le message doit contenir au moins 10 caractères.",
       submit: 'Envoyer le message',
       optionalLabel: '(Optionnel)',
       fields: {
         name: 'Nom',
-        email: 'Email',
+        email: 'E-mail',
         topic: 'Objet',
         message: 'Message'
       },
-      legalNotice: 'Nous conserverons votre message dans notre base de données sécurisée afin de pouvoir vous répondre. Vous pouvez demander sa suppression à tout moment en écrivant à support@cojauny.com.'
+      legalNotice: 'Nous conservons votre message pour répondre. Demandez sa suppression à tout moment à support@cojauny.com.'
     }
   }
 };

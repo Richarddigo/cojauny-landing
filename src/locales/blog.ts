@@ -22,17 +22,17 @@ export interface BlogCopy {
 const blogCopy: Record<Locale, BlogCopy> = {
   es: {
     meta: {
-      title: 'Blog de Cojauny · Guías para coordinar traslados a aeropuertos',
+      title: 'Blog Cojauny · Movilidad inteligente para tus viajes',
       description:
-        'Consejos prácticos para compartir transporte, coordinar ride-sharing entre pasajeros de un mismo vuelo y reducir costes puerta a puerta.',
-      ogTitle: 'Blog Cojauny · Movilidad colaborativa para vuelos',
+        'Consejos prácticos para compartir transporte con compañeros de vuelo y ahorrar en tus traslados al aeropuerto.',
+      ogTitle: 'Blog Cojauny · Movilidad colaborativa en vuelos',
       ogDescription:
-        'Lee casos reales, tácticas de operación y novedades del producto para coordinar traslados con tu vuelo.'
+        'Casos reales, tácticas operativas y novedades para coordinar tu transporte puerta a puerta.'
     },
-    heading: 'Historias y tácticas de movilidad aérea',
+    heading: 'Movilidad inteligente para viajeros',
     subtitle:
-      'Estrategias aplicables para equipos de viaje y pasajeros que quieren compartir transporte antes y después del vuelo.',
-    empty: 'Pronto publicaremos más artículos. Suscríbete a la beta para recibirlos antes.',
+      'Tácticas probadas para coordinar transporte antes y después del vuelo.',
+    empty: 'Pronto publicaremos nuevos artículos. Únete a la beta para leerlos antes que nadie.',
     readTimeLabel: 'min de lectura',
     updatedLabel: 'Actualizado',
     backLabel: 'Volver al blog',
@@ -40,17 +40,17 @@ const blogCopy: Record<Locale, BlogCopy> = {
   },
   en: {
     meta: {
-      title: 'Cojauny Blog · Airport ride-sharing intelligence',
+      title: 'Cojauny Blog · Smart Mobility for Air Travel',
       description:
-        'Playbooks to coordinate airport transfers with fellow passengers, reduce costs and keep everyone informed before boarding.',
-      ogTitle: 'Cojauny Blog · Smarter airport rides',
+        'Coordinate airport transfers with fellow passengers, cut costs, and stay synced before boarding.',
+      ogTitle: 'Cojauny Blog · Smarter Airport Rides',
       ogDescription:
-        'Discover case studies, travel ops tactics and product updates to orchestrate door-to-gate transport.'
+        'Case studies, travel ops tactics, and product updates to master door-to-gate transport.'
     },
-    heading: 'Insights for flight-based mobility',
+    heading: 'Smart Mobility Insights',
     subtitle:
-      'Actionable guidance for travel teams and passengers who coordinate transport with people on the same flight.',
-    empty: 'New articles are on the way. Join the beta to receive them first.',
+      'Proven strategies for coordinating shared transport on the same flight.',
+    empty: 'New articles coming soon. Join the beta to get early access.',
     readTimeLabel: 'min read',
     updatedLabel: 'Updated',
     backLabel: 'Back to blog',
@@ -58,17 +58,17 @@ const blogCopy: Record<Locale, BlogCopy> = {
   },
   de: {
     meta: {
-      title: 'Cojauny Blog · Flughafentransfers gemeinsam optimieren',
+      title: 'Cojauny Blog · Smarte Mobilität für Flugreisen',
       description:
-        'Praxisnahe Tipps, wie Reisende desselben Fluges Taxi, Shuttle oder Privatwagen gemeinsam planen und Kosten senken.',
+        'Koordiniere Flughafentransfers mit Mitreisenden, senke Kosten und bleib vor dem Boarding informiert.',
       ogTitle: 'Cojauny Blog · Effiziente Flughafentransfers',
       ogDescription:
-        'Fallstudien, Prozess-Tipps und Produkt-News für Teams, die Fahrten rund um den Flug koordinieren.'
+        'Fallstudien, Taktiken und Produkt-News für die perfekte Koordination von Tür zu Gate.'
     },
-    heading: 'Impulse für flugbasierte Mobilität',
+    heading: 'Einblicke in smarte Mobilität',
     subtitle:
-      'Handfeste Strategien für Reiseteams und Passagiere, die sich vor und nach dem Flug abstimmen möchten.',
-    empty: 'Weitere Artikel folgen in Kürze. Melde dich zur Beta an, um sie zuerst zu erhalten.',
+      'Bewährte Strategien für die Koordination gemeinsamer Fahrten rund um den Flug.',
+    empty: 'Neue Artikel kommen bald. Melde dich zur Beta an für Vorab-Zugriff.',
     readTimeLabel: 'Min. Lesezeit',
     updatedLabel: 'Aktualisiert',
     backLabel: 'Zurück zum Blog',
@@ -76,17 +76,17 @@ const blogCopy: Record<Locale, BlogCopy> = {
   },
   fr: {
     meta: {
-      title: "Blog Cojauny · Partage de trajets vers l'aéroport",
+      title: "Blog Cojauny · Mobilité Intelligente pour vos Voyages",
       description:
-        "Guides pour coordonner taxis ou VTC entre passagers d'un même vol, gagner du temps et maîtriser les coûts.",
-      ogTitle: "Blog Cojauny · Mobilité aérienne partagée",
+        "Coordonnez vos transferts aéroport avec d'autres passagers, réduisez les coûts et restez synchronisés.",
+      ogTitle: "Blog Cojauny · Mobilité Aérienne Partagée",
       ogDescription:
-        'Cas pratiques, conseils opérationnels et nouveautés produit pour orchestrer les trajets porte-à-porte.'
+        'Études de cas, tactiques opérationnelles et nouveautés pour maîtriser vos trajets porte-à-porte.'
     },
-    heading: 'Savoir-faire pour la mobilité autour du vol',
+    heading: 'Stratégies de Mobilité',
     subtitle:
-      "Recommandations concrètes pour les équipes voyage et passagers qui partagent leur transport vers l'aéroport.",
-    empty: 'De nouveaux articles arrivent bientôt. Rejoignez la bêta pour les recevoir en priorité.',
+      "Tactiques éprouvées pour coordonner le transport partagé sur un même vol.",
+    empty: 'Nouveaux articles bientôt disponibles. Rejoignez la bêta pour un accès prioritaire.',
     readTimeLabel: 'min de lecture',
     updatedLabel: 'Mis à jour',
     backLabel: 'Retour au blog',

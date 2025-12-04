@@ -19,88 +19,88 @@ interface DocsCopy {
 const docsCopy: Record<Locale, DocsCopy> = {
   es: {
     sdkPlan: {
-      title: 'Plan de integración SDK',
+      title: 'Guía de integración SDK',
       intro:
-        'Sigue esta hoja de ruta para conectar Cojauny con tus apps móviles y sistemas internos usando nuestro SDK y las funciones serverless.',
+        'Sigue esta hoja de ruta para conectar Cojauny con tus apps y sistemas usando nuestro SDK y funciones serverless.',
       steps: [
         {
-          title: 'Preparar deep links',
-          description: 'Define esquemas universales en iOS y Android y reserva rutas exclusivas para invitaciones Cojauny.'
+          title: 'Prepara los deep links',
+          description: 'Define esquemas universales (iOS/Android) y reserva rutas para las invitaciones de Cojauny.'
         },
         {
-          title: 'Configurar el proveedor de base de datos',
+          title: 'Configura la base de datos',
           description:
-            'Crea tablas de invitaciones, habilita RLS por proyecto y despliega la función `send-beta-email` con tus credenciales.'
+            'Crea las tablas, activa RLS por proyecto y despliega `send-beta-email` con tus credenciales.'
         },
         {
-          title: 'Implementar listeners',
-          description: 'Usa edge functions o webhooks para avisar a tus apps cuando apruebes usuarios o cambien los cupos.'
+          title: 'Implementa listeners',
+          description: 'Usa edge functions o webhooks para notificar a tus apps sobre aprobaciones o cambios de cupo.'
         }
       ]
     }
   },
   en: {
     sdkPlan: {
-      title: 'SDK Integration Plan',
+      title: 'SDK Integration Guide',
       intro:
-        'Follow this roadmap to connect Cojauny with your mobile apps and internal systems using our SDK and serverless functions.',
+        'Follow this roadmap to connect Cojauny with your apps and systems using our SDK and serverless functions.',
       steps: [
         {
           title: 'Prepare deep links',
-          description: 'Define universal link schemes for iOS and Android and reserve paths for Cojauny invitations.'
+          description: 'Define universal schemes (iOS/Android) and reserve paths for Cojauny invitations.'
         },
         {
-          title: 'Configure your database provider',
+          title: 'Configure the database',
           description:
-            'Create invitation tables, enable per-project RLS rules and deploy the `send-beta-email` function with your credentials.'
+            'Create tables, enable per-project RLS, and deploy `send-beta-email` with your credentials.'
         },
         {
           title: 'Implement listeners',
-          description: 'Rely on edge functions or webhooks to notify your apps whenever you approve users or adjust capacity.'
+          description: 'Use edge functions or webhooks to notify your apps about approvals or capacity changes.'
         }
       ]
     }
   },
   de: {
     sdkPlan: {
-      title: 'SDK-Integrationsplan',
+      title: 'SDK-Integrationsguide',
       intro:
-        'Nutze diese Roadmap, um Cojauny mithilfe unseres SDKs und serverlosen Funktionen mit deinen mobilen Apps und internen Systemen zu verbinden.',
+        'Nutze diese Roadmap, um Cojauny mit deinen Apps und Systemen via SDK und Serverless Functions zu verbinden.',
       steps: [
         {
           title: 'Deep Links vorbereiten',
-          description: 'Definiere universelle Link-Schemata für iOS und Android und reserviere Pfade für Cojauny-Einladungen.'
+          description: 'Definiere universelle Schemata (iOS/Android) und reserviere Pfade für Cojauny-Einladungen.'
         },
         {
-          title: 'Datenbankanbieter konfigurieren',
+          title: 'Datenbank konfigurieren',
           description:
-            'Erstelle Einladungstabellen, aktiviere projektspezifische RLS-Regeln und deploye die Funktion `send-beta-email` mit deinen Zugangsdaten.'
+            'Erstelle Tabellen, aktiviere RLS pro Projekt und deploye `send-beta-email` mit deinen Zugangsdaten.'
         },
         {
           title: 'Listener implementieren',
-          description: 'Nutze Edge Functions oder Webhooks, um deine Apps bei Freigaben oder Kapazitätsänderungen sofort zu informieren.'
+          description: 'Nutze Edge Functions oder Webhooks, um Apps über Freigaben oder Änderungen zu informieren.'
         }
       ]
     }
   },
   fr: {
     sdkPlan: {
-      title: 'Plan d’intégration du SDK',
+      title: 'Guide d’intégration SDK',
       intro:
-        'Suivez cette feuille de route pour connecter Cojauny à vos applications mobiles et systèmes internes grâce à notre SDK et à nos fonctions serverless.',
+        'Suivez cette feuille de route pour connecter Cojauny à vos apps et systèmes via notre SDK et fonctions serverless.',
       steps: [
         {
           title: 'Préparer les deep links',
-          description: 'Définissez des schémas de liens universels pour iOS et Android et réservez des routes dédiées aux invitations Cojauny.'
+          description: 'Définissez des schémas universels (iOS/Android) et réservez des routes pour les invitations Cojauny.'
         },
         {
-          title: 'Configurer le fournisseur de base de données',
+          title: 'Configurer la base de données',
           description:
-            'Créez les tables d’invitations, activez les règles RLS par projet et déployez la fonction `send-beta-email` avec vos identifiants.'
+            'Créez les tables, activez RLS par projet et déployez `send-beta-email` avec vos identifiants.'
         },
         {
-          title: 'Mettre en place les listeners',
-          description: 'Utilisez des edge functions ou des webhooks pour alerter vos apps dès que vous approuvez des utilisateurs ou modifiez la capacité.'
+          title: 'Implémenter les listeners',
+          description: 'Utilisez des edge functions ou webhooks pour notifier vos apps des approbations ou changements.'
         }
       ]
     }
