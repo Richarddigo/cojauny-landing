@@ -49,52 +49,52 @@ const Footer = ({ copy, locale }: FooterProps) => {
                         </a>
                     </div>
                 </div>
-            <div className="flex flex-col items-start gap-4 md:items-end">
-                <div className="flex gap-4 text-white/80">
-                    {socialLinks.map((link) => (
-                        <a
-                            key={link.label}
-                            href={link.href}
-                            aria-label={link.label}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="rounded-full border border-transparent p-2 text-white/60 transition hover:border-brand-200 hover:text-brand-200 focus-visible:border-brand-400"
-                        >
-                            {link.icon}
-                        </a>
-                    ))}
+                <div className="flex flex-col items-start gap-4 md:items-end">
+                    <div className="flex gap-4 text-white/80">
+                        {socialLinks.map((link) => (
+                            <a
+                                key={link.label}
+                                href={link.href}
+                                aria-label={link.label}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="rounded-full border border-transparent p-2 text-white/60 transition hover:border-brand-200 hover:text-brand-200 focus-visible:border-brand-400"
+                            >
+                                {link.icon}
+                            </a>
+                        ))}
+                    </div>
+                    <nav className="flex flex-wrap justify-end gap-4 text-sm text-white/80">
+                        <Link href={`/${locale}/legal/privacy`} className="hover:text-brand-200">
+                            {copy.privacy}
+                        </Link>
+                        <Link href={`/${locale}/legal/cookies`} className="hover:text-brand-200">
+                            {copy.cookies}
+                        </Link>
+                        <Link href={`/${locale}/legal/terms`} className="hover:text-brand-200">
+                            {copy.terms}
+                        </Link>
+                        <Link href={`/${locale}/legal/acceptable-use`} className="hover:text-brand-200">
+                            {copy.acceptableUse ?? 'Uso Aceptable'}
+                        </Link>
+                        <Link href={`/${locale}/legal/faq`} className="hover:text-brand-200">
+                            {copy.faq ?? 'FAQ'}
+                        </Link>
+                        <Link href={`/${locale}/legal/subprocessors`} className="hover:text-brand-200">
+                            {copy.subprocessors ?? 'Subprocesadores'}
+                        </Link>
+                        <Link href={`/${locale}/blog`} className="hover:text-brand-200">
+                            {copy.blog}
+                        </Link>
+                        <Link href={`/${locale}/contact`} className="hover:text-brand-200">
+                            {copy.contact}
+                        </Link>
+                    </nav>
+                    <LanguageSwitcher currentLocale={locale} label={copy.languageLabel} dropdownDirection="up" />
+                    <p className="text-xs text-white/60" suppressHydrationWarning>© {new Date().getFullYear()} Cojauny. {copy.rights}</p>
                 </div>
-                <nav className="flex flex-wrap justify-end gap-4 text-sm text-white/80">
-                    <Link href={`/${locale}/legal/privacy`} className="hover:text-brand-200">
-                        {copy.privacy}
-                    </Link>
-                    <Link href={`/${locale}/legal/cookies`} className="hover:text-brand-200">
-                        {copy.cookies}
-                    </Link>
-                    <Link href={`/${locale}/legal/terms`} className="hover:text-brand-200">
-                        {copy.terms}
-                    </Link>
-                    <Link href={`/${locale}/legal/acceptable-use`} className="hover:text-brand-200">
-                        {copy.acceptableUse ?? 'Uso Aceptable'}
-                    </Link>
-                    <Link href={`/${locale}/legal/faq`} className="hover:text-brand-200">
-                        {copy.faq ?? 'FAQ'}
-                    </Link>
-                    <Link href={`/${locale}/legal/subprocessors`} className="hover:text-brand-200">
-                        {copy.subprocessors ?? 'Subprocesadores'}
-                    </Link>
-                    <Link href={`/${locale}/blog`} className="hover:text-brand-200">
-                        {copy.blog}
-                    </Link>
-                    <Link href={`/${locale}/contact`} className="hover:text-brand-200">
-                        {copy.contact}
-                    </Link>
-                </nav>
-                <LanguageSwitcher currentLocale={locale} label={copy.languageLabel} dropdownDirection="up" />
-                <p className="text-xs text-white/60" suppressHydrationWarning>© {new Date().getFullYear()} Cojauny. {copy.rights}</p>
             </div>
-        </div>
-    </footer>
+        </footer>
     );
 };
 
