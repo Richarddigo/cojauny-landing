@@ -1222,7 +1222,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       moreInfo: 'More Info'
     },
     footer: {
-      description: 'Cojauny connects travelers on the same flight to share transport, cut costs, and create community. Available on iOS 14+ and Android 8+.',
+      description: 'Cojauny connects travelers on the same flight to share transport, cut costs, and create community.',
       rights: 'All rights reserved.',
       appStoreSoon: 'App Store (coming soon)',
       playStoreSoon: 'Google Play (coming soon)',
