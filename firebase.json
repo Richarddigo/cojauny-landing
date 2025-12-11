@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "cl-coride",
+    "site": "cojauny",
     "public": "out",
     "ignore": [
       "firebase.json",

@@ -3,17 +3,18 @@ const { setGlobalOptions } = require('firebase-functions/v2');
 
 // Lista blanca de dominios permitidos para CORS
 const ALLOWED_ORIGINS = [
-    'https://cl-coride.web.app',
-    'https://cl-coride.firebaseapp.com',
+    'https://cojauny.web.app',
+    'https://cojauny.firebaseapp.com',
     'https://cojauny.com',
-    'https://www.cojauny.com'
+    'https://www.cojauny.com',
+    'http://localhost:3000',
+    'http://localhost:3001'
 ];
 
 // Configuración CORS segura - solo permite orígenes autorizados
 const cors = require('cors')({
     origin: function (origin, callback) {
         // Permitir requests sin origin (como curl, Postman en desarrollo)
-        // En producción, considera rechazar estos también
         if (!origin) {
             return callback(null, true);
         }
@@ -43,6 +44,7 @@ const { supabaseKey, smtpPass } = require('./config');
 setGlobalOptions({
     region: 'europe-west1',
     maxInstances: 10,
+    invoker: 'public',
     secrets: [supabaseKey, smtpPass]
 });
 
