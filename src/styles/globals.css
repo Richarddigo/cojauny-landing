@@ -4,10 +4,15 @@
 
 /* ─── Cojauny Design Tokens (aligned with cojauny-studio) ─────────── */
 :root {
-    /* Brand palette — matches cojauny-studio accent */
-    --accent: #5a67f2;
-    --accent-dim: #434dd7;
-    --accent-glow: rgba(90, 103, 242, 0.18);
+    /* Brand palette — matches cojauny-studio accent exactly */
+    --accent: #5B7BFF;
+    --accent-dim: #3A59D9;
+    --accent-glow: rgba(91, 123, 255, 0.18);
+
+    /* Studio dark surfaces (used by Header/Footer) */
+    --bg: #0C1120;
+    --surface: #1C2336;
+    --surface-2: #2A3550;
 
     /* Surfaces (light mode) */
     --light-bg: #F8FAFC;

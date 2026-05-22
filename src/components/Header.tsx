@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
@@ -18,6 +17,14 @@ interface HeaderProps {
 
 const Header = ({ locale, copy }: HeaderProps) => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handler = () => setScrolled(window.scrollY > 20);
+        window.addEventListener('scroll', handler, { passive: true });
+        handler();
+        return () => window.removeEventListener('scroll', handler);
+    }, []);
     const openButtonRef = useRef<HTMLButtonElement | null>(null);
     const closeButtonRef = useRef<HTMLButtonElement | null>(null);
     const menuRef = useRef<HTMLDivElement | null>(null);
@@ -204,8 +211,6 @@ const Header = ({ locale, copy }: HeaderProps) => {
         };
     }, []);
 
-    const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     const getHeaderOffset = () => {
         const hdr = document.querySelector('header');
         // if header exists and is fixed, use its actual height
@@ -252,7 +257,7 @@ const Header = ({ locale, copy }: HeaderProps) => {
 
     return (
         <>
-            <header className="fixed left-0 right-0 top-0 z-50 bg-slate-900/95 shadow-lg backdrop-blur-sm">
+            <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-[rgba(12,17,32,0.95)] backdrop-blur-xl border-b border-[rgba(255,255,255,0.06)] shadow-[0_2px_32px_rgba(0,0,0,0.5)]' : 'bg-transparent'}`}>
                 <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8" aria-label="Global">
                     <div className="flex lg:flex-1">
                         <a href={`/${locale}`} className="-m-1.5 flex items-center gap-2 p-1.5 sm:gap-3">
@@ -301,136 +306,128 @@ const Header = ({ locale, copy }: HeaderProps) => {
             </header>
 
             {mounted && typeof window !== 'undefined' && createPortal(
-                <AnimatePresence>
-                    {mobileMenuOpen && (
-                        <div className="fixed inset-0 z-[9999] flex justify-end" aria-modal="true" role="dialog">
-                            {/* overlay: captura click/touch fuera del panel para cerrar */}
-                            <div
-                                className="flex-1"
-                                data-testid="menu-overlay"
-                                role="button"
-                                tabIndex={0}
+                <div
+                    className={`fixed inset-0 z-[9999] flex justify-end transition-all duration-300 ${mobileMenuOpen ? 'visible' : 'invisible pointer-events-none'}`}
+                    aria-modal="true" role="dialog" aria-hidden={!mobileMenuOpen}
+                >
+                    {/* overlay: captura click/touch fuera del panel para cerrar */}
+                    <div
+                        className={`flex-1 transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0'}`}
+                        data-testid="menu-overlay"
+                        role="button"
+                        tabIndex={0}
+                        onClick={() => setMobileMenuOpen(false)}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                setMobileMenuOpen(false);
+                            } else if (e.key === 'Escape') {
+                                setMobileMenuOpen(false);
+                            }
+                        }}
+                        onTouchStart={(e) => {
+                            // allow touch events to register on overlay
+                            (e.currentTarget as any)._touchStartX = e.touches?.[0]?.clientX ?? 0;
+                        }}
+                        onTouchEnd={(e) => {
+                            const touchEndX = e.changedTouches?.[0]?.clientX ?? 0;
+                            const touchStartX = (e.currentTarget as any)._touchStartX ?? 0;
+                            const delta = touchEndX - touchStartX;
+                            // if swiped right enough, close as well
+                            if (delta > 50) setMobileMenuOpen(false);
+                        }}
+                    />
+                    <div
+                        ref={menuRef}
+                        className={`relative h-full w-auto min-w-max max-w-[95vw] bg-[#0C1120] px-4 py-6 sm:px-6 sm:ring-1 sm:ring-white/10 flex flex-col overflow-y-auto max-h-screen transition-transform duration-300 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+                        onTouchStart={(e) => {
+                            (e.currentTarget as any)._touchStartX = e.touches?.[0]?.clientX ?? 0;
+                        }}
+                        onTouchEnd={(e) => {
+                            const touchEndX = e.changedTouches?.[0]?.clientX ?? 0;
+                            const touchStartX = (e.currentTarget as any)._touchStartX ?? 0;
+                            const delta = touchEndX - touchStartX;
+                            if (delta > 50) setMobileMenuOpen(false);
+                        }}
+                    >
+                        <div className="flex items-center justify-end">
+                            <button
+                                ref={closeButtonRef}
+                                type="button"
+                                className="-m-2.5 rounded-md p-2.5 text-white transition-colors hover:bg-white/10"
                                 onClick={() => setMobileMenuOpen(false)}
-                                onKeyDown={(e) => {
-                                    if (e.key === 'Enter' || e.key === ' ') {
-                                        e.preventDefault();
-                                        setMobileMenuOpen(false);
-                                    } else if (e.key === 'Escape') {
-                                        setMobileMenuOpen(false);
-                                    }
-                                }}
-                                onTouchStart={(e) => {
-                                    // allow touch events to register on overlay
-                                    (e.currentTarget as any)._touchStartX = e.touches?.[0]?.clientX ?? 0;
-                                }}
-                                onTouchEnd={(e) => {
-                                    const touchEndX = e.changedTouches?.[0]?.clientX ?? 0;
-                                    const touchStartX = (e.currentTarget as any)._touchStartX ?? 0;
-                                    const delta = touchEndX - touchStartX;
-                                    // if swiped right enough, close as well
-                                    if (delta > 50) setMobileMenuOpen(false);
-                                }}
-                            />
-                            <motion.div
-                                ref={menuRef}
-                                initial={prefersReducedMotion ? undefined : { x: '100%' }}
-                                animate={prefersReducedMotion ? undefined : { x: 0 }}
-                                exit={prefersReducedMotion ? undefined : { x: '100%' }}
-                                transition={prefersReducedMotion ? { duration: 0 } : { type: 'spring', stiffness: 400, damping: 35 }}
-                                className="relative h-full w-auto min-w-max max-w-[95vw] bg-slate-900 px-4 py-6 sm:px-6 sm:ring-1 sm:ring-white/10 flex flex-col overflow-y-auto max-h-screen"
-                                onTouchStart={(e) => {
-                                    (e.currentTarget as any)._touchStartX = e.touches?.[0]?.clientX ?? 0;
-                                }}
-                                onTouchEnd={(e) => {
-                                    const touchEndX = e.changedTouches?.[0]?.clientX ?? 0;
-                                    const touchStartX = (e.currentTarget as any)._touchStartX ?? 0;
-                                    const delta = touchEndX - touchStartX;
-                                    // if swiped right more than 50px, close
-                                    if (delta > 50) {
-                                        setMobileMenuOpen(false);
-                                    }
-                                }}
+                                aria-label="Close menu"
                             >
-                                <div className="flex items-center justify-end">
-                                    <button
-                                        ref={closeButtonRef}
-                                        type="button"
-                                        className="-m-2.5 rounded-md p-2.5 text-white transition-colors hover:bg-white/10"
-                                        onClick={() => setMobileMenuOpen(false)}
-                                        aria-label="Close menu"
-                                    >
-                                        <span className="sr-only">Close menu</span>
-                                        <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                                    </button>
-                                </div>
-                                <div className="mt-6 flex-1 flex flex-col justify-start">
-                                    <div className="space-y-1 flex flex-col items-end pr-6">
-                                        {[
-                                            { href: '#home', label: copy.home },
-                                            { href: '#demo', label: copy.demo },
-                                            { href: '#benefits', label: copy.benefits },
-                                            { href: '#impact', label: copy.impact },
-                                            { href: '#features', label: copy.features },
-                                            { href: '#how-it-works', label: copy.workflow },
-                                            { href: '#pricing', label: copy.pricing },
-                                            { href: '#beta', label: copy.beta },
-                                            { href: '#faq', label: copy.faq },
-                                            { href: '#feedback', label: copy.feedback }
-                                        ].map((item) => (
-                                            <a
-                                                key={item.href}
-                                                href={item.href}
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    setMobileMenuOpen(false);
-                                                    const targetId = item.href.replace('#', '');
-                                                    setTimeout(() => {
-                                                        const element = document.getElementById(targetId);
-                                                        if (element) {
-                                                            const header = document.querySelector('header');
-                                                            const headerHeight = header ? header.getBoundingClientRect().height : 0;
-                                                            const elementTop = element.getBoundingClientRect().top + window.scrollY;
-                                                            // On mobile, when clicking 'home' we want to ensure we land at the very top
-                                                            const isMobile = typeof window !== 'undefined' ? window.matchMedia('(max-width: 767px)').matches : false;
-                                                            if (isMobile && targetId === 'home') {
-                                                                window.scrollTo({ top: 0, behavior: 'smooth' });
-                                                                return;
-                                                            }
-                                                            const baseOffset = 50;
-                                                            const homeAdjustment = targetId === 'home' ? -20 : 0;
-                                                            const offsetPosition = Math.max(0, elementTop - headerHeight + baseOffset + homeAdjustment);
-                                                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                                                            return;
-                                                        }
-
-                                                        // si no existe el elemento en esta página, navegamos al home con hash
-                                                        try {
-                                                            const homePath = `/${locale}`;
-                                                            router.push(`${homePath}#${targetId}`);
-                                                        } catch (err) {
-                                                            // ignore
-                                                        }
-                                                    }, 300);
-                                                }}
-                                                className="block w-full px-3 py-2 text-base font-semibold leading-6 text-white text-right transition-colors hover:bg-white/10 active:bg-white/20 cursor-pointer"
-                                            >
-                                                {item.label}
-                                            </a>
-                                        ))}
-                                    </div>
-                                    <div className="py-6 w-full flex flex-col items-end pr-6 gap-4">
-                                        <div className="sm:hidden w-full flex justify-end">
-                                            <LanguageSwitcher currentLocale={locale} onSelect={() => setMobileMenuOpen(false)} fullWidth />
-                                        </div>
-                                        <div className="hidden sm:block">
-                                            <LanguageSwitcher currentLocale={locale} onSelect={() => setMobileMenuOpen(false)} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </motion.div>
+                                <span className="sr-only">Close menu</span>
+                                <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                            </button>
                         </div>
-                    )}
-                </AnimatePresence>,
+                        <div className="mt-6 flex-1 flex flex-col justify-start">
+                            <div className="space-y-1 flex flex-col items-end pr-6">
+                                {[
+                                    { href: '#home', label: copy.home },
+                                    { href: '#demo', label: copy.demo },
+                                    { href: '#benefits', label: copy.benefits },
+                                    { href: '#impact', label: copy.impact },
+                                    { href: '#features', label: copy.features },
+                                    { href: '#how-it-works', label: copy.workflow },
+                                    { href: '#pricing', label: copy.pricing },
+                                    { href: '#beta', label: copy.beta },
+                                    { href: '#faq', label: copy.faq },
+                                    { href: '#feedback', label: copy.feedback }
+                                ].map((item) => (
+                                    <a
+                                        key={item.href}
+                                        href={item.href}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            setMobileMenuOpen(false);
+                                            const targetId = item.href.replace('#', '');
+                                            setTimeout(() => {
+                                                const element = document.getElementById(targetId);
+                                                if (element) {
+                                                    const header = document.querySelector('header');
+                                                    const headerHeight = header ? header.getBoundingClientRect().height : 0;
+                                                    const elementTop = element.getBoundingClientRect().top + window.scrollY;
+                                                    // On mobile, when clicking 'home' we want to ensure we land at the very top
+                                                    const isMobile = typeof window !== 'undefined' ? window.matchMedia('(max-width: 767px)').matches : false;
+                                                    if (isMobile && targetId === 'home') {
+                                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                                                        return;
+                                                    }
+                                                    const baseOffset = 50;
+                                                    const homeAdjustment = targetId === 'home' ? -20 : 0;
+                                                    const offsetPosition = Math.max(0, elementTop - headerHeight + baseOffset + homeAdjustment);
+                                                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                                                    return;
+                                                }
+
+                                                // si no existe el elemento en esta página, navegamos al home con hash
+                                                try {
+                                                    const homePath = `/${locale}`;
+                                                    router.push(`${homePath}#${targetId}`);
+                                                } catch (err) {
+                                                    // ignore
+                                                }
+                                            }, 300);
+                                        }}
+                                        className="block w-full px-3 py-2 text-base font-semibold leading-6 text-white text-right transition-colors hover:bg-white/10 active:bg-white/20 cursor-pointer"
+                                    >
+                                        {item.label}
+                                    </a>
+                                ))}
+                            </div>
+                            <div className="py-6 w-full flex flex-col items-end pr-6 gap-4">
+                                <div className="sm:hidden w-full flex justify-end">
+                                    <LanguageSwitcher currentLocale={locale} onSelect={() => setMobileMenuOpen(false)} fullWidth />
+                                </div>
+                                <div className="hidden sm:block">
+                                    <LanguageSwitcher currentLocale={locale} onSelect={() => setMobileMenuOpen(false)} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>,
                 portalElRef.current || document.body
             )}
         </>

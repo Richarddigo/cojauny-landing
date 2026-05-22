@@ -2,7 +2,7 @@
   "name": "cojauny-landing",
   "version": "1.0.0",
   "private": true,
-  "description": "Landing page oficial de Cojauny construida con Next.js, Tailwind CSS y Supabase",
+  "description": "Landing page oficial de Cojauny construida con Next.js, Tailwind CSS y Neon Postgres",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -15,13 +15,11 @@
     "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --watch",
     "test:ci": "cross-env NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules jest --ci",
     "migrate:content": "tsx scripts/extract-current-site.ts",
-    "supabase:backup": "tsx scripts/backup-supabase.ts",
     "seo:sitemap": "tsx scripts/generate-sitemap.ts",
     "seo:preflight": "npm run lint && npm run type-check",
     "deploy:verify": "tsx scripts/deploy-check.ts",
     "predeploy": "npm run lint && npm run build && tsx ./scripts/generate-rss.ts",
     "generate:rss": "tsx ./scripts/generate-rss.ts",
-    "deploy": "firebase deploy --only hosting",
     "test:e2e": "playwright test"
   },
   "keywords": [
@@ -29,15 +27,13 @@
     "movilidad",
     "landing",
     "beta",
-    "supabase",
-    "zoho",
     "nextjs"
   ],
   "license": "MIT",
   "dependencies": {
     "@headlessui/react": "^2.2.9",
     "@heroicons/react": "^2.1.1",
-    "@supabase/supabase-js": "^2.84.0",
+    "@neondatabase/serverless": "^1.1.0",
     "cheerio": "^1.0.0-rc.12",
     "critters": "^0.0.23",
     "framer-motion": "^12.23.25",
@@ -47,7 +43,7 @@
     "react-dom": "^19.2.0",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
-    "supabase": "^2.58.5",
+    "resend": "^6.12.3",
     "uuid": "^9.0.1",
     "wicg-inert": "^3.1.3",
     "zod": "^3.22.4"
@@ -85,6 +81,6 @@
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.2",
     "tsx": "^4.7.1",
-    "typescript": "^5.3.3"
+    "typescript": "^6.0.3"
   }
 }
