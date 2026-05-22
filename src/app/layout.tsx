@@ -82,7 +82,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <head>
                 <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
                 <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-                <link rel="preload" href="/images/mockup-hero.svg" as="image" type="image/svg+xml" />
                 <StructuredData id="ld-org" data={buildOrganizationJsonLd()} />
                 <StructuredData id="ld-website" data={buildWebsiteJsonLd(defaultLocale)} />
                 {env.NEXT_PUBLIC_ANALYTICS_ID && (
