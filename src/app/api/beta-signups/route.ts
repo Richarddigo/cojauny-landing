@@ -5,7 +5,8 @@ import { getDb } from '@/lib/db';
 
 export const runtime = 'nodejs';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+let _resend: Resend | null = null;
+const getResend = () => (_resend ??= new Resend(process.env.RESEND_API_KEY!));
 
 const ALLOWED_ORIGINS = new Set([
   'https://cojauny.com',
@@ -104,7 +105,7 @@ export async function POST(req: NextRequest) {
   // Add to Resend Audience (waitlist) if configured
   if (audienceId) {
     try {
-      await resend.contacts.create({
+      await getResend().contacts.create({
         audienceId,
         email,
         firstName: fullName.split(' ')[0] ?? fullName,
@@ -119,7 +120,7 @@ export async function POST(req: NextRequest) {
 
   // Send confirmation email to user
   try {
-    await resend.emails.send({
+    await getResend().emails.send({
       from: fromEmail,
       to: email,
       subject: '¡Estás en la lista de espera de Cojauny! 🎉',
@@ -132,7 +133,7 @@ export async function POST(req: NextRequest) {
   // Notify admin
   if (toEmail) {
     try {
-      await resend.emails.send({
+      await getResend().emails.send({
         from: fromEmail,
         to: toEmail,
         subject: `[Cojauny Beta] Nueva solicitud — ${fullName}`,

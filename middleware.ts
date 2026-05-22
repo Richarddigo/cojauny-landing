@@ -1,17 +1,18 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { defaultLocale } from '@/locales/config';
 
 const supported = ['es', 'en', 'de', 'fr'];
 
 function pickLocale(acceptLang?: string | null) {
-  if (!acceptLang) return 'en';
+  if (!acceptLang) return defaultLocale;
   const parts = acceptLang.split(',').map(p => p.split(';')[0].trim().toLowerCase());
   for (const p of parts) {
     // language-region -> language
     const lang = p.split('-')[0];
     if (supported.includes(lang)) return lang;
   }
-  return 'en';
+  return defaultLocale;
 }
 
 export function middleware(req: NextRequest) {
@@ -43,4 +44,9 @@ export function middleware(req: NextRequest) {
   return res;
 }
 
-// No explicit matcher: run middleware for all routes and guard inside the handler
+export const config = {
+  matcher: [
+    // Skip _next internals, static files, and API routes
+    '/((?!_next|api|.*\\..*).*)',
+  ],
+};

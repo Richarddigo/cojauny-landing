@@ -5,7 +5,8 @@ import { getDb } from '@/lib/db';
 
 export const runtime = 'nodejs';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+let _resend: Resend | null = null;
+const getResend = () => (_resend ??= new Resend(process.env.RESEND_API_KEY!));
 
 const ALLOWED_ORIGINS = new Set([
   'https://cojauny.com',
@@ -79,7 +80,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    await resend.emails.send({
+    await getResend().emails.send({
       from: fromEmail,
       to: toEmail,
       replyTo: email,

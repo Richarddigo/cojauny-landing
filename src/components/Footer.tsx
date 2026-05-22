@@ -126,6 +126,9 @@ const Footer = ({ copy, locale }: FooterProps) => {
                     <p className="text-xs" style={{ color: '#94A3B8' }} suppressHydrationWarning>
                         © {new Date().getFullYear()} Cojauny. {copy.rights}
                     </p>
+                    <p className="text-xs" style={{ color: '#94A3B8' }}>
+                        {copy.madeInEurope}
+                    </p>
                 </div>
             </div>
         </footer>

@@ -24,7 +24,6 @@ const Header = ({ locale, copy }: HeaderProps) => {
     useEffect(() => {
         const handler = () => setScrolled(window.scrollY > 20);
         window.addEventListener('scroll', handler, { passive: true });
-        handler();
         return () => window.removeEventListener('scroll', handler);
     }, []);
     const openButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -259,7 +258,7 @@ const Header = ({ locale, copy }: HeaderProps) => {
 
     return (
         <>
-            <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-[rgba(12,17,32,0.95)] backdrop-blur-xl border-b border-[rgba(255,255,255,0.06)] shadow-[0_2px_32px_rgba(0,0,0,0.5)]' : 'bg-transparent'}`}>
+            <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-[rgba(12,17,32,0.95)] backdrop-blur-xl ${scrolled ? 'border-b border-[rgba(255,255,255,0.06)] shadow-[0_2px_32px_rgba(0,0,0,0.5)]' : ''}`}>
                 <nav className="mx-auto flex max-w-[1180px] items-center justify-between px-4 py-4 sm:px-6 lg:px-8" aria-label="Global">
                     <div className="flex lg:flex-1">
                         <a href={`/${locale}`} className="-m-1.5 flex items-center gap-2 p-1.5 sm:gap-3">

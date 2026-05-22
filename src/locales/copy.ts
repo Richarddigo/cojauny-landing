@@ -219,6 +219,7 @@ export interface LandingCopy {
     contact: string;
     blog: string;
     languageLabel: string;
+    madeInEurope: string;
   };
 }
 
@@ -727,7 +728,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       subprocessors: 'Subprocesadores',
       contact: 'Contacto',
       blog: 'Blog',
-      languageLabel: 'Idioma'
+      languageLabel: 'Idioma',
+      madeInEurope: 'Hecho en Europa.'
     }
   },
   en: {
@@ -1234,7 +1236,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       subprocessors: 'Subprocessors',
       contact: 'Contact',
       blog: 'Blog',
-      languageLabel: 'Language'
+      languageLabel: 'Language',
+      madeInEurope: 'Made in Europe.'
     }
   },
   de: {
@@ -1741,7 +1744,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       subprocessors: 'Subprozessoren',
       contact: 'Kontakt',
       blog: 'Blog',
-      languageLabel: 'Sprache'
+      languageLabel: 'Sprache',
+      madeInEurope: 'Hergestellt in Europa.'
     }
   },
   fr: {
@@ -2247,7 +2251,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       subprocessors: 'Sous-traitants',
       contact: 'Contact',
       blog: 'Blog',
-      languageLabel: 'Langue'
+      languageLabel: 'Langue',
+      madeInEurope: 'Fait en Europe.'
     }
   }
 };
