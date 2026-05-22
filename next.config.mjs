@@ -63,8 +63,6 @@ const cacheHeaders = [
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
-    // Generar export estático para Firebase Hosting
-    output: 'export',
     poweredByHeader: false,
     compress: true,
 
@@ -84,7 +82,6 @@ const nextConfig = {
     ],
 
     images: {
-        unoptimized: true,
         formats: ['image/avif', 'image/webp'],
         deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
         imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -101,8 +98,7 @@ const nextConfig = {
         removeConsole: process.env.NODE_ENV === 'production'
     },
 
-    // Headers are not supported in 'output: export'
-    // headers: async () => cacheHeaders
+    headers: async () => cacheHeaders
 };
 
 export default nextConfig;

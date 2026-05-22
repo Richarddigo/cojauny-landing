@@ -11,6 +11,7 @@ import PricingSection from '@/components/PricingSection';
 import FaqSection from '@/components/FaqSection';
 import type { LandingCopy } from '@/locales/copy';
 import type { Locale } from '@/locales/config';
+import { ENABLE_PREMIUM } from '@/lib/flags';
 
 interface LandingPageContentProps {
     copy: LandingCopy;
@@ -25,7 +26,8 @@ const LandingPageContent = ({ copy, locale }: LandingPageContentProps) => (
         <SavingsSection copy={copy.savings} />
         <Features copy={copy.features} />
         <WorkflowSection copy={copy.workflow} />
-        <PricingSection copy={copy.pricing} />
+        {/* PREMIUM SECTION — controlled by NEXT_PUBLIC_ENABLE_PREMIUM=true */}
+        {ENABLE_PREMIUM && <PricingSection copy={copy.pricing} />}
         <section id="beta" className="w-full scroll-mt-[74px] py-12 lg:scroll-mt-[100px] md:py-16 lg:py-20">
             <div className="mx-auto max-w-7xl px-4 sm:px-6" style={{ paddingLeft: 'calc(var(--social-bar-offset) + 1rem)' }}>
                 <BetaSignupForm copy={copy.forms.beta} referralPanelCopy={copy.referralPanel} locale={locale} />

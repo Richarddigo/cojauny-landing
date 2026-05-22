@@ -2,7 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Cojauny Design Tokens (aligned with cojauny-studio) ─────────── */
 :root {
+    /* Brand palette — matches cojauny-studio accent */
+    --accent: #5a67f2;
+    --accent-dim: #434dd7;
+    --accent-glow: rgba(90, 103, 242, 0.18);
+
+    /* Surfaces (light mode) */
+    --light-bg: #F8FAFC;
+    --light-surface: #FFFFFF;
+    --light-border: #E2E8F0;
+
+    /* Text */
+    --text: #0f172a;
+    --muted: #64748b;
+
+    /* Radius — shared with studio */
+    --radius-sm: 6px;
+    --radius: 12px;
+    --radius-lg: 20px;
+
+    /* Transition */
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --duration: 200ms;
+
+    /* Box shadows */
+    --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+
     color-scheme: light;
     scroll-behavior: smooth;
     /* Offset para la barra social flotante */
