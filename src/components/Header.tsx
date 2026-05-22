@@ -9,6 +9,7 @@ import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { usePathname, useRouter } from 'next/navigation';
 import type { Locale } from '@/locales/config';
 import type { LandingCopy } from '@/locales/copy';
+import { getCommonCopy } from '@/locales/common';
 
 interface HeaderProps {
     locale: Locale;
@@ -16,6 +17,7 @@ interface HeaderProps {
 }
 
 const Header = ({ locale, copy }: HeaderProps) => {
+    const common = getCommonCopy(locale);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
@@ -258,7 +260,7 @@ const Header = ({ locale, copy }: HeaderProps) => {
     return (
         <>
             <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-[rgba(12,17,32,0.95)] backdrop-blur-xl border-b border-[rgba(255,255,255,0.06)] shadow-[0_2px_32px_rgba(0,0,0,0.5)]' : 'bg-transparent'}`}>
-                <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8" aria-label="Global">
+                <nav className="mx-auto flex max-w-[1180px] items-center justify-between px-4 py-4 sm:px-6 lg:px-8" aria-label="Global">
                     <div className="flex lg:flex-1">
                         <a href={`/${locale}`} className="-m-1.5 flex items-center gap-2 p-1.5 sm:gap-3">
                             <Image
@@ -279,9 +281,9 @@ const Header = ({ locale, copy }: HeaderProps) => {
                             type="button"
                             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white transition-colors hover:bg-white/10"
                             onClick={() => setMobileMenuOpen(true)}
-                            aria-label="Open main menu"
+                            aria-label={common.openMainMenu}
                         >
-                            <span className="sr-only">Open main menu</span>
+                            <span className="sr-only">{common.openMainMenu}</span>
                             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                         </button>
                     </div>
@@ -356,9 +358,9 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                 type="button"
                                 className="-m-2.5 rounded-md p-2.5 text-white transition-colors hover:bg-white/10"
                                 onClick={() => setMobileMenuOpen(false)}
-                                aria-label="Close menu"
+                                aria-label={common.closeMenu}
                             >
-                                <span className="sr-only">Close menu</span>
+                                <span className="sr-only">{common.closeMenu}</span>
                                 <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                             </button>
                         </div>

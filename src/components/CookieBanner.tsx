@@ -42,7 +42,7 @@ const CookieBanner = ({ copy, locale }: CookieBannerProps) => {
                             accept();
                             setOpen(false);
                         }}
-                        className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-white/90 focus-visible:bg-white/80"
+                        className="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-white/90 focus-visible:bg-white/80"
                     >
                         {copy.acceptAll}
                     </button>
@@ -52,7 +52,7 @@ const CookieBanner = ({ copy, locale }: CookieBannerProps) => {
                             reject();
                             setOpen(false);
                         }}
-                        className="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
+                        className="rounded-xl border border-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
                     >
                         {copy.reject}
                     </button>

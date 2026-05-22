@@ -6,6 +6,7 @@ import type { Metadata } from 'next';
 import { getPostsByLocale } from '@/content/blog/posts';
 import { locales, type Locale } from '@/locales/config';
 import { getBlogCopy } from '@/locales/blog';
+import { getCommonCopy } from '@/locales/common';
 import { siteMetadata, ogImages } from '@/lib/site';
 import { buildBreadcrumbJsonLd, buildLocaleAlternates } from '@/lib/jsonld';
 import StructuredData from '@/components/StructuredData';
@@ -72,7 +73,7 @@ export default async function BlogIndex({ params }: BlogIndexProps) {
         <section className="mx-auto max-w-5xl px-6 py-20">
             <StructuredData id={`ld-blog-breadcrumb-${locale}`} data={breadcrumb} />
             <header className="text-center">
-                <p className="text-sm uppercase tracking-[0.4em] text-brand-600">Blog</p>
+                <p className="text-sm uppercase tracking-[0.4em] text-brand-600">{getCommonCopy(locale).blogEyebrow}</p>
                 <h1 className="mt-4 text-4xl font-bold text-slate-900">{copy.heading}</h1>
                 <p className="mt-3 text-lg text-slate-600">{copy.subtitle}</p>
             </header>

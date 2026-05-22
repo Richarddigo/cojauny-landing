@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 
 import type { LandingCopy } from '@/locales/copy';
 import type { Locale } from '@/locales/config';
+import { getCommonCopy } from '@/locales/common';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { socialLinks } from '@/components/SocialLinks';
 
@@ -16,6 +17,7 @@ interface FooterProps {
 
 const Footer = ({ copy, locale }: FooterProps) => {
     const router = useRouter();
+    const common = getCommonCopy(locale);
 
     const handleBetaClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
@@ -67,7 +69,7 @@ const Footer = ({ copy, locale }: FooterProps) => {
 
                     {/* Col 2: App */}
                     <div>
-                        <p className="mb-4 text-xs font-semibold uppercase tracking-widest" style={{ color: '#5B7BFF' }}>App</p>
+                        <p className="mb-4 text-xs font-semibold uppercase tracking-widest" style={{ color: '#5B7BFF' }}>{common.footerSectionApp}</p>
                         <nav className="flex flex-col gap-2">
                             {[
                                 { href: `/${locale}#home`, label: copy.appStoreSoon, isAnchor: true },
@@ -101,7 +103,7 @@ const Footer = ({ copy, locale }: FooterProps) => {
 
                     {/* Col 3: Legal */}
                     <div>
-                        <p className="mb-4 text-xs font-semibold uppercase tracking-widest" style={{ color: '#5B7BFF' }}>Legal</p>
+                        <p className="mb-4 text-xs font-semibold uppercase tracking-widest" style={{ color: '#5B7BFF' }}>{common.footerSectionLegal}</p>
                         <nav className="flex flex-col gap-2">
                             <Link href={`/${locale}/legal/privacy`} className="text-sm transition-colors hover:text-white" style={{ color: '#94A3B8' }}>{copy.privacy}</Link>
                             <Link href={`/${locale}/legal/cookies`} className="text-sm transition-colors hover:text-white" style={{ color: '#94A3B8' }}>{copy.cookies}</Link>

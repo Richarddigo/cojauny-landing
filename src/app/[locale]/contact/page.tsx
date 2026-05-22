@@ -36,7 +36,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
     const copy = getContactCopy(locale);
 
     return (
-        <section className="mx-auto max-w-6xl px-6 py-24">
+        <section className="mx-auto max-w-[1180px] px-6 py-24">
             <div className="mx-auto max-w-3xl text-center">
                 <h1 className="text-4xl font-bold text-slate-900 sm:text-5xl">{copy.heading}</h1>
                 <p className="mt-4 text-lg text-slate-600">{copy.intro}</p>

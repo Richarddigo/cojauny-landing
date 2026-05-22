@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ReactNode } from 'react';
 import {
@@ -9,6 +10,8 @@ import {
     InformationCircleIcon,
     XMarkIcon
 } from '@heroicons/react/24/outline';
+import { getCommonCopy } from '@/locales/common';
+import { locales } from '@/locales/config';
 
 export type AlertType = 'success' | 'error' | 'info';
 
@@ -60,6 +63,9 @@ export default function AlertMessage({
 }: AlertMessageProps) {
     const config = alertConfig[type];
     const Icon = config.icon;
+    const pathname = usePathname();
+    const locale = locales.find((loc) => pathname?.startsWith(`/${loc}`)) ?? 'es';
+    const common = getCommonCopy(locale);
 
     useEffect(() => {
         if (autoDismiss && onClose) {
@@ -99,7 +105,7 @@ export default function AlertMessage({
                         <button
                             onClick={onClose}
                             className={`flex-shrink-0 rounded-full p-1 transition hover:bg-white/50 ${config.iconColor}`}
-                            aria-label="Cerrar mensaje"
+                            aria-label={common.closeMessage}
                         >
                             <XMarkIcon className="h-5 w-5" aria-hidden="true" />
                         </button>

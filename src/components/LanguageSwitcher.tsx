@@ -6,6 +6,7 @@ import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import { localeValues, type Locale } from '@/locales/config';
+import { getCommonCopy } from '@/locales/common';
 import { SpainFlag, UKFlag, GermanyFlag, FranceFlag } from './FlagIcons';
 
 interface LanguageSwitcherProps {
@@ -102,6 +103,7 @@ const LanguageSwitcherInner = ({ currentLocale, label, dropdownDirection = 'down
     const buttonLabel = activeOption?.label ?? currentLocale.toUpperCase();
     const ButtonFlag = activeOption?.flag ?? (() => <span>🌐</span>);
     const buttonCode = activeOption?.code ?? currentLocale.toUpperCase();
+    const common = getCommonCopy(currentLocale);
 
     const buttonAriaLabel = label ?? 'Change language';
     // outside click handler
@@ -235,7 +237,7 @@ const LanguageSwitcherInner = ({ currentLocale, label, dropdownDirection = 'down
             </button>
 
             {open && (
-                <div role="menu" aria-label="Language selector" className={`absolute z-50 left-1/2 transform -translate-x-1/2 sm:left-auto sm:right-0 sm:translate-x-0 min-w-max w-auto overflow-hidden rounded-3xl border border-white/10 bg-slate-900/95 p-2 shadow-soft-glow backdrop-blur ${dropdownDirection === 'up' ? 'bottom-full mb-2 origin-bottom-right' : 'mt-2 origin-top-right'}`}
+                <div role="menu" aria-label={common.languageSelectorLabel} className={`absolute z-50 left-1/2 transform -translate-x-1/2 sm:left-auto sm:right-0 sm:translate-x-0 min-w-max w-auto overflow-hidden rounded-3xl border border-white/10 bg-slate-900/95 p-2 shadow-soft-glow backdrop-blur ${dropdownDirection === 'up' ? 'bottom-full mb-2 origin-bottom-right' : 'mt-2 origin-top-right'}`}
                     onTouchStart={(e) => {
                         (e.currentTarget as any)._touchStartX = e.touches?.[0]?.clientX ?? 0;
                     }}

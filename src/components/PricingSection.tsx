@@ -6,17 +6,19 @@ import { smoothScrollTo } from '@/utils/smoothScroll';
 
 import SectionIntro from '@/components/SectionIntro';
 import type { PricingCopy } from '@/locales/copy';
+import type { CommonCopy } from '@/locales/common';
 
 interface PricingSectionProps {
     copy: PricingCopy;
+    common: CommonCopy;
 }
 
-const PricingSection = ({ copy }: PricingSectionProps) => {
+const PricingSection = ({ copy, common }: PricingSectionProps) => {
     const plans = [copy.plans.free, copy.plans.premium];
 
     return (
         <section id="pricing" className="w-full scroll-mt-[74px] py-12 md:py-16 lg:py-20 lg:scroll-mt-[100px]">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6" style={{ paddingLeft: 'calc(var(--social-bar-offset) + 1rem)' }}>
+            <div className="mx-auto max-w-[1180px] px-4 sm:px-6" style={{ paddingLeft: 'calc(var(--social-bar-offset) + 1rem)' }}>
                 <SectionIntro title={copy.title} description={copy.subtitle} />
                 <div className="mt-12 grid gap-6 sm:gap-8 md:grid-cols-2 md:mt-16 lg:gap-12">
                     {plans.map((plan, index) => {
@@ -85,9 +87,9 @@ const PricingSection = ({ copy }: PricingSectionProps) => {
                         <table className="min-w-full divide-y divide-slate-100 text-sm">
                             <thead>
                                 <tr className="text-left text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-                                    <th className="py-3 pr-3 text-left">Feature</th>
-                                    <th className="px-3 py-3 text-center">Free</th>
-                                    <th className="px-3 py-3 text-center">Premium</th>
+                                    <th className="py-3 pr-3 text-left">{common.pricingFeatureHeader}</th>
+                                    <th className="px-3 py-3 text-center">{common.pricingFreeHeader}</th>
+                                    <th className="px-3 py-3 text-center">{common.pricingPremiumHeader}</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-slate-100">
@@ -97,11 +99,11 @@ const PricingSection = ({ copy }: PricingSectionProps) => {
                                         <td className="px-3 py-3 text-center text-sm text-slate-600 md:py-4">
                                             {typeof feature.free === 'boolean' ? (
                                                 feature.free ? (
-                                                    <span aria-label="Included" className="text-emerald-500">
+                                                    <span aria-label={common.pricingIncludedLabel} className="text-emerald-500">
                                                         ✓
                                                     </span>
                                                 ) : (
-                                                    <span aria-label="Not included" className="text-slate-300">
+                                                    <span aria-label={common.pricingNotIncludedLabel} className="text-slate-300">
                                                         —
                                                     </span>
                                                 )
@@ -112,11 +114,11 @@ const PricingSection = ({ copy }: PricingSectionProps) => {
                                         <td className="px-3 py-3 text-center text-sm text-slate-900 md:py-4">
                                             {typeof feature.premium === 'boolean' ? (
                                                 feature.premium ? (
-                                                    <span aria-label="Included" className="text-emerald-500">
+                                                    <span aria-label={common.pricingIncludedLabel} className="text-emerald-500">
                                                         ✓
                                                     </span>
                                                 ) : (
-                                                    <span aria-label="Not included" className="text-slate-300">
+                                                    <span aria-label={common.pricingNotIncludedLabel} className="text-slate-300">
                                                         —
                                                     </span>
                                                 )

@@ -20,6 +20,20 @@ module.exports = {
                     700: '#2e36ad',
                     800: '#1d2380',
                     900: '#121754'
+                },
+                // Studio dark theme tokens (aligned with cojauny-studio).
+                // Available for opt-in dark sections via classes like `bg-studio-bg`, `text-studio-text`.
+                studio: {
+                    bg: '#0C1120',
+                    surface: '#1C2336',
+                    'surface-2': '#2A3550',
+                    'surface-3': '#333F60',
+                    accent: '#5B7BFF',
+                    'accent-dim': '#3A59D9',
+                    text: '#F1F5F9',
+                    muted: '#94A3B8',
+                    faint: '#8B9DBF',
+                    border: 'rgba(255,255,255,0.08)'
                 }
             },
             fontFamily: {

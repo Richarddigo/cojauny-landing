@@ -16,7 +16,7 @@ const IntegrationCTA = ({ copy, locale }: IntegrationCTAProps) => {
 
     return (
         <div className="overflow-hidden rounded-[3rem] bg-gradient-to-br from-slate-900 via-brand-700 to-slate-900 py-20 px-6 text-white">
-            <div className="relative mx-auto max-w-6xl px-6 text-center">
+            <div className="relative mx-auto max-w-[1180px] px-6 text-center">
                 <div className="absolute inset-0 -z-10 blur-3xl" aria-hidden>
                     <div className="mx-auto h-64 w-64 rounded-full bg-brand-400/30" />
                 </div>
@@ -25,14 +25,14 @@ const IntegrationCTA = ({ copy, locale }: IntegrationCTAProps) => {
                     {isInternal ? (
                         <Link
                             href={href}
-                            className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3 text-base font-semibold text-slate-900 transition hover:bg-slate-100"
+                            className="inline-flex items-center justify-center rounded-xl bg-white px-8 py-3 text-base font-semibold text-slate-900 transition hover:bg-slate-100"
                         >
                             {copy.linkLabel}
                         </Link>
                     ) : (
                         <a
                             href={href}
-                            className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3 text-base font-semibold text-slate-900 transition hover:bg-slate-100"
+                            className="inline-flex items-center justify-center rounded-xl bg-white px-8 py-3 text-base font-semibold text-slate-900 transition hover:bg-slate-100"
                         >
                             {copy.linkLabel}
                         </a>

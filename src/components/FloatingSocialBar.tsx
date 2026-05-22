@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { socialLinks } from './SocialLinks';
 import { locales } from '@/locales/config';
+import { getCommonCopy } from '@/locales/common';
 
 /**
  * Barra vertical flotante fija con iconos de redes sociales + enlace al formulario beta.
@@ -14,6 +15,7 @@ export default function FloatingSocialBar() {
 
     // Detectar el locale actual de la URL
     const currentLocale = locales.find(loc => pathname?.startsWith(`/${loc}`)) || 'en';
+    const common = getCommonCopy(currentLocale);
 
     // Determinar si estamos en la página principal del locale
     const isMainPage = pathname === `/${currentLocale}` || pathname === '/';
@@ -63,7 +65,7 @@ export default function FloatingSocialBar() {
             <motion.a
                 href="#beta"
                 onClick={handleBetaClick}
-                aria-label="Ir al registro beta"
+                aria-label={common.goToBetaSignup}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3, delay: 0.7 }}
