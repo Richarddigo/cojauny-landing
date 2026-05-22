@@ -40,9 +40,8 @@ lerna-debug.log*
 functions/.env*
 supabase/.env*
 
-# Supabase/Firebase secrets
+# Supabase secrets
 .supabase/secrets.json
-firebase.env
 
 # Data exports / backups
 docs/backups/
@@ -74,11 +73,6 @@ Desktop.ini
 *~
 *.swp
 *.swo
-
-# Firebase
-.firebase/
-firebase-debug.log
-firestore-debug.log
 
 # Temporary files
 *.tmp

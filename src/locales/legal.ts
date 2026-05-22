@@ -222,14 +222,6 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
           policyLink: 'https://supabase.com/privacy'
         },
         {
-          name: 'Firebase',
-          purpose: 'Infraestructura',
-          location: 'Bélgica (UE)',
-          security: 'ISO 27001',
-          dataTypes: 'Metadatos técnicos',
-          policyLink: 'https://firebase.google.com/support/privacy'
-        },
-        {
           name: 'Zoho',
           purpose: 'Email',
           location: 'UE',
@@ -416,14 +408,6 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
           security: 'ISO 27001',
           dataTypes: 'User data',
           policyLink: 'https://supabase.com/privacy'
-        },
-        {
-          name: 'Firebase',
-          purpose: 'Infrastructure',
-          location: 'Belgium (EU)',
-          security: 'ISO 27001',
-          dataTypes: 'Technical metadata',
-          policyLink: 'https://firebase.google.com/support/privacy'
         },
         {
           name: 'Zoho',
@@ -614,14 +598,6 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
           policyLink: 'https://supabase.com/privacy'
         },
         {
-          name: 'Firebase',
-          purpose: 'Infrastruktur',
-          location: 'Belgien (EU)',
-          security: 'ISO 27001',
-          dataTypes: 'Metadaten',
-          policyLink: 'https://firebase.google.com/support/privacy'
-        },
-        {
           name: 'Zoho',
           purpose: 'E-Mail',
           location: 'EU',
@@ -808,14 +784,6 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
           security: 'ISO 27001',
           dataTypes: 'Données utilisateur',
           policyLink: 'https://supabase.com/privacy'
-        },
-        {
-          name: 'Firebase',
-          purpose: 'Infrastructure',
-          location: 'Belgique (UE)',
-          security: 'ISO 27001',
-          dataTypes: 'Métadonnées',
-          policyLink: 'https://firebase.google.com/support/privacy'
         },
         {
           name: 'Zoho',
