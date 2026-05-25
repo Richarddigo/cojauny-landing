@@ -10,6 +10,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import type { Locale } from '@/locales/config';
 import type { LandingCopy } from '@/locales/copy';
 import { getCommonCopy } from '@/locales/common';
+import { ENABLE_PREMIUM } from '@/lib/flags';
 
 interface HeaderProps {
     locale: Locale;
@@ -258,7 +259,7 @@ const Header = ({ locale, copy }: HeaderProps) => {
 
     return (
         <>
-            <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-[rgba(12,17,32,0.95)] backdrop-blur-xl ${scrolled ? 'border-b border-[rgba(255,255,255,0.06)] shadow-[0_2px_32px_rgba(0,0,0,0.5)]' : ''}`}>
+            <header className={`fixed top-0 left-0 right-0 z-50 transition-shadow duration-300 bg-[rgb(12,17,32)] backdrop-blur-xl ${scrolled ? 'border-b border-[rgba(255,255,255,0.06)] shadow-[0_2px_32px_rgba(0,0,0,0.5)]' : ''}`}>
                 <nav className="mx-auto flex max-w-[1180px] items-center justify-between px-4 py-4 sm:px-6 lg:px-8" aria-label="Global">
                     <div className="flex lg:flex-1">
                         <a href={`/${locale}`} className="-m-1.5 flex items-center gap-2 p-1.5 sm:gap-3">
@@ -294,7 +295,8 @@ const Header = ({ locale, copy }: HeaderProps) => {
                         <a href="#impact" onClick={(e) => handleScroll(e, '#impact')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.impact}</a>
                         <a href="#features" onClick={(e) => handleScroll(e, '#features')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.features}</a>
                         <a href="#how-it-works" onClick={(e) => handleScroll(e, '#how-it-works')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.workflow}</a>
-                        <a href="#pricing" onClick={(e) => handleScroll(e, '#pricing')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.pricing}</a>
+                        {/* PRICING LINK — re-enable by setting NEXT_PUBLIC_ENABLE_PREMIUM=true */}
+                        {ENABLE_PREMIUM && <a href="#pricing" onClick={(e) => handleScroll(e, '#pricing')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.pricing}</a>}
                         <a href="#beta" onClick={(e) => handleScroll(e, '#beta')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.beta}</a>
                         <a href="#faq" onClick={(e) => handleScroll(e, '#faq')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.faq}</a>
                         <a href="#feedback" onClick={(e) => handleScroll(e, '#feedback')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.feedback}</a>
@@ -372,7 +374,8 @@ const Header = ({ locale, copy }: HeaderProps) => {
                                     { href: '#impact', label: copy.impact },
                                     { href: '#features', label: copy.features },
                                     { href: '#how-it-works', label: copy.workflow },
-                                    { href: '#pricing', label: copy.pricing },
+                                    // PRICING LINK — re-enable by setting NEXT_PUBLIC_ENABLE_PREMIUM=true
+                                    ...(ENABLE_PREMIUM ? [{ href: '#pricing', label: copy.pricing }] : []),
                                     { href: '#beta', label: copy.beta },
                                     { href: '#faq', label: copy.faq },
                                     { href: '#feedback', label: copy.feedback }

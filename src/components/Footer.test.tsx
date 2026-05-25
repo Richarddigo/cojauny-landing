@@ -26,7 +26,8 @@ const mockCopy: LandingCopy['footer'] = {
     blog: 'Blog',
     contact: 'Contacto',
     languageLabel: 'Idioma',
-    rights: 'Todos los derechos reservados.'
+    rights: 'Todos los derechos reservados.',
+    madeInEurope: 'Hecho en Europa'
 };
 
 describe('Footer', () => {
