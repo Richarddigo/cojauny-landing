@@ -220,7 +220,9 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                     ));
 
                     const offset = scrollProgress * maxScroll;
-                    setParallaxOffset(offset);
+                    // Clamp so the phone bottom never goes below the visible viewport
+                    const maxSafeOffset = Math.max(0, window.innerHeight - headerOffset - phoneHeight - 32);
+                    setParallaxOffset(Math.min(offset, maxSafeOffset));
                 } else {
                     setParallaxOffset(0);
                 }
@@ -275,20 +277,20 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
         <section
             ref={containerRef}
             id="demo"
-            className={`relative w-full py-16 md:py-24 lg:py-32 bg-gradient-to-b from-slate-50 to-white ${className ?? ''}`}
+            className={`relative w-full py-16 md:py-24 lg:py-32 bg-studio-bg ${className ?? ''}`}
         >
             <div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8" style={{ paddingLeft: 'calc(var(--social-bar-offset) + 1rem)' }}>
                 <div className="text-center mb-12 md:mb-16 lg:mb-20">
-                    <motion.h2 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+                    <motion.h2 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
                         {copy.heading}
                     </motion.h2>
-                    <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.1 }} className="mt-4 text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">
+                    <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.1 }} className="mt-4 text-lg md:text-xl text-studio-muted max-w-3xl mx-auto">
                         {copy.description}
                     </motion.p>
                 </div>
 
                 {/* Desktop layout - el grid necesita items-stretch para que sticky funcione */}
-                <div className="hidden md:grid md:grid-cols-[1fr,400px] md:gap-12 lg:gap-16 xl:gap-20">
+                <div className="hidden md:grid md:grid-cols-[1fr_400px] md:gap-12 lg:gap-16 xl:gap-20">
                     <div ref={cardsContainerRef} className="flex flex-col gap-8">
                         {copy.screens.map((screen, idx) => (
                             <motion.div
@@ -302,19 +304,19 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                                 className={`demo-card transition-all duration-200 ease-out cursor-pointer ${activeStep === idx ? 'opacity-100' : 'opacity-60'} relative`}
                             >
                                 {isLocked && lockedIndex === idx && (
-                                    <div className="absolute top-2 right-2 bg-white rounded-full p-1 shadow-md border-2 border-brand-500">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 text-brand-500">
+                                    <div className="absolute top-2 right-2 bg-studio-surface-2 rounded-full p-1 shadow-md border-2 border-studio-accent">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 text-studio-accent">
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                                         </svg>
                                     </div>
                                 )}
-                                <div className={`bg-white rounded-3xl p-8 xl:p-10 shadow-xl border-2 transition-all duration-200 ease-out ${isLocked && lockedIndex === idx ? 'border-brand-500 shadow-2xl' : activeStep === idx ? 'border-brand-200 shadow-2xl' : 'border-slate-100'}`}>
+                                <div className={`bg-studio-surface rounded-3xl p-8 xl:p-10 shadow-xl border transition-all duration-200 ease-out ${isLocked && lockedIndex === idx ? 'border-studio-accent shadow-2xl' : activeStep === idx ? 'border-studio-accent/40 shadow-2xl' : 'border-white/8'}`}>
                                     <div className="inline-flex items-center gap-2 mb-5">
-                                        <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors duration-150 ${activeStep === idx ? 'bg-brand-600 text-white' : 'bg-slate-100 text-slate-400'}`}>{idx + 1}</div>
-                                        <span className="px-3 py-1.5 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider">{screen.badge}</span>
+                                        <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors duration-150 ${activeStep === idx ? 'bg-studio-accent text-white' : 'bg-white/10 text-studio-muted'}`}>{idx + 1}</div>
+                                        <span className="px-3 py-1.5 rounded-full bg-studio-accent/10 text-studio-accent text-xs font-bold uppercase tracking-wider">{screen.badge}</span>
                                     </div>
-                                    <h3 className="text-2xl xl:text-3xl font-bold text-slate-900 mb-4">{screen.title}</h3>
-                                    <p className="text-lg text-slate-600 leading-relaxed">{screen.description}</p>
+                                    <h3 className="text-2xl xl:text-3xl font-bold text-white mb-4">{screen.title}</h3>
+                                    <p className="text-lg text-studio-muted leading-relaxed">{screen.description}</p>
                                 </div>
                             </motion.div>
                         ))}
@@ -330,8 +332,9 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.4 }}
-                            className="w-full max-w-[340px] mx-auto"
+                            className="mx-auto"
                             style={{
+                                width: 'min(calc((100vh - 8rem) * 9 / 19.5), 340px)',
                                 transform: `translateY(${parallaxOffset}px)`,
                                 transition: 'transform 0.1s ease-out'
                             }}
@@ -349,19 +352,19 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                             className="flex flex-col"
                         >
                             {/* Tarjeta */}
-                            <div className="bg-white rounded-2xl p-4 sm:p-5 md:p-6 shadow-lg border-2 border-slate-100">
+                            <div className="bg-studio-surface rounded-2xl p-4 sm:p-5 md:p-6 shadow-lg border border-white/8">
                                 <div className="inline-flex items-center gap-2 mb-3">
-                                    <div className="w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-sm bg-blue-600 text-white">
+                                    <div className="w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-sm bg-studio-accent text-white">
                                         {idx + 1}
                                     </div>
-                                    <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider">
+                                    <span className="px-3 py-1 rounded-full bg-studio-accent/10 text-studio-accent text-xs font-bold uppercase tracking-wider">
                                         {screen.badge}
                                     </span>
                                 </div>
-                                <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2">
+                                <h3 className="text-lg md:text-xl font-bold text-white mb-2">
                                     {screen.title}
                                 </h3>
-                                <p className="text-sm md:text-base text-slate-600 leading-relaxed">
+                                <p className="text-sm md:text-base text-studio-muted leading-relaxed">
                                     {screen.description}
                                 </p>
                             </div>
