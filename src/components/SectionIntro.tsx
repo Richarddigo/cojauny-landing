@@ -1,7 +1,3 @@
-"use client";
-
-import { motion } from 'framer-motion';
-
 interface SectionIntroProps {
     eyebrow?: string;
     title: string;
@@ -15,17 +11,12 @@ interface SectionIntroProps {
     eyebrowClassName?: string;
 }
 
-const baseVariants = {
-    hidden: { opacity: 0, y: 16 },
-    visible: { opacity: 1, y: 0 }
-};
-
 const SectionIntro = ({
     eyebrow,
     title,
     description,
     align = 'center',
-    tone = 'dark',
+    tone = 'light',
     isDark,
     className = '',
     titleClassName,
@@ -41,13 +32,7 @@ const SectionIntro = ({
     const eyebrowClasses = eyebrowClassName ?? (effectiveTone === 'dark' ? 'text-brand-400' : 'text-white/70');
 
     return (
-        <motion.div
-            initial={baseVariants.hidden}
-            whileInView={baseVariants.visible}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.4 }}
-            className={`${alignmentClasses} ${widthClasses} ${className}`.trim()}
-        >
+        <div className={`${alignmentClasses} ${widthClasses} ${className}`.trim()}>
             {eyebrow && (
                 <p
                     className={`text-[10px] sm:text-xs font-semibold uppercase tracking-[0.25em] ${eyebrowClasses} inline-block max-w-full break-words`}
@@ -59,7 +44,7 @@ const SectionIntro = ({
                 {title}
             </h2>
             {description && <p className={`mt-2 text-base sm:mt-4 sm:text-lg ${descriptionClasses}`}>{description}</p>}
-        </motion.div>
+        </div>
     );
 };
 

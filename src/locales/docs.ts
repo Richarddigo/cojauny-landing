@@ -12,7 +12,7 @@ interface DocPageCopy {
   steps: DocStep[];
 }
 
-interface DocsCopy {
+export interface DocsCopy {
   sdkPlan: DocPageCopy;
 }
 

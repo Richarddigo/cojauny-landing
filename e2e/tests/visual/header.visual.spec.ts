@@ -8,13 +8,9 @@ test.describe('Header visual', () => {
     await page.setViewportSize({ width: 390, height: 844 });
 
     // open menu
-    const openerSelector = 'header button[aria-label="Open main menu"]';
-    await page.waitForSelector(openerSelector, { timeout: 10000 });
-    // use evaluate to click to avoid detached/stability issues caused by re-renders
-    await page.evaluate((sel) => {
-      const el = document.querySelector(sel) as HTMLElement | null;
-      if (el) el.click();
-    }, openerSelector);
+    const opener = page.getByRole('button', { name: /open main menu|abrir menú principal|abrir menu principal/i }).first();
+    await expect(opener).toBeVisible({ timeout: 10000 });
+    await opener.click();
     await page.waitForTimeout(250); // wait for animation
     await expect(page.locator('role=dialog')).toBeVisible().catch(() => null);
 
@@ -43,7 +39,7 @@ test.describe('Header visual', () => {
         await page.evaluate((el) => (el as HTMLElement).click(), await handle.elementHandle());
         clicked = true;
         break;
-      } catch (e) {
+      } catch {
         // try next
       }
     }

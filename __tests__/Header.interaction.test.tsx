@@ -31,7 +31,7 @@ describe('Header mobile menu interactions', () => {
     });
 
     test('opens and closes the mobile menu via button and overlay click', async () => {
-        render(<Header locale={localeValues[0]} copy={copy} />);
+        render(<Header locale={'en'} copy={copy} />);
 
         const openButton = screen.getByLabelText(/open main menu/i);
         expect(openButton).toBeInTheDocument();
@@ -52,7 +52,7 @@ describe('Header mobile menu interactions', () => {
     });
 
     test('closes on Escape', async () => {
-        render(<Header locale={localeValues[0]} copy={copy} />);
+        render(<Header locale={'en'} copy={copy} />);
         const openButton = screen.getByLabelText(/open main menu/i);
         await userEvent.click(openButton);
 
@@ -65,7 +65,7 @@ describe('Header mobile menu interactions', () => {
     });
 
     test('swipe to close triggers on touch events', async () => {
-        render(<Header locale={localeValues[0]} copy={copy} />);
+        render(<Header locale={'en'} copy={copy} />);
         const openButton = screen.getByLabelText(/open main menu/i);
         await userEvent.click(openButton);
 

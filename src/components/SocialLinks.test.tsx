@@ -57,7 +57,7 @@ describe('SocialIcons component', () => {
         render(<SocialIcons variant="dark" />);
 
         const link = screen.getByLabelText('Instagram');
-        expect(link).toHaveClass('text-slate-500');
+        expect(link).toHaveClass('text-studio-muted');
     });
 
     it('aplica className adicional', () => {

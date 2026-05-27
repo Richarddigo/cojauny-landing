@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import LegalSubprocessors from '@/components/LegalSubprocessors';
+import { getAppMessages } from '@/lib/i18nMessages';
 import { locales, type Locale } from '@/locales/config';
-import { getLegalCopy } from '@/locales/legal';
 
 interface SubprocessorsPageProps {
     params: Promise<{ locale: string }>;
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: SubprocessorsPageProps): Prom
         notFound();
     }
 
-    const copy = getLegalCopy(locale).subprocessors;
+    const copy = (await getAppMessages(locale)).legal.subprocessors;
 
     return {
         title: copy.title,
@@ -35,7 +35,7 @@ const SubprocessorsPage = async ({ params }: SubprocessorsPageProps) => {
         notFound();
     }
 
-    const copy = getLegalCopy(locale).subprocessors;
+    const copy = (await getAppMessages(locale)).legal.subprocessors;
 
     return <LegalSubprocessors copy={copy} />;
 };

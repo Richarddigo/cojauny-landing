@@ -1,8 +1,11 @@
 /**
  * Next.js configuration tuned for multilingual SEO and performance.
- * Defines i18n locales, security headers and aggressive caching for static assets.
+ * Uses next-intl for locale routing. Defines security headers and caching.
  */
-const LOCALES = ['es', 'en', 'fr', 'de'];
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
+const isProd = process.env.NODE_ENV === 'production';
 
 const securityHeaders = [
     {
@@ -36,28 +39,32 @@ const cacheHeaders = [
         source: '/:path*',
         headers: securityHeaders
     },
-    {
-        source: '/(assets|images|fonts)/:path*',
-        headers: [
+    ...(isProd
+        ? [
             {
-                key: 'Cache-Control',
-                value: 'public, max-age=31536000, immutable'
+                source: '/(assets|images|fonts)/:path*',
+                headers: [
+                    {
+                        key: 'Cache-Control',
+                        value: 'public, max-age=31536000, immutable'
+                    }
+                ]
+            },
+            {
+                source: '/_next/static/:path*',
+                headers: [
+                    {
+                        key: 'Cache-Control',
+                        value: 'public, max-age=31536000, immutable'
+                    }
+                ]
+            },
+            {
+                source: '/icons/:path*',
+                headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }]
             }
         ]
-    },
-    {
-        source: '/_next/static/:path*',
-        headers: [
-            {
-                key: 'Cache-Control',
-                value: 'public, max-age=31536000, immutable'
-            }
-        ]
-    },
-    {
-        source: '/icons/:path*',
-        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }]
-    }
+        : [])
 ];
 
 /** @type {import('next').NextConfig} */
@@ -101,4 +108,4 @@ const nextConfig = {
     headers: async () => cacheHeaders
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

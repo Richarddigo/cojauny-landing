@@ -29,7 +29,7 @@ export default function DetectLocale() {
             sessionStorage.setItem('cojauny_locale_redirected', '1');
             // use replace to avoid polluting history
             window.location.replace(dest);
-        } catch (e) {
+        } catch {
             // ignore
         }
     }, []);

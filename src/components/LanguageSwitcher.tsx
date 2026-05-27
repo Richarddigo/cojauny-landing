@@ -1,8 +1,7 @@
 "use client";
 
-import { Fragment, useMemo, Suspense, useState, useRef, useEffect } from 'react';
-import { Transition } from '@headlessui/react';
-import { CheckIcon, ChevronDownIcon } from '@heroicons/react/20/solid';
+import { useMemo, Suspense, useState, useRef, useEffect } from 'react';
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import { localeValues, type Locale } from '@/locales/config';
@@ -37,6 +36,12 @@ const languageCodes: Record<Locale, string> = {
     de: 'DE',
     fr: 'FR'
 };
+
+const GlobeFallbackFlag = ({ className }: { className?: string }) => (
+    <span className={className}>🌐</span>
+);
+
+type TouchTrackingElement = HTMLDivElement & { _touchStartX?: number };
 
 const LanguageSwitcherInner = ({ currentLocale, label, dropdownDirection = 'down', onSelect, fullWidth }: LanguageSwitcherProps) => {
     const router = useRouter();
@@ -85,7 +90,7 @@ const LanguageSwitcherInner = ({ currentLocale, label, dropdownDirection = 'down
         if (typeof onSelect === 'function') {
             try {
                 onSelect(nextLocale);
-            } catch (e) {
+            } catch {
                 // ignore
             }
         }
@@ -101,8 +106,7 @@ const LanguageSwitcherInner = ({ currentLocale, label, dropdownDirection = 'down
 
     const activeOption = options.find((option) => option.value === currentLocale);
     const buttonLabel = activeOption?.label ?? currentLocale.toUpperCase();
-    const ButtonFlag = activeOption?.flag ?? (() => <span>🌐</span>);
-    const buttonCode = activeOption?.code ?? currentLocale.toUpperCase();
+    const ButtonFlag = activeOption?.flag ?? GlobeFallbackFlag;
     const common = getCommonCopy(currentLocale);
 
     const buttonAriaLabel = label ?? 'Change language';
@@ -138,7 +142,7 @@ const LanguageSwitcherInner = ({ currentLocale, label, dropdownDirection = 'down
                 el.style.overflowY = prevOverflow;
                 el.style.maxHeight = prevMax;
             };
-        } catch (e) {
+        } catch {
             // ignore
         }
     }, [open, fullWidth]);
@@ -239,11 +243,13 @@ const LanguageSwitcherInner = ({ currentLocale, label, dropdownDirection = 'down
             {open && (
                 <div role="menu" aria-label={common.languageSelectorLabel} className={`absolute z-50 left-1/2 transform -translate-x-1/2 sm:left-auto sm:right-0 sm:translate-x-0 min-w-max w-auto overflow-hidden rounded-3xl border border-white/10 bg-slate-900/95 p-2 shadow-soft-glow backdrop-blur ${dropdownDirection === 'up' ? 'bottom-full mb-2 origin-bottom-right' : 'mt-2 origin-top-right'}`}
                     onTouchStart={(e) => {
-                        (e.currentTarget as any)._touchStartX = e.touches?.[0]?.clientX ?? 0;
+                        const target = e.currentTarget as TouchTrackingElement;
+                        target._touchStartX = e.touches?.[0]?.clientX ?? 0;
                     }}
                     onTouchEnd={(e) => {
+                        const target = e.currentTarget as TouchTrackingElement;
                         const touchEndX = e.changedTouches?.[0]?.clientX ?? 0;
-                        const touchStartX = (e.currentTarget as any)._touchStartX ?? 0;
+                        const touchStartX = target._touchStartX ?? 0;
                         const delta = touchEndX - touchStartX;
                         if (delta < -50) {
                             setOpen(false);
@@ -263,7 +269,10 @@ const LanguageSwitcherInner = ({ currentLocale, label, dropdownDirection = 'down
                                         navigateToLocale(option.value);
                                         setOpen(false);
                                     }}
-                                    className={`flex w-full items-center justify-between gap-3 rounded-2xl px-3 py-2 text-left text-sm transition ${isActive ? 'bg-white/10 text-white' : 'text-white/80'}`}
+                                    className={`group relative flex w-full items-center justify-between gap-3 rounded-2xl px-3 py-2 text-left text-sm transition ${isActive
+                                        ? 'text-white [text-shadow:0_0_10px_rgba(255,255,255,0.55)]'
+                                        : 'text-white/80 hover:text-white hover:[text-shadow:0_0_10px_rgba(255,255,255,0.55)]'
+                                        }`}
                                 >
                                     <span className="flex items-center gap-3">
                                         <span aria-hidden className="flex h-8 w-8 items-center justify-center">
@@ -271,7 +280,13 @@ const LanguageSwitcherInner = ({ currentLocale, label, dropdownDirection = 'down
                                         </span>
                                         <span className="font-medium">{option.label}</span>
                                     </span>
-                                    {isActive ? <CheckIcon className="h-4 w-4 text-brand-200" aria-hidden /> : null}
+                                    <span
+                                        className={`pointer-events-none absolute bottom-1 right-3 h-0.5 w-4 rounded-full bg-[var(--accent)] transition-all duration-200 ${isActive
+                                            ? 'scale-x-100 opacity-100'
+                                            : 'scale-x-50 opacity-0 group-hover:scale-x-100 group-hover:opacity-100'
+                                            }`}
+                                        aria-hidden
+                                    />
                                 </button>
                             );
                         })}

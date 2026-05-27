@@ -1,0 +1,50 @@
+[
+  {
+    "project": "cojauny-landing",
+    "mobileHeaderHeight": 68,
+    "mobileNavHeight": 68,
+    "mobilePanelWidth": 202,
+    "bodyOverflowAfterClose": "hidden auto",
+    "scrollbar": {
+      "selectors": [
+        "::-webkit-scrollbar",
+        "::-webkit-scrollbar-track",
+        "::-webkit-scrollbar-thumb"
+      ],
+      "webkitScrollbarWidth": "6px",
+      "webkitScrollbarThumbBg": "rgb(42, 53, 80)"
+    }
+  },
+  {
+    "project": "cojauny-studio",
+    "mobileHeaderHeight": 68,
+    "mobileNavHeight": 68,
+    "mobilePanelWidth": 202,
+    "bodyOverflowAfterClose": "hidden auto",
+    "scrollbar": {
+      "selectors": [
+        "::-webkit-scrollbar",
+        "::-webkit-scrollbar-track",
+        "::-webkit-scrollbar-thumb"
+      ],
+      "webkitScrollbarWidth": "6px",
+      "webkitScrollbarThumbBg": "rgb(42, 53, 80)"
+    }
+  },
+  {
+    "project": "cuatrosotas-landing",
+    "mobileHeaderHeight": 68,
+    "mobileNavHeight": 68,
+    "mobilePanelWidth": 202,
+    "bodyOverflowAfterClose": "hidden auto",
+    "scrollbar": {
+      "selectors": [
+        "::-webkit-scrollbar",
+        "::-webkit-scrollbar-track",
+        "::-webkit-scrollbar-thumb"
+      ],
+      "webkitScrollbarWidth": "6px",
+      "webkitScrollbarThumbBg": "rgb(35, 46, 72)"
+    }
+  }
+]

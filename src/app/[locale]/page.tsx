@@ -1,10 +1,12 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 
 import LandingPageContent from '@/components/LandingPageContent';
 import StructuredData from '@/components/StructuredData';
+import { getCommonCopyFromMessages } from '../../i18n/message-adapters';
 import { locales, type Locale } from '@/locales/config';
-import { getLandingCopy } from '@/locales/copy';
+import { getAppMessages } from '@/lib/i18nMessages';
 import { siteMetadata } from '@/lib/site';
 import {
     buildSoftwareAppJsonLd,
@@ -32,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         notFound();
     }
 
-    const copy = getLandingCopy(locale);
+    const copy = (await getAppMessages(locale)).landing;
 
     return {
         title: copy.seo.title,
@@ -49,7 +51,9 @@ export default async function LocalePage({ params }: LocalePageProps) {
         notFound();
     }
 
-    const copy = getLandingCopy(locale);
+    const copy = (await getAppMessages(locale)).landing;
+    const commonT = await getTranslations({ locale, namespace: 'common' });
+    const commonCopy = getCommonCopyFromMessages(commonT);
     const faqItems = getFaqEntries(locale);
 
     const breadcrumb = buildBreadcrumbJsonLd(locale, [
@@ -62,7 +66,7 @@ export default async function LocalePage({ params }: LocalePageProps) {
             <StructuredData id={`ld-app-${locale}`} data={buildSoftwareAppJsonLd(locale)} />
             <StructuredData id={`ld-faq-${locale}`} data={buildFaqJsonLd(faqItems)} />
             <StructuredData id={`ld-breadcrumb-${locale}`} data={breadcrumb} />
-            <LandingPageContent copy={copy} locale={locale} />
+            <LandingPageContent copy={copy} locale={locale} common={commonCopy} />
         </>
     );
 }

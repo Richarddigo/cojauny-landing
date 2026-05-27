@@ -1,6 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require('tailwindcss/defaultTheme');
-
 module.exports = {
     content: [
         './src/**/*.{js,ts,jsx,tsx}',
@@ -37,7 +35,6 @@ module.exports = {
                 }
             },
             fontFamily: {
-                // Use iPhone system font first, then fonts closest to it, then fallbacks and Inter as a last-resort webfont
                 sans: [
                     '-apple-system',
                     'SF Pro Text',
@@ -49,7 +46,9 @@ module.exports = {
                     'Helvetica',
                     'Arial',
                     'var(--font-inter)',
-                    ...defaultTheme.fontFamily.sans
+                    'ui-sans-serif',
+                    'system-ui',
+                    'sans-serif'
                 ]
             },
             boxShadow: {

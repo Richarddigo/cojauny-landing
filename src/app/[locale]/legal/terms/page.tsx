@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import LegalArticle from '@/components/LegalArticle';
+import { getAppMessages } from '@/lib/i18nMessages';
 import { locales, type Locale } from '@/locales/config';
-import { getLegalCopy } from '@/locales/legal';
 
 interface TermsPageProps {
     params: Promise<{ locale: string }>;
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: TermsPageProps): Promise<Meta
         notFound();
     }
 
-    const copy = getLegalCopy(locale).terms;
+    const copy = (await getAppMessages(locale)).legal.terms;
 
     return {
         title: copy.title,
@@ -35,7 +35,7 @@ const TermsPage = async ({ params }: TermsPageProps) => {
         notFound();
     }
 
-    const copy = getLegalCopy(locale).terms;
+    const copy = (await getAppMessages(locale)).legal.terms;
 
     return <LegalArticle copy={copy} />;
 };

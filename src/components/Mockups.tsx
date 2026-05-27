@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
@@ -24,15 +24,8 @@ const Mockups = ({ className, copy }: MockupsProps) => {
 
     const screenOptions = useMemo(() => copy.screens, [copy]);
     const [activeScreenId, setActiveScreenId] = useState(() => screenOptions[0]?.id ?? 'home');
-    const tickingRef = useRef(false);
-
-    useEffect(() => {
-        if (screenOptions.length) {
-            setActiveScreenId(screenOptions[0].id);
-        }
-    }, [screenOptions]);
-
-    const activeScreen = screenOptions.find((screen) => screen.id === activeScreenId) ?? screenOptions[0];
+    const activeScreen = screenOptions.find((screen) => screen.id === activeScreenId)
+        ?? screenOptions[0];
 
     useEffect(() => {
         if (prefersReducedMotion) return;
@@ -67,10 +60,10 @@ const Mockups = ({ className, copy }: MockupsProps) => {
             aria-labelledby="mockups-title"
         >
             <div className="text-center">
-                <h2 id="mockups-title" className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                <h2 id="mockups-title" className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
                     {copy.heading}
                 </h2>
-                <p className="mt-3 text-base leading-relaxed text-slate-600 sm:mt-4 sm:text-lg">{copy.description}</p>
+                <p className="mt-3 text-base leading-relaxed text-studio-muted sm:mt-4 sm:text-lg">{copy.description}</p>
             </div>
             <div className="relative mt-8 flex flex-col gap-6 md:mt-12 lg:mt-20 lg:flex-row lg:gap-10 xl:gap-12">
                 <div ref={cardsContainerRef} className="flex flex-1 flex-col gap-3 text-left md:gap-4 md:max-w-2xl lg:max-w-3xl">
@@ -86,18 +79,18 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                                 onMouseEnter={() => setActiveScreenId(screen.id)}
                                 onFocus={() => setActiveScreenId(screen.id)}
                                 onClick={() => setActiveScreenId(screen.id)}
-                                className={`group rounded-2xl border bg-white p-4 text-left shadow-lg transition focus-visible:outline-none md:rounded-3xl md:p-6 ${isActive
-                                    ? 'border-brand-300 shadow-soft-glow ring-2 ring-brand-100'
-                                    : 'border-slate-100 hover:border-brand-100 hover:shadow-xl'
+                                className={`group rounded-2xl border bg-studio-surface p-4 text-left shadow-lg transition focus-visible:outline-none md:rounded-3xl md:p-6 ${isActive
+                                    ? 'border-studio-accent/60 shadow-soft-glow ring-2 ring-[#5B7BFF]/20'
+                                    : 'border-white/8 hover:border-studio-accent/30 hover:shadow-xl'
                                     }`}
                             >
-                                <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-600">
-                                    <span className="rounded-full bg-brand-50 px-2 py-1 text-[10px] text-brand-600">
+                                <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.15em] text-studio-accent">
+                                    <span className="rounded-full bg-studio-accent/10 px-2 py-1 text-[10px] text-studio-accent">
                                         {screen.badge}
                                     </span>
                                 </span>
-                                <h3 className="mt-3 text-lg font-semibold text-slate-900 sm:mt-4 sm:text-xl">{screen.title}</h3>
-                                <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:mt-3 sm:text-base">{screen.description}</p>
+                                <h3 className="mt-3 text-lg font-semibold text-white sm:mt-4 sm:text-xl">{screen.title}</h3>
+                                <p className="mt-2 text-sm leading-relaxed text-studio-muted sm:mt-3 sm:text-base">{screen.description}</p>
                             </button>
                         );
                     })}
@@ -139,7 +132,7 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                                         </svg>
                                     </div>
                                 </div>
-                                <div className="overflow-hidden rounded-b-[2.5rem] bg-white sm:rounded-b-[3rem]">
+                                <div className="overflow-hidden rounded-b-[2.5rem] bg-studio-surface sm:rounded-b-[3rem]">
                                     {activeScreen && (
                                         <Image
                                             src={activeScreen.image}
@@ -163,3 +156,4 @@ const Mockups = ({ className, copy }: MockupsProps) => {
 };
 
 export default Mockups;
+

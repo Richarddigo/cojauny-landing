@@ -2,8 +2,8 @@ import { ContactInput, FeedbackInput, BetaSignupInput } from '@/lib/validation';
 
 export class ApiError extends Error {
   code?: string;
-  details?: any;
-  constructor(message: string, code?: string, details?: any) {
+  details?: unknown;
+  constructor(message: string, code?: string, details?: unknown) {
     super(message);
     this.code = code;
     this.details = details;
@@ -13,7 +13,7 @@ export class ApiError extends Error {
 /**
  * Generic helper for making API requests.
  */
-async function apiRequest<T>(endpoint: string, data: any): Promise<T> {
+async function apiRequest<T>(endpoint: string, data: unknown): Promise<T> {
   const response = await fetch(endpoint, {
     method: 'POST',
     headers: {
@@ -24,10 +24,15 @@ async function apiRequest<T>(endpoint: string, data: any): Promise<T> {
 
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
+    const normalizedError =
+      errorData && typeof errorData === 'object'
+        ? (errorData as Record<string, unknown>)
+        : {};
+
     throw new ApiError(
-      errorData.error || `API Error: ${response.status}`,
-      errorData.errorCode,
-      errorData.details
+      typeof normalizedError.error === 'string' ? normalizedError.error : `API Error: ${response.status}`,
+      typeof normalizedError.errorCode === 'string' ? normalizedError.errorCode : undefined,
+      normalizedError.details
     );
   }
 

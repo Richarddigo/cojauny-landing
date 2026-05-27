@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import LegalFaq from '@/components/LegalFaq';
+import { getAppMessages } from '@/lib/i18nMessages';
 import { locales, type Locale } from '@/locales/config';
-import { getLegalCopy } from '@/locales/legal';
 
 interface FaqPageProps {
     params: Promise<{ locale: string }>;
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: FaqPageProps): Promise<Metada
         notFound();
     }
 
-    const copy = getLegalCopy(locale).faq;
+    const copy = (await getAppMessages(locale)).legal.faq;
 
     return {
         title: copy.title,
@@ -35,7 +35,7 @@ const FaqPage = async ({ params }: FaqPageProps) => {
         notFound();
     }
 
-    const copy = getLegalCopy(locale).faq;
+    const copy = (await getAppMessages(locale)).legal.faq;
 
     return <LegalFaq copy={copy} />;
 };

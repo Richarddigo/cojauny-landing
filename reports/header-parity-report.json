@@ -1,0 +1,289 @@
+{
+  "generatedAt": "2026-05-26T13:18:30.201Z",
+  "expected": {
+    "desktopHeaderHeight": 70,
+    "desktopNavHeight": 70,
+    "mobileHeaderHeight": 68,
+    "mobileNavHeight": 68,
+    "mobileMenuPanelWidth": 202,
+    "bodyOverflowAfterClose": "hidden auto",
+    "scrollbarWidth": "6px",
+    "scrollbarThumbColor": "rgb(42, 53, 80)",
+    "openerFocusedAfterClose": true,
+    "dialogAriaHiddenAfterClose": "true"
+  },
+  "targets": [
+    {
+      "name": "cojauny-landing",
+      "url": "http://localhost:3001/en?audit=ci-parity",
+      "desktop": {
+        "headerHeight": 70,
+        "navHeight": 70
+      },
+      "mobile": {
+        "mobileHeaderHeight": 68,
+        "mobileNavHeight": 68,
+        "mobileMenuPanelWidth": 202,
+        "bodyOverflowAfterClose": "hidden auto",
+        "scrollbarWidth": "6px",
+        "scrollbarThumbColor": "rgb(42, 53, 80)",
+        "openerFocusedAfterClose": true,
+        "dialogAriaHiddenAfterClose": "true"
+      }
+    },
+    {
+      "name": "cojauny-studio",
+      "url": "http://localhost:3000/en?audit=ci-parity",
+      "desktop": {
+        "headerHeight": 70,
+        "navHeight": 70
+      },
+      "mobile": {
+        "mobileHeaderHeight": 68,
+        "mobileNavHeight": 68,
+        "mobileMenuPanelWidth": 202,
+        "bodyOverflowAfterClose": "hidden auto",
+        "scrollbarWidth": "6px",
+        "scrollbarThumbColor": "rgb(42, 53, 80)",
+        "openerFocusedAfterClose": true,
+        "dialogAriaHiddenAfterClose": "true"
+      }
+    },
+    {
+      "name": "cuatrosotas-landing",
+      "url": "http://localhost:3003/en?audit=ci-parity",
+      "desktop": {
+        "headerHeight": 70,
+        "navHeight": 70
+      },
+      "mobile": {
+        "mobileHeaderHeight": 68,
+        "mobileNavHeight": 68,
+        "mobileMenuPanelWidth": 202,
+        "bodyOverflowAfterClose": "hidden auto",
+        "scrollbarWidth": "6px",
+        "scrollbarThumbColor": "rgb(42, 53, 80)",
+        "openerFocusedAfterClose": true,
+        "dialogAriaHiddenAfterClose": "true"
+      }
+    }
+  ],
+  "checks": [
+    {
+      "target": "cojauny-landing",
+      "metric": "desktop-header-height",
+      "expected": 70,
+      "actual": 70,
+      "pass": true
+    },
+    {
+      "target": "cojauny-landing",
+      "metric": "desktop-nav-height",
+      "expected": 70,
+      "actual": 70,
+      "pass": true
+    },
+    {
+      "target": "cojauny-landing",
+      "metric": "mobile-header-height",
+      "expected": 68,
+      "actual": 68,
+      "pass": true
+    },
+    {
+      "target": "cojauny-landing",
+      "metric": "mobile-nav-height",
+      "expected": 68,
+      "actual": 68,
+      "pass": true
+    },
+    {
+      "target": "cojauny-landing",
+      "metric": "mobile-menu-panel-width",
+      "expected": 202,
+      "actual": 202,
+      "pass": true
+    },
+    {
+      "target": "cojauny-landing",
+      "metric": "body-overflow-after-close",
+      "expected": "hidden auto",
+      "actual": "hidden auto",
+      "pass": true
+    },
+    {
+      "target": "cojauny-landing",
+      "metric": "scrollbar-width",
+      "expected": "6px",
+      "actual": "6px",
+      "pass": true
+    },
+    {
+      "target": "cojauny-landing",
+      "metric": "scrollbar-thumb-color",
+      "expected": "rgb(42, 53, 80)",
+      "actual": "rgb(42, 53, 80)",
+      "pass": true
+    },
+    {
+      "target": "cojauny-landing",
+      "metric": "opener-focused-after-close",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "target": "cojauny-landing",
+      "metric": "dialog-aria-hidden-after-close",
+      "expected": "true",
+      "actual": "true",
+      "pass": true
+    },
+    {
+      "target": "cojauny-studio",
+      "metric": "desktop-header-height",
+      "expected": 70,
+      "actual": 70,
+      "pass": true
+    },
+    {
+      "target": "cojauny-studio",
+      "metric": "desktop-nav-height",
+      "expected": 70,
+      "actual": 70,
+      "pass": true
+    },
+    {
+      "target": "cojauny-studio",
+      "metric": "mobile-header-height",
+      "expected": 68,
+      "actual": 68,
+      "pass": true
+    },
+    {
+      "target": "cojauny-studio",
+      "metric": "mobile-nav-height",
+      "expected": 68,
+      "actual": 68,
+      "pass": true
+    },
+    {
+      "target": "cojauny-studio",
+      "metric": "mobile-menu-panel-width",
+      "expected": 202,
+      "actual": 202,
+      "pass": true
+    },
+    {
+      "target": "cojauny-studio",
+      "metric": "body-overflow-after-close",
+      "expected": "hidden auto",
+      "actual": "hidden auto",
+      "pass": true
+    },
+    {
+      "target": "cojauny-studio",
+      "metric": "scrollbar-width",
+      "expected": "6px",
+      "actual": "6px",
+      "pass": true
+    },
+    {
+      "target": "cojauny-studio",
+      "metric": "scrollbar-thumb-color",
+      "expected": "rgb(42, 53, 80)",
+      "actual": "rgb(42, 53, 80)",
+      "pass": true
+    },
+    {
+      "target": "cojauny-studio",
+      "metric": "opener-focused-after-close",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "target": "cojauny-studio",
+      "metric": "dialog-aria-hidden-after-close",
+      "expected": "true",
+      "actual": "true",
+      "pass": true
+    },
+    {
+      "target": "cuatrosotas-landing",
+      "metric": "desktop-header-height",
+      "expected": 70,
+      "actual": 70,
+      "pass": true
+    },
+    {
+      "target": "cuatrosotas-landing",
+      "metric": "desktop-nav-height",
+      "expected": 70,
+      "actual": 70,
+      "pass": true
+    },
+    {
+      "target": "cuatrosotas-landing",
+      "metric": "mobile-header-height",
+      "expected": 68,
+      "actual": 68,
+      "pass": true
+    },
+    {
+      "target": "cuatrosotas-landing",
+      "metric": "mobile-nav-height",
+      "expected": 68,
+      "actual": 68,
+      "pass": true
+    },
+    {
+      "target": "cuatrosotas-landing",
+      "metric": "mobile-menu-panel-width",
+      "expected": 202,
+      "actual": 202,
+      "pass": true
+    },
+    {
+      "target": "cuatrosotas-landing",
+      "metric": "body-overflow-after-close",
+      "expected": "hidden auto",
+      "actual": "hidden auto",
+      "pass": true
+    },
+    {
+      "target": "cuatrosotas-landing",
+      "metric": "scrollbar-width",
+      "expected": "6px",
+      "actual": "6px",
+      "pass": true
+    },
+    {
+      "target": "cuatrosotas-landing",
+      "metric": "scrollbar-thumb-color",
+      "expected": "rgb(42, 53, 80)",
+      "actual": "rgb(42, 53, 80)",
+      "pass": true
+    },
+    {
+      "target": "cuatrosotas-landing",
+      "metric": "opener-focused-after-close",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "target": "cuatrosotas-landing",
+      "metric": "dialog-aria-hidden-after-close",
+      "expected": "true",
+      "actual": "true",
+      "pass": true
+    }
+  ],
+  "summary": {
+    "totalChecks": 30,
+    "failedChecks": 0,
+    "passedChecks": 30,
+    "allPassed": true
+  }
+}

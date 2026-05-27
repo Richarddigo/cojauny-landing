@@ -79,10 +79,10 @@ describe('Features', () => {
         expect(articles).toHaveLength(mockCopy.items.length);
     });
 
-    it('aplica clases de gradiente al fondo', () => {
+    it('aplica las clases de fondo actuales', () => {
         const { container } = render(<Features copy={mockCopy} />);
         // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
         const section = container.querySelector('#features');
-        expect(section).toHaveClass('bg-gradient-to-b');
+        expect(section).toHaveClass('bg-studio-bg');
     });
 });

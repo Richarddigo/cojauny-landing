@@ -4,6 +4,11 @@
 import { render, screen } from '@testing-library/react';
 import AccessibilitySkipLink from './AccessibilitySkipLink';
 
+jest.mock('next/navigation', () => ({
+    usePathname: () => '/en',
+    useRouter: () => ({ push: jest.fn() }),
+}));
+
 describe('AccessibilitySkipLink', () => {
     it('renderiza con label por defecto', () => {
         render(<AccessibilitySkipLink />);

@@ -2,38 +2,53 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 import type { LandingCopy } from '@/locales/copy';
 import type { Locale } from '@/locales/config';
-import { getCommonCopy } from '@/locales/common';
+import { getCommonCopy, type CommonCopy } from '@/locales/common';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
-import { socialLinks } from '@/components/SocialLinks';
 
 interface FooterProps {
     copy: LandingCopy['footer'];
     locale: Locale;
+    common?: CommonCopy;
 }
 
-const Footer = ({ copy, locale }: FooterProps) => {
-    const router = useRouter();
-    const common = getCommonCopy(locale);
+const navigationSectionLabel: Record<Locale, string> = {
+    es: 'Navegacion',
+    en: 'Navigation',
+    de: 'Navigation',
+    fr: 'Navigation',
+};
 
-    const handleBetaClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-        const element = document.getElementById('beta');
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        } else {
-            router.push(`/${locale}#beta`);
-        }
-    };
+const ecosystemSectionLabel: Record<Locale, string> = {
+    es: 'Ecosistema',
+    en: 'Ecosystem',
+    de: 'Ökosystem',
+    fr: 'Écosystème',
+};
+
+const ecosystemDescription: Record<Locale, string> = {
+    es: 'Cojauny forma parte de un ecosistema de productos digitales en evolución.',
+    en: 'Cojauny is part of an evolving ecosystem of digital products.',
+    de: 'Cojauny ist Teil eines sich entwickelnden Ökosystems digitaler Produkte.',
+    fr: 'Cojauny fait partie d’un écosystème évolutif de produits numériques.',
+};
+
+const homeLabel: Record<Locale, string> = {
+    es: 'Inicio',
+    en: 'Home',
+    de: 'Start',
+    fr: 'Accueil',
+};
+
+const Footer = ({ copy, locale, common }: FooterProps) => {
+    const resolvedCommon = common ?? getCommonCopy(locale);
 
     return (
-        <footer style={{ background: '#0C1120', borderTop: '1px solid rgba(255,255,255,0.06)', marginTop: 'auto' }}>
-            <div className="mx-auto max-w-[1180px] px-6 py-16 lg:px-12">
-                {/* 4-column grid */}
-                <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <footer className="mt-auto border-t border-[rgba(255,255,255,0.06)] bg-bg">
+            <div className="mx-auto max-w-[1180px] px-[100px] py-16">
+                <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5">
 
                     {/* Col 1: Brand */}
                     <div className="flex flex-col gap-4">
@@ -47,86 +62,56 @@ const Footer = ({ copy, locale }: FooterProps) => {
                             />
                             <span className="text-base font-bold text-white">Cojauny</span>
                         </a>
-                        <p className="text-sm leading-relaxed" style={{ color: '#94A3B8', maxWidth: '18ch' }}>
+                        <p className="max-w-[18ch] text-sm leading-relaxed text-studio-muted">
                             {copy.description}
                         </p>
-                        <div className="flex gap-2">
-                            {socialLinks.map((link) => (
-                                <a
-                                    key={link.label}
-                                    href={link.href}
-                                    aria-label={link.label}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="rounded-full p-1.5 text-white/50 transition-colors hover:text-white"
-                                    style={{ border: '1px solid rgba(255,255,255,0.1)' }}
-                                >
-                                    {link.icon}
-                                </a>
-                            ))}
-                        </div>
                     </div>
 
-                    {/* Col 2: App */}
+                    {/* Col 2: Ecosystem */}
                     <div>
-                        <p className="mb-4 text-xs font-semibold uppercase tracking-widest" style={{ color: '#5B7BFF' }}>{common.footerSectionApp}</p>
+                        <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-accent">{ecosystemSectionLabel[locale]}</p>
+                        <p className="text-sm leading-relaxed text-muted">{ecosystemDescription[locale]}</p>
+                    </div>
+
+                    {/* Col 3: Navigation */}
+                    <div>
+                        <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-accent">{navigationSectionLabel[locale]}</p>
                         <nav className="flex flex-col gap-2">
-                            {[
-                                { href: `/${locale}#home`, label: copy.appStoreSoon, isAnchor: true },
-                                { href: `/${locale}#demo`, label: copy.playStoreSoon, isAnchor: true },
-                                { href: `/${locale}/blog`, label: copy.blog },
-                                { href: `/${locale}/contact`, label: copy.contact },
-                            ].map(({ href, label, isAnchor }) => (
-                                isAnchor ? (
-                                    <a
-                                        key={href}
-                                        href={href}
-                                        onClick={handleBetaClick}
-                                        className="text-sm transition-colors hover:text-white"
-                                        style={{ color: '#94A3B8' }}
-                                    >
-                                        {label}
-                                    </a>
-                                ) : (
-                                    <Link
-                                        key={href}
-                                        href={href}
-                                        className="text-sm transition-colors hover:text-white"
-                                        style={{ color: '#94A3B8' }}
-                                    >
-                                        {label}
-                                    </Link>
-                                )
-                            ))}
+                            <Link href={`/${locale}`} className="text-sm text-muted transition-colors hover:text-text">{homeLabel[locale]}</Link>
+                            <Link href={`/${locale}/blog`} className="text-sm text-muted transition-colors hover:text-text">{copy.blog}</Link>
+                            <Link href={`/${locale}/contact`} className="text-sm text-muted transition-colors hover:text-text">{copy.contact}</Link>
                         </nav>
                     </div>
 
-                    {/* Col 3: Legal */}
+                    {/* Col 4: Legal */}
                     <div>
-                        <p className="mb-4 text-xs font-semibold uppercase tracking-widest" style={{ color: '#5B7BFF' }}>{common.footerSectionLegal}</p>
+                        <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-accent">{resolvedCommon.footerSectionLegal}</p>
                         <nav className="flex flex-col gap-2">
-                            <Link href={`/${locale}/legal/privacy`} className="text-sm transition-colors hover:text-white" style={{ color: '#94A3B8' }}>{copy.privacy}</Link>
-                            <Link href={`/${locale}/legal/cookies`} className="text-sm transition-colors hover:text-white" style={{ color: '#94A3B8' }}>{copy.cookies}</Link>
-                            <Link href={`/${locale}/legal/terms`} className="text-sm transition-colors hover:text-white" style={{ color: '#94A3B8' }}>{copy.terms}</Link>
-                            <Link href={`/${locale}/legal/acceptable-use`} className="text-sm transition-colors hover:text-white" style={{ color: '#94A3B8' }}>{copy.acceptableUse ?? 'Uso Aceptable'}</Link>
-                            <Link href={`/${locale}/legal/faq`} className="text-sm transition-colors hover:text-white" style={{ color: '#94A3B8' }}>{copy.faq ?? 'FAQ'}</Link>
-                            <Link href={`/${locale}/legal/subprocessors`} className="text-sm transition-colors hover:text-white" style={{ color: '#94A3B8' }}>{copy.subprocessors ?? 'Subprocesadores'}</Link>
+                            <Link href={`/${locale}/legal/privacy`} className="text-sm text-muted transition-colors hover:text-text">{copy.privacy}</Link>
+                            <Link href={`/${locale}/legal/cookies`} className="text-sm text-muted transition-colors hover:text-text">{copy.cookies}</Link>
+                            <Link href={`/${locale}/legal/terms`} className="text-sm text-muted transition-colors hover:text-text">{copy.terms}</Link>
+                            <Link href={`/${locale}/legal/acceptable-use`} className="text-sm text-muted transition-colors hover:text-text">{copy.acceptableUse ?? 'Uso Aceptable'}</Link>
+                            <Link href={`/${locale}/legal/faq`} className="text-sm text-muted transition-colors hover:text-text">{copy.faq ?? 'FAQ'}</Link>
+                            <Link href={`/${locale}/legal/subprocessors`} className="text-sm text-muted transition-colors hover:text-text">{copy.subprocessors ?? 'Subprocesadores'}</Link>
                         </nav>
                     </div>
 
-                    {/* Col 4: Language */}
+                    {/* Col 5: Language */}
                     <div>
-                        <p className="mb-4 text-xs font-semibold uppercase tracking-widest" style={{ color: '#5B7BFF' }}>{copy.languageLabel}</p>
+                        <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-accent">{copy.languageLabel}</p>
                         <LanguageSwitcher currentLocale={locale} dropdownDirection="up" />
                     </div>
                 </div>
 
                 {/* Bottom bar */}
-                <div className="mt-12 flex flex-col items-center justify-between gap-3 sm:flex-row" style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '2rem' }}>
-                    <p className="text-xs" style={{ color: '#94A3B8' }} suppressHydrationWarning>
+                <div
+                    className="flex flex-col items-center justify-between gap-3 border-t border-[rgba(255,255,255,0.06)] sm:flex-row"
+                    style={{ marginTop: '3rem', paddingTop: '2rem' }}
+                >
+                    <p className="text-xs text-muted" suppressHydrationWarning>
                         © {new Date().getFullYear()} Cojauny. {copy.rights}
                     </p>
-                    <p className="text-xs" style={{ color: '#94A3B8' }}>
+                    <p className="text-xs text-muted">
                         {copy.madeInEurope}
                     </p>
                 </div>

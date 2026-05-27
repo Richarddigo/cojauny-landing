@@ -5,6 +5,11 @@ import { render, screen } from '@testing-library/react';
 import Footer from './Footer';
 import type { LandingCopy } from '@/locales/copy';
 
+jest.mock('next/navigation', () => ({
+    useRouter: () => ({ push: jest.fn() }),
+    usePathname: () => '/es',
+}));
+
 // Mock LanguageSwitcher
 jest.mock('@/components/LanguageSwitcher', () => ({
     __esModule: true,

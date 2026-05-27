@@ -1,10 +1,4 @@
-"use client";
-
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { smoothScrollTo } from '@/utils/smoothScroll';
-
-import SectionIntro from '@/components/SectionIntro';
+﻿import SectionIntro from '@/components/SectionIntro';
 import type { PricingCopy } from '@/locales/copy';
 import type { CommonCopy } from '@/locales/common';
 
@@ -27,30 +21,11 @@ const PricingSection = ({ copy, common }: PricingSectionProps) => {
                         const ctaLabel = isPremium ? copy.plans.premium.cta : copy.plans.free.cta;
 
                         return (
-                            <motion.article
+                            <article
                                 key={plan.name}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, amount: 0.3 }}
-                                animate={isPremium ? {
-                                    boxShadow: [
-                                        "0 20px 50px -12px rgba(79, 70, 229, 0.25)",
-                                        "0 20px 60px -12px rgba(79, 70, 229, 0.35)",
-                                        "0 20px 50px -12px rgba(79, 70, 229, 0.25)"
-                                    ]
-                                } : undefined}
-                                transition={isPremium ? {
-                                    opacity: { duration: 0.35, delay: index * 0.05 },
-                                    y: { duration: 0.35, delay: index * 0.05 },
-                                    boxShadow: {
-                                        duration: 4,
-                                        repeat: Infinity,
-                                        ease: "easeInOut"
-                                    }
-                                } : { duration: 0.35, delay: index * 0.05 }}
                                 className={`relative rounded-2xl border p-6 md:rounded-3xl md:p-8 ${isPremium
-                                    ? 'border-brand-300 bg-gradient-to-br from-white via-brand-50/50 to-brand-100/30 shadow-2xl ring-2 ring-brand-200/50'
-                                    : 'border-slate-100 bg-white shadow-xl'
+                                    ? 'border-studio-accent/40 bg-gradient-to-br from-[#1C2336] to-[rgba(91,123,255,0.08)] shadow-2xl ring-2 ring-[#5B7BFF]/30'
+                                    : 'border-white/8 bg-studio-surface shadow-xl'
                                     }`}
                             >
                                 {badgeLabel && (
@@ -60,66 +35,65 @@ const PricingSection = ({ copy, common }: PricingSectionProps) => {
                                 )}
                                 <div className="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
                                     <div>
-                                        <h3 className="text-xl font-bold text-slate-900 sm:text-2xl">{plan.name}</h3>
-                                        <p className="mt-2 text-sm text-slate-500">{plan.description}</p>
+                                        <h3 className="text-xl font-bold text-white sm:text-2xl">{plan.name}</h3>
+                                        <p className="mt-2 text-sm text-studio-muted">{plan.description}</p>
                                     </div>
-                                    <p className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">{plan.price}</p>
+                                    <p className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">{plan.price}</p>
                                 </div>
                                 <a
                                     href="#beta"
-                                    onClick={(e) => { e.preventDefault(); smoothScrollTo('beta'); }}
                                     className={`mt-6 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-base font-semibold transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 sm:mt-8 ${isPremium
                                         ? 'bg-gradient-to-r from-brand-600 to-brand-500 text-white shadow-lg shadow-brand-600/30 hover:shadow-xl hover:shadow-brand-600/40 hover:scale-[1.02]'
-                                        : 'border-2 border-slate-200 text-slate-900 hover:border-slate-300 hover:bg-slate-50'
+                                        : 'border-2 border-white/20 text-white hover:border-white/30 hover:bg-white/10'
                                         }`}
                                     aria-label={`${plan.name} - ${ctaLabel}`}
                                 >
                                     {ctaLabel}
                                 </a>
-                            </motion.article>
+                            </article>
                         );
                     })}
                 </div>
 
-                <div className="mt-12 rounded-2xl border border-slate-100 bg-white p-5 shadow-xl md:mt-16 md:rounded-3xl md:p-6">
-                    <h3 className="text-center text-xl font-bold text-slate-900 sm:text-2xl">{copy.comparison.title}</h3>
+                <div className="mt-12 rounded-2xl border border-white/8 bg-studio-surface p-5 shadow-xl md:mt-16 md:rounded-3xl md:p-6">
+                    <h3 className="text-center text-xl font-bold text-white sm:text-2xl">{copy.comparison.title}</h3>
                     <div className="mt-8 overflow-x-auto md:mt-10">
-                        <table className="min-w-full divide-y divide-slate-100 text-sm">
+                        <table className="min-w-full divide-y divide-white/8 text-sm">
                             <thead>
-                                <tr className="text-left text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+                                <tr className="text-left text-xs font-semibold uppercase tracking-[0.2em] text-studio-muted">
                                     <th className="py-3 pr-3 text-left">{common.pricingFeatureHeader}</th>
                                     <th className="px-3 py-3 text-center">{common.pricingFreeHeader}</th>
                                     <th className="px-3 py-3 text-center">{common.pricingPremiumHeader}</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-slate-100">
+                            <tbody className="divide-y divide-white/8">
                                 {copy.comparison.features.map((feature, idx) => (
                                     <tr key={`${feature.feature}-${idx}`}>
-                                        <td className="py-3 pr-3 text-sm text-slate-900 md:py-4 md:text-base">{feature.feature}</td>
-                                        <td className="px-3 py-3 text-center text-sm text-slate-600 md:py-4">
+                                        <td className="py-3 pr-3 text-sm text-white md:py-4 md:text-base">{feature.feature}</td>
+                                        <td className="px-3 py-3 text-center text-sm text-studio-muted md:py-4">
                                             {typeof feature.free === 'boolean' ? (
                                                 feature.free ? (
                                                     <span aria-label={common.pricingIncludedLabel} className="text-emerald-500">
-                                                        ✓
+                                                        &#10003;
                                                     </span>
                                                 ) : (
                                                     <span aria-label={common.pricingNotIncludedLabel} className="text-slate-300">
-                                                        —
+                                                        -
                                                     </span>
                                                 )
                                             ) : (
                                                 feature.free
                                             )}
                                         </td>
-                                        <td className="px-3 py-3 text-center text-sm text-slate-900 md:py-4">
+                                        <td className="px-3 py-3 text-center text-sm text-white md:py-4">
                                             {typeof feature.premium === 'boolean' ? (
                                                 feature.premium ? (
                                                     <span aria-label={common.pricingIncludedLabel} className="text-emerald-500">
-                                                        ✓
+                                                        &#10003;
                                                     </span>
                                                 ) : (
                                                     <span aria-label={common.pricingNotIncludedLabel} className="text-slate-300">
-                                                        —
+                                                        -
                                                     </span>
                                                 )
                                             ) : (
@@ -138,3 +112,4 @@ const PricingSection = ({ copy, common }: PricingSectionProps) => {
 };
 
 export default PricingSection;
+

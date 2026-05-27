@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import LegalArticle from '@/components/LegalArticle';
+import { getAppMessages } from '@/lib/i18nMessages';
 import { locales, type Locale } from '@/locales/config';
-import { getLegalCopy } from '@/locales/legal';
 
 interface PrivacyPageProps {
     params: Promise<{ locale: string }>;
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PrivacyPageProps): Promise<Me
         notFound();
     }
 
-    const copy = getLegalCopy(locale).privacy;
+    const copy = (await getAppMessages(locale)).legal.privacy;
 
     return {
         title: copy.title,
@@ -35,7 +35,7 @@ const PrivacyPage = async ({ params }: PrivacyPageProps) => {
         notFound();
     }
 
-    const copy = getLegalCopy(locale).privacy;
+    const copy = (await getAppMessages(locale)).legal.privacy;
 
     return <LegalArticle copy={copy} />;
 };

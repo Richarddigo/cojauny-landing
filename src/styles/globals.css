@@ -1,10 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../../tailwind.config.js";
 
 /* ─── Cojauny Design Tokens (aligned with cojauny-studio) ─────────── */
 :root {
-    /* Brand palette — matches cojauny-studio accent exactly */
+    /* Brand palette - matches cojauny-studio accent exactly */
     --accent: #5B7BFF;
     --accent-dim: #3A59D9;
     --accent-glow: rgba(91, 123, 255, 0.18);
@@ -13,6 +12,7 @@
     --bg: #0C1120;
     --surface: #1C2336;
     --surface-2: #2A3550;
+    --surface-3: #333F60;
 
     /* Surfaces (light mode) */
     --light-bg: #F8FAFC;
@@ -20,8 +20,10 @@
     --light-border: #E2E8F0;
 
     /* Text */
-    --text: #0f172a;
-    --muted: #64748b;
+    --text: #F1F5F9;
+    --muted: #94A3B8;
+    --faint: #8B9DBF;
+    --border: rgba(255, 255, 255, 0.08);
 
     /* Radius — shared with studio */
     --radius-sm: 6px;
@@ -36,56 +38,128 @@
     --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
 
-    color-scheme: light;
+    color-scheme: dark;
     scroll-behavior: smooth;
-    /* Offset para la barra social flotante */
+    /* Offset for the floating social bar */
     --social-bar-offset: 2.5rem;
-    /* 40px en móvil */
+    /* 40px on mobile */
 }
 
 @media (min-width: 640px) {
     :root {
         --social-bar-offset: 3rem;
-        /* 48px en sm */
+        /* 48px on sm */
     }
 }
 
 @media (min-width: 768px) {
     :root {
         --social-bar-offset: 3.5rem;
-        /* 56px en md+ */
+        /* 56px on md+ */
     }
 }
 
 @media (min-width: 1024px) {
     :root {
         --social-bar-offset: 0rem;
-        /* Sin offset en lg+ (la barra queda fuera del contenido) */
+        /* No offset on lg+ (bar stays outside content width) */
     }
 }
 
-body {
-    @apply bg-white text-slate-900 antialiased;
+@theme inline {
+    --font-sans: var(--font-inter);
+    --color-bg: #0C1120;
+    --color-surface: #1C2336;
+    --color-surface-2: #2A3550;
+    --color-surface-3: #333F60;
+    --color-accent: #5B7BFF;
+    --color-accent-dim: #3A59D9;
+    --color-text: #F1F5F9;
+    --color-muted: #94A3B8;
+    --color-faint: #8B9DBF;
+    --color-border: rgba(255, 255, 255, 0.08);
 }
 
-::selection {
-    @apply bg-brand-200 text-brand-900;
+@layer base {
+    body {
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: var(--font-sans, system-ui, sans-serif);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+    }
+
+    ::selection {
+        @apply bg-brand-200 text-brand-900;
+    }
+
+    a {
+        @apply transition-colors duration-200;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+        @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-studio-bg;
+    }
+
+    [data-prefers-reduced-motion='reduce'] * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
-a {
-    @apply transition-colors duration-200;
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--surface-2) transparent;
 }
 
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible {
-    @apply outline-none ring-2 ring-brand-400 ring-offset-2 ring-offset-white;
+::-webkit-scrollbar {
+    width: 6px;
 }
 
-[data-prefers-reduced-motion='reduce'] * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--surface-2);
+    border-radius: 999px;
+}
+
+@layer components {
+    .container-studio {
+        width: 100%;
+        max-width: 1180px;
+        margin-inline: auto;
+        padding-inline: clamp(1.25rem, 5vw, 3rem);
+    }
+
+    .section-padding {
+        padding-block: clamp(4rem, 8vw, 6rem);
+    }
+
+    .focus-ring {
+        @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-studio-bg;
+    }
+
+    .legal-shell {
+        width: 100%;
+        max-width: 56rem;
+        margin-inline: auto;
+        padding-inline: clamp(1.25rem, 5vw, 3rem);
+        padding-block: clamp(5rem, 8vw, 6rem);
+    }
+
+    .legal-card {
+        @apply rounded-3xl border border-white/10 bg-studio-surface/60 p-6;
+    }
+
+    .legal-callout {
+        @apply mt-12 rounded-3xl bg-studio-accent/10 p-6 text-sm text-studio-text;
+    }
 }

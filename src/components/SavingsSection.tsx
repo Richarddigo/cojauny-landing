@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from 'framer-motion';
 import type { LandingCopy } from '@/locales/copy';
 import SectionIntro from '@/components/SectionIntro';
 
@@ -11,9 +8,9 @@ interface SavingsSectionProps {
 const SavingsSection = ({ copy }: SavingsSectionProps) => (
     <section
         id="impact"
-        className="relative w-full scroll-mt-[74px] overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-12 md:py-16 lg:py-24 lg:scroll-mt-[100px]"
+        className="relative w-full scroll-mt-[74px] overflow-hidden bg-gradient-to-br from-studio-bg via-studio-surface to-studio-bg py-12 md:py-16 lg:py-24 lg:scroll-mt-[100px]"
     >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,_rgba(139,92,246,0.15),_transparent_50%)]" aria-hidden />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,_rgba(91,123,255,0.15),_transparent_50%)]" aria-hidden />
         <div className="relative mx-auto max-w-[1180px] px-4 sm:px-6" style={{ paddingLeft: 'calc(var(--social-bar-offset) + 1rem)' }}>
             <SectionIntro
                 title={copy.title}
@@ -23,13 +20,9 @@ const SavingsSection = ({ copy }: SavingsSectionProps) => (
                 descriptionClassName="text-[rgb(196,204,255)]"
             />
             <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 md:mt-16 lg:grid-cols-4 lg:gap-10">
-                {copy.metrics.map((metric, index) => (
-                    <motion.article
+                {copy.metrics.map(metric => (
+                    <article
                         key={metric.label}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.3 }}
-                        transition={{ duration: 0.35, delay: index * 0.05 }}
                         className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all duration-200 hover:bg-white/10 md:rounded-3xl md:p-8"
                     >
                         <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-400 via-brand-500 to-brand-300 opacity-0 transition group-hover:opacity-100"></div>
@@ -38,7 +31,7 @@ const SavingsSection = ({ copy }: SavingsSectionProps) => (
                             {metric.label}
                         </span>
                         <p className="mt-3 text-sm leading-relaxed text-slate-300 sm:mt-4 sm:text-base">{metric.description}</p>
-                    </motion.article>
+                    </article>
                 ))}
             </div>
         </div>

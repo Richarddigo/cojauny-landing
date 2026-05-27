@@ -1,4 +1,4 @@
-import type { Locale } from './config';
+﻿import type { Locale } from './config';
 import { defaultLocale } from './config';
 
 interface LegalSection {
@@ -31,7 +31,7 @@ interface Subprocessor {
   policyLink?: string;
 }
 
-interface ExtendedLegalCopy {
+export interface ExtendedLegalCopy {
   privacy: LegalPageCopy;
   cookies: LegalPageCopy;
   terms: LegalPageCopy;
@@ -57,11 +57,11 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     privacy: {
       title: 'Política de Privacidad y Protección de Datos',
       intro: 'En Cojauny, nos tomamos su privacidad muy en serio. Esta política detalla cómo recopilamos, utilizamos, protegemos y gestionamos sus datos personales de conformidad con el RGPD y otras normativas aplicables.',
-      updatedAt: 'Última actualización: 4 de diciembre de 2025',
+      updatedAt: 'Última actualización: 25 de mayo de 2026',
       sections: [
         {
           heading: '1. Responsable del Tratamiento',
-          body: 'El responsable del tratamiento de sus datos es el Equipo Fundador de Cojauny ("Cojauny"), con operaciones en España. Domicilio a efectos de notificaciones: [Insertar Dirección Física o Apartado Postal]. Puede contactar con nuestro Delegado de Protección de Datos (DPO) en support@cojauny.com.'
+          body: 'El responsable del tratamiento de sus datos es Cojauny Studio - Richard Díaz González ("Cojauny"), con operaciones en España. Puede contactar con nuestro Delegado de Protección de Datos (DPO) en support@cojauny.com.'
         },
         {
           heading: '2. Categorías de Datos Recopilados',
@@ -97,7 +97,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     cookies: {
       title: 'Política de Cookies',
       intro: 'Uso de cookies y tecnologías de rastreo para mejorar la experiencia y seguridad.',
-      updatedAt: '4 de diciembre de 2025',
+      updatedAt: '25 de mayo de 2026',
       sections: [
         {
           heading: '1. Definición y Uso',
@@ -117,7 +117,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     terms: {
       title: 'Términos y Condiciones de Uso',
       intro: 'Contrato legal vinculante entre el Usuario y Cojauny para el uso de la plataforma.',
-      updatedAt: '4 de diciembre de 2025',
+      updatedAt: '25 de mayo de 2026',
       sections: [
         {
           heading: '1. Naturaleza del Servicio y Exención de Responsabilidad Offline',
@@ -157,7 +157,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     acceptableUse: {
       title: 'Política de Uso Aceptable',
       intro: 'Normas de convivencia y seguridad para la comunidad Cojauny.',
-      updatedAt: '4 de diciembre de 2025',
+      updatedAt: '25 de mayo de 2026',
       sections: [
         {
           heading: '1. Comportamiento Prohibido',
@@ -181,7 +181,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     faq: {
       title: 'FAQ Legal',
       intro: 'Dudas frecuentes sobre legalidad y seguridad.',
-      updatedAt: '4 de diciembre de 2025',
+      updatedAt: '25 de mayo de 2026',
       categories: [
         {
           name: 'Responsabilidad',
@@ -211,7 +211,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     subprocessors: {
       title: 'Subprocesadores',
       intro: 'Proveedores externos.',
-      updatedAt: '4 de diciembre de 2025',
+      updatedAt: '25 de mayo de 2026',
       providers: [
         {
           name: 'Supabase',
@@ -245,11 +245,11 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     privacy: {
       title: 'Privacy and Data Protection Policy',
       intro: 'At Cojauny, we take your privacy seriously. This policy details how we collect, use, protect, and manage your personal data in compliance with GDPR and other applicable regulations.',
-      updatedAt: 'Last updated: December 4, 2025',
+      updatedAt: 'Last updated: May 25, 2026',
       sections: [
         {
           heading: '1. Data Controller',
-          body: 'The data controller is the Cojauny Founding Team ("Cojauny"), operating from Spain. Address for notifications: [Insert Physical Address]. You can contact our Data Protection Officer (DPO) at support@cojauny.com.'
+          body: 'The data controller is Cojauny Studio - Richard Díaz González ("Cojauny"), operating from Spain. You can contact our Data Protection Officer (DPO) at support@cojauny.com.'
         },
         {
           heading: '2. Categories of Data Collected',
@@ -285,7 +285,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     cookies: {
       title: 'Cookie Policy',
       intro: 'Use of cookies and tracking technologies to improve experience and security.',
-      updatedAt: 'December 4, 2025',
+      updatedAt: 'May 25, 2026',
       sections: [
         {
           heading: '1. Definition and Use',
@@ -305,7 +305,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     terms: {
       title: 'Terms and Conditions of Use',
       intro: 'Binding legal contract between the User and Cojauny for platform use.',
-      updatedAt: 'December 4, 2025',
+      updatedAt: 'May 25, 2026',
       sections: [
         {
           heading: '1. Nature of Service and Offline Liability Disclaimer',
@@ -345,7 +345,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     acceptableUse: {
       title: 'Acceptable Use Policy',
       intro: 'Community standards and safety rules for Cojauny.',
-      updatedAt: 'December 4, 2025',
+      updatedAt: 'May 25, 2026',
       sections: [
         {
           heading: '1. Prohibited Behavior',
@@ -369,7 +369,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     faq: {
       title: 'Legal FAQ',
       intro: 'Common questions about legality and safety.',
-      updatedAt: 'December 4, 2025',
+      updatedAt: 'May 25, 2026',
       categories: [
         {
           name: 'Liability',
@@ -399,7 +399,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     subprocessors: {
       title: 'Subprocessors',
       intro: 'External providers.',
-      updatedAt: 'December 4, 2025',
+      updatedAt: 'May 25, 2026',
       providers: [
         {
           name: 'Supabase',
@@ -433,11 +433,11 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     privacy: {
       title: 'Datenschutz- und Datensicherheitsrichtlinie',
       intro: 'Bei Cojauny nehmen wir Ihre Privatsphäre sehr ernst. Diese Richtlinie erläutert, wie wir Ihre personenbezogenen Daten gemäß DSGVO verwalten.',
-      updatedAt: 'Letzte Aktualisierung: 4. Dezember 2025',
+      updatedAt: 'Letzte Aktualisierung: 25. Mai 2026',
       sections: [
         {
           heading: '1. Verantwortlicher',
-          body: 'Verantwortlicher ist das Cojauny-Gründerteam ("Cojauny"), Spanien. Adresse für Benachrichtigungen: [Physische Adresse einfügen]. Kontakt DSB: support@cojauny.com.'
+          body: 'Verantwortlicher ist Cojauny Studio - Richard Díaz González ("Cojauny"), Spanien. Kontakt DSB: support@cojauny.com.'
         },
         {
           heading: '2. Erfasste Datenkategorien',
@@ -473,7 +473,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     cookies: {
       title: 'Cookie-Richtlinie',
       intro: 'Nutzung von Cookies zur Verbesserung der Erfahrung.',
-      updatedAt: '4. Dezember 2025',
+      updatedAt: '25. Mai 2026',
       sections: [
         {
           heading: '1. Definition',
@@ -493,7 +493,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     terms: {
       title: 'Allgemeine Geschäftsbedingungen',
       intro: 'Rechtlich bindender Vertrag zwischen Nutzer und Cojauny.',
-      updatedAt: '4. Dezember 2025',
+      updatedAt: '25. Mai 2026',
       sections: [
         {
           heading: '1. Art des Dienstes und Haftungsausschluss Offline',
@@ -533,7 +533,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     acceptableUse: {
       title: 'Richtlinie für akzeptable Nutzung',
       intro: 'Sicherheitsregeln für die Community.',
-      updatedAt: '4. Dezember 2025',
+      updatedAt: '25. Mai 2026',
       sections: [
         {
           heading: '1. Verbotenes Verhalten',
@@ -557,7 +557,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     faq: {
       title: 'Rechtliche FAQ',
       intro: 'Häufige Fragen.',
-      updatedAt: '4. Dezember 2025',
+      updatedAt: '25. Mai 2026',
       categories: [
         {
           name: 'Haftung',
@@ -587,7 +587,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     subprocessors: {
       title: 'Unterauftragsverarbeiter',
       intro: 'Externe Anbieter.',
-      updatedAt: '4. Dezember 2025',
+      updatedAt: '25. Mai 2026',
       providers: [
         {
           name: 'Supabase',
@@ -621,11 +621,11 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     privacy: {
       title: 'Politique de Confidentialité',
       intro: 'Chez Cojauny, nous prenons votre vie privée au sérieux. Cette politique détaille la gestion de vos données selon le RGPD.',
-      updatedAt: 'Dernière mise à jour : 4 décembre 2025',
+      updatedAt: 'Dernière mise à jour : 25 mai 2026',
       sections: [
         {
           heading: '1. Responsable du Traitement',
-          body: 'Responsable : Équipe Fondatrice Cojauny ("Cojauny"), Espagne. Adresse : [Insérer Adresse Physique]. Contact DPO : support@cojauny.com.'
+          body: 'Responsable : Cojauny Studio - Richard Díaz González ("Cojauny"), Espagne. Contact DPO : support@cojauny.com.'
         },
         {
           heading: '2. Données Collectées',
@@ -661,7 +661,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     cookies: {
       title: 'Politique de Cookies',
       intro: 'Usage de cookies pour améliorer l\'expérience.',
-      updatedAt: '4 décembre 2025',
+      updatedAt: '25 mai 2026',
       sections: [
         {
           heading: '1. Définition',
@@ -681,7 +681,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     terms: {
       title: 'Conditions Générales d\'Utilisation',
       intro: 'Contrat légal entre l\'Utilisateur et Cojauny.',
-      updatedAt: '4 décembre 2025',
+      updatedAt: '25 mai 2026',
       sections: [
         {
           heading: '1. Nature du Service et Non-Responsabilité Offline',
@@ -721,7 +721,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     acceptableUse: {
       title: 'Politique d\'Usage Acceptable',
       intro: 'Règles de sécurité pour la communauté.',
-      updatedAt: '4 décembre 2025',
+      updatedAt: '25 mai 2026',
       sections: [
         {
           heading: '1. Comportement Interdit',
@@ -745,7 +745,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     faq: {
       title: 'FAQ Juridique',
       intro: 'Questions fréquentes.',
-      updatedAt: '4 décembre 2025',
+      updatedAt: '25 mai 2026',
       categories: [
         {
           name: 'Responsabilité',
@@ -775,7 +775,7 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
     subprocessors: {
       title: 'Sous-traitants',
       intro: 'Fournisseurs externes.',
-      updatedAt: '4 décembre 2025',
+      updatedAt: '25 mai 2026',
       providers: [
         {
           name: 'Supabase',

@@ -1,9 +1,9 @@
-import { notFound } from 'next/navigation';
+﻿import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 
 import ContactForm from '@/components/ContactForm';
+import { getAppMessages } from '@/lib/i18nMessages';
 import { locales, type Locale } from '@/locales/config';
-import { getContactCopy } from '@/locales/contact';
 
 interface ContactPageProps {
     params: Promise<{ locale: string }>;
@@ -18,10 +18,14 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: ContactPageProps): Promise<Metadata> {
     const { locale: localeParam } = await params;
     const locale = localeParam as Locale;
-    const copy = getContactCopy(locales.includes(locale) ? locale : locales[0]);
+    if (!locales.includes(locale)) {
+        notFound();
+    }
+
+    const copy = (await getAppMessages(locale)).contact;
 
     return {
-        title: `${copy.form.title} · Cojauny`
+        title: `${copy.form.title} - Cojauny`
     };
 }
 
@@ -33,20 +37,21 @@ export default async function ContactPage({ params }: ContactPageProps) {
         notFound();
     }
 
-    const copy = getContactCopy(locale);
+    const copy = (await getAppMessages(locale)).contact;
 
     return (
         <section className="mx-auto max-w-[1180px] px-6 py-24">
             <div className="mx-auto max-w-3xl text-center">
-                <h1 className="text-4xl font-bold text-slate-900 sm:text-5xl">{copy.heading}</h1>
-                <p className="mt-4 text-lg text-slate-600">{copy.intro}</p>
-                <p className="mt-6 rounded-3xl border border-brand-100 bg-brand-50 px-6 py-3 text-sm font-medium text-brand-700">
+                <h1 className="text-4xl font-bold text-white sm:text-5xl">{copy.heading}</h1>
+                <p className="mt-4 text-lg text-studio-muted">{copy.intro}</p>
+                <p className="mt-6 rounded-3xl border border-studio-accent/20 bg-studio-accent/10 px-6 py-3 text-sm font-medium text-studio-accent">
                     {copy.banner}
                 </p>
             </div>
             <div className="mx-auto mt-12 max-w-3xl">
-                <ContactForm locale={locale} copy={copy.form} />
+                <ContactForm locale={locale} />
             </div>
         </section>
     );
 }
+

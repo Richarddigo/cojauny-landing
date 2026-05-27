@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from 'react';
 
@@ -145,7 +145,7 @@ interface SocialIconsProps {
 export const SocialIcons = ({ className = '', iconClassName = '', variant = 'light' }: SocialIconsProps) => {
     const baseClasses = variant === 'light'
         ? 'text-white/60 hover:text-brand-200 hover:border-brand-200'
-        : 'text-slate-500 hover:text-brand-600 hover:border-brand-300';
+        : 'text-studio-muted hover:text-studio-accent hover:border-studio-accent/40';
 
     return (
         <div className={`flex gap-2 ${className}`}>
@@ -166,3 +166,4 @@ export const SocialIcons = ({ className = '', iconClassName = '', variant = 'lig
 };
 
 export default SocialIcons;
+

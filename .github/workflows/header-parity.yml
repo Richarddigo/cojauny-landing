@@ -1,0 +1,53 @@
+name: Header Parity
+
+on:
+  workflow_dispatch:
+    inputs:
+      landingUrl:
+        description: "Target URL for cojauny-landing (e.g. https://cojauny.com/en)"
+        required: true
+        type: string
+      studioUrl:
+        description: "Target URL for cojauny-studio (e.g. https://studio.cojauny.com/en)"
+        required: true
+        type: string
+      cuatrosotasUrl:
+        description: "Target URL for cuatrosotas-landing (e.g. https://cuatrosotas.com/en)"
+        required: true
+        type: string
+
+jobs:
+  header-parity-report:
+    name: Header parity report
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      HEADER_URL_LANDING: ${{ github.event.inputs.landingUrl }}
+      HEADER_URL_STUDIO: ${{ github.event.inputs.studioUrl }}
+      HEADER_URL_CUATROSOTAS: ${{ github.event.inputs.cuatrosotasUrl }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run header parity report
+        run: npm run audit:header-parity
+
+      - name: Upload parity report artifact
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: header-parity-report
+          path: reports/header-parity-report.json
+          retention-days: 14

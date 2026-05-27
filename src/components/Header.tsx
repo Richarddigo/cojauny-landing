@@ -1,277 +1,192 @@
-"use client";
+﻿"use client";
 
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
-import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
-import { usePathname, useRouter } from 'next/navigation';
 import type { Locale } from '@/locales/config';
 import type { LandingCopy } from '@/locales/copy';
-import { getCommonCopy } from '@/locales/common';
+import { getCommonCopy, type CommonCopy } from '@/locales/common';
 import { ENABLE_PREMIUM } from '@/lib/flags';
+import {
+    NAVIGATION_CONTRACT,
+    emitMobileMenuTelemetry,
+    type MobileMenuTelemetryReason,
+} from '@/lib/navigationContract';
+import { useMenuPortal } from '@/hooks/useMenuPortal';
+import { useMobileMenuA11y } from '@/hooks/useMobileMenuA11y';
+import { useScrollToHash } from '@/hooks/useScrollToHash';
 
 interface HeaderProps {
     locale: Locale;
     copy: LandingCopy['header'];
+    common?: CommonCopy;
 }
 
-const Header = ({ locale, copy }: HeaderProps) => {
-    const common = getCommonCopy(locale);
+type NavItem = { href: string; label: string };
+
+const buildNavItems = (copy: LandingCopy['header'], locale: Locale): NavItem[] => [
+    { href: '#home', label: copy.home },
+    { href: '#demo', label: copy.demo },
+    { href: '#benefits', label: copy.benefits },
+    { href: '#impact', label: copy.impact },
+    { href: '#features', label: copy.features },
+    { href: '#how-it-works', label: copy.workflow },
+    // PRICING -- re-enable by setting NEXT_PUBLIC_ENABLE_PREMIUM=true
+    ...(ENABLE_PREMIUM ? [{ href: '#pricing', label: copy.pricing }] : []),
+    { href: '#beta', label: copy.beta },
+    { href: `/${locale}/contact`, label: copy.contact },
+    { href: '#faq', label: copy.faq },
+    { href: '#feedback', label: copy.feedback },
+];
+
+const Header = ({ locale, copy, common }: HeaderProps) => {
+    const resolvedCommon = common ?? getCommonCopy(locale);
+    const navItems = buildNavItems(copy, locale);
+    const desktopNavItems = navItems.filter((item) => item.href !== '#home');
+    const pathname = usePathname() ?? `/${locale}`;
+
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [activeHash, setActiveHash] = useState('');
+
+    const openButtonRef = useRef<HTMLButtonElement | null>(null);
+    const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+    const menuRef = useRef<HTMLDivElement | null>(null);
+
+    const portalEl = useMenuPortal();
+    const scrollToHash = useScrollToHash(locale);
+    const isHydrated = useSyncExternalStore(
+        () => () => { },
+        () => true,
+        () => false,
+    );
+
+    useMobileMenuA11y(
+        {
+            open: mobileMenuOpen,
+            menuRef,
+            openerRef: openButtonRef,
+            closerRef: closeButtonRef,
+            portalEl,
+            onEscapeClose: () => emitMobileMenuTelemetry('close', 'escape'),
+        },
+        setMobileMenuOpen,
+    );
 
     useEffect(() => {
         const handler = () => setScrolled(window.scrollY > 20);
         window.addEventListener('scroll', handler, { passive: true });
         return () => window.removeEventListener('scroll', handler);
     }, []);
-    const openButtonRef = useRef<HTMLButtonElement | null>(null);
-    const closeButtonRef = useRef<HTMLButtonElement | null>(null);
-    const menuRef = useRef<HTMLDivElement | null>(null);
-    const portalElRef = useRef<HTMLElement | null>(null);
-    const inertLoadedRef = useRef<boolean | null>(null);
 
-    // block body scroll when menu open and apply inert to everything except portal
     useEffect(() => {
         if (typeof window === 'undefined') return;
-        document.body.style.overflow = mobileMenuOpen ? 'hidden' : '';
-
-        const ensurePolyfill = async () => {
-            if (inertLoadedRef.current !== null) return inertLoadedRef.current;
-            const supported = 'inert' in HTMLElement.prototype;
-            if (!supported) {
-                try {
-                    // @ts-ignore
-                    await import('wicg-inert');
-                    inertLoadedRef.current = true;
-                    return true;
-                } catch (e) {
-                    inertLoadedRef.current = false;
-                    return false;
-                }
-            }
-            inertLoadedRef.current = true;
-            return true;
-        };
-
-        const applyInertToSiblings = async (apply: boolean) => {
-            await ensurePolyfill();
-            const portal = portalElRef.current;
-            const children = document.body.children;
-
-            for (let i = 0; i < children.length; i++) {
-                const child = children[i];
-                // keep the portal and any scripts/styles untouched
-                if (child === portal) continue;
-                if (child.tagName === 'SCRIPT' || child.tagName === 'STYLE' || child.tagName === 'LINK') continue;
-
-                if (child instanceof HTMLElement) {
-                    try {
-                        // prefer inert when available
-                        if ('inert' in child) {
-                            // @ts-ignore
-                            child.inert = apply;
-                        } else {
-                            const fallbackChild = child as unknown as HTMLElement;
-                            if (apply) {
-                                fallbackChild.setAttribute('aria-hidden', 'true');
-                            } else {
-                                fallbackChild.removeAttribute('aria-hidden');
-                            }
-                        }
-                    } catch (e) {
-                        if (apply) child.setAttribute('aria-hidden', 'true');
-                        else child.removeAttribute('aria-hidden');
-                    }
-                }
-            }
-        };
-
-        if (mobileMenuOpen) {
-            applyInertToSiblings(true).catch(() => null);
-        } else {
-            applyInertToSiblings(false).catch(() => null);
-        }
-
-        return () => {
-            document.body.style.overflow = '';
-            applyInertToSiblings(false).catch(() => null);
-        };
-    }, [mobileMenuOpen]);
-
-    // focus trap and restore focus (focus close button on open)
-    useEffect(() => {
-        if (!mobileMenuOpen) return;
-        const menu = menuRef.current;
-        if (!menu) return;
-
-        const focusableSelector = 'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
-
-        // focus close button if present, else first element
-        const focusFirst = () => {
-            const focusable = Array.from(menu.querySelectorAll<HTMLElement>(focusableSelector)).filter((el) => el.offsetParent !== null);
-            const first = focusable[0];
-            if (closeButtonRef.current) {
-                closeButtonRef.current.focus();
-            } else {
-                first?.focus();
-            }
-        };
-
-        focusFirst();
-
-        // ensure close button receives focus after animations/paint
-        const focusTimer = setTimeout(() => {
-            requestAnimationFrame(() => {
-                if (closeButtonRef.current) closeButtonRef.current.focus();
-            });
-        }, 120);
-
-        const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') {
-                e.preventDefault();
-                setMobileMenuOpen(false);
-                return;
-            }
-            if (e.key === 'Tab') {
-                const focusable = Array.from(menu.querySelectorAll<HTMLElement>(focusableSelector)).filter((el) => el.offsetParent !== null);
-                const first = focusable[0];
-                const last = focusable[focusable.length - 1];
-                if (!first || !last) return;
-                if (e.shiftKey && document.activeElement === first) {
-                    e.preventDefault();
-                    last.focus();
-                } else if (!e.shiftKey && document.activeElement === last) {
-                    e.preventDefault();
-                    first.focus();
-                }
-            }
-        };
-
-        // ensure focus cannot leave the menu using focusin
-        const handleFocusIn = (e: FocusEvent) => {
-            const target = e.target as Node | null;
-            if (!menu.contains(target)) {
-                // redirect focus back to menu
-                if (closeButtonRef.current) closeButtonRef.current.focus();
-                else {
-                    const focusable = Array.from(menu.querySelectorAll<HTMLElement>(focusableSelector)).filter((el) => el.offsetParent !== null);
-                    focusable[0]?.focus();
-                }
-            }
-        };
-
-        document.addEventListener('keydown', handleKeyDown);
-        document.addEventListener('focusin', handleFocusIn);
-
-        const opener = openButtonRef.current;
-        return () => {
-            document.removeEventListener('keydown', handleKeyDown);
-            document.removeEventListener('focusin', handleFocusIn);
-            // restore focus to open button (captured value)
-            try { opener?.focus(); } catch (e) { /* ignore */ }
-            clearTimeout(focusTimer);
-        };
-    }, [mobileMenuOpen]);
-
-    // As a safety, when the menu closes, ensure the opener regains focus after inert removal/animations
-    useEffect(() => {
-        if (mobileMenuOpen) return;
-        // schedule focus restoration after a short delay to allow inert removal and paint
-        const timer = setTimeout(() => {
-            requestAnimationFrame(() => {
-                try {
-                    openButtonRef.current?.focus();
-                } catch (e) {
-                    // ignore
-                }
-            });
-        }, 80);
-        return () => clearTimeout(timer);
-    }, [mobileMenuOpen]);
-
-    // ensure portal is available client-side
-    const [mounted, setMounted] = useState(false);
-    useEffect(() => setMounted(true), []);
-
-    // create a dedicated portal container so we can inert siblings safely
-    useEffect(() => {
-        if (typeof document === 'undefined') return;
-        if (!portalElRef.current) {
-            const el = document.createElement('div');
-            el.setAttribute('id', '__menu_portal');
-            portalElRef.current = el;
-            document.body.appendChild(el);
-        }
-        return () => {
-            if (portalElRef.current && portalElRef.current.parentElement) {
-                portalElRef.current.parentElement.removeChild(portalElRef.current);
-                portalElRef.current = null;
-            }
-        };
+        const syncHash = () => setActiveHash(window.location.hash || '');
+        syncHash();
+        window.addEventListener('hashchange', syncHash);
+        return () => window.removeEventListener('hashchange', syncHash);
     }, []);
 
-    const getHeaderOffset = () => {
-        const hdr = document.querySelector('header');
-        // if header exists and is fixed, use its actual height
-        return hdr ? hdr.getBoundingClientRect().height : 0;
-    };
-    const pathname = usePathname();
-    const router = useRouter();
-
-    const scrollToElementById = (targetId: string) => {
-        const element = document.getElementById(targetId);
-        if (!element) return false;
-        const headerHeight = getHeaderOffset();
-        const elementTop = element.getBoundingClientRect().top + window.scrollY;
-        // aplicamos un offset base de +50px para bajar un poco más
-        // y un ajuste especial para #home que debe subir 20px
-        const baseOffset = 50;
-        const homeAdjustment = targetId === 'home' ? -80 : 0;
-        const offsetPosition = Math.max(0, elementTop - headerHeight + baseOffset + homeAdjustment);
-        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-        return true;
+    const openMobileMenu = () => {
+        emitMobileMenuTelemetry('open', 'open-button');
+        setMobileMenuOpen(true);
     };
 
-    const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
-        e.preventDefault();
-        const targetId = href.replace('#', '');
+    const closeMobileMenu = (reason: MobileMenuTelemetryReason) => {
+        emitMobileMenuTelemetry('close', reason);
+        setMobileMenuOpen(false);
+    };
 
-        // si el elemento existe en esta página, hacemos scroll
-        if (scrollToElementById(targetId)) return;
-
-        // si no existe, navegamos al home con hash
-        // comprobamos si ya estamos en la ruta del home
-        const homePath = `/${locale}`;
-        try {
-            router.push(`${homePath}#${targetId}`);
-        } catch (err) {
-            // ignore push errors
+    const handleDesktopNav = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        if (!href.startsWith('#')) {
+            return;
         }
-
-        // intentar hacer scroll después de la navegación/local hash update
-        setTimeout(() => {
-            scrollToElementById(targetId);
-        }, 250);
+        e.preventDefault();
+        setActiveHash(href);
+        scrollToHash(href);
     };
+
+    const handleMobileNav = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        if (!href.startsWith('#')) {
+            closeMobileMenu('nav-link');
+            return;
+        }
+        e.preventDefault();
+        setActiveHash(href);
+        closeMobileMenu('nav-link');
+        // wait for close animation/inert removal before scrolling
+        setTimeout(() => scrollToHash(href), 250);
+    };
+
+    // shared swipe-to-close handlers for overlay & panel
+    const swipeHandlers = {
+        onTouchStart: (e: React.TouchEvent<HTMLDivElement>) => {
+            (e.currentTarget as unknown as { _touchStartX: number })._touchStartX = e.touches?.[0]?.clientX ?? 0;
+        },
+        onTouchEnd: (e: React.TouchEvent<HTMLDivElement>) => {
+            const startX = (e.currentTarget as unknown as { _touchStartX?: number })._touchStartX ?? 0;
+            const endX = e.changedTouches?.[0]?.clientX ?? 0;
+            if (endX - startX > 50) closeMobileMenu('swipe');
+        },
+    };
+
+    const isRouteLinkActive = (href: string) => {
+        if (href.startsWith('#')) return activeHash === href;
+        if (!href.startsWith('/')) return false;
+        if (href === `/${locale}`) return pathname === href;
+        return pathname.startsWith(href);
+    };
+
+    const desktopLinkClass = (active: boolean) => (
+        `group relative whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium leading-5 transition-all duration-200 ${active
+            ? 'text-white [text-shadow:0_0_10px_rgba(255,255,255,0.55)]'
+            : 'text-white/85 hover:text-white hover:[text-shadow:0_0_10px_rgba(255,255,255,0.55)]'
+        }`
+    );
+
+    const desktopUnderlineClass = (active: boolean) => (
+        `pointer-events-none absolute bottom-0.5 left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full bg-[var(--accent)] transition-all duration-200 ${active
+            ? 'scale-x-100 opacity-100'
+            : 'scale-x-50 opacity-0 group-hover:scale-x-100 group-hover:opacity-100'
+        }`
+    );
+
+    const mobileLinkClass = (active: boolean) => (
+        `group relative block w-full rounded-lg px-4 py-3.5 text-right text-sm font-medium leading-5 transition-colors ${active
+            ? 'text-white [text-shadow:0_0_10px_rgba(255,255,255,0.55)]'
+            : 'text-white/85 hover:text-white hover:[text-shadow:0_0_10px_rgba(255,255,255,0.55)]'
+        } cursor-pointer`
+    );
+
+    const mobileUnderlineClass = (active: boolean) => (
+        `pointer-events-none absolute bottom-1 right-4 h-0.5 w-4 rounded-full bg-[var(--accent)] transition-all duration-200 ${active
+            ? 'scale-x-100 opacity-100'
+            : 'scale-x-50 opacity-0 group-hover:scale-x-100 group-hover:opacity-100'
+        }`
+    );
+
+    const headerStateClass = scrolled
+        ? 'border-b border-white/10 bg-studio-bg/95 shadow-xl shadow-black/40 backdrop-blur-xl'
+        : 'bg-studio-bg/95 backdrop-blur-xl';
 
     return (
         <>
-            <header className={`fixed top-0 left-0 right-0 z-50 transition-shadow duration-300 bg-[rgb(12,17,32)] backdrop-blur-xl ${scrolled ? 'border-b border-[rgba(255,255,255,0.06)] shadow-[0_2px_32px_rgba(0,0,0,0.5)]' : ''}`}>
-                <nav className="mx-auto flex max-w-[1180px] items-center justify-between px-4 py-4 sm:px-6 lg:px-8" aria-label="Global">
+            <header className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${headerStateClass}`}>
+                <nav className="container-studio flex items-center justify-between py-4" aria-label="Global">
                     <div className="flex lg:flex-1">
-                        <a href={`/${locale}`} className="-m-1.5 flex items-center gap-2 p-1.5 sm:gap-3">
+                        <a href={`/${locale}`} className="group -m-1.5 flex items-center gap-2 p-1.5 sm:gap-3">
                             <Image
                                 src="/assets/logo/mountain_white.svg"
                                 alt="Cojauny"
                                 width={32}
                                 height={32}
-                                className="h-7 w-auto sm:h-8"
+                                className="h-7 w-auto transition-all duration-200 group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.55)] min-[900px]:h-8"
                                 priority
                             />
-                            <span className="text-lg font-bold text-white sm:text-xl">Cojauny</span>
+                            <span className="hidden min-[380px]:inline text-base font-bold text-white transition-all duration-200 group-hover:[text-shadow:0_0_10px_rgba(255,255,255,0.55)] min-[900px]:text-lg">Cojauny</span>
                         </a>
                     </div>
 
@@ -279,27 +194,33 @@ const Header = ({ locale, copy }: HeaderProps) => {
                         <button
                             ref={openButtonRef}
                             type="button"
-                            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white transition-colors hover:bg-white/10"
-                            onClick={() => setMobileMenuOpen(true)}
-                            aria-label={common.openMainMenu}
+                            className="focus-ring inline-flex items-center justify-center rounded-lg p-2 text-white/80 transition-all duration-200 hover:bg-white/10 hover:text-white"
+                            onClick={openMobileMenu}
+                            aria-label={resolvedCommon.openMainMenu}
+                            aria-expanded={mobileMenuOpen}
+                            aria-controls="__menu_portal"
                         >
-                            <span className="sr-only">{common.openMainMenu}</span>
-                            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+                            <span className="sr-only">{resolvedCommon.openMainMenu}</span>
+                            <Bars3Icon className="h-5 w-5" aria-hidden="true" />
                         </button>
                     </div>
 
-                    <div className="hidden lg:flex lg:gap-x-3 xl:gap-x-4">
-                        <a href="#home" onClick={(e) => handleScroll(e, '#home')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.home}</a>
-                        <a href="#demo" onClick={(e) => handleScroll(e, '#demo')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.demo}</a>
-                        <a href="#benefits" onClick={(e) => handleScroll(e, '#benefits')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.benefits}</a>
-                        <a href="#impact" onClick={(e) => handleScroll(e, '#impact')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.impact}</a>
-                        <a href="#features" onClick={(e) => handleScroll(e, '#features')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.features}</a>
-                        <a href="#how-it-works" onClick={(e) => handleScroll(e, '#how-it-works')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.workflow}</a>
-                        {/* PRICING LINK — re-enable by setting NEXT_PUBLIC_ENABLE_PREMIUM=true */}
-                        {ENABLE_PREMIUM && <a href="#pricing" onClick={(e) => handleScroll(e, '#pricing')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.pricing}</a>}
-                        <a href="#beta" onClick={(e) => handleScroll(e, '#beta')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.beta}</a>
-                        <a href="#faq" onClick={(e) => handleScroll(e, '#faq')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.faq}</a>
-                        <a href="#feedback" onClick={(e) => handleScroll(e, '#feedback')} className="text-xs font-semibold leading-6 text-white/90 transition hover:text-brand-200 xl:text-sm cursor-pointer">{copy.feedback}</a>
+                    <div className="hidden lg:flex lg:flex-nowrap lg:items-center lg:gap-x-1 xl:gap-x-2">
+                        {desktopNavItems.map(item => {
+                            const active = isRouteLinkActive(item.href);
+                            return (
+                                <a
+                                    key={item.href}
+                                    href={item.href}
+                                    onClick={e => handleDesktopNav(e, item.href)}
+                                    className={desktopLinkClass(active)}
+                                    {...(active ? { 'aria-current': 'page' as const } : {})}
+                                >
+                                    {item.label}
+                                    <span className={desktopUnderlineClass(active)} aria-hidden="true" />
+                                </a>
+                            );
+                        })}
                     </div>
 
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4">
@@ -308,134 +229,81 @@ const Header = ({ locale, copy }: HeaderProps) => {
                 </nav>
             </header>
 
-            {mounted && typeof window !== 'undefined' && createPortal(
+            {isHydrated && portalEl && createPortal(
                 <div
                     className={`fixed inset-0 z-[9999] flex justify-end transition-all duration-300 ${mobileMenuOpen ? 'visible' : 'invisible pointer-events-none'}`}
-                    aria-modal="true" role="dialog" aria-hidden={!mobileMenuOpen}
+                    aria-modal="true"
+                    role="dialog"
+                    aria-hidden={!mobileMenuOpen}
                 >
-                    {/* overlay: captura click/touch fuera del panel para cerrar */}
+                    {/* overlay */}
                     <div
-                        className={`flex-1 transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0'}`}
+                        className={`flex-1 bg-black/40 backdrop-blur-[2px] transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0'}`}
                         data-testid="menu-overlay"
                         role="button"
                         tabIndex={0}
-                        onClick={() => setMobileMenuOpen(false)}
+                        onClick={() => closeMobileMenu('overlay')}
                         onKeyDown={(e) => {
-                            if (e.key === 'Enter' || e.key === ' ') {
+                            if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') {
                                 e.preventDefault();
-                                setMobileMenuOpen(false);
-                            } else if (e.key === 'Escape') {
-                                setMobileMenuOpen(false);
+                                closeMobileMenu('overlay');
                             }
                         }}
-                        onTouchStart={(e) => {
-                            // allow touch events to register on overlay
-                            (e.currentTarget as any)._touchStartX = e.touches?.[0]?.clientX ?? 0;
-                        }}
-                        onTouchEnd={(e) => {
-                            const touchEndX = e.changedTouches?.[0]?.clientX ?? 0;
-                            const touchStartX = (e.currentTarget as any)._touchStartX ?? 0;
-                            const delta = touchEndX - touchStartX;
-                            // if swiped right enough, close as well
-                            if (delta > 50) setMobileMenuOpen(false);
-                        }}
+                        {...swipeHandlers}
                     />
+                    {/* panel */}
                     <div
                         ref={menuRef}
-                        className={`relative h-full w-auto min-w-max max-w-[95vw] bg-[#0C1120] px-4 py-6 sm:px-6 sm:ring-1 sm:ring-white/10 flex flex-col overflow-y-auto max-h-screen transition-transform duration-300 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
-                        onTouchStart={(e) => {
-                            (e.currentTarget as any)._touchStartX = e.touches?.[0]?.clientX ?? 0;
-                        }}
-                        onTouchEnd={(e) => {
-                            const touchEndX = e.changedTouches?.[0]?.clientX ?? 0;
-                            const touchStartX = (e.currentTarget as any)._touchStartX ?? 0;
-                            const delta = touchEndX - touchStartX;
-                            if (delta > 50) setMobileMenuOpen(false);
-                        }}
+                        className={`relative h-full max-w-[95vw] bg-studio-bg px-4 py-6 sm:px-6 sm:ring-1 sm:ring-white/10 flex flex-col overflow-y-auto max-h-screen transition-transform duration-300 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+                        style={{ width: `${NAVIGATION_CONTRACT.mobileMenuPanelWidthPx}px` }}
+                        {...swipeHandlers}
                     >
                         <div className="flex items-center justify-end">
                             <button
                                 ref={closeButtonRef}
                                 type="button"
-                                className="-m-2.5 rounded-md p-2.5 text-white transition-colors hover:bg-white/10"
-                                onClick={() => setMobileMenuOpen(false)}
-                                aria-label={common.closeMenu}
+                                className="focus-ring rounded-lg p-2 text-white/80 transition-all duration-200 hover:bg-white/10 hover:text-white"
+                                onClick={() => closeMobileMenu('close-button')}
+                                aria-label={resolvedCommon.closeMenu}
                             >
-                                <span className="sr-only">{common.closeMenu}</span>
-                                <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                                <span className="sr-only">{resolvedCommon.closeMenu}</span>
+                                <XMarkIcon className="h-5 w-5" aria-hidden="true" />
                             </button>
                         </div>
                         <div className="mt-6 flex-1 flex flex-col justify-start">
                             <div className="space-y-1 flex flex-col items-end pr-6">
-                                {[
-                                    { href: '#home', label: copy.home },
-                                    { href: '#demo', label: copy.demo },
-                                    { href: '#benefits', label: copy.benefits },
-                                    { href: '#impact', label: copy.impact },
-                                    { href: '#features', label: copy.features },
-                                    { href: '#how-it-works', label: copy.workflow },
-                                    // PRICING LINK — re-enable by setting NEXT_PUBLIC_ENABLE_PREMIUM=true
-                                    ...(ENABLE_PREMIUM ? [{ href: '#pricing', label: copy.pricing }] : []),
-                                    { href: '#beta', label: copy.beta },
-                                    { href: '#faq', label: copy.faq },
-                                    { href: '#feedback', label: copy.feedback }
-                                ].map((item) => (
-                                    <a
-                                        key={item.href}
-                                        href={item.href}
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            setMobileMenuOpen(false);
-                                            const targetId = item.href.replace('#', '');
-                                            setTimeout(() => {
-                                                const element = document.getElementById(targetId);
-                                                if (element) {
-                                                    const header = document.querySelector('header');
-                                                    const headerHeight = header ? header.getBoundingClientRect().height : 0;
-                                                    const elementTop = element.getBoundingClientRect().top + window.scrollY;
-                                                    // On mobile, when clicking 'home' we want to ensure we land at the very top
-                                                    const isMobile = typeof window !== 'undefined' ? window.matchMedia('(max-width: 767px)').matches : false;
-                                                    if (isMobile && targetId === 'home') {
-                                                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                                                        return;
-                                                    }
-                                                    const baseOffset = 50;
-                                                    const homeAdjustment = targetId === 'home' ? -20 : 0;
-                                                    const offsetPosition = Math.max(0, elementTop - headerHeight + baseOffset + homeAdjustment);
-                                                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                                                    return;
-                                                }
-
-                                                // si no existe el elemento en esta página, navegamos al home con hash
-                                                try {
-                                                    const homePath = `/${locale}`;
-                                                    router.push(`${homePath}#${targetId}`);
-                                                } catch (err) {
-                                                    // ignore
-                                                }
-                                            }, 300);
-                                        }}
-                                        className="block w-full px-3 py-2 text-base font-semibold leading-6 text-white text-right transition-colors hover:bg-white/10 active:bg-white/20 cursor-pointer"
-                                    >
-                                        {item.label}
-                                    </a>
-                                ))}
+                                {navItems.map(item => {
+                                    const active = isRouteLinkActive(item.href);
+                                    return (
+                                        <a
+                                            key={item.href}
+                                            href={item.href}
+                                            onClick={e => handleMobileNav(e, item.href)}
+                                            className={mobileLinkClass(active)}
+                                            {...(active ? { 'aria-current': 'page' as const } : {})}
+                                        >
+                                            {item.label}
+                                            <span className={mobileUnderlineClass(active)} aria-hidden="true" />
+                                        </a>
+                                    );
+                                })}
                             </div>
                             <div className="py-6 w-full flex flex-col items-end pr-6 gap-4">
                                 <div className="sm:hidden w-full flex justify-end">
-                                    <LanguageSwitcher currentLocale={locale} onSelect={() => setMobileMenuOpen(false)} fullWidth />
+                                    <LanguageSwitcher currentLocale={locale} onSelect={() => closeMobileMenu('nav-link')} fullWidth />
                                 </div>
                                 <div className="hidden sm:block">
-                                    <LanguageSwitcher currentLocale={locale} onSelect={() => setMobileMenuOpen(false)} />
+                                    <LanguageSwitcher currentLocale={locale} onSelect={() => closeMobileMenu('nav-link')} />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>,
-                portalElRef.current || document.body
+                portalEl,
             )}
         </>
     );
 };
 
 export default Header;
+

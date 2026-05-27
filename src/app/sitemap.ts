@@ -29,14 +29,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6
   }));
 
-  // Maintain legacy static routes for backwards compatibility
-  const legacyRoutes = ['/legal/privacidad', '/legal/cookies', '/legal/terminos', '/legal/uso-aceptable', '/legal/faq', '/legal/subprocesadores'].map((route) => ({
-    url: `${base}${route}`,
-    lastModified,
-    changeFrequency: 'monthly' as const,
-    priority: 0.4
-  }));
-
   const defaultEntries = [
     {
       url: base,
@@ -52,5 +44,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   ];
 
-  return [...defaultEntries, ...localizedEntries, ...blogEntries, ...legacyRoutes];
+  return [...defaultEntries, ...localizedEntries, ...blogEntries];
 }

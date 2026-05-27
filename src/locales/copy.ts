@@ -1,5 +1,5 @@
 ﻿import type { Locale } from './config';
-import { defaultLocale, locales } from './config';
+import { defaultLocale } from './config';
 
 export type IconName = 'bolt' | 'users' | 'chat' | 'shield' | 'sparkles' | 'globe';
 
@@ -139,6 +139,7 @@ export interface LandingCopy {
     demo: string;
     pricing: string;
     beta: string;
+    contact: string;
     blog: string;
     benefits: string;
     impact: string;
@@ -232,6 +233,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       demo: 'App',
       pricing: 'Planes',
       beta: 'Acceso Beta',
+      contact: 'Contacto',
       blog: 'Blog',
       benefits: 'Ventajas',
       impact: 'Impacto',
@@ -716,7 +718,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       moreInfo: 'Más info'
     },
     footer: {
-      description: 'Cojauny conecta viajeros para compartir transporte, ahorrar dinero y reducir emisiones. Tu comunidad de viaje inteligente.',
+      description: 'Viajando juntos hacia un futuro sostenible.',
       rights: 'Todos los derechos reservados.',
       appStoreSoon: 'App Store (pronto)',
       playStoreSoon: 'Google Play (pronto)',
@@ -740,6 +742,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       demo: 'App',
       pricing: 'Plans',
       beta: 'Get Early Access',
+      contact: 'Contact',
       blog: 'Blog',
       benefits: 'Benefits',
       impact: 'Impact',
@@ -1173,7 +1176,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         ]
       },
       feedback: {
-        heading: 'Feedback, ideas, and business proposals',
+        heading: '',
         subheading: 'Have a suggestion to improve Cojauny? Want to share an innovative idea or explore business opportunities? We are here to listen.',
         title: 'Share your proposal',
         description:
@@ -1224,13 +1227,13 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       moreInfo: 'More Info'
     },
     footer: {
-      description: 'Cojauny connects travelers on the same flight to share transport, cut costs, and create community.',
+      description: 'Traveling together towards a sustainable future.',
       rights: 'All rights reserved.',
       appStoreSoon: 'App Store (coming soon)',
       playStoreSoon: 'Google Play (coming soon)',
-      privacy: 'Privacy',
-      cookies: 'Cookies',
-      terms: 'Terms',
+      privacy: 'Privacy Policy',
+      cookies: 'Cookie Policy',
+      terms: 'Terms of Service',
       acceptableUse: 'Acceptable Use',
       faq: 'FAQ',
       subprocessors: 'Subprocessors',
@@ -1248,9 +1251,10 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       demo: 'App',
       pricing: 'Preise',
       beta: 'Beta-Zugang',
+      contact: 'Kontakt',
       blog: 'Blog',
       benefits: 'Vorteile',
-      impact: 'Impact',
+      impact: 'Wirkung',
       workflow: 'So geht\'s',
       faq: 'FAQ',
       feedback: 'Feedback'
@@ -1732,7 +1736,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       moreInfo: 'Mehr Info'
     },
     footer: {
-      description: 'Cojauny verbindet Reisende zum Teilen von Transport, Kosten und Emissionen. Deine smarte Reise-Community.',
+      description: 'Gemeinsam in eine nachhaltige Zukunft reisen.',
       rights: 'Alle Rechte vorbehalten.',
       appStoreSoon: 'App Store (bald)',
       playStoreSoon: 'Google Play (bald)',
@@ -1756,6 +1760,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       demo: 'App',
       pricing: 'Tarifs',
       beta: 'Accès Bêta',
+      contact: 'Contact',
       blog: 'Blog',
       benefits: 'Avantages',
       impact: 'Impact',
@@ -2239,7 +2244,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       moreInfo: 'Plus d\'infos'
     },
     footer: {
-      description: 'Cojauny connecte les voyageurs pour partager transport, coûts et émissions. Votre communauté de voyage intelligente.',
+      description: 'Voyager ensemble vers un avenir durable.',
       rights: 'Tous droits réservés.',
       appStoreSoon: 'App Store (bientôt)',
       playStoreSoon: 'Google Play (bientôt)',

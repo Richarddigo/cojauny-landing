@@ -48,16 +48,22 @@ describe('SectionIntro', () => {
         expect(wrapper).toHaveClass('text-left');
     });
 
-    it('aplica tone dark por defecto', () => {
+    it('aplica tone light por defecto', () => {
         render(<SectionIntro title="Title" description="Desc" />);
         const title = screen.getByText('Title');
-        expect(title).toHaveClass('text-slate-900');
+        expect(title).toHaveClass('text-white');
     });
 
     it('aplica tone light cuando se especifica', () => {
         render(<SectionIntro title="Title" description="Desc" tone="light" />);
         const title = screen.getByText('Title');
         expect(title).toHaveClass('text-white');
+    });
+
+    it('aplica tone dark cuando se especifica', () => {
+        render(<SectionIntro title="Title" description="Desc" tone="dark" />);
+        const title = screen.getByText('Title');
+        expect(title).toHaveClass('text-slate-900');
     });
 
     it('isDark override tone para backwards compatibility', () => {

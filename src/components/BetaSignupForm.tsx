@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Fragment, useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
 import AlertMessage from '@/components/AlertMessage';
@@ -6,15 +6,23 @@ import { apiClient, ApiError } from '@/lib/api-client';
 
 
 import { betaSignupSchema, type BetaSignupInput } from '@/lib/validation';
+import { useAppMessages } from '@/i18n/useAppMessages';
+import { getCommonCopy } from '@/locales/common';
 import type { LandingCopy } from '@/locales/copy';
 import type { Locale } from '@/locales/config';
 import ReferralPanel from './ReferralPanel';
 
 interface BetaSignupFormProps {
-    copy: LandingCopy['forms']['beta'];
+    copy?: LandingCopy['forms']['beta'];
     referralPanelCopy?: LandingCopy['referralPanel'];
     locale: Locale;
 }
+
+interface BetaReferralStatsResponse {
+    data?: Array<{ referral_link?: string }> | { referral_link?: string };
+}
+
+type TextareaLikeEvent = { target: EventTarget | null };
 
 type BetaSignupFormState = BetaSignupInput & {
     flightFrequency: BetaSignupInput['flightFrequency'] | '';
@@ -36,6 +44,10 @@ const buildInitialState = (locale: Locale, referralCode?: string): BetaSignupFor
 });
 
 const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps) => {
+    const messages = useAppMessages();
+    const resolvedCopy = copy ?? messages.landing.forms.beta;
+    const resolvedReferralPanelCopy = referralPanelCopy ?? messages.landing.referralPanel;
+    const common = getCommonCopy(locale);
     const [referralCode, setReferralCode] = useState<string | undefined>();
     const [form, setForm] = useState<BetaSignupFormState>(() => buildInitialState(locale, referralCode));
     const [submitting, setSubmitting] = useState(false);
@@ -77,13 +89,19 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
     };
 
     // Auto-resize textarea to fit content and avoid scrollbars
-    const autoResize = (el?: HTMLTextAreaElement | EventTarget | null) => {
+    const autoResize = (el?: HTMLTextAreaElement | TextareaLikeEvent | null) => {
         try {
-            const ta = el instanceof HTMLTextAreaElement ? el : (el as any)?.target ?? null;
-            if (!ta) return;
-            ta.style.height = 'auto';
-            ta.style.height = `${ta.scrollHeight}px`;
-        } catch (e) { }
+            const textarea = el instanceof HTMLTextAreaElement
+                ? el
+                : el && typeof el === 'object' && 'target' in el && el.target instanceof HTMLTextAreaElement
+                    ? el.target
+                    : null;
+
+            if (!textarea) return;
+
+            textarea.style.height = 'auto';
+            textarea.style.height = `${textarea.scrollHeight}px`;
+        } catch { }
     };
 
 
@@ -104,7 +122,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
         const parseResult = betaSignupSchema.safeParse(formData);
         if (!parseResult.success) {
             setSubmitting(false);
-            setError(copy.error);
+            setError(resolvedCopy.error);
             return;
         }
 
@@ -113,22 +131,27 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
             setReferralLink(result.referralLink || '');
             setUserEmail(form.email);
             setForm(buildInitialState(locale, referralCode));
-            setSuccess(copy.success);
+            setSuccess(resolvedCopy.success);
             setShowReferralPanel(true);
-        } catch (err: any) {
+        } catch (err: unknown) {
             if (err instanceof ApiError && err.code === 'beta_duplicate_email') {
-                setError(copy.duplicateError ?? copy.error);
+                setError(resolvedCopy.duplicateError ?? resolvedCopy.error);
                 try {
                     const statsJson = await apiClient.referral.stats(form.email);
-                    const referralLinkFromApi = (statsJson as any)?.data?.[0]?.referral_link || '';
+                    const parsedStats = statsJson as BetaReferralStatsResponse;
+                    const payload = parsedStats.data;
+                    const referralLinkFromApi = Array.isArray(payload)
+                        ? payload[0]?.referral_link ?? ''
+                        : payload?.referral_link ?? '';
+
                     setReferralLink(referralLinkFromApi);
                     setUserEmail(form.email);
                     setShowReferralPanel(true);
-                } catch (e) {
+                } catch {
                     // ignore
                 }
             } else {
-                setError(copy.error);
+                setError(resolvedCopy.error);
             }
         } finally {
             setSubmitting(false);
@@ -139,31 +162,31 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
     return (
         <div id="beta" className="scroll-mt-16 lg:scroll-mt-20">
             <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{copy.heading}</h2>
-                <p className="mt-4 text-lg text-slate-600 mx-auto max-w-2xl">{copy.subheading}</p>
+                <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">{resolvedCopy.heading}</h2>
+                <p className="mt-4 text-lg text-studio-muted mx-auto max-w-2xl">{resolvedCopy.subheading}</p>
             </div>
             <form
                 onSubmit={handleSubmit}
-                className="space-y-6 rounded-3xl border border-slate-100 bg-white p-8 shadow-xl"
+                className="space-y-6 rounded-3xl border border-white/8 bg-studio-surface p-8 shadow-xl"
                 aria-describedby="beta-form-help"
             >
                 <div>
-                    <h3 className="text-2xl font-semibold text-slate-900">{copy.title}</h3>
-                    <p id="beta-form-help" className="mt-2 text-sm text-slate-600">
-                        {copy.description}
+                    <h3 className="text-2xl font-semibold text-white">{resolvedCopy.title}</h3>
+                    <p id="beta-form-help" className="mt-2 text-sm text-studio-muted">
+                        {resolvedCopy.description}
                     </p>
-                    {copy.referralNotice && (
-                        <div className="mt-4 rounded-2xl bg-blue-50 border border-blue-200 px-4 py-3 text-sm text-blue-800">
-                            {copy.referralNotice}
+                    {resolvedCopy.referralNotice && (
+                        <div className="mt-4 rounded-2xl bg-brand-500/10 border border-brand-500/30 px-4 py-3 text-sm text-brand-400">
+                            {resolvedCopy.referralNotice}
                         </div>
                     )}
-                    {copy.optionalHint && (
-                        <p className="mt-1 text-xs text-slate-500">{copy.optionalHint}</p>
+                    {resolvedCopy.optionalHint && (
+                        <p className="mt-1 text-xs text-studio-muted">{resolvedCopy.optionalHint}</p>
                     )}
                 </div>
                 <div className="grid gap-6 md:grid-cols-2">
                     <label className="flex flex-col gap-2">
-                        <span className="text-sm font-medium text-slate-700">{copy.fields.fullName}</span>
+                        <span className="text-sm font-medium text-studio-muted">{resolvedCopy.fields.fullName}</span>
                         <input
                             type="text"
                             name="fullName"
@@ -171,12 +194,12 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                             onChange={handleChange}
                             required
                             autoComplete="name"
-                            aria-label={copy.fields.fullName}
-                            className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20"
+                            aria-label={resolvedCopy.fields.fullName}
+                            className="rounded-2xl border-2 border-white/10 bg-studio-surface-2 px-4 py-3 text-base text-studio-text transition-colors focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
                         />
                     </label>
                     <label className="flex flex-col gap-2">
-                        <span className="text-sm font-medium text-slate-700">{copy.fields.email}</span>
+                        <span className="text-sm font-medium text-studio-muted">{resolvedCopy.fields.email}</span>
                         <input
                             type="email"
                             name="email"
@@ -185,25 +208,25 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                             required
                             autoComplete="email"
                             inputMode="email"
-                            aria-label={copy.fields.email}
-                            className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20"
+                            aria-label={resolvedCopy.fields.email}
+                            className="rounded-2xl border-2 border-white/10 bg-studio-surface-2 px-4 py-3 text-base text-studio-text transition-colors focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
                         />
                     </label>
                     <label className="flex flex-col gap-2">
-                        <span className="text-sm font-medium text-slate-700">
-                            {copy.fields.country}
-                            {copy.optionalLabel && (
-                                <span className="ml-2 text-xs font-normal text-slate-500">{copy.optionalLabel}</span>
+                        <span className="text-sm font-medium text-studio-muted">
+                            {resolvedCopy.fields.country}
+                            {resolvedCopy.optionalLabel && (
+                                <span className="ml-2 text-xs font-normal text-studio-faint">{resolvedCopy.optionalLabel}</span>
                             )}
                         </span>
                         <select
                             name="country"
                             value={form.country ?? ''}
                             onChange={handleChange}
-                            aria-label={copy.fields.country}
-                            className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20"
+                            aria-label={resolvedCopy.fields.country}
+                            className="rounded-2xl border-2 border-white/10 bg-studio-surface-2 px-4 py-3 text-base text-studio-text transition-colors focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
                         >
-                            {(copy.countryOptions ?? []).map((option) => (
+                            {(resolvedCopy.countryOptions ?? []).map((option) => (
                                 <option key={option.value} value={option.value}>
                                     {option.label}
                                 </option>
@@ -211,10 +234,10 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                         </select>
                     </label>
                     <label className="flex flex-col gap-2">
-                        <span className="text-sm font-medium text-slate-700">
-                            {copy.fields.homeAirport}
-                            {copy.optionalLabel && (
-                                <span className="ml-2 text-xs font-normal text-slate-500">{copy.optionalLabel}</span>
+                        <span className="text-sm font-medium text-studio-muted">
+                            {resolvedCopy.fields.homeAirport}
+                            {resolvedCopy.optionalLabel && (
+                                <span className="ml-2 text-xs font-normal text-studio-faint">{resolvedCopy.optionalLabel}</span>
                             )}
                         </span>
                         <input
@@ -222,24 +245,24 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                             name="homeAirport"
                             value={form.homeAirport ?? ''}
                             onChange={handleChange}
-                            placeholder={copy.placeholders?.homeAirport}
-                            aria-label={copy.fields.homeAirport}
-                            className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20 placeholder:text-slate-400"
+                            placeholder={resolvedCopy.placeholders?.homeAirport}
+                            aria-label={resolvedCopy.fields.homeAirport}
+                            className="rounded-2xl border-2 border-white/10 bg-studio-surface-2 px-4 py-3 text-base text-studio-text transition-colors focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 placeholder:text-studio-faint"
                         />
                     </label>
                 </div>
                 <div>
-                    <p className="text-sm font-medium text-slate-700 mb-3">
-                        {copy.fields.flightFrequency}
-                        {copy.optionalLabel && (
-                            <span className="ml-2 text-xs font-normal text-slate-500">{copy.optionalLabel}</span>
+                    <p className="text-sm font-medium text-studio-muted mb-3">
+                        {resolvedCopy.fields.flightFrequency}
+                        {resolvedCopy.optionalLabel && (
+                            <span className="ml-2 text-xs font-normal text-studio-faint">{resolvedCopy.optionalLabel}</span>
                         )}
                     </p>
                     <div className="grid gap-3 md:grid-cols-2">
-                        {(copy.flightFrequencyOptions ?? []).map((option) => (
+                        {(resolvedCopy.flightFrequencyOptions ?? []).map((option) => (
                             <label
                                 key={option.value}
-                                className={`flex flex-col gap-1 rounded-2xl border-2 px-4 py-3 transition-colors ${form.flightFrequency === option.value ? 'border-brand-500 bg-brand-50' : 'border-slate-200 bg-white hover:border-brand-300'}`}
+                                className={`flex flex-col gap-1 rounded-2xl border-2 px-4 py-3 transition-colors ${form.flightFrequency === option.value ? 'border-brand-500 bg-brand-500/10' : 'border-white/10 bg-studio-surface-2 hover:border-brand-500/40'}`}
                             >
                                 <div className="flex items-center gap-2">
                                     <input
@@ -250,18 +273,18 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                                         onChange={handleChange}
                                         className="h-4 w-4 text-brand-600 focus:ring-brand-500"
                                     />
-                                    <span className="text-sm font-medium text-slate-900">{option.label}</span>
+                                    <span className="text-sm font-medium text-white">{option.label}</span>
                                 </div>
-                                <span className="text-xs text-slate-500">{option.description}</span>
+                                <span className="text-xs text-studio-muted">{option.description}</span>
                             </label>
                         ))}
                     </div>
                 </div>
                 <label className="flex flex-col gap-2">
-                    <span className="text-sm font-medium text-slate-700">
-                        {copy.fields.useCase}
-                        {copy.optionalLabel && (
-                            <span className="ml-2 text-xs font-normal text-slate-500">{copy.optionalLabel}</span>
+                    <span className="text-sm font-medium text-studio-muted">
+                        {resolvedCopy.fields.useCase}
+                        {resolvedCopy.optionalLabel && (
+                            <span className="ml-2 text-xs font-normal text-studio-faint">{resolvedCopy.optionalLabel}</span>
                         )}
                     </span>
                     <textarea
@@ -271,11 +294,11 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                         onInput={(e) => autoResize(e.currentTarget)}
                         rows={3}
                         maxLength={MAX_CHARS}
-                        aria-label={copy.fields.useCase}
-                        placeholder={copy.placeholders?.useCase}
-                        className="rounded-2xl border-2 border-slate-200 bg-white px-4 py-3 text-base text-slate-900 transition-colors focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-400/20 resize-none placeholder:text-slate-400"
+                        aria-label={resolvedCopy.fields.useCase}
+                        placeholder={resolvedCopy.placeholders?.useCase}
+                        className="rounded-2xl border-2 border-white/10 bg-studio-surface-2 px-4 py-3 text-base text-studio-text transition-colors focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 resize-none placeholder:text-studio-faint"
                     />
-                    <div className="mt-2 text-xs text-slate-500">{(form.useCase ?? '').length}/{MAX_CHARS}</div>
+                    <div className="mt-2 text-xs text-studio-muted">{(form.useCase ?? '').length}/{MAX_CHARS}</div>
                 </label>
                 <label className="flex items-start gap-3">
                     <input
@@ -283,12 +306,12 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                         name="updatesOptIn"
                         checked={Boolean(form.updatesOptIn)}
                         onChange={handleChange}
-                        className="mt-1 h-5 w-5 rounded border-slate-300 text-brand-600 focus:ring-brand-500"
+                        className="mt-1 h-5 w-5 rounded border-white/20 bg-studio-surface-2 text-brand-500 focus:ring-brand-500"
                     />
-                    <span className="text-sm text-slate-600">
-                        {copy.fields.updatesOptIn}
-                        {copy.optionalLabel && (
-                            <span className="ml-2 text-xs font-normal text-slate-500">{copy.optionalLabel}</span>
+                    <span className="text-sm text-studio-muted">
+                        {resolvedCopy.fields.updatesOptIn}
+                        {resolvedCopy.optionalLabel && (
+                            <span className="ml-2 text-xs font-normal text-studio-faint">{resolvedCopy.optionalLabel}</span>
                         )}
                     </span>
                 </label>
@@ -299,22 +322,22 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                         checked={form.termsAccepted}
                         onChange={handleChange}
                         required
-                        className="mt-1 h-5 w-5 rounded border-slate-300 text-brand-600 focus:ring-brand-500"
+                        className="mt-1 h-5 w-5 rounded border-white/20 bg-studio-surface-2 text-brand-500 focus:ring-brand-500"
                     />
-                    <span className="text-sm text-slate-600">
-                        {copy.checkboxLabel && copy.privacyLinkLabel ? (
-                            copy.checkboxLabel.split('{privacyLink}').map((segment, index, array) => (
+                    <span className="text-sm text-studio-muted">
+                        {resolvedCopy.checkboxLabel && resolvedCopy.privacyLinkLabel ? (
+                            resolvedCopy.checkboxLabel.split('{privacyLink}').map((segment, index, array) => (
                                 <Fragment key={`${segment}-${index}`}>
                                     {segment}
                                     {index < array.length - 1 && (
                                         <a href={`/${locale}/legal/privacy`} className="text-brand-600 underline">
-                                            {copy.privacyLinkLabel}
+                                            {resolvedCopy.privacyLinkLabel}
                                         </a>
                                     )}
                                 </Fragment>
                             ))
                         ) : (
-                            copy.checkboxLabel
+                            resolvedCopy.checkboxLabel
                         )}
                     </span>
                 </label>
@@ -325,13 +348,13 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                         checked={form.privacyAccepted}
                         onChange={handleChange}
                         required
-                        className="mt-1 h-5 w-5 rounded border-slate-300 text-brand-600 focus:ring-brand-500"
+                        className="mt-1 h-5 w-5 rounded border-white/20 bg-studio-surface-2 text-brand-500 focus:ring-brand-500"
                     />
-                    <span className="text-sm text-slate-600">{copy.fields.privacyAcceptance}</span>
+                    <span className="text-sm text-studio-muted">{resolvedCopy.fields.privacyAcceptance}</span>
                 </label>
                 <div className="sr-only" aria-hidden>
                     <label>
-                        No rellenes este campo si eres humano
+                        {common.honeypotHumanLabel}
                         <input
                             type="text"
                             name="honeypot"
@@ -347,9 +370,9 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                     <button
                         type="submit"
                         disabled={submitting}
-                        className="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 px-6 py-4 text-base font-bold text-white shadow-lg shadow-brand-600/25 transition-all duration-200 hover:scale-[1.02] hover:shadow-xl hover:shadow-brand-600/35 focus:outline-none focus:ring-4 focus:ring-brand-500/20 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:scale-100"
+                        className="inline-flex w-full items-center justify-center rounded-xl bg-brand-500 px-6 py-4 text-base font-bold text-white shadow-lg shadow-brand-500/25 transition-all duration-200 hover:bg-brand-600 hover:scale-[1.02] hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-brand-500/20 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:scale-100"
                     >
-                        {submitting ? `${copy.submit}…` : copy.submit}
+                        {submitting ? `${resolvedCopy.submit}...` : resolvedCopy.submit}
                     </button>
                     {success && <AlertMessage type="success" message={success} onClose={() => setSuccess(null)} positioning="relative" />}
                     {error && <AlertMessage type="error" message={error} onClose={() => setError(null)} positioning="relative" />}
@@ -357,10 +380,10 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
             </form>
 
             {/* Show Referral Panel after successful signup / Mostrar panel de referral tras registro exitoso */}
-            {/* Empfehlungs-Panel nach erfolgreicher Anmeldung anzeigen / Afficher le panneau de parrainage après inscription */}
-            {showReferralPanel && userEmail && (
+            {/* Empfehlungs-Panel nach erfolgreicher Anmeldung anzeigen / Afficher le panneau de parrainage apres inscription */}
+            {showReferralPanel && userEmail && resolvedReferralPanelCopy && (
                 <div className="mt-8">
-                    <ReferralPanel copy={referralPanelCopy ?? (copy as any).referralPanel} email={userEmail} referralLink={referralLink} />
+                    <ReferralPanel copy={resolvedReferralPanelCopy} email={userEmail} referralLink={referralLink} />
                 </div>
             )}
         </div>
@@ -368,3 +391,4 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
 };
 
 export default BetaSignupForm;
+

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import Script from 'next/script';
 import { Inter } from 'next/font/google';
@@ -21,8 +21,8 @@ const inter = Inter({
 export const metadata: Metadata = {
     metadataBase: new URL(siteMetadata.url),
     title: {
-        default: `${siteMetadata.name} · Traslados compartidos coordinados por vuelo`,
-        template: `%s · ${siteMetadata.name}`
+        default: `${siteMetadata.name} - Traslados compartidos coordinados por vuelo`,
+        template: `%s - ${siteMetadata.name}`
     },
     description: siteMetadata.description,
     keywords: [
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
         apple: '/apple-icon.png'
     },
     openGraph: {
-        title: `${siteMetadata.name} · Traslados compartidos coordinados por vuelo`,
+        title: `${siteMetadata.name} - Traslados compartidos coordinados por vuelo`,
         description: siteMetadata.description,
         url: siteMetadata.url,
         siteName: siteMetadata.name,
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: `${siteMetadata.name} · Traslados compartidos coordinados por vuelo`,
+        title: `${siteMetadata.name} - Traslados compartidos coordinados por vuelo`,
         description: siteMetadata.description,
         site: siteMetadata.twitter,
         creator: siteMetadata.twitter
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
         'max-image-preview': 'large',
         'max-snippet': -1
     }
-    // Los iconos se generan automáticamente desde:
+    // Los iconos se generan automaticamente desde:
     // - src/app/icon.tsx (favicon 32x32)
     // - src/app/apple-icon.tsx (apple-touch-icon 180x180)
 };
@@ -101,7 +101,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                     </>
                 )}
             </head>
-            <body className="bg-white font-sans antialiased" data-prefers-reduced-motion="dynamic">
+            <body className="bg-studio-bg font-sans antialiased text-studio-text" data-prefers-reduced-motion="dynamic">
                 <DetectLocale />
                 <FloatingSocialBar />
                 {children}
@@ -109,3 +109,4 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </html>
     );
 }
+

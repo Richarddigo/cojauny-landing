@@ -2,11 +2,19 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import type { ReactNode } from 'react';
 
+import { NextIntlClientProvider } from 'next-intl';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { Analytics } from '@vercel/analytics/react';
 import AccessibilitySkipLink from '@/components/AccessibilitySkipLink';
 import CookieBanner from '@/components/CookieBanner';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import { locales, defaultLocale, type Locale } from '@/locales/config';
+import {
+    getCommonCopyFromMessages,
+    getFooterCopyFromMessages,
+    getHeaderCopyFromMessages,
+} from '../../i18n/message-adapters';
+import { locales, type Locale } from '@/locales/config';
 import { getLandingCopy } from '@/locales/copy';
 import { siteMetadata, ogImages } from '@/lib/site';
 import { buildLocaleAlternates, buildRobotsMeta } from '@/lib/jsonld';
@@ -69,16 +77,26 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     }
 
     const copy = getLandingCopy(locale);
+    setRequestLocale(locale);
+    const landingT = await getTranslations({ locale, namespace: 'landing' });
+    const headerT = await getTranslations({ locale, namespace: 'landing.header' });
+    const footerT = await getTranslations({ locale, namespace: 'landing.footer' });
+    const commonT = await getTranslations({ locale, namespace: 'common' });
+
+    const commonCopy = getCommonCopyFromMessages(commonT);
+    const headerCopy = getHeaderCopyFromMessages(headerT);
+    const footerCopy = getFooterCopyFromMessages(footerT);
 
     return (
-        <>
-            <AccessibilitySkipLink label={copy.skipLink} />
-            <Header locale={locale} copy={copy.header} />
+        <NextIntlClientProvider locale={locale}>
+            <AccessibilitySkipLink label={landingT('skipLink')} />
+            <Header locale={locale} copy={headerCopy} common={commonCopy} />
             <main id="main-content" className="relative pt-24">
                 {children}
             </main>
-            <Footer copy={copy.footer} locale={locale} />
+            <Footer copy={footerCopy} locale={locale} common={commonCopy} />
             <CookieBanner copy={copy.cookie} locale={locale} />
-        </>
+            <Analytics />
+        </NextIntlClientProvider>
     );
 }

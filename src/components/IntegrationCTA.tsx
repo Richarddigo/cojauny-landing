@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 
 import type { LandingCopy } from '@/locales/copy';
 import type { Locale } from '@/locales/config';
@@ -25,14 +25,14 @@ const IntegrationCTA = ({ copy, locale }: IntegrationCTAProps) => {
                     {isInternal ? (
                         <Link
                             href={href}
-                            className="inline-flex items-center justify-center rounded-xl bg-white px-8 py-3 text-base font-semibold text-slate-900 transition hover:bg-slate-100"
+                            className="inline-flex items-center justify-center rounded-xl bg-studio-accent px-8 py-3 text-base font-semibold text-white transition hover:bg-studio-accent-dim"
                         >
                             {copy.linkLabel}
                         </Link>
                     ) : (
                         <a
                             href={href}
-                            className="inline-flex items-center justify-center rounded-xl bg-white px-8 py-3 text-base font-semibold text-slate-900 transition hover:bg-slate-100"
+                            className="inline-flex items-center justify-center rounded-xl bg-studio-accent px-8 py-3 text-base font-semibold text-white transition hover:bg-studio-accent-dim"
                         >
                             {copy.linkLabel}
                         </a>
@@ -44,3 +44,4 @@ const IntegrationCTA = ({ copy, locale }: IntegrationCTAProps) => {
 };
 
 export default IntegrationCTA;
+

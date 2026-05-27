@@ -1,2 +1,4 @@
-export default 'SvgMock';
+const svgMock = 'SvgMock';
+
+export default svgMock;
 export const ReactComponent = 'svg';

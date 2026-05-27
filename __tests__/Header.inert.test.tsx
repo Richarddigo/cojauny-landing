@@ -16,7 +16,7 @@ describe('Header inert/aria-hidden handling', () => {
     test('applies aria-hidden or inert to main while menu is open', async () => {
         // ensure there is a main element in the DOM
         document.body.innerHTML = '<main id="app-main">content</main><div id="root"></div>';
-        render(<Header locale={localeValues[0]} copy={copy} />);
+        render(<Header locale={'en'} copy={copy} />);
 
         const openButton = screen.getByLabelText(/open main menu/i);
         await userEvent.click(openButton);

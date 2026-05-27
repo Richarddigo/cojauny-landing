@@ -7,7 +7,7 @@ describe('getLegalCopy', () => {
     expect(es.cookies.title).toContain('Cookies');
     expect(es.terms.title).toContain('Términos');
     expect(es.acceptableUse.title).toContain('Uso Aceptable');
-    expect(es.faq.title).toContain('Preguntas');
+    expect(es.faq.title).toContain('FAQ');
     expect(es.subprocessors.title).toContain('Subprocesadores');
   });
 

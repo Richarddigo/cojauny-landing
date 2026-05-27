@@ -4,6 +4,15 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import BetaSignupForm from '@/components/BetaSignupForm';
 import { getLandingCopy } from '@/locales/copy';
 
+jest.mock('@/i18n/useAppMessages', () => {
+    const { getLandingCopy: getCopy } = require('@/locales/copy');
+    return {
+        useAppMessages: () => ({
+            landing: getCopy('es')
+        })
+    };
+});
+
 describe('BetaSignupForm', () => {
     const originalFetch = global.fetch;
     const mockFetch = jest.fn() as jest.MockedFunction<typeof fetch>;

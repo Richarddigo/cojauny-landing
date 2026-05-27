@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from 'react';
 import { CheckIcon, ClipboardDocumentIcon } from '@heroicons/react/24/outline';
@@ -40,7 +40,7 @@ const ReferralPanel = ({ copy, email, referralLink: propReferralLink }: Referral
         } else {
           setStats(null);
         }
-      } catch (err) {
+      } catch {
         setError('Could not load referral stats');
       } finally {
         setLoading(false);
@@ -58,16 +58,16 @@ const ReferralPanel = ({ copy, email, referralLink: propReferralLink }: Referral
       await navigator.clipboard.writeText(linkToCopy);
       setCopiedLink(true);
       setTimeout(() => setCopiedLink(false), 3000);
-    } catch (err) {
+    } catch {
     }
   };
 
   if (loading) {
     return (
-      <div className="rounded-3xl border border-slate-100 bg-white p-8 shadow-xl">
+      <div className="rounded-3xl border border-white/8 bg-studio-surface p-8 shadow-xl">
         <div className="animate-pulse space-y-4">
-          <div className="h-8 bg-slate-200 rounded w-3/4"></div>
-          <div className="h-4 bg-slate-200 rounded w-1/2"></div>
+          <div className="h-8 bg-white/10 rounded w-3/4"></div>
+          <div className="h-4 bg-white/10 rounded w-1/2"></div>
         </div>
       </div>
     );
@@ -81,17 +81,17 @@ const ReferralPanel = ({ copy, email, referralLink: propReferralLink }: Referral
 
   return (
     <div className="scroll-mt-16 lg:scroll-mt-20">
-      <div className="rounded-3xl border border-brand-100 bg-gradient-to-br from-brand-50 to-white p-8 shadow-xl">
+      <div className="rounded-3xl border border-studio-accent/20 bg-studio-surface p-8 shadow-xl">
         <div className="text-center mb-8">
-          <h3 className="text-2xl font-bold tracking-tight text-slate-900 mb-3">
+          <h3 className="text-2xl font-bold tracking-tight text-white mb-3">
             {copy.title}
           </h3>
-          <p className="text-base text-slate-600">{copy.subtitle}</p>
+          <p className="text-base text-studio-muted">{copy.subtitle}</p>
         </div>
 
-        {/* Referral Link Section / Sección de enlace de referral / Empfehlungslink-Bereich / Section de lien de parrainage */}
+        {/* Referral Link Section / Seccion de enlace de referral / Empfehlungslink-Bereich / Section de lien de parrainage */}
         <div className="mb-8">
-          <label className="block text-sm font-medium text-slate-700 mb-3">
+          <label className="block text-sm font-medium text-studio-muted mb-3">
             {copy.yourLink}
           </label>
           <div className="flex gap-3">
@@ -99,7 +99,7 @@ const ReferralPanel = ({ copy, email, referralLink: propReferralLink }: Referral
               type="text"
               readOnly
               value={displayLink}
-              className="flex-1 rounded-2xl border-2 border-brand-200 bg-white px-4 py-3 text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-400/20"
+              className="flex-1 rounded-2xl border-2 border-studio-accent/40 bg-studio-surface-2 px-4 py-3 text-base text-studio-text focus:outline-none focus:ring-2 focus:ring-studio-accent/20"
             />
             <button
               onClick={handleCopyLink}
@@ -120,48 +120,48 @@ const ReferralPanel = ({ copy, email, referralLink: propReferralLink }: Referral
           </div>
         </div>
 
-        {/* Stats Section / Sección de estadísticas / Statistikbereich / Section des statistiques */}
+        {/* Stats Section / Seccion de estadisticas / Statistikbereich / Section des statistiques */}
         <div className="grid grid-cols-2 gap-4 mb-8">
-          <div className="rounded-2xl bg-white border border-slate-200 p-6 text-center">
-            <div className="text-4xl font-bold text-brand-600 mb-2">{stats.visits}</div>
-            <div className="text-sm font-medium text-slate-600">{copy.stats.visits}</div>
+          <div className="rounded-2xl bg-studio-surface-2 border border-white/8 p-6 text-center">
+            <div className="text-4xl font-bold text-studio-accent mb-2">{stats.visits}</div>
+            <div className="text-sm font-medium text-studio-muted">{copy.stats.visits}</div>
           </div>
-          <div className="rounded-2xl bg-white border border-slate-200 p-6 text-center">
-            <div className="text-4xl font-bold text-emerald-600 mb-2">{stats.signups}</div>
-            <div className="text-sm font-medium text-slate-600">{copy.stats.signups}</div>
+          <div className="rounded-2xl bg-studio-surface-2 border border-white/8 p-6 text-center">
+            <div className="text-4xl font-bold text-emerald-400 mb-2">{stats.signups}</div>
+            <div className="text-sm font-medium text-studio-muted">{copy.stats.signups}</div>
           </div>
         </div>
 
-        {/* Instructions Section / Sección de instrucciones / Anleitungsbereich / Section des instructions */}
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 mb-6">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">
+        {/* Instructions Section / Seccion de instrucciones / Anleitungsbereich / Section des instructions */}
+        <div className="bg-studio-surface-2 rounded-2xl border border-white/8 p-6 mb-6">
+          <h3 className="text-lg font-semibold text-white mb-4">
             {copy.instructions.title}
           </h3>
           <ol className="space-y-3">
             <li className="flex gap-3">
-              <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-brand-100 text-brand-700 text-sm font-semibold">
+              <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-studio-accent/15 text-studio-accent text-sm font-semibold">
                 1
               </span>
-              <span className="text-slate-600">{copy.instructions.step1}</span>
+              <span className="text-studio-muted">{copy.instructions.step1}</span>
             </li>
             <li className="flex gap-3">
-              <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-brand-100 text-brand-700 text-sm font-semibold">
+              <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-studio-accent/15 text-studio-accent text-sm font-semibold">
                 2
               </span>
-              <span className="text-slate-600">{copy.instructions.step2}</span>
+              <span className="text-studio-muted">{copy.instructions.step2}</span>
             </li>
             <li className="flex gap-3">
-              <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-brand-100 text-brand-700 text-sm font-semibold">
+              <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-studio-accent/15 text-studio-accent text-sm font-semibold">
                 3
               </span>
-              <span className="text-slate-600">{copy.instructions.step3}</span>
+              <span className="text-studio-muted">{copy.instructions.step3}</span>
             </li>
           </ol>
         </div>
 
-        {/* Privacy Notice / Aviso de privacidad / Datenschutzhinweis / Avis de confidentialité */}
-        <div className="text-sm text-slate-500 text-center">
-          🔒 {copy.privacy}
+        {/* Privacy Notice / Aviso de privacidad / Datenschutzhinweis / Avis de confidentialite */}
+        <div className="text-sm text-studio-muted text-center">
+          Security: {copy.privacy}
         </div>
       </div>
     </div>
@@ -169,3 +169,4 @@ const ReferralPanel = ({ copy, email, referralLink: propReferralLink }: Referral
 };
 
 export default ReferralPanel;
+

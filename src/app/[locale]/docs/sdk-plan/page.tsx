@@ -1,8 +1,8 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
+import { getAppMessages } from '@/lib/i18nMessages';
 import { locales, type Locale } from '@/locales/config';
-import { getDocsCopy } from '@/locales/docs';
 
 interface SdkPlanPageProps {
     params: Promise<{ locale: string }>;
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: SdkPlanPageProps): Promise<Me
         notFound();
     }
 
-    const copy = getDocsCopy(locale).sdkPlan;
+    const copy = (await getAppMessages(locale)).docs.sdkPlan;
 
     return {
         title: copy.title,
@@ -34,19 +34,19 @@ const SdkPlanPage = async ({ params }: SdkPlanPageProps) => {
         notFound();
     }
 
-    const copy = getDocsCopy(locale).sdkPlan;
+    const copy = (await getAppMessages(locale)).docs.sdkPlan;
 
     return (
         <section className="mx-auto max-w-4xl px-6 py-24">
             <header>
-                <h1 className="text-4xl font-bold text-slate-900">{copy.title}</h1>
-                <p className="mt-4 text-base text-slate-600">{copy.intro}</p>
+                <h1 className="text-4xl font-bold text-white">{copy.title}</h1>
+                <p className="mt-4 text-base text-studio-muted">{copy.intro}</p>
             </header>
             <div className="mt-12 grid gap-8 md:grid-cols-3">
                 {copy.steps.map((step) => (
-                    <article key={step.title} className="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm">
-                        <h2 className="text-xl font-semibold text-slate-900">{step.title}</h2>
-                        <p className="mt-2 text-sm text-slate-600">{step.description}</p>
+                    <article key={step.title} className="rounded-3xl border border-white/8 bg-studio-surface p-6 shadow-sm">
+                        <h2 className="text-xl font-semibold text-white">{step.title}</h2>
+                        <p className="mt-2 text-sm text-studio-muted">{step.description}</p>
                     </article>
                 ))}
             </div>
@@ -55,3 +55,4 @@ const SdkPlanPage = async ({ params }: SdkPlanPageProps) => {
 };
 
 export default SdkPlanPage;
+

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Transition } from '@headlessui/react';
 import { useEffect, useState } from 'react';
@@ -42,7 +42,7 @@ const CookieBanner = ({ copy, locale }: CookieBannerProps) => {
                             accept();
                             setOpen(false);
                         }}
-                        className="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-white/90 focus-visible:bg-white/80"
+                        className="rounded-xl bg-studio-accent px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-studio-accent-dim focus-visible:bg-studio-accent-dim"
                     >
                         {copy.acceptAll}
                     </button>
@@ -69,3 +69,4 @@ const CookieBanner = ({ copy, locale }: CookieBannerProps) => {
 };
 
 export default CookieBanner;
+

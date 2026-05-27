@@ -1,20 +1,24 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 type ConsentState = 'unknown' | 'accepted' | 'rejected';
 
 const STORAGE_KEY = 'cojauny-consent';
 
 export function useConsent() {
-  const [consent, setConsent] = useState<ConsentState>('unknown');
+  const [consent, setConsent] = useState<ConsentState>(() => {
+    if (typeof window === 'undefined') {
+      return 'unknown';
+    }
 
-  useEffect(() => {
     const stored = window.localStorage.getItem(STORAGE_KEY);
     if (stored === 'accepted' || stored === 'rejected') {
-      setConsent(stored);
+      return stored;
     }
-  }, []);
+
+    return 'unknown';
+  });
 
   const accept = () => {
     window.localStorage.setItem(STORAGE_KEY, 'accepted');

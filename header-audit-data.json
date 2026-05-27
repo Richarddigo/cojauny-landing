@@ -1,0 +1,659 @@
+[
+  {
+    "project": "cojauny-landing",
+    "desktopTop": {
+      "url": "http://localhost:3001/en?auditrun=1",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "header": {
+        "height": 70,
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backdropFilter": "none",
+        "borderBottomColor": "rgb(241, 245, 249)",
+        "boxShadow": "none",
+        "position": "fixed",
+        "zIndex": "50"
+      },
+      "nav": {
+        "height": 70,
+        "paddingTop": "16px",
+        "paddingBottom": "16px",
+        "paddingLeft": "48px",
+        "paddingRight": "48px",
+        "justifyContent": "space-between",
+        "alignItems": "center"
+      },
+      "desktopMenu": {
+        "wrapDisplay": "flex",
+        "linksCount": 9,
+        "firstLink": {
+          "text": "App",
+          "color": "oklab(0.999994 0.0000455678 0.0000200868 / 0.85)",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "paddingTop": "8px",
+          "paddingBottom": "8px",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "borderRadius": "20px",
+          "transitionDuration": "0.2s",
+          "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)"
+        }
+      },
+      "menuButton": {
+        "display": "inline-flex",
+        "paddingTop": "8px",
+        "paddingBottom": "8px",
+        "paddingLeft": "8px",
+        "paddingRight": "8px",
+        "borderRadius": "20px",
+        "color": "oklab(0.999994 0.0000455677 0.0000200868 / 0.8)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "scrollbar": {
+        "hasVerticalScroll": true,
+        "rootOverflowY": "visible",
+        "bodyOverflowY": "visible",
+        "webkitScrollbarWidth": "auto",
+        "webkitScrollbarThumbBg": "rgba(0, 0, 0, 0)",
+        "cssRuleSelectors": []
+      }
+    },
+    "desktopScrolled": {
+      "url": "http://localhost:3001/en?auditrun=1",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "header": {
+        "height": 71,
+        "backgroundColor": "oklab(0.181074 -0.000529215 -0.0319702 / 0.660461)",
+        "backdropFilter": "blur(16.6853px)",
+        "borderBottomColor": "oklab(0.974145 -0.00205587 -0.00515161 / 0.374454)",
+        "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklab(0 0 0 / 0.278021) 0px 13.901px 17.3763px -3.47526px, oklab(0 0 0 / 0.278021) 0px 5.56041px 6.95052px -4.17031px",
+        "position": "fixed",
+        "zIndex": "50"
+      },
+      "nav": {
+        "height": 70,
+        "paddingTop": "16px",
+        "paddingBottom": "16px",
+        "paddingLeft": "48px",
+        "paddingRight": "48px",
+        "justifyContent": "space-between",
+        "alignItems": "center"
+      },
+      "desktopMenu": {
+        "wrapDisplay": "flex",
+        "linksCount": 9,
+        "firstLink": {
+          "text": "App",
+          "color": "oklab(0.999994 0.0000455678 0.0000200868 / 0.85)",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "paddingTop": "8px",
+          "paddingBottom": "8px",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "borderRadius": "20px",
+          "transitionDuration": "0.2s",
+          "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)"
+        }
+      },
+      "menuButton": {
+        "display": "inline-flex",
+        "paddingTop": "8px",
+        "paddingBottom": "8px",
+        "paddingLeft": "8px",
+        "paddingRight": "8px",
+        "borderRadius": "20px",
+        "color": "oklab(0.999994 0.0000455677 0.0000200868 / 0.8)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "scrollbar": {
+        "hasVerticalScroll": true,
+        "rootOverflowY": "visible",
+        "bodyOverflowY": "visible",
+        "webkitScrollbarWidth": "auto",
+        "webkitScrollbarThumbBg": "rgba(0, 0, 0, 0)",
+        "cssRuleSelectors": []
+      }
+    },
+    "mobileBase": {
+      "url": "http://localhost:3001/en?auditrun=1",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "header": {
+        "height": 69,
+        "backgroundColor": "oklab(0.181074 -0.000529215 -0.0319702 / 0.95)",
+        "backdropFilter": "blur(24px)",
+        "borderBottomColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+        "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklab(0 0 0 / 0.4) 0px 20px 25px -5px, oklab(0 0 0 / 0.4) 0px 8px 10px -6px",
+        "position": "fixed",
+        "zIndex": "50"
+      },
+      "nav": {
+        "height": 68,
+        "paddingTop": "16px",
+        "paddingBottom": "16px",
+        "paddingLeft": "20px",
+        "paddingRight": "20px",
+        "justifyContent": "space-between",
+        "alignItems": "center"
+      },
+      "desktopMenu": {
+        "wrapDisplay": "none",
+        "linksCount": 9,
+        "firstLink": {
+          "text": "App",
+          "color": "oklab(0.999994 0.0000455678 0.0000200868 / 0.85)",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "paddingTop": "8px",
+          "paddingBottom": "8px",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "borderRadius": "20px",
+          "transitionDuration": "0.2s",
+          "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)"
+        }
+      },
+      "menuButton": {
+        "display": "flex",
+        "paddingTop": "8px",
+        "paddingBottom": "8px",
+        "paddingLeft": "8px",
+        "paddingRight": "8px",
+        "borderRadius": "20px",
+        "color": "oklab(0.999994 0.0000455677 0.0000200868 / 0.8)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "scrollbar": {
+        "hasVerticalScroll": true,
+        "rootOverflowY": "visible",
+        "bodyOverflowY": "visible",
+        "webkitScrollbarWidth": "auto",
+        "webkitScrollbarThumbBg": "rgba(0, 0, 0, 0)",
+        "cssRuleSelectors": []
+      }
+    },
+    "mobileMenu": {
+      "available": true,
+      "dialogAriaHidden": "false",
+      "overlay": {
+        "backgroundColor": "oklab(0 0 0 / 0.4)",
+        "backdropFilter": "blur(2px)",
+        "opacity": "0.992973"
+      },
+      "panel": {
+        "width": 202,
+        "backgroundColor": "rgb(12, 17, 32)",
+        "transform": "none",
+        "paddingTop": "24px",
+        "paddingBottom": "24px",
+        "paddingLeft": "16px",
+        "paddingRight": "16px"
+      },
+      "firstLink": {
+        "text": "Home",
+        "color": "rgb(255, 255, 255)",
+        "paddingTop": "14px",
+        "paddingBottom": "14px",
+        "paddingLeft": "16px",
+        "paddingRight": "16px",
+        "borderRadius": "20px"
+      },
+      "closed": {
+        "dialogAriaHidden": "true",
+        "openerFocused": true,
+        "bodyOverflow": "visible"
+      }
+    }
+  },
+  {
+    "project": "cojauny-studio",
+    "desktopTop": {
+      "url": "http://localhost:3000/en?auditrun=1",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "header": {
+        "height": 70,
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backdropFilter": "none",
+        "borderBottomColor": "rgb(241, 245, 249)",
+        "boxShadow": "none",
+        "position": "fixed",
+        "zIndex": "50"
+      },
+      "nav": {
+        "height": 70,
+        "paddingTop": "16px",
+        "paddingBottom": "16px",
+        "paddingLeft": "48px",
+        "paddingRight": "48px",
+        "justifyContent": "space-between",
+        "alignItems": "center"
+      },
+      "desktopMenu": {
+        "wrapDisplay": "flex",
+        "linksCount": 3,
+        "firstLink": {
+          "text": "Projects",
+          "color": "oklab(0.999994 0.0000455678 0.0000200868 / 0.85)",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "paddingTop": "8px",
+          "paddingBottom": "8px",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "borderRadius": "20px",
+          "transitionDuration": "0.2s",
+          "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)"
+        }
+      },
+      "menuButton": {
+        "display": "inline-flex",
+        "paddingTop": "8px",
+        "paddingBottom": "8px",
+        "paddingLeft": "8px",
+        "paddingRight": "8px",
+        "borderRadius": "20px",
+        "color": "oklab(0.999994 0.0000455677 0.0000200868 / 0.8)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "scrollbar": {
+        "hasVerticalScroll": true,
+        "rootOverflowY": "visible",
+        "bodyOverflowY": "visible",
+        "webkitScrollbarWidth": "6px",
+        "webkitScrollbarThumbBg": "rgb(42, 53, 80)",
+        "cssRuleSelectors": [
+          "::-webkit-scrollbar",
+          "::-webkit-scrollbar-track",
+          "::-webkit-scrollbar-thumb"
+        ]
+      }
+    },
+    "desktopScrolled": {
+      "url": "http://localhost:3000/en?auditrun=1",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "header": {
+        "height": 71,
+        "backgroundColor": "oklab(0.181074 -0.000529215 -0.0319702 / 0.434672)",
+        "backdropFilter": "blur(10.9812px)",
+        "borderBottomColor": "oklab(0.970723 -0.00233411 -0.00583639 / 0.588206)",
+        "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklab(0 0 0 / 0.18302) 0px 9.15098px 11.4387px -2.28775px, oklab(0 0 0 / 0.18302) 0px 3.66039px 4.57549px -2.74529px",
+        "position": "fixed",
+        "zIndex": "50"
+      },
+      "nav": {
+        "height": 70,
+        "paddingTop": "16px",
+        "paddingBottom": "16px",
+        "paddingLeft": "48px",
+        "paddingRight": "48px",
+        "justifyContent": "space-between",
+        "alignItems": "center"
+      },
+      "desktopMenu": {
+        "wrapDisplay": "flex",
+        "linksCount": 3,
+        "firstLink": {
+          "text": "Projects",
+          "color": "oklab(0.999994 0.0000455678 0.0000200868 / 0.85)",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "paddingTop": "8px",
+          "paddingBottom": "8px",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "borderRadius": "20px",
+          "transitionDuration": "0.2s",
+          "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)"
+        }
+      },
+      "menuButton": {
+        "display": "inline-flex",
+        "paddingTop": "8px",
+        "paddingBottom": "8px",
+        "paddingLeft": "8px",
+        "paddingRight": "8px",
+        "borderRadius": "20px",
+        "color": "oklab(0.999994 0.0000455677 0.0000200868 / 0.8)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "scrollbar": {
+        "hasVerticalScroll": true,
+        "rootOverflowY": "visible",
+        "bodyOverflowY": "visible",
+        "webkitScrollbarWidth": "6px",
+        "webkitScrollbarThumbBg": "rgb(42, 53, 80)",
+        "cssRuleSelectors": [
+          "::-webkit-scrollbar",
+          "::-webkit-scrollbar-track",
+          "::-webkit-scrollbar-thumb"
+        ]
+      }
+    },
+    "mobileBase": {
+      "url": "http://localhost:3000/en?auditrun=1",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "header": {
+        "height": 69,
+        "backgroundColor": "lab(5.15964 1.29469 -10.811 / 0.95)",
+        "backdropFilter": "blur(24px)",
+        "borderBottomColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+        "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklab(0 0 0 / 0.4) 0px 20px 25px -5px, oklab(0 0 0 / 0.4) 0px 8px 10px -6px",
+        "position": "fixed",
+        "zIndex": "50"
+      },
+      "nav": {
+        "height": 68,
+        "paddingTop": "16px",
+        "paddingBottom": "16px",
+        "paddingLeft": "20px",
+        "paddingRight": "20px",
+        "justifyContent": "space-between",
+        "alignItems": "center"
+      },
+      "desktopMenu": {
+        "wrapDisplay": "none",
+        "linksCount": 3,
+        "firstLink": {
+          "text": "Projects",
+          "color": "oklab(0.999994 0.0000455678 0.0000200868 / 0.85)",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "paddingTop": "8px",
+          "paddingBottom": "8px",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "borderRadius": "20px",
+          "transitionDuration": "0.2s",
+          "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)"
+        }
+      },
+      "menuButton": {
+        "display": "flex",
+        "paddingTop": "8px",
+        "paddingBottom": "8px",
+        "paddingLeft": "8px",
+        "paddingRight": "8px",
+        "borderRadius": "20px",
+        "color": "oklab(0.999994 0.0000455677 0.0000200868 / 0.8)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "scrollbar": {
+        "hasVerticalScroll": true,
+        "rootOverflowY": "visible",
+        "bodyOverflowY": "visible",
+        "webkitScrollbarWidth": "6px",
+        "webkitScrollbarThumbBg": "rgb(42, 53, 80)",
+        "cssRuleSelectors": [
+          "::-webkit-scrollbar",
+          "::-webkit-scrollbar-track",
+          "::-webkit-scrollbar-thumb"
+        ]
+      }
+    },
+    "mobileMenu": {
+      "available": true,
+      "dialogAriaHidden": "false",
+      "overlay": {
+        "backgroundColor": "oklab(0 0 0 / 0.4)",
+        "backdropFilter": "blur(2px)",
+        "opacity": "0.992977"
+      },
+      "panel": {
+        "width": 191,
+        "backgroundColor": "rgb(12, 17, 32)",
+        "transform": "none",
+        "paddingTop": "24px",
+        "paddingBottom": "24px",
+        "paddingLeft": "16px",
+        "paddingRight": "16px"
+      },
+      "firstLink": {
+        "text": "Home",
+        "color": "rgb(255, 255, 255)",
+        "paddingTop": "14px",
+        "paddingBottom": "14px",
+        "paddingLeft": "16px",
+        "paddingRight": "16px",
+        "borderRadius": "20px"
+      },
+      "closed": {
+        "dialogAriaHidden": "true",
+        "openerFocused": true,
+        "bodyOverflow": "visible"
+      }
+    }
+  },
+  {
+    "project": "cuatrosotas-landing",
+    "desktopTop": {
+      "url": "http://localhost:3003/en?auditrun=1",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "header": {
+        "height": 70,
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "backdropFilter": "none",
+        "borderBottomColor": "rgb(241, 245, 249)",
+        "boxShadow": "none",
+        "position": "fixed",
+        "zIndex": "50"
+      },
+      "nav": {
+        "height": 70,
+        "paddingTop": "16px",
+        "paddingBottom": "16px",
+        "paddingLeft": "48px",
+        "paddingRight": "48px",
+        "justifyContent": "space-between",
+        "alignItems": "center"
+      },
+      "desktopMenu": {
+        "wrapDisplay": "flex",
+        "linksCount": 3,
+        "firstLink": {
+          "text": "Support",
+          "color": "rgba(255, 255, 255, 0.85)",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "paddingTop": "8px",
+          "paddingBottom": "8px",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "borderRadius": "20px",
+          "transitionDuration": "0.2s",
+          "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)"
+        }
+      },
+      "menuButton": {
+        "display": "inline-flex",
+        "paddingTop": "8px",
+        "paddingBottom": "8px",
+        "paddingLeft": "8px",
+        "paddingRight": "8px",
+        "borderRadius": "20px",
+        "color": "oklab(0.999994 0.0000455677 0.0000200868 / 0.8)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "scrollbar": {
+        "hasVerticalScroll": true,
+        "rootOverflowY": "visible",
+        "bodyOverflowY": "auto",
+        "webkitScrollbarWidth": "auto",
+        "webkitScrollbarThumbBg": "rgba(0, 0, 0, 0)",
+        "cssRuleSelectors": []
+      }
+    },
+    "desktopScrolled": {
+      "url": "http://localhost:3003/en?auditrun=1",
+      "viewport": {
+        "width": 1280,
+        "height": 900
+      },
+      "header": {
+        "height": 71,
+        "backgroundColor": "oklab(0.181074 -0.000529215 -0.0319702 / 0.736847)",
+        "backdropFilter": "blur(18.6151px)",
+        "borderBottomColor": "oklab(0.976408 -0.00187197 -0.00469902 / 0.301934)",
+        "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklab(0 0 0 / 0.310251) 0px 15.5126px 19.3907px -3.87814px, oklab(0 0 0 / 0.310251) 0px 6.20503px 7.75629px -4.65377px",
+        "position": "fixed",
+        "zIndex": "50"
+      },
+      "nav": {
+        "height": 70,
+        "paddingTop": "16px",
+        "paddingBottom": "16px",
+        "paddingLeft": "48px",
+        "paddingRight": "48px",
+        "justifyContent": "space-between",
+        "alignItems": "center"
+      },
+      "desktopMenu": {
+        "wrapDisplay": "flex",
+        "linksCount": 3,
+        "firstLink": {
+          "text": "Support",
+          "color": "rgba(255, 255, 255, 0.85)",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "paddingTop": "8px",
+          "paddingBottom": "8px",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "borderRadius": "20px",
+          "transitionDuration": "0.2s",
+          "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)"
+        }
+      },
+      "menuButton": {
+        "display": "inline-flex",
+        "paddingTop": "8px",
+        "paddingBottom": "8px",
+        "paddingLeft": "8px",
+        "paddingRight": "8px",
+        "borderRadius": "20px",
+        "color": "oklab(0.999994 0.0000455677 0.0000200868 / 0.8)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "scrollbar": {
+        "hasVerticalScroll": true,
+        "rootOverflowY": "visible",
+        "bodyOverflowY": "auto",
+        "webkitScrollbarWidth": "auto",
+        "webkitScrollbarThumbBg": "rgba(0, 0, 0, 0)",
+        "cssRuleSelectors": []
+      }
+    },
+    "mobileBase": {
+      "url": "http://localhost:3003/en?auditrun=1",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "header": {
+        "height": 71,
+        "backgroundColor": "oklab(0.181074 -0.000529215 -0.0319702 / 0.95)",
+        "backdropFilter": "blur(24px)",
+        "borderBottomColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.1)",
+        "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklab(0 0 0 / 0.4) 0px 20px 25px -5px, oklab(0 0 0 / 0.4) 0px 8px 10px -6px",
+        "position": "fixed",
+        "zIndex": "50"
+      },
+      "nav": {
+        "height": 70,
+        "paddingTop": "16px",
+        "paddingBottom": "16px",
+        "paddingLeft": "20px",
+        "paddingRight": "20px",
+        "justifyContent": "space-between",
+        "alignItems": "center"
+      },
+      "desktopMenu": {
+        "wrapDisplay": "none",
+        "linksCount": 3,
+        "firstLink": {
+          "text": "Support",
+          "color": "rgba(255, 255, 255, 0.85)",
+          "fontSize": "14px",
+          "fontWeight": "500",
+          "paddingTop": "8px",
+          "paddingBottom": "8px",
+          "paddingLeft": "12px",
+          "paddingRight": "12px",
+          "borderRadius": "20px",
+          "transitionDuration": "0.2s",
+          "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)"
+        }
+      },
+      "menuButton": {
+        "display": "flex",
+        "paddingTop": "8px",
+        "paddingBottom": "8px",
+        "paddingLeft": "8px",
+        "paddingRight": "8px",
+        "borderRadius": "20px",
+        "color": "oklab(0.999994 0.0000455677 0.0000200868 / 0.8)",
+        "backgroundColor": "rgba(0, 0, 0, 0)"
+      },
+      "scrollbar": {
+        "hasVerticalScroll": true,
+        "rootOverflowY": "visible",
+        "bodyOverflowY": "auto",
+        "webkitScrollbarWidth": "auto",
+        "webkitScrollbarThumbBg": "rgba(0, 0, 0, 0)",
+        "cssRuleSelectors": []
+      }
+    },
+    "mobileMenu": {
+      "available": true,
+      "dialogAriaHidden": "false",
+      "overlay": {
+        "backgroundColor": "oklab(0 0 0 / 0.4)",
+        "backdropFilter": "blur(2px)",
+        "opacity": "0.998314"
+      },
+      "panel": {
+        "width": 191,
+        "backgroundColor": "rgb(12, 17, 32)",
+        "transform": "none",
+        "paddingTop": "24px",
+        "paddingBottom": "24px",
+        "paddingLeft": "16px",
+        "paddingRight": "16px"
+      },
+      "firstLink": {
+        "text": "Home",
+        "color": "rgb(255, 255, 255)",
+        "paddingTop": "14px",
+        "paddingBottom": "14px",
+        "paddingLeft": "16px",
+        "paddingRight": "16px",
+        "borderRadius": "20px"
+      },
+      "closed": {
+        "dialogAriaHidden": "true",
+        "openerFocused": true,
+        "bodyOverflow": "hidden auto"
+      }
+    }
+  }
+]

@@ -4,6 +4,15 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import FeedbackForm from '@/components/FeedbackForm';
 import { getLandingCopy } from '@/locales/copy';
 
+jest.mock('@/i18n/useAppMessages', () => {
+    const { getLandingCopy: getCopy } = require('@/locales/copy');
+    return {
+        useAppMessages: () => ({
+            landing: getCopy('es')
+        })
+    };
+});
+
 describe('FeedbackForm', () => {
     const originalFetch = global.fetch;
     const mockFetch = jest.fn() as jest.MockedFunction<typeof fetch>;
@@ -41,7 +50,7 @@ describe('FeedbackForm', () => {
             target: { value: 'Me encanta la interfaz y la velocidad.' }
         });
 
-        fireEvent.submit(screen.getByRole('button', { name: /Enviar mensaje/i }));
+        fireEvent.submit(screen.getByRole('button', { name: new RegExp(formCopy.submit, 'i') }));
 
         await waitFor(() => {
             expect(screen.getByText(formCopy.success)).toBeInTheDocument();

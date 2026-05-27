@@ -6,13 +6,17 @@ import AlertMessage from '@/components/AlertMessage';
 import { apiClient } from '@/lib/api-client';
 
 import { feedbackSchema, type FeedbackInput } from '@/lib/validation';
+import { useAppMessages } from '@/i18n/useAppMessages';
+import { getCommonCopy } from '@/locales/common';
 import type { LandingCopy } from '@/locales/copy';
 import type { Locale } from '@/locales/config';
 
 interface FeedbackFormProps {
-    copy: LandingCopy['forms']['feedback'];
+    copy?: LandingCopy['forms']['feedback'];
     locale: Locale;
 }
+
+type TextareaLikeEvent = { target: EventTarget | null };
 
 const buildInitialState = (locale: Locale): FeedbackInput => ({
     email: '',
@@ -24,6 +28,9 @@ const buildInitialState = (locale: Locale): FeedbackInput => ({
 });
 
 const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
+    const messages = useAppMessages();
+    const resolvedCopy = copy ?? messages.landing.forms.feedback;
+    const common = getCommonCopy(locale);
     const [form, setForm] = useState<FeedbackInput>(() => buildInitialState(locale));
     const [submitting, setSubmitting] = useState(false);
     const [success, setSuccess] = useState<string | null>(null);
@@ -47,19 +54,25 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
     };
 
     // Auto-resize textarea to fit content and avoid scrollbars
-    const autoResize = (el?: HTMLTextAreaElement | EventTarget | null) => {
+    const autoResize = (el?: HTMLTextAreaElement | TextareaLikeEvent | null) => {
         try {
-            const ta = el instanceof HTMLTextAreaElement ? el : (el as any)?.target ?? null;
-            if (!ta) return;
-            ta.style.height = 'auto';
-            ta.style.height = `${ta.scrollHeight}px`;
-        } catch (e) { }
+            const textarea = el instanceof HTMLTextAreaElement
+                ? el
+                : el && typeof el === 'object' && 'target' in el && el.target instanceof HTMLTextAreaElement
+                    ? el.target
+                    : null;
+
+            if (!textarea) return;
+
+            textarea.style.height = 'auto';
+            textarea.style.height = `${textarea.scrollHeight}px`;
+        } catch { }
     };
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (form.message && form.message.length > MAX_CHARS) {
-            setMessageError(copy.error);
+            setMessageError(resolvedCopy.error);
             return;
         }
         setSubmitting(true);
@@ -70,7 +83,7 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
         // Validate email doesn't contain '+'
         if (form.email.includes('+')) {
             setSubmitting(false);
-            setError(copy.error);
+            setError(resolvedCopy.error);
             return;
         }
 
@@ -79,9 +92,9 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
             setSubmitting(false);
             const msgIssue = parseResult.error.issues?.find((i) => i.path?.[0] === 'message');
             if (msgIssue) {
-                setMessageError(copy.error);
+                setMessageError(resolvedCopy.error);
             } else {
-                setError(copy.error);
+                setError(resolvedCopy.error);
             }
             return;
         }
@@ -93,9 +106,9 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
         try {
             await apiClient.feedback.submit(parseResult.data);
             setForm(buildInitialState(locale));
-            setSuccess(copy.success);
-        } catch (err: any) {
-            setError(err.message || copy.error);
+            setSuccess(resolvedCopy.success);
+        } catch (err: unknown) {
+            setError(err instanceof Error && err.message ? err.message : resolvedCopy.error);
         } finally {
             setSubmitting(false);
         }
@@ -104,52 +117,52 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
     return (
         <form
             onSubmit={handleSubmit}
-            className="space-y-6 rounded-3xl border border-white/20 bg-white/80 p-8 shadow-soft-glow backdrop-blur-xl transition-all hover:shadow-2xl"
+            className="space-y-6 rounded-3xl border border-white/12 bg-studio-surface/80 p-8 shadow-soft-glow backdrop-blur-xl transition-all hover:shadow-2xl"
             aria-describedby="feedback-help"
         >
             <div>
-                <h2 className="text-2xl font-bold tracking-tight text-slate-900">{copy.title}</h2>
-                <p id="feedback-help" className="mt-2 text-sm text-slate-600">
-                    {copy.description}
+                <h2 className="text-2xl font-bold tracking-tight text-white">{resolvedCopy.title}</h2>
+                <p id="feedback-help" className="mt-2 text-sm text-studio-muted">
+                    {resolvedCopy.description}
                 </p>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2">
                 <label className="flex flex-col gap-2">
-                    <span className="text-sm font-medium text-slate-700">{copy.fields.fullName}</span>
+                    <span className="text-sm font-medium text-studio-muted">{resolvedCopy.fields.fullName}</span>
                     <input
                         type="text"
                         name="name"
                         value={form.name}
                         onChange={handleChange}
                         required
-                        aria-label={copy.fields.fullName}
-                        className="rounded-xl border border-slate-200 bg-white/50 px-4 py-3 text-base text-slate-900 shadow-sm transition-all placeholder:text-slate-400 focus:border-brand-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-500/10"
+                        aria-label={resolvedCopy.fields.fullName}
+                        className="rounded-xl border border-white/12 bg-studio-surface-2/50 px-4 py-3 text-base text-studio-text shadow-sm transition-all placeholder:text-studio-faint focus:border-brand-500 focus:bg-studio-surface-2 focus:outline-none focus:ring-4 focus:ring-brand-500/10"
                     />
                 </label>
                 <label className="flex flex-col gap-2">
-                    <span className="text-sm font-medium text-slate-700">{copy.fields.email}</span>
+                    <span className="text-sm font-medium text-studio-muted">{resolvedCopy.fields.email}</span>
                     <input
                         type="email"
                         name="email"
                         value={form.email}
                         onChange={handleChange}
                         required
-                        aria-label={copy.fields.email}
-                        className="rounded-xl border border-slate-200 bg-white/50 px-4 py-3 text-base text-slate-900 shadow-sm transition-all placeholder:text-slate-400 focus:border-brand-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-500/10"
+                        aria-label={resolvedCopy.fields.email}
+                        className="rounded-xl border border-white/12 bg-studio-surface-2/50 px-4 py-3 text-base text-studio-text shadow-sm transition-all placeholder:text-studio-faint focus:border-brand-500 focus:bg-studio-surface-2 focus:outline-none focus:ring-4 focus:ring-brand-500/10"
                     />
                 </label>
             </div>
 
             <label className="flex flex-col gap-2">
-                <span className="text-sm font-medium text-slate-700">{copy.fields.case}</span>
+                <span className="text-sm font-medium text-studio-muted">{resolvedCopy.fields.case}</span>
                 <div className="flex gap-4">
-                    {copy.caseOptions?.map((option) => (
+                    {resolvedCopy.caseOptions?.map((option) => (
                         <label
                             key={option.value}
-                            className={`flex min-w-0 flex-1 cursor-pointer flex-col items-center gap-1 rounded-xl border p-2 sm:p-4 transition-all hover:bg-slate-50 ${form.usecase === option.value
-                                ? 'border-brand-500 bg-brand-50/50 ring-2 ring-brand-500/20'
-                                : 'border-slate-200 bg-white/50'
+                            className={`flex min-w-0 flex-1 cursor-pointer flex-col items-center gap-1 rounded-xl border p-2 sm:p-4 transition-all hover:bg-white/10 ${form.usecase === option.value
+                                ? 'border-brand-500 bg-brand-500/10 ring-2 ring-brand-500/20'
+                                : 'border-white/10 bg-studio-surface-2/50'
                                 }`}
                         >
                             <input
@@ -160,12 +173,12 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
                                 onChange={handleChange}
                                 className="sr-only"
                             />
-                            <span className="text-brand-600">
+                            <span className="text-brand-400">
                                 {option.value === 'feedback' && <ChatBubbleBottomCenterTextIcon className="h-8 w-8" />}
                                 {option.value === 'idea' && <LightBulbIcon className="h-8 w-8" />}
                                 {option.value === 'business_proposal' && <BriefcaseIcon className="h-8 w-8" />}
                             </span>
-                            <span className="text-xs sm:text-xs font-medium capitalize text-slate-600 text-center break-words whitespace-normal max-w-full px-1">
+                            <span className="text-xs sm:text-xs font-medium capitalize text-studio-muted text-center break-words whitespace-normal max-w-full px-1">
                                 <span className="sm:hidden text-[12px]">{option.label}</span>
                                 <span className="hidden sm:inline">{option.label}</span>
                             </span>
@@ -175,13 +188,13 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
             </label>
 
             <label className="flex flex-col gap-2">
-                <span className="text-sm font-medium text-slate-700">{copy.fields.message}</span>
+                <span className="text-sm font-medium text-studio-muted">{resolvedCopy.fields.message}</span>
                 <textarea
                     id="feedback-message"
                     name="message"
                     value={form.message}
                     onChange={(e) => {
-                        handleChange(e as any);
+                        handleChange(e);
                         setMessageError(null);
                     }}
                     onInput={(e) => autoResize(e.currentTarget)}
@@ -189,13 +202,13 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
                     required
                     minLength={10}
                     maxLength={MAX_CHARS}
-                    aria-label={copy.fields.message}
+                    aria-label={resolvedCopy.fields.message}
                     aria-invalid={!!messageError}
                     aria-describedby={messageError ? 'feedback-message-error' : undefined}
-                    className={`resize-none rounded-xl px-4 py-3 text-base shadow-sm transition-all placeholder:text-slate-400 focus:outline-none ${messageError ? 'border-red-500 bg-red-50 text-slate-900 ring-2 ring-red-200' : 'border border-slate-200 bg-white/50 text-slate-900 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10'}`}
+                    className={`resize-none rounded-xl px-4 py-3 text-base shadow-sm transition-all placeholder:text-studio-faint focus:outline-none ${messageError ? 'border-red-500 bg-red-900/20 text-studio-text ring-2 ring-red-500/30' : 'border border-white/12 bg-studio-surface-2/50 text-studio-text focus:border-brand-500 focus:bg-studio-surface-2 focus:ring-4 focus:ring-brand-500/10'}`}
                 />
                 <div className="flex justify-between items-center mt-2">
-                    <p className="text-sm text-slate-600">{form.message.length}/{MAX_CHARS}</p>
+                    <p className="text-sm text-studio-muted">{form.message.length}/{MAX_CHARS}</p>
                     {messageError && (
                         <p id="feedback-message-error" className="text-sm text-red-600" role="alert">
                             {messageError}
@@ -207,7 +220,7 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
 
             <div className="sr-only" aria-hidden>
                 <label>
-                    No rellenes este campo si eres humano
+                    {common.honeypotHumanLabel}
                     <input
                         type="text"
                         name="honeypot"
@@ -233,10 +246,10 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
                                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                             </svg>
-                            {copy.submit}…
+                            {resolvedCopy.submit}…
                         </>
                     ) : (
-                        copy.submit
+                        resolvedCopy.submit
                     )}
                 </button>
 
