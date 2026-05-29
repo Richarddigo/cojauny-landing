@@ -58,7 +58,7 @@ const Footer = ({ copy, locale, common }: FooterProps) => {
                                 alt="Cojauny"
                                 width={28}
                                 height={28}
-                                className="h-7 w-auto"
+                                className="h-7 w-7"
                             />
                             <span className="text-base font-bold text-white">Cojauny</span>
                         </a>
