@@ -76,7 +76,7 @@ const nextConfig = {
     experimental: {
         optimizeCss: true,
         scrollRestoration: true,
-        optimizePackageImports: ['@heroicons/react', '@headlessui/react']
+        optimizePackageImports: ['@heroicons/react', '@headlessui/react', 'next-intl', 'framer-motion']
     },
 
     // Allow cross-origin dev requests from known local development origins.
