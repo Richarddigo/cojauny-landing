@@ -6,7 +6,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Analytics } from '@vercel/analytics/react';
 import AccessibilitySkipLink from '@/components/AccessibilitySkipLink';
-import CookieBanner from '@/components/CookieBannerLazy';
+import CookieBanner from '@/components/CookieBanner';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import {

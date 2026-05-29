@@ -165,13 +165,14 @@
     }
 }
 /* --- FloatingSocialBar CSS-only fade-in (replaces framer-motion) --- */
+/* NOTE: animate only opacity to avoid CLS contribution from transform. */
 @keyframes floatingSocialBarIn {
-    from { opacity: 0; transform: translateX(-20px); }
-    to { opacity: 1; transform: translateX(0); }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 @keyframes floatingSocialItemIn {
-    from { opacity: 0; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1); }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 .floating-social-bar {
     animation: floatingSocialBarIn 0.5s ease-out 0.3s both;
