@@ -42,7 +42,6 @@
     "@vercel/analytics": "^2.0.1",
     "cheerio": "^1.0.0-rc.12",
     "critters": "^0.0.23",
-    "framer-motion": "^12.23.25",
     "next": "^16.0.7",
     "next-intl": "^4.12.0",
     "react": "^19.2.0",

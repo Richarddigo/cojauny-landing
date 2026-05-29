@@ -16,7 +16,7 @@ const FaqSection = ({ copy }: FaqSectionProps) => (
     >
         <div className="mx-auto max-w-4xl px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">
             <SectionIntro title={copy.title} description={copy.subtitle} />
-            <dl className="mt-10 space-y-4 md:mt-12 md:space-y-6">
+            <div className="mt-10 space-y-4 md:mt-12 md:space-y-6">
                 {copy.items.map((item, index) => (
                     <Disclosure as="div" key={`faq-${index}`} className="rounded-2xl border border-white/8 bg-studio-surface shadow-sm md:rounded-3xl">
                         {({ open }) => (
@@ -36,7 +36,7 @@ const FaqSection = ({ copy }: FaqSectionProps) => (
                         )}
                     </Disclosure>
                 ))}
-            </dl>
+            </div>
         </div>
     </section>
 );

@@ -8,7 +8,7 @@ import { env } from '@/lib/env';
 import { defaultLocale, locales } from '@/locales/config';
 import { siteMetadata, ogImages } from '@/lib/site';
 import StructuredData from '@/components/StructuredData';
-import DetectLocale from '@/components/DetectLocale';
+// Removed: DetectLocale (client-side redirect). Locale detection is now server-side via next-intl middleware.
 import FloatingSocialBar from '@/components/FloatingSocialBar';
 import { buildOrganizationJsonLd, buildWebsiteJsonLd } from '@/lib/jsonld';
 
@@ -102,7 +102,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 )}
             </head>
             <body className="bg-studio-bg font-sans antialiased text-studio-text" data-prefers-reduced-motion="dynamic">
-                <DetectLocale />
                 <FloatingSocialBar />
                 {children}
             </body>

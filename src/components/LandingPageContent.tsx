@@ -29,19 +29,19 @@ const LandingPageContent = ({ copy, locale, common }: LandingPageContentProps) =
         <>
             <Hero copy={copy.hero} />
             <DemoSection copy={copy.mockups} />
-            <ValuePropsSection copy={copy.value} />
-            <SavingsSection copy={copy.savings} />
-            <Features copy={copy.features} />
-            <WorkflowSection copy={copy.workflow} />
+            <div className="cv-auto"><ValuePropsSection copy={copy.value} /></div>
+            <div className="cv-auto"><SavingsSection copy={copy.savings} /></div>
+            <div className="cv-auto"><Features copy={copy.features} /></div>
+            <div className="cv-auto"><WorkflowSection copy={copy.workflow} /></div>
             {/* PREMIUM SECTION — controlled by NEXT_PUBLIC_ENABLE_PREMIUM=true */}
-            {ENABLE_PREMIUM && <PricingSection copy={copy.pricing} common={resolvedCommon} />}
-            <section id="beta" className="w-full scroll-mt-[74px] py-12 lg:scroll-mt-[100px] md:py-16 lg:py-20">
+            {ENABLE_PREMIUM && <div className="cv-auto"><PricingSection copy={copy.pricing} common={resolvedCommon} /></div>}
+            <section id="beta" className="cv-auto w-full scroll-mt-[74px] py-12 lg:scroll-mt-[100px] md:py-16 lg:py-20">
                 <div className="mx-auto max-w-[1180px] px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">
                     <BetaSignupForm locale={locale} />
                 </div>
             </section>
-            <FaqSection copy={copy.faq} />
-            <section id="feedback" className="w-full scroll-mt-[74px] py-12 lg:scroll-mt-[100px] md:py-16 lg:py-20">
+            <div className="cv-auto"><FaqSection copy={copy.faq} /></div>
+            <section id="feedback" className="cv-auto w-full scroll-mt-[74px] py-12 lg:scroll-mt-[100px] md:py-16 lg:py-20">
                 <div className="mx-auto max-w-[1180px] px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">
                     <div className="mb-12 text-center md:mb-16">
                         <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl">
@@ -54,7 +54,7 @@ const LandingPageContent = ({ copy, locale, common }: LandingPageContentProps) =
                     <FeedbackForm locale={locale} />
                 </div>
             </section>
-            <section className="w-full py-12 md:py-16 lg:py-20">
+            <section className="cv-auto w-full py-12 md:py-16 lg:py-20">
                 <div className="mx-auto max-w-[1180px] px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">
                     <IntegrationCTA copy={copy.ctaStrip} locale={locale} />
                 </div>

@@ -1,6 +1,5 @@
 ﻿"use client";
 
-import { motion, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
@@ -13,8 +12,7 @@ interface MockupsProps {
 }
 
 const Mockups = ({ className, copy }: MockupsProps) => {
-    const prefersReducedMotionClient = useReducedMotion();
-    const prefersReducedMotion = useReducedMotionPreference() || prefersReducedMotionClient;
+    const prefersReducedMotion = useReducedMotionPreference();
     const sectionRef = useRef<HTMLElement>(null);
     const phoneRef = useRef<HTMLDivElement>(null);
     const cardsContainerRef = useRef<HTMLDivElement>(null);
@@ -108,12 +106,9 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                         }
                         className="relative mx-auto w-[clamp(220px,22vw,340px)] max-w-full sm:w-[300px] lg:w-[340px]"
                     >
-                        <motion.div
+                        <div
                             key={activeScreen?.id}
-                            initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.96 }}
-                            animate={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.45, ease: 'easeOut' }}
-                            className="relative"
+                            className={prefersReducedMotion ? 'relative' : 'relative cojauny-fade-scale-in'}
                             aria-live="polite"
                         >
                             <div className="relative rounded-[2.5rem] border-[5px] border-black bg-black sm:rounded-[3rem]">
@@ -147,7 +142,7 @@ const Mockups = ({ className, copy }: MockupsProps) => {
                                 </div>
                                 <div className="pointer-events-none absolute bottom-3 left-1/2 h-1 w-32 -translate-x-1/2 rounded-full bg-white/30" />
                             </div>
-                        </motion.div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -109,7 +109,8 @@ const LanguageSwitcherInner = ({ currentLocale, label, dropdownDirection = 'down
     const ButtonFlag = activeOption?.flag ?? GlobeFallbackFlag;
     const common = getCommonCopy(currentLocale);
 
-    const buttonAriaLabel = label ?? 'Change language';
+    // Include visible text in the accessible name to satisfy WCAG 2.5.3 (label in name).
+    const buttonAriaLabel = `${buttonLabel} - ${label ?? 'Change language'}`;
     // outside click handler
     useEffect(() => {
         const handleDocClick = (e: MouseEvent) => {

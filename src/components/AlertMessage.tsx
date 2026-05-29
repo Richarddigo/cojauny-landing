@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
 import { ReactNode } from 'react';
 import {
     CheckCircleIcon,
@@ -82,36 +81,30 @@ export default function AlertMessage({
         : 'relative';
 
     return (
-        <AnimatePresence>
-            <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: -10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.2 }}
-                role="alert"
-                aria-live="polite"
-                aria-atomic="true"
-                className={`${positionClasses} ${className}`}
+        <div
+            role="alert"
+            aria-live="polite"
+            aria-atomic="true"
+            className={`${positionClasses} cojauny-fade-in ${className}`}
+        >
+            <div
+                className={`
+        flex items-start gap-4 rounded-3xl border-2 p-6 shadow-2xl backdrop-blur-sm
+        ${config.bgColor} ${config.borderColor} ${config.textColor}
+      `}
             >
-                <div
-                    className={`
-            flex items-start gap-4 rounded-3xl border-2 p-6 shadow-2xl backdrop-blur-sm
-            ${config.bgColor} ${config.borderColor} ${config.textColor}
-          `}
-                >
-                    <Icon className={`h-8 w-8 flex-shrink-0 ${config.iconColor}`} aria-hidden="true" />
-                    <div className="flex-1 text-base font-medium leading-relaxed">{message}</div>
-                    {onClose && (
-                        <button
-                            onClick={onClose}
-                            className={`flex-shrink-0 rounded-full p-1 transition hover:bg-white/50 ${config.iconColor}`}
-                            aria-label={common.closeMessage}
-                        >
-                            <XMarkIcon className="h-5 w-5" aria-hidden="true" />
-                        </button>
-                    )}
-                </div>
-            </motion.div>
-        </AnimatePresence>
+                <Icon className={`h-8 w-8 flex-shrink-0 ${config.iconColor}`} aria-hidden="true" />
+                <div className="flex-1 text-base font-medium leading-relaxed">{message}</div>
+                {onClose && (
+                    <button
+                        onClick={onClose}
+                        className={`flex-shrink-0 rounded-full p-1 transition hover:bg-white/50 ${config.iconColor}`}
+                        aria-label={common.closeMessage}
+                    >
+                        <XMarkIcon className="h-5 w-5" aria-hidden="true" />
+                    </button>
+                )}
+            </div>
+        </div>
     );
 }

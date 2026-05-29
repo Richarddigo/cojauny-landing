@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import type { LandingCopy } from '@/locales/copy';
@@ -22,31 +21,25 @@ const IPhoneMockup = ({ screen, className, priority = false, animate = true }: {
 
                 <div className="relative h-full w-full overflow-hidden">
                     {animate ? (
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={screen.id}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 0.3, ease: 'easeOut' }}
-                                className="relative h-full w-full"
-                            >
-                                {/* Fondo de la barra superior del mockup - color #1b2335 */}
-                                <div className="absolute inset-0 bg-[#1b2335]" />
-                                <div className="absolute inset-[1px] top-[15px] bottom-[1px]">
-                                    <div className="relative h-full w-full">
-                                        <Image
-                                            src={screen.image}
-                                            alt={screen.title}
-                                            fill
-                                            className="object-cover object-top"
-                                            sizes="(max-width: 640px) 180px, (max-width: 768px) 220px, (max-width: 1024px) 260px, 340px"
-                                            priority={priority}
-                                        />
-                                    </div>
+                        <div
+                            key={screen.id}
+                            className="relative h-full w-full cojauny-fade-in"
+                        >
+                            {/* Fondo de la barra superior del mockup - color #1b2335 */}
+                            <div className="absolute inset-0 bg-[#1b2335]" />
+                            <div className="absolute inset-[1px] top-[15px] bottom-[1px]">
+                                <div className="relative h-full w-full">
+                                    <Image
+                                        src={screen.image}
+                                        alt={screen.title}
+                                        fill
+                                        className="object-cover object-top"
+                                        sizes="(max-width: 640px) 180px, (max-width: 768px) 220px, (max-width: 1024px) 260px, 340px"
+                                        priority={priority}
+                                    />
                                 </div>
-                            </motion.div>
-                        </AnimatePresence>
+                            </div>
+                        </div>
                     ) : (
                         <div className="relative h-full w-full">
                             {/* Fondo de la barra superior del mockup - color #1b2335 */}

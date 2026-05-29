@@ -188,3 +188,34 @@
         transform: none;
     }
 }
+
+/* --- Generic fade utilities (replaces framer-motion) --- */
+@keyframes cojaunyFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes cojaunyFadeScaleIn {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
+}
+.cojauny-fade-in {
+    animation: cojaunyFadeIn 0.3s ease-out both;
+}
+.cojauny-fade-scale-in {
+    animation: cojaunyFadeScaleIn 0.45s ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+    .cojauny-fade-in, .cojauny-fade-scale-in {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* --- Perf: defer paint/layout of below-fold sections --- */
+/* Apply via className="cv-auto" on long sections; ~800px placeholder avoids CLS. */
+.cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 800px;
+}
+
