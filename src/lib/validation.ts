@@ -24,21 +24,8 @@ export const feedbackSchema = z
     name: z.string().min(2, 'Incluye tu nombre'),
     usecase: z.enum(['feedback', 'idea', 'business_proposal']),
     locale: z.enum(localeValues),
-    honeypot: z.string().optional()
-  })
-  .refine((values) => !values.honeypot, {
-    message: 'Posible bot detectado',
-    path: ['honeypot']
-  });
-
-export const contactSchema = z
-  .object({
-    email: z.string().email('Introduce un correo válido'),
-    message: z.string().min(10, 'Cuéntanos el motivo del contacto con un poco más de detalle'),
-    name: z.string().min(2, 'Incluye tu nombre'),
-    topic: z.string().min(2, 'Incluye el tema'),
-    locale: z.enum(localeValues),
-    honeypot: z.string().optional()
+    honeypot: z.string().optional(),
+    cfTurnstileResponse: z.string().optional(),
   })
   .refine((values) => !values.honeypot, {
     message: 'Posible bot detectado',
@@ -72,7 +59,8 @@ export const betaSignupSchema = z
       }),
     locale: z.enum(localeValues),
     honeypot: z.string().optional(),
-    referralCode: z.string().optional()
+    referralCode: z.string().optional(),
+    cfTurnstileResponse: z.string().optional(),
   })
   .refine((values) => !values.honeypot, {
     message: 'Posible bot detectado',
@@ -80,5 +68,4 @@ export const betaSignupSchema = z
   });
 
 export type FeedbackInput = z.infer<typeof feedbackSchema>;
-export type ContactInput = z.infer<typeof contactSchema>;
 export type BetaSignupInput = z.infer<typeof betaSignupSchema>;

@@ -1,4 +1,4 @@
-import { ContactInput, FeedbackInput, BetaSignupInput } from '@/lib/validation';
+import { FeedbackInput, BetaSignupInput } from '@/lib/validation';
 
 export class ApiError extends Error {
   code?: string;
@@ -40,9 +40,6 @@ async function apiRequest<T>(endpoint: string, data: unknown): Promise<T> {
 }
 
 export const apiClient = {
-  contact: {
-    submit: (data: ContactInput) => apiRequest<{ success: boolean }>('/api/contact', data),
-  },
   feedback: {
     submit: (data: FeedbackInput) => apiRequest<{ success: boolean }>('/api/feedback', data),
   },

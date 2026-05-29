@@ -1,6 +1,5 @@
 import { getBlogCopy } from '@/locales/blog';
 import { getCommonCopy } from '@/locales/common';
-import { getContactCopy } from '@/locales/contact';
 import type { Locale } from '@/locales/config';
 import { getDocsCopy } from '@/locales/docs';
 import { getLegalCopy } from '@/locales/legal';
@@ -15,7 +14,6 @@ export function getLocaleMessages(locale: Locale) {
     common: getCommonCopy(locale),
     landing: getLandingCopy(locale),
     blog: getBlogCopy(locale),
-    contact: getContactCopy(locale),
     docs: getDocsCopy(locale),
     legal: getLegalCopy(locale),
   };

@@ -1,6 +1,7 @@
 ﻿"use client";
 
-import { Fragment, useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
+import { Fragment, useEffect, useRef, useState, type ChangeEvent, type FormEvent } from 'react';
+import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile';
 import AlertMessage from '@/components/AlertMessage';
 import { apiClient, ApiError } from '@/lib/api-client';
 
@@ -11,6 +12,8 @@ import { getCommonCopy } from '@/locales/common';
 import type { LandingCopy } from '@/locales/copy';
 import type { Locale } from '@/locales/config';
 import ReferralPanel from './ReferralPanel';
+
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? '';
 
 interface BetaSignupFormProps {
     copy?: LandingCopy['forms']['beta'];
@@ -56,6 +59,8 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
     const [userEmail, setUserEmail] = useState<string | null>(null);
     const [showReferralPanel, setShowReferralPanel] = useState(false);
     const [referralLink, setReferralLink] = useState<string>('');
+    const [turnstileToken, setTurnstileToken] = useState('');
+    const turnstileRef = useRef<TurnstileInstance>(null);
     const MAX_CHARS = 1000;
 
 
@@ -127,12 +132,14 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
         }
 
         try {
-            const result = await apiClient.beta.signup(parseResult.data);
+            const result = await apiClient.beta.signup({ ...parseResult.data, cfTurnstileResponse: turnstileToken });
             setReferralLink(result.referralLink || '');
             setUserEmail(form.email);
             setForm(buildInitialState(locale, referralCode));
             setSuccess(resolvedCopy.success);
             setShowReferralPanel(true);
+            turnstileRef.current?.reset();
+            setTurnstileToken('');
         } catch (err: unknown) {
             if (err instanceof ApiError && err.code === 'beta_duplicate_email') {
                 setError(resolvedCopy.duplicateError ?? resolvedCopy.error);
@@ -155,6 +162,8 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
             }
         } finally {
             setSubmitting(false);
+            turnstileRef.current?.reset();
+            setTurnstileToken('');
         }
     };
 
@@ -367,6 +376,15 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                 </div>
                 <input type="hidden" name="locale" value={form.locale} />
                 <div className="relative space-y-4">
+                    {TURNSTILE_SITE_KEY && (
+                        <Turnstile
+                            ref={turnstileRef}
+                            siteKey={TURNSTILE_SITE_KEY}
+                            onSuccess={setTurnstileToken}
+                            onExpire={() => setTurnstileToken('')}
+                            options={{ theme: 'dark' }}
+                        />
+                    )}
                     <button
                         type="submit"
                         disabled={submitting}

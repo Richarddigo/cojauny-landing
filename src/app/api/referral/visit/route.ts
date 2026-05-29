@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getDb } from '@/lib/db';
+import { referralRatelimit } from '@/lib/ratelimit';
 
 export const runtime = 'nodejs';
 
@@ -16,6 +17,14 @@ export async function POST(req: NextRequest) {
   const origin = req.headers.get('origin');
   if (origin && !ALLOWED_ORIGINS.has(origin)) {
     return NextResponse.json({ error: 'Forbidden.' }, { status: 403 });
+  }
+
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
+  if (referralRatelimit) {
+    const { success } = await referralRatelimit.limit(ip);
+    if (!success) {
+      return NextResponse.json({ error: 'Too many requests. Try again later.' }, { status: 429 });
+    }
   }
 
   let body: { referralCode?: string };

@@ -1,12 +1,10 @@
 import '@testing-library/jest-dom';
 import { getCommonCopy } from '@/locales/common';
-import { getContactCopy } from '@/locales/contact';
 import { getLandingCopy } from '@/locales/copy';
 
 jest.mock('next-intl', () => {
     const messages = {
         landing: getLandingCopy('es'),
-        contact: getContactCopy('es'),
         common: getCommonCopy('es')
     };
 

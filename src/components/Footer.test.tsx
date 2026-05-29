@@ -67,7 +67,7 @@ describe('Footer', () => {
         render(<Footer copy={mockCopy} locale="es" />);
 
         expect(screen.getByText(mockCopy.blog)).toHaveAttribute('href', '/es/blog');
-        expect(screen.getByText(mockCopy.contact)).toHaveAttribute('href', '/es/contact');
+        expect(screen.getByText(mockCopy.contact)).toHaveAttribute('href', 'https://studio.cojauny.com/es/contact');
     });
 
     it('renderiza iconos de redes sociales', () => {

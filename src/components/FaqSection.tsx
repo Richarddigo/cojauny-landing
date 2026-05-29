@@ -14,7 +14,7 @@ const FaqSection = ({ copy }: FaqSectionProps) => (
         id="faq"
         className="w-full scroll-mt-[74px] bg-studio-bg py-12 md:py-16 lg:py-20 lg:scroll-mt-[100px]"
     >
-        <div className="mx-auto max-w-4xl px-4 sm:px-6" style={{ paddingLeft: 'calc(var(--social-bar-offset) + 1rem)' }}>
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">
             <SectionIntro title={copy.title} description={copy.subtitle} />
             <dl className="mt-10 space-y-4 md:mt-12 md:space-y-6">
                 {copy.items.map((item, index) => (

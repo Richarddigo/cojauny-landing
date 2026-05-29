@@ -5,7 +5,7 @@ import React from 'react';
 export const socialLinks = [
     {
         label: 'Instagram',
-        href: 'https://instagram.com/cojauny',
+        href: 'https://www.instagram.com/cojaunyapp',
         icon: (
             <svg
                 viewBox="0 0 24 24"

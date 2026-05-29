@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 import { siteMetadata, hreflangByLocale } from './site';
-import { locales, type Locale } from '@/locales/config';
+import { locales, defaultLocale, type Locale } from '@/locales/config';
 
 interface BreadcrumbItem {
   name: string;
@@ -14,7 +14,10 @@ const hrefLangFallback = 'en-US';
 export const buildCanonicalUrl = (locale: Locale, path = '') => {
   const normalized = path.replace(/^\/+/g, '').replace(/\/$/, '');
   const suffix = normalized ? `/${normalized}` : '';
-  return `${siteMetadata.url}/${locale}${suffix}`;
+  // Default locale (en) has no prefix — localePrefix: 'as-needed'
+  return locale === defaultLocale
+    ? `${siteMetadata.url}${suffix || '/'}`
+    : `${siteMetadata.url}/${locale}${suffix}`;
 };
 
 export const buildLocaleAlternates = (locale: Locale, path = ''): Metadata['alternates'] => ({

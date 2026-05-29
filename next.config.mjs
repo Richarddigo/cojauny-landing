@@ -105,7 +105,13 @@ const nextConfig = {
         removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false
     },
 
-    headers: async () => cacheHeaders
+    headers: async () => cacheHeaders,
+
+    redirects: async () => [
+        // Contact page is centralized in cojauny-studio. Redirect any legacy traffic.
+        { source: '/:locale(es|en|de|fr)/contact', destination: 'https://studio.cojauny.com/:locale/contact', permanent: true },
+        { source: '/contact', destination: 'https://studio.cojauny.com/contact', permanent: true }
+    ]
 };
 
 export default withNextIntl(nextConfig);

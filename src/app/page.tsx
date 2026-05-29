@@ -1,6 +1,4 @@
-import { redirect } from 'next/navigation';
-import { defaultLocale } from '@/locales/config';
-
+// Intentionally empty — middleware (localePrefix: 'as-needed') serves the default locale at / directly.
 export default function Page() {
-    redirect(`/${defaultLocale}`);
+  return null;
 }

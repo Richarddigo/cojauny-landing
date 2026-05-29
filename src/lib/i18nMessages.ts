@@ -2,7 +2,6 @@ import { getMessages } from 'next-intl/server';
 
 import type { BlogCopy } from '@/locales/blog';
 import type { CommonCopy } from '@/locales/common';
-import type { ContactPageCopy } from '@/locales/contact';
 import type { Locale } from '@/locales/config';
 import type { LandingCopy } from '@/locales/copy';
 import type { DocsCopy } from '@/locales/docs';
@@ -12,7 +11,6 @@ export interface AppMessages {
   common: CommonCopy;
   landing: LandingCopy;
   blog: BlogCopy;
-  contact: ContactPageCopy;
   docs: DocsCopy;
   legal: ExtendedLegalCopy;
 }

@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from 'react';
+import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile';
 import { ChatBubbleBottomCenterTextIcon, LightBulbIcon, BriefcaseIcon } from '@heroicons/react/24/outline';
 import AlertMessage from '@/components/AlertMessage';
 import { apiClient } from '@/lib/api-client';
@@ -10,6 +11,8 @@ import { useAppMessages } from '@/i18n/useAppMessages';
 import { getCommonCopy } from '@/locales/common';
 import type { LandingCopy } from '@/locales/copy';
 import type { Locale } from '@/locales/config';
+
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? '';
 
 interface FeedbackFormProps {
     copy?: LandingCopy['forms']['feedback'];
@@ -36,6 +39,8 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
     const [success, setSuccess] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [messageError, setMessageError] = useState<string | null>(null);
+    const [turnstileToken, setTurnstileToken] = useState('');
+    const turnstileRef = useRef<TurnstileInstance>(null);
     const MAX_CHARS = 1000;
 
     useEffect(() => {
@@ -104,11 +109,15 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
 
 
         try {
-            await apiClient.feedback.submit(parseResult.data);
+            await apiClient.feedback.submit({ ...parseResult.data, cfTurnstileResponse: turnstileToken });
             setForm(buildInitialState(locale));
             setSuccess(resolvedCopy.success);
+            turnstileRef.current?.reset();
+            setTurnstileToken('');
         } catch (err: unknown) {
             setError(err instanceof Error && err.message ? err.message : resolvedCopy.error);
+            turnstileRef.current?.reset();
+            setTurnstileToken('');
         } finally {
             setSubmitting(false);
         }
@@ -235,6 +244,15 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
             <input type="hidden" name="locale" value={form.locale} />
 
             <div className="relative space-y-4">
+                {TURNSTILE_SITE_KEY && (
+                    <Turnstile
+                        ref={turnstileRef}
+                        siteKey={TURNSTILE_SITE_KEY}
+                        onSuccess={setTurnstileToken}
+                        onExpire={() => setTurnstileToken('')}
+                        options={{ theme: 'dark' }}
+                    />
+                )}
                 <button
                     type="submit"
                     disabled={submitting}

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { feedbackSchema } from '@/lib/validation';
 import { getDb } from '@/lib/db';
+import { feedbackRatelimit } from '@/lib/ratelimit';
 
 export const runtime = 'nodejs';
 
@@ -17,19 +18,6 @@ const ALLOWED_ORIGINS = new Set([
     : []),
 ]);
 
-const rateMap = new Map<string, number[]>();
-const WINDOW_MS = 60_000;
-const MAX_REQ = 5;
-
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const ts = (rateMap.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
-  if (ts.length >= MAX_REQ) return true;
-  ts.push(now);
-  rateMap.set(ip, ts);
-  return false;
-}
-
 export async function POST(req: NextRequest) {
   const origin = req.headers.get('origin');
   if (origin && !ALLOWED_ORIGINS.has(origin)) {
@@ -37,8 +25,11 @@ export async function POST(req: NextRequest) {
   }
 
   const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
-  if (isRateLimited(ip)) {
-    return NextResponse.json({ error: 'Too many requests. Try again later.' }, { status: 429 });
+  if (feedbackRatelimit) {
+    const { success } = await feedbackRatelimit.limit(ip);
+    if (!success) {
+      return NextResponse.json({ error: 'Too many requests. Try again later.' }, { status: 429 });
+    }
   }
 
   let body: unknown;
@@ -53,9 +44,27 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Validation error.', issues: parsed.error.issues }, { status: 422 });
   }
 
+  // Turnstile bot verification — enforced only when secret key is configured.
+  const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
+  if (turnstileSecret) {
+    const token = parsed.data.cfTurnstileResponse;
+    if (!token) {
+      return NextResponse.json({ error: 'Bot verification required.' }, { status: 400 });
+    }
+    const verifyRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      body: new URLSearchParams({ secret: turnstileSecret, response: token, remoteip: ip }),
+    });
+    const verifyData = await verifyRes.json() as { success: boolean };
+    if (!verifyData.success) {
+      return NextResponse.json({ error: 'Bot verification failed. Please try again.' }, { status: 400 });
+    }
+  }
+
   const { name, email, message, usecase, locale } = parsed.data;
   const fromEmail = 'noreply@cojauny.com';
   const toEmail = process.env.FEEDBACK_TO_EMAIL;
+  const segmentId = process.env.RESEND_SEGMENT_FEEDBACK;
 
   // Persist to Neon if configured (non-blocking)
   const db = getDb();
@@ -89,6 +98,21 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     console.error('[feedback] Resend error:', err);
     return NextResponse.json({ error: 'Failed to submit feedback. Try again later.' }, { status: 502 });
+  }
+
+  // Add to Resend Contacts (feedback segment) if configured — non-fatal
+  if (segmentId) {
+    try {
+      await getResend().contacts.create({
+        email,
+        firstName: name.split(' ')[0] ?? name,
+        lastName: name.split(' ').slice(1).join(' ') || undefined,
+        unsubscribed: false,
+        segments: [{ id: segmentId }],
+      });
+    } catch (err) {
+      console.error('[feedback] Resend contacts error:', err);
+    }
   }
 
   return NextResponse.json({ success: true });

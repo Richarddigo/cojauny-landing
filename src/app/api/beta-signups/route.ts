@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { betaSignupSchema } from '@/lib/validation';
 import { getDb } from '@/lib/db';
+import { betaSignupRatelimit } from '@/lib/ratelimit';
 
 export const runtime = 'nodejs';
 
@@ -17,19 +18,6 @@ const ALLOWED_ORIGINS = new Set([
     : []),
 ]);
 
-const rateMap = new Map<string, number[]>();
-const WINDOW_MS = 60_000;
-const MAX_REQ = 3;
-
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const ts = (rateMap.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
-  if (ts.length >= MAX_REQ) return true;
-  ts.push(now);
-  rateMap.set(ip, ts);
-  return false;
-}
-
 export async function POST(req: NextRequest) {
   const origin = req.headers.get('origin');
   if (origin && !ALLOWED_ORIGINS.has(origin)) {
@@ -37,8 +25,11 @@ export async function POST(req: NextRequest) {
   }
 
   const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
-  if (isRateLimited(ip)) {
-    return NextResponse.json({ error: 'Too many requests. Try again later.' }, { status: 429 });
+  if (betaSignupRatelimit) {
+    const { success } = await betaSignupRatelimit.limit(ip);
+    if (!success) {
+      return NextResponse.json({ error: 'Too many requests. Try again later.' }, { status: 429 });
+    }
   }
 
   let body: unknown;
@@ -53,10 +44,27 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Validation error.', issues: parsed.error.issues }, { status: 422 });
   }
 
+  // Turnstile bot verification — enforced only when secret key is configured.
+  const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
+  if (turnstileSecret) {
+    const token = parsed.data.cfTurnstileResponse;
+    if (!token) {
+      return NextResponse.json({ error: 'Bot verification required.' }, { status: 400 });
+    }
+    const verifyRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      body: new URLSearchParams({ secret: turnstileSecret, response: token, remoteip: ip }),
+    });
+    const verifyData = await verifyRes.json() as { success: boolean };
+    if (!verifyData.success) {
+      return NextResponse.json({ error: 'Bot verification failed. Please try again.' }, { status: 400 });
+    }
+  }
+
   const { email, fullName, country, flightFrequency, useCase, homeAirport, updatesOptIn, termsAccepted, privacyAccepted, locale, referralCode } = parsed.data;
   const fromEmail = 'noreply@cojauny.com';
   const toEmail = process.env.BETA_TO_EMAIL;
-  const audienceId = process.env.BETA_AUDIENCE_ID;
+  const segmentId = process.env.RESEND_SEGMENT_BETA;
 
   // Persist to Neon if configured — trigger auto-creates referral_stats row
   const db = getDb();
@@ -102,15 +110,15 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  // Add to Resend Audience (waitlist) if configured
-  if (audienceId) {
+  // Add to Resend Contacts (beta-waitlist segment) if configured
+  if (segmentId) {
     try {
       await getResend().contacts.create({
-        audienceId,
         email,
         firstName: fullName.split(' ')[0] ?? fullName,
         lastName: fullName.split(' ').slice(1).join(' ') || undefined,
         unsubscribed: false,
+        segments: [{ id: segmentId }],
       });
     } catch (err) {
       console.error('[beta-signups] Resend contacts error:', err);

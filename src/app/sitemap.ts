@@ -6,7 +6,7 @@ import { blogPosts } from '@/content/blog/posts';
 
 export const dynamic = 'force-static';
 
-const localeAwarePaths = ['/', '/contact', '/docs/sdk-plan'];
+const localeAwarePaths = ['/', '/docs/sdk-plan'];
 const legalPaths = ['/legal/privacy', '/legal/cookies', '/legal/terms', '/legal/acceptable-use', '/legal/faq', '/legal/subprocessors'];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -35,12 +35,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: 'daily' as const,
       priority: 1
-    },
-    {
-      url: `${base}/contact`,
-      lastModified,
-      changeFrequency: 'monthly' as const,
-      priority: 0.6
     }
   ];
 

@@ -32,7 +32,7 @@ describe('jsonld utilities', () => {
 
     describe('buildLocaleAlternates', () => {
         it('devuelve objeto con canonical y languages', () => {
-            const alternates = buildLocaleAlternates('es', '/contact');
+            const alternates = buildLocaleAlternates('es', '/blog');
             expect(alternates).toHaveProperty('canonical');
             expect(alternates).toHaveProperty('languages');
             expect(alternates?.languages).toHaveProperty('x-default');

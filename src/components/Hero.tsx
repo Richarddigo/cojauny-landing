@@ -29,7 +29,7 @@ const Hero = ({ copy }: HeroProps) => (
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:mt-10 sm:flex-row sm:gap-4">
                 <a
                     href="#beta"
-                    className="inline-flex w-full items-center justify-center rounded-xl bg-studio-accent px-8 py-3.5 text-base font-semibold text-white shadow-[0_20px_48px_rgba(91,123,255,0.32)] transition-all duration-150 hover:scale-[1.02] hover:bg-studio-accent-dim focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-studio-bg sm:w-auto sm:px-10"
+                    className="inline-flex items-center justify-center rounded-xl bg-studio-accent px-8 py-3 text-base font-semibold text-white transition hover:bg-studio-accent-dim"
                 >
                     {copy.primaryCta}
                 </a>

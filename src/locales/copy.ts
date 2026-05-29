@@ -266,7 +266,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       title: 'Comparte transporte con viajeros de tu mismo vuelo',
       subtitle:
         'Cojauny te conecta automáticamente con pasajeros de tu vuelo para compartir taxi, van o coche privado. Ahorra hasta un 75%, reduce tu huella de carbono y viaja seguro con perfiles verificados.',
-      primaryCta: 'Probar gratis',
+      primaryCta: 'Solicitar acceso beta',
       secondaryCta: 'Cómo funciona',
       imageAlt: 'App Cojauny mostrando matching de vuelo y ahorro compartido'
     },
@@ -775,7 +775,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       title: 'Share your ride with passengers on your flight',
       subtitle:
         'Cojauny automatically connects you with travelers on the same flight to share a taxi, van, or private car. Save 50-75%, reduce carbon footprint, and travel safely with verified profiles. Sign up free.',
-      primaryCta: 'Try for Free',
+      primaryCta: 'Reserve my beta spot',
       secondaryCta: 'See how it works',
       imageAlt: 'Cojauny App showing flight matching and shared savings'
     },
@@ -1284,7 +1284,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       title: 'Teile die Fahrt mit Passagieren deines Fluges',
       subtitle:
         'Cojauny verbindet dich automatisch mit Reisenden desselben Fluges, um Taxi, Van oder Privatwagen zu teilen. Spare bis zu 75%, reduziere CO₂ und reise sicher mit verifizierten Profilen.',
-      primaryCta: 'Kostenlos testen',
+      primaryCta: 'Beta-Zugang anfordern',
       secondaryCta: 'So funktioniert\'s',
       imageAlt: 'Cojauny App zeigt Flug-Matching und geteilte Ersparnisse'
     },
@@ -1792,7 +1792,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       title: 'Partagez le trajet avec les passagers de votre vol',
       subtitle:
         'Cojauny vous connecte automatiquement avec des voyageurs du même vol pour partager taxi, van ou VTC. Économisez jusqu\'à 75%, réduisez votre empreinte carbone et voyagez en sécurité avec des profils vérifiés.',
-      primaryCta: 'Essayer gratuitement',
+      primaryCta: "Demander l'accès Bêta",
       secondaryCta: 'Comment ça marche',
       imageAlt: 'Interface Cojauny montrant le matching de vol et les économies'
     },
