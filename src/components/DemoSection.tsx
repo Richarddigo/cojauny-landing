@@ -274,27 +274,23 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
         >
             <div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8 pl-[calc(var(--social-bar-offset)+1rem)]">
                 <div className="text-center mb-12 md:mb-16 lg:mb-20">
-                    <motion.h2 initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+                    <h2 className="cojauny-fade-in text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
                         {copy.heading}
-                    </motion.h2>
-                    <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.1 }} className="mt-4 text-lg md:text-xl text-studio-muted max-w-3xl mx-auto">
+                    </h2>
+                    <p className="cojauny-fade-in mt-4 text-lg md:text-xl text-studio-muted max-w-3xl mx-auto">
                         {copy.description}
-                    </motion.p>
+                    </p>
                 </div>
 
                 {/* Desktop layout - el grid necesita items-stretch para que sticky funcione */}
                 <div className="hidden md:grid md:grid-cols-[1fr_400px] md:gap-12 lg:gap-16 xl:gap-20">
                     <div ref={cardsContainerRef} className="flex flex-col gap-8">
                         {copy.screens.map((screen, idx) => (
-                            <motion.div
+                            <div
                                 key={screen.id}
                                 ref={el => { cardsRef.current[idx] = el; }}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true, margin: '-50px' }}
-                                transition={{ duration: 0.35, delay: idx * 0.05 }}
                                 onClick={() => handleCardClick(idx)}
-                                className={`demo-card transition-all duration-200 ease-out cursor-pointer ${activeStep === idx ? 'opacity-100' : 'opacity-60'} relative`}
+                                className={`demo-card cojauny-fade-in transition-all duration-200 ease-out cursor-pointer ${activeStep === idx ? 'opacity-100' : 'opacity-60'} relative`}
                             >
                                 {isLocked && lockedIndex === idx && (
                                     <div className="absolute top-2 right-2 bg-studio-surface-2 rounded-full p-1 shadow-md border-2 border-studio-accent">
@@ -311,7 +307,7 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                                     <h3 className="text-2xl xl:text-3xl font-bold text-white mb-4">{screen.title}</h3>
                                     <p className="text-lg text-studio-muted leading-relaxed">{screen.description}</p>
                                 </div>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
 
@@ -320,12 +316,8 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                         ref={phoneContainerRef}
                         className="relative md:sticky md:top-24 md:self-start"
                     >
-                        <motion.div
-                            initial={{ opacity: 0, x: 20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.4 }}
-                            className="mx-auto"
+                        <div
+                            className="cojauny-fade-in mx-auto"
                             style={{
                                 width: 'min(calc((100vh - 8rem) * 9 / 19.5), 340px)',
                                 transform: `translateY(${parallaxOffset}px)`,
@@ -333,7 +325,7 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                             }}
                         >
                             <IPhoneMockup screen={copy.screens[activeStep]} priority={true} animate={true} />
-                        </motion.div>
+                        </div>
                     </div>
                 </div>
 
