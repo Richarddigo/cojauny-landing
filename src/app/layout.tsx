@@ -14,7 +14,7 @@ import { buildOrganizationJsonLd, buildWebsiteJsonLd } from '@/lib/jsonld';
 
 const inter = Inter({
     subsets: ['latin'],
-    display: 'swap',
+    display: 'optional',
     variable: '--font-inter'
 });
 
