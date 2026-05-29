@@ -41,6 +41,10 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
     const [messageError, setMessageError] = useState<string | null>(null);
     const [turnstileToken, setTurnstileToken] = useState('');
     const turnstileRef = useRef<TurnstileInstance>(null);
+    // Defer Turnstile mount until the user actually starts interacting with
+    // the form. Loading Turnstile eagerly pulls ~900KB of Cloudflare scripts
+    // into the critical path (huge LCP/TBT hit) for visitors who never submit.
+    const [interacted, setInteracted] = useState(false);
     const MAX_CHARS = 1000;
 
     useEffect(() => {
@@ -126,6 +130,7 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
     return (
         <form
             onSubmit={handleSubmit}
+            onFocus={() => { if (!interacted) setInteracted(true); }}
             className="space-y-6 rounded-3xl border border-white/12 bg-studio-surface/80 p-8 shadow-soft-glow backdrop-blur-xl transition-all hover:shadow-2xl"
             aria-describedby="feedback-help"
         >
@@ -244,7 +249,7 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
             <input type="hidden" name="locale" value={form.locale} />
 
             <div className="relative space-y-4">
-                {TURNSTILE_SITE_KEY && (
+                {TURNSTILE_SITE_KEY && interacted && (
                     <Turnstile
                         ref={turnstileRef}
                         siteKey={TURNSTILE_SITE_KEY}

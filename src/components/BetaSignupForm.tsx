@@ -61,6 +61,10 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
     const [referralLink, setReferralLink] = useState<string>('');
     const [turnstileToken, setTurnstileToken] = useState('');
     const turnstileRef = useRef<TurnstileInstance>(null);
+    // Defer Turnstile mount until first interaction. Loading it eagerly adds
+    // ~900KB of Cloudflare scripts to the critical path for visitors who never
+    // submit the form.
+    const [interacted, setInteracted] = useState(false);
     const MAX_CHARS = 1000;
 
 
@@ -176,6 +180,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
             </div>
             <form
                 onSubmit={handleSubmit}
+                onFocus={() => { if (!interacted) setInteracted(true); }}
                 className="space-y-6 rounded-3xl border border-white/8 bg-studio-surface p-8 shadow-xl"
                 aria-describedby="beta-form-help"
             >
@@ -376,7 +381,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                 </div>
                 <input type="hidden" name="locale" value={form.locale} />
                 <div className="relative space-y-4">
-                    {TURNSTILE_SITE_KEY && (
+                    {TURNSTILE_SITE_KEY && interacted && (
                         <Turnstile
                             ref={turnstileRef}
                             siteKey={TURNSTILE_SITE_KEY}
