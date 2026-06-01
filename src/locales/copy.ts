@@ -214,6 +214,7 @@ export interface LandingCopy {
     privacy: string;
     cookies: string;
     terms: string;
+    accountDeletion?: string;
     acceptableUse?: string;
     faq?: string;
     subprocessors?: string;
@@ -725,6 +726,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       privacy: 'Privacidad',
       cookies: 'Cookies',
       terms: 'Términos',
+      accountDeletion: 'Eliminar cuenta',
       acceptableUse: 'Uso',
       faq: 'FAQ',
       subprocessors: 'Subprocesadores',
@@ -1234,6 +1236,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       privacy: 'Privacy Policy',
       cookies: 'Cookie Policy',
       terms: 'Terms of Service',
+      accountDeletion: 'Account deletion',
       acceptableUse: 'Acceptable Use',
       faq: 'FAQ',
       subprocessors: 'Subprocessors',
@@ -1743,6 +1746,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       privacy: 'Datenschutz',
       cookies: 'Cookies',
       terms: 'AGB',
+      accountDeletion: 'Konto löschen',
       acceptableUse: 'Nutzung',
       faq: 'FAQ',
       subprocessors: 'Subprozessoren',
@@ -2251,6 +2255,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       privacy: 'Confidentialité',
       cookies: 'Cookies',
       terms: 'CGU',
+      accountDeletion: 'Supprimer le compte',
       acceptableUse: 'Utilisation',
       faq: 'FAQ',
       subprocessors: 'Sous-traitants',

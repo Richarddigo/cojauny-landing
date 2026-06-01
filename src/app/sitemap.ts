@@ -7,7 +7,15 @@ import { blogPosts } from '@/content/blog/posts';
 export const dynamic = 'force-static';
 
 const localeAwarePaths = ['/', '/docs/sdk-plan'];
-const legalPaths = ['/legal/privacy', '/legal/cookies', '/legal/terms', '/legal/acceptable-use', '/legal/faq', '/legal/subprocessors'];
+const legalPaths = [
+  '/account-deletion',
+  '/legal/privacy',
+  '/legal/cookies',
+  '/legal/terms',
+  '/legal/acceptable-use',
+  '/legal/faq',
+  '/legal/subprocessors'
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteMetadata.url.replace(/\/$/, '');

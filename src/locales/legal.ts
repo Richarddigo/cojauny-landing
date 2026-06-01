@@ -35,6 +35,7 @@ export interface ExtendedLegalCopy {
   privacy: LegalPageCopy;
   cookies: LegalPageCopy;
   terms: LegalPageCopy;
+  accountDeletion: LegalPageCopy;
   acceptableUse: LegalPageCopy;
   faq: {
     title: string;
@@ -153,6 +154,41 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
         }
       ],
       contact: 'Legal: support@cojauny.com'
+    },
+    accountDeletion: {
+      title: 'Eliminación de cuenta y datos',
+      intro:
+        'Esta página describe cómo solicitar la eliminación de su cuenta de Cojauny y qué datos se borran. Cumple con los requisitos de Google Play y del RGPD para el derecho de supresión.',
+      updatedAt: 'Última actualización: 1 de junio de 2026',
+      sections: [
+        {
+          heading: '1. Eliminar la cuenta desde la app (recomendado)',
+          body:
+            'Abra la app Cojauny e inicie sesión. Vaya a Ajustes → Cuenta → Eliminar cuenta. Confirme en el diálogo. Si usa inicio de sesión con Google, puede que deba volver a autenticarse (requisito de seguridad de Firebase). La eliminación es definitiva y no se puede deshacer.'
+        },
+        {
+          heading: '2. Solicitud sin acceso a la app',
+          body:
+            'Si no puede acceder a la app, envíe un correo desde la dirección asociada a su cuenta a support@cojauny.com con el asunto «Eliminación de cuenta». Incluya su nombre de usuario o email registrado. Responderemos en un plazo máximo de 30 días y verificaremos su identidad antes de procesar la solicitud.'
+        },
+        {
+          heading: '3. Datos que se eliminan',
+          body:
+            'Al eliminar la cuenta se borran, entre otros: su perfil y datos de cuenta (nombre, email, avatar), participación en eventos y chats, mensajes asociados a su usuario, tokens de notificaciones push, preferencias locales en el dispositivo tras cerrar sesión, y su registro de autenticación en Firebase Auth. Las imágenes que subió a chats o eventos se eliminan o desvinculan según las reglas de retención del servicio.'
+        },
+        {
+          heading: '4. Datos que pueden conservarse temporalmente',
+          body:
+            'Podemos conservar durante un periodo limitado: registros técnicos y de seguridad (hasta 12 meses), copias de respaldo cifradas hasta el siguiente ciclo de purga, y datos bloqueados por obligación legal (hasta 5 años según la normativa aplicable en España). Los datos agregados o anonimizados que no permitan identificarle pueden conservarse con fines estadísticos.'
+        },
+        {
+          heading: '5. Plazo y confirmación',
+          body:
+            'La eliminación en la app suele completarse en pocos minutos. Las solicitudes por correo se procesan en un máximo de 30 días. Recibirá confirmación por email cuando la eliminación haya finalizado, salvo que la dirección ya no esté operativa.'
+        }
+      ],
+      contact:
+        '¿Necesita ayuda? support@cojauny.com · Política de privacidad: /legal/privacy · Términos: /legal/terms'
     },
     acceptableUse: {
       title: 'Política de Uso Aceptable',
@@ -342,6 +378,41 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
       ],
       contact: 'Legal: support@cojauny.com'
     },
+    accountDeletion: {
+      title: 'Account and data deletion',
+      intro:
+        'How to request deletion of your Cojauny account and what data is removed. This page meets Google Play and GDPR erasure requirements.',
+      updatedAt: 'Last updated: June 1, 2026',
+      sections: [
+        {
+          heading: '1. Delete your account in the app (recommended)',
+          body:
+            'Open the Cojauny app and sign in. Go to Settings → Account → Delete account, then confirm in the dialog. If you use Google Sign-In, you may need to re-authenticate (Firebase security requirement). Deletion is permanent and cannot be undone.'
+        },
+        {
+          heading: '2. Request without app access',
+          body:
+            'If you cannot use the app, email support@cojauny.com from the address linked to your account with the subject “Account deletion”. Include your registered email or username. We will respond within 30 days and verify your identity before processing the request.'
+        },
+        {
+          heading: '3. Data that is deleted',
+          body:
+            'When your account is deleted we remove, among other items: profile and account data (name, email, avatar), event and chat participation, messages tied to your user, push notification tokens, on-device preferences after sign-out, and your Firebase Authentication record. Images you uploaded to chats or events are deleted or disassociated according to our retention rules.'
+        },
+        {
+          heading: '4. Data that may be kept temporarily',
+          body:
+            'We may retain for a limited period: technical and security logs (up to 12 months), encrypted backup copies until the next purge cycle, and data required by law (up to 5 years under applicable Spanish law). Aggregated or anonymized data that cannot identify you may be kept for statistics.'
+        },
+        {
+          heading: '5. Timeline and confirmation',
+          body:
+            'In-app deletion usually completes within minutes. Email requests are processed within 30 days. You will receive email confirmation when deletion is complete, unless the address is no longer reachable.'
+        }
+      ],
+      contact:
+        'Need help? support@cojauny.com · Privacy policy: /legal/privacy · Terms: /legal/terms'
+    },
     acceptableUse: {
       title: 'Acceptable Use Policy',
       intro: 'Community standards and safety rules for Cojauny.',
@@ -530,6 +601,41 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
       ],
       contact: 'Recht: support@cojauny.com'
     },
+    accountDeletion: {
+      title: 'Kontolöschung und Daten',
+      intro:
+        'So fordern Sie die Löschung Ihres Cojauny-Kontos an und welche Daten entfernt werden. Diese Seite erfüllt die Anforderungen von Google Play und die DSGVO (Recht auf Löschung).',
+      updatedAt: 'Zuletzt aktualisiert: 1. Juni 2026',
+      sections: [
+        {
+          heading: '1. Konto in der App löschen (empfohlen)',
+          body:
+            'Öffnen Sie die Cojauny-App und melden Sie sich an. Gehen Sie zu Einstellungen → Konto → Konto löschen und bestätigen Sie im Dialog. Bei Google-Anmeldung kann eine erneute Authentifizierung nötig sein. Die Löschung ist endgültig.'
+        },
+        {
+          heading: '2. Anfrage ohne App-Zugang',
+          body:
+            'Senden Sie eine E-Mail von der mit dem Konto verknüpften Adresse an support@cojauny.com mit dem Betreff „Kontolöschung“. Wir antworten innerhalb von 30 Tagen und prüfen Ihre Identität vor der Bearbeitung.'
+        },
+        {
+          heading: '3. Gelöschte Daten',
+          body:
+            'Es werden u. a. entfernt: Profil- und Kontodaten, Event- und Chat-Teilnahme, mit Ihrem Nutzer verknüpfte Nachrichten, Push-Token, lokale Einstellungen nach Abmeldung und Ihr Firebase-Auth-Eintrag. Hochgeladene Bilder werden gemäß Aufbewahrungsregeln gelöscht oder getrennt.'
+        },
+        {
+          heading: '4. Vorübergehend aufbewahrte Daten',
+          body:
+            'Begrenzt können bleiben: technische und Sicherheitsprotokolle (bis 12 Monate), verschlüsselte Backups bis zur nächsten Bereinigung und gesetzlich erforderliche Daten (bis 5 Jahre nach spanischem Recht). Anonymisierte Statistiken ohne Identifizierung können bleiben.'
+        },
+        {
+          heading: '5. Frist und Bestätigung',
+          body:
+            'Die Löschung in der App dauert in der Regel wenige Minuten. E-Mail-Anfragen innerhalb von 30 Tagen. Sie erhalten eine Bestätigung per E-Mail, sofern die Adresse erreichbar ist.'
+        }
+      ],
+      contact:
+        'Hilfe: support@cojauny.com · Datenschutz: /legal/privacy · AGB: /legal/terms'
+    },
     acceptableUse: {
       title: 'Richtlinie für akzeptable Nutzung',
       intro: 'Sicherheitsregeln für die Community.',
@@ -717,6 +823,41 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
         }
       ],
       contact: 'Juridique : support@cojauny.com'
+    },
+    accountDeletion: {
+      title: 'Suppression du compte et des données',
+      intro:
+        'Comment demander la suppression de votre compte Cojauny et quelles données sont effacées. Cette page répond aux exigences Google Play et au RGPD (droit à l\'effacement).',
+      updatedAt: 'Dernière mise à jour : 1 juin 2026',
+      sections: [
+        {
+          heading: '1. Supprimer le compte dans l\'app (recommandé)',
+          body:
+            'Ouvrez l\'app Cojauny et connectez-vous. Allez dans Réglages → Compte → Supprimer le compte, puis confirmez. Avec Google Sign-In, une ré-authentification peut être requise. La suppression est définitive.'
+        },
+        {
+          heading: '2. Demande sans accès à l\'app',
+          body:
+            'Envoyez un e-mail depuis l\'adresse liée au compte à support@cojauny.com avec l\'objet « Suppression de compte ». Réponse sous 30 jours après vérification d\'identité.'
+        },
+        {
+          heading: '3. Données supprimées',
+          body:
+            'Sont supprimés notamment : profil et compte, participation aux événements et chats, messages liés à votre utilisateur, jetons push, préférences locales après déconnexion, et enregistrement Firebase Auth. Les images envoyées sont supprimées ou dissociées selon nos règles de conservation.'
+        },
+        {
+          heading: '4. Données conservées temporairement',
+          body:
+            'Peuvent être conservées : journaux techniques et de sécurité (jusqu\'à 12 mois), sauvegardes chiffrées jusqu\'au prochain cycle de purge, et données exigées par la loi (jusqu\'à 5 ans selon le droit espagnol). Les données agrégées anonymisées peuvent être conservées à des fins statistiques.'
+        },
+        {
+          heading: '5. Délai et confirmation',
+          body:
+            'La suppression dans l\'app prend généralement quelques minutes. Les demandes par e-mail sous 30 jours. Confirmation par e-mail lorsque c\'est terminé, sauf adresse injoignable.'
+        }
+      ],
+      contact:
+        'Aide : support@cojauny.com · Confidentialité : /legal/privacy · Conditions : /legal/terms'
     },
     acceptableUse: {
       title: 'Politique d\'Usage Acceptable',

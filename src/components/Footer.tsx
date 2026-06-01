@@ -114,6 +114,7 @@ const Footer = ({ copy, locale, common }: FooterProps) => {
                             <Link href={`/${locale}/legal/privacy`} className="text-sm text-muted transition-colors hover:text-text">{copy.privacy}</Link>
                             <Link href={`/${locale}/legal/cookies`} className="text-sm text-muted transition-colors hover:text-text">{copy.cookies}</Link>
                             <Link href={`/${locale}/legal/terms`} className="text-sm text-muted transition-colors hover:text-text">{copy.terms}</Link>
+                            <Link href={`/${locale}/account-deletion`} className="text-sm text-muted transition-colors hover:text-text">{copy.accountDeletion ?? 'Account deletion'}</Link>
                             <Link href={`/${locale}/legal/acceptable-use`} className="text-sm text-muted transition-colors hover:text-text">{copy.acceptableUse ?? 'Uso Aceptable'}</Link>
                             <Link href={`/${locale}/legal/faq`} className="text-sm text-muted transition-colors hover:text-text">{copy.faq ?? 'FAQ'}</Link>
                             <Link href={`/${locale}/legal/subprocessors`} className="text-sm text-muted transition-colors hover:text-text">{copy.subprocessors ?? 'Subprocesadores'}</Link>
