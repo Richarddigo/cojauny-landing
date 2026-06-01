@@ -5,15 +5,6 @@ import { render, screen } from '@testing-library/react';
 import Features from './Features';
 import type { LandingCopy, IconName } from '@/locales/copy';
 
-// Mock framer-motion
-jest.mock('framer-motion', () => ({
-    motion: {
-        article: ({ children, className, ...props }: any) => (
-            <article className={className} {...props}>{children}</article>
-        )
-    }
-}));
-
 // Mock SectionIntro
 jest.mock('@/components/SectionIntro', () => ({
     __esModule: true,

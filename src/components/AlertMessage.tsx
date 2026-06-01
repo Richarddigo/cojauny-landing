@@ -10,7 +10,7 @@ import {
     XMarkIcon
 } from '@heroicons/react/24/outline';
 import { getCommonCopy } from '@/locales/common';
-import { locales } from '@/locales/config';
+import { locales, defaultLocale } from '@/locales/config';
 
 export type AlertType = 'success' | 'error' | 'info';
 
@@ -63,7 +63,7 @@ export default function AlertMessage({
     const config = alertConfig[type];
     const Icon = config.icon;
     const pathname = usePathname();
-    const locale = locales.find((loc) => pathname?.startsWith(`/${loc}`)) ?? 'es';
+    const locale = locales.find((loc) => pathname?.startsWith(`/${loc}`)) ?? defaultLocale;
     const common = getCommonCopy(locale);
 
     useEffect(() => {

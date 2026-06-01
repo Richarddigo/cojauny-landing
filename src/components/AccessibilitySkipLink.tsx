@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { getCommonCopy } from '@/locales/common';
-import { locales } from '@/locales/config';
+import { locales, defaultLocale } from '@/locales/config';
 
 interface AccessibilitySkipLinkProps {
     label?: string;
@@ -11,7 +11,7 @@ interface AccessibilitySkipLinkProps {
 
 const AccessibilitySkipLink = ({ label }: AccessibilitySkipLinkProps) => {
     const pathname = usePathname();
-    const locale = locales.find((loc) => pathname?.startsWith(`/${loc}`)) ?? 'es';
+    const locale = locales.find((loc) => pathname?.startsWith(`/${loc}`)) ?? defaultLocale;
     const resolved = label ?? getCommonCopy(locale).skipToMainContent;
     return (
         <Link

@@ -33,6 +33,21 @@ export interface CommonCopy {
   airportSavingsBadge: string;
   // OG / Social card alt text
   ogAlt: string;
+  // Footer section labels (moved from Footer.tsx hardcoded Records)
+  footerNavSectionLabel: string;
+  footerEcosystemSectionLabel: string;
+  footerEcosystemDescription: string;
+  footerHomeLabel: string;
+  // Header nav landmark
+  navAriaLabel: string;
+  // Loading / Error page strings
+  loadingLabel: string;
+  errorTitle: string;
+  errorMessage: string;
+  errorRetry: string;
+  errorGoHome: string;
+  // Account-deletion page
+  relatedLegalPages: string;
 }
 
 const commonCopy: Record<Locale, CommonCopy> = {
@@ -54,6 +69,17 @@ const commonCopy: Record<Locale, CommonCopy> = {
     blogEyebrow: 'Blog',
     airportSavingsBadge: 'Ahorra en cada viaje al aeropuerto',
     ogAlt: 'Cojauny — Comparte taxi al aeropuerto',
+    footerNavSectionLabel: 'Navegación',
+    footerEcosystemSectionLabel: 'Ecosistema',
+    footerEcosystemDescription: 'Cojauny forma parte de un ecosistema de productos digitales en evolución.',
+    footerHomeLabel: 'Inicio',
+    navAriaLabel: 'Navegación principal',
+    loadingLabel: 'Cargando…',
+    errorTitle: 'Algo salió mal',
+    errorMessage: 'Ocurrió un error inesperado. Por favor, inténtalo de nuevo.',
+    errorRetry: 'Intentar de nuevo',
+    errorGoHome: '← Ir al inicio',
+    relatedLegalPages: 'Páginas legales relacionadas',
   },
   en: {
     closeMessage: 'Close message',
@@ -73,6 +99,17 @@ const commonCopy: Record<Locale, CommonCopy> = {
     blogEyebrow: 'Blog',
     airportSavingsBadge: 'Save on every trip to the airport',
     ogAlt: 'Cojauny — Share airport taxi rides',
+    footerNavSectionLabel: 'Navigation',
+    footerEcosystemSectionLabel: 'Ecosystem',
+    footerEcosystemDescription: 'Cojauny is part of an evolving ecosystem of digital products.',
+    footerHomeLabel: 'Home',
+    navAriaLabel: 'Main navigation',
+    loadingLabel: 'Loading…',
+    errorTitle: 'Something went wrong',
+    errorMessage: 'An unexpected error occurred. Please try again.',
+    errorRetry: 'Try again',
+    errorGoHome: '← Go home',
+    relatedLegalPages: 'Related legal pages',
   },
   de: {
     closeMessage: 'Nachricht schließen',
@@ -92,6 +129,17 @@ const commonCopy: Record<Locale, CommonCopy> = {
     blogEyebrow: 'Blog',
     airportSavingsBadge: 'Spare bei jeder Fahrt zum Flughafen',
     ogAlt: 'Cojauny — Flughafen-Taxi gemeinsam teilen',
+    footerNavSectionLabel: 'Navigation',
+    footerEcosystemSectionLabel: 'Ökosystem',
+    footerEcosystemDescription: 'Cojauny ist Teil eines sich entwickelnden Ökosystems digitaler Produkte.',
+    footerHomeLabel: 'Start',
+    navAriaLabel: 'Hauptnavigation',
+    loadingLabel: 'Laden…',
+    errorTitle: 'Etwas ist schiefgelaufen',
+    errorMessage: 'Ein unerwarteter Fehler ist aufgetreten. Bitte versuche es erneut.',
+    errorRetry: 'Erneut versuchen',
+    errorGoHome: '← Zur Startseite',
+    relatedLegalPages: 'Verwandte rechtliche Seiten',
   },
   fr: {
     closeMessage: 'Fermer le message',
@@ -109,8 +157,19 @@ const commonCopy: Record<Locale, CommonCopy> = {
     pricingIncludedLabel: 'Inclus',
     pricingNotIncludedLabel: 'Non inclus',
     blogEyebrow: 'Blog',
-    airportSavingsBadge: "Economise sur chaque trajet vers l'aeroport",
+    airportSavingsBadge: "Économise sur chaque trajet vers l'aéroport",
     ogAlt: 'Cojauny — Partagez vos trajets en taxi vers l’aéroport',
+    footerNavSectionLabel: 'Navigation',
+    footerEcosystemSectionLabel: 'Écosystème',
+    footerEcosystemDescription: 'Cojauny fait partie d’un écosystème évolutif de produits numériques.',
+    footerHomeLabel: 'Accueil',
+    navAriaLabel: 'Navigation principale',
+    loadingLabel: 'Chargement…',
+    errorTitle: "Une erreur s'est produite",
+    errorMessage: 'Une erreur inattendue est survenue. Veuillez réessayer.',
+    errorRetry: 'Réessayer',
+    errorGoHome: '← Retour à l’accueil',
+    relatedLegalPages: 'Pages juridiques associées',
   },
 };
 

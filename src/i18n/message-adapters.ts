@@ -22,6 +22,17 @@ export function getCommonCopyFromMessages(t: Translator): CommonCopy {
     blogEyebrow: t('blogEyebrow'),
     airportSavingsBadge: t('airportSavingsBadge'),
     ogAlt: t('ogAlt'),
+    footerNavSectionLabel: t('footerNavSectionLabel'),
+    footerEcosystemSectionLabel: t('footerEcosystemSectionLabel'),
+    footerEcosystemDescription: t('footerEcosystemDescription'),
+    footerHomeLabel: t('footerHomeLabel'),
+    navAriaLabel: t('navAriaLabel'),
+    loadingLabel: t('loadingLabel'),
+    errorTitle: t('errorTitle'),
+    errorMessage: t('errorMessage'),
+    errorRetry: t('errorRetry'),
+    errorGoHome: t('errorGoHome'),
+    relatedLegalPages: t('relatedLegalPages'),
   };
 }
 
@@ -51,6 +62,7 @@ export function getFooterCopyFromMessages(t: Translator): LandingCopy['footer'] 
     privacy: t('privacy'),
     cookies: t('cookies'),
     terms: t('terms'),
+    accountDeletion: t('accountDeletion'),
     acceptableUse: t('acceptableUse'),
     faq: t('faq'),
     subprocessors: t('subprocessors'),

@@ -1,8 +1,18 @@
-﻿export default function Loading() {
+﻿'use client';
+
+import { usePathname } from 'next/navigation';
+import { getCommonCopy } from '@/locales/common';
+import { locales, defaultLocale } from '@/locales/config';
+
+export default function Loading() {
+    const pathname = usePathname();
+    const locale = locales.find((loc) => pathname?.startsWith(`/${loc}`)) ?? defaultLocale;
+    const { loadingLabel } = getCommonCopy(locale);
+
     return (
         <div
             className="mx-auto max-w-3xl px-6 py-24"
-            aria-label="Loading..."
+            aria-label={loadingLabel}
             role="status"
         >
             {/* Title skeleton */}

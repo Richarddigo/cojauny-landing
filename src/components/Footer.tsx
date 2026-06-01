@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,34 +13,6 @@ interface FooterProps {
     locale: Locale;
     common?: CommonCopy;
 }
-
-const navigationSectionLabel: Record<Locale, string> = {
-    es: 'Navegacion',
-    en: 'Navigation',
-    de: 'Navigation',
-    fr: 'Navigation',
-};
-
-const ecosystemSectionLabel: Record<Locale, string> = {
-    es: 'Ecosistema',
-    en: 'Ecosystem',
-    de: 'Ökosystem',
-    fr: 'Écosystème',
-};
-
-const ecosystemDescription: Record<Locale, string> = {
-    es: 'Cojauny forma parte de un ecosistema de productos digitales en evolución.',
-    en: 'Cojauny is part of an evolving ecosystem of digital products.',
-    de: 'Cojauny ist Teil eines sich entwickelnden Ökosystems digitaler Produkte.',
-    fr: 'Cojauny fait partie d’un écosystème évolutif de produits numériques.',
-};
-
-const homeLabel: Record<Locale, string> = {
-    es: 'Inicio',
-    en: 'Home',
-    de: 'Start',
-    fr: 'Accueil',
-};
 
 const Footer = ({ copy, locale, common }: FooterProps) => {
     const resolvedCommon = common ?? getCommonCopy(locale);
@@ -69,7 +41,7 @@ const Footer = ({ copy, locale, common }: FooterProps) => {
 
                     {/* Col 2: Ecosystem */}
                     <div>
-                        <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-accent">{ecosystemSectionLabel[locale]}</p>
+                        <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-accent">{resolvedCommon.footerEcosystemSectionLabel}</p>
                         <div className="mb-3 flex flex-col gap-2">
                             <a
                                 href="https://studio.cojauny.com"
@@ -94,14 +66,14 @@ const Footer = ({ copy, locale, common }: FooterProps) => {
                                 </svg>
                             </a>
                         </div>
-                        <p className="text-sm leading-relaxed text-muted">{ecosystemDescription[locale]}</p>
+                        <p className="text-sm leading-relaxed text-muted">{resolvedCommon.footerEcosystemDescription}</p>
                     </div>
 
                     {/* Col 3: Navigation */}
                     <div>
-                        <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-accent">{navigationSectionLabel[locale]}</p>
+                        <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-accent">{resolvedCommon.footerNavSectionLabel}</p>
                         <nav className="flex flex-col gap-2">
-                            <Link href={`/${locale}`} className="text-sm text-muted transition-colors hover:text-text">{homeLabel[locale]}</Link>
+                            <Link href={`/${locale}`} className="text-sm text-muted transition-colors hover:text-text">{resolvedCommon.footerHomeLabel}</Link>
                             <Link href={`/${locale}/blog`} className="text-sm text-muted transition-colors hover:text-text">{copy.blog}</Link>
                             <a href={`https://studio.cojauny.com/${locale}/contact`} target="_blank" rel="noopener noreferrer" className="text-sm text-muted transition-colors hover:text-text">{copy.contact}</a>
                         </nav>
@@ -114,10 +86,10 @@ const Footer = ({ copy, locale, common }: FooterProps) => {
                             <Link href={`/${locale}/legal/privacy`} className="text-sm text-muted transition-colors hover:text-text">{copy.privacy}</Link>
                             <Link href={`/${locale}/legal/cookies`} className="text-sm text-muted transition-colors hover:text-text">{copy.cookies}</Link>
                             <Link href={`/${locale}/legal/terms`} className="text-sm text-muted transition-colors hover:text-text">{copy.terms}</Link>
-                            <Link href={`/${locale}/account-deletion`} className="text-sm text-muted transition-colors hover:text-text">{copy.accountDeletion ?? 'Account deletion'}</Link>
-                            <Link href={`/${locale}/legal/acceptable-use`} className="text-sm text-muted transition-colors hover:text-text">{copy.acceptableUse ?? 'Uso Aceptable'}</Link>
-                            <Link href={`/${locale}/legal/faq`} className="text-sm text-muted transition-colors hover:text-text">{copy.faq ?? 'FAQ'}</Link>
-                            <Link href={`/${locale}/legal/subprocessors`} className="text-sm text-muted transition-colors hover:text-text">{copy.subprocessors ?? 'Subprocesadores'}</Link>
+                            <Link href={`/${locale}/account-deletion`} className="text-sm text-muted transition-colors hover:text-text">{copy.accountDeletion}</Link>
+                            <Link href={`/${locale}/legal/acceptable-use`} className="text-sm text-muted transition-colors hover:text-text">{copy.acceptableUse}</Link>
+                            <Link href={`/${locale}/legal/faq`} className="text-sm text-muted transition-colors hover:text-text">{copy.faq}</Link>
+                            <Link href={`/${locale}/legal/subprocessors`} className="text-sm text-muted transition-colors hover:text-text">{copy.subprocessors}</Link>
                         </nav>
                     </div>
 
@@ -133,7 +105,7 @@ const Footer = ({ copy, locale, common }: FooterProps) => {
                     className="mt-12 pt-8 flex flex-col items-center justify-between gap-3 border-t border-[rgba(255,255,255,0.06)] sm:flex-row"
                 >
                     <p className="text-xs text-muted" suppressHydrationWarning>
-                        © {new Date().getFullYear()} Cojauny. {copy.rights}
+                        Â© {new Date().getFullYear()} Cojauny. {copy.rights}
                     </p>
                     <p className="text-xs text-muted">
                         {copy.madeInEurope}
@@ -145,4 +117,5 @@ const Footer = ({ copy, locale, common }: FooterProps) => {
 };
 
 export default Footer;
+
 

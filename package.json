@@ -4,7 +4,7 @@
   "private": true,
   "description": "Landing page oficial de Cojauny construida con Next.js, Tailwind CSS y Neon Postgres",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --hostname 0.0.0.0",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",

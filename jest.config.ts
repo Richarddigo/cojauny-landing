@@ -13,7 +13,8 @@ const customJestConfig: Config = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
-    '\\.(svg)$': '<rootDir>/__mocks__/svgMock.ts'
+    '\\.(svg)$': '<rootDir>/__mocks__/svgMock.ts',
+    '@marsidev/react-turnstile': '<rootDir>/__mocks__/turnstileMock.ts'
   },
   testEnvironment: 'jest-environment-jsdom',
   testPathIgnorePatterns: ['<rootDir>/__tests__/mocks/', '<rootDir>/e2e/']

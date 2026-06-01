@@ -20,7 +20,9 @@ describe('jsonld utilities', () => {
 
         it('construye URL canónica con path', () => {
             const url = buildCanonicalUrl('en', '/blog/test-article');
-            expect(url).toContain('/en/blog/test-article');
+            // Default locale (en) has no prefix with localePrefix: 'as-needed'
+            expect(url).toContain('/blog/test-article');
+            expect(url).not.toContain('/en/');
         });
 
         it('normaliza paths con barras extras', () => {

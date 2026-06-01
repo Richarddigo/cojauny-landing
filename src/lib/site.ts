@@ -7,7 +7,7 @@ export const siteMetadata = {
   description: 'Plataforma para coordinar pasajeros del mismo vuelo, compartir transporte o vans y medir ahorro y CO₂ evitado en cada trayecto.',
   url: 'https://cojauny.com',
   currentSiteUrl: env.CURRENT_SITE_URL ?? 'https://ejemplo.com',
-  locale: 'es_ES',
+  locale: 'es_ES', // canonical locale for structured data; per-page locale is set dynamically
   author: 'Cojauny Studio - Richard Díaz González',
   twitter: '@cojauny',
   primaryColor: '#5a67f2',

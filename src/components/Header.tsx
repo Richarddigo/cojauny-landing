@@ -25,7 +25,7 @@ interface HeaderProps {
     common?: CommonCopy;
 }
 
-type NavItem = { href: string; label: string };
+type NavItem = { href: string; label: string; external?: boolean };
 
 const buildNavItems = (copy: LandingCopy['header'], locale: Locale): NavItem[] => [
     { href: '#home', label: copy.home },
@@ -37,7 +37,7 @@ const buildNavItems = (copy: LandingCopy['header'], locale: Locale): NavItem[] =
     // PRICING -- re-enable by setting NEXT_PUBLIC_ENABLE_PREMIUM=true
     ...(ENABLE_PREMIUM ? [{ href: '#pricing', label: copy.pricing }] : []),
     { href: '#beta', label: copy.beta },
-    { href: `/${locale}/contact`, label: copy.contact },
+    { href: `https://studio.cojauny.com/${locale}/contact`, label: copy.contact, external: true },
     { href: '#faq', label: copy.faq },
     { href: '#feedback', label: copy.feedback },
 ];
@@ -175,7 +175,7 @@ const Header = ({ locale, copy, common }: HeaderProps) => {
     return (
         <>
             <header className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${headerStateClass}`}>
-                <nav className="container-studio flex items-center justify-between py-4" aria-label="Global">
+                <nav className="container-studio flex items-center justify-between py-4" aria-label={resolvedCommon.navAriaLabel}>
                     <div className="flex lg:flex-1">
                         <a href={`/${locale}`} className="group -m-1.5 flex items-center gap-2 p-1.5 sm:gap-3">
                             <Image
@@ -214,6 +214,7 @@ const Header = ({ locale, copy, common }: HeaderProps) => {
                                     href={item.href}
                                     onClick={e => handleDesktopNav(e, item.href)}
                                     className={desktopLinkClass(active)}
+                                    {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                                     {...(active ? { 'aria-current': 'page' as const } : {})}
                                 >
                                     {item.label}
@@ -280,6 +281,7 @@ const Header = ({ locale, copy, common }: HeaderProps) => {
                                             href={item.href}
                                             onClick={e => handleMobileNav(e, item.href)}
                                             className={mobileLinkClass(active)}
+                                            {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                                             {...(active ? { 'aria-current': 'page' as const } : {})}
                                         >
                                             {item.label}

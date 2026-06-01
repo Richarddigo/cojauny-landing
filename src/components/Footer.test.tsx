@@ -25,6 +25,7 @@ const mockCopy: LandingCopy['footer'] = {
     privacy: 'Privacidad',
     cookies: 'Cookies',
     terms: 'Términos',
+    accountDeletion: 'Eliminación de cuenta',
     acceptableUse: 'Uso Aceptable',
     faq: 'FAQ',
     subprocessors: 'Subprocesadores',
@@ -46,10 +47,12 @@ describe('Footer', () => {
         expect(screen.getByText(mockCopy.description)).toBeInTheDocument();
     });
 
-    it('renderiza enlaces a App Store y Google Play', () => {
+    it('renderiza enlaces del ecosistema', () => {
         render(<Footer copy={mockCopy} locale="es" />);
-        expect(screen.getByText(mockCopy.appStoreSoon)).toBeInTheDocument();
-        expect(screen.getByText(mockCopy.playStoreSoon)).toBeInTheDocument();
+        const studioLink = screen.getByRole('link', { name: /Cojauny Studio/i });
+        expect(studioLink).toHaveAttribute('href', 'https://studio.cojauny.com');
+        const cuatroSotasLink = screen.getByRole('link', { name: /Cuatro Sotas/i });
+        expect(cuatroSotasLink).toHaveAttribute('href', 'https://cuatrosotas.cojauny.com');
     });
 
     it('renderiza todos los enlaces de navegación legal', () => {
@@ -70,16 +73,12 @@ describe('Footer', () => {
         expect(screen.getByText(mockCopy.contact)).toHaveAttribute('href', 'https://studio.cojauny.com/es/contact');
     });
 
-    it('renderiza iconos de redes sociales', () => {
+    it('renderiza la sección de ecosistema con descripción', () => {
         render(<Footer copy={mockCopy} locale="es" />);
 
-        // Los iconos tienen aria-label
-        expect(screen.getByLabelText('Instagram')).toBeInTheDocument();
-        expect(screen.getByLabelText('Facebook')).toBeInTheDocument();
-        expect(screen.getByLabelText('TikTok')).toBeInTheDocument();
-        expect(screen.getByLabelText('LinkedIn')).toBeInTheDocument();
-        expect(screen.getByLabelText('X (Twitter)')).toBeInTheDocument();
-        expect(screen.getByLabelText('WhatsApp')).toBeInTheDocument();
+        // The Ecosystem section label and description are rendered in the footer
+        expect(screen.getByText('Ecosistema')).toBeInTheDocument();
+        expect(screen.getByText(/parte de un ecosistema/i)).toBeInTheDocument();
     });
 
     it('renderiza el copyright con el año actual', () => {

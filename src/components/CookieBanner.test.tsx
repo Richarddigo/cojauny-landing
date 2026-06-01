@@ -45,14 +45,18 @@ describe('CookieBanner', () => {
         mockConsent = 'accepted';
         render(<CookieBanner copy={mockCopy} locale="es" />);
 
-        expect(screen.queryByText(mockCopy.message)).not.toBeInTheDocument();
+        // Component always renders in DOM (CSS-only visibility) — check aria-hidden instead
+        const dialog = screen.getByRole('dialog', { hidden: true });
+        expect(dialog).toHaveAttribute('aria-hidden', 'true');
     });
 
     it('no muestra el banner cuando consent es rejected', () => {
         mockConsent = 'rejected';
         render(<CookieBanner copy={mockCopy} locale="es" />);
 
-        expect(screen.queryByText(mockCopy.message)).not.toBeInTheDocument();
+        // Component always renders in DOM (CSS-only visibility) — check aria-hidden instead
+        const dialog = screen.getByRole('dialog', { hidden: true });
+        expect(dialog).toHaveAttribute('aria-hidden', 'true');
     });
 
     it('llama a accept() al hacer clic en Aceptar', () => {

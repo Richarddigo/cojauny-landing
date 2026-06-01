@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import LegalArticle from '@/components/LegalArticle';
 import { Link } from '@/i18n/navigation';
 import { getAppMessages } from '@/lib/i18nMessages';
+import { getCommonCopy } from '@/locales/common';
 import { locales, type Locale } from '@/locales/config';
 
 interface AccountDeletionPageProps {
@@ -48,13 +49,14 @@ const AccountDeletionPage = async ({ params }: AccountDeletionPageProps) => {
 
     const copy = (await getAppMessages(locale)).legal.accountDeletion;
     const links = relatedLinksLabel[locale];
+    const common = getCommonCopy(locale);
 
     return (
         <>
             <LegalArticle copy={copy} />
             <nav
                 className="legal-shell -mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 pb-16 text-sm"
-                aria-label="Related legal pages"
+                aria-label={common.relatedLegalPages}
             >
                 <a
                     href="mailto:support@cojauny.com"

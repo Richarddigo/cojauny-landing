@@ -4,14 +4,6 @@
 import { render, screen } from '@testing-library/react';
 import SectionIntro from './SectionIntro';
 
-// Mock framer-motion
-jest.mock('framer-motion', () => ({
-    motion: {
-        div: ({ children, className, ...props }: any) => (
-            <div className={className} {...props}>{children}</div>
-        )
-    }
-}));
 
 describe('SectionIntro', () => {
     it('renderiza el título', () => {
