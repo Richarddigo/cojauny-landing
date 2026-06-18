@@ -10,8 +10,8 @@ export const siteMetadata = {
   locale: 'es_ES', // canonical locale for structured data; per-page locale is set dynamically
   author: 'Cojauny Studio - Richard Díaz González',
   twitter: '@cojauny',
-  primaryColor: '#5a67f2',
-  secondaryColor: '#121754',
+  primaryColor: '#5B7BFF',
+  secondaryColor: '#3A59D9',
   appStoreUrl: 'https://cojauny.com/app-store',
   playStoreUrl: 'https://cojauny.com/google-play',
   contactEmail: 'support@cojauny.com',

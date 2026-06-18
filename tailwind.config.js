@@ -8,16 +8,16 @@ module.exports = {
         extend: {
             colors: {
                 brand: {
-                    50: '#f5f7ff',
-                    100: '#e6ecff',
-                    200: '#c4ccff',
-                    300: '#9da8ff',
-                    400: '#7b88ff',
-                    500: '#5a67f2',
-                    600: '#434dd7',
-                    700: '#2e36ad',
-                    800: '#1d2380',
-                    900: '#121754'
+                    50: '#eef1ff',
+                    100: '#dce3ff',
+                    200: '#b8c4ff',
+                    300: '#93a8ff',
+                    400: '#7b94ff',
+                    500: '#5B7BFF',
+                    600: '#3A59D9',
+                    700: '#2e46b0',
+                    800: '#1f307f',
+                    900: '#121f52'
                 },
                 // Studio dark theme tokens (aligned with cojauny-studio).
                 // Available for opt-in dark sections via classes like `bg-studio-bg`, `text-studio-text`.
@@ -52,7 +52,7 @@ module.exports = {
                 ]
             },
             boxShadow: {
-                'soft-glow': '0 20px 60px rgba(90, 103, 242, 0.25)'
+                'soft-glow': '0 20px 60px rgba(91, 123, 255, 0.25)'
             }
         }
     },

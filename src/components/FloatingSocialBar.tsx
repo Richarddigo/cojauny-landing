@@ -64,7 +64,7 @@ export default function FloatingSocialBar() {
                 href="#beta"
                 onClick={handleBetaClick}
                 aria-label={common.goToBetaSignup}
-                className="floating-social-item p-1.5 rounded-full text-orange-400 hover:text-orange-300 hover:bg-white/10 transition-all duration-200 group"
+                className="floating-social-item p-1.5 rounded-full text-studio-accent hover:text-studio-accent-light hover:bg-white/10 transition-all duration-200 group"
                 style={{ animationDelay: '0.7s' }}
             >
                 <svg
@@ -95,7 +95,7 @@ export default function FloatingSocialBar() {
                     {/* Llamas del cohete */}
                     <path
                         d="M10 17L9 20M12 18L12 21M14 17L15 20"
-                        stroke="#FF6B35"
+                        stroke="#5B7BFF"
                         strokeWidth="1.5"
                         strokeLinecap="round"
                     />

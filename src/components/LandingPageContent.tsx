@@ -27,19 +27,19 @@ const LandingPageContent = ({ copy, locale, common }: LandingPageContentProps) =
     const resolvedCommon = common ?? getCommonCopy(locale);
     return (
         <>
-            <Hero copy={copy.hero} />
+            <Hero copy={copy.hero} quickSignupCopy={copy.heroQuickSignup} betaCopy={copy.forms.beta} locale={locale} />
             <DemoSection copy={copy.mockups} />
+            <section id="beta" className="cv-auto w-full scroll-mt-[74px] py-12 lg:scroll-mt-[100px] md:py-16 lg:py-20">
+                <div className="mx-auto max-w-[1180px] px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">
+                    <BetaSignupForm locale={locale} />
+                </div>
+            </section>
             <div className="cv-auto"><ValuePropsSection copy={copy.value} /></div>
             <div className="cv-auto"><SavingsSection copy={copy.savings} /></div>
             <div className="cv-auto"><Features copy={copy.features} /></div>
             <div className="cv-auto"><WorkflowSection copy={copy.workflow} /></div>
             {/* PREMIUM SECTION — controlled by NEXT_PUBLIC_ENABLE_PREMIUM=true */}
             {ENABLE_PREMIUM && <div className="cv-auto"><PricingSection copy={copy.pricing} common={resolvedCommon} /></div>}
-            <section id="beta" className="cv-auto w-full scroll-mt-[74px] py-12 lg:scroll-mt-[100px] md:py-16 lg:py-20">
-                <div className="mx-auto max-w-[1180px] px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">
-                    <BetaSignupForm locale={locale} />
-                </div>
-            </section>
             <div className="cv-auto"><FaqSection copy={copy.faq} /></div>
             <section id="feedback" className="cv-auto w-full scroll-mt-[74px] py-12 lg:scroll-mt-[100px] md:py-16 lg:py-20">
                 <div className="mx-auto max-w-[1180px] px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">

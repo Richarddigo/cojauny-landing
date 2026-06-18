@@ -3,6 +3,7 @@ import { Resend } from 'resend';
 import { betaSignupSchema } from '@/lib/validation';
 import { getDb } from '@/lib/db';
 import { betaSignupRatelimit } from '@/lib/ratelimit';
+import { buildBetaAdminEmail, buildBetaUserEmail, sanitizeHeader } from '@/lib/email';
 
 export const runtime = 'nodejs';
 
@@ -44,7 +45,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Validation error.', issues: parsed.error.issues }, { status: 422 });
   }
 
-  // Turnstile bot verification — enforced only when secret key is configured.
   const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
   if (turnstileSecret) {
     const token = parsed.data.cfTurnstileResponse;
@@ -61,14 +61,27 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  const { email, fullName, country, flightFrequency, useCase, homeAirport, updatesOptIn, termsAccepted, privacyAccepted, locale, referralCode } = parsed.data;
-  const fromEmail = 'noreply@cojauny.com';
+  const {
+    email,
+    fullName,
+    country,
+    flightFrequency,
+    useCase,
+    homeAirport,
+    updatesOptIn,
+    termsAccepted,
+    privacyAccepted,
+    locale,
+    referralCode,
+  } = parsed.data;
+  const fromEmail = 'Cojauny <noreply@cojauny.com>';
   const toEmail = process.env.BETA_TO_EMAIL;
   const segmentId = process.env.RESEND_SEGMENT_BETA;
 
-  // Persist to Neon if configured — trigger auto-creates referral_stats row
   const db = getDb();
   let referralLink = '';
+  let isDuplicate = false;
+
   if (db) {
     try {
       const ipAddress = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? null;
@@ -87,7 +100,6 @@ export async function POST(req: NextRequest) {
         RETURNING id
       ` as Array<{ id: string }>;
 
-      // If new row, increment referrer counter and fetch the new referral link
       if (inserted.length > 0) {
         if (referralCode) {
           try {
@@ -104,14 +116,23 @@ export async function POST(req: NextRequest) {
           SELECT referral_link FROM referral_stats WHERE waitlist_id = ${inserted[0].id}
         ` as Array<{ referral_link: string }>;
         referralLink = stats[0]?.referral_link ?? '';
+      } else {
+        isDuplicate = true;
+        const existing = await db`
+          SELECT rs.referral_link
+            FROM waitlist w
+            JOIN referral_stats rs ON rs.waitlist_id = w.id
+           WHERE lower(w.email) = lower(${email})
+           LIMIT 1
+        ` as Array<{ referral_link: string }>;
+        referralLink = existing[0]?.referral_link ?? '';
       }
     } catch (err) {
       console.error('[beta-signups] DB insert error:', err);
     }
   }
 
-  // Add to Resend Contacts (beta-waitlist segment) if configured
-  if (segmentId) {
+  if (segmentId && !isDuplicate) {
     try {
       await getResend().contacts.create({
         email,
@@ -122,35 +143,49 @@ export async function POST(req: NextRequest) {
       });
     } catch (err) {
       console.error('[beta-signups] Resend contacts error:', err);
-      // Non-fatal: continue to send confirmation email
     }
   }
 
-  // Send confirmation email to user
-  try {
-    await getResend().emails.send({
-      from: fromEmail,
-      to: email,
-      subject: '¡Estás en la lista de espera de Cojauny! 🎉',
-      text: `Hola ${fullName},\n\nGracias por apuntarte a la lista de espera beta de Cojauny.\n\nTe avisaremos en cuanto tengamos acceso disponible.\n\n— El equipo de Cojauny`,
-    });
-  } catch (err) {
-    console.error('[beta-signups] confirmation email error:', err);
+  if (!isDuplicate) {
+    const userEmail = buildBetaUserEmail(fullName, locale, referralLink || undefined);
+    try {
+      await getResend().emails.send({
+        from: fromEmail,
+        to: email,
+        subject: sanitizeHeader(userEmail.subject),
+        html: userEmail.html,
+      });
+    } catch (err) {
+      console.error('[beta-signups] confirmation email error:', err);
+    }
   }
 
-  // Notify admin
-  if (toEmail) {
+  if (toEmail && !isDuplicate) {
+    const adminEmail = buildBetaAdminEmail({
+      fullName,
+      email,
+      country,
+      flightFrequency,
+      useCase,
+      locale,
+    });
     try {
       await getResend().emails.send({
         from: fromEmail,
         to: toEmail,
-        subject: `[Cojauny Beta] Nueva solicitud — ${fullName}`,
-        text: `Nueva solicitud beta\n\nNombre: ${fullName}\nEmail: ${email}\nPaís: ${country ?? 'N/A'}\nFrecuencia: ${flightFrequency ?? 'N/A'}\nUso: ${useCase ?? 'N/A'}`,
+        subject: sanitizeHeader(adminEmail.subject),
+        html: adminEmail.html,
       });
     } catch (err) {
       console.error('[beta-signups] admin notification error:', err);
     }
   }
 
-  return NextResponse.json({ success: true, confirmationToken: '', referralLink });
+  return NextResponse.json({
+    success: true,
+    duplicate: isDuplicate,
+    ...(isDuplicate ? { errorCode: 'beta_duplicate_email' } : {}),
+    confirmationToken: '',
+    referralLink,
+  });
 }

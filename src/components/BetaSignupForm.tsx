@@ -173,7 +173,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
 
 
     return (
-        <div id="beta" className="scroll-mt-16 lg:scroll-mt-20">
+        <>
             <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">{resolvedCopy.heading}</h2>
                 <p className="mt-4 text-lg text-studio-muted mx-auto max-w-2xl">{resolvedCopy.subheading}</p>
@@ -409,7 +409,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                     <ReferralPanel copy={resolvedReferralPanelCopy} email={userEmail} referralLink={referralLink} />
                 </div>
             )}
-        </div>
+        </>
     );
 };
 

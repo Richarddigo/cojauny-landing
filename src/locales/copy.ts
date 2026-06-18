@@ -71,6 +71,7 @@ export interface ReferralPanelCopy {
     step3: string;
   };
   privacy: string;
+  privacyLabel: string;
 }
 
 export interface ValuePropCopy {
@@ -161,6 +162,16 @@ export interface LandingCopy {
     primaryCta: string;
     secondaryCta: string;
     imageAlt: string;
+  };
+  heroQuickSignup: {
+    ariaLabel: string;
+    label: string;
+    namePlaceholder: string;
+    emailPlaceholder: string;
+    submit: string;
+    submitting: string;
+    privacyNote: string;
+    success: string;
   };
   features: {
     title: string;
@@ -270,6 +281,16 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       primaryCta: 'Solicitar acceso beta',
       secondaryCta: 'Cómo funciona',
       imageAlt: 'App Cojauny mostrando matching de vuelo y ahorro compartido'
+    },
+    heroQuickSignup: {
+      ariaLabel: 'Registro rápido en la lista de espera beta',
+      label: 'Reserva tu plaza en la beta — solo nombre y email',
+      namePlaceholder: 'Tu nombre',
+      emailPlaceholder: 'tu@email.com',
+      submit: 'Unirme a la beta',
+      submitting: 'Enviando…',
+      privacyNote: 'Acepto los términos y la política de privacidad de Cojauny para solicitar acceso beta.',
+      success: '¡Listo! Te avisaremos por email cuando tu acceso esté disponible.'
     },
     features: {
       title: 'Todo lo que necesitas para viajar mejor',
@@ -709,7 +730,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         step3: 'Sumamos puntos si se registran.'
       },
       privacy:
-        'Sistema 100% anónimo. No guardamos datos de tus invitados.'
+        'Sistema 100% anónimo. No guardamos datos de tus invitados.',
+      privacyLabel: 'Seguridad:'
     },
     cookie: {
       message:
@@ -780,6 +802,16 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       primaryCta: 'Reserve my beta spot',
       secondaryCta: 'See how it works',
       imageAlt: 'Cojauny App showing flight matching and shared savings'
+    },
+    heroQuickSignup: {
+      ariaLabel: 'Quick beta waitlist signup',
+      label: 'Reserve your beta spot — just name and email',
+      namePlaceholder: 'Your name',
+      emailPlaceholder: 'you@email.com',
+      submit: 'Join the beta',
+      submitting: 'Sending…',
+      privacyNote: 'I accept Cojauny\'s terms and privacy policy to request beta access.',
+      success: 'You\'re in! We\'ll email you as soon as your access is ready.'
     },
     features: {
       title: 'Everything you need to travel cheaper and greener',
@@ -1178,7 +1210,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         ]
       },
       feedback: {
-        heading: '',
+        heading: 'Your feedback matters',
         subheading: 'Have a suggestion to improve Cojauny? Want to share an innovative idea or explore business opportunities? We are here to listen.',
         title: 'Share your proposal',
         description:
@@ -1219,7 +1251,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         step3: 'If they sign up, we count a new signup associated with you and you move up the queue.'
       },
       privacy:
-        'We only count visits and signups anonymously. We do not collect personal data from those who click your link.'
+        'We only count visits and signups anonymously. We do not collect personal data from those who click your link.',
+      privacyLabel: 'Security:'
     },
     cookie: {
       message:
@@ -1290,6 +1323,16 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       primaryCta: 'Beta-Zugang anfordern',
       secondaryCta: 'So funktioniert\'s',
       imageAlt: 'Cojauny App zeigt Flug-Matching und geteilte Ersparnisse'
+    },
+    heroQuickSignup: {
+      ariaLabel: 'Schnelle Beta-Wartelisten-Anmeldung',
+      label: 'Sichere dir deinen Beta-Platz — nur Name und E-Mail',
+      namePlaceholder: 'Dein Name',
+      emailPlaceholder: 'du@email.de',
+      submit: 'Beta beitreten',
+      submitting: 'Wird gesendet…',
+      privacyNote: 'Ich akzeptiere die AGB und Datenschutzrichtlinie von Cojauny für den Beta-Zugang.',
+      success: 'Geschafft! Wir benachrichtigen dich per E-Mail, sobald dein Zugang bereit ist.'
     },
     features: {
       title: 'Alles für eine bessere Reise',
@@ -1729,7 +1772,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         step3: 'Wir geben Punkte bei Anmeldung.'
       },
       privacy:
-        '100% anonymes System. Wir speichern keine Daten deiner Eingeladenen.'
+        '100% anonymes System. Wir speichern keine Daten deiner Eingeladenen.',
+      privacyLabel: 'Sicherheit:'
     },
     cookie: {
       message:
@@ -1799,6 +1843,16 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       primaryCta: "Demander l'accès Bêta",
       secondaryCta: 'Comment ça marche',
       imageAlt: 'Interface Cojauny montrant le matching de vol et les économies'
+    },
+    heroQuickSignup: {
+      ariaLabel: 'Inscription rapide à la liste d\'attente bêta',
+      label: 'Réservez votre place bêta — nom et e-mail uniquement',
+      namePlaceholder: 'Votre nom',
+      emailPlaceholder: 'vous@email.com',
+      submit: 'Rejoindre la bêta',
+      submitting: 'Envoi…',
+      privacyNote: 'J\'accepte les conditions et la politique de confidentialité de Cojauny pour demander l\'accès bêta.',
+      success: 'C\'est fait ! Nous vous préviendrons par e-mail dès que votre accès sera prêt.'
     },
     features: {
       title: 'Tout pour un voyage optimisé',
@@ -2238,7 +2292,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         step3: 'Nous donnons des points à l\'inscription.'
       },
       privacy:
-        'Système 100% anonyme. Nous ne stockons pas les données de vos invités.'
+        'Système 100% anonyme. Nous ne stockons pas les données de vos invités.',
+      privacyLabel: 'Sécurité :'
     },
     cookie: {
       message:

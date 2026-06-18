@@ -161,7 +161,7 @@ const ReferralPanel = ({ copy, email, referralLink: propReferralLink }: Referral
 
         {/* Privacy Notice / Aviso de privacidad / Datenschutzhinweis / Avis de confidentialite */}
         <div className="text-sm text-studio-muted text-center">
-          Security: {copy.privacy}
+          {copy.privacyLabel} {copy.privacy}
         </div>
       </div>
     </div>

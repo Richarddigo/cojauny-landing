@@ -3,6 +3,11 @@ import { Resend } from 'resend';
 import { feedbackSchema } from '@/lib/validation';
 import { getDb } from '@/lib/db';
 import { feedbackRatelimit } from '@/lib/ratelimit';
+import {
+  buildFeedbackAdminEmail,
+  buildFeedbackUserEmail,
+  sanitizeHeader,
+} from '@/lib/email';
 
 export const runtime = 'nodejs';
 
@@ -44,7 +49,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Validation error.', issues: parsed.error.issues }, { status: 422 });
   }
 
-  // Turnstile bot verification — enforced only when secret key is configured.
   const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
   if (turnstileSecret) {
     const token = parsed.data.cfTurnstileResponse;
@@ -62,11 +66,10 @@ export async function POST(req: NextRequest) {
   }
 
   const { name, email, message, usecase, locale } = parsed.data;
-  const fromEmail = 'noreply@cojauny.com';
+  const fromEmail = 'Cojauny <noreply@cojauny.com>';
   const toEmail = process.env.FEEDBACK_TO_EMAIL;
   const segmentId = process.env.RESEND_SEGMENT_FEEDBACK;
 
-  // Persist to Neon if configured (non-blocking)
   const db = getDb();
   if (db) {
     try {
@@ -78,7 +81,6 @@ export async function POST(req: NextRequest) {
       `;
     } catch (err) {
       console.error('[feedback] DB insert error:', err);
-      // Non-fatal — continue to send email
     }
   }
 
@@ -87,20 +89,32 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Server configuration error.' }, { status: 503 });
   }
 
+  const adminEmail = buildFeedbackAdminEmail({ name, email, message, usecase, locale });
   try {
     await getResend().emails.send({
       from: fromEmail,
       to: toEmail,
-      replyTo: email,
-      subject: `[Cojauny Feedback] ${usecase} — from ${name}`,
-      text: `New feedback\n\nName: ${name}\nEmail: ${email}\nType: ${usecase}\n\nMessage:\n${message}`,
+      replyTo: sanitizeHeader(email),
+      subject: sanitizeHeader(adminEmail.subject),
+      html: adminEmail.html,
     });
   } catch (err) {
     console.error('[feedback] Resend error:', err);
     return NextResponse.json({ error: 'Failed to submit feedback. Try again later.' }, { status: 502 });
   }
 
-  // Add to Resend Contacts (feedback segment) if configured — non-fatal
+  const userEmail = buildFeedbackUserEmail(name, locale);
+  try {
+    await getResend().emails.send({
+      from: fromEmail,
+      to: email,
+      subject: sanitizeHeader(userEmail.subject),
+      html: userEmail.html,
+    });
+  } catch (err) {
+    console.error('[feedback] user confirmation email error:', err);
+  }
+
   if (segmentId) {
     try {
       await getResend().contacts.create({

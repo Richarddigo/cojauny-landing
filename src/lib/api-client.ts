@@ -44,8 +44,19 @@ export const apiClient = {
     submit: (data: FeedbackInput) => apiRequest<{ success: boolean }>('/api/feedback', data),
   },
   beta: {
-    signup: (data: BetaSignupInput) => apiRequest<{ success: boolean; id: string; confirmationToken: string; referralLink?: string }>('/api/beta-signups', data),
-
+    signup: async (data: BetaSignupInput) => {
+      const result = await apiRequest<{
+        success: boolean;
+        duplicate?: boolean;
+        errorCode?: string;
+        confirmationToken: string;
+        referralLink?: string;
+      }>('/api/beta-signups', data);
+      if (result.duplicate || result.errorCode === 'beta_duplicate_email') {
+        throw new ApiError('Duplicate email', 'beta_duplicate_email', result);
+      }
+      return result;
+    },
   },
   referral: {
     visit: (referralCode: string) => apiRequest<{ success: boolean }>('/api/referral/visit', { referralCode }),
