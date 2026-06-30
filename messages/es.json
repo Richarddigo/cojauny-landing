@@ -47,182 +47,176 @@
       "feedback": "Feedback"
     },
     "seo": {
-      "title": "Cojauny: Comunidad verificada de transporte compartido por vuelo",
-      "description": "Conecta con pasajeros verificados de tu mismo vuelo para compartir transporte al aeropuerto. Matching por número de vuelo, perfiles con documento y valoraciones por estrellas. +120 aeropuertos.",
+      "title": "Cojauny | Traslados aeroportuarios compartidos con pasajeros verificados",
+      "description": "Plataforma de movilidad verificada. Emparejamiento por vuelo, identidad validada y reputación transparente antes de cada trayecto compartido.",
       "keywords": [
-        "compartir taxi aeropuerto",
-        "transporte compartido aeropuerto",
+        "traslado aeropuerto seguro",
+        "transporte compartido verificado",
         "app viajes aeropuerto",
         "carpool aeropuerto",
         "viaje compartido vuelo",
-        "coordinar transporte vuelo",
         "comunidad viajeros verificada",
-        "traslado aeropuerto seguro",
-        "compartir coche mismo vuelo",
-        "perfil verificado aeropuerto"
+        "perfil verificado aeropuerto",
+        "matching por vuelo",
+        "movilidad aeroportuaria segura",
+        "compartir coche mismo vuelo"
       ],
-      "ogTitle": "Cojauny: Viaja con personas de tu mismo vuelo, verificadas",
-      "ogDescription": "Comunidad de viaje verificada que te empareja con pasajeros de tu vuelo exacto. Perfiles con documento, valoraciones y chat seguro antes del trayecto."
+      "ogTitle": "Cojauny | Seguridad verificada en traslados aeroportuarios",
+      "ogDescription": "Identidad verificada, reputación visible y matching por número de vuelo. Viaja con pasajeros de tu mismo trayecto, no con desconocidos al azar."
     },
     "hero": {
-      "eyebrow": "Mismo vuelo. Viajeros verificados. Trayecto compartido.",
-      "title": "Una comunidad de viaje verificada que te conecta con personas de tu mismo vuelo, para que nunca viajes con un desconocido ni pagues de más en tu traslado",
-      "subtitle": "Matching por número de vuelo, perfiles verificados con documento y foto, y valoraciones por estrellas. Conoces con quién compartes antes de salir de casa.",
+      "eyebrow": "Seguridad verificada · Mismo vuelo",
+      "title": "La seguridad es lo primero en cada traslado compartido al aeropuerto",
+      "subtitle": "Cojauny conecta pasajeros del mismo vuelo tras verificar identidad, reputación y contexto del trayecto. Usted decide con quién viaja antes de salir.",
       "primaryCta": "Solicitar acceso beta",
-      "secondaryCta": "Cómo funciona",
-      "imageAlt": "App Cojauny mostrando matching por vuelo y perfiles verificados"
+      "secondaryCta": "Ver cómo funciona",
+      "imageAlt": "Interfaz de Cojauny con perfiles verificados y matching por vuelo",
+      "trustSignals": [
+        "Verificación de identidad",
+        "Matching por número de vuelo",
+        "Reputación visible"
+      ]
     },
     "heroVariants": {
       "savings": {
-        "title": "Comparte tu traslado al aeropuerto y ahorra hasta un 75% con pasajeros verificados de tu mismo vuelo",
-        "subtitle": "Matching por número de vuelo, perfiles con documento y valoraciones visibles. La confianza primero; el ahorro es la confirmación."
+        "title": "Traslados aeroportuarios más seguros y eficientes, con ahorro al compartir",
+        "subtitle": "La seguridad define cada conexión. El ahorro llega después, al dividir el coste con pasajeros verificados de su vuelo."
       }
     },
     "heroQuickSignup": {
-      "ariaLabel": "Registro rápido en la lista de espera beta",
-      "label": "Reserva tu plaza en la beta — solo nombre y email",
-      "referralHint": "Invita amigos con tu enlace único y sube en la lista de espera.",
-      "namePlaceholder": "Tu nombre",
-      "emailPlaceholder": "tu@email.com",
-      "submit": "Unirme a la beta",
-      "submitting": "Enviando…",
-      "privacyNote": "Acepto los términos y la política de privacidad de Cojauny para solicitar acceso beta.",
-      "success": "¡Listo! Te avisaremos por email cuando tu acceso esté disponible."
+      "ariaLabel": "Solicitud de acceso a la beta de Cojauny",
+      "label": "Solicite acceso anticipado a la beta",
+      "emailPlaceholder": "su@email.com",
+      "submit": "Solicitar acceso",
+      "submitting": "Enviando solicitud…",
+      "privacyNote": "Al enviar su correo, acepta los términos de uso y la política de privacidad de Cojauny.",
+      "success": "Solicitud recibida. Le contactaremos por correo cuando su acceso esté disponible."
     },
-    "airportsHubTitle": "Aeropuertos populares",
-    "airportsHubAll": "Ver los 180+ aeropuertos",
-    "betaReferralBanner": "¿Conoces a alguien que viaje seguido? Invítale con tu enlace único tras registrarte y sube en la lista de espera.",
+    "airportsHubTitle": "Principales aeropuertos",
+    "airportsHubAll": "Ver cobertura completa",
+    "betaReferralBanner": "Tras registrarse, recibirá un enlace de invitación para compartir con su red y priorizar su acceso.",
     "features": {
-      "title": "Diseñado para que confíes antes de compartir",
-      "subtitle": "Matching por vuelo, perfiles verificados, chat seguro y reputación visible. Cojauny elimina la incertidumbre de viajar con desconocidos.",
+      "title": "Infraestructura de confianza para viajar en compañía",
+      "subtitle": "Cada función está diseñada para reducir el riesgo antes del trayecto: identidad, contexto compartido y comunicación controlada.",
       "items": [
         {
-          "title": "Matching por Vuelo",
-          "description": "Introduce tu número de vuelo y conectamos automáticamente con pasajeros del mismo trayecto. No es un coche compartido al azar: es tu vuelo.",
+          "title": "Matching por vuelo",
+          "description": "El emparejamiento se realiza por número de vuelo y fecha. No hay coincidencias aleatorias: solo pasajeros del mismo trayecto.",
           "iconName": "bolt"
         },
         {
-          "title": "Confianza Verificada",
-          "description": "Todos los perfiles pasan verificación de identidad y foto. Consulta valoraciones y historial antes de unirte a un trayecto.",
+          "title": "Identidad verificada",
+          "description": "Perfiles con verificación documental y foto. La confianza se construye con datos verificables, no con suposiciones.",
           "iconName": "shield"
         },
         {
-          "title": "Chat Seguro 48h",
-          "description": "Comunícate en un canal cifrado que se activa antes del vuelo y desaparece 48h después. Conócete al grupo sin compartir tu número.",
+          "title": "Canal de comunicación seguro",
+          "description": "Coordinación previa al vuelo en un entorno cifrado, con acceso limitado en el tiempo para proteger su privacidad.",
           "iconName": "chat"
         },
         {
-          "title": "Valoraciones por Estrellas",
-          "description": "Tras cada viaje, puntualidad, comunicación y amabilidad se valoran con estrellas. La reputación te ayuda a elegir con criterio.",
+          "title": "Reputación transparente",
+          "description": "Valoraciones por estrellas y comentarios visibles tras cada trayecto. Toma decisiones informadas antes de confirmar.",
           "iconName": "sparkles"
         },
         {
-          "title": "Eventos con Cupos",
-          "description": "Publica o únete a traslados con aforo controlado. Ves quién organiza, quién va y el punto de encuentro antes de confirmar.",
+          "title": "Eventos con aforo controlado",
+          "description": "Cada traslado muestra organizador, participantes, punto de encuentro y coste estimado antes de la confirmación.",
           "iconName": "users"
         },
         {
-          "title": "Alertas de Viaje",
-          "description": "Recibe notificaciones sobre cambios de vuelo, recordatorios de encuentro y avisos de llegada del conductor al instante.",
-          "iconName": "sparkles"
-        },
-        {
-          "title": "Multilenguaje Global",
-          "description": "La app se adapta a 78 idiomas con traducción automática. Coordina con viajeros de todo el mundo sin barreras.",
+          "title": "Alertas operativas de vuelo",
+          "description": "Notificaciones sobre cambios de horario, recordatorios de encuentro y actualizaciones relevantes del trayecto.",
           "iconName": "globe"
-        },
-        {
-          "title": "Panel de Impacto",
-          "description": "Cuando compartes, también ahorras. Visualiza tu ahorro acumulado y el CO₂ evitado en cada viaje completado.",
-          "iconName": "bolt"
         }
       ]
     },
     "value": {
-      "title": "Viaja con gente de tu vuelo, no con desconocidos al azar",
-      "subtitle": "Cojauny resuelve primero la pregunta que importa: ¿me fío? Solo después viene el ahorro. Una comunidad verificada con contexto compartido.",
+      "eyebrow": "Seguridad primero",
+      "title": "Un estándar de confianza antes de compartir vehículo",
+      "subtitle": "Cojauny prioriza la seguridad del pasajero en cada etapa: verificación, selección, coordinación y evaluación posterior.",
       "items": [
         {
-          "title": "🛡️ Seguridad verificada",
-          "description": "Perfiles con documento de identidad, foto y sistema de reputación por estrellas. Sabes con quién viajas antes de confirmar."
+          "title": "Verificación de identidad",
+          "description": "Acceso a una comunidad donde cada perfil cumple un proceso de validación documental antes de participar."
         },
         {
-          "title": "✈️ Tu mismo vuelo, contexto compartido",
-          "description": "No es un coche compartido al azar: compartes trayecto con pasajeros de tu vuelo exacto. Mismo destino, mismos horarios, misma terminal."
+          "title": "Contexto de vuelo compartido",
+          "description": "Viaja con personas del mismo vuelo y terminal. El contexto operativo reduce incertidumbre y mejora la coordinación."
         },
         {
-          "title": "⭐ Reputación transparente",
-          "description": "Valoraciones visibles de viajes anteriores. Elige compañeros con historial positivo y construye tu propia reputación."
+          "title": "Reputación auditable",
+          "description": "Historial de valoraciones visible para evaluar puntualidad, comunicación y conducta en trayectos anteriores."
         },
         {
-          "title": "⏱️ Coordinación sin estrés",
-          "description": "Agenda integrada y avisos automáticos. Todo el grupo sabe dónde y cuándo encontrarse sin cientos de mensajes."
+          "title": "Coordinación estructurada",
+          "description": "Punto de encuentro, horarios y reparto de costes definidos con antelación. Menos fricción, más previsibilidad."
         },
         {
-          "title": "🤝 Comunidad, no extraños",
-          "description": "Conecta con viajeros que van al mismo sitio que tú. El chat previo te permite conocer al grupo antes del trayecto."
+          "title": "Comunidad profesional",
+          "description": "Un entorno pensado para viajeros frecuentes y equipos corporativos que necesitan estándares claros de confianza."
         },
         {
-          "title": "💸 Y además, ahorras",
-          "description": "Cuando compartes con confianza, el coste se divide. Un beneficio real, pero nunca a costa de tu seguridad."
+          "title": "Eficiencia económica responsable",
+          "description": "Al compartir con criterio, el coste del traslado se optimiza sin comprometer los requisitos de seguridad."
         }
       ]
     },
     "savings": {
-      "title": "Y además, compartir también ahorra",
-      "caption": "Una vez que confías y coordinas, el ahorro llega solo. Esto es lo que puedes esperar al compartir trayecto.",
+      "title": "Eficiencia económica como resultado de la confianza",
+      "caption": "Cuando la coordinación es segura y predecible, compartir traslado reduce costes de forma sostenida.",
       "metrics": [
         {
-          "value": "120+",
+          "value": "180+",
           "label": "Aeropuertos",
-          "description": "Red activa en los principales hubs de Europa y América."
+          "description": "Cobertura en hubs internacionales de Europa, América y Oriente Medio."
         },
         {
           "value": "50.000+",
-          "label": "Pasajeros conectados",
-          "description": "Meta anual para crear una red global con masa crítica en rutas clave."
+          "label": "Conexiones previstas",
+          "description": "Objetivo de red para alcanzar masa crítica en rutas de alta demanda."
         },
         {
           "value": "50-75%",
-          "label": "Ahorro al compartir",
-          "description": "Rango medio de ahorro por traslado cuando divides taxi o coche privado con tu grupo."
+          "label": "Ahorro por trayecto",
+          "description": "Rango estimado al dividir taxi o vehículo privado entre pasajeros verificados."
         },
         {
           "value": "1.000+ t",
           "label": "CO₂ evitado",
-          "description": "Toneladas de emisiones que planeamos reducir en nuestro primer año operativo."
+          "description": "Impacto ambiental proyectado al consolidar ocupación por vehículo."
         }
       ]
     },
     "workflow": {
-      "title": "Tu viaje compartido en 5 pasos",
-      "intro": "De tu número de vuelo a un trayecto de confianza. Así funciona el matching en Cojauny.",
+      "title": "Proceso de viaje compartido en cinco pasos",
+      "intro": "Un flujo claro, con controles de seguridad en cada fase del trayecto.",
       "steps": [
         {
-          "title": "1. Perfil verificado",
-          "description": "Crea tu cuenta con foto y verifica tu identidad. Accedes a una comunidad donde todos pasan el mismo filtro."
+          "title": "1. Alta con verificación",
+          "description": "Cree su perfil y complete la verificación de identidad para acceder a la comunidad."
         },
         {
-          "title": "2. Añade tu vuelo",
-          "description": "Ingresa tu número de vuelo y fecha. Buscamos automáticamente pasajeros compatibles en el mismo trayecto."
+          "title": "2. Registro de vuelo",
+          "description": "Indique número de vuelo y fecha para identificar pasajeros compatibles."
         },
         {
-          "title": "3. Revisa y elige",
-          "description": "Consulta perfiles, valoraciones por estrellas y eventos disponibles. Tú decides con quién compartir."
+          "title": "3. Evaluación de opciones",
+          "description": "Revise perfiles, reputación y condiciones del trayecto antes de confirmar."
         },
         {
-          "title": "4. Coordina en chat seguro",
-          "description": "Ultima detalles con el grupo en un canal cifrado. Punto de encuentro, horarios y reparto del coste, todo claro."
+          "title": "4. Coordinación segura",
+          "description": "Alinee punto de encuentro, horarios y reparto de costes en canal cifrado."
         },
         {
-          "title": "5. Viaja y valora",
-          "description": "Comparte el trayecto con tranquilidad. Al terminar, valora a tus compañeros y construye tu reputación."
+          "title": "5. Trayecto y valoración",
+          "description": "Complete el viaje y aporte su evaluación para mantener estándares de la comunidad."
         }
       ]
     },
     "mockups": {
-      "heading": "Así se ve viajar con confianza",
-      "description": "Perfiles verificados, matching por vuelo, chat seguro y valoraciones visibles. La app que te muestra con quién viajas antes de salir.",
+      "heading": "Una experiencia diseñada para decidir con información",
+      "description": "La interfaz muestra identidad, contexto de vuelo y reputación antes de confirmar cualquier trayecto compartido.",
       "screens": [
         {
           "id": "flight-search",
@@ -269,8 +263,8 @@
       ]
     },
     "ctaStrip": {
-      "heading": "Únete a la comunidad verificada de Cojauny",
-      "body": "Accede a la beta privada: perfiles verificados, matching por vuelo y acceso anticipado al producto. Plazas limitadas para early adopters.",
+      "heading": "Acceda a la beta de Cojauny",
+      "body": "Solicite acceso anticipado a una plataforma de traslados compartidos con estándares verificados de seguridad.",
       "link": "#beta",
       "linkLabel": "Solicitar acceso beta"
     },
@@ -397,14 +391,14 @@
         "heading": "Únete a la comunidad verificada de Cojauny",
         "subheading": "Acceso anticipado a la beta: perfiles verificados, matching por vuelo y línea directa con el equipo.",
         "title": "Solicita acceso beta",
-        "description": "🌟 Acceso prioritario · 🛡️ Perfiles verificados · 🏆 Insignia fundadora · 🚀 Soporte directo",
+        "description": "Acceso prioritario, perfiles verificados, insignia de fundador y soporte directo del equipo.",
         "success": "¡Estás dentro! Te avisaremos por email cuando tu acceso esté listo.",
         "error": "Hubo un error al registrar tu solicitud. Por favor, inténtalo de nuevo.",
         "duplicateError": "Ya estás en nuestra lista. Te avisaremos pronto.",
         "submit": "Enviar solicitud",
         "checkboxLabel": "Acepto la {privacyLink} de Cojauny.",
         "privacyLinkLabel": "política de privacidad",
-        "referralNotice": "ℹ️ Recibirás un enlace único para invitar amigos. Solo contamos visitas y registros para darte prioridad, sin guardar datos ajenos.",
+        "referralNotice": "Tras registrarse recibirá un enlace de invitación. Solo contamos visitas y registros para priorizar su acceso, sin almacenar datos de terceros.",
         "optionalLabel": "(opcional)",
         "optionalHint": "Los campos marcados como \"(opcional)\" no son obligatorios.",
         "fields": {

@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
 
   const {
     email,
-    fullName,
+    fullName: rawFullName,
     country,
     flightFrequency,
     useCase,
@@ -74,6 +74,10 @@ export async function POST(req: NextRequest) {
     locale,
     referralCode,
   } = parsed.data;
+  const fullName =
+    rawFullName && rawFullName.trim().length >= 3
+      ? rawFullName.trim()
+      : email.split('@')[0] || 'Beta user';
   const fromEmail = 'Cojauny <noreply@cojauny.com>';
   const toEmail = process.env.BETA_TO_EMAIL;
   const segmentId = process.env.RESEND_SEGMENT_BETA;

@@ -22,6 +22,7 @@ describe('Hero', () => {
             screen.getByRole('heading', { name: new RegExp(copy.hero.title, 'i') })
         ).toBeInTheDocument();
         expect(screen.getByRole('link', { name: new RegExp(copy.hero.secondaryCta, 'i') })).toBeInTheDocument();
-        expect(screen.getByText(copy.heroQuickSignup.referralHint)).toBeInTheDocument();
+        expect(screen.getByText(copy.heroQuickSignup.label)).toBeInTheDocument();
+        expect(screen.getByText(copy.hero.trustSignals[0])).toBeInTheDocument();
     });
 });

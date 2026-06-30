@@ -35,7 +35,7 @@ export const feedbackSchema = z
 export const betaSignupSchema = z
   .object({
     email: z.string().email('Introduce un correo válido'),
-    fullName: z.string().min(3, 'Introduce tu nombre completo'),
+    fullName: z.string().min(3, 'Introduce tu nombre completo').optional(),
     useCase: z.string().optional(),
     country: z
       .enum(betaCountryValues, {
@@ -67,5 +67,20 @@ export const betaSignupSchema = z
     path: ['honeypot']
   });
 
-export type FeedbackInput = z.infer<typeof feedbackSchema>;
+export const heroBetaSignupSchema = z
+  .object({
+    email: z.string().email('Introduce un correo válido'),
+    locale: z.enum(localeValues),
+    termsAccepted: z.literal(true),
+    privacyAccepted: z.literal(true),
+    honeypot: z.string().optional(),
+    cfTurnstileResponse: z.string().optional(),
+  })
+  .refine((values) => !values.honeypot, {
+    message: 'Posible bot detectado',
+    path: ['honeypot'],
+  });
+
+export type HeroBetaSignupInput = z.infer<typeof heroBetaSignupSchema>;
 export type BetaSignupInput = z.infer<typeof betaSignupSchema>;
+export type FeedbackInput = z.infer<typeof feedbackSchema>;

@@ -47,135 +47,129 @@
       "feedback": "Feedback"
     },
     "seo": {
-      "title": "Cojauny: Verifizierte Reisegemeinschaft für geteilte Flughafentransfers",
-      "description": "Finde verifizierte Passagiere auf deinem exakten Flug für gemeinsame Flughafentransfers. Flugnummer-Matching, verifizierte Profile und Sternebewertungen. 120+ Flughäfen.",
+      "title": "Cojauny | Verifizierte Flughafentransfers mit flugbezogenem Matching",
+      "description": "Verifizierte Mobilitätsplattform. Flug-Matching, Identitätsprüfung und transparente Reputation vor jedem geteilten Transfer.",
       "keywords": [
-        "verifizierte flughafenfahrt",
-        "flughafentransfer teilen",
-        "flug mitfahrgelegenheit",
+        "sicherer flughafentransfer",
+        "verifizierter flughafen ride share",
+        "flug ride sharing",
         "vertrauenswürdige reisegemeinschaft",
         "gleicher flug carpool",
-        "flughafen fahrgemeinschaft app",
+        "flughafen carpool app",
         "verifizierte reiseprofile",
-        "sicherer flughafentransfer",
-        "taxi teilen gleicher flug",
-        "nachhaltiges reisen"
+        "flug matching app",
+        "sichere flughafen mobilität",
+        "geteilter flughafentransport"
       ],
-      "ogTitle": "Cojauny: Reise mit Menschen auf deinem exakten Flug, verifiziert",
-      "ogDescription": "Eine verifizierte Reisegemeinschaft, die dich mit Passagieren deines Fluges verbindet. Verifizierte Profile, Sternebewertungen und sicherer Chat vor der Fahrt."
+      "ogTitle": "Cojauny | Sicherheit zuerst bei geteilten Flughafentransfers",
+      "ogDescription": "Identitätsprüfung, sichtbare Reputation und Matching per Flugnummer. Reisen Sie mit Passagieren auf derselben Strecke, nicht mit zufälligen Fremden."
     },
     "hero": {
-      "eyebrow": "Gleicher Flug. Verifizierte Reisende. Geteilte Fahrt.",
-      "title": "Eine verifizierte Reisegemeinschaft, die dich mit Menschen auf deinem exakten Flug verbindet — damit du nie mit einem Fremden und nie zu viel für deinen Transfer reist",
-      "subtitle": "Flugnummer-Matching, verifizierte Profile mit Ausweis und Foto sowie Sternebewertungen. Du weißt, mit wem du fährst, bevor du das Haus verlässt.",
+      "eyebrow": "Sicherheit verifiziert · Gleicher Flug",
+      "title": "Sicherheit steht bei jedem geteilten Flughafentransfer an erster Stelle",
+      "subtitle": "Cojauny verbindet Passagiere desselben Flugs nach Prüfung von Identität, Reputation und Fahrtkontext. Sie entscheiden vor Abflug, mit wem Sie fahren.",
       "primaryCta": "Beta-Zugang anfordern",
-      "secondaryCta": "So funktioniert's",
-      "imageAlt": "Cojauny App zeigt Flug-Matching und verifizierte Profile"
+      "secondaryCta": "Ablauf ansehen",
+      "imageAlt": "Cojauny-Oberfläche mit verifizierten Profilen und Flug-Matching",
+      "trustSignals": [
+        "Identitätsprüfung",
+        "Flugnummer-Matching",
+        "Sichtbare Reputation"
+      ]
     },
     "heroVariants": {
       "savings": {
-        "title": "Teile deinen Flughafentransfer und spare bis zu 75% mit verifizierten Passagieren auf deinem Flug",
-        "subtitle": "Flugnummer-Matching, verifizierte Profile und sichtbare Bewertungen. Vertrauen zuerst — Ersparnis als Bestätigung."
+        "title": "Sicherere und effizientere Flughafentransfers mit Ersparnis beim Teilen",
+        "subtitle": "Sicherheit definiert jede Verbindung. Kosteneffizienz folgt, wenn verifizierte Passagiere Ihres Flugs gemeinsam fahren."
       }
     },
     "heroQuickSignup": {
-      "ariaLabel": "Schnelle Beta-Wartelisten-Anmeldung",
-      "label": "Sichere dir deinen Beta-Platz — nur Name und E-Mail",
-      "referralHint": "Lade Freunde mit deinem Einladungslink ein und steige in der Warteliste auf.",
-      "namePlaceholder": "Dein Name",
-      "emailPlaceholder": "du@email.de",
-      "submit": "Beta beitreten",
-      "submitting": "Wird gesendet…",
-      "privacyNote": "Ich akzeptiere die AGB und Datenschutzrichtlinie von Cojauny für den Beta-Zugang.",
-      "success": "Geschafft! Wir benachrichtigen dich per E-Mail, sobald dein Zugang bereit ist."
+      "ariaLabel": "Cojauny Beta-Zugang anfordern",
+      "label": "Frühen Beta-Zugang anfordern",
+      "emailPlaceholder": "ihre@email.de",
+      "submit": "Zugang anfordern",
+      "submitting": "Anfrage wird gesendet…",
+      "privacyNote": "Mit dem Absenden Ihrer E-Mail akzeptieren Sie die Nutzungsbedingungen und Datenschutzrichtlinie von Cojauny.",
+      "success": "Anfrage erhalten. Wir kontaktieren Sie per E-Mail, sobald Ihr Zugang verfügbar ist."
     },
-    "airportsHubTitle": "Beliebte Flughäfen",
-    "airportsHubAll": "180+ Flughäfen ansehen",
-    "betaReferralBanner": "Kennst du Vielreisende? Nach der Anmeldung teile deinen Einladungslink und steige in der Warteliste auf.",
+    "airportsHubTitle": "Wichtige Flughäfen",
+    "airportsHubAll": "Vollständige Abdeckung ansehen",
+    "betaReferralBanner": "Nach der Registrierung erhalten Sie einen Einladungslink, um Ihren Zugang zu priorisieren.",
     "features": {
-      "title": "Gebaut, damit du vertraust, bevor du teilst",
-      "subtitle": "Flug-Matching, verifizierte Profile, sicherer Chat und sichtbare Reputation. Cojauny beseitigt die Unsicherheit beim Reisen mit Fremden.",
+      "title": "Vertrauensinfrastruktur für gemeinsames Reisen",
+      "subtitle": "Jede Funktion reduziert Risiken vor dem Fahrtantritt: Identität, gemeinsamer Kontext und kontrollierte Kommunikation.",
       "items": [
         {
           "title": "Flug-Matching",
-          "description": "Gib deine Flugnummer ein und wir verbinden dich mit Passagieren auf derselben Strecke. Keine zufällige Mitfahrgelegenheit — dein exakter Flug.",
+          "description": "Matching erfolgt über Flugnummer und Datum. Keine Zufallstreffer — nur Passagiere auf derselben Strecke.",
           "iconName": "bolt"
         },
         {
-          "title": "Verifiziertes Vertrauen",
-          "description": "Jedes Profil durchläuft Identitäts- und Fotoprüfung. Prüfe Bewertungen und Historie, bevor du einer Fahrt beitrittst.",
+          "title": "Verifizierte Identität",
+          "description": "Profile mit Dokumentenprüfung und Foto. Vertrauen basiert auf überprüfbaren Daten, nicht auf Annahmen.",
           "iconName": "shield"
         },
         {
-          "title": "Sicherer 48h-Chat",
-          "description": "Kommuniziere in einem verschlüsselten Kanal vor und während der Fahrt. Lerne deine Begleiter kennen, ohne deine Handynummer zu teilen.",
+          "title": "Sicherer Kommunikationskanal",
+          "description": "Koordination vor dem Flug in einer verschlüsselten Umgebung mit zeitlich begrenztem Zugang.",
           "iconName": "chat"
         },
         {
-          "title": "Sternebewertungen",
-          "description": "Nach jeder Fahrt bewertest du Pünktlichkeit, Kommunikation und Freundlichkeit. Reputation hilft dir, sicher zu wählen.",
+          "title": "Transparente Reputation",
+          "description": "Sternebewertungen und Feedback sind vor der Bestätigung sichtbar. Entscheiden Sie informiert.",
           "iconName": "sparkles"
         },
         {
-          "title": "Events mit Plätzen",
-          "description": "Tritt Transfers mit kontrollierter Kapazität bei oder erstelle sie. Sieh Organisator, Teilnehmer und Treffpunkt vor der Bestätigung.",
+          "title": "Events mit kontrollierter Kapazität",
+          "description": "Jeder Transfer zeigt Organisator, Teilnehmer, Treffpunkt und geschätzte Kosten vor der Bestätigung.",
           "iconName": "users"
         },
         {
-          "title": "Reise-Alerts",
-          "description": "Priorisierte Benachrichtigungen für Flugänderungen, Treffpunkt-Erinnerungen und Fahrerankunft.",
-          "iconName": "sparkles"
-        },
-        {
-          "title": "Weltweite Sprachunterstützung",
-          "description": "Die App passt sich an 78 Sprachen an, inklusive Auto-Übersetzung. Koordiniere dich weltweit ohne Barrieren.",
+          "title": "Operative Flugalerts",
+          "description": "Benachrichtigungen bei Zeitplanänderungen, Treffpunkt-Erinnerungen und relevanten Reise-Updates.",
           "iconName": "globe"
-        },
-        {
-          "title": "Impact-Dashboard",
-          "description": "Wenn du mit Vertrauen teilst, sparst du auch. Verfolge kumulierte Ersparnisse und vermiedenes CO₂ nach jeder Fahrt.",
-          "iconName": "bolt"
         }
       ]
     },
     "value": {
-      "title": "Reise mit Menschen auf deinem Flug, nicht mit zufälligen Fremden",
-      "subtitle": "Cojauny beantwortet zuerst die wichtige Frage: Kann ich ihnen vertrauen? Ersparnis kommt danach. Eine verifizierte Community mit gemeinsamem Kontext.",
+      "eyebrow": "Sicherheit zuerst",
+      "title": "Ein Vertrauensstandard vor dem Teilen eines Fahrzeugs",
+      "subtitle": "Cojauny priorisiert die Sicherheit der Passagiere in jeder Phase: Verifizierung, Auswahl, Koordination und Bewertung.",
       "items": [
         {
-          "title": "🛡️ Verifizierte Sicherheit",
-          "description": "Profile mit Ausweis, Foto und Sternebewertungssystem. Du weißt, mit wem du fährst, bevor du bestätigst."
+          "title": "Identitätsprüfung",
+          "description": "Zugang zu einer Community, in der jedes Profil eine Dokumentenprüfung abschließt."
         },
         {
-          "title": "✈️ Gleicher Flug, gemeinsamer Kontext",
-          "description": "Keine zufällige Mitfahrgelegenheit: Du teilst Fahrten mit Passagieren deines exakten Fluges. Gleiches Ziel, Zeitplan und Terminal."
+          "title": "Gemeinsamer Flugkontext",
+          "description": "Fahren Sie mit Personen auf demselben Flug und Terminal. Operativer Kontext reduziert Unsicherheit."
         },
         {
-          "title": "⭐ Transparente Reputation",
-          "description": "Sichtbare Bewertungen aus vergangenen Fahrten. Wähle Begleiter mit positiver Historie und baue deine eigene Reputation auf."
+          "title": "Nachvollziehbare Reputation",
+          "description": "Sichtbare Bewertungshistorie für Pünktlichkeit, Kommunikation und Verhalten."
         },
         {
-          "title": "⏱️ Stressfreie Koordination",
-          "description": "Integrierte Agenda und Auto-Alerts. Die ganze Gruppe weiß wann und wo, ohne endlose Nachrichten."
+          "title": "Strukturierte Koordination",
+          "description": "Treffpunkt, Zeitplan und Kostenaufteilung werden im Voraus festgelegt."
         },
         {
-          "title": "🤝 Community, keine Fremden",
-          "description": "Vernetze dich mit Reisenden zum gleichen Ziel. Pre-Trip-Chat lässt dich die Gruppe vor der Fahrt kennenlernen."
+          "title": "Professionelle Community",
+          "description": "Entwickelt für Vielreisende und Unternehmen mit klaren Sicherheitsanforderungen."
         },
         {
-          "title": "💸 Und ja, du sparst auch",
-          "description": "Wenn du mit Vertrauen teilst, teilen sich die Kosten natürlich. Ein echter Vorteil — nie auf Kosten deiner Sicherheit."
+          "title": "Verantwortliche Kosteneffizienz",
+          "description": "Bei kriteriengeleitetem Teilen sinken Transferkosten ohne Sicherheitskompromisse."
         }
       ]
     },
     "savings": {
-      "title": "Und Teilen spart auch Geld",
-      "caption": "Sobald du vertraust und koordinierst, folgt die Ersparnis von selbst. Das kannst du beim Teilen erwarten.",
+      "title": "Wirtschaftliche Effizienz als Ergebnis von Vertrauen",
+      "caption": "Wenn die Koordination sicher und vorhersehbar ist, senken geteilte Transfers die Kosten nachhaltig.",
       "metrics": [
         {
-          "value": "120+",
+          "value": "180+",
           "label": "Flughäfen",
-          "description": "Aktives Netzwerk an großen Hubs in Europa und Amerika."
+          "description": "Abdeckung in internationalen Hubs in Europa, Amerika und dem Nahen Osten."
         },
         {
           "value": "50.000+",
@@ -195,34 +189,34 @@
       ]
     },
     "workflow": {
-      "title": "Deine geteilte Fahrt in 5 Schritten",
-      "intro": "Von deiner Flugnummer zur vertrauensvollen geteilten Fahrt. So funktioniert das Matching.",
+      "title": "Gemeinsamer Reiseprozess in fünf Schritten",
+      "intro": "Ein klarer Ablauf mit Sicherheitskontrollen in jeder Phase der Fahrt.",
       "steps": [
         {
-          "title": "1. Verifiziertes Profil",
-          "description": "Registriere dich mit Foto und verifiziere deine Identität. Alle in der Community durchlaufen denselben Vertrauensfilter."
+          "title": "1. Verifizierte Registrierung",
+          "description": "Erstellen Sie Ihr Profil und schließen Sie die Identitätsprüfung ab, um Zugang zur Community zu erhalten."
         },
         {
-          "title": "2. Flug hinzufügen",
-          "description": "Gib Flugnummer und Datum ein. Wir finden automatisch kompatible Passagiere auf derselben Strecke."
+          "title": "2. Flugregistrierung",
+          "description": "Geben Sie Flugnummer und Datum an, um kompatible Passagiere zu identifizieren."
         },
         {
-          "title": "3. Prüfen und wählen",
-          "description": "Durchsuche Profile, Sternebewertungen und verfügbare Events. Du entscheidest, mit wem du teilst."
+          "title": "3. Optionen prüfen",
+          "description": "Prüfen Sie Profile, Reputation und Fahrtbedingungen vor der Bestätigung."
         },
         {
-          "title": "4. Im sicheren Chat koordinieren",
-          "description": "Klare Details mit der Gruppe in einem verschlüsselten Kanal. Treffpunkt, Zeit und Kostenaufteilung."
+          "title": "4. Sichere Koordination",
+          "description": "Treffpunkt, Zeitplan und Kostenaufteilung in einem verschlüsselten Kanal abstimmen."
         },
         {
-          "title": "5. Fahren und bewerten",
-          "description": "Teile die Fahrt mit Vertrauen. Bewerte danach deine Begleiter und baue deine Reputation auf."
+          "title": "5. Fahrt und Bewertung",
+          "description": "Schließen Sie die Fahrt ab und geben Sie Ihre Bewertung ab, um Community-Standards zu wahren."
         }
       ]
     },
     "mockups": {
-      "heading": "So sieht Reisen mit Vertrauen aus",
-      "description": "Verifizierte Profile, Flug-Matching, sicherer Chat und sichtbare Bewertungen. Die App zeigt dir, mit wem du fährst, bevor du losgehst.",
+      "heading": "Eine Oberfläche für informierte Entscheidungen",
+      "description": "Die App zeigt Identität, Flugkontext und Reputation, bevor ein geteilter Transfer bestätigt wird.",
       "screens": [
         {
           "id": "flight-search",
@@ -269,8 +263,8 @@
       ]
     },
     "ctaStrip": {
-      "heading": "Tritt Cojaunys verifizierter Reisegemeinschaft bei",
-      "body": "Privater Beta-Zugang: verifizierte Profile, Flug-Matching und früher Produktzugang. Begrenzte Plätze für Early Adopters.",
+      "heading": "Beta-Zugang zu Cojauny anfordern",
+      "body": "Fordern Sie frühen Zugang zu einer Plattform für geteilte Transfers mit verifizierten Sicherheitsstandards an.",
       "link": "#beta",
       "linkLabel": "Beta-Zugang anfordern"
     },
@@ -397,14 +391,14 @@
         "heading": "Tritt Cojaunys verifizierter Reisegemeinschaft bei",
         "subheading": "Früher Beta-Zugang: verifizierte Profile, Flug-Matching und direkter Draht zum Team.",
         "title": "Beta-Zugang anfordern",
-        "description": "🌟 Prio-Zugang · 🛡️ Verifizierte Profile · 🏆 Gründer-Badge · 🚀 Direkter Support",
+        "description": "Prioritätszugang, verifizierte Profile, Gründer-Badge und direkter Team-Support.",
         "success": "Du bist dabei! Wir benachrichtigen dich per E-Mail, wenn dein Zugang bereit ist.",
         "error": "Fehler bei der Registrierung. Bitte versuche es erneut.",
         "duplicateError": "Du bist bereits auf der Liste. Wir melden uns bald.",
         "submit": "Anfrage senden",
         "checkboxLabel": "Ich akzeptiere Cojaunys {privacyLink}.",
         "privacyLinkLabel": "Datenschutzrichtlinie",
-        "referralNotice": "ℹ️ Du erhältst einen Link zum Einladen. Wir zählen nur Besuche und Anmeldungen für deine Priorität, ohne Daten Dritter zu speichern.",
+        "referralNotice": "Nach der Registrierung erhalten Sie einen Einladungslink. Wir zählen nur Besuche und Anmeldungen zur Priorisierung Ihres Zugangs, ohne Daten Dritter zu speichern.",
         "optionalLabel": "(optional)",
         "optionalHint": "Felder mit \"(optional)\" sind nicht Pflicht.",
         "fields": {
