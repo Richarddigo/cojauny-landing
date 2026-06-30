@@ -47,8 +47,8 @@
       "feedback": "Feedback"
     },
     "seo": {
-      "title": "Cojauny | Verified airport transfers with flight-matched passengers",
-      "description": "A verified mobility platform. Flight matching, identity validation, and transparent reputation before every shared transfer.",
+      "title": "Cojauny | Security-verified shared airport transfers",
+      "description": "Passenger safety comes first: verified identity, auditable reputation, and flight matching before any shared transfer is confirmed.",
       "keywords": [
         "safe airport transfer",
         "verified airport ride share",
@@ -61,31 +61,31 @@
         "secure airport mobility",
         "shared airport transport"
       ],
-      "ogTitle": "Cojauny | Security-first shared airport transfers",
-      "ogDescription": "ID verification, visible reputation, and flight-number matching. Travel with passengers on your exact itinerary, not random strangers."
+      "ogTitle": "Cojauny | Your safety defines every shared ride",
+      "ogDescription": "Verified identity, visible reputation, and flight matching. No transfer is confirmed without the information you need to decide safely."
     },
     "hero": {
-      "eyebrow": "Security verified · Same flight",
-      "title": "Security comes first in every shared airport transfer",
-      "subtitle": "Cojauny connects passengers on the same flight after identity, reputation, and trip context are verified. You choose who you ride with before departure.",
+      "eyebrow": "Security verified · No exceptions",
+      "title": "Your safety defines every shared airport transfer",
+      "subtitle": "We verify identity, reputation, and flight context before every connection. You choose who you ride with — never random strangers.",
       "primaryCta": "Request beta access",
       "secondaryCta": "See how it works",
       "imageAlt": "Cojauny interface showing verified profiles and flight matching",
       "trustSignals": [
-        "Identity verification",
-        "Flight-number matching",
-        "Visible reputation"
+        "Verified identity",
+        "No random matching",
+        "Auditable reputation"
       ]
     },
     "heroVariants": {
       "savings": {
-        "title": "Safer and more efficient airport transfers, with savings when sharing",
-        "subtitle": "Security defines every connection. Cost efficiency follows when verified passengers on your flight share the ride."
+        "title": "Your safety first. Sharing optimizes transfer cost second",
+        "subtitle": "Verification, reputation, and flight context before every connection. Savings only make sense when trust is guaranteed."
       }
     },
     "heroQuickSignup": {
       "ariaLabel": "Request Cojauny beta access",
-      "label": "Request early beta access",
+      "label": "Request access to a platform that puts your safety first",
       "emailPlaceholder": "you@email.com",
       "submit": "Request access",
       "submitting": "Submitting…",
@@ -96,8 +96,8 @@
     "airportsHubAll": "View full coverage",
     "betaReferralBanner": "After registration, you will receive an invite link to share with your network and prioritize your access.",
     "features": {
-      "title": "Trust infrastructure for shared travel",
-      "subtitle": "Every capability is designed to reduce risk before the ride: identity, shared context, and controlled communication.",
+      "title": "Every feature exists to protect you before the ride",
+      "subtitle": "Verification, shared context, and controlled communication: each layer reduces risk before you enter the vehicle.",
       "items": [
         {
           "title": "Flight matching",
@@ -132,9 +132,9 @@
       ]
     },
     "value": {
-      "eyebrow": "Security first",
-      "title": "A trust standard before sharing a vehicle",
-      "subtitle": "Cojauny prioritizes passenger safety at every stage: verification, selection, coordination, and post-trip evaluation.",
+      "eyebrow": "Our commitment",
+      "title": "Passenger safety above everything else",
+      "subtitle": "At Cojauny, no transfer is confirmed without prior verification, informed selection, and secure coordination.",
       "items": [
         {
           "title": "Identity verification",
@@ -163,8 +163,8 @@
       ]
     },
     "savings": {
-      "title": "Economic efficiency as an outcome of trust",
-      "caption": "When coordination is secure and predictable, shared transfers reduce costs sustainably.",
+      "title": "When safety is resolved, cost optimizes",
+      "caption": "Sharing with verified passengers on the same flight is more efficient — always as the result of a solid trust foundation.",
       "metrics": [
         {
           "value": "180+",
@@ -189,8 +189,8 @@
       ]
     },
     "workflow": {
-      "title": "Shared travel process in five steps",
-      "intro": "A clear flow with security controls at every stage of the journey.",
+      "title": "Five steps. Security controls at each one.",
+      "intro": "From identity verification to post-trip rating: security built into every stage of the process.",
       "steps": [
         {
           "title": "1. Verified onboarding",
@@ -215,8 +215,8 @@
       ]
     },
     "mockups": {
-      "heading": "An experience designed for informed decisions",
-      "description": "The interface surfaces identity, flight context, and reputation before any shared transfer is confirmed.",
+      "heading": "See who you ride with before you confirm",
+      "description": "Identity, flight, and reputation visible in the interface — because safety starts with information.",
       "screens": [
         {
           "id": "flight-search",
@@ -255,16 +255,16 @@
         },
         {
           "id": "impact",
-          "badge": "Savings",
-          "title": "Savings as confirmation",
-          "description": "When you share with confidence, costs split. Track your accumulated savings after each trip.",
+          "badge": "Outcome",
+          "title": "Efficiency after verification",
+          "description": "When trust is guaranteed, sharing the transfer optimizes cost without compromising safety.",
           "image": "/images/mockups/en/mockup-impact.svg"
         }
       ]
     },
     "ctaStrip": {
-      "heading": "Request access to the Cojauny beta",
-      "body": "Request early access to a shared transfer platform with verified security standards.",
+      "heading": "Join a platform that puts your safety first",
+      "body": "Request access to the Cojauny beta: shared transfers with verified identity, auditable reputation, and flight matching.",
       "link": "#beta",
       "linkLabel": "Request beta access"
     },
@@ -388,8 +388,8 @@
     },
     "forms": {
       "beta": {
-        "heading": "Join Cojauny's verified travel community",
-        "subheading": "Early beta access: verified profiles, flight matching, and a direct line to the product team.",
+        "heading": "Beta access with verified security standards",
+        "subheading": "We prioritize passenger protection in every feature. Request early access.",
         "title": "Request Beta Access",
         "description": "Priority access, verified profiles, founding badge, and direct team support.",
         "success": "Great, you are on the waitlist. We will notify you by email when the beta is ready.",
