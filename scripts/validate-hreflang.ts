@@ -1,4 +1,4 @@
-import { writeFileSync } from 'fs';
+import { mkdirSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
 import { featuredAirports } from '../src/content/airports';
@@ -93,6 +93,7 @@ const report = {
 };
 
 const outputPath = join(process.cwd(), 'docs', 'hreflang-validation-report.json');
+mkdirSync(join(process.cwd(), 'docs'), { recursive: true });
 writeFileSync(outputPath, JSON.stringify(report, null, 2));
 
 if (report.summary.pagesWithIssues > 0) {
