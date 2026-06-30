@@ -16,6 +16,7 @@
     "test:ci": "cross-env NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules jest --ci",
     "migrate:content": "tsx scripts/extract-current-site.ts",
     "seo:sitemap": "tsx scripts/generate-sitemap.ts",
+    "seo:validate-jsonld": "tsx scripts/validate-jsonld.ts",
     "seo:preflight": "npm run lint && npm run type-check",
     "deploy:verify": "tsx scripts/deploy-check.ts",
     "predeploy": "npm run lint && npm run build && tsx ./scripts/generate-rss.ts",

@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google';
 import '@/styles/globals.css';
 import FloatingSocialBar from '@/components/FloatingSocialBar';
 import ConsentGatedGoogleAnalytics from '@/components/ConsentGatedGoogleAnalytics';
+import GoogleConsentMode from '@/components/GoogleConsentMode';
 import StructuredData from '@/components/StructuredData';
 import { defaultLocale, locales } from '@/locales/config';
 import { siteMetadata, ogImages } from '@/lib/site';
@@ -80,6 +81,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <head>
                 <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
                 <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+                <link
+                    rel="alternate"
+                    type="application/rss+xml"
+                    title="Cojauny Blog"
+                    href={`${siteMetadata.url}/rss.xml`}
+                />
+                <GoogleConsentMode />
                 <StructuredData id="ld-org" data={buildOrganizationJsonLd()} />
                 <StructuredData id="ld-website" data={buildWebsiteJsonLd(defaultLocale)} />
             </head>

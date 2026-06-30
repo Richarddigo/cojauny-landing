@@ -8,6 +8,7 @@ import AccessibilitySkipLink from '@/components/AccessibilitySkipLink';
 import CookieBanner from '@/components/CookieBanner';
 import ConsentGatedVercelAnalytics from '@/components/ConsentGatedVercelAnalytics';
 import Footer from '@/components/Footer';
+import HashScrollHandler from '@/components/HashScrollHandler';
 import Header from '@/components/Header';
 import LocaleDocumentLang from '@/components/LocaleDocumentLang';
 import {
@@ -91,6 +92,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     return (
         <NextIntlClientProvider locale={locale}>
             <LocaleDocumentLang locale={locale} />
+            <HashScrollHandler />
             <AccessibilitySkipLink label={landingT('skipLink')} />
             <Header locale={locale} copy={headerCopy} common={commonCopy} />
             <main id="main-content" className="relative pt-24">

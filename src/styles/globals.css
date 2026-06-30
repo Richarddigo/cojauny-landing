@@ -152,7 +152,17 @@
         width: 100%;
         max-width: 56rem;
         margin-inline: auto;
-        padding-inline: clamp(1.25rem, 5vw, 3rem);
+        padding-right: clamp(1.25rem, 5vw, 3rem);
+        padding-left: calc(var(--social-bar-offset) + clamp(1.25rem, 5vw, 3rem));
+        padding-block: clamp(5rem, 8vw, 6rem);
+    }
+
+    .airport-page-shell {
+        width: 100%;
+        max-width: 56rem;
+        margin-inline: auto;
+        padding-right: clamp(1.25rem, 5vw, 3rem);
+        padding-left: calc(var(--social-bar-offset) + clamp(1.25rem, 5vw, 3rem));
         padding-block: clamp(5rem, 8vw, 6rem);
     }
 

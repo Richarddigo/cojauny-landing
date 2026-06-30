@@ -19,7 +19,7 @@ const Footer = ({ copy, locale, common }: FooterProps) => {
 
     return (
         <footer className="mt-auto border-t border-[rgba(255,255,255,0.06)] bg-bg">
-            <div className="mx-auto max-w-[1180px] px-[100px] py-16">
+            <div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8 py-16">
                 <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5">
 
                     {/* Col 1: Brand */}
