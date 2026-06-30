@@ -94,7 +94,7 @@ export default async function Image() {
                             textAlign: 'center',
                         }}
                     >
-                        Comparte taxi, van o coche privado al aeropuerto con pasajeros de tu vuelo
+                        Comunidad verificada que te conecta con pasajeros de tu mismo vuelo
                     </div>
 
                     {/* CTA / Beneficio */}
@@ -112,7 +112,7 @@ export default async function Image() {
                             boxShadow: '0 4px 20px rgba(90, 103, 242, 0.4)',
                         }}
                     >
-                        Ahorra 50-75% en cada trayecto
+                        Perfiles verificados · Mismo vuelo · Confianza
                     </div>
                 </div>
 

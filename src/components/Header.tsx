@@ -29,11 +29,11 @@ type NavItem = { href: string; label: string; external?: boolean };
 
 const buildNavItems = (copy: LandingCopy['header'], locale: Locale): NavItem[] => [
     { href: '#home', label: copy.home },
-    { href: '#demo', label: copy.demo },
     { href: '#benefits', label: copy.benefits },
-    { href: '#impact', label: copy.impact },
-    { href: '#features', label: copy.features },
     { href: '#how-it-works', label: copy.workflow },
+    { href: '#demo', label: copy.demo },
+    { href: '#features', label: copy.features },
+    { href: '#impact', label: copy.impact },
     // PRICING -- re-enable by setting NEXT_PUBLIC_ENABLE_PREMIUM=true
     ...(ENABLE_PREMIUM ? [{ href: '#pricing', label: copy.pricing }] : []),
     { href: '#beta', label: copy.beta },

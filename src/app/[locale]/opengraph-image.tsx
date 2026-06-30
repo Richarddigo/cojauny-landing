@@ -16,23 +16,23 @@ export function generateStaticParams() {
 const ogTexts: Record<Locale, { title: string; tagline: string; cta: string }> = {
     es: {
         title: 'Cojauny',
-        tagline: 'Comparte taxi, van o coche privado al aeropuerto con pasajeros de tu vuelo',
-        cta: 'Ahorra 50-75% en cada trayecto'
+        tagline: 'Comunidad verificada que te conecta con pasajeros de tu mismo vuelo',
+        cta: 'Perfiles verificados · Mismo vuelo · Confianza'
     },
     en: {
         title: 'Cojauny',
-        tagline: 'Share taxi, van or private car to the airport with passengers on your flight',
-        cta: 'Save 50-75% on every trip'
+        tagline: 'Verified community matching you with passengers on your exact flight',
+        cta: 'Verified profiles · Same flight · Trust'
     },
     de: {
         title: 'Cojauny',
-        tagline: 'Teile Taxi, Van oder Privatwagen zum Flughafen mit Passagieren deines Fluges',
-        cta: 'Spare 50-75% bei jeder Fahrt'
+        tagline: 'Verifizierte Community für Passagiere auf deinem exakten Flug',
+        cta: 'Verifizierte Profile · Gleicher Flug · Vertrauen'
     },
     fr: {
         title: 'Cojauny',
-        tagline: 'Partagez taxi, van ou voiture privée vers l\'aéroport avec les passagers de votre vol',
-        cta: 'Économisez 50-75% par trajet'
+        tagline: 'Communauté vérifiée avec les passagers de votre vol exact',
+        cta: 'Profils vérifiés · Même vol · Confiance'
     }
 };
 
