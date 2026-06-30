@@ -1,11 +1,13 @@
 import dynamic from 'next/dynamic';
 import Hero from '@/components/Hero';
+import HeroVariantTracker from '@/components/HeroVariantTracker';
 import Features from '@/components/Features';
 import IntegrationCTA from '@/components/IntegrationCTA';
 import ValuePropsSection from '@/components/ValuePropsSection';
 import SavingsSection from '@/components/SavingsSection';
 import WorkflowSection from '@/components/WorkflowSection';
 import PricingSection from '@/components/PricingSection';
+import { getHeroVariant, resolveHeroCopy } from '@/lib/heroVariant';
 
 // Below-fold client components — code-split to reduce initial JS payload
 const DemoSection = dynamic(() => import('@/components/DemoSection'));
@@ -25,12 +27,16 @@ interface LandingPageContentProps {
 
 const LandingPageContent = ({ copy, locale, common }: LandingPageContentProps) => {
     const resolvedCommon = common ?? getCommonCopy(locale);
+    const heroVariant = getHeroVariant();
+    const heroCopy = resolveHeroCopy(copy.hero, copy.heroVariants);
+
     return (
         <>
-            <Hero copy={copy.hero} quickSignupCopy={copy.heroQuickSignup} betaCopy={copy.forms.beta} locale={locale} />
+            <HeroVariantTracker variant={heroVariant} />
+            <Hero copy={heroCopy} quickSignupCopy={copy.heroQuickSignup} betaCopy={copy.forms.beta} locale={locale} />
             <div className="cv-auto"><ValuePropsSection copy={copy.value} /></div>
             <div className="cv-auto"><WorkflowSection copy={copy.workflow} /></div>
-            <DemoSection copy={copy.mockups} />
+            <div className="cv-auto"><DemoSection copy={copy.mockups} /></div>
             <div className="cv-auto"><Features copy={copy.features} /></div>
             <div className="cv-auto"><SavingsSection copy={copy.savings} /></div>
             <section id="beta" className="cv-auto w-full scroll-mt-[74px] py-12 lg:scroll-mt-[100px] md:py-16 lg:py-20">

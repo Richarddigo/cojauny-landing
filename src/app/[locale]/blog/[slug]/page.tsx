@@ -99,7 +99,7 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
     ]);
 
     return (
-        <article className="relative mx-auto max-w-3xl px-6 py-20">
+        <article className="relative mx-auto max-w-3xl px-4 py-20 pl-[calc(var(--social-bar-offset)+1rem)] sm:px-6">
             <StructuredData id={`ld-article-${locale}-${slug}`} data={articleJson} />
             <StructuredData id={`ld-article-breadcrumb-${locale}-${slug}`} data={breadcrumb} />
             <Link

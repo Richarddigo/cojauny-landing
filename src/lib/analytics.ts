@@ -1,3 +1,5 @@
+import type { HeroVariant } from '@/lib/heroVariant';
+
 export type BetaSignupSource = 'hero' | 'full_form';
 
 declare global {
@@ -20,6 +22,26 @@ export function trackBetaSignup(source: BetaSignupSource): void {
   void import('@vercel/analytics')
     .then(({ track }) => {
       track('beta_signup', { source });
+    })
+    .catch(() => {
+      // Optional dependency path — ignore if unavailable
+    });
+}
+
+/** Records which hero copy arm was shown (trust vs savings experiment). */
+export function trackHeroVariant(variant: HeroVariant): void {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  window.gtag?.('event', 'hero_variant_impression', {
+    event_category: 'experiment',
+    event_label: variant,
+  });
+
+  void import('@vercel/analytics')
+    .then(({ track }) => {
+      track('hero_variant_impression', { variant });
     })
     .catch(() => {
       // Optional dependency path — ignore if unavailable

@@ -71,7 +71,7 @@ export default async function BlogIndex({ params }: BlogIndexProps) {
     ]);
 
     return (
-        <section className="mx-auto max-w-5xl px-6 py-20">
+        <section className="mx-auto max-w-5xl px-4 py-20 pl-[calc(var(--social-bar-offset)+1rem)] sm:px-6">
             <StructuredData id={`ld-blog-breadcrumb-${locale}`} data={breadcrumb} />
             <header className="text-center">
                 <p className="text-sm uppercase tracking-[0.4em] text-studio-accent">{common('blogEyebrow')}</p>

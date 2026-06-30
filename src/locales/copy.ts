@@ -163,6 +163,12 @@ export interface LandingCopy {
     secondaryCta: string;
     imageAlt: string;
   };
+  heroVariants?: {
+    savings: {
+      title: string;
+      subtitle: string;
+    };
+  };
   heroQuickSignup: {
     ariaLabel: string;
     label: string;
@@ -283,6 +289,14 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       primaryCta: 'Solicitar acceso beta',
       secondaryCta: 'Cómo funciona',
       imageAlt: 'App Cojauny mostrando matching por vuelo y perfiles verificados'
+    },
+    heroVariants: {
+      savings: {
+        title:
+          'Comparte tu traslado al aeropuerto y ahorra hasta un 75% con pasajeros verificados de tu mismo vuelo',
+        subtitle:
+          'Matching por número de vuelo, perfiles con documento y valoraciones visibles. La confianza primero; el ahorro es la confirmación.',
+      },
     },
     heroQuickSignup: {
       ariaLabel: 'Registro rápido en la lista de espera beta',
@@ -807,6 +821,14 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       secondaryCta: 'See how it works',
       imageAlt: 'Cojauny app showing flight matching and verified profiles'
     },
+    heroVariants: {
+      savings: {
+        title:
+          'Share your airport transfer and save up to 75% with verified passengers on your exact flight',
+        subtitle:
+          'Flight-number matching, ID-verified profiles, and visible ratings. Trust comes first; savings are the confirmation.',
+      },
+    },
     heroQuickSignup: {
       ariaLabel: 'Quick beta waitlist signup',
       label: 'Reserve your beta spot — just name and email',
@@ -1330,6 +1352,14 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       secondaryCta: 'So funktioniert\'s',
       imageAlt: 'Cojauny App zeigt Flug-Matching und verifizierte Profile'
     },
+    heroVariants: {
+      savings: {
+        title:
+          'Teile deinen Flughafentransfer und spare bis zu 75% mit verifizierten Passagieren auf deinem Flug',
+        subtitle:
+          'Flugnummer-Matching, verifizierte Profile und sichtbare Bewertungen. Vertrauen zuerst — Ersparnis als Bestätigung.',
+      },
+    },
     heroQuickSignup: {
       ariaLabel: 'Schnelle Beta-Wartelisten-Anmeldung',
       label: 'Sichere dir deinen Beta-Platz — nur Name und E-Mail',
@@ -1852,6 +1882,14 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       primaryCta: "Demander l'accès Bêta",
       secondaryCta: 'Comment ça marche',
       imageAlt: 'Interface Cojauny montrant le matching par vol et les profils vérifiés'
+    },
+    heroVariants: {
+      savings: {
+        title:
+          'Partagez votre transfert aéroport et économisez jusqu\'à 75% avec des passagers vérifiés sur votre vol',
+        subtitle:
+          'Matching par numéro de vol, profils vérifiés et évaluations visibles. La confiance d\'abord — l\'économie en confirmation.',
+      },
     },
     heroQuickSignup: {
       ariaLabel: 'Inscription rapide à la liste d\'attente bêta',
