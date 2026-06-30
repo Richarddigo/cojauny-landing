@@ -6,10 +6,10 @@ import { env } from '@/lib/env';
 
 /** Loads Google Analytics only after the user accepts analytics cookies. */
 export default function ConsentGatedGoogleAnalytics() {
-  const { consent } = useConsent();
+  const { analyticsAllowed } = useConsent();
   const analyticsId = env.NEXT_PUBLIC_ANALYTICS_ID;
 
-  if (!analyticsId || consent !== 'accepted') {
+  if (!analyticsId || !analyticsAllowed) {
     return null;
   }
 

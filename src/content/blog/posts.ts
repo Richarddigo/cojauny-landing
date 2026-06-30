@@ -1,4 +1,5 @@
 import type { Locale } from '@/locales/config';
+import { airportBlogPosts } from './airport-blog-posts';
 
 export interface BlogPost {
   postId: string;
@@ -4612,13 +4613,16 @@ export const blogPosts: BlogPost[] = [
 }
 
 ];
+
+export const allBlogPosts: BlogPost[] = [...blogPosts, ...airportBlogPosts];
+
 /**
  * Filters blog posts by the given locale.
  * @param locale The locale to filter posts by (e.g., 'en', 'es', 'fr', 'de').
  * @returns An array of blog posts matching the locale.
  */
 export function getPostsByLocale(locale: Locale): BlogPost[] {
-  return blogPosts.filter((post) => post.locale === locale);
+  return allBlogPosts.filter((post) => post.locale === locale);
 }
 
 /**
@@ -4628,5 +4632,5 @@ export function getPostsByLocale(locale: Locale): BlogPost[] {
  * @returns The blog post matching the locale and slug, or undefined if not found.
  */
 export function getPost(locale: Locale, slug: string): BlogPost | undefined {
-  return blogPosts.find((post) => post.locale === locale && post.slug === slug);
+  return allBlogPosts.find((post) => post.locale === locale && post.slug === slug);
 }

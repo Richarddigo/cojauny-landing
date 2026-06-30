@@ -8,20 +8,32 @@ declare global {
   }
 }
 
+function readHeroVariantFromCookie(): HeroVariant {
+  if (typeof document === 'undefined') {
+    return 'trust';
+  }
+
+  const match = document.cookie.match(/(?:^|;\s*)hero_variant=(trust|savings)/);
+  return match?.[1] === 'savings' ? 'savings' : 'trust';
+}
+
 /** Fires a conversion event when a beta signup succeeds. No-op without analytics consent/scripts. */
 export function trackBetaSignup(source: BetaSignupSource): void {
   if (typeof window === 'undefined') {
     return;
   }
 
+  const heroVariant = readHeroVariantFromCookie();
+
   window.gtag?.('event', 'beta_signup', {
     event_category: 'conversion',
     event_label: source,
+    hero_variant: heroVariant,
   });
 
   void import('@vercel/analytics')
     .then(({ track }) => {
-      track('beta_signup', { source });
+      track('beta_signup', { source, hero_variant: heroVariant });
     })
     .catch(() => {
       // Optional dependency path — ignore if unavailable

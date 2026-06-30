@@ -17,6 +17,8 @@
     "migrate:content": "tsx scripts/extract-current-site.ts",
     "seo:sitemap": "tsx scripts/generate-sitemap.ts",
     "seo:validate-jsonld": "tsx scripts/validate-jsonld.ts",
+    "seo:validate-hreflang": "tsx scripts/validate-hreflang.ts",
+    "i18n:sync": "tsx scripts/sync-messages-from-copy.ts",
     "seo:preflight": "npm run lint && npm run type-check",
     "deploy:verify": "tsx scripts/deploy-check.ts",
     "predeploy": "npm run lint && npm run build && tsx ./scripts/generate-rss.ts",

@@ -1,15 +1,25 @@
 import type { LandingCopy } from '@/locales/copy';
 import type { Locale } from '@/locales/config';
 import HeroBetaCapture from '@/components/HeroBetaCapture';
+import AirportHubLinks from '@/components/AirportHubLinks';
 
 interface HeroProps {
     copy: LandingCopy['hero'];
     quickSignupCopy: LandingCopy['heroQuickSignup'];
     betaCopy: LandingCopy['forms']['beta'];
     locale: Locale;
+    airportsHubTitle: string;
+    airportsHubAll: string;
 }
 
-const Hero = ({ copy, quickSignupCopy, betaCopy, locale }: HeroProps) => (
+const Hero = ({
+    copy,
+    quickSignupCopy,
+    betaCopy,
+    locale,
+    airportsHubTitle,
+    airportsHubAll,
+}: HeroProps) => (
     <section
         id="home"
         className="relative overflow-hidden scroll-mt-[74px] bg-studio-bg pb-10 text-center sm:pb-12 md:pb-14 lg:pb-20 lg:scroll-mt-[100px]"
@@ -32,6 +42,12 @@ const Hero = ({ copy, quickSignupCopy, betaCopy, locale }: HeroProps) => (
                 {copy.subtitle}
             </p>
             <HeroBetaCapture locale={locale} copy={quickSignupCopy} betaCopy={betaCopy} />
+            <AirportHubLinks
+                locale={locale}
+                title={airportsHubTitle}
+                allLabel={airportsHubAll}
+                className="mt-8 text-left"
+            />
             <div className="mt-6 flex justify-center sm:mt-8">
                 <a
                     href="#how-it-works"

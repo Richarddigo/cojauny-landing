@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-import { blogPosts } from '@/content/blog/posts';
+import { allBlogPosts } from '@/content/blog/posts';
 import { featuredAirports } from '@/content/airports';
 import { buildCanonicalUrl } from '@/lib/jsonld';
 import { locales } from '@/locales/config';
@@ -30,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  const blogEntries = blogPosts.map((post) => ({
+  const blogEntries = allBlogPosts.map((post) => ({
     url: buildCanonicalUrl(post.locale as (typeof locales)[number], `/blog/${post.slug}`),
     lastModified: new Date(post.updatedAt),
     changeFrequency: 'monthly' as const,

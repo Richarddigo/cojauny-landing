@@ -180,6 +180,9 @@ export interface LandingCopy {
     privacyNote: string;
     success: string;
   };
+  airportsHubTitle: string;
+  airportsHubAll: string;
+  betaReferralBanner: string;
   features: {
     title: string;
     subtitle: string;
@@ -222,6 +225,13 @@ export interface LandingCopy {
     message: string;
     acceptAll: string;
     reject: string;
+    customize: string;
+    savePreferences: string;
+    essentialLabel: string;
+    essentialDescription: string;
+    analyticsLabel: string;
+    analyticsDescription: string;
+    alwaysOn: string;
     moreInfo: string;
   };
   footer: {
@@ -309,6 +319,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       privacyNote: 'Acepto los términos y la política de privacidad de Cojauny para solicitar acceso beta.',
       success: '¡Listo! Te avisaremos por email cuando tu acceso esté disponible.'
     },
+    airportsHubTitle: 'Aeropuertos populares',
+    airportsHubAll: 'Ver los 180+ aeropuertos',
+    betaReferralBanner: '¿Conoces a alguien que viaje seguido? Invítale con tu enlace único tras registrarte y sube en la lista de espera.',
     features: {
       title: 'Diseñado para que confíes antes de compartir',
       subtitle:
@@ -752,9 +765,16 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     cookie: {
       message:
-        'Usamos cookies para mejorar tu experiencia. Tú decides cuáles aceptas.',
+        'Usamos cookies esenciales para el sitio y cookies analíticas opcionales. Tú eliges qué aceptar. Tu elección se guarda 12 meses.',
       acceptAll: 'Aceptar todas',
       reject: 'Solo necesarias',
+      customize: 'Personalizar',
+      savePreferences: 'Guardar preferencias',
+      essentialLabel: 'Cookies esenciales',
+      essentialDescription: 'Necesarias para seguridad, idioma y funcionamiento básico.',
+      analyticsLabel: 'Cookies analíticas',
+      analyticsDescription: 'Nos ayudan a medir visitas y mejorar la conversión beta.',
+      alwaysOn: 'Siempre activas',
       moreInfo: 'Más info'
     },
     footer: {
@@ -840,6 +860,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       privacyNote: 'I accept Cojauny\'s terms and privacy policy to request beta access.',
       success: 'You\'re in! We\'ll email you as soon as your access is ready.'
     },
+    airportsHubTitle: 'Popular airports',
+    airportsHubAll: 'Browse 180+ airports',
+    betaReferralBanner: 'Know frequent flyers? After signup, share your unique invite link to move up the waitlist.',
     features: {
       title: 'Built so you trust before you share',
       subtitle:
@@ -1283,9 +1306,16 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     cookie: {
       message:
-        'We use essential and optional analytics cookies to understand how Cojauny is used. You can accept them or keep browsing with only essentials.',
-      acceptAll: 'Accept',
-      reject: 'Reject',
+        'We use essential cookies for the site and optional analytics cookies. You choose what to accept. Your choice is stored for 12 months.',
+      acceptAll: 'Accept all',
+      reject: 'Essential only',
+      customize: 'Customize',
+      savePreferences: 'Save preferences',
+      essentialLabel: 'Essential cookies',
+      essentialDescription: 'Required for security, language, and basic functionality.',
+      analyticsLabel: 'Analytics cookies',
+      analyticsDescription: 'Help us measure visits and improve beta conversion.',
+      alwaysOn: 'Always on',
       moreInfo: 'More Info'
     },
     footer: {
@@ -1371,6 +1401,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       privacyNote: 'Ich akzeptiere die AGB und Datenschutzrichtlinie von Cojauny für den Beta-Zugang.',
       success: 'Geschafft! Wir benachrichtigen dich per E-Mail, sobald dein Zugang bereit ist.'
     },
+    airportsHubTitle: 'Beliebte Flughäfen',
+    airportsHubAll: '180+ Flughäfen ansehen',
+    betaReferralBanner: 'Kennst du Vielreisende? Nach der Anmeldung teile deinen Einladungslink und steige in der Warteliste auf.',
     features: {
       title: 'Gebaut, damit du vertraust, bevor du teilst',
       subtitle:
@@ -1814,9 +1847,16 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     cookie: {
       message:
-        'Wir nutzen Cookies für dein Erlebnis. Du entscheidest, welche du akzeptierst.',
+        'Wir nutzen essenzielle Cookies für die Website und optionale Analyse-Cookies. Du wählst, was du akzeptierst. Deine Wahl wird 12 Monate gespeichert.',
       acceptAll: 'Alle akzeptieren',
       reject: 'Nur notwendige',
+      customize: 'Anpassen',
+      savePreferences: 'Einstellungen speichern',
+      essentialLabel: 'Essenzielle Cookies',
+      essentialDescription: 'Erforderlich für Sicherheit, Sprache und Grundfunktionen.',
+      analyticsLabel: 'Analyse-Cookies',
+      analyticsDescription: 'Helfen uns, Besuche zu messen und die Beta-Konversion zu verbessern.',
+      alwaysOn: 'Immer aktiv',
       moreInfo: 'Mehr Info'
     },
     footer: {
@@ -1902,6 +1942,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       privacyNote: 'J\'accepte les conditions et la politique de confidentialité de Cojauny pour demander l\'accès bêta.',
       success: 'C\'est fait ! Nous vous préviendrons par e-mail dès que votre accès sera prêt.'
     },
+    airportsHubTitle: 'Aéroports populaires',
+    airportsHubAll: 'Voir les 180+ aéroports',
+    betaReferralBanner: 'Vous connaissez des voyageurs fréquents ? Après inscription, partagez votre lien unique pour monter dans la liste d\'attente.',
     features: {
       title: 'Conçu pour que vous fassiez confiance avant de partager',
       subtitle:
@@ -2345,9 +2388,16 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     cookie: {
       message:
-        'Nous utilisons des cookies pour votre expérience. Vous décidez lesquels accepter.',
+        'Nous utilisons des cookies essentiels et des cookies analytiques optionnels. Vous choisissez quoi accepter. Votre choix est conservé 12 mois.',
       acceptAll: 'Tout accepter',
-      reject: 'Nécessaires seulement',
+      reject: 'Essentiels seulement',
+      customize: 'Personnaliser',
+      savePreferences: 'Enregistrer les préférences',
+      essentialLabel: 'Cookies essentiels',
+      essentialDescription: 'Nécessaires pour la sécurité, la langue et le fonctionnement de base.',
+      analyticsLabel: 'Cookies analytiques',
+      analyticsDescription: 'Nous aident à mesurer les visites et améliorer la conversion bêta.',
+      alwaysOn: 'Toujours actifs',
       moreInfo: 'Plus d\'infos'
     },
     footer: {

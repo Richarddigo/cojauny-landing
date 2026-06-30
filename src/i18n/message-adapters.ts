@@ -26,6 +26,7 @@ export function getCommonCopyFromMessages(t: Translator): CommonCopy {
     footerEcosystemSectionLabel: t('footerEcosystemSectionLabel'),
     footerEcosystemDescription: t('footerEcosystemDescription'),
     footerHomeLabel: t('footerHomeLabel'),
+    footerAirportsLabel: t('footerAirportsLabel'),
     navAriaLabel: t('navAriaLabel'),
     loadingLabel: t('loadingLabel'),
     errorTitle: t('errorTitle'),

@@ -5,9 +5,9 @@ import { useConsent } from '@/hooks/useConsent';
 
 /** Renders Vercel Analytics only after analytics cookie consent. */
 export default function ConsentGatedVercelAnalytics() {
-  const { consent } = useConsent();
+  const { analyticsAllowed } = useConsent();
 
-  if (consent !== 'accepted') {
+  if (!analyticsAllowed) {
     return null;
   }
 

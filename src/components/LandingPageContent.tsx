@@ -1,19 +1,33 @@
 import dynamic from 'next/dynamic';
 import Hero from '@/components/Hero';
 import HeroVariantTracker from '@/components/HeroVariantTracker';
+import StickyMobileBetaCta from '@/components/StickyMobileBetaCta';
 import Features from '@/components/Features';
 import IntegrationCTA from '@/components/IntegrationCTA';
 import ValuePropsSection from '@/components/ValuePropsSection';
 import SavingsSection from '@/components/SavingsSection';
 import WorkflowSection from '@/components/WorkflowSection';
 import PricingSection from '@/components/PricingSection';
-import { getHeroVariant, resolveHeroCopy } from '@/lib/heroVariant';
+import { resolveHeroCopy, type HeroVariant } from '@/lib/heroVariant';
+import {
+  BetaSignupFormSkeleton,
+  DemoSectionSkeleton,
+  FaqSectionSkeleton,
+  FeedbackFormSkeleton,
+} from '@/components/SectionSkeletons';
 
-// Below-fold client components — code-split to reduce initial JS payload
-const DemoSection = dynamic(() => import('@/components/DemoSection'));
-const FaqSection = dynamic(() => import('@/components/FaqSection'));
-const BetaSignupForm = dynamic(() => import('@/components/BetaSignupForm'));
-const FeedbackForm = dynamic(() => import('@/components/FeedbackForm'));
+const DemoSection = dynamic(() => import('@/components/DemoSection'), {
+  loading: () => <DemoSectionSkeleton />,
+});
+const FaqSection = dynamic(() => import('@/components/FaqSection'), {
+  loading: () => <FaqSectionSkeleton />,
+});
+const BetaSignupForm = dynamic(() => import('@/components/BetaSignupForm'), {
+  loading: () => <BetaSignupFormSkeleton />,
+});
+const FeedbackForm = dynamic(() => import('@/components/FeedbackForm'), {
+  loading: () => <FeedbackFormSkeleton />,
+});
 import type { LandingCopy } from '@/locales/copy';
 import type { Locale } from '@/locales/config';
 import { getCommonCopy, type CommonCopy } from '@/locales/common';
@@ -23,17 +37,25 @@ interface LandingPageContentProps {
     copy: LandingCopy;
     locale: Locale;
     common?: CommonCopy;
+    heroVariant: HeroVariant;
 }
 
-const LandingPageContent = ({ copy, locale, common }: LandingPageContentProps) => {
+const LandingPageContent = ({ copy, locale, common, heroVariant }: LandingPageContentProps) => {
     const resolvedCommon = common ?? getCommonCopy(locale);
-    const heroVariant = getHeroVariant();
-    const heroCopy = resolveHeroCopy(copy.hero, copy.heroVariants);
+    const heroCopy = resolveHeroCopy(copy.hero, copy.heroVariants, heroVariant);
 
     return (
         <>
             <HeroVariantTracker variant={heroVariant} />
-            <Hero copy={heroCopy} quickSignupCopy={copy.heroQuickSignup} betaCopy={copy.forms.beta} locale={locale} />
+            <Hero
+                copy={heroCopy}
+                quickSignupCopy={copy.heroQuickSignup}
+                betaCopy={copy.forms.beta}
+                locale={locale}
+                airportsHubTitle={copy.airportsHubTitle}
+                airportsHubAll={copy.airportsHubAll}
+            />
+            <StickyMobileBetaCta locale={locale} label={copy.hero.primaryCta} />
             <div className="cv-auto"><ValuePropsSection copy={copy.value} /></div>
             <div className="cv-auto"><WorkflowSection copy={copy.workflow} /></div>
             <div className="cv-auto"><DemoSection copy={copy.mockups} /></div>
@@ -41,12 +63,14 @@ const LandingPageContent = ({ copy, locale, common }: LandingPageContentProps) =
             <div className="cv-auto"><SavingsSection copy={copy.savings} /></div>
             <section id="beta" className="cv-auto w-full scroll-mt-[74px] py-12 lg:scroll-mt-[100px] md:py-16 lg:py-20">
                 <div className="mx-auto max-w-[1180px] px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">
+                    <p className="mb-6 rounded-2xl border border-studio-accent/25 bg-studio-accent/10 px-4 py-3 text-center text-sm text-studio-muted sm:text-base">
+                        {copy.betaReferralBanner}
+                    </p>
                     <BetaSignupForm locale={locale} />
                 </div>
             </section>
-            {/* PREMIUM SECTION — controlled by NEXT_PUBLIC_ENABLE_PREMIUM=true */}
             {ENABLE_PREMIUM && <div className="cv-auto"><PricingSection copy={copy.pricing} common={resolvedCommon} /></div>}
-            <div className="cv-auto"><FaqSection copy={copy.faq} /></div>
+            <div className="cv-auto"><FaqSection copy={copy.faq} locale={locale} airportsHubTitle={copy.airportsHubTitle} airportsHubAll={copy.airportsHubAll} /></div>
             <section id="feedback" className="cv-auto w-full scroll-mt-[74px] py-12 lg:scroll-mt-[100px] md:py-16 lg:py-20">
                 <div className="mx-auto max-w-[1180px] px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">
                     <div className="mb-12 text-center md:mb-16">

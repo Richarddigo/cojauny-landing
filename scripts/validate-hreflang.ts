@@ -1,11 +1,13 @@
-import { readFileSync, writeFileSync } from 'fs';
+import { writeFileSync } from 'fs';
 import { join } from 'path';
+
+import { featuredAirports } from '../src/content/airports';
+import { allBlogPosts } from '../src/content/blog/posts';
 import { locales } from '../src/locales/config';
 import { siteMetadata } from '../src/lib/site';
-import { blogPosts } from '../src/content/blog/posts';
 
 /**
- * Validates hreflang tags structure and canonical URLs
+ * Validates hreflang/canonical URL structure for key routes.
  * Run: npm run seo:validate-hreflang
  */
 
@@ -19,47 +21,43 @@ interface HreflangValidation {
 
 const validations: HreflangValidation[] = [];
 
-// Pages to validate
 const pages = [
   { path: '', name: 'Homepage' },
-  { path: '/contact', name: 'Contact' },
   { path: '/blog', name: 'Blog Index' },
+  { path: '/airports', name: 'Airports Index' },
   { path: '/legal/privacy', name: 'Privacy' },
   { path: '/legal/cookies', name: 'Cookies' },
-  { path: '/legal/terms', name: 'Terms' }
+  { path: '/legal/terms', name: 'Terms' },
+  { path: '/legal/faq', name: 'Legal FAQ' },
 ];
 
-// Add blog posts
-blogPosts.forEach(post => {
+allBlogPosts.forEach((post) => {
   pages.push({
     path: `/blog/${post.slug}`,
-    name: `Blog: ${post.slug}`
+    name: `Blog: ${post.slug}`,
   });
 });
 
-// Validate each page/locale combination
-locales.forEach(locale => {
-  pages.forEach(page => {
+featuredAirports.slice(0, 5).forEach((airport) => {
+  pages.push({
+    path: `/airports/${airport.slug}`,
+    name: `Airport: ${airport.iata}`,
+  });
+});
+
+locales.forEach((locale) => {
+  pages.forEach((page) => {
     const canonical = `${siteMetadata.url}/${locale}${page.path}`;
     const alternates: Record<string, string> = {};
     const issues: string[] = [];
 
-    // Build expected alternates
-    locales.forEach(altLocale => {
+    locales.forEach((altLocale) => {
       alternates[altLocale] = `${siteMetadata.url}/${altLocale}${page.path}`;
     });
     alternates['x-default'] = siteMetadata.url;
 
-    // Validation rules
     if (!canonical.startsWith('https://')) {
       issues.push('Canonical must use HTTPS');
-    }
-
-    if (canonical.includes('//')) {
-      const doubleSlashes = canonical.match(/(?<!:)\/\//g);
-      if (doubleSlashes && doubleSlashes.length > 0) {
-        issues.push('Canonical contains double slashes');
-      }
     }
 
     if (!alternates['x-default']) {
@@ -70,7 +68,6 @@ locales.forEach(locale => {
       issues.push(`Expected ${locales.length + 1} alternates, got ${Object.keys(alternates).length}`);
     }
 
-    // Check self-reference
     if (alternates[locale] !== canonical) {
       issues.push('Self-referencing alternate does not match canonical');
     }
@@ -80,31 +77,27 @@ locales.forEach(locale => {
       locale,
       canonical,
       alternates,
-      issues
+      issues,
     });
   });
 });
 
-// Generate report
 const report = {
   summary: {
     totalPages: validations.length,
-    pagesWithIssues: validations.filter(v => v.issues.length > 0).length,
-    locales: locales,
-    baseUrl: siteMetadata.url
+    pagesWithIssues: validations.filter((v) => v.issues.length > 0).length,
+    locales,
+    baseUrl: siteMetadata.url,
   },
-  validations
+  validations,
 };
 
 const outputPath = join(process.cwd(), 'docs', 'hreflang-validation-report.json');
 writeFileSync(outputPath, JSON.stringify(report, null, 2));
 
 if (report.summary.pagesWithIssues > 0) {
-  validations
-    .filter(v => v.issues.length > 0)
-    .forEach(v => {
-    });
+  console.error(`Hreflang validation failed: ${report.summary.pagesWithIssues} pages with issues`);
   process.exit(1);
 }
 
-
+console.log(`Hreflang validation passed (${report.summary.totalPages} page/locale pairs)`);

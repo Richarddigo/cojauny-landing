@@ -13,20 +13,20 @@ declare global {
 
 /** Sets Google Consent Mode v2 defaults and updates when the user chooses. */
 export default function GoogleConsentMode() {
-  const { consent } = useConsent();
+  const { analyticsAllowed, isConfigured } = useConsent();
 
   useEffect(() => {
-    if (typeof window === 'undefined' || consent === 'unknown') {
+    if (typeof window === 'undefined' || !isConfigured) {
       return;
     }
 
     window.gtag?.('consent', 'update', {
-      analytics_storage: consent === 'accepted' ? 'granted' : 'denied',
+      analytics_storage: analyticsAllowed ? 'granted' : 'denied',
       ad_storage: 'denied',
       ad_user_data: 'denied',
       ad_personalization: 'denied',
     });
-  }, [consent]);
+  }, [analyticsAllowed, isConfigured]);
 
   return (
     <Script id="google-consent-mode" strategy="beforeInteractive">

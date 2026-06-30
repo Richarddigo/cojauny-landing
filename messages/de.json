@@ -1,1 +1,827 @@
-{}
+{
+  "common": {
+    "closeMessage": "Nachricht schließen",
+    "openMainMenu": "Hauptmenü öffnen",
+    "closeMenu": "Menü schließen",
+    "skipToMainContent": "Zum Hauptinhalt springen",
+    "goToBetaSignup": "Zur Beta-Anmeldung",
+    "honeypotHumanLabel": "Fülle dieses Feld nicht aus, wenn du ein Mensch bist",
+    "languageSelectorLabel": "Sprachauswahl",
+    "footerSectionApp": "App",
+    "footerSectionLegal": "Rechtliches",
+    "pricingFeatureHeader": "Funktion",
+    "pricingFreeHeader": "Kostenlos",
+    "pricingPremiumHeader": "Premium",
+    "pricingIncludedLabel": "Inklusive",
+    "pricingNotIncludedLabel": "Nicht inklusive",
+    "blogEyebrow": "Blog",
+    "airportSavingsBadge": "Spare bei jeder Fahrt zum Flughafen",
+    "ogAlt": "Cojauny — Flughafen-Taxi gemeinsam teilen",
+    "footerNavSectionLabel": "Navigation",
+    "footerEcosystemSectionLabel": "Ökosystem",
+    "footerEcosystemDescription": "Cojauny ist Teil eines sich entwickelnden Ökosystems digitaler Produkte.",
+    "footerHomeLabel": "Start",
+    "footerAirportsLabel": "Flughäfen",
+    "navAriaLabel": "Hauptnavigation",
+    "loadingLabel": "Laden…",
+    "errorTitle": "Etwas ist schiefgelaufen",
+    "errorMessage": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuche es erneut.",
+    "errorRetry": "Erneut versuchen",
+    "errorGoHome": "← Zur Startseite",
+    "relatedLegalPages": "Verwandte rechtliche Seiten"
+  },
+  "landing": {
+    "skipLink": "Zum Hauptinhalt springen",
+    "header": {
+      "home": "Start",
+      "features": "Funktionen",
+      "demo": "App",
+      "pricing": "Preise",
+      "beta": "Beta-Zugang",
+      "contact": "Kontakt",
+      "blog": "Blog",
+      "benefits": "Vorteile",
+      "impact": "Ersparnis",
+      "workflow": "So geht's",
+      "faq": "FAQ",
+      "feedback": "Feedback"
+    },
+    "seo": {
+      "title": "Cojauny: Verifizierte Reisegemeinschaft für geteilte Flughafentransfers",
+      "description": "Finde verifizierte Passagiere auf deinem exakten Flug für gemeinsame Flughafentransfers. Flugnummer-Matching, verifizierte Profile und Sternebewertungen. 120+ Flughäfen.",
+      "keywords": [
+        "verifizierte flughafenfahrt",
+        "flughafentransfer teilen",
+        "flug mitfahrgelegenheit",
+        "vertrauenswürdige reisegemeinschaft",
+        "gleicher flug carpool",
+        "flughafen fahrgemeinschaft app",
+        "verifizierte reiseprofile",
+        "sicherer flughafentransfer",
+        "taxi teilen gleicher flug",
+        "nachhaltiges reisen"
+      ],
+      "ogTitle": "Cojauny: Reise mit Menschen auf deinem exakten Flug, verifiziert",
+      "ogDescription": "Eine verifizierte Reisegemeinschaft, die dich mit Passagieren deines Fluges verbindet. Verifizierte Profile, Sternebewertungen und sicherer Chat vor der Fahrt."
+    },
+    "hero": {
+      "eyebrow": "Gleicher Flug. Verifizierte Reisende. Geteilte Fahrt.",
+      "title": "Eine verifizierte Reisegemeinschaft, die dich mit Menschen auf deinem exakten Flug verbindet — damit du nie mit einem Fremden und nie zu viel für deinen Transfer reist",
+      "subtitle": "Flugnummer-Matching, verifizierte Profile mit Ausweis und Foto sowie Sternebewertungen. Du weißt, mit wem du fährst, bevor du das Haus verlässt.",
+      "primaryCta": "Beta-Zugang anfordern",
+      "secondaryCta": "So funktioniert's",
+      "imageAlt": "Cojauny App zeigt Flug-Matching und verifizierte Profile"
+    },
+    "heroVariants": {
+      "savings": {
+        "title": "Teile deinen Flughafentransfer und spare bis zu 75% mit verifizierten Passagieren auf deinem Flug",
+        "subtitle": "Flugnummer-Matching, verifizierte Profile und sichtbare Bewertungen. Vertrauen zuerst — Ersparnis als Bestätigung."
+      }
+    },
+    "heroQuickSignup": {
+      "ariaLabel": "Schnelle Beta-Wartelisten-Anmeldung",
+      "label": "Sichere dir deinen Beta-Platz — nur Name und E-Mail",
+      "referralHint": "Lade Freunde mit deinem Einladungslink ein und steige in der Warteliste auf.",
+      "namePlaceholder": "Dein Name",
+      "emailPlaceholder": "du@email.de",
+      "submit": "Beta beitreten",
+      "submitting": "Wird gesendet…",
+      "privacyNote": "Ich akzeptiere die AGB und Datenschutzrichtlinie von Cojauny für den Beta-Zugang.",
+      "success": "Geschafft! Wir benachrichtigen dich per E-Mail, sobald dein Zugang bereit ist."
+    },
+    "airportsHubTitle": "Beliebte Flughäfen",
+    "airportsHubAll": "180+ Flughäfen ansehen",
+    "betaReferralBanner": "Kennst du Vielreisende? Nach der Anmeldung teile deinen Einladungslink und steige in der Warteliste auf.",
+    "features": {
+      "title": "Gebaut, damit du vertraust, bevor du teilst",
+      "subtitle": "Flug-Matching, verifizierte Profile, sicherer Chat und sichtbare Reputation. Cojauny beseitigt die Unsicherheit beim Reisen mit Fremden.",
+      "items": [
+        {
+          "title": "Flug-Matching",
+          "description": "Gib deine Flugnummer ein und wir verbinden dich mit Passagieren auf derselben Strecke. Keine zufällige Mitfahrgelegenheit — dein exakter Flug.",
+          "iconName": "bolt"
+        },
+        {
+          "title": "Verifiziertes Vertrauen",
+          "description": "Jedes Profil durchläuft Identitäts- und Fotoprüfung. Prüfe Bewertungen und Historie, bevor du einer Fahrt beitrittst.",
+          "iconName": "shield"
+        },
+        {
+          "title": "Sicherer 48h-Chat",
+          "description": "Kommuniziere in einem verschlüsselten Kanal vor und während der Fahrt. Lerne deine Begleiter kennen, ohne deine Handynummer zu teilen.",
+          "iconName": "chat"
+        },
+        {
+          "title": "Sternebewertungen",
+          "description": "Nach jeder Fahrt bewertest du Pünktlichkeit, Kommunikation und Freundlichkeit. Reputation hilft dir, sicher zu wählen.",
+          "iconName": "sparkles"
+        },
+        {
+          "title": "Events mit Plätzen",
+          "description": "Tritt Transfers mit kontrollierter Kapazität bei oder erstelle sie. Sieh Organisator, Teilnehmer und Treffpunkt vor der Bestätigung.",
+          "iconName": "users"
+        },
+        {
+          "title": "Reise-Alerts",
+          "description": "Priorisierte Benachrichtigungen für Flugänderungen, Treffpunkt-Erinnerungen und Fahrerankunft.",
+          "iconName": "sparkles"
+        },
+        {
+          "title": "Weltweite Sprachunterstützung",
+          "description": "Die App passt sich an 78 Sprachen an, inklusive Auto-Übersetzung. Koordiniere dich weltweit ohne Barrieren.",
+          "iconName": "globe"
+        },
+        {
+          "title": "Impact-Dashboard",
+          "description": "Wenn du mit Vertrauen teilst, sparst du auch. Verfolge kumulierte Ersparnisse und vermiedenes CO₂ nach jeder Fahrt.",
+          "iconName": "bolt"
+        }
+      ]
+    },
+    "value": {
+      "title": "Reise mit Menschen auf deinem Flug, nicht mit zufälligen Fremden",
+      "subtitle": "Cojauny beantwortet zuerst die wichtige Frage: Kann ich ihnen vertrauen? Ersparnis kommt danach. Eine verifizierte Community mit gemeinsamem Kontext.",
+      "items": [
+        {
+          "title": "🛡️ Verifizierte Sicherheit",
+          "description": "Profile mit Ausweis, Foto und Sternebewertungssystem. Du weißt, mit wem du fährst, bevor du bestätigst."
+        },
+        {
+          "title": "✈️ Gleicher Flug, gemeinsamer Kontext",
+          "description": "Keine zufällige Mitfahrgelegenheit: Du teilst Fahrten mit Passagieren deines exakten Fluges. Gleiches Ziel, Zeitplan und Terminal."
+        },
+        {
+          "title": "⭐ Transparente Reputation",
+          "description": "Sichtbare Bewertungen aus vergangenen Fahrten. Wähle Begleiter mit positiver Historie und baue deine eigene Reputation auf."
+        },
+        {
+          "title": "⏱️ Stressfreie Koordination",
+          "description": "Integrierte Agenda und Auto-Alerts. Die ganze Gruppe weiß wann und wo, ohne endlose Nachrichten."
+        },
+        {
+          "title": "🤝 Community, keine Fremden",
+          "description": "Vernetze dich mit Reisenden zum gleichen Ziel. Pre-Trip-Chat lässt dich die Gruppe vor der Fahrt kennenlernen."
+        },
+        {
+          "title": "💸 Und ja, du sparst auch",
+          "description": "Wenn du mit Vertrauen teilst, teilen sich die Kosten natürlich. Ein echter Vorteil — nie auf Kosten deiner Sicherheit."
+        }
+      ]
+    },
+    "savings": {
+      "title": "Und Teilen spart auch Geld",
+      "caption": "Sobald du vertraust und koordinierst, folgt die Ersparnis von selbst. Das kannst du beim Teilen erwarten.",
+      "metrics": [
+        {
+          "value": "120+",
+          "label": "Flughäfen",
+          "description": "Aktives Netzwerk an großen Hubs in Europa und Amerika."
+        },
+        {
+          "value": "50.000+",
+          "label": "Verbundene Passagiere",
+          "description": "Jahresziel für ein globales Netzwerk mit kritischer Masse auf Hauptstrecken."
+        },
+        {
+          "value": "50-75%",
+          "label": "Ersparnis beim Teilen",
+          "description": "Durchschnittliche Ersparnis pro Transfer beim Teilen von Taxi oder Privatwagen."
+        },
+        {
+          "value": "1.000+ t",
+          "label": "CO₂ vermieden",
+          "description": "Tonnen Emissionen, die wir im ersten Betriebsjahr vermeiden wollen."
+        }
+      ]
+    },
+    "workflow": {
+      "title": "Deine geteilte Fahrt in 5 Schritten",
+      "intro": "Von deiner Flugnummer zur vertrauensvollen geteilten Fahrt. So funktioniert das Matching.",
+      "steps": [
+        {
+          "title": "1. Verifiziertes Profil",
+          "description": "Registriere dich mit Foto und verifiziere deine Identität. Alle in der Community durchlaufen denselben Vertrauensfilter."
+        },
+        {
+          "title": "2. Flug hinzufügen",
+          "description": "Gib Flugnummer und Datum ein. Wir finden automatisch kompatible Passagiere auf derselben Strecke."
+        },
+        {
+          "title": "3. Prüfen und wählen",
+          "description": "Durchsuche Profile, Sternebewertungen und verfügbare Events. Du entscheidest, mit wem du teilst."
+        },
+        {
+          "title": "4. Im sicheren Chat koordinieren",
+          "description": "Klare Details mit der Gruppe in einem verschlüsselten Kanal. Treffpunkt, Zeit und Kostenaufteilung."
+        },
+        {
+          "title": "5. Fahren und bewerten",
+          "description": "Teile die Fahrt mit Vertrauen. Bewerte danach deine Begleiter und baue deine Reputation auf."
+        }
+      ]
+    },
+    "mockups": {
+      "heading": "So sieht Reisen mit Vertrauen aus",
+      "description": "Verifizierte Profile, Flug-Matching, sicherer Chat und sichtbare Bewertungen. Die App zeigt dir, mit wem du fährst, bevor du losgehst.",
+      "screens": [
+        {
+          "id": "flight-search",
+          "badge": "Matching",
+          "title": "Dein Flug, deine Gruppe",
+          "description": "Gib deine Flugnummer ein. Das System findet Passagiere auf derselben Strecke — keine zufälligen Fremden.",
+          "image": "/images/mockups/de/mockup-flight-search.svg"
+        },
+        {
+          "id": "profile",
+          "badge": "Profil",
+          "title": "Verifizierte Community",
+          "description": "Verifizierte Identität, Foto und Sternebewertungen. Kenn deine Begleiter vor der Bestätigung.",
+          "image": "/images/mockups/de/mockup-profile.svg"
+        },
+        {
+          "id": "event-detail",
+          "badge": "Detail",
+          "title": "Alles klar vor dem Beitritt",
+          "description": "Organisator, Teilnehmer, Treffpunkt und geschätzte Kosten. Keine Überraschungen.",
+          "image": "/images/mockups/de/mockup-event-detail.svg"
+        },
+        {
+          "id": "chat",
+          "badge": "Chat",
+          "title": "Mit Vertrauen koordinieren",
+          "description": "Sprich mit der Gruppe in einem sicheren Kanal. Organisiere ohne deine Nummer zu teilen.",
+          "image": "/images/mockups/de/mockup-chat.svg"
+        },
+        {
+          "id": "events-list",
+          "badge": "Events",
+          "title": "Optionen für deinen Flug",
+          "description": "Transfers und Meetups für deinen Flug mit Plätzen und Teilnehmern in Echtzeit.",
+          "image": "/images/mockups/de/mockup-events-list.svg"
+        },
+        {
+          "id": "impact",
+          "badge": "Ersparnis",
+          "title": "Ersparnis als Bestätigung",
+          "description": "Wenn du mit Vertrauen teilst, teilen sich die Kosten. Verfolge deine Ersparnisse nach jeder Fahrt.",
+          "image": "/images/mockups/de/mockup-impact.svg"
+        }
+      ]
+    },
+    "ctaStrip": {
+      "heading": "Tritt Cojaunys verifizierter Reisegemeinschaft bei",
+      "body": "Privater Beta-Zugang: verifizierte Profile, Flug-Matching und früher Produktzugang. Begrenzte Plätze für Early Adopters.",
+      "link": "#beta",
+      "linkLabel": "Beta-Zugang anfordern"
+    },
+    "pricing": {
+      "title": "Flexible Pläne für dich",
+      "subtitle": "Starte kostenlos und wachse mit deinen Reisebedürfnissen.",
+      "plans": {
+        "free": {
+          "name": "Free",
+          "price": "Kostenlos",
+          "description": "Perfekt für Gelegenheitsreisende. Manage eine aktive Reise zur Zeit ohne Kosten.",
+          "cta": "Kostenloses Konto"
+        },
+        "premium": {
+          "name": "Premium",
+          "price": "4,99€/Monat",
+          "description": "Für Vielflieger. Unbegrenztes Management, Gruppenchat und Prio-Support. 49€/Jahr.",
+          "cta": "Werde Premium"
+        }
+      },
+      "comparison": {
+        "title": "Plan-Vergleich",
+        "features": [
+          {
+            "feature": "Gleichzeitig aktive Flüge",
+            "free": "1",
+            "premium": "Unbegrenzt"
+          },
+          {
+            "feature": "Gleichzeitig aktive Events",
+            "free": "1",
+            "premium": "Unbegrenzt"
+          },
+          {
+            "feature": "Neue Events erstellen",
+            "free": false,
+            "premium": true
+          },
+          {
+            "feature": "Chat mit Organisator",
+            "free": true,
+            "premium": true
+          },
+          {
+            "feature": "Voller Gruppenchat",
+            "free": false,
+            "premium": true
+          },
+          {
+            "feature": "Wiederkehrende Events",
+            "free": false,
+            "premium": true
+          },
+          {
+            "feature": "Detaillierte Statistiken",
+            "free": "Basis",
+            "premium": "Erweitert"
+          },
+          {
+            "feature": "Prioritätssupport",
+            "free": false,
+            "premium": true
+          },
+          {
+            "feature": "Premium-Badge",
+            "free": false,
+            "premium": true
+          }
+        ]
+      }
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "subtitle": "Wir beantworten deine Zweifel zu Cojauny",
+      "items": [
+        {
+          "question": "Wie funktioniert das Matching?",
+          "answer": "Gib Flug und Datum ein. Wir gleichen das mit unserer globalen Datenbank ab und zeigen dir Reisende auf deinem Flug oder mit passenden Zeiten zum Teilen."
+        },
+        {
+          "question": "Ist es sicher, mit Fremden zu reisen?",
+          "answer": "Sicherheit hat Priorität. Wir verifizieren Profile mit Ausweis und Foto. Das Bewertungssystem und der Vorab-Chat lassen dich deine Begleiter kennenlernen."
+        },
+        {
+          "question": "Wozu dienen Bewertungen?",
+          "answer": "Sie schaffen Vertrauen. Nach der Reise bewertest du Pünktlichkeit und Freundlichkeit. Eine gute Reputation erleichtert es, künftig Begleiter zu finden."
+        },
+        {
+          "question": "Kann ich meine Teilnahme stornieren?",
+          "answer": "Ja, du kannst ein Event in der App verlassen. Als Organisator bitte frühzeitig Bescheid geben. Häufige Stornierungen können deine Reputation beeinflussen."
+        },
+        {
+          "question": "Wie wird der Transport bezahlt?",
+          "answer": "Cojauny wickelt keine Transportzahlungen ab. Nutzer einigen sich auf die Teilung (Bar, Apps, etc.). Die App hilft beim fairen Split-Rechnen."
+        },
+        {
+          "question": "Welche Art von Events gibt es?",
+          "answer": "Vom geteilten Taxi zum Flughafen bis zum Abendessen am Ziel. Premium-Nutzer können jede Art von eigenem Event erstellen."
+        },
+        {
+          "question": "Welche Flughäfen werden unterstützt?",
+          "answer": "Wir sind an 120+ internationalen Flughäfen. Ist deiner nicht dabei, kannst du ihn anfragen und wir fügen ihn nach Bedarf hinzu."
+        },
+        {
+          "question": "Wie schützt ihr meine Daten?",
+          "answer": "Wir halten uns strikt an die DSGVO. Wir zeigen nur das Nötigste. Deine privaten Kontaktdaten werden nie automatisch geteilt."
+        },
+        {
+          "question": "Ist es in meiner Sprache?",
+          "answer": "Ja, Cojauny unterstützt 78 Sprachen und erkennt deine automatisch. Wir erleichtern die Kommunikation in internationalen Gruppen."
+        },
+        {
+          "question": "Was wenn mein Flug Verspätung hat?",
+          "answer": "Wir erhalten Echtzeit-Updates. Wir benachrichtigen die ganze Gruppe bei Änderungen, damit ihr umplanen oder stornieren könnt."
+        },
+        {
+          "question": "Wie viel kann ich sparen?",
+          "answer": "Hängt von Route und Gruppe ab, aber im Schnitt ca. 50-75% im Vergleich zum Einzeltaxi. Das ist die natürliche Bestätigung des Teilens mit Vertrauen."
+        }
+      ]
+    },
+    "forms": {
+      "beta": {
+        "heading": "Tritt Cojaunys verifizierter Reisegemeinschaft bei",
+        "subheading": "Früher Beta-Zugang: verifizierte Profile, Flug-Matching und direkter Draht zum Team.",
+        "title": "Beta-Zugang anfordern",
+        "description": "🌟 Prio-Zugang · 🛡️ Verifizierte Profile · 🏆 Gründer-Badge · 🚀 Direkter Support",
+        "success": "Du bist dabei! Wir benachrichtigen dich per E-Mail, wenn dein Zugang bereit ist.",
+        "error": "Fehler bei der Registrierung. Bitte versuche es erneut.",
+        "duplicateError": "Du bist bereits auf der Liste. Wir melden uns bald.",
+        "submit": "Anfrage senden",
+        "checkboxLabel": "Ich akzeptiere Cojaunys {privacyLink}.",
+        "privacyLinkLabel": "Datenschutzrichtlinie",
+        "referralNotice": "ℹ️ Du erhältst einen Link zum Einladen. Wir zählen nur Besuche und Anmeldungen für deine Priorität, ohne Daten Dritter zu speichern.",
+        "optionalLabel": "(optional)",
+        "optionalHint": "Felder mit \"(optional)\" sind nicht Pflicht.",
+        "fields": {
+          "fullName": "Vollständiger Name",
+          "email": "E-Mail-Adresse",
+          "country": "Wohnsitzland",
+          "homeAirport": "Stadt oder Flughafen",
+          "flightFrequency": "Flugfrequenz",
+          "useCase": "Was interessiert dich an Cojauny?",
+          "updatesOptIn": "Produkt-Updates erhalten",
+          "privacyAcceptance": "Ich akzeptiere die Datenverarbeitung für die Beta."
+        },
+        "placeholders": {
+          "homeAirport": "Z.B. Berlin (BER), MUC",
+          "useCase": "Ersparnis, Networking, Nachhaltigkeit..."
+        },
+        "countryOptions": [
+          {
+            "value": "",
+            "label": "Wähle dein Land"
+          },
+          {
+            "value": "es",
+            "label": "Spanien"
+          },
+          {
+            "value": "de",
+            "label": "Deutschland"
+          },
+          {
+            "value": "fr",
+            "label": "Frankreich"
+          },
+          {
+            "value": "uk",
+            "label": "Vereinigtes Königreich"
+          },
+          {
+            "value": "us",
+            "label": "USA"
+          },
+          {
+            "value": "mx",
+            "label": "Mexiko"
+          },
+          {
+            "value": "ar",
+            "label": "Argentinien"
+          },
+          {
+            "value": "co",
+            "label": "Kolumbien"
+          },
+          {
+            "value": "cl",
+            "label": "Chile"
+          },
+          {
+            "value": "other",
+            "label": "Anderes Land"
+          }
+        ],
+        "flightFrequencyOptions": [
+          {
+            "value": "once",
+            "label": "1x im Jahr",
+            "description": "Urlaub oder gelegentlich"
+          },
+          {
+            "value": "two_to_five",
+            "label": "2–5x im Jahr",
+            "description": "Vielflieger oder regelmäßiger Urlaub"
+          },
+          {
+            "value": "six_to_ten",
+            "label": "6–10x im Jahr",
+            "description": "Profis oder Pendler"
+          },
+          {
+            "value": "more_than_ten",
+            "label": "10+x im Jahr",
+            "description": "Crews und Heavy User"
+          }
+        ]
+      },
+      "feedback": {
+        "heading": "Deine Meinung zählt",
+        "subheading": "Ideen, Vorschläge? Wir wollen von dir hören, um Cojauny zu verbessern.",
+        "title": "Sende uns eine Nachricht",
+        "description": "Hast du einen Geschäftsvorschlag oder Feedback? Schreib uns.",
+        "success": "Nachricht erhalten. Danke für deine Hilfe.",
+        "error": "Nachricht muss mindestens 10 Zeichen lang sein.",
+        "submit": "Senden",
+        "optionalLabel": "(optional)",
+        "optionalHint": "Felder sind Pflicht, außer anders angegeben.",
+        "fields": {
+          "fullName": "Name",
+          "email": "E-Mail",
+          "message": "Deine Nachricht",
+          "useCase": "Art der Anfrage",
+          "selectPlaceholder": "Wähle eine Option"
+        },
+        "caseOptions": [
+          {
+            "value": "feedback",
+            "label": "Produkt-Feedback"
+          },
+          {
+            "value": "idea",
+            "label": "Neue Idee"
+          },
+          {
+            "value": "business_proposal",
+            "label": "Geschäftsvorschlag"
+          }
+        ]
+      }
+    },
+    "referralPanel": {
+      "title": "Rücke in der Liste nach oben",
+      "subtitle": "Teile Cojauny und erhalte bevorzugten Zugang.",
+      "yourLink": "Dein Einladungslink",
+      "copyButton": "Link kopieren",
+      "copiedButton": "Kopiert",
+      "stats": {
+        "visits": "Besuche",
+        "signups": "Anmeldungen"
+      },
+      "instructions": {
+        "title": "Wie es funktioniert",
+        "step1": "Teile deinen Link.",
+        "step2": "Wir zählen anonyme Besuche.",
+        "step3": "Wir geben Punkte bei Anmeldung."
+      },
+      "privacy": "100% anonymes System. Wir speichern keine Daten deiner Eingeladenen.",
+      "privacyLabel": "Sicherheit:"
+    },
+    "cookie": {
+      "message": "Wir nutzen essenzielle Cookies für die Website und optionale Analyse-Cookies. Du wählst, was du akzeptierst. Deine Wahl wird 12 Monate gespeichert.",
+      "acceptAll": "Alle akzeptieren",
+      "reject": "Nur notwendige",
+      "customize": "Anpassen",
+      "savePreferences": "Einstellungen speichern",
+      "essentialLabel": "Essenzielle Cookies",
+      "essentialDescription": "Erforderlich für Sicherheit, Sprache und Grundfunktionen.",
+      "analyticsLabel": "Analyse-Cookies",
+      "analyticsDescription": "Helfen uns, Besuche zu messen und die Beta-Konversion zu verbessern.",
+      "alwaysOn": "Immer aktiv",
+      "moreInfo": "Mehr Info"
+    },
+    "footer": {
+      "description": "Gemeinsam in eine nachhaltige Zukunft reisen.",
+      "rights": "Alle Rechte vorbehalten.",
+      "appStoreSoon": "App Store (bald)",
+      "playStoreSoon": "Google Play (bald)",
+      "privacy": "Datenschutz",
+      "cookies": "Cookies",
+      "terms": "AGB",
+      "accountDeletion": "Konto löschen",
+      "acceptableUse": "Nutzungsbedingungen",
+      "faq": "FAQ",
+      "subprocessors": "Subprozessoren",
+      "contact": "Kontakt",
+      "blog": "Blog",
+      "languageLabel": "Sprache",
+      "madeInEurope": "Hergestellt in Europa."
+    }
+  },
+  "blog": {
+    "meta": {
+      "title": "Cojauny Blog · Smarte Mobilität für Flugreisen",
+      "description": "Koordiniere Flughafentransfers mit Mitreisenden, senke Kosten und bleib vor dem Boarding informiert.",
+      "ogTitle": "Cojauny Blog · Effiziente Flughafentransfers",
+      "ogDescription": "Fallstudien, Taktiken und Produkt-News für die perfekte Koordination von Tür zu Gate."
+    },
+    "heading": "Einblicke in smarte Mobilität",
+    "subtitle": "Bewährte Strategien für die Koordination gemeinsamer Fahrten rund um den Flug.",
+    "empty": "Neue Artikel kommen bald. Melde dich zur Beta an für Vorab-Zugriff.",
+    "readTimeLabel": "Min. Lesezeit",
+    "updatedLabel": "Aktualisiert",
+    "backLabel": "Zurück zum Blog",
+    "shareLabel": "Artikel teilen"
+  },
+  "docs": {
+    "sdkPlan": {
+      "title": "SDK-Integrationsguide",
+      "intro": "Nutze diese Roadmap, um Cojauny mit deinen Apps und Systemen via SDK und Serverless Functions zu verbinden.",
+      "steps": [
+        {
+          "title": "Deep Links vorbereiten",
+          "description": "Definiere universelle Schemata (iOS/Android) und reserviere Pfade für Cojauny-Einladungen."
+        },
+        {
+          "title": "Datenbank konfigurieren",
+          "description": "Erstelle Tabellen, aktiviere RLS pro Projekt und deploye `send-beta-email` mit deinen Zugangsdaten."
+        },
+        {
+          "title": "Listener implementieren",
+          "description": "Nutze Edge Functions oder Webhooks, um Apps über Freigaben oder Änderungen zu informieren."
+        }
+      ]
+    }
+  },
+  "legal": {
+    "privacy": {
+      "title": "Datenschutz- und Datensicherheitsrichtlinie",
+      "intro": "Bei Cojauny nehmen wir Ihre Privatsphäre sehr ernst. Diese Richtlinie erläutert, wie wir Ihre personenbezogenen Daten gemäß DSGVO verwalten.",
+      "updatedAt": "Letzte Aktualisierung: 25. Mai 2026",
+      "sections": [
+        {
+          "heading": "1. Verantwortlicher",
+          "body": "Verantwortlicher ist Cojauny Studio - Richard Díaz González (\"Cojauny\"), Spanien. Kontakt DSB: support@cojauny.com."
+        },
+        {
+          "heading": "2. Erfasste Datenkategorien",
+          "body": "Wir erfassen: (a) Identitätsdaten: Name, E-Mail, ID; (b) Technische Daten: IP, Gerät, Logs; (c) Nutzungsdaten: Interaktionen; (d) Standortdaten: Präzise Geolokalisierung (nur mit Einwilligung); (e) Eventdaten: Infos zu Events; (f) Nutzerinhalte: Fotos, Texte."
+        },
+        {
+          "heading": "3. Zweck und Rechtsgrundlage",
+          "body": "Wir verarbeiten für: (i) Leistungserbringung (Vertrag); (ii) Sicherheit (Berechtigtes Interesse); (iii) Kommunikation (Vertrag); (iv) Compliance (Gesetz); (v) Geolokalisierung (Einwilligung). Keine automatisierten Entscheidungen mit Rechtswirkung ohne Einwilligung."
+        },
+        {
+          "heading": "4. Datenspeicherung",
+          "body": "Speicherung solange Konto aktiv. Geolokalisierung: Löschung nach 2 Std. Logs: 12 Monate. Nach Schließung Sperrung während Verjährungsfrist (bis 5 Jahre)."
+        },
+        {
+          "heading": "5. Empfänger und Übermittlungen",
+          "body": "Weitergabe an Provider (Hosting) unter Auftragsverarbeitungsverträgen. Transfers außerhalb EWR geschützt durch EU-Standardvertragsklauseln (SCC)."
+        },
+        {
+          "heading": "6. Nutzerrechte",
+          "body": "Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch und Übertragbarkeit via support@cojauny.com. Beschwerderecht bei der AEPD."
+        },
+        {
+          "heading": "7. Sicherheit",
+          "body": "TLS 1.2+, AES-256, Zugriffskontrollen und Audits. Meldung von Sicherheitsverletzungen binnen 72h bei Risiko."
+        },
+        {
+          "heading": "8. App und Berechtigungen",
+          "body": "App fragt nach: Kamera/Galerie (Fotos), Standort (Koordination), Benachrichtigungen. Widerruf in Geräteeinstellungen möglich."
+        }
+      ],
+      "contact": "DSB: support@cojauny.com | Antwort in 24h"
+    },
+    "cookies": {
+      "title": "Cookie-Richtlinie",
+      "intro": "Nutzung von Cookies zur Verbesserung der Erfahrung.",
+      "updatedAt": "25. Mai 2026",
+      "sections": [
+        {
+          "heading": "1. Definition",
+          "body": "Wir nutzen Cookies und lokalen Speicher für Sitzungserhalt und Analyse."
+        },
+        {
+          "heading": "2. Arten",
+          "body": "(a) Essenziell: Login/Sicherheit (ohne Einwilligung). (b) Analyse: Google Analytics (mit Einwilligung). (c) Funktional: Sprache."
+        },
+        {
+          "heading": "3. Kontrolle",
+          "body": "Verwaltung über Banner oder App-Einstellungen. Blockieren essenzieller Cookies kann Nutzung verhindern."
+        }
+      ],
+      "contact": "Cookies: support@cojauny.com"
+    },
+    "terms": {
+      "title": "Allgemeine Geschäftsbedingungen",
+      "intro": "Rechtlich bindender Vertrag zwischen Nutzer und Cojauny.",
+      "updatedAt": "25. Mai 2026",
+      "sections": [
+        {
+          "heading": "1. Art des Dienstes und Haftungsausschluss Offline",
+          "body": "Cojauny ist ein Tech-Tool zur Event-Koordination. Wir sind KEINE Event-Veranstalter und überwachen keine realen Interaktionen. Cojauny haftet NICHT für Sicherheit, Verhalten oder Legalität von Offline-Events. Teilnahme auf eigenes Risiko."
+        },
+        {
+          "heading": "2. Lizenz für Nutzerinhalte",
+          "body": "Sie behalten das Eigentum an Ihren Posts. Mit dem Upload gewähren Sie Cojauny eine weltweite, nicht-exklusive, kostenlose Lizenz zur Nutzung, Anzeige und Verbreitung der Inhalte für den Betrieb des Dienstes."
+        },
+        {
+          "heading": "3. Registrierung und Sicherheit",
+          "body": "Mindestalter 18. Sie haften für Ihr Passwort. Melden Sie unbefugten Zugriff sofort."
+        },
+        {
+          "heading": "4. Schadloshaltung",
+          "body": "Sie stellen Cojauny von allen Ansprüchen, Schäden oder Kosten frei, die entstehen aus: (a) Ihrem Vertragsbruch; (b) Verletzung Dritter; (c) Ihrem Verhalten bei Offline-Events."
+        },
+        {
+          "heading": "5. Geistiges Eigentum der Plattform",
+          "body": "Software und Marken gehören exklusiv Cojauny. Reverse Engineering verboten."
+        },
+        {
+          "heading": "6. Haftungsbeschränkung",
+          "body": "Soweit gesetzlich zulässig, haftet Cojauny nicht für indirekte Schäden oder physische Schäden bei Events. Gesamthaftung beschränkt auf Zahlungen der letzten 12 Monate oder 50€."
+        },
+        {
+          "heading": "7. Änderung und Kündigung",
+          "body": "Änderungen mit Benachrichtigung. Sperrung bei Verstoß ohne Vorankündigung."
+        },
+        {
+          "heading": "8. Recht und Gerichtsstand",
+          "body": "Spanisches Recht. Gerichtsstand: Madrid, Spanien."
+        }
+      ],
+      "contact": "Recht: support@cojauny.com"
+    },
+    "accountDeletion": {
+      "title": "Kontolöschung und Daten",
+      "intro": "So fordern Sie die Löschung Ihres Cojauny-Kontos an und welche Daten entfernt werden. Diese Seite erfüllt die Anforderungen von Google Play und die DSGVO (Recht auf Löschung).",
+      "updatedAt": "Zuletzt aktualisiert: 1. Juni 2026",
+      "sections": [
+        {
+          "heading": "1. Konto in der App löschen (empfohlen)",
+          "body": "Öffnen Sie die Cojauny-App und melden Sie sich an. Gehen Sie zu Einstellungen → Konto → Konto löschen und bestätigen Sie im Dialog. Bei Google-Anmeldung kann eine erneute Authentifizierung nötig sein. Die Löschung ist endgültig."
+        },
+        {
+          "heading": "2. Anfrage ohne App-Zugang",
+          "body": "Senden Sie eine E-Mail von der mit dem Konto verknüpften Adresse an support@cojauny.com mit dem Betreff „Kontolöschung“. Wir antworten innerhalb von 30 Tagen und prüfen Ihre Identität vor der Bearbeitung."
+        },
+        {
+          "heading": "3. Gelöschte Daten",
+          "body": "Es werden u. a. entfernt: Profil- und Kontodaten, Event- und Chat-Teilnahme, mit Ihrem Nutzer verknüpfte Nachrichten, Push-Token, lokale Einstellungen nach Abmeldung und Ihr Firebase-Auth-Eintrag. Hochgeladene Bilder werden gemäß Aufbewahrungsregeln gelöscht oder getrennt."
+        },
+        {
+          "heading": "4. Vorübergehend aufbewahrte Daten",
+          "body": "Begrenzt können bleiben: technische und Sicherheitsprotokolle (bis 12 Monate), verschlüsselte Backups bis zur nächsten Bereinigung und gesetzlich erforderliche Daten (bis 5 Jahre nach spanischem Recht). Anonymisierte Statistiken ohne Identifizierung können bleiben."
+        },
+        {
+          "heading": "5. Frist und Bestätigung",
+          "body": "Die Löschung in der App dauert in der Regel wenige Minuten. E-Mail-Anfragen innerhalb von 30 Tagen. Sie erhalten eine Bestätigung per E-Mail, sofern die Adresse erreichbar ist."
+        }
+      ],
+      "contact": "Hilfe: support@cojauny.com · Datenschutz: /legal/privacy · AGB: /legal/terms"
+    },
+    "acceptableUse": {
+      "title": "Richtlinie für akzeptable Nutzung",
+      "intro": "Sicherheitsregeln für die Community.",
+      "updatedAt": "25. Mai 2026",
+      "sections": [
+        {
+          "heading": "1. Verbotenes Verhalten",
+          "body": "Verboten: Belästigung, Hassrede, explizite sexuelle Inhalte, illegale Aktivitäten, Spam."
+        },
+        {
+          "heading": "2. Event-Sicherheit",
+          "body": "Verboten: Organisation von Events, die Sicherheit gefährden oder Gesetze verletzen."
+        },
+        {
+          "heading": "3. Technische Integrität",
+          "body": "Scraping, malware, DDoS-Attacken verboten."
+        },
+        {
+          "heading": "4. Konsequenzen",
+          "body": "Verstoß führt zu sofortiger Sperrung und ggf. Anzeige."
+        }
+      ],
+      "contact": "Meldungen: support@cojauny.com"
+    },
+    "faq": {
+      "title": "Rechtliche FAQ",
+      "intro": "Häufige Fragen.",
+      "updatedAt": "25. Mai 2026",
+      "categories": [
+        {
+          "name": "Haftung",
+          "questions": [
+            {
+              "question": "Haftet Cojauny für Events?",
+              "answer": "Nein. Wir sind nur das Tool. Organisatoren haften für ihre Taten."
+            }
+          ]
+        },
+        {
+          "name": "Datenschutz",
+          "questions": [
+            {
+              "question": "Verkaufen Sie Daten?",
+              "answer": "Niemals."
+            },
+            {
+              "question": "Konto löschen?",
+              "answer": "Über App-Einstellungen oder Support."
+            }
+          ]
+        }
+      ],
+      "contact": "Support: support@cojauny.com"
+    },
+    "subprocessors": {
+      "title": "Unterauftragsverarbeiter",
+      "intro": "Externe Anbieter.",
+      "updatedAt": "25. Mai 2026",
+      "providers": [
+        {
+          "name": "Supabase",
+          "purpose": "Datenbank",
+          "location": "Deutschland (EU)",
+          "security": "ISO 27001",
+          "dataTypes": "Nutzerdaten",
+          "policyLink": "https://supabase.com/privacy"
+        },
+        {
+          "name": "Zoho",
+          "purpose": "E-Mail",
+          "location": "EU",
+          "security": "DSGVO",
+          "dataTypes": "E-Mails",
+          "policyLink": "https://www.zoho.com/privacy.html"
+        },
+        {
+          "name": "Dynadot",
+          "purpose": "Domains",
+          "location": "USA",
+          "security": "Privacy Shield",
+          "dataTypes": "Netzwerkdaten",
+          "policyLink": "https://www.dynadot.com/privacy_policy.html"
+        }
+      ],
+      "contact": "Recht: support@cojauny.com"
+    }
+  }
+}

@@ -12,6 +12,8 @@ describe('Hero', () => {
                 quickSignupCopy={copy.heroQuickSignup}
                 betaCopy={copy.forms.beta}
                 locale="es"
+                airportsHubTitle={copy.airportsHubTitle}
+                airportsHubAll={copy.airportsHubAll}
             />
         );
 

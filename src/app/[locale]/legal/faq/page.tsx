@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import LegalFaq from '@/components/LegalFaq';
+import StructuredData from '@/components/StructuredData';
 import { getAppMessages } from '@/lib/i18nMessages';
+import { buildFaqJsonLd } from '@/lib/jsonld';
 import { locales, type Locale } from '@/locales/config';
 
 interface FaqPageProps {
@@ -36,8 +38,14 @@ const FaqPage = async ({ params }: FaqPageProps) => {
     }
 
     const copy = (await getAppMessages(locale)).legal.faq;
+    const faqItems = copy.categories.flatMap((category) => category.questions);
 
-    return <LegalFaq copy={copy} />;
+    return (
+        <>
+            <StructuredData id={`ld-legal-faq-${locale}`} data={buildFaqJsonLd(faqItems)} />
+            <LegalFaq copy={copy} />
+        </>
+    );
 };
 
 export default FaqPage;

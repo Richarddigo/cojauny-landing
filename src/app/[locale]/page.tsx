@@ -7,6 +7,7 @@ import StructuredData from '@/components/StructuredData';
 import { getCommonCopyFromMessages } from '../../i18n/message-adapters';
 import { locales, type Locale } from '@/locales/config';
 import { getAppMessages } from '@/lib/i18nMessages';
+import { getHeroVariant } from '@/lib/heroVariant';
 import { siteMetadata } from '@/lib/site';
 import {
     buildSoftwareAppJsonLd,
@@ -14,7 +15,6 @@ import {
     buildBreadcrumbJsonLd,
     buildLocaleAlternates
 } from '@/lib/jsonld';
-import { filterFaqForPhase } from '@/lib/faqFilters';
 
 interface LocalePageProps {
     params: Promise<{ locale: string }>;
@@ -54,7 +54,7 @@ export default async function LocalePage({ params }: LocalePageProps) {
     const copy = (await getAppMessages(locale)).landing;
     const commonT = await getTranslations({ locale, namespace: 'common' });
     const commonCopy = getCommonCopyFromMessages(commonT);
-    const faqItems = filterFaqForPhase(copy.faq.items);
+    const heroVariant = await getHeroVariant();
 
     const breadcrumb = buildBreadcrumbJsonLd(locale, [
         { name: 'Cojauny', absoluteUrl: siteMetadata.url },
@@ -64,9 +64,9 @@ export default async function LocalePage({ params }: LocalePageProps) {
     return (
         <>
             <StructuredData id={`ld-app-${locale}`} data={buildSoftwareAppJsonLd(locale)} />
-            <StructuredData id={`ld-faq-${locale}`} data={buildFaqJsonLd(faqItems)} />
+            <StructuredData id={`ld-faq-${locale}`} data={buildFaqJsonLd(copy.faq.items)} />
             <StructuredData id={`ld-breadcrumb-${locale}`} data={breadcrumb} />
-            <LandingPageContent copy={copy} locale={locale} common={commonCopy} />
+            <LandingPageContent copy={copy} locale={locale} common={commonCopy} heroVariant={heroVariant} />
         </>
     );
 }

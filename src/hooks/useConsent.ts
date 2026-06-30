@@ -1,10 +1,15 @@
 "use client";
 
-import { useState } from 'react';
-
-type ConsentState = 'unknown' | 'accepted' | 'rejected';
-
-const STORAGE_KEY = 'cojauny-consent';
+import { useCallback, useState } from 'react';
+import {
+  buildConsent,
+  CONSENT_STORAGE_KEY,
+  hasAnalyticsConsent,
+  parseConsent,
+  serializeConsent,
+  type ConsentPreferences,
+  type ConsentState,
+} from '@/lib/consent';
 
 export function useConsent() {
   const [consent, setConsent] = useState<ConsentState>(() => {
@@ -12,23 +17,37 @@ export function useConsent() {
       return 'unknown';
     }
 
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (stored === 'accepted' || stored === 'rejected') {
-      return stored;
-    }
-
-    return 'unknown';
+    return parseConsent(window.localStorage.getItem(CONSENT_STORAGE_KEY));
   });
 
-  const accept = () => {
-    window.localStorage.setItem(STORAGE_KEY, 'accepted');
-    setConsent('accepted');
-  };
+  const save = useCallback((preferences: ConsentPreferences) => {
+    window.localStorage.setItem(CONSENT_STORAGE_KEY, serializeConsent(preferences));
+    setConsent(preferences);
+  }, []);
 
-  const reject = () => {
-    window.localStorage.setItem(STORAGE_KEY, 'rejected');
-    setConsent('rejected');
-  };
+  const acceptAll = useCallback(() => {
+    save(buildConsent(true));
+  }, [save]);
 
-  return { consent, accept, reject };
+  const rejectAnalytics = useCallback(() => {
+    save(buildConsent(false));
+  }, [save]);
+
+  const savePreferences = useCallback(
+    (analytics: boolean) => {
+      save(buildConsent(analytics));
+    },
+    [save],
+  );
+
+  const analyticsAllowed = hasAnalyticsConsent(consent);
+
+  return {
+    consent,
+    analyticsAllowed,
+    acceptAll,
+    rejectAnalytics,
+    savePreferences,
+    isConfigured: consent !== 'unknown',
+  };
 }

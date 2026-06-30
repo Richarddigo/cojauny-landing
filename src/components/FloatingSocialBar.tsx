@@ -7,40 +7,32 @@ import { getCommonCopy } from '@/locales/common';
 
 /**
  * Barra vertical flotante fija con iconos de redes sociales + enlace al formulario beta.
- * Se posiciona justo debajo del logo de Cojauny en el lado izquierdo.
- *
- * NOTE: previously animated with framer-motion; replaced with CSS-only fade-in
- * to remove framer-motion from the root layout critical path. See globals.css
- * for the .floating-social-bar / .floating-social-item keyframes.
+ * Oculta en móvil fuera de la landing para evitar solapamiento con contenido legal/blog.
  */
 export default function FloatingSocialBar() {
     const pathname = usePathname();
 
-    // Detectar el locale actual de la URL
-    const currentLocale = locales.find(loc => pathname?.startsWith(`/${loc}`)) || 'en';
+    const currentLocale = locales.find((loc) => pathname?.startsWith(`/${loc}`)) || 'en';
     const common = getCommonCopy(currentLocale);
 
-    // Determinar si estamos en la página principal del locale
     const isMainPage = pathname === `/${currentLocale}` || pathname === '/';
 
     const handleBetaClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
 
         if (isMainPage) {
-            // Si estamos en la página principal, solo hacer scroll
             const betaSection = document.getElementById('beta');
             if (betaSection) {
                 betaSection.scrollIntoView({ behavior: 'smooth' });
             }
         } else {
-            // Si estamos en otra página, navegar a la página principal con el hash
             window.location.href = `/${currentLocale}#beta`;
         }
     };
 
     return (
         <div
-            className="floating-social-bar fixed left-1.5 sm:left-2 md:left-3 top-20 z-40 flex flex-col gap-1 bg-slate-900/95 backdrop-blur-sm rounded-full py-2 px-1.5 shadow-lg border border-white/10"
+            className={`floating-social-bar fixed left-1.5 sm:left-2 md:left-3 top-20 z-40 flex flex-col gap-1 bg-slate-900/95 backdrop-blur-sm rounded-full py-2 px-1.5 shadow-lg border border-white/10 ${isMainPage ? '' : 'max-md:hidden'}`}
         >
             {socialLinks.map((link, index) => (
                 <a

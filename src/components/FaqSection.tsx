@@ -3,17 +3,20 @@
 import { Disclosure } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import type { LandingCopy } from '@/locales/copy';
+import type { Locale } from '@/locales/config';
 import SectionIntro from '@/components/SectionIntro';
-import { filterFaqForPhase } from '@/lib/faqFilters';
+import AirportHubLinks from '@/components/AirportHubLinks';
 
 interface FaqSectionProps {
     copy: LandingCopy['faq'];
+    locale: Locale;
+    airportsHubTitle: string;
+    airportsHubAll: string;
 }
 
-const FaqSection = ({ copy }: FaqSectionProps) => {
-    const items = filterFaqForPhase(copy.items);
+const AIRPORT_QUESTION = /aeropuerto|airport|flughafen|aéroport/i;
 
-    return (
+const FaqSection = ({ copy, locale, airportsHubTitle, airportsHubAll }: FaqSectionProps) => (
     <section
         id="faq"
         className="w-full scroll-mt-[74px] bg-studio-bg py-12 md:py-16 lg:py-20 lg:scroll-mt-[100px]"
@@ -21,7 +24,7 @@ const FaqSection = ({ copy }: FaqSectionProps) => {
         <div className="mx-auto max-w-4xl px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">
             <SectionIntro title={copy.title} description={copy.subtitle} />
             <div className="mt-10 space-y-4 md:mt-12 md:space-y-6">
-                {items.map((item, index) => (
+                {copy.items.map((item, index) => (
                     <Disclosure as="div" key={`faq-${index}`} className="rounded-2xl border border-white/8 bg-studio-surface shadow-sm md:rounded-3xl">
                         {({ open }) => (
                             <>
@@ -35,6 +38,14 @@ const FaqSection = ({ copy }: FaqSectionProps) => {
                                 </Disclosure.Button>
                                 <Disclosure.Panel className="px-5 pb-4 md:px-6 md:pb-5">
                                     <p className="text-sm leading-relaxed text-studio-muted md:text-base">{item.answer}</p>
+                                    {AIRPORT_QUESTION.test(item.question) && (
+                                        <AirportHubLinks
+                                            locale={locale}
+                                            title={airportsHubTitle}
+                                            allLabel={airportsHubAll}
+                                            className="mt-4 rounded-2xl border border-white/8 bg-white/5 p-4"
+                                        />
+                                    )}
                                 </Disclosure.Panel>
                             </>
                         )}
@@ -43,8 +54,6 @@ const FaqSection = ({ copy }: FaqSectionProps) => {
             </div>
         </div>
     </section>
-    );
-};
+);
 
 export default FaqSection;
-

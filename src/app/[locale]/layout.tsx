@@ -17,7 +17,7 @@ import {
     getHeaderCopyFromMessages,
 } from '../../i18n/message-adapters';
 import { locales, type Locale } from '@/locales/config';
-import { getLandingCopy } from '@/locales/copy';
+import { getLandingCopyForPhase } from '@/lib/landingCopy';
 import { siteMetadata, ogImages } from '@/lib/site';
 import { buildLocaleAlternates, buildRobotsMeta } from '@/lib/jsonld';
 
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         notFound();
     }
 
-    const copy = getLandingCopy(locale);
+    const copy = getLandingCopyForPhase(locale);
     const otherLocales = locales.filter((value) => value !== locale);
     const alternates = buildLocaleAlternates(locale);
 
@@ -78,7 +78,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         notFound();
     }
 
-    const copy = getLandingCopy(locale);
+    const copy = getLandingCopyForPhase(locale);
     setRequestLocale(locale);
     const landingT = await getTranslations({ locale, namespace: 'landing' });
     const headerT = await getTranslations({ locale, namespace: 'landing.header' });

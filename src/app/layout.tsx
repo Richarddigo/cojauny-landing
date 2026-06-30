@@ -20,16 +20,17 @@ const inter = Inter({
 export const metadata: Metadata = {
     metadataBase: new URL(siteMetadata.url),
     title: {
-        default: `${siteMetadata.name} - Traslados compartidos coordinados por vuelo`,
+        default: `${siteMetadata.name} - Verified airport ride sharing`,
         template: `%s - ${siteMetadata.name}`
     },
-    description: siteMetadata.description,
+    description:
+        'Match with verified passengers on your exact flight to share airport transfers. Flight-number matching, ID-verified profiles, and star ratings.',
     keywords: [
-        'traslado aeropuerto compartido',
-        'airport ride sharing',
+        'verified airport ride share',
+        'airport transfer sharing',
         'flight coordination',
-        'carpool aeropuerto',
-        'movilidad colaborativa'
+        'airport carpool app',
+        'collaborative mobility'
     ],
     authors: [{ name: siteMetadata.author }],
     icons: {
@@ -40,18 +41,20 @@ export const metadata: Metadata = {
         apple: '/apple-icon.png'
     },
     openGraph: {
-        title: `${siteMetadata.name} - Traslados compartidos coordinados por vuelo`,
-        description: siteMetadata.description,
+        title: `${siteMetadata.name} - Verified airport ride sharing`,
+        description:
+            'Match with verified passengers on your exact flight to share airport transfers. Flight-number matching, ID-verified profiles, and star ratings.',
         url: siteMetadata.url,
         siteName: siteMetadata.name,
         images: ogImages,
-        locale: siteMetadata.locale,
+        locale: 'en_US',
         type: 'website'
     },
     twitter: {
         card: 'summary_large_image',
-        title: `${siteMetadata.name} - Traslados compartidos coordinados por vuelo`,
-        description: siteMetadata.description,
+        title: `${siteMetadata.name} - Verified airport ride sharing`,
+        description:
+            'Match with verified passengers on your exact flight to share airport transfers.',
         site: siteMetadata.twitter,
         creator: siteMetadata.twitter
     },

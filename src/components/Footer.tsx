@@ -75,6 +75,7 @@ const Footer = ({ copy, locale, common }: FooterProps) => {
                         <nav className="flex flex-col gap-2">
                             <Link href={`/${locale}`} className="text-sm text-muted transition-colors hover:text-text">{resolvedCommon.footerHomeLabel}</Link>
                             <Link href={`/${locale}/blog`} className="text-sm text-muted transition-colors hover:text-text">{copy.blog}</Link>
+                            <Link href={`/${locale}/airports`} className="text-sm text-muted transition-colors hover:text-text">{resolvedCommon.footerAirportsLabel}</Link>
                             <a href={`https://studio.cojauny.com/${locale}/contact`} target="_blank" rel="noopener noreferrer" className="text-sm text-muted transition-colors hover:text-text">{copy.contact}</a>
                         </nav>
                     </div>

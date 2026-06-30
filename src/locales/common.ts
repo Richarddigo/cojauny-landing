@@ -38,6 +38,7 @@ export interface CommonCopy {
   footerEcosystemSectionLabel: string;
   footerEcosystemDescription: string;
   footerHomeLabel: string;
+  footerAirportsLabel: string;
   // Header nav landmark
   navAriaLabel: string;
   // Loading / Error page strings
@@ -73,6 +74,7 @@ const commonCopy: Record<Locale, CommonCopy> = {
     footerEcosystemSectionLabel: 'Ecosistema',
     footerEcosystemDescription: 'Cojauny forma parte de un ecosistema de productos digitales en evolución.',
     footerHomeLabel: 'Inicio',
+    footerAirportsLabel: 'Aeropuertos',
     navAriaLabel: 'Navegación principal',
     loadingLabel: 'Cargando…',
     errorTitle: 'Algo salió mal',
@@ -103,6 +105,7 @@ const commonCopy: Record<Locale, CommonCopy> = {
     footerEcosystemSectionLabel: 'Ecosystem',
     footerEcosystemDescription: 'Cojauny is part of an evolving ecosystem of digital products.',
     footerHomeLabel: 'Home',
+    footerAirportsLabel: 'Airports',
     navAriaLabel: 'Main navigation',
     loadingLabel: 'Loading…',
     errorTitle: 'Something went wrong',
@@ -133,6 +136,7 @@ const commonCopy: Record<Locale, CommonCopy> = {
     footerEcosystemSectionLabel: 'Ökosystem',
     footerEcosystemDescription: 'Cojauny ist Teil eines sich entwickelnden Ökosystems digitaler Produkte.',
     footerHomeLabel: 'Start',
+    footerAirportsLabel: 'Flughäfen',
     navAriaLabel: 'Hauptnavigation',
     loadingLabel: 'Laden…',
     errorTitle: 'Etwas ist schiefgelaufen',
@@ -163,6 +167,7 @@ const commonCopy: Record<Locale, CommonCopy> = {
     footerEcosystemSectionLabel: 'Écosystème',
     footerEcosystemDescription: 'Cojauny fait partie d’un écosystème évolutif de produits numériques.',
     footerHomeLabel: 'Accueil',
+    footerAirportsLabel: 'Aéroports',
     navAriaLabel: 'Navigation principale',
     loadingLabel: 'Chargement…',
     errorTitle: "Une erreur s'est produite",

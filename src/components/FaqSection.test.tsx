@@ -28,14 +28,14 @@ const mockCopy: LandingCopy['faq'] = {
 
 describe('FaqSection', () => {
     it('renderiza el título y subtítulo', () => {
-        render(<FaqSection copy={mockCopy} />);
+        render(<FaqSection copy={mockCopy} locale="es" airportsHubTitle="Aeropuertos" airportsHubAll="Ver todos" />);
 
         expect(screen.getByText(mockCopy.title)).toBeInTheDocument();
         expect(screen.getByText(mockCopy.subtitle)).toBeInTheDocument();
     });
 
     it('renderiza todas las preguntas', () => {
-        render(<FaqSection copy={mockCopy} />);
+        render(<FaqSection copy={mockCopy} locale="es" airportsHubTitle="Aeropuertos" airportsHubAll="Ver todos" />);
 
         mockCopy.items.forEach(item => {
             expect(screen.getByText(item.question)).toBeInTheDocument();
@@ -43,7 +43,7 @@ describe('FaqSection', () => {
     });
 
     it('las respuestas están ocultas inicialmente', () => {
-        render(<FaqSection copy={mockCopy} />);
+        render(<FaqSection copy={mockCopy} locale="es" airportsHubTitle="Aeropuertos" airportsHubAll="Ver todos" />);
 
         // Las respuestas no deberían estar visibles
         mockCopy.items.forEach(item => {
@@ -52,7 +52,7 @@ describe('FaqSection', () => {
     });
 
     it('muestra la respuesta al hacer clic en una pregunta', async () => {
-        render(<FaqSection copy={mockCopy} />);
+        render(<FaqSection copy={mockCopy} locale="es" airportsHubTitle="Aeropuertos" airportsHubAll="Ver todos" />);
 
         const firstQuestion = screen.getByText(mockCopy.items[0].question);
         fireEvent.click(firstQuestion);
@@ -61,7 +61,7 @@ describe('FaqSection', () => {
     });
 
     it('oculta la respuesta al hacer clic de nuevo', async () => {
-        render(<FaqSection copy={mockCopy} />);
+        render(<FaqSection copy={mockCopy} locale="es" airportsHubTitle="Aeropuertos" airportsHubAll="Ver todos" />);
 
         const firstQuestion = screen.getByText(mockCopy.items[0].question);
 
@@ -75,7 +75,7 @@ describe('FaqSection', () => {
     });
 
     it('puede abrir múltiples preguntas a la vez', async () => {
-        render(<FaqSection copy={mockCopy} />);
+        render(<FaqSection copy={mockCopy} locale="es" airportsHubTitle="Aeropuertos" airportsHubAll="Ver todos" />);
 
         const firstQuestion = screen.getByText(mockCopy.items[0].question);
         const secondQuestion = screen.getByText(mockCopy.items[1].question);
@@ -88,7 +88,7 @@ describe('FaqSection', () => {
     });
 
     it('tiene id para navegación por ancla', () => {
-        const { container } = render(<FaqSection copy={mockCopy} />);
+        const { container } = render(<FaqSection copy={mockCopy} locale="es" airportsHubTitle="Aeropuertos" airportsHubAll="Ver todos" />);
         // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
         const section = container.querySelector('#faq');
         expect(section).toBeInTheDocument();
