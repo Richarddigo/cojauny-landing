@@ -116,7 +116,7 @@
         },
         {
           "title": "Reputación transparente",
-          "description": "Valoraciones por estrellas y comentarios visibles tras cada trayecto. Toma decisiones informadas antes de confirmar.",
+          "description": "Valoraciones de 0 a 5 estrellas y comentarios opcionales tras cada trayecto. Visibles en el perfil público antes de confirmar.",
           "iconName": "sparkles"
         },
         {
@@ -146,7 +146,7 @@
         },
         {
           "title": "Reputación auditable",
-          "description": "Historial de valoraciones visible para evaluar puntualidad, comunicación y conducta en trayectos anteriores."
+          "description": "Historial público de valoraciones y comentarios para evaluar puntualidad, comunicación y conducta en trayectos anteriores."
         },
         {
           "title": "Coordinación estructurada",
@@ -210,7 +210,7 @@
         },
         {
           "title": "5. Trayecto y valoración",
-          "description": "Complete el viaje y aporte su evaluación para mantener estándares de la comunidad."
+          "description": "Complete el viaje y valore a sus compañeros (0–5 estrellas y comentario opcional). Las valoraciones alimentan el perfil público y el historial de reputación."
         }
       ]
     },
@@ -229,7 +229,7 @@
           "id": "profile",
           "badge": "Perfil",
           "title": "Comunidad verificada",
-          "description": "Identidad verificada, foto y valoraciones por estrellas. Conoces a tus compañeros antes de confirmar.",
+          "description": "Perfil público con identidad verificada, media de estrellas (0–5) y comentarios de trayectos anteriores.",
           "image": "/images/mockups/es/mockup-profile.svg"
         },
         {
@@ -346,11 +346,15 @@
         },
         {
           "question": "¿Es seguro viajar con desconocidos?",
-          "answer": "La seguridad es prioridad. Verificamos perfiles con documento de identidad y foto. El sistema de reputación y el chat previo te permiten conocer a tus compañeros antes de compartir."
+          "answer": "La seguridad es prioridad. Verificamos perfiles con documento de identidad y foto. Antes de confirmar, puede consultar el perfil público de cada usuario — valoraciones, comentarios e historial de reputación. El chat previo permite coordinar sin exponer datos de contacto privados."
         },
         {
-          "question": "¿Para qué sirven las valoraciones?",
-          "answer": "Construyen confianza. Al finalizar un viaje, valoras la puntualidad y amabilidad. Una buena reputación te facilita encontrar compañeros en el futuro."
+          "question": "¿Cómo funcionan las valoraciones con estrellas y los comentarios?",
+          "answer": "Tras cada trayecto completado, los participantes se valoran mutuamente en una escala de 0 a 5 estrellas en tres criterios: puntualidad, comunicación y conducta. La media se refleja en el perfil público. Opcionalmente, puede dejar un comentario breve visible en el historial de reputación de ese usuario. Las valoraciones negativas se revisan para detectar abusos. Esta información le permite decidir con criterio antes de confirmar un trayecto."
+        },
+        {
+          "question": "¿Qué es público y qué es privado en mi perfil?",
+          "answer": "Cojauny distingue entre perfil público y datos privados. En su perfil público, otros usuarios ven su nombre, foto, país, reputación (media de estrellas y comentarios de trayectos) y el historial de valoraciones recibidas en la comunidad. En su área privada conserva el control de email, teléfono, documento de identidad y datos de contacto: no se comparten automáticamente. Usted elige qué información adicional revelar en el chat antes de un trayecto."
         },
         {
           "question": "¿Puedo cancelar mi asistencia?",
@@ -370,7 +374,7 @@
         },
         {
           "question": "¿Cómo protegen mis datos?",
-          "answer": "Cumplimos estrictamente con GDPR. Solo mostramos lo esencial. Tus datos de contacto privados nunca se comparten automáticamente."
+          "answer": "Cumplimos con el RGPD. Los datos sensibles (email, teléfono, documento de identidad) permanecen en su perfil privado y cifrados. Solo la información del perfil público —nombre, foto, país, reputación e historial de valoraciones— es visible para que otros usuarios evalúen la confianza antes de un trayecto. Sus datos de contacto nunca se comparten automáticamente."
         },
         {
           "question": "¿Está en mi idioma?",
