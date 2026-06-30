@@ -116,7 +116,7 @@
         },
         {
           "title": "Réputation transparente",
-          "description": "Évaluations par étoiles et retours visibles avant confirmation. Prenez des décisions informées.",
+          "description": "Évaluations de 0 à 5 étoiles et commentaires optionnels après chaque trajet. Visibles sur le profil public avant confirmation.",
           "iconName": "sparkles"
         },
         {
@@ -146,7 +146,7 @@
         },
         {
           "title": "Réputation auditable",
-          "description": "Historique d'évaluations visible pour juger ponctualité, communication et conduite lors de trajets précédents."
+          "description": "Historique public d'évaluations et de commentaires pour juger ponctualité, communication et conduite lors de trajets précédents."
         },
         {
           "title": "Coordination structurée",
@@ -210,7 +210,7 @@
         },
         {
           "title": "5. Trajet et évaluation",
-          "description": "Terminez le voyage et soumettez votre évaluation pour maintenir les standards de la communauté."
+          "description": "Terminez le voyage et évaluez vos compagnons (0 à 5 étoiles et commentaire optionnel). Les évaluations alimentent le profil public et l'historique de réputation."
         }
       ]
     },
@@ -229,7 +229,7 @@
           "id": "profile",
           "badge": "Profil",
           "title": "Communauté vérifiée",
-          "description": "Identité vérifiée, photo et évaluations par étoiles. Connaissez vos compagnons avant de confirmer.",
+          "description": "Profil public avec identité vérifiée, moyenne d'étoiles (0–5) et commentaires de trajets précédents.",
           "image": "/images/mockups/fr/mockup-profile.svg"
         },
         {
@@ -346,11 +346,15 @@
         },
         {
           "question": "Est-ce sûr de voyager avec des inconnus ?",
-          "answer": "La sécurité est prioritaire. Nous vérifions les profils avec pièce d'identité et photo. Le système de notation et le chat préalable vous permettent de connaître vos compagnons."
+          "answer": "La sécurité est prioritaire. Nous vérifions les profils avec pièce d'identité et photo. Avant de confirmer, vous pouvez consulter le profil public — évaluations par étoiles, commentaires et historique de réputation. Le chat sécurisé préalable permet de coordonner sans exposer vos coordonnées privées."
         },
         {
-          "question": "À quoi servent les évaluations ?",
-          "answer": "Elles créent la confiance. Après le voyage, vous notez ponctualité et amabilité. Une bonne réputation facilite la recherche de futurs compagnons."
+          "question": "Comment fonctionnent les évaluations par étoiles et les commentaires de profil ?",
+          "answer": "Après chaque trajet terminé, les participants s'évaluent mutuellement sur une échelle de 0 à 5 étoiles selon trois critères : ponctualité, communication et conduite. La moyenne apparaît sur le profil public. Un commentaire court optionnel peut être laissé et reste visible dans l'historique de réputation de l'utilisateur. Les évaluations négatives sont examinées pour détecter les abus. Ces informations vous permettent de décider en connaissance de cause avant de confirmer un trajet."
+        },
+        {
+          "question": "Qu'est-ce qui est public et privé sur mon profil ?",
+          "answer": "Cojauny distingue le profil public des données privées. Votre profil public affiche votre nom, photo, pays, réputation (moyenne d'étoiles et commentaires de trajets) et l'historique des évaluations reçues dans la communauté. Votre espace privé conserve le contrôle de l'e-mail, du téléphone, de la pièce d'identité et des coordonnées — ils ne sont jamais partagés automatiquement. Vous choisissez les informations supplémentaires à révéler dans le chat avant un trajet."
         },
         {
           "question": "Puis-je annuler ma participation ?",
@@ -370,7 +374,7 @@
         },
         {
           "question": "Comment protégez-vous mes données ?",
-          "answer": "Nous respectons strictement le RGPD. Nous n'affichons que le nécessaire. Vos coordonnées privées ne sont jamais partagées automatiquement."
+          "answer": "Nous respectons le RGPD. Les données sensibles (e-mail, téléphone, pièce d'identité) restent dans votre profil privé et sont chiffrées. Seules les informations du profil public — nom, photo, pays, réputation et historique d'évaluations — sont visibles pour que les autres utilisateurs puissent évaluer la confiance avant un trajet. Vos coordonnées ne sont jamais partagées automatiquement."
         },
         {
           "question": "Est-ce dans ma langue ?",

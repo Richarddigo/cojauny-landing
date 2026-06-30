@@ -116,7 +116,7 @@
         },
         {
           "title": "Transparente Reputation",
-          "description": "Sternebewertungen und Feedback sind vor der Bestätigung sichtbar. Entscheiden Sie informiert.",
+          "description": "Bewertungen von 0 bis 5 Sternen und optionale Kommentare nach jeder Fahrt. Sichtbar im öffentlichen Profil vor der Bestätigung.",
           "iconName": "sparkles"
         },
         {
@@ -146,7 +146,7 @@
         },
         {
           "title": "Nachvollziehbare Reputation",
-          "description": "Sichtbare Bewertungshistorie für Pünktlichkeit, Kommunikation und Verhalten."
+          "description": "Öffentlicher Verlauf von Bewertungen und Kommentaren zu Pünktlichkeit, Kommunikation und Verhalten bei früheren Fahrten."
         },
         {
           "title": "Strukturierte Koordination",
@@ -210,7 +210,7 @@
         },
         {
           "title": "5. Fahrt und Bewertung",
-          "description": "Schließen Sie die Fahrt ab und geben Sie Ihre Bewertung ab, um Community-Standards zu wahren."
+          "description": "Schließen Sie die Fahrt ab und bewerten Sie Ihre Begleiter (0–5 Sterne und optionaler Kommentar). Bewertungen fließen in das öffentliche Profil und den Reputationsverlauf ein."
         }
       ]
     },
@@ -229,7 +229,7 @@
           "id": "profile",
           "badge": "Profil",
           "title": "Verifizierte Community",
-          "description": "Verifizierte Identität, Foto und Sternebewertungen. Kenn deine Begleiter vor der Bestätigung.",
+          "description": "Öffentliches Profil mit verifizierter Identität, Sterne-Durchschnitt (0–5) und Kommentaren früherer Fahrten.",
           "image": "/images/mockups/de/mockup-profile.svg"
         },
         {
@@ -346,11 +346,15 @@
         },
         {
           "question": "Ist es sicher, mit Fremden zu reisen?",
-          "answer": "Sicherheit hat Priorität. Wir verifizieren Profile mit Ausweis und Foto. Das Bewertungssystem und der Vorab-Chat lassen dich deine Begleiter kennenlernen."
+          "answer": "Sicherheit hat Priorität. Wir verifizieren Profile mit Ausweis und Foto. Vor der Bestätigung können Sie das öffentliche Profil einsehen — Sternebewertungen, Kommentare und Reputationsverlauf. Der sichere Vorab-Chat ermöglicht Koordination ohne private Kontaktdaten preiszugeben."
         },
         {
-          "question": "Wozu dienen Bewertungen?",
-          "answer": "Sie schaffen Vertrauen. Nach der Reise bewertest du Pünktlichkeit und Freundlichkeit. Eine gute Reputation erleichtert es, künftig Begleiter zu finden."
+          "question": "Wie funktionieren Sternebewertungen und Profilkommentare?",
+          "answer": "Nach jeder abgeschlossenen Fahrt bewerten sich die Teilnehmer gegenseitig auf einer Skala von 0 bis 5 Sternen in drei Kriterien: Pünktlichkeit, Kommunikation und Verhalten. Der Durchschnitt erscheint im öffentlichen Profil. Optional kann ein kurzer Kommentar hinterlassen werden, der im Reputationsverlauf des Nutzers sichtbar ist. Negative Bewertungen werden auf Missbrauch geprüft. So können Sie vor der Bestätigung informiert entscheiden."
+        },
+        {
+          "question": "Was ist öffentlich und was ist privat in meinem Profil?",
+          "answer": "Cojauny unterscheidet zwischen öffentlichem Profil und privaten Daten. Im öffentlichen Profil sehen andere Nutzer Ihren Namen, Ihr Foto, Ihr Land, Ihre Reputation (Sterne-Durchschnitt und Fahrtkommentare) und den erhaltenen Bewertungsverlauf in der Community. In Ihrem privaten Bereich behalten Sie die Kontrolle über E-Mail, Telefon, Ausweis und Kontaktdaten — sie werden nicht automatisch geteilt. Zusätzliche Informationen geben Sie selbst im Chat vor der Fahrt preis."
         },
         {
           "question": "Kann ich meine Teilnahme stornieren?",
@@ -370,7 +374,7 @@
         },
         {
           "question": "Wie schützt ihr meine Daten?",
-          "answer": "Wir halten uns strikt an die DSGVO. Wir zeigen nur das Nötigste. Deine privaten Kontaktdaten werden nie automatisch geteilt."
+          "answer": "Wir halten uns an die DSGVO. Sensible Daten (E-Mail, Telefon, Ausweis) bleiben in Ihrem privaten Profil und sind verschlüsselt. Nur öffentliche Profilinformationen — Name, Foto, Land, Reputation und Bewertungsverlauf — sind sichtbar, damit andere Nutzer Vertrauen vor der Fahrt einschätzen können. Kontaktdaten werden nie automatisch geteilt."
         },
         {
           "question": "Ist es in meiner Sprache?",

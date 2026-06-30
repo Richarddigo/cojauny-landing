@@ -116,7 +116,7 @@
         },
         {
           "title": "Transparent reputation",
-          "description": "Star ratings and post-trip feedback are visible before you confirm. Make informed decisions.",
+          "description": "0–5 star ratings and optional comments after each trip. Visible on the public profile before you confirm.",
           "iconName": "sparkles"
         },
         {
@@ -146,7 +146,7 @@
         },
         {
           "title": "Auditable reputation",
-          "description": "Visible rating history to assess punctuality, communication, and conduct on previous trips."
+          "description": "Public history of ratings and comments to assess punctuality, communication, and conduct on previous trips."
         },
         {
           "title": "Structured coordination",
@@ -210,7 +210,7 @@
         },
         {
           "title": "5. Trip and rating",
-          "description": "Complete the ride and submit your evaluation to maintain community standards."
+          "description": "Complete the trip and rate your companions (0–5 stars and optional comment). Ratings feed the public profile and reputation history."
         }
       ]
     },
@@ -229,7 +229,7 @@
           "id": "profile",
           "badge": "Profile",
           "title": "Verified community",
-          "description": "ID-verified identity, photo, and star ratings. Know your companions before you confirm.",
+          "description": "Public profile with verified identity, star average (0–5), and comments from previous trips.",
           "image": "/images/mockups/en/mockup-profile.svg"
         },
         {
@@ -346,11 +346,15 @@
         },
         {
           "question": "Is it safe to share transport with strangers?",
-          "answer": "Absolutely. Safety is our top priority. All users must verify their identity with photo and ID. We have a transparent reputation system where you can see ratings and comments from other travelers. Before confirming attendance, you can review full profiles, travel history, and communicate with the group via chat. Plus, our automatic moderation detects and removes suspicious behavior in real-time."
+          "answer": "Absolutely. Safety is our top priority. All users must verify their identity with photo and ID. You can review each traveler's public profile—star ratings, comments, and reputation history—before confirming. A secure pre-trip chat lets you coordinate without sharing private contact details."
         },
         {
-          "question": "How exactly does the reputation and rating system work?",
-          "answer": "After completing each event, all participants can evaluate each other on 3 dimensions: punctuality (arrived at agreed time), communication (replied fast in chat), and friendliness (was pleasant during trip). You use a 5-star system with optional comment. These ratings are averaged and appear on your public profile along with special badges (Gold Traveler 100+ trips, Eco-Warrior 5 tons CO₂ saved, etc.). High reputation (4.5+ stars) automatically positions you in top results when others search for travel companions, and makes you eligible for \"Trusted Traveler\" program with advanced verification. Negative ratings are analyzed by our moderation team to detect abuse."
+          "question": "How do star ratings and profile comments work?",
+          "answer": "After each completed trip, participants rate each other on a 0–5 star scale across three criteria: punctuality, communication, and conduct. The average appears on the public profile. An optional short comment can be left and is visible in that user's reputation history. Negative ratings are reviewed for abuse. This helps you make informed decisions before confirming a shared transfer."
+        },
+        {
+          "question": "What is public and what is private on my profile?",
+          "answer": "Cojauny separates your public profile from private data. Your public profile shows your name, photo, country, reputation (star average and trip comments), and the rating history you have received in the community. Your private area keeps email, phone, ID documents, and contact details under your control—they are never shared automatically. You choose what additional information to reveal in chat before a trip."
         },
         {
           "question": "Can I cancel my participation without penalty?",
@@ -370,7 +374,7 @@
         },
         {
           "question": "How do you protect my personal data and privacy?",
-          "answer": "Your privacy is sacred to us. We only publicly show your profile name, country of residence, and profile photo. Your email, phone, address, and ID documents remain completely encrypted with AES-256 encryption and are only accessible by you. We strictly comply with GDPR. You manually decide if you share additional info like social media or phone number with other participants. We do not sell or share your data with third parties under any circumstances. You can download or delete all your data anytime from your profile."
+          "answer": "We comply with GDPR. Sensitive data (email, phone, ID documents) stays in your private profile and is encrypted. Only public profile information—name, photo, country, reputation, and rating history—is visible so other users can assess trust before a trip. Your contact details are never shared automatically."
         },
         {
           "question": "Is the app available in my language?",

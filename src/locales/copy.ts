@@ -351,7 +351,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Reputación transparente',
           description:
-            'Valoraciones por estrellas y comentarios visibles tras cada trayecto. Toma decisiones informadas antes de confirmar.',
+            'Valoraciones de 0 a 5 estrellas y comentarios opcionales tras cada trayecto. Visibles en el perfil público antes de confirmar.',
           iconName: 'sparkles',
         },
         {
@@ -387,7 +387,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Reputación auditable',
           description:
-            'Historial de valoraciones visible para evaluar puntualidad, comunicación y conducta en trayectos anteriores.',
+            'Historial público de valoraciones y comentarios para evaluar puntualidad, comunicación y conducta en trayectos anteriores.',
         },
         {
           title: 'Coordinación estructurada',
@@ -455,7 +455,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           title: '5. Trayecto y valoración',
-          description: 'Complete el viaje y aporte su evaluación para mantener estándares de la comunidad.',
+          description: 'Complete el viaje y valore a sus compañeros (0–5 estrellas y comentario opcional). Las valoraciones alimentan el perfil público y el historial de reputación.',
         },
       ],
     },
@@ -477,7 +477,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           badge: 'Perfil',
           title: 'Comunidad verificada',
           description:
-            'Identidad verificada, foto y valoraciones por estrellas. Conoces a tus compañeros antes de confirmar.',
+            'Perfil público con identidad verificada, media de estrellas (0–5) y comentarios de trayectos anteriores.',
           image: '/images/mockups/es/mockup-profile.svg'
         },
         {
@@ -598,11 +598,17 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: '¿Es seguro viajar con desconocidos?',
-          answer: 'La seguridad es prioridad. Verificamos perfiles con documento de identidad y foto. El sistema de reputación y el chat previo te permiten conocer a tus compañeros antes de compartir.'
+          answer: 'La seguridad es prioridad. Verificamos perfiles con documento de identidad y foto. Antes de confirmar, puede consultar el perfil público de cada usuario — valoraciones, comentarios e historial de reputación. El chat previo permite coordinar sin exponer datos de contacto privados.',
         },
         {
-          question: '¿Para qué sirven las valoraciones?',
-          answer: 'Construyen confianza. Al finalizar un viaje, valoras la puntualidad y amabilidad. Una buena reputación te facilita encontrar compañeros en el futuro.'
+          question: '¿Cómo funcionan las valoraciones con estrellas y los comentarios?',
+          answer:
+            'Tras cada trayecto completado, los participantes se valoran mutuamente en una escala de 0 a 5 estrellas en tres criterios: puntualidad, comunicación y conducta. La media se refleja en el perfil público. Opcionalmente, puede dejar un comentario breve visible en el historial de reputación de ese usuario. Las valoraciones negativas se revisan para detectar abusos. Esta información le permite decidir con criterio antes de confirmar un trayecto.',
+        },
+        {
+          question: '¿Qué es público y qué es privado en mi perfil?',
+          answer:
+            'Cojauny distingue entre perfil público y datos privados. En su perfil público, otros usuarios ven su nombre, foto, país, reputación (media de estrellas y comentarios de trayectos) y el historial de valoraciones recibidas en la comunidad. En su área privada conserva el control de email, teléfono, documento de identidad y datos de contacto: no se comparten automáticamente. Usted elige qué información adicional revelar en el chat antes de un trayecto.',
         },
         {
           question: '¿Puedo cancelar mi asistencia?',
@@ -622,7 +628,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: '¿Cómo protegen mis datos?',
-          answer: 'Cumplimos estrictamente con GDPR. Solo mostramos lo esencial. Tus datos de contacto privados nunca se comparten automáticamente.'
+          answer:
+            'Cumplimos con el RGPD. Los datos sensibles (email, teléfono, documento de identidad) permanecen en su perfil privado y cifrados. Solo la información del perfil público —nombre, foto, país, reputación e historial de valoraciones— es visible para que otros usuarios evalúen la confianza antes de un trayecto. Sus datos de contacto nunca se comparten automáticamente.',
         },
         {
           question: '¿Está en mi idioma?',
@@ -885,7 +892,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Transparent reputation',
           description:
-            'Star ratings and post-trip feedback are visible before you confirm. Make informed decisions.',
+            '0–5 star ratings and optional comments after each trip. Visible on the public profile before you confirm.',
           iconName: 'sparkles',
         },
         {
@@ -921,7 +928,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Auditable reputation',
           description:
-            'Visible rating history to assess punctuality, communication, and conduct on previous trips.',
+            'Public history of ratings and comments to assess punctuality, communication, and conduct on previous trips.',
         },
         {
           title: 'Structured coordination',
@@ -989,7 +996,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           title: '5. Trip and rating',
-          description: 'Complete the ride and submit your evaluation to maintain community standards.',
+          description: 'Complete the trip and rate your companions (0–5 stars and optional comment). Ratings feed the public profile and reputation history.',
         },
       ],
     },
@@ -1011,7 +1018,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           badge: 'Profile',
           title: 'Verified community',
           description:
-            'ID-verified identity, photo, and star ratings. Know your companions before you confirm.',
+            'Public profile with verified identity, star average (0–5), and comments from previous trips.',
           image: '/images/mockups/en/mockup-profile.svg'
         },
         {
@@ -1132,11 +1139,17 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: 'Is it safe to share transport with strangers?',
-          answer: 'Absolutely. Safety is our top priority. All users must verify their identity with photo and ID. We have a transparent reputation system where you can see ratings and comments from other travelers. Before confirming attendance, you can review full profiles, travel history, and communicate with the group via chat. Plus, our automatic moderation detects and removes suspicious behavior in real-time.'
+          answer: 'Absolutely. Safety is our top priority. All users must verify their identity with photo and ID. You can review each traveler\'s public profile—star ratings, comments, and reputation history—before confirming. A secure pre-trip chat lets you coordinate without sharing private contact details.',
         },
         {
-          question: 'How exactly does the reputation and rating system work?',
-          answer: 'After completing each event, all participants can evaluate each other on 3 dimensions: punctuality (arrived at agreed time), communication (replied fast in chat), and friendliness (was pleasant during trip). You use a 5-star system with optional comment. These ratings are averaged and appear on your public profile along with special badges (Gold Traveler 100+ trips, Eco-Warrior 5 tons CO₂ saved, etc.). High reputation (4.5+ stars) automatically positions you in top results when others search for travel companions, and makes you eligible for "Trusted Traveler" program with advanced verification. Negative ratings are analyzed by our moderation team to detect abuse.'
+          question: 'How do star ratings and profile comments work?',
+          answer:
+            'After each completed trip, participants rate each other on a 0–5 star scale across three criteria: punctuality, communication, and conduct. The average appears on the public profile. An optional short comment can be left and is visible in that user\'s reputation history. Negative ratings are reviewed for abuse. This helps you make informed decisions before confirming a shared transfer.',
+        },
+        {
+          question: 'What is public and what is private on my profile?',
+          answer:
+            'Cojauny separates your public profile from private data. Your public profile shows your name, photo, country, reputation (star average and trip comments), and the rating history you have received in the community. Your private area keeps email, phone, ID documents, and contact details under your control—they are never shared automatically. You choose what additional information to reveal in chat before a trip.',
         },
         {
           question: 'Can I cancel my participation without penalty?',
@@ -1156,7 +1169,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: 'How do you protect my personal data and privacy?',
-          answer: 'Your privacy is sacred to us. We only publicly show your profile name, country of residence, and profile photo. Your email, phone, address, and ID documents remain completely encrypted with AES-256 encryption and are only accessible by you. We strictly comply with GDPR. You manually decide if you share additional info like social media or phone number with other participants. We do not sell or share your data with third parties under any circumstances. You can download or delete all your data anytime from your profile.'
+          answer:
+            'We comply with GDPR. Sensitive data (email, phone, ID documents) stays in your private profile and is encrypted. Only public profile information—name, photo, country, reputation, and rating history—is visible so other users can assess trust before a trip. Your contact details are never shared automatically.',
         },
         {
           question: 'Is the app available in my language?',
@@ -1419,7 +1433,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Transparente Reputation',
           description:
-            'Sternebewertungen und Feedback sind vor der Bestätigung sichtbar. Entscheiden Sie informiert.',
+            'Bewertungen von 0 bis 5 Sternen und optionale Kommentare nach jeder Fahrt. Sichtbar im öffentlichen Profil vor der Bestätigung.',
           iconName: 'sparkles',
         },
         {
@@ -1455,7 +1469,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Nachvollziehbare Reputation',
           description:
-            'Sichtbare Bewertungshistorie für Pünktlichkeit, Kommunikation und Verhalten.',
+            'Öffentlicher Verlauf von Bewertungen und Kommentaren zu Pünktlichkeit, Kommunikation und Verhalten bei früheren Fahrten.',
         },
         {
           title: 'Strukturierte Koordination',
@@ -1523,7 +1537,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           title: '5. Fahrt und Bewertung',
-          description: 'Schließen Sie die Fahrt ab und geben Sie Ihre Bewertung ab, um Community-Standards zu wahren.',
+          description: 'Schließen Sie die Fahrt ab und bewerten Sie Ihre Begleiter (0–5 Sterne und optionaler Kommentar). Bewertungen fließen in das öffentliche Profil und den Reputationsverlauf ein.',
         },
       ],
     },
@@ -1545,7 +1559,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           badge: 'Profil',
           title: 'Verifizierte Community',
           description:
-            'Verifizierte Identität, Foto und Sternebewertungen. Kenn deine Begleiter vor der Bestätigung.',
+            'Öffentliches Profil mit verifizierter Identität, Sterne-Durchschnitt (0–5) und Kommentaren früherer Fahrten.',
           image: '/images/mockups/de/mockup-profile.svg'
         },
         {
@@ -1666,11 +1680,17 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: 'Ist es sicher, mit Fremden zu reisen?',
-          answer: 'Sicherheit hat Priorität. Wir verifizieren Profile mit Ausweis und Foto. Das Bewertungssystem und der Vorab-Chat lassen dich deine Begleiter kennenlernen.'
+          answer: 'Sicherheit hat Priorität. Wir verifizieren Profile mit Ausweis und Foto. Vor der Bestätigung können Sie das öffentliche Profil einsehen — Sternebewertungen, Kommentare und Reputationsverlauf. Der sichere Vorab-Chat ermöglicht Koordination ohne private Kontaktdaten preiszugeben.',
         },
         {
-          question: 'Wozu dienen Bewertungen?',
-          answer: 'Sie schaffen Vertrauen. Nach der Reise bewertest du Pünktlichkeit und Freundlichkeit. Eine gute Reputation erleichtert es, künftig Begleiter zu finden.'
+          question: 'Wie funktionieren Sternebewertungen und Profilkommentare?',
+          answer:
+            'Nach jeder abgeschlossenen Fahrt bewerten sich die Teilnehmer gegenseitig auf einer Skala von 0 bis 5 Sternen in drei Kriterien: Pünktlichkeit, Kommunikation und Verhalten. Der Durchschnitt erscheint im öffentlichen Profil. Optional kann ein kurzer Kommentar hinterlassen werden, der im Reputationsverlauf des Nutzers sichtbar ist. Negative Bewertungen werden auf Missbrauch geprüft. So können Sie vor der Bestätigung informiert entscheiden.',
+        },
+        {
+          question: 'Was ist öffentlich und was ist privat in meinem Profil?',
+          answer:
+            'Cojauny unterscheidet zwischen öffentlichem Profil und privaten Daten. Im öffentlichen Profil sehen andere Nutzer Ihren Namen, Ihr Foto, Ihr Land, Ihre Reputation (Sterne-Durchschnitt und Fahrtkommentare) und den erhaltenen Bewertungsverlauf in der Community. In Ihrem privaten Bereich behalten Sie die Kontrolle über E-Mail, Telefon, Ausweis und Kontaktdaten — sie werden nicht automatisch geteilt. Zusätzliche Informationen geben Sie selbst im Chat vor der Fahrt preis.',
         },
         {
           question: 'Kann ich meine Teilnahme stornieren?',
@@ -1690,7 +1710,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: 'Wie schützt ihr meine Daten?',
-          answer: 'Wir halten uns strikt an die DSGVO. Wir zeigen nur das Nötigste. Deine privaten Kontaktdaten werden nie automatisch geteilt.'
+          answer:
+            'Wir halten uns an die DSGVO. Sensible Daten (E-Mail, Telefon, Ausweis) bleiben in Ihrem privaten Profil und sind verschlüsselt. Nur öffentliche Profilinformationen — Name, Foto, Land, Reputation und Bewertungsverlauf — sind sichtbar, damit andere Nutzer Vertrauen vor der Fahrt einschätzen können. Kontaktdaten werden nie automatisch geteilt.',
         },
         {
           question: 'Ist es in meiner Sprache?',
@@ -1953,7 +1974,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Réputation transparente',
           description:
-            'Évaluations par étoiles et retours visibles avant confirmation. Prenez des décisions informées.',
+            'Évaluations de 0 à 5 étoiles et commentaires optionnels après chaque trajet. Visibles sur le profil public avant confirmation.',
           iconName: 'sparkles',
         },
         {
@@ -1989,7 +2010,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Réputation auditable',
           description:
-            'Historique d\'évaluations visible pour juger ponctualité, communication et conduite lors de trajets précédents.',
+            'Historique public d\'évaluations et de commentaires pour juger ponctualité, communication et conduite lors de trajets précédents.',
         },
         {
           title: 'Coordination structurée',
@@ -2057,7 +2078,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           title: '5. Trajet et évaluation',
-          description: 'Terminez le voyage et soumettez votre évaluation pour maintenir les standards de la communauté.',
+          description: 'Terminez le voyage et évaluez vos compagnons (0 à 5 étoiles et commentaire optionnel). Les évaluations alimentent le profil public et l\'historique de réputation.',
         },
       ],
     },
@@ -2079,7 +2100,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           badge: 'Profil',
           title: 'Communauté vérifiée',
           description:
-            'Identité vérifiée, photo et évaluations par étoiles. Connaissez vos compagnons avant de confirmer.',
+            'Profil public avec identité vérifiée, moyenne d\'étoiles (0–5) et commentaires de trajets précédents.',
           image: '/images/mockups/fr/mockup-profile.svg'
         },
         {
@@ -2200,11 +2221,17 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: 'Est-ce sûr de voyager avec des inconnus ?',
-          answer: 'La sécurité est prioritaire. Nous vérifions les profils avec pièce d\'identité et photo. Le système de notation et le chat préalable vous permettent de connaître vos compagnons.'
+          answer: 'La sécurité est prioritaire. Nous vérifions les profils avec pièce d\'identité et photo. Avant de confirmer, vous pouvez consulter le profil public — évaluations par étoiles, commentaires et historique de réputation. Le chat sécurisé préalable permet de coordonner sans exposer vos coordonnées privées.',
         },
         {
-          question: 'À quoi servent les évaluations ?',
-          answer: 'Elles créent la confiance. Après le voyage, vous notez ponctualité et amabilité. Une bonne réputation facilite la recherche de futurs compagnons.'
+          question: 'Comment fonctionnent les évaluations par étoiles et les commentaires de profil ?',
+          answer:
+            'Après chaque trajet terminé, les participants s\'évaluent mutuellement sur une échelle de 0 à 5 étoiles selon trois critères : ponctualité, communication et conduite. La moyenne apparaît sur le profil public. Un commentaire court optionnel peut être laissé et reste visible dans l\'historique de réputation de l\'utilisateur. Les évaluations négatives sont examinées pour détecter les abus. Ces informations vous permettent de décider en connaissance de cause avant de confirmer un trajet.',
+        },
+        {
+          question: 'Qu\'est-ce qui est public et privé sur mon profil ?',
+          answer:
+            'Cojauny distingue le profil public des données privées. Votre profil public affiche votre nom, photo, pays, réputation (moyenne d\'étoiles et commentaires de trajets) et l\'historique des évaluations reçues dans la communauté. Votre espace privé conserve le contrôle de l\'e-mail, du téléphone, de la pièce d\'identité et des coordonnées — ils ne sont jamais partagés automatiquement. Vous choisissez les informations supplémentaires à révéler dans le chat avant un trajet.',
         },
         {
           question: 'Puis-je annuler ma participation ?',
@@ -2224,7 +2251,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: 'Comment protégez-vous mes données ?',
-          answer: 'Nous respectons strictement le RGPD. Nous n\'affichons que le nécessaire. Vos coordonnées privées ne sont jamais partagées automatiquement.'
+          answer:
+            'Nous respectons le RGPD. Les données sensibles (e-mail, téléphone, pièce d\'identité) restent dans votre profil privé et sont chiffrées. Seules les informations du profil public — nom, photo, pays, réputation et historique d\'évaluations — sont visibles pour que les autres utilisateurs puissent évaluer la confiance avant un trajet. Vos coordonnées ne sont jamais partagées automatiquement.',
         },
         {
           question: 'Est-ce dans ma langue ?',
