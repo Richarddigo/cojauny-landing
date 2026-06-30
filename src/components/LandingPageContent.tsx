@@ -63,7 +63,7 @@ const LandingPageContent = ({ copy, locale, common, heroVariant }: LandingPageCo
             <div className="cv-auto"><SavingsSection copy={copy.savings} /></div>
             <section id="beta" className="cv-auto w-full scroll-mt-[74px] py-12 lg:scroll-mt-[100px] md:py-16 lg:py-20">
                 <div className="mx-auto max-w-[1180px] px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">
-                    <p className="mb-6 rounded-2xl border border-studio-accent/25 bg-studio-accent/10 px-4 py-3 text-center text-sm text-studio-muted sm:text-base">
+                    <p className="mb-6 rounded-xl border border-white/10 bg-studio-surface/60 px-5 py-3.5 text-center text-sm leading-relaxed text-studio-muted sm:text-base">
                         {copy.betaReferralBanner}
                     </p>
                     <BetaSignupForm locale={locale} />

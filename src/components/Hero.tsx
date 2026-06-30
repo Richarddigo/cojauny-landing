@@ -22,40 +22,55 @@ const Hero = ({
 }: HeroProps) => (
     <section
         id="home"
-        className="relative overflow-hidden scroll-mt-[74px] bg-studio-bg pb-10 text-center sm:pb-12 md:pb-14 lg:pb-20 lg:scroll-mt-[100px]"
+        className="relative overflow-hidden scroll-mt-[74px] bg-studio-bg pb-12 text-center sm:pb-14 md:pb-16 lg:scroll-mt-[100px] lg:pb-20"
     >
         <div
-            className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,#0C1120,#1C2336,#0C1120)]"
+            className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,#0a0f1c_0%,#121a2b_45%,#0a0f1c_100%)]"
             aria-hidden
         />
-        <div className="absolute inset-x-0 top-0 -z-10 flex justify-center opacity-50" aria-hidden>
-            <div className="h-60 w-60 rounded-full bg-[rgba(91,123,255,0.2)] blur-3xl" />
-        </div>
-        <div className="mx-auto max-w-4xl px-4 pl-[calc(var(--social-bar-offset)+1rem)] sm:px-6">
-            <span className="inline-flex items-center justify-center rounded-full border border-[rgba(91,123,255,0.4)] bg-[rgba(91,123,255,0.1)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-studio-accent sm:px-4">
+        <div className="absolute inset-x-0 top-0 -z-10 h-72 bg-[radial-gradient(ellipse_at_top,rgba(91,123,255,0.18),transparent_65%)]" aria-hidden />
+
+        <div className="mx-auto max-w-3xl px-4 pl-[calc(var(--social-bar-offset)+1rem)] sm:px-6">
+            <span className="inline-flex items-center justify-center rounded-full border border-studio-accent/35 bg-studio-accent/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-studio-accent sm:text-xs">
                 {copy.eyebrow}
             </span>
-            <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-white sm:mt-6 sm:text-4xl md:text-5xl lg:text-6xl">
+
+            <h1 className="mt-6 text-[1.75rem] font-bold leading-[1.15] tracking-tight text-white sm:text-4xl md:text-[2.75rem]">
                 {copy.title}
             </h1>
-            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-studio-muted sm:mt-6 sm:text-lg">
+
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-studio-muted sm:text-lg">
                 {copy.subtitle}
             </p>
+
+            <ul className="mx-auto mt-6 flex max-w-2xl flex-wrap items-center justify-center gap-2 sm:gap-3">
+                {copy.trustSignals.map((signal) => (
+                    <li
+                        key={signal}
+                        className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-white/85 sm:text-sm"
+                    >
+                        {signal}
+                    </li>
+                ))}
+            </ul>
+
             <HeroBetaCapture locale={locale} copy={quickSignupCopy} betaCopy={betaCopy} />
-            <AirportHubLinks
-                locale={locale}
-                title={airportsHubTitle}
-                allLabel={airportsHubAll}
-                className="mt-8 text-left"
-            />
-            <div className="mt-6 flex justify-center sm:mt-8">
+
+            <div className="mt-8 flex justify-center">
                 <a
                     href="#how-it-works"
-                    className="inline-flex w-full items-center justify-center rounded-xl border-2 border-white/20 px-8 py-3.5 text-base font-semibold text-white transition-all duration-150 hover:border-white/30 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-studio-bg sm:w-auto sm:px-10"
+                    className="inline-flex items-center justify-center rounded-xl border border-white/15 px-6 py-3 text-sm font-medium text-white/90 transition hover:border-white/25 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
                 >
                     {copy.secondaryCta}
                 </a>
             </div>
+
+            <AirportHubLinks
+                locale={locale}
+                title={airportsHubTitle}
+                allLabel={airportsHubAll}
+                className="mt-10 border-t border-white/8 pt-8 text-left"
+            />
         </div>
     </section>
 );
