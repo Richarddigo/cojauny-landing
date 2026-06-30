@@ -4,11 +4,12 @@ import type { ReactNode } from 'react';
 
 import { NextIntlClientProvider } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { Analytics } from '@vercel/analytics/react';
 import AccessibilitySkipLink from '@/components/AccessibilitySkipLink';
 import CookieBanner from '@/components/CookieBanner';
+import ConsentGatedVercelAnalytics from '@/components/ConsentGatedVercelAnalytics';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
+import LocaleDocumentLang from '@/components/LocaleDocumentLang';
 import {
     getCommonCopyFromMessages,
     getFooterCopyFromMessages,
@@ -89,6 +90,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
     return (
         <NextIntlClientProvider locale={locale}>
+            <LocaleDocumentLang locale={locale} />
             <AccessibilitySkipLink label={landingT('skipLink')} />
             <Header locale={locale} copy={headerCopy} common={commonCopy} />
             <main id="main-content" className="relative pt-24">
@@ -96,7 +98,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             </main>
             <Footer copy={footerCopy} locale={locale} common={commonCopy} />
             <CookieBanner copy={copy.cookie} locale={locale} />
-            <Analytics />
+            <ConsentGatedVercelAnalytics />
         </NextIntlClientProvider>
     );
 }

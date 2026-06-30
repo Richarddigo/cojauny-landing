@@ -105,7 +105,7 @@ const Footer = ({ copy, locale, common }: FooterProps) => {
                     className="mt-12 pt-8 flex flex-col items-center justify-between gap-3 border-t border-[rgba(255,255,255,0.06)] sm:flex-row"
                 >
                     <p className="text-xs text-muted" suppressHydrationWarning>
-                        Â© {new Date().getFullYear()} Cojauny. {copy.rights}
+                        © {new Date().getFullYear()} Cojauny. {copy.rights}
                     </p>
                     <p className="text-xs text-muted">
                         {copy.madeInEurope}

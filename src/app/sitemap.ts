@@ -1,8 +1,8 @@
 import type { MetadataRoute } from 'next';
 
-import { siteMetadata } from '@/lib/site';
-import { locales } from '@/locales/config';
 import { blogPosts } from '@/content/blog/posts';
+import { buildCanonicalUrl } from '@/lib/jsonld';
+import { locales } from '@/locales/config';
 
 export const dynamic = 'force-static';
 
@@ -18,12 +18,11 @@ const legalPaths = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = siteMetadata.url.replace(/\/$/, '');
   const lastModified = new Date();
 
   const localizedEntries = locales.flatMap((locale) =>
     [...localeAwarePaths, ...legalPaths].map((path) => ({
-      url: `${base}/${locale}${path === '/' ? '' : path}`,
+      url: buildCanonicalUrl(locale, path === '/' ? '' : path),
       lastModified,
       changeFrequency: (path === '/' ? 'daily' : 'monthly') as 'daily' | 'monthly',
       priority: path === '/' ? 1 : 0.7
@@ -31,20 +30,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
 
   const blogEntries = blogPosts.map((post) => ({
-    url: `${base}/${post.locale}/blog/${post.slug}`,
+    url: buildCanonicalUrl(post.locale as (typeof locales)[number], `/blog/${post.slug}`),
     lastModified: new Date(post.updatedAt),
     changeFrequency: 'monthly' as const,
     priority: 0.6
   }));
 
-  const defaultEntries = [
-    {
-      url: base,
-      lastModified,
-      changeFrequency: 'daily' as const,
-      priority: 1
+  const seen = new Set<string>();
+  return [...localizedEntries, ...blogEntries].filter((entry) => {
+    if (seen.has(entry.url)) {
+      return false;
     }
-  ];
-
-  return [...defaultEntries, ...localizedEntries, ...blogEntries];
+    seen.add(entry.url);
+    return true;
+  });
 }

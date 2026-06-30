@@ -4,8 +4,7 @@ import { Fragment, useEffect, useRef, useState, type ChangeEvent, type FormEvent
 import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile';
 import AlertMessage from '@/components/AlertMessage';
 import { apiClient, ApiError } from '@/lib/api-client';
-
-
+import { trackBetaSignup } from '@/lib/analytics';
 import { betaSignupSchema, type BetaSignupInput } from '@/lib/validation';
 import { useAppMessages } from '@/i18n/useAppMessages';
 import { getCommonCopy } from '@/locales/common';
@@ -137,6 +136,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
 
         try {
             const result = await apiClient.beta.signup({ ...parseResult.data, cfTurnstileResponse: turnstileToken });
+            trackBetaSignup('full_form');
             setReferralLink(result.referralLink || '');
             setUserEmail(form.email);
             setForm(buildInitialState(locale, referralCode));

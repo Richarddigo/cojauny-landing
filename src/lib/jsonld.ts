@@ -56,12 +56,7 @@ export const buildWebsiteJsonLd = (locale: Locale) => ({
   name: siteMetadata.name,
   url: siteMetadata.url,
   description: siteMetadata.description,
-  inLanguage: hreflangByLocale[locale] ?? hrefLangFallback,
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: `${siteMetadata.url}/search?q={search_term_string}`,
-    'query-input': 'required name=search_term_string'
-  }
+  inLanguage: hreflangByLocale[locale] ?? hrefLangFallback
 });
 
 export const buildSoftwareAppJsonLd = (locale: Locale) => ({
@@ -75,11 +70,6 @@ export const buildSoftwareAppJsonLd = (locale: Locale) => ({
     '@type': 'Offer',
     price: '0',
     priceCurrency: 'EUR'
-  },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    ratingCount: '127'
   },
   inLanguage: hreflangByLocale[locale] ?? hrefLangFallback,
   downloadUrl: siteMetadata.playStoreUrl,

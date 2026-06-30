@@ -1,15 +1,13 @@
 ﻿import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import Script from 'next/script';
 import { Inter } from 'next/font/google';
 
 import '@/styles/globals.css';
-import { env } from '@/lib/env';
+import FloatingSocialBar from '@/components/FloatingSocialBar';
+import ConsentGatedGoogleAnalytics from '@/components/ConsentGatedGoogleAnalytics';
+import StructuredData from '@/components/StructuredData';
 import { defaultLocale, locales } from '@/locales/config';
 import { siteMetadata, ogImages } from '@/lib/site';
-import StructuredData from '@/components/StructuredData';
-// Removed: DetectLocale (client-side redirect). Locale detection is now server-side via next-intl middleware.
-import FloatingSocialBar from '@/components/FloatingSocialBar';
 import { buildOrganizationJsonLd, buildWebsiteJsonLd } from '@/lib/jsonld';
 
 const inter = Inter({
@@ -84,26 +82,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
                 <StructuredData id="ld-org" data={buildOrganizationJsonLd()} />
                 <StructuredData id="ld-website" data={buildWebsiteJsonLd(defaultLocale)} />
-                {env.NEXT_PUBLIC_ANALYTICS_ID && (
-                    <>
-                        <Script
-                            src={`https://www.googletagmanager.com/gtag/js?id=${env.NEXT_PUBLIC_ANALYTICS_ID}`}
-                            strategy="afterInteractive"
-                        />
-                        <Script id="ga" strategy="afterInteractive">
-                            {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${env.NEXT_PUBLIC_ANALYTICS_ID}', { anonymize_ip: true });
-              `}
-                        </Script>
-                    </>
-                )}
             </head>
             <body className="bg-studio-bg font-sans antialiased text-studio-text" data-prefers-reduced-motion="dynamic">
                 <FloatingSocialBar />
                 {children}
+                <ConsentGatedGoogleAnalytics />
             </body>
         </html>
     );

@@ -4,12 +4,16 @@ import { Disclosure } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import type { LandingCopy } from '@/locales/copy';
 import SectionIntro from '@/components/SectionIntro';
+import { filterFaqForPhase } from '@/lib/faqFilters';
 
 interface FaqSectionProps {
     copy: LandingCopy['faq'];
 }
 
-const FaqSection = ({ copy }: FaqSectionProps) => (
+const FaqSection = ({ copy }: FaqSectionProps) => {
+    const items = filterFaqForPhase(copy.items);
+
+    return (
     <section
         id="faq"
         className="w-full scroll-mt-[74px] bg-studio-bg py-12 md:py-16 lg:py-20 lg:scroll-mt-[100px]"
@@ -17,7 +21,7 @@ const FaqSection = ({ copy }: FaqSectionProps) => (
         <div className="mx-auto max-w-4xl px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">
             <SectionIntro title={copy.title} description={copy.subtitle} />
             <div className="mt-10 space-y-4 md:mt-12 md:space-y-6">
-                {copy.items.map((item, index) => (
+                {items.map((item, index) => (
                     <Disclosure as="div" key={`faq-${index}`} className="rounded-2xl border border-white/8 bg-studio-surface shadow-sm md:rounded-3xl">
                         {({ open }) => (
                             <>
@@ -39,7 +43,8 @@ const FaqSection = ({ copy }: FaqSectionProps) => (
             </div>
         </div>
     </section>
-);
+    );
+};
 
 export default FaqSection;
 

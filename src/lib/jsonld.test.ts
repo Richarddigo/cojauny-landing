@@ -83,8 +83,7 @@ describe('jsonld utilities', () => {
         it('genera JSON-LD para WebSite con locale', () => {
             const website = buildWebsiteJsonLd('es');
             expect(website['@type']).toBe('WebSite');
-            expect(website).toHaveProperty('potentialAction');
-            expect(website.potentialAction['@type']).toBe('SearchAction');
+            expect(website).not.toHaveProperty('potentialAction');
         });
 
         it('usa idioma correcto según locale', () => {
@@ -102,7 +101,7 @@ describe('jsonld utilities', () => {
             expect(app.operatingSystem).toBe('iOS, Android');
             expect(app.applicationCategory).toBe('TravelApplication');
             expect(app).toHaveProperty('offers');
-            expect(app).toHaveProperty('aggregateRating');
+            expect(app).not.toHaveProperty('aggregateRating');
         });
     });
 

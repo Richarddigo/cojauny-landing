@@ -3,6 +3,7 @@
 import { useRef, useState, type FormEvent } from 'react';
 import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile';
 import { apiClient, ApiError } from '@/lib/api-client';
+import { trackBetaSignup } from '@/lib/analytics';
 import { betaSignupSchema } from '@/lib/validation';
 import type { LandingCopy } from '@/locales/copy';
 import type { Locale } from '@/locales/config';
@@ -48,6 +49,7 @@ export default function HeroBetaCapture({ locale, copy, betaCopy }: HeroBetaCapt
 
     try {
       await apiClient.beta.signup({ ...parsed.data, cfTurnstileResponse: turnstileToken });
+      trackBetaSignup('hero');
       setMessage({ type: 'success', text: copy.success });
       setEmail('');
       setFullName('');
@@ -75,7 +77,8 @@ export default function HeroBetaCapture({ locale, copy, betaCopy }: HeroBetaCapt
         className="rounded-2xl border border-white/10 bg-studio-surface/80 p-4 shadow-soft-glow backdrop-blur-sm sm:p-5"
         aria-label={copy.ariaLabel}
       >
-        <p className="mb-3 text-sm font-medium text-studio-muted">{copy.label}</p>
+        <p className="mb-1 text-sm font-medium text-studio-muted">{copy.label}</p>
+        <p className="mb-3 text-xs text-studio-muted/90">{copy.referralHint}</p>
         <div className="flex flex-col gap-3 sm:flex-row">
           <input
             type="text"

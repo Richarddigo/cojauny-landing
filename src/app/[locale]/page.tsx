@@ -15,6 +15,7 @@ import {
     buildLocaleAlternates
 } from '@/lib/jsonld';
 import { getFaqEntries } from '@/lib/faq';
+import { filterFaqForPhase } from '@/lib/faqFilters';
 
 interface LocalePageProps {
     params: Promise<{ locale: string }>;
@@ -54,7 +55,7 @@ export default async function LocalePage({ params }: LocalePageProps) {
     const copy = (await getAppMessages(locale)).landing;
     const commonT = await getTranslations({ locale, namespace: 'common' });
     const commonCopy = getCommonCopyFromMessages(commonT);
-    const faqItems = getFaqEntries(locale);
+    const faqItems = filterFaqForPhase(getFaqEntries(locale));
 
     const breadcrumb = buildBreadcrumbJsonLd(locale, [
         { name: 'Cojauny', absoluteUrl: siteMetadata.url },

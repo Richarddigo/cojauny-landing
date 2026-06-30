@@ -166,6 +166,7 @@ export interface LandingCopy {
   heroQuickSignup: {
     ariaLabel: string;
     label: string;
+    referralHint: string;
     namePlaceholder: string;
     emailPlaceholder: string;
     submit: string;
@@ -286,6 +287,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     heroQuickSignup: {
       ariaLabel: 'Registro rápido en la lista de espera beta',
       label: 'Reserva tu plaza en la beta — solo nombre y email',
+      referralHint: 'Invita amigos con tu enlace único y sube en la lista de espera.',
       namePlaceholder: 'Tu nombre',
       emailPlaceholder: 'tu@email.com',
       submit: 'Unirme a la beta',
@@ -630,7 +632,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         subheading: 'Acceso anticipado a la beta: perfiles verificados, matching por vuelo y línea directa con el equipo.',
         title: 'Solicita acceso beta',
         description:
-          '🌟 Acceso prioritario · 💰 Precio especial · 🏆 Insignia fundadora · 🚀 Soporte directo',
+          '🌟 Acceso prioritario · 🛡️ Perfiles verificados · 🏆 Insignia fundadora · 🚀 Soporte directo',
         success:
           '¡Estás dentro! Te avisaremos por email cuando tu acceso esté listo.',
         error: 'Hubo un error al registrar tu solicitud. Por favor, inténtalo de nuevo.',
@@ -808,6 +810,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     heroQuickSignup: {
       ariaLabel: 'Quick beta waitlist signup',
       label: 'Reserve your beta spot — just name and email',
+      referralHint: 'Invite friends with your unique link and move up the waitlist.',
       namePlaceholder: 'Your name',
       emailPlaceholder: 'you@email.com',
       submit: 'Join the beta',
@@ -1152,7 +1155,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         subheading: 'Early beta access: verified profiles, flight matching, and a direct line to the product team.',
         title: 'Request Beta Access',
         description:
-          '🌟 Early Access · 💰 Preferred Rates · 🏆 Early Adopter Badge · 🛠️ Direct Product Channel · 🚀 Priority Support',
+          '🌟 Early access · 🛡️ Verified profiles · 🏆 Founding badge · 🚀 Direct support',
         success:
           'Great, you are on the waitlist. We will notify you by email when the beta is ready.',
         error: 'We could not register your request. Check data or try again in a few minutes.',
@@ -1330,6 +1333,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     heroQuickSignup: {
       ariaLabel: 'Schnelle Beta-Wartelisten-Anmeldung',
       label: 'Sichere dir deinen Beta-Platz — nur Name und E-Mail',
+      referralHint: 'Lade Freunde mit deinem Einladungslink ein und steige in der Warteliste auf.',
       namePlaceholder: 'Dein Name',
       emailPlaceholder: 'du@email.de',
       submit: 'Beta beitreten',
@@ -1670,11 +1674,11 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     forms: {
       beta: {
-        heading: 'Werde Teil der Reise-Revolution',
-        subheading: 'Früher Zugang für Early Adopters. Exklusive Raten und direkter Draht zum Team.',
+        heading: 'Tritt Cojaunys verifizierter Reisegemeinschaft bei',
+        subheading: 'Früher Beta-Zugang: verifizierte Profile, Flug-Matching und direkter Draht zum Team.',
         title: 'Beta-Zugang anfordern',
         description:
-          '🌟 Prio-Zugang · 💰 Spezialpreis · 🏆 Gründer-Badge · 🚀 Direkter Support',
+          '🌟 Prio-Zugang · 🛡️ Verifizierte Profile · 🏆 Gründer-Badge · 🚀 Direkter Support',
         success:
           'Du bist dabei! Wir benachrichtigen dich per E-Mail, wenn dein Zugang bereit ist.',
         error: 'Fehler bei der Registrierung. Bitte versuche es erneut.',
@@ -1852,6 +1856,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     heroQuickSignup: {
       ariaLabel: 'Inscription rapide à la liste d\'attente bêta',
       label: 'Réservez votre place bêta — nom et e-mail uniquement',
+      referralHint: 'Invitez des amis avec votre lien unique et montez dans la liste d\'attente.',
       namePlaceholder: 'Votre nom',
       emailPlaceholder: 'vous@email.com',
       submit: 'Rejoindre la bêta',
@@ -2192,11 +2197,11 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     forms: {
       beta: {
-        heading: 'Rejoignez la révolution du voyage',
-        subheading: 'Accès anticipé pour les Early Adopters. Tarifs exclusifs et lien direct avec l\'équipe.',
+        heading: 'Rejoignez la communauté de voyage vérifiée de Cojauny',
+        subheading: 'Accès bêta anticipé : profils vérifiés, matching par vol et lien direct avec l\'équipe.',
         title: 'Demander l\'accès Bêta',
         description:
-          '🌟 Accès Prio · 💰 Prix Spécial · 🏆 Badge Fondateur · 🚀 Support Direct',
+          '🌟 Accès prioritaire · 🛡️ Profils vérifiés · 🏆 Badge fondateur · 🚀 Support direct',
         success:
           'Vous êtes inscrit ! Nous vous informerons par e-mail dès que votre accès sera prêt.',
         error: 'Erreur lors de l\'inscription. Veuillez réessayer.',

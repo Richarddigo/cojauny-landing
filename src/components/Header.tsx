@@ -25,27 +25,21 @@ interface HeaderProps {
     common?: CommonCopy;
 }
 
-type NavItem = { href: string; label: string; external?: boolean };
+type NavItem = { href: string; label: string; external?: boolean; highlight?: boolean };
 
 const buildNavItems = (copy: LandingCopy['header'], locale: Locale): NavItem[] => [
-    { href: '#home', label: copy.home },
     { href: '#benefits', label: copy.benefits },
     { href: '#how-it-works', label: copy.workflow },
     { href: '#demo', label: copy.demo },
-    { href: '#features', label: copy.features },
-    { href: '#impact', label: copy.impact },
-    // PRICING -- re-enable by setting NEXT_PUBLIC_ENABLE_PREMIUM=true
-    ...(ENABLE_PREMIUM ? [{ href: '#pricing', label: copy.pricing }] : []),
-    { href: '#beta', label: copy.beta },
-    { href: `https://studio.cojauny.com/${locale}/contact`, label: copy.contact, external: true },
     { href: '#faq', label: copy.faq },
-    { href: '#feedback', label: copy.feedback },
+    ...(ENABLE_PREMIUM ? [{ href: '#pricing', label: copy.pricing }] : []),
+    { href: '#beta', label: copy.beta, highlight: true },
 ];
 
 const Header = ({ locale, copy, common }: HeaderProps) => {
     const resolvedCommon = common ?? getCommonCopy(locale);
     const navItems = buildNavItems(copy, locale);
-    const desktopNavItems = navItems.filter((item) => item.href !== '#home');
+    const desktopNavItems = navItems;
     const pathname = usePathname() ?? `/${locale}`;
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -140,32 +134,40 @@ const Header = ({ locale, copy, common }: HeaderProps) => {
         return pathname.startsWith(href);
     };
 
-    const desktopLinkClass = (active: boolean) => (
-        `group relative whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium leading-5 transition-all duration-200 ${active
-            ? 'text-white [text-shadow:0_0_10px_rgba(255,255,255,0.55)]'
-            : 'text-white/85 hover:text-white hover:[text-shadow:0_0_10px_rgba(255,255,255,0.55)]'
-        }`
+    const desktopLinkClass = (active: boolean, highlight?: boolean) => (
+        highlight
+            ? `inline-flex items-center justify-center whitespace-nowrap rounded-xl bg-studio-accent px-3 py-2 text-sm font-semibold text-white transition hover:bg-studio-accent-dim ${active ? 'ring-2 ring-white/30' : ''}`
+            : `group relative whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium leading-5 transition-all duration-200 ${active
+                ? 'text-white [text-shadow:0_0_10px_rgba(255,255,255,0.55)]'
+                : 'text-white/85 hover:text-white hover:[text-shadow:0_0_10px_rgba(255,255,255,0.55)]'
+            }`
     );
 
-    const desktopUnderlineClass = (active: boolean) => (
-        `pointer-events-none absolute bottom-0.5 left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full bg-[var(--accent)] transition-all duration-200 ${active
-            ? 'scale-x-100 opacity-100'
-            : 'scale-x-50 opacity-0 group-hover:scale-x-100 group-hover:opacity-100'
-        }`
+    const desktopUnderlineClass = (active: boolean, highlight?: boolean) => (
+        highlight
+            ? ''
+            : `pointer-events-none absolute bottom-0.5 left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full bg-[var(--accent)] transition-all duration-200 ${active
+                ? 'scale-x-100 opacity-100'
+                : 'scale-x-50 opacity-0 group-hover:scale-x-100 group-hover:opacity-100'
+            }`
     );
 
-    const mobileLinkClass = (active: boolean) => (
-        `group relative block w-full rounded-lg px-4 py-3.5 text-right text-sm font-medium leading-5 transition-colors ${active
-            ? 'text-white [text-shadow:0_0_10px_rgba(255,255,255,0.55)]'
-            : 'text-white/85 hover:text-white hover:[text-shadow:0_0_10px_rgba(255,255,255,0.55)]'
-        } cursor-pointer`
+    const mobileLinkClass = (active: boolean, highlight?: boolean) => (
+        highlight
+            ? `block w-full rounded-xl bg-studio-accent px-4 py-3.5 text-right text-sm font-semibold text-white transition hover:bg-studio-accent-dim ${active ? 'ring-2 ring-white/30' : ''}`
+            : `group relative block w-full rounded-lg px-4 py-3.5 text-right text-sm font-medium leading-5 transition-colors ${active
+                ? 'text-white [text-shadow:0_0_10px_rgba(255,255,255,0.55)]'
+                : 'text-white/85 hover:text-white hover:[text-shadow:0_0_10px_rgba(255,255,255,0.55)]'
+            } cursor-pointer`
     );
 
-    const mobileUnderlineClass = (active: boolean) => (
-        `pointer-events-none absolute bottom-1 right-4 h-0.5 w-4 rounded-full bg-[var(--accent)] transition-all duration-200 ${active
-            ? 'scale-x-100 opacity-100'
-            : 'scale-x-50 opacity-0 group-hover:scale-x-100 group-hover:opacity-100'
-        }`
+    const mobileUnderlineClass = (active: boolean, highlight?: boolean) => (
+        highlight
+            ? ''
+            : `pointer-events-none absolute bottom-1 right-4 h-0.5 w-4 rounded-full bg-[var(--accent)] transition-all duration-200 ${active
+                ? 'scale-x-100 opacity-100'
+                : 'scale-x-50 opacity-0 group-hover:scale-x-100 group-hover:opacity-100'
+            }`
     );
 
     const headerStateClass = scrolled
@@ -213,12 +215,12 @@ const Header = ({ locale, copy, common }: HeaderProps) => {
                                     key={item.href}
                                     href={item.href}
                                     onClick={e => handleDesktopNav(e, item.href)}
-                                    className={desktopLinkClass(active)}
+                                    className={desktopLinkClass(active, item.highlight)}
                                     {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                                     {...(active ? { 'aria-current': 'page' as const } : {})}
                                 >
                                     {item.label}
-                                    <span className={desktopUnderlineClass(active)} aria-hidden="true" />
+                                    <span className={desktopUnderlineClass(active, item.highlight)} aria-hidden="true" />
                                 </a>
                             );
                         })}
@@ -280,12 +282,12 @@ const Header = ({ locale, copy, common }: HeaderProps) => {
                                             key={item.href}
                                             href={item.href}
                                             onClick={e => handleMobileNav(e, item.href)}
-                                            className={mobileLinkClass(active)}
+                                            className={mobileLinkClass(active, item.highlight)}
                                             {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                                             {...(active ? { 'aria-current': 'page' as const } : {})}
                                         >
                                             {item.label}
-                                            <span className={mobileUnderlineClass(active)} aria-hidden="true" />
+                                            <span className={mobileUnderlineClass(active, item.highlight)} aria-hidden="true" />
                                         </a>
                                     );
                                 })}
