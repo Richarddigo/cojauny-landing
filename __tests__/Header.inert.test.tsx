@@ -18,7 +18,7 @@ describe('Header inert/aria-hidden handling', () => {
         document.body.innerHTML = '<main id="app-main">content</main><div id="root"></div>';
         render(<Header locale={'en'} copy={copy} />);
 
-        const openButton = screen.getByLabelText(/open main menu/i);
+        const openButton = screen.getByLabelText(/open menu/i);
         await userEvent.click(openButton);
 
         const dialog = await screen.findByRole('dialog');

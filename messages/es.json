@@ -1,34 +1,34 @@
 {
   "common": {
-    "closeMessage": "Cerrar mensaje",
-    "openMainMenu": "Abrir menú principal",
+    "closeMessage": "Cerrar aviso",
+    "openMainMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
     "skipToMainContent": "Saltar al contenido principal",
     "goToBetaSignup": "Ir al registro beta",
-    "honeypotHumanLabel": "No rellenes este campo si eres humano",
-    "languageSelectorLabel": "Selector de idioma",
+    "honeypotHumanLabel": "Deja este campo vacío",
+    "languageSelectorLabel": "Cambiar idioma",
     "footerSectionApp": "App",
     "footerSectionLegal": "Legal",
-    "pricingFeatureHeader": "Característica",
-    "pricingFreeHeader": "Gratis",
+    "pricingFeatureHeader": "Función",
+    "pricingFreeHeader": "Free",
     "pricingPremiumHeader": "Premium",
     "pricingIncludedLabel": "Incluido",
     "pricingNotIncludedLabel": "No incluido",
     "blogEyebrow": "Blog",
     "airportSavingsBadge": "Ahorra en cada viaje al aeropuerto",
-    "ogAlt": "Cojauny — Comparte taxi al aeropuerto",
+    "ogAlt": "Cojauny — comparte tu taxi al aeropuerto",
     "footerNavSectionLabel": "Navegación",
     "footerEcosystemSectionLabel": "Ecosistema",
-    "footerEcosystemDescription": "Cojauny forma parte de un ecosistema de productos digitales en evolución.",
+    "footerEcosystemDescription": "Cojauny forma parte de una familia de productos digitales en crecimiento.",
     "footerHomeLabel": "Inicio",
     "footerAirportsLabel": "Aeropuertos",
     "navAriaLabel": "Navegación principal",
     "loadingLabel": "Cargando…",
-    "errorTitle": "Algo salió mal",
-    "errorMessage": "Ocurrió un error inesperado. Por favor, inténtalo de nuevo.",
-    "errorRetry": "Intentar de nuevo",
-    "errorGoHome": "← Ir al inicio",
-    "relatedLegalPages": "Páginas legales relacionadas"
+    "errorTitle": "Vaya, algo ha ido mal",
+    "errorMessage": "Ha ocurrido un error inesperado. Prueba de nuevo en un momento.",
+    "errorRetry": "Reintentar",
+    "errorGoHome": "← Volver al inicio",
+    "relatedLegalPages": "Otras páginas legales"
   },
   "landing": {
     "skipLink": "Saltar al contenido principal",
@@ -37,7 +37,7 @@
       "features": "Funciones",
       "demo": "App",
       "pricing": "Planes",
-      "beta": "Acceso Beta",
+      "beta": "Acceso beta",
       "contact": "Contacto",
       "blog": "Blog",
       "benefits": "Ventajas",
@@ -47,8 +47,8 @@
       "feedback": "Feedback"
     },
     "seo": {
-      "title": "Cojauny | Comparte tu traslado al aeropuerto con tu mismo vuelo",
-      "description": "Encuentra viajeros de tu vuelo, comparte el coste del taxi o traslado y coordina todo de forma segura desde la app. Únete a la beta hoy.",
+      "title": "Cojauny | Comparte tu traslado al aeropuerto con gente de tu vuelo",
+      "description": "Encuentra a otros viajeros de tu vuelo, comparte el taxi y sabe siempre con quién viajas. Únete a la beta hoy.",
       "keywords": [
         "traslado aeropuerto compartido",
         "compartir taxi aeropuerto",
@@ -61,16 +61,16 @@
         "movilidad aeroportuaria segura",
         "ahorrar traslado aeropuerto"
       ],
-      "ogTitle": "Cojauny | Comparte tu traslado al aeropuerto, fácil y verificado",
-      "ogDescription": "Encuentra pasajeros de tu vuelo, comparte el coste del traslado y viaja con compañeros verificados y valorados."
+      "ogTitle": "Cojauny | Comparte tu traslado al aeropuerto",
+      "ogDescription": "Encuentra viajeros de tu vuelo, reparte el coste del taxi y viaja con compañeros verificados."
     },
     "hero": {
-      "eyebrow": "Beta abierta · Plazas limitadas",
-      "title": "Comparte tu traslado al aeropuerto con gente de tu mismo vuelo",
-      "subtitle": "Encuentra viajeros verificados en tu vuelo, reparte el coste del trayecto y coordina todo con seguridad desde la app.",
+      "eyebrow": "Beta abierta · Quedan pocas plazas",
+      "title": "No vuelvas a coger un taxi solo al aeropuerto",
+      "subtitle": "Cojauny te empareja con viajeros de tu mismo vuelo para que compartas el taxi, ahorres dinero y sepas siempre con quién vas.",
       "primaryCta": "Reservar mi plaza",
       "secondaryCta": "Ver cómo funciona",
-      "imageAlt": "Interfaz de Cojauny mostrando matching por vuelo, coste compartido y perfiles verificados",
+      "imageAlt": "Interfaz de Cojauny mostrando el matching por vuelo, el coste compartido y los perfiles verificados",
       "trustSignals": [
         "Reparte el coste",
         "Emparejado por vuelo",
@@ -79,206 +79,206 @@
     },
     "heroVariants": {
       "savings": {
-        "title": "Comparte tu traslado al aeropuerto y ahorra hasta un 75%",
-        "subtitle": "Encuentra viajeros verificados en tu vuelo y reparte el coste del trayecto — siempre sabes con quién viajas antes de confirmar."
+        "title": "Ahorra hasta un 75% en tu próximo traslado",
+        "subtitle": "Empareja con viajeros verificados de tu vuelo y reparte el coste del trayecto — siempre sabes con quién viajas antes de decir que sí."
       }
     },
     "heroQuickSignup": {
-      "ariaLabel": "Unirse a la lista de espera de la beta de Cojauny",
-      "label": "Consigue acceso anticipado y reserva tu plaza en la beta",
+      "ariaLabel": "Unirme a la beta de Cojauny",
+      "label": "Consigue acceso anticipado — quedan pocas plazas",
       "emailPlaceholder": "tu@email.com",
       "submit": "Reservar mi plaza",
-      "submitting": "Enviando solicitud…",
-      "privacyNote": "Al enviar su correo, acepta los términos de uso y la política de privacidad de Cojauny.",
-      "success": "¡Ya estás dentro! Te avisaremos por email en cuanto tu acceso esté listo."
+      "submitting": "Enviando…",
+      "privacyNote": "Al unirte, aceptas nuestros términos y política de privacidad. Nunca te enviaremos spam.",
+      "success": "¡Ya estás dentro! Te escribiremos en cuanto se abra tu plaza."
     },
-    "airportsHubTitle": "Principales aeropuertos",
-    "airportsHubAll": "Ver cobertura completa",
-    "betaReferralBanner": "Tras registrarse, recibirá un enlace de invitación para compartir con su red y priorizar su acceso.",
+    "airportsHubTitle": "Aeropuertos destacados",
+    "airportsHubAll": "Ver todos los aeropuertos",
+    "betaReferralBanner": "En cuanto entres, te daremos un enlace de invitación personal — compártelo para subir puestos en la lista.",
     "features": {
-      "title": "Todo lo que necesitas para un traslado más inteligente",
-      "subtitle": "Desde encontrar a tu grupo hasta repartir la cuenta: cada función está pensada para que compartir sea sencillo y seguro.",
+      "title": "Todo lo que necesitas para compartir viaje con confianza",
+      "subtitle": "Desde encontrar con quién ir hasta repartir la cuenta: cada función está pensada para que compartir sea fácil y seguro.",
       "items": [
         {
-          "title": "Matching por vuelo",
-          "description": "El emparejamiento se realiza por número de vuelo y fecha. No hay coincidencias aleatorias: solo pasajeros del mismo trayecto.",
+          "title": "Emparejado por vuelo, no por suerte",
+          "description": "Te emparejamos por número de vuelo y fecha, así siempre viajas con gente de tu mismo trayecto, nunca con desconocidos al azar.",
           "iconName": "bolt"
         },
         {
-          "title": "Reparto automático del coste",
-          "description": "La app calcula y reparte el coste del traslado entre todo el grupo, para que nadie tenga que hacer cuentas.",
+          "title": "Reparte el coste sin esfuerzo",
+          "description": "La app calcula lo que le toca pagar a cada uno, así nadie tiene que sacar la calculadora.",
           "iconName": "sparkles"
         },
         {
-          "title": "Identidad verificada",
-          "description": "Perfiles con verificación documental y foto, para que sepas con quién viajas.",
+          "title": "Perfiles verificados",
+          "description": "Cada viajero confirma su identidad con documento y foto antes de poder unirse a un viaje.",
           "iconName": "shield"
         },
         {
-          "title": "Coordinación desde la app",
-          "description": "Chatea con tu grupo antes del vuelo para acordar el punto de encuentro y el horario, sin compartir tu número.",
+          "title": "Habla antes de veros",
+          "description": "Acuerda el punto de encuentro y la hora desde la app, sin compartir tu número de teléfono.",
           "iconName": "chat"
         },
         {
-          "title": "Valoraciones y reseñas",
-          "description": "Valoraciones de 0 a 5 estrellas y comentarios opcionales tras cada trayecto, visibles en el perfil público antes de confirmar.",
+          "title": "Valoraciones en las que confiar",
+          "description": "Las estrellas y los comentarios de viajes anteriores están siempre visibles en cada perfil.",
           "iconName": "users"
         },
         {
-          "title": "Alertas de vuelo en tiempo real",
-          "description": "Notificaciones sobre cambios de horario, recordatorios de encuentro y actualizaciones relevantes del trayecto.",
+          "title": "Alertas de vuelo al momento",
+          "description": "Te avisamos en cuanto algo cambia, para que tu grupo nunca se quede a ciegas.",
           "iconName": "globe"
         }
       ]
     },
     "value": {
-      "eyebrow": "Por qué Cojauny",
-      "title": "Ahorra en tus traslados al aeropuerto sin perder el control",
-      "subtitle": "Cada trayecto compartido combina ahorro real, comodidad y seguridad — usted decide con quién viaja antes de confirmar.",
+      "eyebrow": "Por qué la gente se apunta",
+      "title": "Un viaje, tres buenas razones",
+      "subtitle": "Cojauny junta ahorro real, comodidad real y tranquilidad real — tú siempre eliges con quién viajas.",
       "items": [
         {
-          "title": "Ahorro real",
-          "description": "Reparte el coste de un taxi o traslado privado con otros pasajeros en lugar de pagar la tarifa completa en solitario."
+          "title": "Ahorras de verdad",
+          "description": "Compartir un taxi o traslado con otros pasajeros cuesta mucho menos que ir solo."
         },
         {
-          "title": "Emparejado por vuelo, no al azar",
-          "description": "Viaja con personas de tu mismo vuelo y terminal — nunca con un desconocido cualquiera de la calle."
+          "title": "Emparejado por vuelo, nunca al azar",
+          "description": "Solo viajas con gente de tu mismo vuelo y terminal — nunca con un desconocido cualquiera de la calle."
         },
         {
           "title": "Verificado y valorado",
-          "description": "La verificación de identidad y las valoraciones públicas de trayectos anteriores le permiten elegir compañeros de viaje con confianza."
+          "description": "Cada perfil verifica su identidad, y puedes ver sus valoraciones antes de aceptar nada."
         },
         {
-          "title": "Todo acordado de antemano",
-          "description": "Punto de encuentro, horarios y reparto de costes definidos antes de confirmar, sin sorpresas el día del viaje."
+          "title": "Sin sorpresas el día del viaje",
+          "description": "Punto de encuentro, hora y reparto del coste, todo acordado en la app antes de salir de casa."
         }
       ]
     },
     "savings": {
-      "title": "Ahorra hasta un 75% en tu traslado al aeropuerto",
-      "caption": "Compartir el trayecto con viajeros verificados de tu vuelo es la forma más sencilla de reducir costes. Estas son las cifras hacia las que trabajamos durante la beta.",
+      "title": "Ahorra hasta un 75% en tu próximo traslado",
+      "caption": "Compartir trayecto con viajeros verificados de tu vuelo es la forma más fácil de pagar menos. Estas son las cifras hacia las que trabajamos durante la beta.",
       "metrics": [
         {
           "value": "50-75%",
           "label": "Ahorro por trayecto",
-          "description": "Rango estimado al dividir taxi o vehículo privado entre pasajeros verificados."
+          "description": "Lo que puedes ahorrar compartiendo taxi o traslado en lugar de ir solo."
         },
         {
           "value": "180+",
           "label": "Aeropuertos",
-          "description": "Cobertura en hubs internacionales de Europa, América y Oriente Medio."
+          "description": "Cubrimos los principales aeropuertos de Europa, América y Oriente Medio."
         },
         {
           "value": "50.000+",
-          "label": "Conexiones previstas",
-          "description": "Objetivo de red para alcanzar masa crítica en rutas de alta demanda."
+          "label": "Viajeros esperados",
+          "description": "Nuestro objetivo para tener gente suficiente y encontrar match en rutas con mucho tráfico."
         },
         {
           "value": "1.000+ t",
           "label": "CO₂ evitado",
-          "description": "Impacto ambiental proyectado al consolidar ocupación por vehículo."
+          "description": "El impacto estimado de llenar más coches en lugar de ir cada uno por su lado."
         }
       ]
     },
     "workflow": {
-      "title": "Del número de vuelo al trayecto compartido en 5 pasos",
-      "intro": "Verifique su perfil una sola vez y luego encuentre grupo, coordine y viaje — con la seguridad integrada en cada paso.",
+      "title": "Del número de vuelo al viaje compartido en 5 pasos",
+      "intro": "Verifica tu perfil una sola vez — luego solo tienes que emparejar, hablar y viajar, con algún control de seguridad de por medio.",
       "steps": [
         {
-          "title": "1. Crea tu perfil verificado",
-          "description": "Regístrate y completa la verificación de identidad una vez para desbloquear la comunidad."
+          "title": "1. Crea tu perfil",
+          "description": "Regístrate y verifica tu identidad una vez. Ya está, ya puedes empezar a buscar viaje."
         },
         {
           "title": "2. Añade tu vuelo",
-          "description": "Indica número de vuelo y fecha para que encontremos viajeros compatibles."
+          "description": "Indica tu número de vuelo y fecha para que encontremos gente que viaja contigo."
         },
         {
-          "title": "3. Compara tus opciones",
-          "description": "Revisa los perfiles emparejados, sus valoraciones y las condiciones del trayecto antes de elegir."
+          "title": "3. Elige con quién ir",
+          "description": "Compara perfiles y valoraciones, y decide con quién viajar."
         },
         {
-          "title": "4. Coordina los detalles",
-          "description": "Acuerda punto de encuentro, horario y reparto de costes en un chat privado dentro de la app."
+          "title": "4. Cuadra los detalles",
+          "description": "Acuerda el punto de encuentro, la hora y el reparto del coste, todo desde el chat."
         },
         {
           "title": "5. Viaja y valora",
-          "description": "Completa el trayecto y valora a tus compañeros (0–5 estrellas y comentario opcional) para ayudar al próximo viajero a decidir."
+          "description": "Haz el trayecto y deja una valoración rápida para ayudar al siguiente viajero a decidir."
         }
       ]
     },
     "mockups": {
-      "heading": "Vea quién viaja con usted antes de confirmar",
-      "description": "Identidad, vuelo y reputación visibles en la interfaz — porque la seguridad empieza por la información.",
+      "heading": "Mira con quién viajarías antes de confirmar",
+      "description": "Vuelo, perfil y valoraciones anteriores — todo visible en la app antes de decir que sí.",
       "screens": [
         {
           "id": "flight-search",
           "badge": "Matching",
-          "title": "Tu vuelo, tu grupo",
-          "description": "Introduce tu número de vuelo. El sistema encuentra pasajeros del mismo trayecto, no desconocidos al azar.",
+          "title": "Tu vuelo, tu gente",
+          "description": "Introduce tu número de vuelo y mira quién más va contigo — nada de emparejamientos al azar.",
           "image": "/images/mockups/es/mockup-flight-search.svg"
         },
         {
           "id": "profile",
           "badge": "Perfil",
-          "title": "Comunidad verificada",
-          "description": "Perfil público con identidad verificada, media de estrellas (0–5) y comentarios de trayectos anteriores.",
+          "title": "Un perfil en el que confiar",
+          "description": "Identidad verificada, con nota media y comentarios de viajes anteriores.",
           "image": "/images/mockups/es/mockup-profile.svg"
         },
         {
           "id": "event-detail",
           "badge": "Detalle",
-          "title": "Todo claro antes de unirte",
-          "description": "Quién organiza, quién va, punto de encuentro y coste estimado. Sin sorpresas.",
+          "title": "Nada oculto",
+          "description": "Quién organiza, quién va, dónde quedar y cuánto cuesta. Todo por adelantado.",
           "image": "/images/mockups/es/mockup-event-detail.svg"
         },
         {
           "id": "chat",
           "badge": "Chat",
-          "title": "Coordina con tranquilidad",
-          "description": "Habla con el grupo en un canal seguro. Conócete y organiza el trayecto sin compartir tu número.",
+          "title": "Habla antes de viajar",
+          "description": "Coordínate con tu grupo desde la app, sin dar tu número de teléfono.",
           "image": "/images/mockups/es/mockup-chat.svg"
         },
         {
           "id": "events-list",
           "badge": "Eventos",
-          "title": "Opciones para tu vuelo",
-          "description": "Traslados y encuentros para tu vuelo con plazas y participantes en tiempo real.",
+          "title": "Elige lo que mejor te venga",
+          "description": "Consulta todos los viajes disponibles para tu vuelo, con plazas y gente en tiempo real.",
           "image": "/images/mockups/es/mockup-events-list.svg"
         },
         {
           "id": "impact",
           "badge": "Resultado",
           "title": "Ve crecer tu ahorro",
-          "description": "Sigue cuánto has ahorrado en tus traslados compartidos, trayecto a trayecto.",
+          "description": "Sigue cuánto has ahorrado, viaje tras viaje.",
           "image": "/images/mockups/es/mockup-impact.svg"
         }
       ]
     },
     "ctaStrip": {
-      "heading": "¿Listo para compartir tu próximo traslado al aeropuerto?",
-      "body": "Únete a la beta de Cojauny: encuentra viajeros de tu vuelo, reparte el coste y viaja con compañeros verificados y valorados.",
+      "heading": "Comparte tu próximo traslado al aeropuerto",
+      "body": "Únete a la beta de Cojauny: encuentra viajeros de tu vuelo, reparte el coste y viaja con alguien de confianza.",
       "link": "#beta",
       "linkLabel": "Reservar mi plaza"
     },
     "pricing": {
-      "title": "Planes flexibles para ti",
-      "subtitle": "Comienza gratis y crece según tus necesidades de viaje.",
+      "title": "Precios simples, cuando estés listo",
+      "subtitle": "Empieza gratis. Pasa a Premium solo si vuelas lo suficiente para necesitarlo.",
       "plans": {
         "free": {
           "name": "Free",
           "price": "Gratis",
-          "description": "Perfecto para viajeros ocasionales. Gestiona un viaje activo a la vez sin coste.",
-          "cta": "Crear cuenta gratis"
+          "description": "Gestiona un vuelo y un evento a la vez, sin límite en el número total de viajes.",
+          "cta": "Empezar gratis"
         },
         "premium": {
           "name": "Premium",
           "price": "4,99 €/mes",
-          "description": "Para viajeros frecuentes. Gestión ilimitada, chat grupal y soporte prioritario. 49 €/año.",
-          "cta": "Hacerme Premium"
+          "description": "Gestiona varios vuelos y eventos a la vez, con chat grupal, estadísticas detalladas y soporte prioritario. 49 €/año (ahorras un 17%).",
+          "cta": "Pasar a Premium"
         }
       },
       "comparison": {
-        "title": "Comparativa de planes",
+        "title": "Qué incluye cada plan",
         "features": [
           {
             "feature": "Vuelos activos simultáneos",
@@ -333,76 +333,76 @@
       "subtitle": "Resolvemos tus dudas sobre Cojauny",
       "items": [
         {
-          "question": "¿Cómo funciona el matching?",
-          "answer": "Introduce tu vuelo y fecha. Cruzamos datos con nuestra base global y te mostramos viajeros en tu mismo vuelo o con horarios compatibles para compartir transporte."
+          "question": "¿Cómo funciona el matching por vuelo?",
+          "answer": "Solo tienes que indicar tu número de vuelo y la fecha. Consultamos nuestra base de datos al momento y te emparejamos con otros viajeros de tu mismo vuelo, o de uno compatible en el mismo aeropuerto y horario."
         },
         {
           "question": "¿Es seguro viajar con gente que no conozco?",
-          "answer": "Sí. Cada usuario verifica su identidad con documento y foto antes de unirse, y puedes consultar el perfil público de cada viajero — valoraciones, comentarios e historial de reputación — antes de confirmar nada. La coordinación se hace en un chat seguro dentro de la app, así que nunca tienes que compartir tu número. Los datos sensibles como email, documento de identidad y contacto son privados y nunca se comparten automáticamente."
+          "answer": "Sí. Todo el mundo verifica su identidad con foto y documento antes de unirse, y puedes consultar el perfil público de cada viajero — valoraciones, comentarios, reputación — antes de confirmar nada. La coordinación se hace por un chat seguro dentro de la app, así que nunca compartes tu número, y tus datos sensibles como el email o el documento se quedan siempre en privado."
         },
         {
-          "question": "¿Puedo cancelar mi asistencia sin penalización?",
-          "answer": "Sí, tienes total flexibilidad. Puedes salir de cualquier evento desde la app sin coste adicional. Si eres organizador, al cancelar todos los participantes reciben una notificación instantánea con opciones para reorganizarse. Te recomendamos avisar con la mayor antelación posible."
+          "question": "¿Puedo cancelar mi participación sin penalización?",
+          "answer": "Sí, sin ataduras. Puedes salir de cualquier evento desde la app sin coste. Si eres el organizador, el resto se entera al instante para poder reorganizarse. Intenta avisar con la mayor antelación que puedas."
         },
         {
-          "question": "¿Cómo funciona el reparto del coste entre participantes?",
-          "answer": "La app incluye una calculadora automática que reparte el coste del traslado a partes iguales y muestra a todo el grupo el ahorro estimado antes del viaje. Cojauny no procesa pagos directamente, así que mantienes flexibilidad para liquidar como prefiráis: efectivo, Bizum, transferencia, PayPal o pago con tarjeta dividido."
+          "question": "¿Cómo se reparte el coste entre los participantes?",
+          "answer": "La app calcula el reparto automáticamente y muestra a todos el ahorro estimado antes del viaje. No gestionamos los pagos nosotros, así que podéis liquidar como os venga mejor: efectivo, Bizum, transferencia, lo que sea más cómodo."
         },
         {
           "question": "¿Qué tipo de eventos puedo crear o unirme?",
-          "answer": "Cojauny admite varias categorías: traslados compartidos al aeropuerto de salida, recogidas en el aeropuerto de llegada, furgonetas corporativas para equipos, coches privados compartidos, alojamiento compartido en destino y actividades sociales tras el vuelo. Los usuarios Premium pueden crear eventos personalizados para cualquier necesidad de viaje compartido."
+          "answer": "Traslados compartidos al aeropuerto, recogidas a la llegada, furgonetas para equipos, coches privados compartidos, alojamiento compartido, o incluso un plan al aterrizar. Los usuarios Premium pueden crear eventos personalizados para cualquier otra cosa."
         },
         {
           "question": "¿En qué aeropuertos funciona Cojauny?",
-          "answer": "Lanzamos con cobertura en los principales hubs internacionales de Europa, América y Oriente Medio, incluyendo Madrid-Barajas, Barcelona-El Prat, Londres-Heathrow, París-Charles de Gaulle y Nueva York-JFK. Vamos añadiendo aeropuertos según la demanda de la beta — si el tuyo no está, puedes solicitarlo desde Ajustes → Solicitar aeropuerto."
+          "answer": "Empezamos con los principales aeropuertos de Europa, América y Oriente Medio — como Madrid, Barcelona, Londres-Heathrow, París-CDG o Nueva York-JFK. ¿No está el tuyo? Solicítalo desde Ajustes → Solicitar aeropuerto."
         },
         {
           "question": "¿Qué pasa si mi vuelo se retrasa, se cancela o cambia de puerta?",
-          "answer": "Cojauny recibe actualizaciones de vuelo en tiempo real. Cuando tu vuelo cambia, todos los participantes de tu evento reciben una notificación instantánea con los detalles actualizados, y puedes ajustar la hora de encuentro, actualizar el punto de encuentro o cancelar el evento con un solo toque. El historial de cambios queda visible para mantener la transparencia."
+          "answer": "Seguimos tu vuelo en tiempo real. Si algo cambia, todo el grupo recibe un aviso al instante, y puedes actualizar la hora o el punto de encuentro — o cancelar el evento — con un solo toque."
         },
         {
           "question": "¿Cuánto dinero puedo ahorrar realmente con Cojauny?",
-          "answer": "El ahorro estimado es del 50-75% en el transporte al aeropuerto. Por ejemplo, un traslado que cuesta 30-35€ en solitario baja a unos 7,50-9€ por persona al compartirlo con tres pasajeros más de tu mismo vuelo — unos 22-25€ ahorrados por trayecto, o 500-600€ al año si vuelas dos veces al mes."
+          "answer": "De media, entre un 50% y un 75% frente a ir solo. Por ejemplo, un traslado de 30 € baja a unos 8 € por persona al compartirlo con otros tres pasajeros — eso son entre 500 y 600 € al año si vuelas dos veces al mes."
         },
         {
-          "question": "¿Qué pasa después de apuntarme a la lista de espera de la beta?",
-          "answer": "Recibirás un email de confirmación al instante, además de un enlace de invitación personal que puedes compartir para avanzar en la cola. A medida que abramos nuevas plazas, te enviaremos un email con los detalles de tu acceso y todo lo necesario para completar tu primer traslado compartido."
+          "question": "¿Qué pasa después de apuntarme a la lista de espera?",
+          "answer": "Recibes un email de confirmación al momento, más tu propio enlace de invitación para subir puestos. En cuanto se libere tu plaza, te escribimos con todo lo necesario para tu primer viaje compartido."
         }
       ]
     },
     "forms": {
       "beta": {
         "heading": "Reserva tu plaza en la beta de Cojauny",
-        "subheading": "Sé de los primeros en compartir traslados verificados al aeropuerto y consigue ventajas de miembro fundador.",
-        "title": "Solicita acceso beta",
-        "description": "Acceso prioritario, perfil verificado, insignia de fundador y soporte directo del equipo.",
-        "success": "¡Estás dentro! Te avisaremos por email cuando tu acceso esté listo.",
-        "error": "Hubo un error al registrar tu solicitud. Por favor, inténtalo de nuevo.",
-        "duplicateError": "Ya estás en nuestra lista. Te avisaremos pronto.",
+        "subheading": "Sé de los primeros en compartir traslados verificados al aeropuerto, con ventajas de miembro fundador incluidas.",
+        "title": "Solicita tu acceso a la beta",
+        "description": "Acceso prioritario, perfil verificado, insignia de fundador y contacto directo con el equipo.",
+        "success": "¡Ya estás en la lista! Te escribiremos por email en cuanto tengas acceso.",
+        "error": "Algo ha fallado por nuestra parte — inténtalo de nuevo en un momento.",
+        "duplicateError": "Parece que ya estás en la lista. Te contactaremos pronto.",
         "submit": "Reservar mi plaza",
-        "checkboxLabel": "Acepto la {privacyLink} de Cojauny.",
+        "checkboxLabel": "He leído y acepto la {privacyLink} de Cojauny.",
         "privacyLinkLabel": "política de privacidad",
-        "referralNotice": "Tras registrarse recibirá un enlace de invitación. Solo contamos visitas y registros para priorizar su acceso, sin almacenar datos de terceros.",
+        "referralNotice": "Al registrarte recibirás un enlace para invitar a otros. Solo contamos visitas y registros para darte prioridad — nunca compartimos tus datos con terceros.",
         "optionalLabel": "(opcional)",
-        "optionalHint": "Los campos marcados como \"(opcional)\" no son obligatorios.",
+        "optionalHint": "Los campos marcados como \"(opcional)\" te los puedes saltar sin problema.",
         "fields": {
           "fullName": "Nombre completo",
           "email": "Correo electrónico",
-          "country": "País de residencia",
-          "homeAirport": "Ciudad o aeropuerto base",
-          "flightFrequency": "Frecuencia de vuelo",
-          "useCase": "¿Qué te interesa de Cojauny?",
-          "updatesOptIn": "Recibir novedades del producto",
-          "privacyAcceptance": "Acepto el tratamiento de mis datos para la beta."
+          "country": "País",
+          "homeAirport": "Ciudad o aeropuerto habitual",
+          "flightFrequency": "¿Con qué frecuencia vuelas?",
+          "useCase": "¿Para qué te gustaría usar Cojauny?",
+          "updatesOptIn": "Avísame de las novedades",
+          "privacyAcceptance": "Acepto que se guarden mis datos para participar en la beta."
         },
         "placeholders": {
           "homeAirport": "Ej. Madrid (MAD), CDMX",
-          "useCase": "Seguridad, networking, sostenibilidad..."
+          "useCase": "Cuéntanos un poco cómo lo usarías"
         },
         "countryOptions": [
           {
             "value": "",
-            "label": "Selecciona tu país"
+            "label": "Elige tu país"
           },
           {
             "value": "es",
@@ -449,39 +449,39 @@
           {
             "value": "once",
             "label": "1 vez al año",
-            "description": "Vacaciones o viajes puntuales"
+            "description": "Vacaciones o algún viaje suelto"
           },
           {
             "value": "two_to_five",
             "label": "2–5 veces al año",
-            "description": "Viajeros frecuentes u ocio regular"
+            "description": "Viajas con cierta regularidad"
           },
           {
             "value": "six_to_ten",
             "label": "6–10 veces al año",
-            "description": "Profesionales o commuters"
+            "description": "El aeropuerto ya te resulta familiar"
           },
           {
             "value": "more_than_ten",
             "label": "+10 veces al año",
-            "description": "Tripulaciones y grandes viajeros"
+            "description": "Prácticamente vives con la maleta hecha"
           }
         ]
       },
       "feedback": {
-        "heading": "Tu opinión importa",
-        "subheading": "¿Ideas, sugerencias o propuestas? Queremos escucharte para mejorar Cojauny.",
+        "heading": "¿Tienes algo que contarnos? Te escuchamos",
+        "subheading": "Ideas, fallos, propuestas de negocio... lo que sea, queremos saberlo.",
         "title": "Envíanos un mensaje",
-        "description": "¿Tienes una propuesta de negocio o feedback específico? Escríbenos.",
-        "success": "Mensaje recibido. Gracias por ayudarnos a mejorar.",
-        "error": "El mensaje debe tener al menos 10 caracteres.",
-        "submit": "Enviar",
+        "description": "¿Gestionas una empresa con traslados habituales o tienes una propuesta de colaboración? Cuéntanoslo, o escribe a feedback@cojauny.com.",
+        "success": "Recibido, ¡gracias! Te responderemos si necesitamos algo más.",
+        "error": "Revisa tu mensaje e inténtalo de nuevo.",
+        "submit": "Enviar mensaje",
         "optionalLabel": "(opcional)",
-        "optionalHint": "Campos obligatorios salvo indicación contraria.",
+        "optionalHint": "Todos los campos son obligatorios salvo que veas \"(opcional)\".",
         "fields": {
           "fullName": "Nombre",
           "email": "Correo",
-          "message": "Tu mensaje",
+          "message": "Cuéntanos",
           "useCase": "Tipo de consulta",
           "selectPlaceholder": "Selecciona una opción"
         },
@@ -502,48 +502,48 @@
       }
     },
     "referralPanel": {
-      "title": "Adelanta puestos en la lista",
-      "subtitle": "Comparte Cojauny y gana prioridad en el acceso.",
+      "title": "Te avisaremos en cuanto se abra la beta",
+      "subtitle": "Mientras tanto, comparte tu enlace y sube puestos en la lista.",
       "yourLink": "Tu enlace de invitación",
       "copyButton": "Copiar enlace",
-      "copiedButton": "Copiado",
+      "copiedButton": "¡Copiado!",
       "stats": {
         "visits": "Visitas",
         "signups": "Registros"
       },
       "instructions": {
         "title": "Cómo funciona",
-        "step1": "Comparte tu enlace único.",
-        "step2": "Contamos las visitas anónimas.",
-        "step3": "Sumamos puntos si se registran."
+        "step1": "Comparte tu enlace con amigos, compañeros o en redes sociales.",
+        "step2": "Cada visita a través de tu enlace cuenta, de forma anónima.",
+        "step3": "Cada registro te hace subir puestos en la lista."
       },
-      "privacy": "Sistema 100% anónimo. No guardamos datos de tus invitados.",
-      "privacyLabel": "Seguridad:"
+      "privacy": "Solo contamos visitas y registros — no recogemos datos personales de quien hace clic en tu enlace.",
+      "privacyLabel": "Un apunte:"
     },
     "cookie": {
-      "message": "Usamos cookies esenciales para el sitio y cookies analíticas opcionales. Tú eliges qué aceptar. Tu elección se guarda 12 meses.",
+      "message": "Usamos algunas cookies esenciales para que la web funcione, y otras de análisis opcionales para mejorarla. Tu elección se guarda 12 meses.",
       "acceptAll": "Aceptar todas",
-      "reject": "Solo necesarias",
+      "reject": "Solo esenciales",
       "customize": "Personalizar",
       "savePreferences": "Guardar preferencias",
-      "essentialLabel": "Cookies esenciales",
-      "essentialDescription": "Necesarias para seguridad, idioma y funcionamiento básico.",
-      "analyticsLabel": "Cookies analíticas",
-      "analyticsDescription": "Nos ayudan a medir visitas y mejorar la conversión beta.",
+      "essentialLabel": "Esenciales",
+      "essentialDescription": "Necesarias para cosas básicas como la seguridad y recordar tu idioma.",
+      "analyticsLabel": "Análisis",
+      "analyticsDescription": "Nos ayudan a entender qué funciona y a mejorar la beta.",
       "alwaysOn": "Siempre activas",
-      "moreInfo": "Más info"
+      "moreInfo": "Saber más"
     },
     "footer": {
-      "description": "Viajando juntos hacia un futuro sostenible.",
+      "description": "Hacemos que ir al aeropuerto sea más fácil, más barato y más seguro. Juntos.",
       "rights": "Todos los derechos reservados.",
-      "appStoreSoon": "App Store (pronto)",
-      "playStoreSoon": "Google Play (pronto)",
-      "privacy": "Privacidad",
-      "cookies": "Cookies",
-      "terms": "Términos",
-      "accountDeletion": "Eliminar cuenta",
+      "appStoreSoon": "App Store (próximamente)",
+      "playStoreSoon": "Google Play (próximamente)",
+      "privacy": "Política de privacidad",
+      "cookies": "Política de cookies",
+      "terms": "Términos de servicio",
+      "accountDeletion": "Eliminar mi cuenta",
       "acceptableUse": "Uso aceptable",
-      "faq": "FAQ",
+      "faq": "Preguntas frecuentes",
       "subprocessors": "Subprocesadores",
       "contact": "Contacto",
       "blog": "Blog",
@@ -564,7 +564,9 @@
     "readTimeLabel": "min de lectura",
     "updatedLabel": "Actualizado",
     "backLabel": "Volver al blog",
-    "shareLabel": "Comparte este artículo"
+    "shareLabel": "Comparte este artículo",
+    "readMoreLabel": "Leer más",
+    "categoryFallback": "Blog"
   },
   "docs": {
     "sdkPlan": {
@@ -773,6 +775,11 @@
       "title": "Subprocesadores",
       "intro": "Proveedores externos.",
       "updatedAt": "25 de mayo de 2026",
+      "fieldLabels": {
+        "purpose": "Finalidad",
+        "location": "Ubicación",
+        "security": "Seguridad"
+      },
       "providers": [
         {
           "name": "Supabase",

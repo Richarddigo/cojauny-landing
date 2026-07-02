@@ -6,7 +6,7 @@ test.describe('Language switcher', () => {
     await page.setViewportSize({ width: 390, height: 844 });
 
     // On mobile the language switcher sits inside the menu; open the menu first if needed
-    const openMenu = page.getByRole('button', { name: /open main menu|abrir menú principal|abrir menu principal/i }).first();
+    const openMenu = page.getByRole('button', { name: /open (main )?menu|abrir menú( principal)?|abrir menu( principal)?|menü öffnen|ouvrir le menu( principal)?/i }).first();
     if (await openMenu.isVisible()) {
       await openMenu.click();
     }
@@ -20,7 +20,7 @@ test.describe('Language switcher', () => {
     await button.click();
 
     // Menu should be visible and contain language names
-    const menu = dialog.getByRole('menu', { name: /language selector|selector de idioma|sélecteur de langue|sprachauswahl/i });
+    const menu = dialog.getByRole('menu', { name: /change language|cambiar idioma|changer de langue|sprache ändern|language selector|selector de idioma|sélecteur de langue|sprachauswahl/i });
     await expect(menu).toBeVisible();
 
     // Options can be buttons with role=menuitem or links; use text fallback

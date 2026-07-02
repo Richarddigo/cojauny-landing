@@ -118,8 +118,8 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
             setSuccess(resolvedCopy.success);
             turnstileRef.current?.reset();
             setTurnstileToken('');
-        } catch (err: unknown) {
-            setError(err instanceof Error && err.message ? err.message : resolvedCopy.error);
+        } catch {
+            setError(resolvedCopy.error);
             turnstileRef.current?.reset();
             setTurnstileToken('');
         } finally {

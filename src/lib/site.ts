@@ -4,7 +4,7 @@ export const siteMetadata = {
   name: 'Cojauny',
   shortName: 'Cojauny',
   legalName: 'Cojauny Studio - Richard Díaz González',
-  description: 'Plataforma para coordinar pasajeros del mismo vuelo, compartir transporte o vans y medir ahorro y CO₂ evitado en cada trayecto.',
+  description: 'Comparte tu traslado al aeropuerto con gente de tu mismo vuelo: reparte el coste, viaja con compañeros verificados y ahorra en cada trayecto.',
   url: 'https://cojauny.com',
   currentSiteUrl: env.CURRENT_SITE_URL ?? 'https://ejemplo.com',
   locale: 'es_ES', // canonical locale for structured data; per-page locale is set dynamically
@@ -32,7 +32,7 @@ export const ogImages = [
     url: `${siteMetadata.url}/opengraph-image`,
     width: 1200,
     height: 630,
-    alt: 'Cojauny - movilidad colaborativa',
+    alt: 'Cojauny - comparte tu traslado al aeropuerto',
     type: 'image/png'
   }
 ];

@@ -3,7 +3,7 @@ import { locales, type Locale } from '@/locales/config';
 
 // Configuración de la imagen Twitter
 export const dynamic = 'force-static';
-export const alt = 'Cojauny - Share airport rides';
+export const alt = 'Cojauny - Share your airport ride';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -16,23 +16,23 @@ export function generateStaticParams() {
 const twitterTexts: Record<Locale, { title: string; tagline: string; cta: string }> = {
     es: {
         title: 'Cojauny',
-        tagline: 'Comunidad verificada que te conecta con pasajeros de tu mismo vuelo',
-        cta: 'Perfiles verificados · Mismo vuelo · Confianza'
+        tagline: 'No vuelvas a coger un taxi solo al aeropuerto',
+        cta: 'Reparte el coste · Emparejado por vuelo · Verificado'
     },
     en: {
         title: 'Cojauny',
-        tagline: 'Verified community matching you with passengers on your exact flight',
-        cta: 'Verified profiles · Same flight · Trust'
+        tagline: 'Never take an airport taxi alone again',
+        cta: 'Split the cost · Matched by flight · Verified'
     },
     de: {
         title: 'Cojauny',
-        tagline: 'Verifizierte Community für Passagiere auf deinem exakten Flug',
-        cta: 'Verifizierte Profile · Gleicher Flug · Vertrauen'
+        tagline: 'Nie wieder allein ins Taxi zum Flughafen',
+        cta: 'Kosten teilen · Nach Flug gematcht · Verifiziert'
     },
     fr: {
         title: 'Cojauny',
-        tagline: 'Communauté vérifiée avec les passagers de votre vol exact',
-        cta: 'Profils vérifiés · Même vol · Confiance'
+        tagline: 'Ne prenez plus jamais un taxi seul pour l\u2019aéroport',
+        cta: 'Partagez le coût · Associé par vol · Vérifié'
     }
 };
 

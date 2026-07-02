@@ -17,6 +17,8 @@ export interface BlogCopy {
   updatedLabel: string;
   backLabel: string;
   shareLabel: string;
+  readMoreLabel: string;
+  categoryFallback: string;
 }
 
 const blogCopy: Record<Locale, BlogCopy> = {
@@ -36,7 +38,9 @@ const blogCopy: Record<Locale, BlogCopy> = {
     readTimeLabel: 'min de lectura',
     updatedLabel: 'Actualizado',
     backLabel: 'Volver al blog',
-    shareLabel: 'Comparte este artículo'
+    shareLabel: 'Comparte este artículo',
+    readMoreLabel: 'Leer más',
+    categoryFallback: 'Blog'
   },
   en: {
     meta: {
@@ -54,7 +58,9 @@ const blogCopy: Record<Locale, BlogCopy> = {
     readTimeLabel: 'min read',
     updatedLabel: 'Updated',
     backLabel: 'Back to blog',
-    shareLabel: 'Share this article'
+    shareLabel: 'Share this article',
+    readMoreLabel: 'Read more',
+    categoryFallback: 'Blog'
   },
   de: {
     meta: {
@@ -72,7 +78,9 @@ const blogCopy: Record<Locale, BlogCopy> = {
     readTimeLabel: 'Min. Lesezeit',
     updatedLabel: 'Aktualisiert',
     backLabel: 'Zurück zum Blog',
-    shareLabel: 'Artikel teilen'
+    shareLabel: 'Artikel teilen',
+    readMoreLabel: 'Weiterlesen',
+    categoryFallback: 'Blog'
   },
   fr: {
     meta: {
@@ -90,7 +98,9 @@ const blogCopy: Record<Locale, BlogCopy> = {
     readTimeLabel: 'min de lecture',
     updatedLabel: 'Mis à jour',
     backLabel: 'Retour au blog',
-    shareLabel: "Partager l'article"
+    shareLabel: "Partager l'article",
+    readMoreLabel: 'Lire la suite',
+    categoryFallback: 'Blog'
   }
 };
 

@@ -17,7 +17,7 @@ const copy = {
 describe('Header focus behaviour', () => {
     test('focus trap inside menu and restores focus to open button', async () => {
         render(<Header locale={'en'} copy={copy} />);
-        const openButton = screen.getByLabelText(/open main menu/i);
+        const openButton = screen.getByLabelText(/open menu/i);
         await userEvent.click(openButton);
 
         const dialog = await screen.findByRole('dialog');

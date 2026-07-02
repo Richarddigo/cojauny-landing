@@ -5,7 +5,7 @@ test.describe('Mobile menu focus behavior', () => {
     await page.goto('/es');
     await page.setViewportSize({ width: 390, height: 844 });
 
-    const open = page.getByRole('button', { name: /open main menu|abrir menú principal|abrir menu principal/i });
+    const open = page.getByRole('button', { name: /open (main )?menu|abrir menú( principal)?|abrir menu( principal)?|menü öffnen|ouvrir le menu( principal)?/i });
     await open.click();
 
     // Close button should receive focus

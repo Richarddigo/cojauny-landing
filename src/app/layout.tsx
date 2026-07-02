@@ -20,17 +20,17 @@ const inter = Inter({
 export const metadata: Metadata = {
     metadataBase: new URL(siteMetadata.url),
     title: {
-        default: `${siteMetadata.name} - Verified airport ride sharing`,
+        default: `${siteMetadata.name} - Share your airport ride with people on your flight`,
         template: `%s - ${siteMetadata.name}`
     },
     description:
-        'Match with verified passengers on your exact flight to share airport transfers. Flight-number matching, ID-verified profiles, and star ratings.',
+        'Match with other travelers on your flight, split the cost of the taxi, and know exactly who you\'re riding with. Join the beta today.',
     keywords: [
-        'verified airport ride share',
-        'airport transfer sharing',
-        'flight coordination',
-        'airport carpool app',
-        'collaborative mobility'
+        'airport ride share',
+        'shared airport transfer',
+        'split taxi cost airport',
+        'flight matching app',
+        'verified travel profiles'
     ],
     authors: [{ name: siteMetadata.author }],
     icons: {
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
         apple: '/apple-icon.png'
     },
     openGraph: {
-        title: `${siteMetadata.name} - Verified airport ride sharing`,
+        title: `${siteMetadata.name} - Share your airport ride with people on your flight`,
         description:
-            'Match with verified passengers on your exact flight to share airport transfers. Flight-number matching, ID-verified profiles, and star ratings.',
+            'Match with other travelers on your flight, split the cost of the taxi, and know exactly who you\'re riding with. Join the beta today.',
         url: siteMetadata.url,
         siteName: siteMetadata.name,
         images: ogImages,
@@ -52,9 +52,9 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: `${siteMetadata.name} - Verified airport ride sharing`,
+        title: `${siteMetadata.name} - Share your airport ride with people on your flight`,
         description:
-            'Match with verified passengers on your exact flight to share airport transfers.',
+            'Match with other travelers on your flight and split the cost of the taxi.',
         site: siteMetadata.twitter,
         creator: siteMetadata.twitter
     },

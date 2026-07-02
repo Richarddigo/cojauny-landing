@@ -105,7 +105,7 @@ export default async function BlogIndex({ params }: BlogIndexProps) {
                         <div className="flex flex-1 flex-col">
                             <div className="mb-4 flex items-center gap-2">
                                 <span className="inline-flex items-center rounded-full bg-studio-accent/10 px-2.5 py-0.5 text-xs font-medium text-studio-accent ring-1 ring-inset ring-studio-accent/20">
-                                    {post.categories[0] ? post.categories[0].toUpperCase() : 'BLOG'}
+                                    {post.categories[0] ? post.categories[0].toUpperCase() : copy.categoryFallback.toUpperCase()}
                                 </span>
                                 <span className="text-xs font-medium text-studio-faint">
                                     - {post.readingTimeMinutes} {copy.readTimeLabel}
@@ -129,7 +129,7 @@ export default async function BlogIndex({ params }: BlogIndexProps) {
                                     ))}
                                 </div>
                                 <span className="text-xs font-semibold text-studio-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                                    Read more {'->'}
+                                    {copy.readMoreLabel} {'->'}
                                 </span>
                             </div>
                         </div>

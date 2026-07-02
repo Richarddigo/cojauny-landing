@@ -8,7 +8,7 @@ test.describe('Header visual', () => {
     await page.setViewportSize({ width: 390, height: 844 });
 
     // open menu
-    const opener = page.getByRole('button', { name: /open main menu|abrir menú principal|abrir menu principal/i }).first();
+    const opener = page.getByRole('button', { name: /open (main )?menu|abrir menú( principal)?|abrir menu( principal)?|menü öffnen|ouvrir le menu( principal)?/i }).first();
     await expect(opener).toBeVisible({ timeout: 10000 });
     await opener.click();
     await page.waitForTimeout(250); // wait for animation

@@ -48,6 +48,11 @@ export interface ExtendedLegalCopy {
     title: string;
     intro: string;
     updatedAt: string;
+    fieldLabels: {
+      purpose: string;
+      location: string;
+      security: string;
+    };
     providers: Subprocessor[];
     contact: string;
   };
@@ -248,6 +253,11 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
       title: 'Subprocesadores',
       intro: 'Proveedores externos.',
       updatedAt: '25 de mayo de 2026',
+      fieldLabels: {
+        purpose: 'Finalidad',
+        location: 'Ubicación',
+        security: 'Seguridad',
+      },
       providers: [
         {
           name: 'Supabase',
@@ -471,6 +481,11 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
       title: 'Subprocessors',
       intro: 'External providers.',
       updatedAt: 'May 25, 2026',
+      fieldLabels: {
+        purpose: 'Purpose',
+        location: 'Location',
+        security: 'Security',
+      },
       providers: [
         {
           name: 'Supabase',
@@ -694,6 +709,11 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
       title: 'Unterauftragsverarbeiter',
       intro: 'Externe Anbieter.',
       updatedAt: '25. Mai 2026',
+      fieldLabels: {
+        purpose: 'Zweck',
+        location: 'Standort',
+        security: 'Sicherheit',
+      },
       providers: [
         {
           name: 'Supabase',
@@ -917,6 +937,11 @@ const legalCopy: Record<Locale, ExtendedLegalCopy> = {
       title: 'Sous-traitants',
       intro: 'Fournisseurs externes.',
       updatedAt: '25 mai 2026',
+      fieldLabels: {
+        purpose: 'Finalité',
+        location: 'Localisation',
+        security: 'Sécurité',
+      },
       providers: [
         {
           name: 'Supabase',

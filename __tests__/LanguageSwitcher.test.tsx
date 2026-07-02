@@ -14,7 +14,7 @@ const props = { currentLocale: 'es' } as any;
 describe('LanguageSwitcher interactions', () => {
     test('opens and closes with keyboard and click outside; Escape closes', async () => {
         render(<LanguageSwitcher {...props} />);
-        const btn = screen.getByLabelText(/selector de idioma/i);
+        const btn = screen.getByLabelText(/cambiar idioma/i);
         expect(btn).toBeInTheDocument();
 
         await userEvent.click(btn);

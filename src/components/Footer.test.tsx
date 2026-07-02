@@ -78,7 +78,7 @@ describe('Footer', () => {
 
         // The Ecosystem section label and description are rendered in the footer
         expect(screen.getByText('Ecosistema')).toBeInTheDocument();
-        expect(screen.getByText(/parte de un ecosistema/i)).toBeInTheDocument();
+        expect(screen.getByText(/familia de productos digitales/i)).toBeInTheDocument();
     });
 
     it('renderiza el copyright con el año actual', () => {

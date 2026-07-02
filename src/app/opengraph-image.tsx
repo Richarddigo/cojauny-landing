@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 
 // Configuración de la imagen OG para la página raíz
 export const dynamic = 'force-static';
-export const alt = 'Cojauny - Comparte taxi al aeropuerto';
+export const alt = 'Cojauny - Comparte tu traslado al aeropuerto';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -94,7 +94,7 @@ export default async function Image() {
                             textAlign: 'center',
                         }}
                     >
-                        Comunidad verificada que te conecta con pasajeros de tu mismo vuelo
+                        No vuelvas a coger un taxi solo al aeropuerto
                     </div>
 
                     {/* CTA / Beneficio */}
@@ -112,7 +112,7 @@ export default async function Image() {
                             boxShadow: '0 4px 20px rgba(90, 103, 242, 0.4)',
                         }}
                     >
-                        Perfiles verificados · Mismo vuelo · Confianza
+                        Reparte el coste · Emparejado por vuelo · Verificado
                     </div>
                 </div>
 
