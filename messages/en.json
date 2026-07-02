@@ -47,57 +47,57 @@
       "feedback": "Feedback"
     },
     "seo": {
-      "title": "Cojauny | Security-verified shared airport transfers",
-      "description": "Passenger safety comes first: verified identity, auditable reputation, and flight matching before any shared transfer is confirmed.",
+      "title": "Cojauny | Share airport transfers with people on your flight",
+      "description": "Match with verified travelers on your flight, split the cost of the ride, and coordinate safely in the app. Join the beta today.",
       "keywords": [
-        "safe airport transfer",
-        "verified airport ride share",
+        "airport ride share",
+        "shared airport transfer",
+        "split taxi cost airport",
         "flight ride sharing",
-        "trusted travel community",
         "same flight carpool",
         "airport carpool app",
-        "verified travel profiles",
         "flight matching app",
-        "secure airport mobility",
-        "shared airport transport"
+        "verified travel profiles",
+        "trusted travel community",
+        "secure airport mobility"
       ],
-      "ogTitle": "Cojauny | Your safety defines every shared ride",
-      "ogDescription": "Verified identity, visible reputation, and flight matching. No transfer is confirmed without the information you need to decide safely."
+      "ogTitle": "Cojauny | Share your airport ride, verified and simple",
+      "ogDescription": "Match with passengers on your flight, split the transfer cost, and travel with verified, reviewed companions."
     },
     "hero": {
-      "eyebrow": "Security verified · No exceptions",
-      "title": "Your safety defines every shared airport transfer",
-      "subtitle": "We verify identity, reputation, and flight context before every connection. You choose who you ride with — never random strangers.",
-      "primaryCta": "Request beta access",
+      "eyebrow": "Beta now open · Limited spots",
+      "title": "Share your airport transfer with people on your flight",
+      "subtitle": "Match with verified travelers on the same flight, split the cost of the ride, and coordinate everything safely in the app.",
+      "primaryCta": "Reserve my spot",
       "secondaryCta": "See how it works",
-      "imageAlt": "Cojauny interface showing verified profiles and flight matching",
+      "imageAlt": "Cojauny interface showing flight matches, shared costs, and verified profiles",
       "trustSignals": [
-        "Verified identity",
-        "No random matching",
-        "Auditable reputation"
+        "Split the cost",
+        "Matched by flight",
+        "Verified travelers"
       ]
     },
     "heroVariants": {
       "savings": {
-        "title": "Your safety first. Sharing optimizes transfer cost second",
-        "subtitle": "Verification, reputation, and flight context before every connection. Savings only make sense when trust is guaranteed."
+        "title": "Split your airport transfer and save up to 75%",
+        "subtitle": "Match with verified travelers on your flight and share the ride cost — you always see who you are traveling with before you confirm."
       }
     },
     "heroQuickSignup": {
-      "ariaLabel": "Request Cojauny beta access",
-      "label": "Request access to a platform that puts your safety first",
+      "ariaLabel": "Join the Cojauny beta waitlist",
+      "label": "Get early access and lock in your beta spot",
       "emailPlaceholder": "you@email.com",
-      "submit": "Request access",
+      "submit": "Reserve my spot",
       "submitting": "Submitting…",
       "privacyNote": "By submitting your email, you agree to Cojauny's terms of use and privacy policy.",
-      "success": "Request received. We will contact you by email when your access is available."
+      "success": "You're on the list! We will email you as soon as your access is ready."
     },
     "airportsHubTitle": "Major airports",
     "airportsHubAll": "View full coverage",
     "betaReferralBanner": "After registration, you will receive an invite link to share with your network and prioritize your access.",
     "features": {
-      "title": "Every feature exists to protect you before the ride",
-      "subtitle": "Verification, shared context, and controlled communication: each layer reduces risk before you enter the vehicle.",
+      "title": "Everything you need for a smarter airport transfer",
+      "subtitle": "From finding your match to splitting the bill — every feature is built to make sharing simple, and safe.",
       "items": [
         {
           "title": "Flight matching",
@@ -105,67 +105,64 @@
           "iconName": "bolt"
         },
         {
-          "title": "Verified identity",
-          "description": "Profiles include document verification and photo validation. Trust is built on verifiable data.",
-          "iconName": "shield"
-        },
-        {
-          "title": "Secure communication channel",
-          "description": "Pre-flight coordination in an encrypted environment with time-limited access to protect privacy.",
-          "iconName": "chat"
-        },
-        {
-          "title": "Transparent reputation",
-          "description": "0–5 star ratings and optional comments after each trip. Visible on the public profile before you confirm.",
+          "title": "Automatic cost splitting",
+          "description": "The app calculates and splits the transfer cost for everyone in the group, so nobody does the math.",
           "iconName": "sparkles"
         },
         {
-          "title": "Capacity-controlled events",
-          "description": "Each transfer shows organizer, participants, meeting point, and estimated cost before confirmation.",
+          "title": "Verified identity",
+          "description": "Profiles include document verification and photo validation, so you know who you are traveling with.",
+          "iconName": "shield"
+        },
+        {
+          "title": "In-app coordination",
+          "description": "Chat with your group before the flight to confirm meeting point and timing, without sharing your phone number.",
+          "iconName": "chat"
+        },
+        {
+          "title": "Ratings & reviews",
+          "description": "0–5 star ratings and optional comments after each trip, visible on the public profile before you confirm.",
           "iconName": "users"
         },
         {
-          "title": "Operational flight alerts",
+          "title": "Live flight alerts",
           "description": "Notifications for schedule changes, meeting reminders, and relevant trip updates.",
           "iconName": "globe"
         }
       ]
     },
     "value": {
-      "eyebrow": "Our commitment",
-      "title": "Passenger safety above everything else",
-      "subtitle": "At Cojauny, no transfer is confirmed without prior verification, informed selection, and secure coordination.",
+      "eyebrow": "Why Cojauny",
+      "title": "Save on airport transfers without giving up control",
+      "subtitle": "Every shared ride combines real savings, convenience, and safety — you decide who you travel with before you confirm.",
       "items": [
         {
-          "title": "Identity verification",
-          "description": "Access a community where every profile completes document validation before participating."
+          "title": "Real savings",
+          "description": "Split the cost of a taxi or private transfer with other passengers instead of paying the full fare alone."
         },
         {
-          "title": "Shared flight context",
-          "description": "Ride with people on the same flight and terminal. Operational context reduces uncertainty."
+          "title": "Matched by flight, not at random",
+          "description": "Ride with people on your same flight and terminal — never a random stranger from the street."
         },
         {
-          "title": "Auditable reputation",
-          "description": "Public history of ratings and comments to assess punctuality, communication, and conduct on previous trips."
+          "title": "Verified & reviewed",
+          "description": "Identity verification and public ratings from past trips let you choose your travel companions with confidence."
         },
         {
-          "title": "Structured coordination",
-          "description": "Meeting point, timing, and cost split are defined in advance for predictable execution."
-        },
-        {
-          "title": "Professional community",
-          "description": "Built for frequent travelers and corporate teams that require clear trust standards."
-        },
-        {
-          "title": "Responsible cost efficiency",
-          "description": "When sharing is criteria-driven, transfer costs improve without compromising safety requirements."
+          "title": "Everything agreed in advance",
+          "description": "Meeting point, timing, and cost split are defined before you confirm, so there are no surprises on the day."
         }
       ]
     },
     "savings": {
-      "title": "When safety is resolved, cost optimizes",
-      "caption": "Sharing with verified passengers on the same flight is more efficient — always as the result of a solid trust foundation.",
+      "title": "Save up to 75% on your airport transfer",
+      "caption": "Splitting the ride with verified travelers on your flight is the simplest way to cut costs. These are the numbers we are building toward during beta.",
       "metrics": [
+        {
+          "value": "50-75%",
+          "label": "Savings per trip",
+          "description": "Estimated range when splitting taxi or private vehicle among verified passengers."
+        },
         {
           "value": "180+",
           "label": "Airports",
@@ -177,11 +174,6 @@
           "description": "Network target to reach critical mass on high-demand routes."
         },
         {
-          "value": "50-75%",
-          "label": "Savings per trip",
-          "description": "Estimated range when splitting taxi or private vehicle among verified passengers."
-        },
-        {
           "value": "1,000+ t",
           "label": "CO₂ avoided",
           "description": "Projected environmental impact from higher vehicle occupancy."
@@ -189,34 +181,34 @@
       ]
     },
     "workflow": {
-      "title": "Five steps. Security controls at each one.",
-      "intro": "From identity verification to post-trip rating: security built into every stage of the process.",
+      "title": "From flight number to shared ride in 5 steps",
+      "intro": "Verify your profile once, then match, coordinate, and travel — with safety checks built in at every stage.",
       "steps": [
         {
-          "title": "1. Verified onboarding",
-          "description": "Create your profile and complete identity verification to access the community."
+          "title": "1. Create your verified profile",
+          "description": "Sign up and complete identity verification once to unlock the community."
         },
         {
-          "title": "2. Flight registration",
-          "description": "Submit flight number and date to identify compatible passengers."
+          "title": "2. Add your flight",
+          "description": "Submit your flight number and date so we can find compatible travelers."
         },
         {
-          "title": "3. Option evaluation",
-          "description": "Review profiles, reputation, and trip conditions before confirming."
+          "title": "3. Compare your options",
+          "description": "Review matched profiles, ratings, and trip conditions before you choose."
         },
         {
-          "title": "4. Secure coordination",
-          "description": "Align meeting point, timing, and cost split in an encrypted channel."
+          "title": "4. Coordinate the details",
+          "description": "Agree on meeting point, timing, and cost split in a private in-app chat."
         },
         {
-          "title": "5. Trip and rating",
-          "description": "Complete the trip and rate your companions (0–5 stars and optional comment). Ratings feed the public profile and reputation history."
+          "title": "5. Travel and rate",
+          "description": "Complete the trip and rate your companions (0–5 stars and optional comment) to help the next traveler decide."
         }
       ]
     },
     "mockups": {
-      "heading": "See who you ride with before you confirm",
-      "description": "Identity, flight, and reputation visible in the interface — because safety starts with information.",
+      "heading": "See exactly who you would be traveling with",
+      "description": "Flight, profile, and reputation are all visible in the app before you say yes.",
       "screens": [
         {
           "id": "flight-search",
@@ -256,17 +248,17 @@
         {
           "id": "impact",
           "badge": "Outcome",
-          "title": "Efficiency after verification",
-          "description": "When trust is guaranteed, sharing the transfer optimizes cost without compromising safety.",
+          "title": "Watch your savings add up",
+          "description": "Track how much you have saved across your shared transfers, trip after trip.",
           "image": "/images/mockups/en/mockup-impact.svg"
         }
       ]
     },
     "ctaStrip": {
-      "heading": "Join a platform that puts your safety first",
-      "body": "Request access to the Cojauny beta: shared transfers with verified identity, auditable reputation, and flight matching.",
+      "heading": "Ready to share your next airport ride?",
+      "body": "Join the Cojauny beta: match with travelers on your flight, split the cost, and ride with verified, reviewed companions.",
       "link": "#beta",
-      "linkLabel": "Request beta access"
+      "linkLabel": "Reserve my spot"
     },
     "pricing": {
       "title": "Plans designed for every traveler",
@@ -342,64 +334,52 @@
       "items": [
         {
           "question": "How does the flight matching system work?",
-          "answer": "Simply enter your flight number (e.g., IB2345) and date. Our platform queries our global database integrated with Aerodatabox API in real-time and automatically connects you with other travelers on the same flight or compatible flights at the same time and airport. The system automatically verifies schedule, terminal, and destination compatibility to ensure perfect coordination."
+          "answer": "Enter your flight number (e.g., IB2345) and date. Our platform queries a global database in real time and connects you with other travelers on the same flight or on compatible flights at the same time and airport, automatically checking schedule, terminal, and destination."
         },
         {
-          "question": "Is it safe to share transport with strangers?",
-          "answer": "Absolutely. Safety is our top priority. All users must verify their identity with photo and ID. You can review each traveler's public profile—star ratings, comments, and reputation history—before confirming. A secure pre-trip chat lets you coordinate without sharing private contact details."
-        },
-        {
-          "question": "How do star ratings and profile comments work?",
-          "answer": "After each completed trip, participants rate each other on a 0–5 star scale across three criteria: punctuality, communication, and conduct. The average appears on the public profile. An optional short comment can be left and is visible in that user's reputation history. Negative ratings are reviewed for abuse. This helps you make informed decisions before confirming a shared transfer."
-        },
-        {
-          "question": "What is public and what is private on my profile?",
-          "answer": "Cojauny separates your public profile from private data. Your public profile shows your name, photo, country, reputation (star average and trip comments), and the rating history you have received in the community. Your private area keeps email, phone, ID documents, and contact details under your control—they are never shared automatically. You choose what additional information to reveal in chat before a trip."
+          "question": "Is it safe to share a ride with people I don't know?",
+          "answer": "Yes. Every user verifies their identity with photo and ID before joining, and you can review each traveler's public profile — star ratings, comments, and reputation history — before confirming anything. Coordination happens in a secure in-app chat, so you never have to share your phone number. Sensitive data such as email, ID documents, and contact details stay private and are never shared automatically."
         },
         {
           "question": "Can I cancel my participation without penalty?",
-          "answer": "Yes, you have total flexibility. You can leave any event directly from the app at no extra cost. If you are the event organizer, upon canceling, all participants receive an instant notification with options to reorganize the group or find alternatives. We recommend notifying as early as possible to allow others to reorganize. Your cancellation history is visible on your profile to maintain community transparency."
+          "answer": "Yes, you have total flexibility. You can leave any event directly from the app at no extra cost. If you are the event organizer, upon canceling, all participants receive an instant notification with options to reorganize the group or find alternatives. We recommend notifying as early as possible to allow others to reorganize."
         },
         {
-          "question": "How do payments work between participants?",
-          "answer": "Cojauny does not process payments directly to keep costs low and maximize flexibility. Participants coordinate their preferred payment method: cash to driver, Bizum, bank transfer, PayPal, or split card payment. The app provides an automatic calculator that splits costs equally and saves the estimated savings record to your profile. All calculations are transparent and visible to the group before the trip."
+          "question": "How does splitting the cost work between participants?",
+          "answer": "The app includes an automatic calculator that splits the transfer cost equally among the group and shows everyone the estimated savings before the trip. Cojauny does not process payments directly, so you keep flexibility to settle up however suits the group best: cash, Bizum, bank transfer, PayPal, or a split card payment."
         },
         {
           "question": "What types of events can I create or join?",
-          "answer": "Cojauny supports multiple event categories: Shared transfers to departure airport, pickups from arrival airport, corporate van services for business teams, shared private cars, shared accommodation at destination (hostel or full apartment), and post-flight social activities. Premium users can create custom events for any type of shared travel need."
+          "answer": "Cojauny supports multiple event categories: shared transfers to the departure airport, pickups from the arrival airport, corporate van services for business teams, shared private cars, shared accommodation at destination, and post-flight social activities. Premium users can create custom events for any type of shared travel need."
         },
         {
           "question": "Which airports is Cojauny available in?",
-          "answer": "We currently operate in over 120 major airports globally, covering Europe, Americas, Asia, and Oceania. Our coverage includes major hubs like Madrid-Barajas, Barcelona-El Prat, London-Heathrow, Paris-Charles de Gaulle, New York-JFK, and many more. We add new airports quarterly based on user demand. If your airport is not listed, you can request it from Settings → Request Airport and we will prioritize it based on request volume."
+          "answer": "We are launching with coverage across major international hubs in Europe, the Americas, and the Middle East, including Madrid-Barajas, Barcelona-El Prat, London-Heathrow, Paris-Charles de Gaulle, and New York-JFK. We are adding new airports based on beta demand — if yours is missing, you can request it from Settings → Request Airport."
         },
         {
-          "question": "How do you protect my personal data and privacy?",
-          "answer": "We comply with GDPR. Sensitive data (email, phone, ID documents) stays in your private profile and is encrypted. Only public profile information—name, photo, country, reputation, and rating history—is visible so other users can assess trust before a trip. Your contact details are never shared automatically."
-        },
-        {
-          "question": "Is the app available in my language?",
-          "answer": "Yes, Cojauny is fully translated into 78 languages including Spanish, English, French, German, Portuguese, Italian, Mandarin Chinese, Japanese, Korean, Arabic, Russian, and many more. The interface automatically detects your device language upon first login. You can change it manually anytime from Settings → Language. This is especially useful in multicultural groups where participants from different countries need to communicate effectively."
-        },
-        {
-          "question": "What happens if my flight is delayed, canceled, or gate changes?",
-          "answer": "Cojauny receives real-time flight updates from multiple sources (airlines, airports, FlightAware). When your flight changes, all participants in your events receive instant push notifications with updated details. You can automatically adjust event time with one click, change meeting point if terminal changes, or cancel event if flight is definitely canceled. Change history is logged for transparency. Our early warning system alerts you even 6 hours before takeoff if high delay probability is detected based on weather or airport congestion."
+          "question": "What happens if my flight is delayed, canceled, or the gate changes?",
+          "answer": "Cojauny receives real-time flight updates. When your flight changes, everyone in your event gets an instant notification with updated details, and you can adjust the meeting time, update the meeting point, or cancel the event with one tap. Change history stays visible for transparency."
         },
         {
           "question": "How much money can I really save using Cojauny?",
-          "answer": "Average savings are 50-75% on airport transport. Concrete example: A transfer from Central Madrid to Airport T4 costs approx 30-35€. Traveling alone, you pay the total. Sharing with 3 more passengers from the same flight, your share is only 7.50-9€, saving 22-25€ per trip. Frequent flyers making 2 monthly trips save approx 500-600€ per year. Savings are the natural confirmation of sharing with confidence."
+          "answer": "Estimated savings are 50-75% on airport transport. For example, a transfer that costs 30-35€ alone drops to around 7.50-9€ per person when shared with three other passengers from the same flight — roughly 22-25€ saved per trip, or 500-600€ a year for someone who flies twice a month."
+        },
+        {
+          "question": "What happens after I join the beta waitlist?",
+          "answer": "You will receive a confirmation email right away, plus a personal invite link you can share to move up the queue. As we open new spots, we will email you with your access details and everything you need to complete your first shared transfer."
         }
       ]
     },
     "forms": {
       "beta": {
-        "heading": "Beta access with verified security standards",
-        "subheading": "We prioritize passenger protection in every feature. Request early access.",
+        "heading": "Reserve your spot in the Cojauny beta",
+        "subheading": "Be among the first to share verified airport rides and lock in founding-member perks.",
         "title": "Request Beta Access",
-        "description": "Priority access, verified profiles, founding badge, and direct team support.",
+        "description": "Priority access, verified profile, founding member badge, and direct support from the team.",
         "success": "Great, you are on the waitlist. We will notify you by email when the beta is ready.",
         "error": "We could not register your request. Check data or try again in a few minutes.",
         "duplicateError": "You are already on our waitlist. We will notify you when beta is available.",
-        "submit": "Send Request",
+        "submit": "Reserve my spot",
         "checkboxLabel": "I have read and accept Cojauny's {privacyLink}.",
         "privacyLinkLabel": "privacy policy",
         "referralNotice": "After signing up you will receive an invite link. We only count visits and registrations to prioritize your access, without storing third-party data.",

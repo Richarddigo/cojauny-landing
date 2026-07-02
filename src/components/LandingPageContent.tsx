@@ -61,6 +61,8 @@ const LandingPageContent = ({ copy, locale, common, heroVariant }: LandingPageCo
             <div className="cv-auto"><DemoSection copy={copy.mockups} /></div>
             <div className="cv-auto"><Features copy={copy.features} /></div>
             <div className="cv-auto"><SavingsSection copy={copy.savings} /></div>
+            {ENABLE_PREMIUM && <div className="cv-auto"><PricingSection copy={copy.pricing} common={resolvedCommon} /></div>}
+            <div className="cv-auto"><FaqSection copy={copy.faq} locale={locale} airportsHubTitle={copy.airportsHubTitle} airportsHubAll={copy.airportsHubAll} /></div>
             <section id="beta" className="cv-auto w-full scroll-mt-[74px] py-12 lg:scroll-mt-[100px] md:py-16 lg:py-20">
                 <div className="mx-auto max-w-[1180px] px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">
                     <p className="mb-6 rounded-xl border border-white/10 bg-studio-surface/60 px-5 py-3.5 text-center text-sm leading-relaxed text-studio-muted sm:text-base">
@@ -69,8 +71,11 @@ const LandingPageContent = ({ copy, locale, common, heroVariant }: LandingPageCo
                     <BetaSignupForm locale={locale} />
                 </div>
             </section>
-            {ENABLE_PREMIUM && <div className="cv-auto"><PricingSection copy={copy.pricing} common={resolvedCommon} /></div>}
-            <div className="cv-auto"><FaqSection copy={copy.faq} locale={locale} airportsHubTitle={copy.airportsHubTitle} airportsHubAll={copy.airportsHubAll} /></div>
+            <section className="cv-auto w-full py-12 md:py-16 lg:py-20">
+                <div className="mx-auto max-w-[1180px] px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">
+                    <IntegrationCTA copy={copy.ctaStrip} locale={locale} />
+                </div>
+            </section>
             <section id="feedback" className="cv-auto w-full scroll-mt-[74px] py-12 lg:scroll-mt-[100px] md:py-16 lg:py-20">
                 <div className="mx-auto max-w-[1180px] px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">
                     <div className="mb-12 text-center md:mb-16">
@@ -82,11 +87,6 @@ const LandingPageContent = ({ copy, locale, common, heroVariant }: LandingPageCo
                         </p>
                     </div>
                     <FeedbackForm locale={locale} />
-                </div>
-            </section>
-            <section className="cv-auto w-full py-12 md:py-16 lg:py-20">
-                <div className="mx-auto max-w-[1180px] px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">
-                    <IntegrationCTA copy={copy.ctaStrip} locale={locale} />
                 </div>
             </section>
         </>
