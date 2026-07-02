@@ -4,7 +4,10 @@
     ChatBubbleLeftRightIcon,
     ShieldCheckIcon,
     SparklesIcon,
-    GlobeAltIcon
+    GlobeAltIcon,
+    LockClosedIcon,
+    FlagIcon,
+    MapPinIcon
 } from '@heroicons/react/24/outline';
 import type { LandingCopy, IconName } from '@/locales/copy';
 import SectionIntro from '@/components/SectionIntro';
@@ -19,7 +22,10 @@ const iconMap: Record<IconName, typeof BoltIcon> = {
     chat: ChatBubbleLeftRightIcon,
     shield: ShieldCheckIcon,
     sparkles: SparklesIcon,
-    globe: GlobeAltIcon
+    globe: GlobeAltIcon,
+    lock: LockClosedIcon,
+    flag: FlagIcon,
+    pin: MapPinIcon
 };
 
 const Features = ({ copy }: FeaturesProps) => {

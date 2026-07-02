@@ -1,7 +1,7 @@
 ﻿import type { Locale } from './config';
 import { defaultLocale } from './config';
 
-export type IconName = 'bolt' | 'users' | 'chat' | 'shield' | 'sparkles' | 'globe';
+export type IconName = 'bolt' | 'users' | 'chat' | 'shield' | 'sparkles' | 'globe' | 'lock' | 'flag' | 'pin';
 
 export interface FeatureCopy {
   title: string;
@@ -292,9 +292,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     hero: {
       eyebrow: 'Beta abierta · Quedan pocas plazas',
-      title: 'No vuelvas a coger un taxi solo al aeropuerto',
+      title: 'Comparte tu traslado al aeropuerto con gente de tu vuelo',
       subtitle:
-        'Cojauny te empareja con viajeros de tu mismo vuelo para que compartas el taxi, ahorres dinero y sepas siempre con quién vas.',
+        'Cojauny te empareja por número de vuelo, así compartes taxi o furgoneta con viajeros verificados que van a lo mismo — y sabes siempre con quién vas.',
       primaryCta: 'Reservar mi plaza',
       secondaryCta: 'Ver cómo funciona',
       imageAlt: 'Interfaz de Cojauny mostrando el matching por vuelo, el coste compartido y los perfiles verificados',
@@ -302,6 +302,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         'Reparte el coste',
         'Emparejado por vuelo',
         'Viajeros verificados',
+        'Tu nombre real, en privado',
       ],
     },
     heroVariants: {
@@ -343,27 +344,45 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           iconName: 'sparkles',
         },
         {
-          title: 'Perfiles verificados',
+          title: 'Tu nombre real, siempre en privado',
           description:
-            'Cada viajero confirma su identidad con documento y foto antes de poder unirse a un viaje.',
+            'El resto de viajeros solo ve tu alias y tu valoración — nunca tu nombre real, tu teléfono ni tus documentos.',
+          iconName: 'lock',
+        },
+        {
+          title: 'Verificado antes de emparejar',
+          description:
+            'Cada viajero confirma su email, y puede añadir verificación por teléfono también, así siempre sabes con quién hablas.',
           iconName: 'shield',
         },
         {
-          title: 'Habla antes de veros',
+          title: 'Valoraciones de viajes reales',
           description:
-            'Acuerda el punto de encuentro y la hora desde la app, sin compartir tu número de teléfono.',
-          iconName: 'chat',
-        },
-        {
-          title: 'Valoraciones en las que confiar',
-          description:
-            'Las estrellas y los comentarios de viajes anteriores están siempre visibles en cada perfil.',
+            'Cada valoración y comentario viene de un vuelo que esa persona compartió de verdad contigo — nunca son inventados.',
           iconName: 'users',
         },
         {
-          title: 'Alertas de vuelo al momento',
+          title: 'Denuncia o bloquea al momento',
           description:
-            'Te avisamos en cuanto algo cambia, para que tu grupo nunca se quede a ciegas.',
+            'Si algo no te cuadra, puedes denunciar o bloquear a otro viajero al instante, sin dar explicaciones.',
+          iconName: 'flag',
+        },
+        {
+          title: 'Habla antes de veros, incluso en el aire',
+          description:
+            'Coordina el punto de encuentro desde antes de embarcar, sigue hablando durante el vuelo sin conexión, y todo se sincroniza al aterrizar.',
+          iconName: 'chat',
+        },
+        {
+          title: 'Encontraos al llegar',
+          description:
+            'Abre la app en cuanto aterrices y queda con tus compañeros de viaje en la puerta con un solo toque.',
+          iconName: 'pin',
+        },
+        {
+          title: '¿Vuelves a tu ciudad? Consigue la insignia de local',
+          description:
+            'Si vuelves a tu propia ciudad, te marcamos como local — útil para los viajeros que quieran algún consejo para llegar.',
           iconName: 'globe',
         },
       ],
@@ -387,7 +406,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Verificado y valorado',
           description:
-            'Cada perfil verifica su identidad, y puedes ver sus valoraciones antes de aceptar nada.',
+            'Cada perfil verifica su identidad y puedes ver sus valoraciones antes de aceptar nada — su nombre real solo lo conoce Cojauny, nunca tú.',
         },
         {
           title: 'Sin sorpresas el día del viaje',
@@ -433,7 +452,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           title: '2. Añade tu vuelo',
-          description: 'Indica tu número de vuelo y fecha para que encontremos gente que viaja contigo.',
+          description: 'Indica tu número de vuelo y fecha: creamos al momento un grupo y un chat solo para tu viaje.',
         },
         {
           title: '3. Elige con quién ir',
@@ -441,11 +460,11 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           title: '4. Cuadra los detalles',
-          description: 'Acuerda el punto de encuentro, la hora y el reparto del coste, todo desde el chat.',
+          description: 'Acuerda el punto de encuentro, la hora y el reparto del coste desde el chat — sigue activo incluso sin conexión durante el vuelo.',
         },
         {
           title: '5. Viaja y valora',
-          description: 'Haz el trayecto y deja una valoración rápida para ayudar al siguiente viajero a decidir.',
+          description: 'Al aterrizar, abre la app para encontraros en un toque, haz el trayecto y deja una valoración rápida.',
         },
       ],
     },
@@ -588,7 +607,15 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: '¿Es seguro viajar con gente que no conozco?',
-          answer: 'Sí. Todo el mundo verifica su identidad con foto y documento antes de unirse, y puedes consultar el perfil público de cada viajero — valoraciones, comentarios, reputación — antes de confirmar nada. La coordinación se hace por un chat seguro dentro de la app, así que nunca compartes tu número, y tus datos sensibles como el email o el documento se quedan siempre en privado.',
+          answer: 'Sí. Todo el mundo verifica su email (y puede añadir también su teléfono) antes de unirse, y puedes consultar el perfil público de cada viajero — valoraciones, comentarios, reputación — antes de confirmar nada. Ese perfil solo muestra un alias, nunca tu nombre real: tu identidad completa la conoce Cojauny de forma interna, por si hiciera falta por seguridad o motivos legales, pero nunca se comparte con otros usuarios. La coordinación se hace por un chat seguro dentro de la app, así que nunca compartes tu número de teléfono.',
+        },
+        {
+          question: '¿Qué información ven de mí el resto de viajeros?',
+          answer: 'Solo tu alias, tu foto de perfil (si decides subir una) y tu valoración media. Tu nombre real, tu teléfono y tus documentos de verificación nunca se muestran a otros usuarios — se quedan en Cojauny, visibles solo de forma interna por seguridad y trazabilidad legal. Compartir tu número de asiento, si quieres hacerlo, también es siempre opcional.',
+        },
+        {
+          question: '¿Y si vuelvo a mi propia ciudad?',
+          answer: 'Perfecto: te marcamos con la insignia de "vuelves a casa" para que otros viajeros de tu vuelo sepan que conoces la zona y puedan preguntarte algo sobre el trayecto desde el aeropuerto. Puedes seguir compartiendo traslado igualmente, o simplemente echar una mano con algún consejo.',
         },
         {
           question: '¿Puedo cancelar mi participación sin penalización?',
@@ -804,9 +831,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     hero: {
       eyebrow: 'Beta is open · Spots are limited',
-      title: 'Never take an airport taxi alone again',
+      title: 'Share your airport ride with people on your flight',
       subtitle:
-        'Cojauny matches you with people on your exact flight so you can split the ride, cut your costs, and always know who you\'re traveling with.',
+        'Cojauny matches you by flight number, so you can split a taxi or van with verified travelers going the same way — and always know who you\'re with.',
       primaryCta: 'Reserve my spot',
       secondaryCta: 'See how it works',
       imageAlt: 'Cojauny interface showing flight matches, shared costs, and verified profiles',
@@ -814,6 +841,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         'Split the cost',
         'Matched by flight',
         'Verified travelers',
+        'Your name stays private',
       ],
     },
     heroVariants: {
@@ -855,27 +883,45 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           iconName: 'sparkles',
         },
         {
-          title: 'Verified profiles',
+          title: 'Your real name stays private',
           description:
-            'Every traveler confirms their identity with an ID and photo before they can join a ride.',
+            'Other travelers only ever see your alias and rating — never your real name, phone number, or documents.',
+          iconName: 'lock',
+        },
+        {
+          title: 'Verified before you match',
+          description:
+            'Every traveler confirms their email, and can add phone verification too, so you always know who you\'re talking to.',
           iconName: 'shield',
         },
         {
-          title: 'Chat before you meet',
+          title: 'Ratings from real shared flights',
           description:
-            'Sort out the pickup point and timing in the app — no need to share your phone number.',
-          iconName: 'chat',
-        },
-        {
-          title: 'Ratings you can trust',
-          description:
-            'Star ratings and comments from past trips are right there on every profile.',
+            'Every rating and comment comes from a flight someone actually took with you — no fake reviews, ever.',
           iconName: 'users',
         },
         {
-          title: 'Real-time flight alerts',
+          title: 'Report or block in one tap',
           description:
-            'Get notified the moment something changes, so your group is never caught off guard.',
+            'If something feels off, you can report or block another traveler instantly — no questions asked.',
+          iconName: 'flag',
+        },
+        {
+          title: 'Chat that works mid-flight',
+          description:
+            'Keep talking to your group before boarding, offline during the flight, and after you land — everything syncs automatically.',
+          iconName: 'chat',
+        },
+        {
+          title: 'Find each other on arrival',
+          description:
+            'Open the app the moment you land and meet your travel companions at the gate in one tap.',
+          iconName: 'pin',
+        },
+        {
+          title: 'Flying home? Get the local badge',
+          description:
+            'If you\'re returning to your own city, we flag you as a local — handy for travelers who could use a tip on the way in.',
           iconName: 'globe',
         },
       ],
@@ -899,7 +945,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Verified, and reviewed',
           description:
-            'Every profile is ID-verified, and past ratings are visible before you agree to anything.',
+            'Every profile is verified and past ratings are visible before you agree to anything — their real name is something only Cojauny ever sees.',
         },
         {
           title: 'No surprises on the day',
@@ -945,7 +991,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           title: '2. Add your flight',
-          description: 'Enter your flight number and date so we can find people traveling with you.',
+          description: 'Enter your flight number and date, and we instantly create a group chat just for your trip.',
         },
         {
           title: '3. Pick your match',
@@ -953,11 +999,11 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           title: '4. Sort out the details',
-          description: 'Agree on the meeting point, timing, and cost split, right there in the chat.',
+          description: 'Agree on the meeting point, timing, and cost split in the chat — it keeps working even offline during your flight.',
         },
         {
           title: '5. Travel, then rate',
-          description: 'Take the ride, then leave a quick rating to help the next traveler decide.',
+          description: 'Land, open the app to find each other in one tap, take the ride, then leave a quick rating.',
         },
       ],
     },
@@ -1100,7 +1146,15 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: 'Is it safe to share a ride with people I don\'t know?',
-          answer: 'Yes. Everyone verifies their identity with photo ID before joining, and you can check each traveler\'s public profile — ratings, comments, reputation — before agreeing to anything. You coordinate through a secure in-app chat, so you never have to share your phone number, and sensitive details like your email or ID stay private.',
+          answer: 'Yes. Everyone verifies their email (and can add phone verification too) before joining, and you can check each traveler\'s public profile — ratings, comments, reputation — before agreeing to anything. That profile only ever shows an alias, never a real name: Cojauny keeps your full identity on file internally for safety and legal reasons, but it\'s never shared with other users. You coordinate through a secure in-app chat, so you never have to share your phone number.',
+        },
+        {
+          question: 'What information do other travelers actually see about me?',
+          answer: 'Just your alias, your profile photo (if you choose to add one), and your average rating. Your real name, phone number, and verification documents are never shown to other users — they stay with Cojauny, visible internally only for safety and legal traceability. Sharing your seat number, if you want to, is always optional too.',
+        },
+        {
+          question: 'What if I\'m flying back to my own city?',
+          answer: 'Even better — we\'ll flag you with a "local returning home" badge, so other travelers on your flight know you know the area and can ask you for tips getting into town. You can still split the ride, or just lend a hand.',
         },
         {
           question: 'Can I cancel my participation without penalty?',
@@ -1316,9 +1370,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     hero: {
       eyebrow: 'Beta ist offen · Plätze sind begrenzt',
-      title: 'Nie wieder allein ins Taxi zum Flughafen',
+      title: 'Teile deine Fahrt zum Flughafen mit Leuten von deinem Flug',
       subtitle:
-        'Cojauny bringt dich mit Leuten von deinem Flug zusammen, damit ihr euch das Taxi teilt, Geld spart und immer wisst, mit wem ihr unterwegs seid.',
+        'Cojauny matcht euch über die Flugnummer, damit ihr euch Taxi oder Shuttle mit verifizierten Reisenden teilt — und immer wisst, mit wem ihr unterwegs seid.',
       primaryCta: 'Meinen Platz sichern',
       secondaryCta: 'So funktioniert\'s',
       imageAlt: 'Cojauny-Oberfläche mit Flug-Matching, geteilten Kosten und verifizierten Profilen',
@@ -1326,6 +1380,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         'Kosten teilen',
         'Nach Flug gematcht',
         'Verifizierte Reisende',
+        'Dein Name bleibt privat',
       ],
     },
     heroVariants: {
@@ -1367,27 +1422,45 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           iconName: 'sparkles',
         },
         {
-          title: 'Verifizierte Profile',
+          title: 'Dein echter Name bleibt privat',
           description:
-            'Jeder bestätigt seine Identität mit Ausweis und Foto, bevor er mitfahren kann.',
+            'Andere Reisende sehen nur deinen Alias und deine Bewertung — nie deinen echten Namen, deine Telefonnummer oder Dokumente.',
+          iconName: 'lock',
+        },
+        {
+          title: 'Verifiziert, bevor ihr euch matcht',
+          description:
+            'Jeder bestätigt seine E-Mail und kann zusätzlich die Telefonnummer verifizieren, damit du immer weißt, mit wem du sprichst.',
           iconName: 'shield',
         },
         {
-          title: 'Chatten, bevor ihr euch trefft',
+          title: 'Bewertungen aus echten gemeinsamen Flügen',
           description:
-            'Klärt Treffpunkt und Uhrzeit direkt in der App — ganz ohne Telefonnummer.',
-          iconName: 'chat',
-        },
-        {
-          title: 'Bewertungen, denen du vertrauen kannst',
-          description:
-            'Sterne und Kommentare aus früheren Fahrten sind direkt im Profil sichtbar.',
+            'Jede Bewertung und jeder Kommentar stammt von einem Flug, den die Person wirklich mit dir geteilt hat — nie erfunden.',
           iconName: 'users',
         },
         {
-          title: 'Flugalerts in Echtzeit',
+          title: 'Melden oder blockieren mit einem Klick',
           description:
-            'Wir informieren dich sofort, wenn sich etwas ändert, damit deine Gruppe nicht überrascht wird.',
+            'Wenn sich etwas komisch anfühlt, kannst du einen anderen Reisenden sofort melden oder blockieren — ganz ohne Erklärung.',
+          iconName: 'flag',
+        },
+        {
+          title: 'Chat, der auch im Flugzeug funktioniert',
+          description:
+            'Bleib mit deiner Gruppe in Kontakt — vor dem Boarding, offline während des Flugs und nach der Landung. Alles synchronisiert sich automatisch.',
+          iconName: 'chat',
+        },
+        {
+          title: 'Findet euch bei der Ankunft',
+          description:
+            'Öffne die App, sobald du gelandet bist, und triff deine Mitreisenden mit einem Klick am Gate.',
+          iconName: 'pin',
+        },
+        {
+          title: 'Fliegst du nach Hause? Hol dir das Local-Badge',
+          description:
+            'Wenn du in deine eigene Stadt zurückfliegst, markieren wir dich als Local — praktisch für Reisende, die einen Tipp für den Weg in die Stadt gebrauchen können.',
           iconName: 'globe',
         },
       ],
@@ -1411,7 +1484,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Verifiziert und bewertet',
           description:
-            'Jedes Profil ist ausweisgeprüft, und du siehst Bewertungen, bevor du zusagst.',
+            'Jedes Profil ist geprüft, und du siehst Bewertungen, bevor du zusagst — den echten Namen kennt nur Cojauny, nie du.',
         },
         {
           title: 'Keine Überraschungen am Reisetag',
@@ -1457,7 +1530,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           title: '2. Flug hinzufügen',
-          description: 'Gib Flugnummer und Datum ein, damit wir Leute finden, die mit dir unterwegs sind.',
+          description: 'Gib Flugnummer und Datum ein — wir legen sofort eine Gruppe und einen Chat nur für deinen Flug an.',
         },
         {
           title: '3. Match auswählen',
@@ -1465,11 +1538,11 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           title: '4. Details klären',
-          description: 'Sprecht Treffpunkt, Uhrzeit und Kostenaufteilung direkt im Chat ab.',
+          description: 'Sprecht Treffpunkt, Uhrzeit und Kostenaufteilung im Chat ab — der funktioniert sogar offline während des Flugs.',
         },
         {
           title: '5. Fahren und bewerten',
-          description: 'Mach die Fahrt und gib danach eine kurze Bewertung ab — das hilft dem nächsten Reisenden.',
+          description: 'Nach der Landung öffnest du die App, findet euch mit einem Klick, macht die Fahrt und bewertet danach kurz.',
         },
       ],
     },
@@ -1612,7 +1685,15 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: 'Ist es sicher, mit Leuten zu reisen, die ich nicht kenne?',
-          answer: 'Ja. Jeder verifiziert seine Identität mit Ausweis und Foto, bevor er mitmachen kann, und du siehst das öffentliche Profil jedes Reisenden — Bewertungen, Kommentare, Reputation — bevor du zusagst. Die Absprache läuft über einen sicheren Chat in der App, du musst also nie deine Nummer rausgeben, und sensible Daten wie E-Mail oder Ausweis bleiben privat.',
+          answer: 'Ja. Jeder verifiziert seine E-Mail (und kann zusätzlich die Telefonnummer verifizieren), bevor er mitmachen kann, und du siehst das öffentliche Profil jedes Reisenden — Bewertungen, Kommentare, Reputation — bevor du zusagst. Dieses Profil zeigt immer nur einen Alias, nie den echten Namen: Deine vollständige Identität kennt Cojauny intern, falls sie aus Sicherheits- oder Rechtsgründen gebraucht wird, wird aber nie an andere Nutzer weitergegeben. Die Absprache läuft über einen sicheren Chat in der App, du musst also nie deine Nummer rausgeben.',
+        },
+        {
+          question: 'Welche Informationen sehen andere Reisende von mir?',
+          answer: 'Nur deinen Alias, dein Profilbild (falls du eines hochlädst) und deine Durchschnittsbewertung. Dein echter Name, deine Telefonnummer und deine Verifizierungsdokumente werden anderen Nutzern nie gezeigt — sie bleiben bei Cojauny und sind nur intern zu Sicherheits- und Rechtszwecken einsehbar. Auch deine Sitzplatznummer zu teilen, ist immer freiwillig.',
+        },
+        {
+          question: 'Was ist, wenn ich in meine eigene Stadt zurückfliege?',
+          answer: 'Umso besser — dann bekommst du das Local-Badge, damit andere Reisende auf deinem Flug wissen, dass du dich auskennst, und dich nach Tipps für den Weg in die Stadt fragen können. Du kannst trotzdem die Fahrt teilen oder einfach nur aushelfen.',
         },
         {
           question: 'Kann ich ohne Nachteile stornieren?',
@@ -1828,9 +1909,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     hero: {
       eyebrow: 'La bêta est ouverte · Places limitées',
-      title: 'Ne prenez plus jamais un taxi seul pour l\'aéroport',
+      title: 'Partagez votre trajet vers l\'aéroport avec des passagers de votre vol',
       subtitle:
-        'Cojauny vous met en relation avec des voyageurs de votre vol pour partager le taxi, réduire vos frais et toujours savoir avec qui vous voyagez.',
+        'Cojauny vous associe par numéro de vol, pour partager un taxi ou une navette avec des voyageurs vérifiés qui vont au même endroit — en sachant toujours avec qui vous voyagez.',
       primaryCta: 'Réserver ma place',
       secondaryCta: 'Voir comment ça marche',
       imageAlt: 'Interface Cojauny avec matching par vol, coûts partagés et profils vérifiés',
@@ -1838,6 +1919,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         'Partagez le coût',
         'Associé par vol',
         'Voyageurs vérifiés',
+        'Votre nom reste privé',
       ],
     },
     heroVariants: {
@@ -1879,27 +1961,45 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           iconName: 'sparkles',
         },
         {
-          title: 'Des profils vérifiés',
+          title: 'Votre vrai nom reste privé',
           description:
-            'Chaque voyageur confirme son identité avec une pièce d\'identité et une photo avant de pouvoir rejoindre un trajet.',
+            'Les autres voyageurs ne voient que votre pseudo et votre note — jamais votre vrai nom, votre numéro ou vos documents.',
+          iconName: 'lock',
+        },
+        {
+          title: 'Vérifié avant de vous associer',
+          description:
+            'Chaque voyageur confirme son e-mail, et peut aussi vérifier son numéro de téléphone, pour que vous sachiez toujours à qui vous parlez.',
           iconName: 'shield',
         },
         {
-          title: 'On discute avant de se voir',
+          title: 'Des avis venant de vrais trajets partagés',
           description:
-            'Convenez du point de rendez-vous et de l\'heure dans l\'app, sans partager votre numéro.',
-          iconName: 'chat',
-        },
-        {
-          title: 'Des avis auxquels se fier',
-          description:
-            'Étoiles et commentaires des trajets précédents sont visibles directement sur chaque profil.',
+            'Chaque avis et commentaire vient d\'un vol que cette personne a vraiment partagé avec vous — jamais inventé.',
           iconName: 'users',
         },
         {
-          title: 'Alertes de vol en temps réel',
+          title: 'Signalez ou bloquez en un geste',
           description:
-            'Vous êtes prévenu dès qu\'un imprévu survient, pour que votre groupe ne soit jamais pris au dépourvu.',
+            'Si quelque chose vous semble louche, vous pouvez signaler ou bloquer un voyageur instantanément, sans justification.',
+          iconName: 'flag',
+        },
+        {
+          title: 'Un chat qui fonctionne même en plein vol',
+          description:
+            'Restez en contact avec votre groupe avant l\'embarquement, hors ligne pendant le vol, et après l\'atterrissage — tout se synchronise automatiquement.',
+          iconName: 'chat',
+        },
+        {
+          title: 'Retrouvez-vous à l\'arrivée',
+          description:
+            'Ouvrez l\'app dès l\'atterrissage et retrouvez vos compagnons de route à la porte en un geste.',
+          iconName: 'pin',
+        },
+        {
+          title: 'Vous rentrez chez vous ? Obtenez le badge local',
+          description:
+            'Si vous rentrez dans votre propre ville, on vous identifie comme local — pratique pour les voyageurs qui cherchent un conseil pour rejoindre le centre.',
           iconName: 'globe',
         },
       ],
@@ -1923,7 +2023,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Vérifié, et noté',
           description:
-            'Chaque profil est vérifié par pièce d\'identité, et les avis sont visibles avant que vous confirmiez quoi que ce soit.',
+            'Chaque profil est vérifié, et les avis sont visibles avant que vous confirmiez quoi que ce soit — son vrai nom, lui, ne sera jamais visible que par Cojauny.',
         },
         {
           title: 'Aucune surprise le jour J',
@@ -1969,7 +2069,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           title: '2. Ajoutez votre vol',
-          description: 'Indiquez votre numéro de vol et la date pour que nous trouvions des voyageurs compatibles.',
+          description: 'Indiquez votre numéro de vol et la date : on crée aussitôt un groupe et un chat rien que pour votre trajet.',
         },
         {
           title: '3. Choisissez votre compagnon de route',
@@ -1977,11 +2077,11 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           title: '4. Réglez les détails',
-          description: 'Mettez-vous d\'accord sur le lieu de rendez-vous, l\'horaire et la répartition des coûts, directement dans le chat.',
+          description: 'Mettez-vous d\'accord sur le lieu de rendez-vous, l\'horaire et la répartition des coûts dans le chat — il continue même hors ligne pendant le vol.',
         },
         {
           title: '5. Voyagez, puis notez',
-          description: 'Faites le trajet, puis laissez un avis rapide pour aider le prochain voyageur à choisir.',
+          description: 'Une fois posé, ouvrez l\'app pour vous retrouver en un geste, faites le trajet, puis laissez un avis rapide.',
         },
       ],
     },
@@ -2124,7 +2224,15 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           question: 'Est-ce sûr de voyager avec des gens que je ne connais pas ?',
-          answer: 'Oui. Chacun vérifie son identité avec une pièce d\'identité et une photo avant de rejoindre, et vous pouvez consulter le profil public de chaque voyageur — avis, commentaires, réputation — avant de confirmer quoi que ce soit. La coordination se fait via un chat sécurisé dans l\'app, vous n\'avez donc jamais à partager votre numéro, et vos données sensibles comme l\'e-mail ou la pièce d\'identité restent privées.',
+          answer: 'Oui. Chacun vérifie son e-mail (et peut aussi vérifier son numéro de téléphone) avant de rejoindre, et vous pouvez consulter le profil public de chaque voyageur — avis, commentaires, réputation — avant de confirmer quoi que ce soit. Ce profil n\'affiche qu\'un pseudo, jamais le vrai nom : votre identité complète reste connue de Cojauny en interne, en cas de besoin pour la sécurité ou le suivi légal, mais elle n\'est jamais partagée avec les autres utilisateurs. La coordination se fait via un chat sécurisé dans l\'app, vous n\'avez donc jamais à partager votre numéro.',
+        },
+        {
+          question: 'Quelles informations les autres voyageurs voient-ils de moi ?',
+          answer: 'Seulement votre pseudo, votre photo de profil (si vous choisissez d\'en ajouter une) et votre note moyenne. Votre vrai nom, votre numéro et vos documents de vérification ne sont jamais montrés aux autres utilisateurs — ils restent chez Cojauny, visibles uniquement en interne pour la sécurité et la traçabilité légale. Partager votre numéro de siège reste, lui aussi, toujours facultatif.',
+        },
+        {
+          question: 'Et si je rentre dans ma propre ville ?',
+          answer: 'Encore mieux : on vous attribue le badge « retour à la maison », pour que les autres voyageurs de votre vol sachent que vous connaissez le coin et puissent vous demander des conseils pour rejoindre le centre. Vous pouvez quand même partager le trajet, ou juste donner un coup de main.',
         },
         {
           question: 'Puis-je annuler ma participation sans pénalité ?',

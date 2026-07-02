@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 
 // Configuración de la imagen OG para la página raíz
 export const dynamic = 'force-static';
-export const alt = 'Cojauny - Comparte tu traslado al aeropuerto';
+export const alt = 'Cojauny - Comparte tu traslado al aeropuerto con gente de tu vuelo';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -94,7 +94,7 @@ export default async function Image() {
                             textAlign: 'center',
                         }}
                     >
-                        No vuelvas a coger un taxi solo al aeropuerto
+                        Comparte tu traslado al aeropuerto con gente de tu vuelo
                     </div>
 
                     {/* CTA / Beneficio */}

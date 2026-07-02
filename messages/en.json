@@ -66,15 +66,16 @@
     },
     "hero": {
       "eyebrow": "Beta is open · Spots are limited",
-      "title": "Never take an airport taxi alone again",
-      "subtitle": "Cojauny matches you with people on your exact flight so you can split the ride, cut your costs, and always know who you're traveling with.",
+      "title": "Share your airport ride with people on your flight",
+      "subtitle": "Cojauny matches you by flight number, so you can split a taxi or van with verified travelers going the same way — and always know who you're with.",
       "primaryCta": "Reserve my spot",
       "secondaryCta": "See how it works",
       "imageAlt": "Cojauny interface showing flight matches, shared costs, and verified profiles",
       "trustSignals": [
         "Split the cost",
         "Matched by flight",
-        "Verified travelers"
+        "Verified travelers",
+        "Your name stays private"
       ]
     },
     "heroVariants": {
@@ -110,23 +111,38 @@
           "iconName": "sparkles"
         },
         {
-          "title": "Verified profiles",
-          "description": "Every traveler confirms their identity with an ID and photo before they can join a ride.",
+          "title": "Your real name stays private",
+          "description": "Other travelers only ever see your alias and rating — never your real name, phone number, or documents.",
+          "iconName": "lock"
+        },
+        {
+          "title": "Verified before you match",
+          "description": "Every traveler confirms their email, and can add phone verification too, so you always know who you're talking to.",
           "iconName": "shield"
         },
         {
-          "title": "Chat before you meet",
-          "description": "Sort out the pickup point and timing in the app — no need to share your phone number.",
-          "iconName": "chat"
-        },
-        {
-          "title": "Ratings you can trust",
-          "description": "Star ratings and comments from past trips are right there on every profile.",
+          "title": "Ratings from real shared flights",
+          "description": "Every rating and comment comes from a flight someone actually took with you — no fake reviews, ever.",
           "iconName": "users"
         },
         {
-          "title": "Real-time flight alerts",
-          "description": "Get notified the moment something changes, so your group is never caught off guard.",
+          "title": "Report or block in one tap",
+          "description": "If something feels off, you can report or block another traveler instantly — no questions asked.",
+          "iconName": "flag"
+        },
+        {
+          "title": "Chat that works mid-flight",
+          "description": "Keep talking to your group before boarding, offline during the flight, and after you land — everything syncs automatically.",
+          "iconName": "chat"
+        },
+        {
+          "title": "Find each other on arrival",
+          "description": "Open the app the moment you land and meet your travel companions at the gate in one tap.",
+          "iconName": "pin"
+        },
+        {
+          "title": "Flying home? Get the local badge",
+          "description": "If you're returning to your own city, we flag you as a local — handy for travelers who could use a tip on the way in.",
           "iconName": "globe"
         }
       ]
@@ -146,7 +162,7 @@
         },
         {
           "title": "Verified, and reviewed",
-          "description": "Every profile is ID-verified, and past ratings are visible before you agree to anything."
+          "description": "Every profile is verified and past ratings are visible before you agree to anything — their real name is something only Cojauny ever sees."
         },
         {
           "title": "No surprises on the day",
@@ -190,7 +206,7 @@
         },
         {
           "title": "2. Add your flight",
-          "description": "Enter your flight number and date so we can find people traveling with you."
+          "description": "Enter your flight number and date, and we instantly create a group chat just for your trip."
         },
         {
           "title": "3. Pick your match",
@@ -198,11 +214,11 @@
         },
         {
           "title": "4. Sort out the details",
-          "description": "Agree on the meeting point, timing, and cost split, right there in the chat."
+          "description": "Agree on the meeting point, timing, and cost split in the chat — it keeps working even offline during your flight."
         },
         {
           "title": "5. Travel, then rate",
-          "description": "Take the ride, then leave a quick rating to help the next traveler decide."
+          "description": "Land, open the app to find each other in one tap, take the ride, then leave a quick rating."
         }
       ]
     },
@@ -338,7 +354,15 @@
         },
         {
           "question": "Is it safe to share a ride with people I don't know?",
-          "answer": "Yes. Everyone verifies their identity with photo ID before joining, and you can check each traveler's public profile — ratings, comments, reputation — before agreeing to anything. You coordinate through a secure in-app chat, so you never have to share your phone number, and sensitive details like your email or ID stay private."
+          "answer": "Yes. Everyone verifies their email (and can add phone verification too) before joining, and you can check each traveler's public profile — ratings, comments, reputation — before agreeing to anything. That profile only ever shows an alias, never a real name: Cojauny keeps your full identity on file internally for safety and legal reasons, but it's never shared with other users. You coordinate through a secure in-app chat, so you never have to share your phone number."
+        },
+        {
+          "question": "What information do other travelers actually see about me?",
+          "answer": "Just your alias, your profile photo (if you choose to add one), and your average rating. Your real name, phone number, and verification documents are never shown to other users — they stay with Cojauny, visible internally only for safety and legal traceability. Sharing your seat number, if you want to, is always optional too."
+        },
+        {
+          "question": "What if I'm flying back to my own city?",
+          "answer": "Even better — we'll flag you with a \"local returning home\" badge, so other travelers on your flight know you know the area and can ask you for tips getting into town. You can still split the ride, or just lend a hand."
         },
         {
           "question": "Can I cancel my participation without penalty?",

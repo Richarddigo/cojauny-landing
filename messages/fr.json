@@ -66,15 +66,16 @@
     },
     "hero": {
       "eyebrow": "La bêta est ouverte · Places limitées",
-      "title": "Ne prenez plus jamais un taxi seul pour l'aéroport",
-      "subtitle": "Cojauny vous met en relation avec des voyageurs de votre vol pour partager le taxi, réduire vos frais et toujours savoir avec qui vous voyagez.",
+      "title": "Partagez votre trajet vers l'aéroport avec des passagers de votre vol",
+      "subtitle": "Cojauny vous associe par numéro de vol, pour partager un taxi ou une navette avec des voyageurs vérifiés qui vont au même endroit — en sachant toujours avec qui vous voyagez.",
       "primaryCta": "Réserver ma place",
       "secondaryCta": "Voir comment ça marche",
       "imageAlt": "Interface Cojauny avec matching par vol, coûts partagés et profils vérifiés",
       "trustSignals": [
         "Partagez le coût",
         "Associé par vol",
-        "Voyageurs vérifiés"
+        "Voyageurs vérifiés",
+        "Votre nom reste privé"
       ]
     },
     "heroVariants": {
@@ -110,23 +111,38 @@
           "iconName": "sparkles"
         },
         {
-          "title": "Des profils vérifiés",
-          "description": "Chaque voyageur confirme son identité avec une pièce d'identité et une photo avant de pouvoir rejoindre un trajet.",
+          "title": "Votre vrai nom reste privé",
+          "description": "Les autres voyageurs ne voient que votre pseudo et votre note — jamais votre vrai nom, votre numéro ou vos documents.",
+          "iconName": "lock"
+        },
+        {
+          "title": "Vérifié avant de vous associer",
+          "description": "Chaque voyageur confirme son e-mail, et peut aussi vérifier son numéro de téléphone, pour que vous sachiez toujours à qui vous parlez.",
           "iconName": "shield"
         },
         {
-          "title": "On discute avant de se voir",
-          "description": "Convenez du point de rendez-vous et de l'heure dans l'app, sans partager votre numéro.",
-          "iconName": "chat"
-        },
-        {
-          "title": "Des avis auxquels se fier",
-          "description": "Étoiles et commentaires des trajets précédents sont visibles directement sur chaque profil.",
+          "title": "Des avis venant de vrais trajets partagés",
+          "description": "Chaque avis et commentaire vient d'un vol que cette personne a vraiment partagé avec vous — jamais inventé.",
           "iconName": "users"
         },
         {
-          "title": "Alertes de vol en temps réel",
-          "description": "Vous êtes prévenu dès qu'un imprévu survient, pour que votre groupe ne soit jamais pris au dépourvu.",
+          "title": "Signalez ou bloquez en un geste",
+          "description": "Si quelque chose vous semble louche, vous pouvez signaler ou bloquer un voyageur instantanément, sans justification.",
+          "iconName": "flag"
+        },
+        {
+          "title": "Un chat qui fonctionne même en plein vol",
+          "description": "Restez en contact avec votre groupe avant l'embarquement, hors ligne pendant le vol, et après l'atterrissage — tout se synchronise automatiquement.",
+          "iconName": "chat"
+        },
+        {
+          "title": "Retrouvez-vous à l'arrivée",
+          "description": "Ouvrez l'app dès l'atterrissage et retrouvez vos compagnons de route à la porte en un geste.",
+          "iconName": "pin"
+        },
+        {
+          "title": "Vous rentrez chez vous ? Obtenez le badge local",
+          "description": "Si vous rentrez dans votre propre ville, on vous identifie comme local — pratique pour les voyageurs qui cherchent un conseil pour rejoindre le centre.",
           "iconName": "globe"
         }
       ]
@@ -146,7 +162,7 @@
         },
         {
           "title": "Vérifié, et noté",
-          "description": "Chaque profil est vérifié par pièce d'identité, et les avis sont visibles avant que vous confirmiez quoi que ce soit."
+          "description": "Chaque profil est vérifié, et les avis sont visibles avant que vous confirmiez quoi que ce soit — son vrai nom, lui, ne sera jamais visible que par Cojauny."
         },
         {
           "title": "Aucune surprise le jour J",
@@ -190,7 +206,7 @@
         },
         {
           "title": "2. Ajoutez votre vol",
-          "description": "Indiquez votre numéro de vol et la date pour que nous trouvions des voyageurs compatibles."
+          "description": "Indiquez votre numéro de vol et la date : on crée aussitôt un groupe et un chat rien que pour votre trajet."
         },
         {
           "title": "3. Choisissez votre compagnon de route",
@@ -198,11 +214,11 @@
         },
         {
           "title": "4. Réglez les détails",
-          "description": "Mettez-vous d'accord sur le lieu de rendez-vous, l'horaire et la répartition des coûts, directement dans le chat."
+          "description": "Mettez-vous d'accord sur le lieu de rendez-vous, l'horaire et la répartition des coûts dans le chat — il continue même hors ligne pendant le vol."
         },
         {
           "title": "5. Voyagez, puis notez",
-          "description": "Faites le trajet, puis laissez un avis rapide pour aider le prochain voyageur à choisir."
+          "description": "Une fois posé, ouvrez l'app pour vous retrouver en un geste, faites le trajet, puis laissez un avis rapide."
         }
       ]
     },
@@ -338,7 +354,15 @@
         },
         {
           "question": "Est-ce sûr de voyager avec des gens que je ne connais pas ?",
-          "answer": "Oui. Chacun vérifie son identité avec une pièce d'identité et une photo avant de rejoindre, et vous pouvez consulter le profil public de chaque voyageur — avis, commentaires, réputation — avant de confirmer quoi que ce soit. La coordination se fait via un chat sécurisé dans l'app, vous n'avez donc jamais à partager votre numéro, et vos données sensibles comme l'e-mail ou la pièce d'identité restent privées."
+          "answer": "Oui. Chacun vérifie son e-mail (et peut aussi vérifier son numéro de téléphone) avant de rejoindre, et vous pouvez consulter le profil public de chaque voyageur — avis, commentaires, réputation — avant de confirmer quoi que ce soit. Ce profil n'affiche qu'un pseudo, jamais le vrai nom : votre identité complète reste connue de Cojauny en interne, en cas de besoin pour la sécurité ou le suivi légal, mais elle n'est jamais partagée avec les autres utilisateurs. La coordination se fait via un chat sécurisé dans l'app, vous n'avez donc jamais à partager votre numéro."
+        },
+        {
+          "question": "Quelles informations les autres voyageurs voient-ils de moi ?",
+          "answer": "Seulement votre pseudo, votre photo de profil (si vous choisissez d'en ajouter une) et votre note moyenne. Votre vrai nom, votre numéro et vos documents de vérification ne sont jamais montrés aux autres utilisateurs — ils restent chez Cojauny, visibles uniquement en interne pour la sécurité et la traçabilité légale. Partager votre numéro de siège reste, lui aussi, toujours facultatif."
+        },
+        {
+          "question": "Et si je rentre dans ma propre ville ?",
+          "answer": "Encore mieux : on vous attribue le badge « retour à la maison », pour que les autres voyageurs de votre vol sachent que vous connaissez le coin et puissent vous demander des conseils pour rejoindre le centre. Vous pouvez quand même partager le trajet, ou juste donner un coup de main."
         },
         {
           "question": "Puis-je annuler ma participation sans pénalité ?",
