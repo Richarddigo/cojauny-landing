@@ -3,7 +3,7 @@ import { locales, type Locale } from '@/locales/config';
 
 // Configuración de la imagen OG
 export const dynamic = 'force-static';
-export const alt = 'Cojauny - Share your airport ride with people on your flight';
+export const alt = 'Cojauny - Connect with the people on your flight';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -16,23 +16,23 @@ export function generateStaticParams() {
 const ogTexts: Record<Locale, { title: string; tagline: string; cta: string }> = {
     es: {
         title: 'Cojauny',
-        tagline: 'Comparte tu traslado al aeropuerto con gente de tu vuelo',
-        cta: 'Reparte el coste · Emparejado por vuelo · Verificado'
+        tagline: 'Conecta con la gente de tu vuelo',
+        cta: 'Emparejado por vuelo · Habla antes de volar · Reparte el coste'
     },
     en: {
         title: 'Cojauny',
-        tagline: 'Share your airport ride with people on your flight',
-        cta: 'Split the cost · Matched by flight · Verified'
+        tagline: 'Connect with the people on your flight',
+        cta: 'Matched by flight · Chat before you fly · Split the cost'
     },
     de: {
         title: 'Cojauny',
-        tagline: 'Teile deine Fahrt zum Flughafen mit Leuten von deinem Flug',
-        cta: 'Kosten teilen · Nach Flug gematcht · Verifiziert'
+        tagline: 'Verbinde dich mit den Leuten auf deinem Flug',
+        cta: 'Nach Flug gematcht · Chat vor dem Abflug · Kosten teilen'
     },
     fr: {
         title: 'Cojauny',
-        tagline: 'Partagez votre trajet a\u00e9roport avec des gens de votre vol',
-        cta: 'Partagez le coût · Associé par vol · Vérifié'
+        tagline: 'Connectez-vous aux passagers de votre vol',
+        cta: 'Associé par vol · Chat avant le départ · Partagez le coût'
     }
 };
 

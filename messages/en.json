@@ -66,16 +66,16 @@
     },
     "hero": {
       "eyebrow": "Beta is open · Spots are limited",
-      "title": "Share your airport ride with people on your flight",
-      "subtitle": "Cojauny matches you by flight number, so you can split a taxi or van with verified travelers going the same way — and always know who you're with.",
+      "title": "Connect with the people on your flight",
+      "subtitle": "Cojauny matches you with your fellow passengers the moment you book — chat for weeks, plan together, and share a ride once you land.",
       "primaryCta": "Reserve my spot",
       "secondaryCta": "See how it works",
       "imageAlt": "Cojauny interface showing flight matches, shared costs, and verified profiles",
       "trustSignals": [
-        "Split the cost",
         "Matched by flight",
-        "Verified travelers",
-        "Your name stays private"
+        "Chat before you fly",
+        "Split the cost",
+        "Verified & private"
       ]
     },
     "heroVariants": {
@@ -97,8 +97,8 @@
     "airportsHubAll": "See all airports",
     "betaReferralBanner": "Once you're in, you'll get a personal invite link — share it to jump the queue.",
     "features": {
-      "title": "Everything you need to share a ride with confidence",
-      "subtitle": "From finding your match to splitting the bill, every feature is built to make sharing easy — and safe.",
+      "title": "Everything you need to connect with your flight",
+      "subtitle": "From matching to meeting up in person, every feature is built around your flight — and keeping you safe.",
       "items": [
         {
           "title": "Matched by flight, not luck",
@@ -131,8 +131,8 @@
           "iconName": "flag"
         },
         {
-          "title": "Chat that works mid-flight",
-          "description": "Keep talking to your group before boarding, offline during the flight, and after you land — everything syncs automatically.",
+          "title": "Start chatting the moment you match",
+          "description": "Plan for weeks before your flight, keep talking even offline once you're in the air, and everything's ready when you land.",
           "iconName": "chat"
         },
         {
@@ -149,7 +149,7 @@
     },
     "value": {
       "eyebrow": "Why people join",
-      "title": "One ride, three good reasons",
+      "title": "One flight, four good reasons",
       "subtitle": "Cojauny brings together real savings, real convenience, and real peace of mind — you always choose who you travel with.",
       "items": [
         {
@@ -158,7 +158,7 @@
         },
         {
           "title": "Matched by flight, never by luck",
-          "description": "You only ever travel with people on your exact flight and terminal — never a random stranger off the street."
+          "description": "You only ever connect with people on your exact flight — not a days-old post in a Facebook group or a stranger you're hoping is still at the gate."
         },
         {
           "title": "Verified, and reviewed",
@@ -187,7 +187,7 @@
         {
           "value": "50,000+",
           "label": "Travelers expected",
-          "description": "Our goal for building a network big enough to match rides on busy routes."
+          "description": "The more travelers join, the more flights get matched instantly — this is the size we're building toward during the beta."
         },
         {
           "value": "1,000+ t",
@@ -197,8 +197,8 @@
       ]
     },
     "workflow": {
-      "title": "From flight number to shared ride in five steps",
-      "intro": "Verify your profile once — then match, chat, and travel, with a few safety checks built in along the way.",
+      "title": "From booking to landing, in five simple steps",
+      "intro": "Verify your profile once. From there, match, chat, and plan for weeks — right up until you land.",
       "steps": [
         {
           "title": "1. Set up your profile",
@@ -206,7 +206,7 @@
         },
         {
           "title": "2. Add your flight",
-          "description": "Enter your flight number and date, and we instantly create a group chat just for your trip."
+          "description": "Add it the moment you book — even months ahead — and we instantly create a group chat just for your flight."
         },
         {
           "title": "3. Pick your match",
@@ -271,8 +271,8 @@
       ]
     },
     "ctaStrip": {
-      "heading": "Ready for your next airport ride to cost less?",
-      "body": "Join the Cojauny beta — match with people on your flight, split the ride, and travel with someone you can trust.",
+      "heading": "Your next flight already has your people on it",
+      "body": "Join the beta, get matched with your fellow passengers the moment you book, and start chatting long before you land.",
       "link": "#beta",
       "linkLabel": "Reserve my spot"
     },
@@ -351,6 +351,10 @@
         {
           "question": "How does the flight matching system work?",
           "answer": "Just enter your flight number and date. We check our database in real time and match you with other travelers on the same flight, or on a compatible one at the same airport and time."
+        },
+        {
+          "question": "Why not just use a WhatsApp group or find someone at the airport?",
+          "answer": "You can try — but it usually means hoping someone's still around, scrolling through days-old posts, or chatting with someone who never actually had a ticket. Cojauny confirms everyone in your group is really on your flight, matches you automatically the moment you book, and keeps the conversation going for weeks before you fly — not just the few minutes after you land."
         },
         {
           "question": "Is it safe to share a ride with people I don't know?",

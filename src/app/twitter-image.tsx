@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 
 // Configuración de la imagen Twitter para la página raíz
 export const dynamic = 'force-static';
-export const alt = 'Cojauny - Comparte tu traslado al aeropuerto con gente de tu vuelo';
+export const alt = 'Cojauny - Conecta con la gente de tu vuelo';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -94,7 +94,7 @@ export default async function Image() {
                             textAlign: 'center',
                         }}
                     >
-                        Comparte tu traslado al aeropuerto con gente de tu vuelo
+                        Conecta con la gente de tu vuelo
                     </div>
 
                     {/* CTA / Beneficio */}
@@ -112,7 +112,7 @@ export default async function Image() {
                             boxShadow: '0 4px 20px rgba(90, 103, 242, 0.4)',
                         }}
                     >
-                        Reparte el coste · Emparejado por vuelo · Verificado
+                        Emparejado por vuelo · Habla antes de volar · Reparte el coste
                     </div>
                 </div>
 

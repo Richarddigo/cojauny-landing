@@ -66,16 +66,16 @@
     },
     "hero": {
       "eyebrow": "Beta ist offen · Plätze sind begrenzt",
-      "title": "Teile deine Fahrt zum Flughafen mit Leuten von deinem Flug",
-      "subtitle": "Cojauny matcht euch über die Flugnummer, damit ihr euch Taxi oder Shuttle mit verifizierten Reisenden teilt — und immer wisst, mit wem ihr unterwegs seid.",
+      "title": "Verbinde dich mit den Leuten auf deinem Flug",
+      "subtitle": "Cojauny matcht dich mit deinen Mitreisenden, sobald du buchst — chattet wochenlang, plant gemeinsam, und teilt euch die Fahrt bei der Landung.",
       "primaryCta": "Meinen Platz sichern",
       "secondaryCta": "So funktioniert's",
       "imageAlt": "Cojauny-Oberfläche mit Flug-Matching, geteilten Kosten und verifizierten Profilen",
       "trustSignals": [
-        "Kosten teilen",
         "Nach Flug gematcht",
-        "Verifizierte Reisende",
-        "Dein Name bleibt privat"
+        "Chat vor dem Abflug",
+        "Kosten teilen",
+        "Verifiziert & privat"
       ]
     },
     "heroVariants": {
@@ -97,8 +97,8 @@
     "airportsHubAll": "Alle Flughäfen ansehen",
     "betaReferralBanner": "Sobald du dabei bist, bekommst du einen persönlichen Einladungslink — teile ihn und rutsche in der Warteliste nach vorne.",
     "features": {
-      "title": "Alles, was du zum sicheren Mitfahren brauchst",
-      "subtitle": "Vom Match bis zur geteilten Rechnung — jede Funktion macht das Teilen einfach und sicher.",
+      "title": "Alles, was du brauchst, um dich mit deinem Flug zu verbinden",
+      "subtitle": "Vom Match bis zum persönlichen Treffen — jede Funktion dreht sich um deinen Flug, und deine Sicherheit.",
       "items": [
         {
           "title": "Nach Flug gematcht, nicht nach Zufall",
@@ -131,8 +131,8 @@
           "iconName": "flag"
         },
         {
-          "title": "Chat, der auch im Flugzeug funktioniert",
-          "description": "Bleib mit deiner Gruppe in Kontakt — vor dem Boarding, offline während des Flugs und nach der Landung. Alles synchronisiert sich automatisch.",
+          "title": "Chatten ab dem Moment des Matches",
+          "description": "Plane wochenlang im Voraus, bleib auch offline während des Flugs in Kontakt, und bei der Landung ist schon alles klar.",
           "iconName": "chat"
         },
         {
@@ -149,7 +149,7 @@
     },
     "value": {
       "eyebrow": "Warum Leute mitmachen",
-      "title": "Eine Fahrt, drei gute Gründe",
+      "title": "Ein Flug, vier gute Gründe",
       "subtitle": "Cojauny bringt echte Ersparnis, echten Komfort und ein gutes Gefühl zusammen — du entscheidest immer, mit wem du fährst.",
       "items": [
         {
@@ -158,7 +158,7 @@
         },
         {
           "title": "Nach Flug gematcht, nie nach Zufall",
-          "description": "Du reist nur mit Leuten von deinem Flug und Terminal — nie mit einem zufälligen Fremden von der Straße."
+          "description": "Du verbindest dich nur mit Leuten von deinem Flug — nicht mit einem tagealten Post in einer Facebook-Gruppe oder einem Fremden, den du hoffentlich noch am Gate triffst."
         },
         {
           "title": "Verifiziert und bewertet",
@@ -187,7 +187,7 @@
         {
           "value": "50.000+",
           "label": "Erwartete Reisende",
-          "description": "Unser Ziel für ein Netzwerk, das groß genug ist, um auch auf stark frequentierten Strecken zu matchen."
+          "description": "Je mehr Reisende mitmachen, desto mehr Flüge bekommen sofort ein Match — das ist die Größe, auf die wir während der Beta hinarbeiten."
         },
         {
           "value": "1.000+ t",
@@ -197,8 +197,8 @@
       ]
     },
     "workflow": {
-      "title": "Von der Flugnummer zur geteilten Fahrt in 5 Schritten",
-      "intro": "Verifiziere dein Profil einmal — dann heißt es nur noch matchen, absprechen und losfahren, mit ein paar Sicherheitschecks nebenbei.",
+      "title": "Von der Buchung bis zur Landung in 5 Schritten",
+      "intro": "Verifiziere dein Profil einmal. Danach kannst du matchen, chatten und wochenlang planen — bis zu dem Tag, an dem du landest.",
       "steps": [
         {
           "title": "1. Profil anlegen",
@@ -206,7 +206,7 @@
         },
         {
           "title": "2. Flug hinzufügen",
-          "description": "Gib Flugnummer und Datum ein — wir legen sofort eine Gruppe und einen Chat nur für deinen Flug an."
+          "description": "Trag ihn ein, sobald du buchst — auch Monate im Voraus — und wir legen sofort eine Gruppe und einen Chat nur für deinen Flug an."
         },
         {
           "title": "3. Match auswählen",
@@ -271,8 +271,8 @@
       ]
     },
     "ctaStrip": {
-      "heading": "Bereit für eine günstigere Fahrt zum Flughafen?",
-      "body": "Tritt der Cojauny-Beta bei: finde Leute von deinem Flug, teilt euch die Fahrt und reist mit jemandem, dem ihr vertrauen könnt.",
+      "heading": "Dein nächster Flug hat schon deine Leute",
+      "body": "Tritt der Beta bei, werde direkt bei der Buchung mit deinen Mitreisenden gematcht und chattet schon lange vor dem Abflug.",
       "link": "#beta",
       "linkLabel": "Meinen Platz sichern"
     },
@@ -351,6 +351,10 @@
         {
           "question": "Wie funktioniert das Flug-Matching?",
           "answer": "Gib einfach deine Flugnummer und das Datum ein. Wir gleichen das in Echtzeit mit unserer Datenbank ab und bringen dich mit anderen Reisenden auf deinem Flug zusammen — oder auf einem passenden Flug am selben Flughafen zur selben Zeit."
+        },
+        {
+          "question": "Warum nicht einfach eine WhatsApp-Gruppe nutzen oder jemanden am Flughafen suchen?",
+          "answer": "Kannst du versuchen — meistens heißt das aber, zu hoffen, dass noch jemand da ist, tagealte Posts zu durchsuchen oder mit jemandem zu schreiben, der nie ein Ticket hatte. Cojauny bestätigt, dass alle in deiner Gruppe wirklich auf deinem Flug sind, matcht dich automatisch, sobald du buchst, und hält die Unterhaltung wochenlang vor dem Abflug am Laufen — nicht nur für die paar Minuten nach der Landung."
         },
         {
           "question": "Ist es sicher, mit Leuten zu reisen, die ich nicht kenne?",

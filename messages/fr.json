@@ -66,16 +66,16 @@
     },
     "hero": {
       "eyebrow": "La bêta est ouverte · Places limitées",
-      "title": "Partagez votre trajet vers l'aéroport avec des passagers de votre vol",
-      "subtitle": "Cojauny vous associe par numéro de vol, pour partager un taxi ou une navette avec des voyageurs vérifiés qui vont au même endroit — en sachant toujours avec qui vous voyagez.",
+      "title": "Connectez-vous aux passagers de votre vol",
+      "subtitle": "Cojauny vous associe à vos compagnons de vol dès la réservation — discutez pendant des semaines, organisez-vous ensemble, et partagez le trajet à l'atterrissage.",
       "primaryCta": "Réserver ma place",
       "secondaryCta": "Voir comment ça marche",
       "imageAlt": "Interface Cojauny avec matching par vol, coûts partagés et profils vérifiés",
       "trustSignals": [
-        "Partagez le coût",
         "Associé par vol",
-        "Voyageurs vérifiés",
-        "Votre nom reste privé"
+        "Chat avant le départ",
+        "Partagez le coût",
+        "Vérifié et privé"
       ]
     },
     "heroVariants": {
@@ -97,8 +97,8 @@
     "airportsHubAll": "Voir tous les aéroports",
     "betaReferralBanner": "Une fois inscrit, vous recevrez un lien d'invitation personnel — partagez-le pour avancer dans la file d'attente.",
     "features": {
-      "title": "Tout ce qu'il faut pour covoiturer en toute confiance",
-      "subtitle": "De la recherche d'un compagnon de route au partage de l'addition : chaque fonctionnalité rend le partage simple, et sûr.",
+      "title": "Tout ce qu'il faut pour vous connecter à votre vol",
+      "subtitle": "De l'association à la rencontre en personne : chaque fonctionnalité tourne autour de votre vol, et de votre sécurité.",
       "items": [
         {
           "title": "Associé par vol, jamais par hasard",
@@ -131,8 +131,8 @@
           "iconName": "flag"
         },
         {
-          "title": "Un chat qui fonctionne même en plein vol",
-          "description": "Restez en contact avec votre groupe avant l'embarquement, hors ligne pendant le vol, et après l'atterrissage — tout se synchronise automatiquement.",
+          "title": "Discutez dès que vous êtes associés",
+          "description": "Organisez-vous pendant des semaines à l'avance, restez en contact même hors ligne pendant le vol, et tout est prêt à l'atterrissage.",
           "iconName": "chat"
         },
         {
@@ -149,7 +149,7 @@
     },
     "value": {
       "eyebrow": "Pourquoi on nous rejoint",
-      "title": "Un trajet, trois bonnes raisons",
+      "title": "Un vol, quatre bonnes raisons",
       "subtitle": "Cojauny réunit de vraies économies, un vrai confort et une vraie tranquillité d'esprit — vous choisissez toujours avec qui voyager.",
       "items": [
         {
@@ -158,7 +158,7 @@
         },
         {
           "title": "Associé par vol, jamais par hasard",
-          "description": "Vous ne voyagez qu'avec des personnes de votre vol et terminal — jamais avec un inconnu croisé dans la rue."
+          "description": "Vous n'êtes en contact qu'avec des gens de votre vol — pas un post vieux de plusieurs jours dans un groupe Facebook, ni un inconnu que vous espérez encore trouver à la porte."
         },
         {
           "title": "Vérifié, et noté",
@@ -187,7 +187,7 @@
         {
           "value": "50 000+",
           "label": "Voyageurs attendus",
-          "description": "Notre objectif pour constituer un réseau assez grand pour trouver des correspondances même sur les lignes très fréquentées."
+          "description": "Plus il y a de voyageurs, plus de vols trouvent un match instantané — c'est la taille vers laquelle on travaille pendant la bêta."
         },
         {
           "value": "1 000+ t",
@@ -197,8 +197,8 @@
       ]
     },
     "workflow": {
-      "title": "Du numéro de vol au trajet partagé en 5 étapes",
-      "intro": "Vérifiez votre profil une seule fois — ensuite, il ne reste qu'à trouver un compagnon de route, s'organiser et voyager, avec quelques contrôles de sécurité au passage.",
+      "title": "De la réservation à l'atterrissage, en 5 étapes",
+      "intro": "Vérifiez votre profil une seule fois. Ensuite, associez-vous, discutez et organisez-vous pendant des semaines — jusqu'au jour de l'atterrissage.",
       "steps": [
         {
           "title": "1. Créez votre profil",
@@ -206,7 +206,7 @@
         },
         {
           "title": "2. Ajoutez votre vol",
-          "description": "Indiquez votre numéro de vol et la date : on crée aussitôt un groupe et un chat rien que pour votre trajet."
+          "description": "Ajoutez-le dès la réservation, même des mois à l'avance, et on crée aussitôt un groupe et un chat rien que pour votre vol."
         },
         {
           "title": "3. Choisissez votre compagnon de route",
@@ -271,8 +271,8 @@
       ]
     },
     "ctaStrip": {
-      "heading": "Prêt à payer moins cher votre prochain trajet aéroport ?",
-      "body": "Rejoignez la bêta Cojauny : trouvez des voyageurs de votre vol, partagez le trajet et voyagez avec quelqu'un de confiance.",
+      "heading": "Votre prochain vol a déjà vos compagnons de route",
+      "body": "Rejoignez la bêta, soyez associé à vos compagnons de vol dès la réservation, et discutez bien avant l'atterrissage.",
       "link": "#beta",
       "linkLabel": "Réserver ma place"
     },
@@ -351,6 +351,10 @@
         {
           "question": "Comment fonctionne le matching par vol ?",
           "answer": "Indiquez simplement votre numéro de vol et la date. Nous vérifions notre base de données en temps réel et vous mettons en relation avec d'autres voyageurs de votre vol, ou d'un vol compatible au même aéroport et à la même heure."
+        },
+        {
+          "question": "Pourquoi pas juste un groupe WhatsApp ou chercher quelqu'un à l'aéroport ?",
+          "answer": "Vous pouvez essayer — mais ça veut souvent dire espérer que quelqu'un soit encore là, faire défiler des publications vieilles de plusieurs jours, ou discuter avec quelqu'un qui n'avait même pas de billet. Cojauny confirme que tout le monde dans votre groupe est vraiment sur votre vol, vous associe automatiquement dès la réservation, et garde la conversation active pendant des semaines avant le départ — pas seulement les quelques minutes après l'atterrissage."
         },
         {
           "question": "Est-ce sûr de voyager avec des gens que je ne connais pas ?",

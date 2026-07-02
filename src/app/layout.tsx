@@ -20,16 +20,17 @@ const inter = Inter({
 export const metadata: Metadata = {
     metadataBase: new URL(siteMetadata.url),
     title: {
-        default: `${siteMetadata.name} - Share your airport ride with people on your flight`,
+        default: `${siteMetadata.name} - Connect with the people on your flight`,
         template: `%s - ${siteMetadata.name}`
     },
     description:
-        'Match with other travelers on your flight, split the cost of the taxi, and know exactly who you\'re riding with. Join the beta today.',
+        'Cojauny matches you with your fellow passengers the moment you book. Chat for weeks, plan together, and share a ride once you land. Join the beta today.',
     keywords: [
+        'flight matching app',
+        'connect with flight passengers',
         'airport ride share',
         'shared airport transfer',
         'split taxi cost airport',
-        'flight matching app',
         'verified travel profiles'
     ],
     authors: [{ name: siteMetadata.author }],
@@ -41,9 +42,9 @@ export const metadata: Metadata = {
         apple: '/apple-icon.png'
     },
     openGraph: {
-        title: `${siteMetadata.name} - Share your airport ride with people on your flight`,
+        title: `${siteMetadata.name} - Connect with the people on your flight`,
         description:
-            'Match with other travelers on your flight, split the cost of the taxi, and know exactly who you\'re riding with. Join the beta today.',
+            'Cojauny matches you with your fellow passengers the moment you book. Chat for weeks, plan together, and share a ride once you land. Join the beta today.',
         url: siteMetadata.url,
         siteName: siteMetadata.name,
         images: ogImages,
@@ -52,9 +53,9 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: `${siteMetadata.name} - Share your airport ride with people on your flight`,
+        title: `${siteMetadata.name} - Connect with the people on your flight`,
         description:
-            'Match with other travelers on your flight and split the cost of the taxi.',
+            'Match with your fellow passengers the moment you book, and share a ride once you land.',
         site: siteMetadata.twitter,
         creator: siteMetadata.twitter
     },

@@ -292,17 +292,17 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     hero: {
       eyebrow: 'Beta abierta · Quedan pocas plazas',
-      title: 'Comparte tu traslado al aeropuerto con gente de tu vuelo',
+      title: 'Conecta con la gente de tu vuelo',
       subtitle:
-        'Cojauny te empareja por número de vuelo, así compartes taxi o furgoneta con viajeros verificados que van a lo mismo — y sabes siempre con quién vas.',
+        'Cojauny te empareja con tus compañeros de vuelo en cuanto reservas — habla con ellos durante semanas, organizad el viaje juntos, y compartid traslado al aterrizar.',
       primaryCta: 'Reservar mi plaza',
       secondaryCta: 'Ver cómo funciona',
       imageAlt: 'Interfaz de Cojauny mostrando el matching por vuelo, el coste compartido y los perfiles verificados',
       trustSignals: [
-        'Reparte el coste',
         'Emparejado por vuelo',
-        'Viajeros verificados',
-        'Tu nombre real, en privado',
+        'Habla antes de volar',
+        'Reparte el coste',
+        'Verificado y privado',
       ],
     },
     heroVariants: {
@@ -327,9 +327,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     betaReferralBanner:
       'En cuanto entres, te daremos un enlace de invitación personal — compártelo para subir puestos en la lista.',
     features: {
-      title: 'Todo lo que necesitas para compartir viaje con confianza',
+      title: 'Todo lo que necesitas para conectar con tu vuelo',
       subtitle:
-        'Desde encontrar con quién ir hasta repartir la cuenta: cada función está pensada para que compartir sea fácil y seguro.',
+        'Desde emparejar hasta encontraros en persona: cada función gira en torno a tu vuelo, y a mantenerte seguro.',
       items: [
         {
           title: 'Emparejado por vuelo, no por suerte',
@@ -368,9 +368,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           iconName: 'flag',
         },
         {
-          title: 'Habla antes de veros, incluso en el aire',
+          title: 'Habla desde el mismo día del match',
           description:
-            'Coordina el punto de encuentro desde antes de embarcar, sigue hablando durante el vuelo sin conexión, y todo se sincroniza al aterrizar.',
+            'Organiza el viaje con semanas de antelación, sigue hablando durante el vuelo aunque no tengas conexión, y todo estará listo al aterrizar.',
           iconName: 'chat',
         },
         {
@@ -389,7 +389,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     value: {
       eyebrow: 'Por qué la gente se apunta',
-      title: 'Un viaje, tres buenas razones',
+      title: 'Un vuelo, cuatro buenas razones',
       subtitle:
         'Cojauny junta ahorro real, comodidad real y tranquilidad real — tú siempre eliges con quién viajas.',
       items: [
@@ -401,7 +401,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Emparejado por vuelo, nunca al azar',
           description:
-            'Solo viajas con gente de tu mismo vuelo y terminal — nunca con un desconocido cualquiera de la calle.',
+            'Solo te conectas con gente de tu mismo vuelo — no con un post de hace días en un grupo de Facebook ni con un desconocido que esperas encontrar en la puerta.',
         },
         {
           title: 'Verificado y valorado',
@@ -433,7 +433,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           value: '50.000+',
           label: 'Viajeros esperados',
-          description: 'Nuestro objetivo para tener gente suficiente y encontrar match en rutas con mucho tráfico.',
+          description: 'Cuantos más viajeros se unen, más vuelos consiguen match al instante — este es el tamaño que buscamos durante la beta.',
         },
         {
           value: '1.000+ t',
@@ -443,16 +443,16 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ],
     },
     workflow: {
-      title: 'Del número de vuelo al viaje compartido en 5 pasos',
-      intro: 'Verifica tu perfil una sola vez — luego solo tienes que emparejar, hablar y viajar, con algún control de seguridad de por medio.',
+      title: 'De la reserva al aterrizaje, en 5 pasos',
+      intro: 'Verifica tu perfil una sola vez. A partir de ahí, empareja, habla y organiza el viaje durante semanas — hasta el mismo día que aterrizas.',
       steps: [
         {
           title: '1. Crea tu perfil',
-          description: 'Regístrate y verifica tu identidad una vez. Ya está, ya puedes empezar a buscar viaje.',
+          description: 'Regístrate y verifica tu identidad una vez. Ya está, ya puedes empezar a buscar gente en tu vuelo.',
         },
         {
           title: '2. Añade tu vuelo',
-          description: 'Indica tu número de vuelo y fecha: creamos al momento un grupo y un chat solo para tu viaje.',
+          description: 'Añádelo en cuanto reserves, aunque falten meses, y creamos al momento un grupo y un chat solo para tu vuelo.',
         },
         {
           title: '3. Elige con quién ir',
@@ -524,8 +524,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     ctaStrip: {
-      heading: 'Comparte tu próximo traslado al aeropuerto',
-      body: 'Únete a la beta de Cojauny: encuentra viajeros de tu vuelo, reparte el coste y viaja con alguien de confianza.',
+      heading: 'Tu próximo vuelo ya tiene tu gente',
+      body: 'Únete a la beta, empareja con tus compañeros de vuelo en cuanto reserves, y empieza a hablar mucho antes de aterrizar.',
       link: '#beta',
       linkLabel: 'Reservar mi plaza',
     },
@@ -604,6 +604,10 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           question: '¿Cómo funciona el matching por vuelo?',
           answer: 'Solo tienes que indicar tu número de vuelo y la fecha. Consultamos nuestra base de datos al momento y te emparejamos con otros viajeros de tu mismo vuelo, o de uno compatible en el mismo aeropuerto y horario.'
+        },
+        {
+          question: '¿Por qué no usar un grupo de WhatsApp o buscar a alguien en el aeropuerto?',
+          answer: 'Puedes intentarlo, pero suele significar esperar que alguien siga por ahí, revisar publicaciones de hace días o hablar con alguien que ni siquiera tenía billete. Cojauny confirma que todos en tu grupo van de verdad en tu vuelo, te empareja automáticamente en cuanto reservas, y mantiene la conversación durante semanas antes de volar — no solo los minutos después de aterrizar.'
         },
         {
           question: '¿Es seguro viajar con gente que no conozco?',
@@ -831,17 +835,17 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     hero: {
       eyebrow: 'Beta is open · Spots are limited',
-      title: 'Share your airport ride with people on your flight',
+      title: 'Connect with the people on your flight',
       subtitle:
-        'Cojauny matches you by flight number, so you can split a taxi or van with verified travelers going the same way — and always know who you\'re with.',
+        'Cojauny matches you with your fellow passengers the moment you book — chat for weeks, plan together, and share a ride once you land.',
       primaryCta: 'Reserve my spot',
       secondaryCta: 'See how it works',
       imageAlt: 'Cojauny interface showing flight matches, shared costs, and verified profiles',
       trustSignals: [
-        'Split the cost',
         'Matched by flight',
-        'Verified travelers',
-        'Your name stays private',
+        'Chat before you fly',
+        'Split the cost',
+        'Verified & private',
       ],
     },
     heroVariants: {
@@ -866,9 +870,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     betaReferralBanner:
       'Once you\'re in, you\'ll get a personal invite link — share it to jump the queue.',
     features: {
-      title: 'Everything you need to share a ride with confidence',
+      title: 'Everything you need to connect with your flight',
       subtitle:
-        'From finding your match to splitting the bill, every feature is built to make sharing easy — and safe.',
+        'From matching to meeting up in person, every feature is built around your flight — and keeping you safe.',
       items: [
         {
           title: 'Matched by flight, not luck',
@@ -907,9 +911,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           iconName: 'flag',
         },
         {
-          title: 'Chat that works mid-flight',
+          title: 'Start chatting the moment you match',
           description:
-            'Keep talking to your group before boarding, offline during the flight, and after you land — everything syncs automatically.',
+            'Plan for weeks before your flight, keep talking even offline once you\'re in the air, and everything\'s ready when you land.',
           iconName: 'chat',
         },
         {
@@ -928,7 +932,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     value: {
       eyebrow: 'Why people join',
-      title: 'One ride, three good reasons',
+      title: 'One flight, four good reasons',
       subtitle:
         'Cojauny brings together real savings, real convenience, and real peace of mind — you always choose who you travel with.',
       items: [
@@ -940,7 +944,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Matched by flight, never by luck',
           description:
-            'You only ever travel with people on your exact flight and terminal — never a random stranger off the street.',
+            'You only ever connect with people on your exact flight — not a days-old post in a Facebook group or a stranger you\'re hoping is still at the gate.',
         },
         {
           title: 'Verified, and reviewed',
@@ -972,7 +976,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           value: '50,000+',
           label: 'Travelers expected',
-          description: 'Our goal for building a network big enough to match rides on busy routes.',
+          description: 'The more travelers join, the more flights get matched instantly — this is the size we\'re building toward during the beta.',
         },
         {
           value: '1,000+ t',
@@ -982,8 +986,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ],
     },
     workflow: {
-      title: 'From flight number to shared ride in five steps',
-      intro: 'Verify your profile once — then match, chat, and travel, with a few safety checks built in along the way.',
+      title: 'From booking to landing, in five simple steps',
+      intro: 'Verify your profile once. From there, match, chat, and plan for weeks — right up until you land.',
       steps: [
         {
           title: '1. Set up your profile',
@@ -991,7 +995,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           title: '2. Add your flight',
-          description: 'Enter your flight number and date, and we instantly create a group chat just for your trip.',
+          description: 'Add it the moment you book — even months ahead — and we instantly create a group chat just for your flight.',
         },
         {
           title: '3. Pick your match',
@@ -1063,8 +1067,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     ctaStrip: {
-      heading: 'Ready for your next airport ride to cost less?',
-      body: 'Join the Cojauny beta — match with people on your flight, split the ride, and travel with someone you can trust.',
+      heading: 'Your next flight already has your people on it',
+      body: 'Join the beta, get matched with your fellow passengers the moment you book, and start chatting long before you land.',
       link: '#beta',
       linkLabel: 'Reserve my spot'
     },
@@ -1143,6 +1147,10 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           question: 'How does the flight matching system work?',
           answer: 'Just enter your flight number and date. We check our database in real time and match you with other travelers on the same flight, or on a compatible one at the same airport and time.'
+        },
+        {
+          question: 'Why not just use a WhatsApp group or find someone at the airport?',
+          answer: 'You can try — but it usually means hoping someone\'s still around, scrolling through days-old posts, or chatting with someone who never actually had a ticket. Cojauny confirms everyone in your group is really on your flight, matches you automatically the moment you book, and keeps the conversation going for weeks before you fly — not just the few minutes after you land.'
         },
         {
           question: 'Is it safe to share a ride with people I don\'t know?',
@@ -1370,17 +1378,17 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     hero: {
       eyebrow: 'Beta ist offen · Plätze sind begrenzt',
-      title: 'Teile deine Fahrt zum Flughafen mit Leuten von deinem Flug',
+      title: 'Verbinde dich mit den Leuten auf deinem Flug',
       subtitle:
-        'Cojauny matcht euch über die Flugnummer, damit ihr euch Taxi oder Shuttle mit verifizierten Reisenden teilt — und immer wisst, mit wem ihr unterwegs seid.',
+        'Cojauny matcht dich mit deinen Mitreisenden, sobald du buchst — chattet wochenlang, plant gemeinsam, und teilt euch die Fahrt bei der Landung.',
       primaryCta: 'Meinen Platz sichern',
       secondaryCta: 'So funktioniert\'s',
       imageAlt: 'Cojauny-Oberfläche mit Flug-Matching, geteilten Kosten und verifizierten Profilen',
       trustSignals: [
-        'Kosten teilen',
         'Nach Flug gematcht',
-        'Verifizierte Reisende',
-        'Dein Name bleibt privat',
+        'Chat vor dem Abflug',
+        'Kosten teilen',
+        'Verifiziert & privat',
       ],
     },
     heroVariants: {
@@ -1405,9 +1413,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     betaReferralBanner:
       'Sobald du dabei bist, bekommst du einen persönlichen Einladungslink — teile ihn und rutsche in der Warteliste nach vorne.',
     features: {
-      title: 'Alles, was du zum sicheren Mitfahren brauchst',
+      title: 'Alles, was du brauchst, um dich mit deinem Flug zu verbinden',
       subtitle:
-        'Vom Match bis zur geteilten Rechnung — jede Funktion macht das Teilen einfach und sicher.',
+        'Vom Match bis zum persönlichen Treffen — jede Funktion dreht sich um deinen Flug, und deine Sicherheit.',
       items: [
         {
           title: 'Nach Flug gematcht, nicht nach Zufall',
@@ -1446,9 +1454,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           iconName: 'flag',
         },
         {
-          title: 'Chat, der auch im Flugzeug funktioniert',
+          title: 'Chatten ab dem Moment des Matches',
           description:
-            'Bleib mit deiner Gruppe in Kontakt — vor dem Boarding, offline während des Flugs und nach der Landung. Alles synchronisiert sich automatisch.',
+            'Plane wochenlang im Voraus, bleib auch offline während des Flugs in Kontakt, und bei der Landung ist schon alles klar.',
           iconName: 'chat',
         },
         {
@@ -1467,7 +1475,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     value: {
       eyebrow: 'Warum Leute mitmachen',
-      title: 'Eine Fahrt, drei gute Gründe',
+      title: 'Ein Flug, vier gute Gründe',
       subtitle:
         'Cojauny bringt echte Ersparnis, echten Komfort und ein gutes Gefühl zusammen — du entscheidest immer, mit wem du fährst.',
       items: [
@@ -1479,7 +1487,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Nach Flug gematcht, nie nach Zufall',
           description:
-            'Du reist nur mit Leuten von deinem Flug und Terminal — nie mit einem zufälligen Fremden von der Straße.',
+            'Du verbindest dich nur mit Leuten von deinem Flug — nicht mit einem tagealten Post in einer Facebook-Gruppe oder einem Fremden, den du hoffentlich noch am Gate triffst.',
         },
         {
           title: 'Verifiziert und bewertet',
@@ -1511,7 +1519,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           value: '50.000+',
           label: 'Erwartete Reisende',
-          description: 'Unser Ziel für ein Netzwerk, das groß genug ist, um auch auf stark frequentierten Strecken zu matchen.'
+          description: 'Je mehr Reisende mitmachen, desto mehr Flüge bekommen sofort ein Match — das ist die Größe, auf die wir während der Beta hinarbeiten.'
         },
         {
           value: '1.000+ t',
@@ -1521,8 +1529,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     workflow: {
-      title: 'Von der Flugnummer zur geteilten Fahrt in 5 Schritten',
-      intro: 'Verifiziere dein Profil einmal — dann heißt es nur noch matchen, absprechen und losfahren, mit ein paar Sicherheitschecks nebenbei.',
+      title: 'Von der Buchung bis zur Landung in 5 Schritten',
+      intro: 'Verifiziere dein Profil einmal. Danach kannst du matchen, chatten und wochenlang planen — bis zu dem Tag, an dem du landest.',
       steps: [
         {
           title: '1. Profil anlegen',
@@ -1530,7 +1538,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           title: '2. Flug hinzufügen',
-          description: 'Gib Flugnummer und Datum ein — wir legen sofort eine Gruppe und einen Chat nur für deinen Flug an.',
+          description: 'Trag ihn ein, sobald du buchst — auch Monate im Voraus — und wir legen sofort eine Gruppe und einen Chat nur für deinen Flug an.',
         },
         {
           title: '3. Match auswählen',
@@ -1602,8 +1610,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     ctaStrip: {
-      heading: 'Bereit für eine günstigere Fahrt zum Flughafen?',
-      body: 'Tritt der Cojauny-Beta bei: finde Leute von deinem Flug, teilt euch die Fahrt und reist mit jemandem, dem ihr vertrauen könnt.',
+      heading: 'Dein nächster Flug hat schon deine Leute',
+      body: 'Tritt der Beta bei, werde direkt bei der Buchung mit deinen Mitreisenden gematcht und chattet schon lange vor dem Abflug.',
       link: '#beta',
       linkLabel: 'Meinen Platz sichern'
     },
@@ -1682,6 +1690,10 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           question: 'Wie funktioniert das Flug-Matching?',
           answer: 'Gib einfach deine Flugnummer und das Datum ein. Wir gleichen das in Echtzeit mit unserer Datenbank ab und bringen dich mit anderen Reisenden auf deinem Flug zusammen — oder auf einem passenden Flug am selben Flughafen zur selben Zeit.'
+        },
+        {
+          question: 'Warum nicht einfach eine WhatsApp-Gruppe nutzen oder jemanden am Flughafen suchen?',
+          answer: 'Kannst du versuchen — meistens heißt das aber, zu hoffen, dass noch jemand da ist, tagealte Posts zu durchsuchen oder mit jemandem zu schreiben, der nie ein Ticket hatte. Cojauny bestätigt, dass alle in deiner Gruppe wirklich auf deinem Flug sind, matcht dich automatisch, sobald du buchst, und hält die Unterhaltung wochenlang vor dem Abflug am Laufen — nicht nur für die paar Minuten nach der Landung.'
         },
         {
           question: 'Ist es sicher, mit Leuten zu reisen, die ich nicht kenne?',
@@ -1909,17 +1921,17 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     hero: {
       eyebrow: 'La bêta est ouverte · Places limitées',
-      title: 'Partagez votre trajet vers l\'aéroport avec des passagers de votre vol',
+      title: 'Connectez-vous aux passagers de votre vol',
       subtitle:
-        'Cojauny vous associe par numéro de vol, pour partager un taxi ou une navette avec des voyageurs vérifiés qui vont au même endroit — en sachant toujours avec qui vous voyagez.',
+        'Cojauny vous associe à vos compagnons de vol dès la réservation — discutez pendant des semaines, organisez-vous ensemble, et partagez le trajet à l\'atterrissage.',
       primaryCta: 'Réserver ma place',
       secondaryCta: 'Voir comment ça marche',
       imageAlt: 'Interface Cojauny avec matching par vol, coûts partagés et profils vérifiés',
       trustSignals: [
-        'Partagez le coût',
         'Associé par vol',
-        'Voyageurs vérifiés',
-        'Votre nom reste privé',
+        'Chat avant le départ',
+        'Partagez le coût',
+        'Vérifié et privé',
       ],
     },
     heroVariants: {
@@ -1944,9 +1956,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     betaReferralBanner:
       'Une fois inscrit, vous recevrez un lien d\'invitation personnel — partagez-le pour avancer dans la file d\'attente.',
     features: {
-      title: 'Tout ce qu\'il faut pour covoiturer en toute confiance',
+      title: 'Tout ce qu\'il faut pour vous connecter à votre vol',
       subtitle:
-        'De la recherche d\'un compagnon de route au partage de l\'addition : chaque fonctionnalité rend le partage simple, et sûr.',
+        'De l\'association à la rencontre en personne : chaque fonctionnalité tourne autour de votre vol, et de votre sécurité.',
       items: [
         {
           title: 'Associé par vol, jamais par hasard',
@@ -1985,9 +1997,9 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           iconName: 'flag',
         },
         {
-          title: 'Un chat qui fonctionne même en plein vol',
+          title: 'Discutez dès que vous êtes associés',
           description:
-            'Restez en contact avec votre groupe avant l\'embarquement, hors ligne pendant le vol, et après l\'atterrissage — tout se synchronise automatiquement.',
+            'Organisez-vous pendant des semaines à l\'avance, restez en contact même hors ligne pendant le vol, et tout est prêt à l\'atterrissage.',
           iconName: 'chat',
         },
         {
@@ -2006,7 +2018,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     value: {
       eyebrow: 'Pourquoi on nous rejoint',
-      title: 'Un trajet, trois bonnes raisons',
+      title: 'Un vol, quatre bonnes raisons',
       subtitle:
         'Cojauny réunit de vraies économies, un vrai confort et une vraie tranquillité d\'esprit — vous choisissez toujours avec qui voyager.',
       items: [
@@ -2018,7 +2030,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Associé par vol, jamais par hasard',
           description:
-            'Vous ne voyagez qu\'avec des personnes de votre vol et terminal — jamais avec un inconnu croisé dans la rue.',
+            'Vous n\'êtes en contact qu\'avec des gens de votre vol — pas un post vieux de plusieurs jours dans un groupe Facebook, ni un inconnu que vous espérez encore trouver à la porte.',
         },
         {
           title: 'Vérifié, et noté',
@@ -2050,7 +2062,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           value: '50 000+',
           label: 'Voyageurs attendus',
-          description: 'Notre objectif pour constituer un réseau assez grand pour trouver des correspondances même sur les lignes très fréquentées.'
+          description: 'Plus il y a de voyageurs, plus de vols trouvent un match instantané — c\'est la taille vers laquelle on travaille pendant la bêta.'
         },
         {
           value: '1 000+ t',
@@ -2060,8 +2072,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     workflow: {
-      title: 'Du numéro de vol au trajet partagé en 5 étapes',
-      intro: 'Vérifiez votre profil une seule fois — ensuite, il ne reste qu\'à trouver un compagnon de route, s\'organiser et voyager, avec quelques contrôles de sécurité au passage.',
+      title: 'De la réservation à l\'atterrissage, en 5 étapes',
+      intro: 'Vérifiez votre profil une seule fois. Ensuite, associez-vous, discutez et organisez-vous pendant des semaines — jusqu\'au jour de l\'atterrissage.',
       steps: [
         {
           title: '1. Créez votre profil',
@@ -2069,7 +2081,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           title: '2. Ajoutez votre vol',
-          description: 'Indiquez votre numéro de vol et la date : on crée aussitôt un groupe et un chat rien que pour votre trajet.',
+          description: 'Ajoutez-le dès la réservation, même des mois à l\'avance, et on crée aussitôt un groupe et un chat rien que pour votre vol.',
         },
         {
           title: '3. Choisissez votre compagnon de route',
@@ -2141,8 +2153,8 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       ]
     },
     ctaStrip: {
-      heading: 'Prêt à payer moins cher votre prochain trajet aéroport ?',
-      body: 'Rejoignez la bêta Cojauny : trouvez des voyageurs de votre vol, partagez le trajet et voyagez avec quelqu\'un de confiance.',
+      heading: 'Votre prochain vol a déjà vos compagnons de route',
+      body: 'Rejoignez la bêta, soyez associé à vos compagnons de vol dès la réservation, et discutez bien avant l\'atterrissage.',
       link: '#beta',
       linkLabel: 'Réserver ma place'
     },
@@ -2221,6 +2233,10 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           question: 'Comment fonctionne le matching par vol ?',
           answer: 'Indiquez simplement votre numéro de vol et la date. Nous vérifions notre base de données en temps réel et vous mettons en relation avec d\'autres voyageurs de votre vol, ou d\'un vol compatible au même aéroport et à la même heure.'
+        },
+        {
+          question: 'Pourquoi pas juste un groupe WhatsApp ou chercher quelqu\'un à l\'aéroport ?',
+          answer: 'Vous pouvez essayer — mais ça veut souvent dire espérer que quelqu\'un soit encore là, faire défiler des publications vieilles de plusieurs jours, ou discuter avec quelqu\'un qui n\'avait même pas de billet. Cojauny confirme que tout le monde dans votre groupe est vraiment sur votre vol, vous associe automatiquement dès la réservation, et garde la conversation active pendant des semaines avant le départ — pas seulement les quelques minutes après l\'atterrissage.'
         },
         {
           question: 'Est-ce sûr de voyager avec des gens que je ne connais pas ?',

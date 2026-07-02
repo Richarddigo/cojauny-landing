@@ -28,8 +28,8 @@ interface HeaderProps {
 type NavItem = { href: string; label: string; external?: boolean; highlight?: boolean };
 
 const buildNavItems = (copy: LandingCopy['header'], locale: Locale): NavItem[] => [
-    { href: '#benefits', label: copy.benefits },
     { href: '#how-it-works', label: copy.workflow },
+    { href: '#benefits', label: copy.benefits },
     { href: '#demo', label: copy.demo },
     { href: '#faq', label: copy.faq },
     ...(ENABLE_PREMIUM ? [{ href: '#pricing', label: copy.pricing }] : []),

@@ -56,10 +56,10 @@ const LandingPageContent = ({ copy, locale, common, heroVariant }: LandingPageCo
                 airportsHubAll={copy.airportsHubAll}
             />
             <StickyMobileBetaCta locale={locale} label={copy.hero.primaryCta} />
-            <div className="cv-auto"><ValuePropsSection copy={copy.value} /></div>
             <div className="cv-auto"><WorkflowSection copy={copy.workflow} /></div>
-            <div className="cv-auto"><DemoSection copy={copy.mockups} /></div>
+            <div className="cv-auto"><ValuePropsSection copy={copy.value} /></div>
             <div className="cv-auto"><Features copy={copy.features} /></div>
+            <div className="cv-auto"><DemoSection copy={copy.mockups} /></div>
             <div className="cv-auto"><SavingsSection copy={copy.savings} /></div>
             {ENABLE_PREMIUM && <div className="cv-auto"><PricingSection copy={copy.pricing} common={resolvedCommon} /></div>}
             <div className="cv-auto"><FaqSection copy={copy.faq} locale={locale} airportsHubTitle={copy.airportsHubTitle} airportsHubAll={copy.airportsHubAll} /></div>

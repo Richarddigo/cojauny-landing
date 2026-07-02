@@ -66,16 +66,16 @@
     },
     "hero": {
       "eyebrow": "Beta abierta · Quedan pocas plazas",
-      "title": "Comparte tu traslado al aeropuerto con gente de tu vuelo",
-      "subtitle": "Cojauny te empareja por número de vuelo, así compartes taxi o furgoneta con viajeros verificados que van a lo mismo — y sabes siempre con quién vas.",
+      "title": "Conecta con la gente de tu vuelo",
+      "subtitle": "Cojauny te empareja con tus compañeros de vuelo en cuanto reservas — habla con ellos durante semanas, organizad el viaje juntos, y compartid traslado al aterrizar.",
       "primaryCta": "Reservar mi plaza",
       "secondaryCta": "Ver cómo funciona",
       "imageAlt": "Interfaz de Cojauny mostrando el matching por vuelo, el coste compartido y los perfiles verificados",
       "trustSignals": [
-        "Reparte el coste",
         "Emparejado por vuelo",
-        "Viajeros verificados",
-        "Tu nombre real, en privado"
+        "Habla antes de volar",
+        "Reparte el coste",
+        "Verificado y privado"
       ]
     },
     "heroVariants": {
@@ -97,8 +97,8 @@
     "airportsHubAll": "Ver todos los aeropuertos",
     "betaReferralBanner": "En cuanto entres, te daremos un enlace de invitación personal — compártelo para subir puestos en la lista.",
     "features": {
-      "title": "Todo lo que necesitas para compartir viaje con confianza",
-      "subtitle": "Desde encontrar con quién ir hasta repartir la cuenta: cada función está pensada para que compartir sea fácil y seguro.",
+      "title": "Todo lo que necesitas para conectar con tu vuelo",
+      "subtitle": "Desde emparejar hasta encontraros en persona: cada función gira en torno a tu vuelo, y a mantenerte seguro.",
       "items": [
         {
           "title": "Emparejado por vuelo, no por suerte",
@@ -131,8 +131,8 @@
           "iconName": "flag"
         },
         {
-          "title": "Habla antes de veros, incluso en el aire",
-          "description": "Coordina el punto de encuentro desde antes de embarcar, sigue hablando durante el vuelo sin conexión, y todo se sincroniza al aterrizar.",
+          "title": "Habla desde el mismo día del match",
+          "description": "Organiza el viaje con semanas de antelación, sigue hablando durante el vuelo aunque no tengas conexión, y todo estará listo al aterrizar.",
           "iconName": "chat"
         },
         {
@@ -149,7 +149,7 @@
     },
     "value": {
       "eyebrow": "Por qué la gente se apunta",
-      "title": "Un viaje, tres buenas razones",
+      "title": "Un vuelo, cuatro buenas razones",
       "subtitle": "Cojauny junta ahorro real, comodidad real y tranquilidad real — tú siempre eliges con quién viajas.",
       "items": [
         {
@@ -158,7 +158,7 @@
         },
         {
           "title": "Emparejado por vuelo, nunca al azar",
-          "description": "Solo viajas con gente de tu mismo vuelo y terminal — nunca con un desconocido cualquiera de la calle."
+          "description": "Solo te conectas con gente de tu mismo vuelo — no con un post de hace días en un grupo de Facebook ni con un desconocido que esperas encontrar en la puerta."
         },
         {
           "title": "Verificado y valorado",
@@ -187,7 +187,7 @@
         {
           "value": "50.000+",
           "label": "Viajeros esperados",
-          "description": "Nuestro objetivo para tener gente suficiente y encontrar match en rutas con mucho tráfico."
+          "description": "Cuantos más viajeros se unen, más vuelos consiguen match al instante — este es el tamaño que buscamos durante la beta."
         },
         {
           "value": "1.000+ t",
@@ -197,16 +197,16 @@
       ]
     },
     "workflow": {
-      "title": "Del número de vuelo al viaje compartido en 5 pasos",
-      "intro": "Verifica tu perfil una sola vez — luego solo tienes que emparejar, hablar y viajar, con algún control de seguridad de por medio.",
+      "title": "De la reserva al aterrizaje, en 5 pasos",
+      "intro": "Verifica tu perfil una sola vez. A partir de ahí, empareja, habla y organiza el viaje durante semanas — hasta el mismo día que aterrizas.",
       "steps": [
         {
           "title": "1. Crea tu perfil",
-          "description": "Regístrate y verifica tu identidad una vez. Ya está, ya puedes empezar a buscar viaje."
+          "description": "Regístrate y verifica tu identidad una vez. Ya está, ya puedes empezar a buscar gente en tu vuelo."
         },
         {
           "title": "2. Añade tu vuelo",
-          "description": "Indica tu número de vuelo y fecha: creamos al momento un grupo y un chat solo para tu viaje."
+          "description": "Añádelo en cuanto reserves, aunque falten meses, y creamos al momento un grupo y un chat solo para tu vuelo."
         },
         {
           "title": "3. Elige con quién ir",
@@ -271,8 +271,8 @@
       ]
     },
     "ctaStrip": {
-      "heading": "Comparte tu próximo traslado al aeropuerto",
-      "body": "Únete a la beta de Cojauny: encuentra viajeros de tu vuelo, reparte el coste y viaja con alguien de confianza.",
+      "heading": "Tu próximo vuelo ya tiene tu gente",
+      "body": "Únete a la beta, empareja con tus compañeros de vuelo en cuanto reserves, y empieza a hablar mucho antes de aterrizar.",
       "link": "#beta",
       "linkLabel": "Reservar mi plaza"
     },
@@ -351,6 +351,10 @@
         {
           "question": "¿Cómo funciona el matching por vuelo?",
           "answer": "Solo tienes que indicar tu número de vuelo y la fecha. Consultamos nuestra base de datos al momento y te emparejamos con otros viajeros de tu mismo vuelo, o de uno compatible en el mismo aeropuerto y horario."
+        },
+        {
+          "question": "¿Por qué no usar un grupo de WhatsApp o buscar a alguien en el aeropuerto?",
+          "answer": "Puedes intentarlo, pero suele significar esperar que alguien siga por ahí, revisar publicaciones de hace días o hablar con alguien que ni siquiera tenía billete. Cojauny confirma que todos en tu grupo van de verdad en tu vuelo, te empareja automáticamente en cuanto reservas, y mantiene la conversación durante semanas antes de volar — no solo los minutos después de aterrizar."
         },
         {
           "question": "¿Es seguro viajar con gente que no conozco?",
