@@ -6,7 +6,14 @@ describe('Hero', () => {
     it('muestra el título principal y los CTA', () => {
         const copy = getLandingCopy('es');
 
-        render(<Hero copy={copy.hero} />);
+        render(
+            <Hero
+                copy={copy.hero}
+                quickSignupCopy={copy.heroQuickSignup}
+                betaCopy={copy.forms.beta}
+                locale="es"
+            />
+        );
 
         // Use copy values so tests don't break when copy changes
         expect(

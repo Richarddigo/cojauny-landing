@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useConsent } from '@/hooks/useConsent';
 import type { LandingCopy } from '@/locales/copy';
 import type { Locale } from '@/locales/config';
+import Button from '@/components/ui/Button';
 
 interface CookieBannerProps {
     copy: LandingCopy['cookie'];
@@ -32,28 +33,27 @@ const CookieBanner = ({ copy, locale }: CookieBannerProps) => {
         >
             <p className="mb-4 text-sm text-white/80">{copy.message}</p>
             <div className="flex flex-wrap gap-3">
-                <button
-                    type="button"
+                <Button
+                    size="sm"
                     onClick={() => {
                         accept();
                         setOpen(false);
                     }}
-                    className="rounded-xl bg-studio-accent px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-studio-accent-dim focus-visible:bg-studio-accent-dim"
                     tabIndex={open ? 0 : -1}
                 >
                     {copy.acceptAll}
-                </button>
-                <button
-                    type="button"
+                </Button>
+                <Button
+                    variant="secondary"
+                    size="sm"
                     onClick={() => {
                         reject();
                         setOpen(false);
                     }}
-                    className="rounded-xl border border-white/20 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
                     tabIndex={open ? 0 : -1}
                 >
                     {copy.reject}
-                </button>
+                </Button>
                 <a
                     href={`/${locale}/legal/cookies`}
                     className="ml-auto text-sm font-medium text-white/70 underline-offset-4 hover:text-white hover:underline"

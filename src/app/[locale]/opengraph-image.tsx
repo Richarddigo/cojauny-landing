@@ -51,7 +51,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    background: 'linear-gradient(135deg, #1e3a5f 0%, #0f172a 50%, #1e293b 100%)',
+                    background: 'linear-gradient(135deg, #0C1120 0%, #1C2336 50%, #0C1120 100%)',
                     fontFamily: 'Inter, system-ui, sans-serif',
                 }}
             >
@@ -63,7 +63,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
                         left: 0,
                         right: 0,
                         bottom: 0,
-                        backgroundImage: 'radial-gradient(circle at 25% 25%, rgba(90, 103, 242, 0.15) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(90, 103, 242, 0.1) 0%, transparent 50%)',
+                        backgroundImage: 'radial-gradient(circle at 25% 25%, rgba(91, 123, 255, 0.18) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(91, 123, 255, 0.12) 0%, transparent 50%)',
                         display: 'flex',
                     }}
                 />
@@ -138,12 +138,12 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
                             alignItems: 'center',
                             justifyContent: 'center',
                             padding: '16px 40px',
-                            background: 'linear-gradient(135deg, #5a67f2 0%, #4338ca 100%)',
+                            background: 'linear-gradient(135deg, #5B7BFF 0%, #3A59D9 100%)',
                             borderRadius: '50px',
                             fontSize: '24px',
                             fontWeight: 600,
                             color: '#ffffff',
-                            boxShadow: '0 4px 20px rgba(90, 103, 242, 0.4)',
+                            boxShadow: '0 4px 20px rgba(91, 123, 255, 0.4)',
                         }}
                     >
                         {texts.cta}

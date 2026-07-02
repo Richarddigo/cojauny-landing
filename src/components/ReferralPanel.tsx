@@ -1,8 +1,10 @@
 ﻿"use client";
 
 import { useState, useEffect } from 'react';
-import { CheckIcon, ClipboardDocumentIcon } from '@heroicons/react/24/outline';
+import { ClipboardDocumentIcon } from '@heroicons/react/24/outline';
 import type { ReferralPanelCopy } from '@/locales/copy';
+import Button from '@/components/ui/Button';
+import Icon from '@/components/ui/Icon';
 
 interface ReferralPanelProps {
   copy: ReferralPanelCopy;
@@ -101,13 +103,10 @@ const ReferralPanel = ({ copy, email, referralLink: propReferralLink }: Referral
               value={displayLink}
               className="flex-1 rounded-2xl border-2 border-studio-accent/40 bg-studio-surface-2 px-4 py-3 text-base text-studio-text focus:outline-none focus:ring-2 focus:ring-studio-accent/20"
             />
-            <button
-              onClick={handleCopyLink}
-              className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-brand-600 to-brand-500 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-brand-600/30 transition-all duration-200 hover:shadow-xl hover:shadow-brand-600/40 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
-            >
+            <Button onClick={handleCopyLink} className="rounded-2xl">
               {copiedLink ? (
                 <>
-                  <CheckIcon className="h-5 w-5" aria-hidden />
+                  <Icon name="check" size={18} className="text-white" />
                   {copy.copiedButton}
                 </>
               ) : (
@@ -116,7 +115,7 @@ const ReferralPanel = ({ copy, email, referralLink: propReferralLink }: Referral
                   {copy.copyButton}
                 </>
               )}
-            </button>
+            </Button>
           </div>
         </div>
 

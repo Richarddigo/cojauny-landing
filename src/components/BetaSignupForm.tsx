@@ -3,6 +3,7 @@
 import { Fragment, useEffect, useRef, useState, type ChangeEvent, type FormEvent } from 'react';
 import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile';
 import AlertMessage from '@/components/AlertMessage';
+import Button from '@/components/ui/Button';
 import { apiClient, ApiError } from '@/lib/api-client';
 
 
@@ -390,13 +391,9 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                             options={{ theme: 'dark' }}
                         />
                     )}
-                    <button
-                        type="submit"
-                        disabled={submitting}
-                        className="inline-flex w-full items-center justify-center rounded-xl bg-brand-500 px-6 py-4 text-base font-bold text-white shadow-lg shadow-brand-500/25 transition-all duration-200 hover:bg-brand-600 hover:scale-[1.02] hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-brand-500/20 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:scale-100"
-                    >
-                        {submitting ? `${resolvedCopy.submit}...` : resolvedCopy.submit}
-                    </button>
+                    <Button type="submit" loading={submitting} size="lg" className="w-full">
+                        {resolvedCopy.submit}
+                    </Button>
                     {success && <AlertMessage type="success" message={success} onClose={() => setSuccess(null)} positioning="relative" />}
                     {error && <AlertMessage type="error" message={error} onClose={() => setError(null)} positioning="relative" />}
                 </div>

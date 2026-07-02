@@ -27,20 +27,33 @@ const LandingPageContent = ({ copy, locale, common }: LandingPageContentProps) =
     const resolvedCommon = common ?? getCommonCopy(locale);
     return (
         <>
+            {/*
+              Section order is deliberately funnel-shaped: hook (Hero) -> why it matters
+              (ValueProps) -> proof (Demo) -> ambition (Savings) -> what it does in detail
+              (Features/Workflow) -> objection handling (FAQ) -> urgency (IntegrationCTA)
+              -> the actual ask (BetaSignupForm) -> lowest-priority secondary ask (Feedback).
+              This keeps persuasion ahead of the commitment step instead of asking for a
+              long form before visitors know why they should fill it in.
+            */}
             <Hero copy={copy.hero} quickSignupCopy={copy.heroQuickSignup} betaCopy={copy.forms.beta} locale={locale} />
-            <DemoSection copy={copy.mockups} />
-            <section id="beta" className="cv-auto w-full scroll-mt-[74px] py-12 lg:scroll-mt-[100px] md:py-16 lg:py-20">
-                <div className="mx-auto max-w-[1180px] px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">
-                    <BetaSignupForm locale={locale} />
-                </div>
-            </section>
             <div className="cv-auto"><ValuePropsSection copy={copy.value} /></div>
+            <DemoSection copy={copy.mockups} />
             <div className="cv-auto"><SavingsSection copy={copy.savings} /></div>
             <div className="cv-auto"><Features copy={copy.features} /></div>
             <div className="cv-auto"><WorkflowSection copy={copy.workflow} /></div>
             {/* PREMIUM SECTION — controlled by NEXT_PUBLIC_ENABLE_PREMIUM=true */}
             {ENABLE_PREMIUM && <div className="cv-auto"><PricingSection copy={copy.pricing} common={resolvedCommon} /></div>}
             <div className="cv-auto"><FaqSection copy={copy.faq} /></div>
+            <section className="cv-auto w-full pt-12 md:pt-16 lg:pt-20">
+                <div className="mx-auto max-w-[1180px] px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">
+                    <IntegrationCTA copy={copy.ctaStrip} locale={locale} />
+                </div>
+            </section>
+            <section id="beta" className="cv-auto w-full scroll-mt-[74px] py-12 lg:scroll-mt-[100px] md:py-16 lg:py-20">
+                <div className="mx-auto max-w-[1180px] px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">
+                    <BetaSignupForm locale={locale} />
+                </div>
+            </section>
             <section id="feedback" className="cv-auto w-full scroll-mt-[74px] py-12 lg:scroll-mt-[100px] md:py-16 lg:py-20">
                 <div className="mx-auto max-w-[1180px] px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">
                     <div className="mb-12 text-center md:mb-16">
@@ -52,11 +65,6 @@ const LandingPageContent = ({ copy, locale, common }: LandingPageContentProps) =
                         </p>
                     </div>
                     <FeedbackForm locale={locale} />
-                </div>
-            </section>
-            <section className="cv-auto w-full py-12 md:py-16 lg:py-20">
-                <div className="mx-auto max-w-[1180px] px-4 sm:px-6 pl-[calc(var(--social-bar-offset)+1rem)]">
-                    <IntegrationCTA copy={copy.ctaStrip} locale={locale} />
                 </div>
             </section>
         </>

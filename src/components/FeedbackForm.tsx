@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from 'r
 import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile';
 import { ChatBubbleBottomCenterTextIcon, LightBulbIcon, BriefcaseIcon } from '@heroicons/react/24/outline';
 import AlertMessage from '@/components/AlertMessage';
+import Button from '@/components/ui/Button';
 import { apiClient } from '@/lib/api-client';
 
 import { feedbackSchema, type FeedbackInput } from '@/lib/validation';
@@ -131,7 +132,7 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
         <form
             onSubmit={handleSubmit}
             onFocus={() => { if (!interacted) setInteracted(true); }}
-            className="space-y-6 rounded-3xl border border-white/12 bg-studio-surface/80 p-8 shadow-soft-glow backdrop-blur-xl transition-all hover:shadow-2xl"
+            className="space-y-6 rounded-3xl border border-white/8 bg-studio-surface p-8 shadow-xl"
             aria-describedby="feedback-help"
         >
             <div>
@@ -151,7 +152,7 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
                         onChange={handleChange}
                         required
                         aria-label={resolvedCopy.fields.fullName}
-                        className="rounded-xl border border-white/12 bg-studio-surface-2/50 px-4 py-3 text-base text-studio-text shadow-sm transition-all placeholder:text-studio-faint focus:border-brand-500 focus:bg-studio-surface-2 focus:outline-none focus:ring-4 focus:ring-brand-500/10"
+                        className="rounded-2xl border-2 border-white/10 bg-studio-surface-2 px-4 py-3 text-base text-studio-text transition-colors placeholder:text-studio-faint focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
                     />
                 </label>
                 <label className="flex flex-col gap-2">
@@ -163,7 +164,7 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
                         onChange={handleChange}
                         required
                         aria-label={resolvedCopy.fields.email}
-                        className="rounded-xl border border-white/12 bg-studio-surface-2/50 px-4 py-3 text-base text-studio-text shadow-sm transition-all placeholder:text-studio-faint focus:border-brand-500 focus:bg-studio-surface-2 focus:outline-none focus:ring-4 focus:ring-brand-500/10"
+                        className="rounded-2xl border-2 border-white/10 bg-studio-surface-2 px-4 py-3 text-base text-studio-text transition-colors placeholder:text-studio-faint focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20"
                     />
                 </label>
             </div>
@@ -174,9 +175,9 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
                     {resolvedCopy.caseOptions?.map((option) => (
                         <label
                             key={option.value}
-                            className={`flex min-w-0 flex-1 cursor-pointer flex-col items-center gap-1 rounded-xl border p-2 sm:p-4 transition-all hover:bg-white/10 ${form.usecase === option.value
-                                ? 'border-brand-500 bg-brand-500/10 ring-2 ring-brand-500/20'
-                                : 'border-white/10 bg-studio-surface-2/50'
+                            className={`flex min-w-0 flex-1 cursor-pointer flex-col items-center gap-1 rounded-2xl border-2 p-2 transition-colors sm:p-4 ${form.usecase === option.value
+                                ? 'border-brand-500 bg-brand-500/10'
+                                : 'border-white/10 bg-studio-surface-2 hover:border-brand-500/40'
                                 }`}
                         >
                             <input
@@ -219,7 +220,7 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
                     aria-label={resolvedCopy.fields.message}
                     aria-invalid={!!messageError}
                     aria-describedby={messageError ? 'feedback-message-error' : undefined}
-                    className={`resize-none rounded-xl px-4 py-3 text-base shadow-sm transition-all placeholder:text-studio-faint focus:outline-none ${messageError ? 'border-red-500 bg-red-900/20 text-studio-text ring-2 ring-red-500/30' : 'border border-white/12 bg-studio-surface-2/50 text-studio-text focus:border-brand-500 focus:bg-studio-surface-2 focus:ring-4 focus:ring-brand-500/10'}`}
+                    className={`resize-none rounded-2xl px-4 py-3 text-base transition-colors placeholder:text-studio-faint focus:outline-none ${messageError ? 'border-2 border-red-500 bg-red-900/20 text-studio-text ring-2 ring-red-500/30' : 'border-2 border-white/10 bg-studio-surface-2 text-studio-text focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20'}`}
                 />
                 <div className="flex justify-between items-center mt-2">
                     <p className="text-sm text-studio-muted">{form.message.length}/{MAX_CHARS}</p>
@@ -258,23 +259,9 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
                         options={{ theme: 'dark' }}
                     />
                 )}
-                <button
-                    type="submit"
-                    disabled={submitting}
-                    className="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 px-6 py-4 text-base font-bold text-white shadow-lg shadow-brand-600/25 transition-all duration-200 hover:scale-[1.02] hover:shadow-xl hover:shadow-brand-600/35 focus:outline-none focus:ring-4 focus:ring-brand-500/20 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:scale-100"
-                >
-                    {submitting ? (
-                        <>
-                            <svg className="mr-2 h-5 w-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            {resolvedCopy.submit}…
-                        </>
-                    ) : (
-                        resolvedCopy.submit
-                    )}
-                </button>
+                <Button type="submit" loading={submitting} size="lg" className="w-full">
+                    {resolvedCopy.submit}
+                </Button>
 
                 {success && <AlertMessage type="success" message={success} onClose={() => setSuccess(null)} positioning="relative" />}
                 {error && <AlertMessage type="error" message={error} onClose={() => setError(null)} positioning="relative" />}

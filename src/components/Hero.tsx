@@ -1,6 +1,7 @@
 import type { LandingCopy } from '@/locales/copy';
 import type { Locale } from '@/locales/config';
 import HeroBetaCapture from '@/components/HeroBetaCapture';
+import Button from '@/components/ui/Button';
 
 interface HeroProps {
     copy: LandingCopy['hero'];
@@ -33,18 +34,12 @@ const Hero = ({ copy, quickSignupCopy, betaCopy, locale }: HeroProps) => (
             </p>
             <HeroBetaCapture locale={locale} copy={quickSignupCopy} betaCopy={betaCopy} />
             <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:mt-8 sm:flex-row sm:gap-4">
-                <a
-                    href="#beta"
-                    className="inline-flex items-center justify-center rounded-xl bg-studio-accent px-8 py-3 text-base font-semibold text-white transition hover:bg-studio-accent-dim"
-                >
+                <Button href="#beta" variant="primary" size="lg">
                     {copy.primaryCta}
-                </a>
-                <a
-                    href="#demo"
-                    className="inline-flex w-full items-center justify-center rounded-xl border-2 border-white/20 px-8 py-3.5 text-base font-semibold text-white transition-all duration-150 hover:border-white/30 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-studio-bg sm:w-auto sm:px-10"
-                >
+                </Button>
+                <Button href="#demo" variant="outline" size="lg" className="w-full sm:w-auto">
                     {copy.secondaryCta}
-                </a>
+                </Button>
             </div>
         </div>
     </section>

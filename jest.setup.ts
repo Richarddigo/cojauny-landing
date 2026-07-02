@@ -2,6 +2,28 @@ import '@testing-library/jest-dom';
 import { getCommonCopy } from '@/locales/common';
 import { getLandingCopy } from '@/locales/copy';
 
+// jsdom has no IntersectionObserver. AnimateIn (scroll-reveal) relies on it;
+// stub it so components using it render synchronously in tests without
+// crashing, defaulting to "already visible" behavior isn't required since
+// tests only assert on content, not reveal-state classes.
+class IntersectionObserverStub implements IntersectionObserver {
+    readonly root: Element | Document | null = null;
+    readonly rootMargin: string = '';
+    readonly scrollMargin: string = '';
+    readonly thresholds: ReadonlyArray<number> = [];
+    observe() { /* no-op */ }
+    unobserve() { /* no-op */ }
+    disconnect() { /* no-op */ }
+    takeRecords(): IntersectionObserverEntry[] { return []; }
+}
+
+if (typeof window !== 'undefined' && !('IntersectionObserver' in window)) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).IntersectionObserver = IntersectionObserverStub;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (global as any).IntersectionObserver = IntersectionObserverStub;
+}
+
 jest.mock('next-intl', () => {
     const messages = {
         landing: getLandingCopy('es'),

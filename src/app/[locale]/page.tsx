@@ -14,7 +14,6 @@ import {
     buildBreadcrumbJsonLd,
     buildLocaleAlternates
 } from '@/lib/jsonld';
-import { getFaqEntries } from '@/lib/faq';
 
 interface LocalePageProps {
     params: Promise<{ locale: string }>;
@@ -54,7 +53,9 @@ export default async function LocalePage({ params }: LocalePageProps) {
     const copy = (await getAppMessages(locale)).landing;
     const commonT = await getTranslations({ locale, namespace: 'common' });
     const commonCopy = getCommonCopyFromMessages(commonT);
-    const faqItems = getFaqEntries(locale);
+    // Single source of truth: the FAQ JSON-LD must mirror the on-page FaqSection
+    // copy exactly, so structured data never drifts from what visitors actually read.
+    const faqItems = copy.faq.items;
 
     const breadcrumb = buildBreadcrumbJsonLd(locale, [
         { name: 'Cojauny', absoluteUrl: siteMetadata.url },

@@ -1,8 +1,8 @@
-﻿import Link from 'next/link';
-
-import type { LandingCopy } from '@/locales/copy';
+﻿import type { LandingCopy } from '@/locales/copy';
 import type { Locale } from '@/locales/config';
 import SectionIntro from '@/components/SectionIntro';
+import Button from '@/components/ui/Button';
+import AnimateIn from '@/components/ui/AnimateIn';
 
 interface IntegrationCTAProps {
     copy: LandingCopy['ctaStrip'];
@@ -12,34 +12,20 @@ interface IntegrationCTAProps {
 const IntegrationCTA = ({ copy, locale }: IntegrationCTAProps) => {
     const href = copy.link.startsWith('/') ? `/${locale}${copy.link}` : copy.link;
 
-    const isInternal = href.startsWith('/');
-
     return (
-        <div className="overflow-hidden rounded-[3rem] bg-gradient-to-br from-slate-900 via-brand-700 to-slate-900 py-20 px-6 text-white">
+        <AnimateIn className="overflow-hidden rounded-[3rem] border border-white/10 bg-gradient-to-br from-slate-900 via-studio-accent-dim to-slate-900 py-20 px-6 text-white">
             <div className="relative mx-auto max-w-[1180px] px-6 text-center">
                 <div className="absolute inset-0 -z-10 blur-3xl" aria-hidden>
-                    <div className="mx-auto h-64 w-64 rounded-full bg-brand-400/30" />
+                    <div className="mx-auto h-64 w-64 rounded-full bg-studio-accent/30" />
                 </div>
                 <SectionIntro title={copy.heading} description={copy.body} tone="light" />
                 <div className="mt-10 flex justify-center">
-                    {isInternal ? (
-                        <Link
-                            href={href}
-                            className="inline-flex items-center justify-center rounded-xl bg-studio-accent px-8 py-3 text-base font-semibold text-white transition hover:bg-studio-accent-dim"
-                        >
-                            {copy.linkLabel}
-                        </Link>
-                    ) : (
-                        <a
-                            href={href}
-                            className="inline-flex items-center justify-center rounded-xl bg-studio-accent px-8 py-3 text-base font-semibold text-white transition hover:bg-studio-accent-dim"
-                        >
-                            {copy.linkLabel}
-                        </a>
-                    )}
+                    <Button href={href} variant="primary" size="lg">
+                        {copy.linkLabel}
+                    </Button>
                 </div>
             </div>
-        </div>
+        </AnimateIn>
     );
 };
 

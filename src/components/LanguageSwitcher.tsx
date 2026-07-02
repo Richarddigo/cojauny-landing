@@ -1,11 +1,11 @@
 "use client";
 
 import { useMemo, Suspense, useState, useRef, useEffect } from 'react';
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import { localeValues, type Locale } from '@/locales/config';
 import { getCommonCopy } from '@/locales/common';
+import Icon from '@/components/ui/Icon';
 import { SpainFlag, UKFlag, GermanyFlag, FranceFlag } from './FlagIcons';
 
 interface LanguageSwitcherProps {
@@ -238,7 +238,7 @@ const LanguageSwitcherInner = ({ currentLocale, label, dropdownDirection = 'down
                     <ButtonFlag className="h-5 w-5 rounded-sm" />
                 </span>
                 <span className="inline">{buttonLabel}</span>
-                <ChevronDownIcon className="h-4 w-4 text-white/60" aria-hidden />
+                <Icon name="chevron-down" size={14} className={`text-white/60 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
             </button>
 
             {open && (

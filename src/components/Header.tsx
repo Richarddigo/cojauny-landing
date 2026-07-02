@@ -4,7 +4,8 @@ import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import Icon from '@/components/ui/Icon';
+import Button from '@/components/ui/Button';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import type { Locale } from '@/locales/config';
 import type { LandingCopy } from '@/locales/copy';
@@ -45,7 +46,10 @@ const buildNavItems = (copy: LandingCopy['header'], locale: Locale): NavItem[] =
 const Header = ({ locale, copy, common }: HeaderProps) => {
     const resolvedCommon = common ?? getCommonCopy(locale);
     const navItems = buildNavItems(copy, locale);
-    const desktopNavItems = navItems.filter((item) => item.href !== '#home');
+    // "Get Early Access" gets its own visually distinct button in the desktop nav
+    // (see IntegrationCTA/Hero CTA copy) instead of blending in with utility links.
+    const desktopNavItems = navItems.filter((item) => item.href !== '#home' && item.href !== '#beta');
+    const betaNavItem = navItems.find((item) => item.href === '#beta');
     const pathname = usePathname() ?? `/${locale}`;
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -201,7 +205,7 @@ const Header = ({ locale, copy, common }: HeaderProps) => {
                             aria-controls="__menu_portal"
                         >
                             <span className="sr-only">{resolvedCommon.openMainMenu}</span>
-                            <Bars3Icon className="h-5 w-5" aria-hidden="true" />
+                            <Icon name="hamburger" size={20} className="text-white/80" />
                         </button>
                     </div>
 
@@ -226,6 +230,15 @@ const Header = ({ locale, copy, common }: HeaderProps) => {
 
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4">
                         <LanguageSwitcher currentLocale={locale} />
+                        {betaNavItem && (
+                            <Button
+                                href={betaNavItem.href}
+                                size="sm"
+                                onClick={(e) => handleDesktopNav(e as React.MouseEvent<HTMLAnchorElement>, betaNavItem.href)}
+                            >
+                                {betaNavItem.label}
+                            </Button>
+                        )}
                     </div>
                 </nav>
             </header>
@@ -268,7 +281,7 @@ const Header = ({ locale, copy, common }: HeaderProps) => {
                                 aria-label={resolvedCommon.closeMenu}
                             >
                                 <span className="sr-only">{resolvedCommon.closeMenu}</span>
-                                <XMarkIcon className="h-5 w-5" aria-hidden="true" />
+                                <Icon name="close" size={20} className="text-white/80" />
                             </button>
                         </div>
                         <div className="mt-6 flex-1 flex flex-col justify-start">

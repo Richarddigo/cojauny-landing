@@ -69,7 +69,7 @@ describe('BetaSignupForm', () => {
         const checkboxLabelSnippet = formCopy.checkboxLabel?.split('{privacyLink}')[0].trim() || 'He leído y acepto la';
         fireEvent.click(screen.getByRole('checkbox', { name: new RegExp(checkboxLabelSnippet, 'i') }));
 
-        fireEvent.submit(screen.getByRole('button', { name: /Enviar solicitud/i }));
+        fireEvent.submit(screen.getByRole('button', { name: /Reservar mi plaza/i }));
 
         await waitFor(() => {
             expect(screen.getByText(new RegExp(formCopy.success, 'i'))).toBeInTheDocument();
@@ -115,7 +115,7 @@ describe('BetaSignupForm', () => {
         fireEvent.click(screen.getByRole('checkbox', { name: new RegExp(checkboxLabelSnippet, 'i') }));
         fireEvent.click(screen.getByRole('checkbox', { name: new RegExp(formCopy.fields.privacyAcceptance || 'Acepto', 'i') }));
 
-        fireEvent.submit(screen.getByRole('button', { name: /Enviar solicitud/i }));
+        fireEvent.submit(screen.getByRole('button', { name: /Reservar mi plaza/i }));
 
         await waitFor(() => {
             // Verificar que aparece el mensaje de error usando role alert
@@ -143,7 +143,7 @@ describe('BetaSignupForm', () => {
         fireEvent.click(screen.getByRole('checkbox', { name: new RegExp(formCopy.fields.privacyAcceptance || 'Acepto', 'i') }));
 
         // Enviar el formulario sin rellenar useCase
-        fireEvent.submit(screen.getByRole('button', { name: /Enviar solicitud/i }));
+        fireEvent.submit(screen.getByRole('button', { name: /Reservar mi plaza/i }));
 
         await waitFor(() => {
             expect(screen.getByText(new RegExp(formCopy.success, 'i'))).toBeInTheDocument();

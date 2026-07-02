@@ -8,7 +8,7 @@ import { join } from 'path';
 
 import { buildOrganizationJsonLd, buildWebsiteJsonLd, buildSoftwareAppJsonLd, buildFaqJsonLd, buildBreadcrumbJsonLd, buildArticleJsonLd } from '../src/lib/jsonld';
 import { locales } from '../src/locales/config';
-import { getFaqEntries } from '../src/lib/faq';
+import { getLandingCopy } from '../src/locales/copy';
 
 const schemas = [];
 
@@ -34,9 +34,10 @@ locales.forEach(locale => {
   });
 });
 
-// FAQPage per locale
+// FAQPage per locale — sourced from the same landing copy that powers FaqSection,
+// so the structured data never drifts from what's visible on the page.
 locales.forEach(locale => {
-  const faqItems = getFaqEntries(locale);
+  const faqItems = getLandingCopy(locale).faq.items;
   schemas.push({
     name: `FAQPage-${locale}`,
     schema: buildFaqJsonLd(faqItems)
