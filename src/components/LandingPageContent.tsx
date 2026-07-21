@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic';
-import Hero from '@/components/Hero';
-import HeroVariantTracker from '@/components/HeroVariantTracker';
+import HeroWithVariant from '@/components/HeroWithVariant';
 import StickyMobileBetaCta from '@/components/StickyMobileBetaCta';
 import Features from '@/components/Features';
 import IntegrationCTA from '@/components/IntegrationCTA';
@@ -8,7 +7,6 @@ import ValuePropsSection from '@/components/ValuePropsSection';
 import SavingsSection from '@/components/SavingsSection';
 import WorkflowSection from '@/components/WorkflowSection';
 import PricingSection from '@/components/PricingSection';
-import { resolveHeroCopy, type HeroVariant } from '@/lib/heroVariant';
 import {
   BetaSignupFormSkeleton,
   DemoSectionSkeleton,
@@ -37,18 +35,16 @@ interface LandingPageContentProps {
     copy: LandingCopy;
     locale: Locale;
     common?: CommonCopy;
-    heroVariant: HeroVariant;
 }
 
-const LandingPageContent = ({ copy, locale, common, heroVariant }: LandingPageContentProps) => {
+const LandingPageContent = ({ copy, locale, common }: LandingPageContentProps) => {
     const resolvedCommon = common ?? getCommonCopy(locale);
-    const heroCopy = resolveHeroCopy(copy.hero, copy.heroVariants, heroVariant);
 
     return (
         <>
-            <HeroVariantTracker variant={heroVariant} />
-            <Hero
-                copy={heroCopy}
+            <HeroWithVariant
+                hero={copy.hero}
+                heroVariants={copy.heroVariants}
                 quickSignupCopy={copy.heroQuickSignup}
                 betaCopy={copy.forms.beta}
                 locale={locale}

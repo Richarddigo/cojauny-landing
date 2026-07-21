@@ -13,8 +13,6 @@ interface AirportPageProps {
   params: Promise<{ locale: string; slug: string }>;
 }
 
-export const revalidate = 86400;
-
 export function generateStaticParams() {
   return locales.flatMap((locale) =>
     featuredAirports.map((airport) => ({
@@ -125,6 +123,7 @@ export default async function AirportPage({ params }: AirportPageProps) {
             <li key={item.slug}>
               <Link
                 href={`/${locale}/airports/${item.slug}`}
+                prefetch={false}
                 className="block rounded-2xl border border-white/8 bg-studio-surface/60 px-4 py-3 text-sm text-studio-muted transition-colors hover:border-studio-accent/40 hover:text-white"
               >
                 {item.city[locale]} ({item.iata})

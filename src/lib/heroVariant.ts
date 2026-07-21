@@ -1,5 +1,3 @@
-import { cookies } from 'next/headers';
-
 import type { LandingCopy } from '@/locales/copy';
 
 export type HeroVariant = 'trust' | 'savings';
@@ -15,21 +13,8 @@ export function getHeroVariantFromEnv(): HeroVariant | null {
   return null;
 }
 
-/** Server-side variant from cookie (set by middleware A/B assignment). */
-export async function getHeroVariant(): Promise<HeroVariant> {
-  const envVariant = getHeroVariantFromEnv();
-  if (envVariant) {
-    return envVariant;
-  }
-
-  const cookieStore = await cookies();
-  const fromCookie = cookieStore.get(HERO_COOKIE)?.value;
-  if (fromCookie === 'savings' || fromCookie === 'trust') {
-    return fromCookie;
-  }
-
-  return 'trust';
-}
+/** Cookie name set by middleware for client-side A/B reads. */
+export const HERO_VARIANT_COOKIE = HERO_COOKIE;
 
 export function resolveHeroCopy(
   hero: LandingCopy['hero'],

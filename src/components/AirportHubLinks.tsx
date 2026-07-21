@@ -36,6 +36,7 @@ export default function AirportHubLinks({
           <li key={airport.slug}>
             <Link
               href={`/${locale}/airports/${airport.slug}`}
+              prefetch={false}
               className="inline-flex rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-studio-muted transition-colors hover:border-studio-accent/40 hover:text-white"
             >
               {airport.city[locale]} ({airport.iata})

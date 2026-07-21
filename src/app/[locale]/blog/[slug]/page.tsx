@@ -6,7 +6,7 @@ import { getTranslations } from 'next-intl/server';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-import { blogPosts, getPost } from '@/content/blog/posts';
+import { allBlogPosts, getPost } from '@/content/blog/posts';
 import { locales, type Locale } from '@/locales/config';
 import { getBlogCopy } from '@/locales/blog';
 import { siteMetadata } from '@/lib/site';
@@ -17,10 +17,8 @@ interface BlogPageProps {
     params: Promise<{ locale: string; slug: string }>;
 }
 
-export const revalidate = 3600;
-
 export function generateStaticParams() {
-    return blogPosts.map((post) => ({ locale: post.locale, slug: post.slug }));
+    return allBlogPosts.map((post) => ({ locale: post.locale, slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {

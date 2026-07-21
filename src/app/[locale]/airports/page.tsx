@@ -13,8 +13,6 @@ interface AirportsIndexProps {
   params: Promise<{ locale: string }>;
 }
 
-export const revalidate = 86400;
-
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
@@ -75,6 +73,7 @@ export default async function AirportsIndexPage({ params }: AirportsIndexProps) 
           <li key={airport.slug}>
             <Link
               href={`/${locale}/airports/${airport.slug}`}
+              prefetch={false}
               className="block rounded-2xl border border-white/8 bg-studio-surface/80 p-5 transition-colors hover:border-studio-accent/40"
             >
               <p className="font-semibold text-white">

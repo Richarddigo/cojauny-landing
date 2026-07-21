@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     [...localeAwarePaths, ...legalPaths].map((path) => ({
       url: buildCanonicalUrl(locale, path === '/' ? '' : path),
       lastModified,
-      changeFrequency: (path === '/' ? 'daily' : 'monthly') as 'daily' | 'monthly',
+      changeFrequency: 'monthly' as const,
       priority: path === '/' ? 1 : 0.7
     }))
   );
