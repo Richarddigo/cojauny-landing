@@ -47,20 +47,20 @@
       "feedback": "Feedback"
     },
     "seo": {
-      "title": "Cojauny | Flughafentaxi mit Reisenden deines Flugs teilen",
-      "description": "Finde Mitreisende deines Flugs, plane den Flughafentransfer und teile die Taxikosten. Entdecke Cojauny und melde dich für den Beta-Zugang an.",
+      "title": "Cojauny | Flughafentransfer mit Reisenden deines Flugs teilen",
+      "description": "Finde Mitreisende deines Flugs, plane den Flughafentransfer und teile die Fahrtkosten. Entdecke Cojauny und melde dich für den Beta-Zugang an.",
       "keywords": [
-        "Flughafentaxi teilen",
+        "Flughafentransfer teilen",
         "gemeinsamer Flughafentransfer",
         "Mitreisende gleicher Flug",
-        "Taxikosten Flughafen teilen"
+        "Kosten für Flughafentransfer teilen"
       ],
       "ogTitle": "Dein Flug. Deine Mitreisenden. Eine gemeinsame Fahrt.",
       "ogDescription": "Plane den Flughafentransfer mit anderen Reisenden und teile die Kosten. Melde dich für die Cojauny-Beta an."
     },
     "hero": {
       "eyebrow": "Gemeinsame Flughafentransfers · Beta-Zugang",
-      "title": "Teile das Flughafentaxi mit Reisenden deines Flugs",
+      "title": "Teile den Flughafentransfer mit Reisenden deines Flugs",
       "subtitle": "Deine Reise endet nicht mit der Landung. Cojauny hilft dir, Mitreisende zu finden, die Fahrt abzusprechen und die Kosten zu teilen. Plane vor dem Abflug und komm gut vorbereitet an.",
       "primaryCta": "Für die Beta anmelden",
       "secondaryCta": "So funktioniert Cojauny",
@@ -73,7 +73,7 @@
     },
     "heroVariants": {
       "savings": {
-        "title": "Ein Taxi. Geteilte Kosten.",
+        "title": "Gemeinsam unterwegs. Kosten teilen.",
         "subtitle": "Eine Fahrt für 40 € kostet bei vier Personen je 10 €, wenn der Fahrpreis gleich bleibt. Cojauny hilft dir, Mitreisende für die gemeinsame Planung zu finden."
       }
     },
@@ -147,7 +147,7 @@
       "items": [
         {
           "title": "Kosten aufteilen",
-          "description": "Ein geteiltes Taxi kann den Preis pro Person senken. Die Ersparnis hängt von Tarif, Strecke und Gruppengröße ab."
+          "description": "Ein gemeinsamer Transfer kann die Kosten pro Person senken. Die Ersparnis hängt von Tarif, Strecke und Gruppengröße ab."
         },
         {
           "title": "Menschen mit ähnlichen Plänen finden",
@@ -343,7 +343,7 @@
       "items": [
         {
           "question": "Was ist Cojauny?",
-          "answer": "Eine App, um Mitreisende deines Flugs zu finden und etwa ein gemeinsames Flughafentaxi zu organisieren. Die Teilnehmenden vereinbaren Transfer und Bezahlung. Cojauny ist kein Transportunternehmen."
+          "answer": "Eine App, um Mitreisende deines Flugs zu finden und etwa einen gemeinsamen Flughafentransfer zu organisieren. Die Teilnehmenden vereinbaren Transfer und Bezahlung. Cojauny ist kein Transportunternehmen."
         },
         {
           "question": "Kann ich die App direkt nach der Anmeldung nutzen?",
@@ -358,7 +358,7 @@
           "answer": "Das hängt vom Endpreis und der Gruppengröße ab. Kostet das Taxi unverändert 40 €, zahlen zwei Personen je 20 € und vier je 10 €. Prüft Zuschläge, Gepäck, Kapazität und Umwege."
         },
         {
-          "question": "Bucht Cojauny das Taxi oder zieht den Fahrpreis ein?",
+          "question": "Bucht Cojauny den Transfer oder zieht den Fahrpreis ein?",
           "answer": "Cojauny hilft bei der Gruppenplanung und Kostenaufteilung, wickelt aber keine Transferzahlungen ab. Vereinbart vor der Reise, wie ihr den Transport bucht und bezahlt."
         },
         {

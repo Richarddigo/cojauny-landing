@@ -47,20 +47,20 @@
       "feedback": "Feedback"
     },
     "seo": {
-      "title": "Cojauny | Share an airport taxi with people on your flight",
-      "description": "Connect with fellow passengers, plan an airport transfer and split the taxi fare. Discover Cojauny and join the beta access list.",
+      "title": "Cojauny | Share your airport transfer with people on your flight",
+      "description": "Connect with fellow passengers, plan an airport transfer and share the transport costs. Discover Cojauny and join the beta access list.",
       "keywords": [
-        "share airport taxi",
+        "share airport transport",
         "shared airport transfer",
         "same flight passengers",
-        "split airport taxi fare"
+        "share airport transfer costs"
       ],
       "ogTitle": "Your flight. Your people. One shared ride.",
       "ogDescription": "Plan an airport ride with fellow passengers and share the fare. Join the Cojauny beta access list."
     },
     "hero": {
       "eyebrow": "Shared airport rides · Beta access",
-      "title": "Share an airport taxi with people on your flight",
+      "title": "Share your airport transfer with people on your flight",
       "subtitle": "Your journey doesn't end at landing. Cojauny helps you connect with fellow passengers, plan a ride and split the fare. Arrange it before you fly and arrive with a plan.",
       "primaryCta": "Join the beta list",
       "secondaryCta": "See how Cojauny works",
@@ -73,7 +73,7 @@
     },
     "heroVariants": {
       "savings": {
-        "title": "One taxi. A shared fare.",
+        "title": "Shared transport. Shared costs.",
         "subtitle": "A €40 ride split between four people costs €10 each if the fare stays the same. Cojauny helps you find fellow passengers to plan it together."
       }
     },
@@ -147,7 +147,7 @@
       "items": [
         {
           "title": "Split the fare",
-          "description": "Sharing a taxi can reduce the cost per person. Savings depend on the fare, route and group size."
+          "description": "Sharing transport can reduce the cost per person. Savings depend on the fare, route and group size."
         },
         {
           "title": "Find people with a similar plan",
@@ -343,7 +343,7 @@
       "items": [
         {
           "question": "What is Cojauny?",
-          "answer": "An app for connecting with fellow passengers and coordinating plans such as a shared airport taxi. Participants arrange the transfer and payment; Cojauny is not a transport operator."
+          "answer": "An app for connecting with fellow passengers and coordinating plans such as shared airport transport. Participants arrange the transfer and payment; Cojauny is not a transport operator."
         },
         {
           "question": "Can I use the app as soon as I sign up?",
@@ -358,7 +358,7 @@
           "answer": "It depends on the final fare and group size. If a taxi costs €40 and the fare stays the same, two people pay €20 each and four pay €10. Check surcharges, luggage, capacity and detours."
         },
         {
-          "question": "Does Cojauny book or charge for the taxi?",
+          "question": "Does Cojauny book or charge for transport?",
           "answer": "Cojauny helps coordinate the group and calculate the split. It does not process transfer payments. Agree how to book and pay for the transport before travelling."
         },
         {

@@ -280,22 +280,22 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       feedback: 'Feedback',
     },
     seo: {
-      title: 'Cojauny | Comparte el taxi del aeropuerto con viajeros de tu vuelo',
+      title: 'Cojauny | Comparte el transporte del aeropuerto con viajeros de tu vuelo',
       description:
-        'Conecta con viajeros de tu vuelo, organiza el traslado y reparte el coste del taxi. Descubre Cojauny y apúntate a la lista de acceso a la beta.',
+        'Conecta con viajeros de tu vuelo, organiza el traslado y reparte el coste del transporte. Descubre Cojauny y apúntate a la lista de acceso a la beta.',
       keywords: [
-        'compartir taxi aeropuerto',
+        'compartir transporte aeropuerto',
         'traslado aeropuerto compartido',
         'viajeros mismo vuelo',
-        'ahorrar taxi aeropuerto',
+        'compartir gastos traslado aeropuerto',
       ],
       ogTitle: 'Tu vuelo. Tu gente. Un traslado compartido.',
       ogDescription:
-        'Organiza el trayecto con otros viajeros y comparte el coste del taxi. Apúntate a la beta de Cojauny.',
+        'Organiza el trayecto con otros viajeros y comparte el coste del transporte. Apúntate a la beta de Cojauny.',
     },
     hero: {
       eyebrow: 'Traslados compartidos · Acceso beta',
-      title: 'Comparte el taxi del aeropuerto con gente de tu vuelo',
+      title: 'Comparte el transporte del aeropuerto con gente de tu vuelo',
       subtitle:
         'El viaje no termina al aterrizar. Cojauny te ayuda a conectar con otros pasajeros, acordar el traslado y repartir el coste. Organízalo antes de volar y llega con un plan.',
       primaryCta: 'Apuntarme a la beta',
@@ -309,7 +309,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     heroVariants: {
       savings: {
-        title: 'Un mismo taxi. Un coste compartido.',
+        title: 'Comparte el transporte. Reparte el coste.',
         subtitle:
           'Un traslado de 40 € entre cuatro personas sale a 10 € por persona si el precio no cambia. Cojauny te ayuda a encontrar compañeros de vuelo para organizarlo.',
       },
@@ -398,7 +398,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Reparte el coste',
           description:
-            'Compartir un taxi puede reducir lo que paga cada persona. El ahorro depende de la tarifa, la ruta y el tamaño del grupo.',
+            'Compartir el transporte puede reducir lo que paga cada persona. El ahorro depende de la tarifa, la ruta y el tamaño del grupo.',
         },
         {
           title: 'Encuentra gente con el mismo plan',
@@ -613,7 +613,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           question: '¿Qué es Cojauny?',
           answer:
-            'Una app para conectar con otros viajeros de tu vuelo y coordinar planes como compartir un taxi del aeropuerto. Los participantes acuerdan el traslado y el pago; Cojauny no es un operador de transporte.',
+            'Una app para conectar con otros viajeros de tu vuelo y coordinar planes como compartir el transporte del aeropuerto. Los participantes acuerdan el traslado y el pago; Cojauny no es un operador de transporte.',
         },
         {
           question: '¿Puedo usar la app al apuntarme?',
@@ -631,7 +631,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
             'Depende del precio final y del número de personas. Si un taxi cuesta 40 € y la tarifa no cambia, dos personas pagan 20 € cada una y cuatro pagan 10 €. Comprueba suplementos, equipaje, capacidad y posibles desvíos.',
         },
         {
-          question: '¿Cojauny cobra o reserva el taxi?',
+          question: '¿Cojauny cobra o reserva el transporte?',
           answer:
             'Cojauny ayuda a coordinar el grupo y a calcular el reparto. No procesa los pagos del traslado. Acordad cómo contratar y pagar el transporte antes de viajar.',
         },
@@ -839,14 +839,14 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       feedback: 'Feedback',
     },
     seo: {
-      title: 'Cojauny | Share an airport taxi with people on your flight',
+      title: 'Cojauny | Share your airport transfer with people on your flight',
       description:
-        'Connect with fellow passengers, plan an airport transfer and split the taxi fare. Discover Cojauny and join the beta access list.',
+        'Connect with fellow passengers, plan an airport transfer and share the transport costs. Discover Cojauny and join the beta access list.',
       keywords: [
-        'share airport taxi',
+        'share airport transport',
         'shared airport transfer',
         'same flight passengers',
-        'split airport taxi fare',
+        'share airport transfer costs',
       ],
       ogTitle: 'Your flight. Your people. One shared ride.',
       ogDescription:
@@ -854,7 +854,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     hero: {
       eyebrow: 'Shared airport rides · Beta access',
-      title: 'Share an airport taxi with people on your flight',
+      title: 'Share your airport transfer with people on your flight',
       subtitle:
         "Your journey doesn't end at landing. Cojauny helps you connect with fellow passengers, plan a ride and split the fare. Arrange it before you fly and arrive with a plan.",
       primaryCta: 'Join the beta list',
@@ -868,7 +868,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     heroVariants: {
       savings: {
-        title: 'One taxi. A shared fare.',
+        title: 'Shared transport. Shared costs.',
         subtitle:
           'A €40 ride split between four people costs €10 each if the fare stays the same. Cojauny helps you find fellow passengers to plan it together.',
       },
@@ -956,7 +956,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Split the fare',
           description:
-            'Sharing a taxi can reduce the cost per person. Savings depend on the fare, route and group size.',
+            'Sharing transport can reduce the cost per person. Savings depend on the fare, route and group size.',
         },
         {
           title: 'Find people with a similar plan',
@@ -1165,7 +1165,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           question: 'What is Cojauny?',
           answer:
-            'An app for connecting with fellow passengers and coordinating plans such as a shared airport taxi. Participants arrange the transfer and payment; Cojauny is not a transport operator.',
+            'An app for connecting with fellow passengers and coordinating plans such as shared airport transport. Participants arrange the transfer and payment; Cojauny is not a transport operator.',
         },
         {
           question: 'Can I use the app as soon as I sign up?',
@@ -1183,7 +1183,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
             'It depends on the final fare and group size. If a taxi costs €40 and the fare stays the same, two people pay €20 each and four pay €10. Check surcharges, luggage, capacity and detours.',
         },
         {
-          question: 'Does Cojauny book or charge for the taxi?',
+          question: 'Does Cojauny book or charge for transport?',
           answer:
             'Cojauny helps coordinate the group and calculate the split. It does not process transfer payments. Agree how to book and pay for the transport before travelling.',
         },
@@ -1387,14 +1387,14 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       feedback: 'Feedback',
     },
     seo: {
-      title: 'Cojauny | Flughafentaxi mit Reisenden deines Flugs teilen',
+      title: 'Cojauny | Flughafentransfer mit Reisenden deines Flugs teilen',
       description:
-        'Finde Mitreisende deines Flugs, plane den Flughafentransfer und teile die Taxikosten. Entdecke Cojauny und melde dich für den Beta-Zugang an.',
+        'Finde Mitreisende deines Flugs, plane den Flughafentransfer und teile die Fahrtkosten. Entdecke Cojauny und melde dich für den Beta-Zugang an.',
       keywords: [
-        'Flughafentaxi teilen',
+        'Flughafentransfer teilen',
         'gemeinsamer Flughafentransfer',
         'Mitreisende gleicher Flug',
-        'Taxikosten Flughafen teilen',
+        'Kosten für Flughafentransfer teilen',
       ],
       ogTitle: 'Dein Flug. Deine Mitreisenden. Eine gemeinsame Fahrt.',
       ogDescription:
@@ -1402,7 +1402,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     hero: {
       eyebrow: 'Gemeinsame Flughafentransfers · Beta-Zugang',
-      title: 'Teile das Flughafentaxi mit Reisenden deines Flugs',
+      title: 'Teile den Flughafentransfer mit Reisenden deines Flugs',
       subtitle:
         'Deine Reise endet nicht mit der Landung. Cojauny hilft dir, Mitreisende zu finden, die Fahrt abzusprechen und die Kosten zu teilen. Plane vor dem Abflug und komm gut vorbereitet an.',
       primaryCta: 'Für die Beta anmelden',
@@ -1416,7 +1416,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     heroVariants: {
       savings: {
-        title: 'Ein Taxi. Geteilte Kosten.',
+        title: 'Gemeinsam unterwegs. Kosten teilen.',
         subtitle:
           'Eine Fahrt für 40 € kostet bei vier Personen je 10 €, wenn der Fahrpreis gleich bleibt. Cojauny hilft dir, Mitreisende für die gemeinsame Planung zu finden.',
       },
@@ -1505,7 +1505,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Kosten aufteilen',
           description:
-            'Ein geteiltes Taxi kann den Preis pro Person senken. Die Ersparnis hängt von Tarif, Strecke und Gruppengröße ab.',
+            'Ein gemeinsamer Transfer kann die Kosten pro Person senken. Die Ersparnis hängt von Tarif, Strecke und Gruppengröße ab.',
         },
         {
           title: 'Menschen mit ähnlichen Plänen finden',
@@ -1715,7 +1715,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           question: 'Was ist Cojauny?',
           answer:
-            'Eine App, um Mitreisende deines Flugs zu finden und etwa ein gemeinsames Flughafentaxi zu organisieren. Die Teilnehmenden vereinbaren Transfer und Bezahlung. Cojauny ist kein Transportunternehmen.',
+            'Eine App, um Mitreisende deines Flugs zu finden und etwa einen gemeinsamen Flughafentransfer zu organisieren. Die Teilnehmenden vereinbaren Transfer und Bezahlung. Cojauny ist kein Transportunternehmen.',
         },
         {
           question: 'Kann ich die App direkt nach der Anmeldung nutzen?',
@@ -1733,7 +1733,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
             'Das hängt vom Endpreis und der Gruppengröße ab. Kostet das Taxi unverändert 40 €, zahlen zwei Personen je 20 € und vier je 10 €. Prüft Zuschläge, Gepäck, Kapazität und Umwege.',
         },
         {
-          question: 'Bucht Cojauny das Taxi oder zieht den Fahrpreis ein?',
+          question: 'Bucht Cojauny den Transfer oder zieht den Fahrpreis ein?',
           answer:
             'Cojauny hilft bei der Gruppenplanung und Kostenaufteilung, wickelt aber keine Transferzahlungen ab. Vereinbart vor der Reise, wie ihr den Transport bucht und bezahlt.',
         },
@@ -1944,22 +1944,22 @@ export const landingCopy: Record<Locale, LandingCopy> = {
       feedback: 'Feedback',
     },
     seo: {
-      title: 'Cojauny | Partagez un taxi à l’aéroport avec les voyageurs de votre vol',
+      title: 'Cojauny | Partagez votre transfert à l’aéroport avec les voyageurs de votre vol',
       description:
-        'Retrouvez des voyageurs de votre vol, organisez le transfert et partagez le prix du taxi. Découvrez Cojauny et inscrivez-vous pour accéder à la bêta.',
+        'Retrouvez des voyageurs de votre vol, organisez le transfert et partagez les frais de transport. Découvrez Cojauny et inscrivez-vous pour accéder à la bêta.',
       keywords: [
-        'partager taxi aéroport',
+        'partager transport aéroport',
         'transfert aéroport partagé',
         'voyageurs même vol',
-        'partager frais taxi aéroport',
+        'partager frais transfert aéroport',
       ],
       ogTitle: 'Votre vol. Vos compagnons. Un trajet partagé.',
       ogDescription:
-        'Organisez le transfert avec d’autres voyageurs et partagez le prix du taxi. Inscrivez-vous à la bêta Cojauny.',
+        'Organisez le transfert avec d’autres voyageurs et partagez les frais de transport. Inscrivez-vous à la bêta Cojauny.',
     },
     hero: {
       eyebrow: 'Transferts partagés · Accès bêta',
-      title: 'Partagez le taxi de l’aéroport avec les voyageurs de votre vol',
+      title: 'Partagez votre transfert à l’aéroport avec les voyageurs de votre vol',
       subtitle:
         'Le voyage ne s’arrête pas à l’atterrissage. Cojauny vous aide à rencontrer d’autres passagers, organiser le trajet et partager les frais. Préparez votre arrivée avant de décoller.',
       primaryCta: 'M’inscrire à la bêta',
@@ -1973,7 +1973,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
     },
     heroVariants: {
       savings: {
-        title: 'Un taxi. Des frais partagés.',
+        title: 'Un transport partagé. Des frais partagés.',
         subtitle:
           'Un trajet à 40 € partagé entre quatre personnes revient à 10 € chacune si le tarif reste identique. Cojauny vous aide à trouver des compagnons de vol pour l’organiser.',
       },
@@ -2063,7 +2063,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           title: 'Partagez les frais',
           description:
-            'Partager un taxi peut réduire le prix par personne. L’économie dépend du tarif, du trajet et de la taille du groupe.',
+            'Partager le transport peut réduire les frais par personne. L’économie dépend du tarif, du trajet et de la taille du groupe.',
         },
         {
           title: 'Trouvez des voyageurs aux plans proches',
@@ -2276,7 +2276,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         {
           question: 'Qu’est-ce que Cojauny ?',
           answer:
-            'Une app pour rencontrer des voyageurs de votre vol et organiser des plans comme un taxi partagé à l’aéroport. Les participants conviennent du transfert et du paiement. Cojauny n’est pas un transporteur.',
+            'Une app pour rencontrer des voyageurs de votre vol et organiser des plans comme un transport partagé à l’aéroport. Les participants conviennent du transfert et du paiement. Cojauny n’est pas un transporteur.',
         },
         {
           question: 'Puis-je utiliser l’app dès mon inscription ?',
@@ -2294,7 +2294,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
             'Cela dépend du prix final et du groupe. Si un taxi coûte toujours 40 €, deux personnes paient 20 € chacune et quatre paient 10 €. Vérifiez suppléments, bagages, capacité et détours.',
         },
         {
-          question: 'Cojauny réserve-t-il le taxi ou encaisse-t-il le paiement ?',
+          question: 'Cojauny réserve-t-il le transport ou encaisse-t-il le paiement ?',
           answer:
             'Cojauny aide à organiser le groupe et à répartir les frais. L’app ne traite pas les paiements du transfert. Convenez de la réservation et du règlement avant le voyage.',
         },

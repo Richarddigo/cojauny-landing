@@ -47,20 +47,20 @@
       "feedback": "Feedback"
     },
     "seo": {
-      "title": "Cojauny | Comparte el taxi del aeropuerto con viajeros de tu vuelo",
-      "description": "Conecta con viajeros de tu vuelo, organiza el traslado y reparte el coste del taxi. Descubre Cojauny y apúntate a la lista de acceso a la beta.",
+      "title": "Cojauny | Comparte el transporte del aeropuerto con viajeros de tu vuelo",
+      "description": "Conecta con viajeros de tu vuelo, organiza el traslado y reparte el coste del transporte. Descubre Cojauny y apúntate a la lista de acceso a la beta.",
       "keywords": [
-        "compartir taxi aeropuerto",
+        "compartir transporte aeropuerto",
         "traslado aeropuerto compartido",
         "viajeros mismo vuelo",
-        "ahorrar taxi aeropuerto"
+        "compartir gastos traslado aeropuerto"
       ],
       "ogTitle": "Tu vuelo. Tu gente. Un traslado compartido.",
-      "ogDescription": "Organiza el trayecto con otros viajeros y comparte el coste del taxi. Apúntate a la beta de Cojauny."
+      "ogDescription": "Organiza el trayecto con otros viajeros y comparte el coste del transporte. Apúntate a la beta de Cojauny."
     },
     "hero": {
       "eyebrow": "Traslados compartidos · Acceso beta",
-      "title": "Comparte el taxi del aeropuerto con gente de tu vuelo",
+      "title": "Comparte el transporte del aeropuerto con gente de tu vuelo",
       "subtitle": "El viaje no termina al aterrizar. Cojauny te ayuda a conectar con otros pasajeros, acordar el traslado y repartir el coste. Organízalo antes de volar y llega con un plan.",
       "primaryCta": "Apuntarme a la beta",
       "secondaryCta": "Así funciona Cojauny",
@@ -73,7 +73,7 @@
     },
     "heroVariants": {
       "savings": {
-        "title": "Un mismo taxi. Un coste compartido.",
+        "title": "Comparte el transporte. Reparte el coste.",
         "subtitle": "Un traslado de 40 € entre cuatro personas sale a 10 € por persona si el precio no cambia. Cojauny te ayuda a encontrar compañeros de vuelo para organizarlo."
       }
     },
@@ -147,7 +147,7 @@
       "items": [
         {
           "title": "Reparte el coste",
-          "description": "Compartir un taxi puede reducir lo que paga cada persona. El ahorro depende de la tarifa, la ruta y el tamaño del grupo."
+          "description": "Compartir el transporte puede reducir lo que paga cada persona. El ahorro depende de la tarifa, la ruta y el tamaño del grupo."
         },
         {
           "title": "Encuentra gente con el mismo plan",
@@ -343,7 +343,7 @@
       "items": [
         {
           "question": "¿Qué es Cojauny?",
-          "answer": "Una app para conectar con otros viajeros de tu vuelo y coordinar planes como compartir un taxi del aeropuerto. Los participantes acuerdan el traslado y el pago; Cojauny no es un operador de transporte."
+          "answer": "Una app para conectar con otros viajeros de tu vuelo y coordinar planes como compartir el transporte del aeropuerto. Los participantes acuerdan el traslado y el pago; Cojauny no es un operador de transporte."
         },
         {
           "question": "¿Puedo usar la app al apuntarme?",
@@ -358,7 +358,7 @@
           "answer": "Depende del precio final y del número de personas. Si un taxi cuesta 40 € y la tarifa no cambia, dos personas pagan 20 € cada una y cuatro pagan 10 €. Comprueba suplementos, equipaje, capacidad y posibles desvíos."
         },
         {
-          "question": "¿Cojauny cobra o reserva el taxi?",
+          "question": "¿Cojauny cobra o reserva el transporte?",
           "answer": "Cojauny ayuda a coordinar el grupo y a calcular el reparto. No procesa los pagos del traslado. Acordad cómo contratar y pagar el transporte antes de viajar."
         },
         {
