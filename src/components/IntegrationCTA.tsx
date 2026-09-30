@@ -25,14 +25,14 @@ const IntegrationCTA = ({ copy, locale }: IntegrationCTAProps) => {
                     {isInternal ? (
                         <Link
                             href={href}
-                            className="inline-flex items-center justify-center rounded-xl bg-studio-accent px-8 py-3 text-base font-semibold text-white transition hover:bg-studio-accent-dim"
+                            className="inline-flex items-center justify-center rounded-xl bg-action px-8 py-3 text-base font-semibold text-white transition hover:bg-action-dim"
                         >
                             {copy.linkLabel}
                         </Link>
                     ) : (
                         <a
                             href={href}
-                            className="inline-flex items-center justify-center rounded-xl bg-studio-accent px-8 py-3 text-base font-semibold text-white transition hover:bg-studio-accent-dim"
+                            className="inline-flex items-center justify-center rounded-xl bg-action px-8 py-3 text-base font-semibold text-white transition hover:bg-action-dim"
                         >
                             {copy.linkLabel}
                         </a>

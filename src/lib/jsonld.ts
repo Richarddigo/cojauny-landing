@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { getLandingCopy } from '@/locales/copy';
 
 import { siteMetadata, hreflangByLocale } from './site';
 import { locales, defaultLocale, type Locale } from '@/locales/config';
@@ -16,7 +17,7 @@ export const buildCanonicalUrl = (locale: Locale, path = '') => {
   const suffix = normalized ? `/${normalized}` : '';
   // Default locale (en) has no prefix — localePrefix: 'as-needed'
   return locale === defaultLocale
-    ? `${siteMetadata.url}${suffix || '/'}`
+    ? `${siteMetadata.url}${suffix}`
     : `${siteMetadata.url}/${locale}${suffix}`;
 };
 
@@ -24,7 +25,7 @@ export const buildLocaleAlternates = (locale: Locale, path = ''): Metadata['alte
   canonical: buildCanonicalUrl(locale, path),
   languages: {
     ...Object.fromEntries(locales.map((value) => [value, buildCanonicalUrl(value, path)])),
-    'x-default': siteMetadata.url
+    'x-default': buildCanonicalUrl(defaultLocale, path)
   }
 });
 
@@ -55,7 +56,7 @@ export const buildWebsiteJsonLd = (locale: Locale) => ({
   '@type': 'WebSite',
   name: siteMetadata.name,
   url: siteMetadata.url,
-  description: siteMetadata.description,
+  description: getLandingCopy(locale).seo.description,
   inLanguage: hreflangByLocale[locale] ?? hrefLangFallback
 });
 
@@ -63,17 +64,10 @@ export const buildSoftwareAppJsonLd = (locale: Locale) => ({
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: siteMetadata.name,
-  description: siteMetadata.description,
+  description: getLandingCopy(locale).seo.description,
   operatingSystem: 'iOS, Android',
   applicationCategory: 'TravelApplication',
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'EUR'
-  },
   inLanguage: hreflangByLocale[locale] ?? hrefLangFallback,
-  downloadUrl: siteMetadata.playStoreUrl,
-  installUrl: siteMetadata.appStoreUrl,
   creator: {
     '@type': 'Organization',
     name: siteMetadata.name

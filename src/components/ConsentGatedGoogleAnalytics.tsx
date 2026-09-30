@@ -23,6 +23,8 @@ export default function ConsentGatedGoogleAnalytics() {
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
+          gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+          gtag('consent', 'update', { analytics_storage: 'granted' });
           gtag('js', new Date());
           gtag('config', '${analyticsId}', { anonymize_ip: true });
         `}

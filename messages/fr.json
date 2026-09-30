@@ -47,234 +47,227 @@
       "feedback": "Feedback"
     },
     "seo": {
-      "title": "Cojauny | Partagez votre trajet vers l'aéroport avec votre vol",
-      "description": "Trouvez d'autres voyageurs sur votre vol, partagez le taxi et sachez avec qui vous voyagez. Rejoignez la bêta dès aujourd'hui.",
+      "title": "Cojauny | Partagez un taxi à l’aéroport avec les voyageurs de votre vol",
+      "description": "Retrouvez des voyageurs de votre vol, organisez le transfert et partagez le prix du taxi. Découvrez Cojauny et inscrivez-vous pour accéder à la bêta.",
       "keywords": [
-        "transfert aéroport partagé",
         "partager taxi aéroport",
-        "application voyage aéroport",
-        "covoiturage aéroport",
-        "voyage partagé même vol",
-        "matching par vol",
-        "profil vérifié aéroport",
-        "communauté voyageurs vérifiée",
-        "mobilité aéroportuaire sécurisée",
-        "économiser transfert aéroport"
+        "transfert aéroport partagé",
+        "voyageurs même vol",
+        "partager frais taxi aéroport"
       ],
-      "ogTitle": "Cojauny | Partagez votre trajet vers l'aéroport",
-      "ogDescription": "Trouvez des passagers de votre vol, partagez le coût et voyagez avec des compagnons vérifiés."
+      "ogTitle": "Votre vol. Vos compagnons. Un trajet partagé.",
+      "ogDescription": "Organisez le transfert avec d’autres voyageurs et partagez le prix du taxi. Inscrivez-vous à la bêta Cojauny."
     },
     "hero": {
-      "eyebrow": "La bêta est ouverte · Places limitées",
-      "title": "Connectez-vous aux passagers de votre vol",
-      "subtitle": "Cojauny vous associe à vos compagnons de vol dès la réservation — discutez pendant des semaines, organisez-vous ensemble, et partagez le trajet à l'atterrissage.",
-      "primaryCta": "Réserver ma place",
-      "secondaryCta": "Voir comment ça marche",
-      "imageAlt": "Interface Cojauny avec matching par vol, coûts partagés et profils vérifiés",
+      "eyebrow": "Transferts partagés · Accès bêta",
+      "title": "Partagez le taxi de l’aéroport avec les voyageurs de votre vol",
+      "subtitle": "Le voyage ne s’arrête pas à l’atterrissage. Cojauny vous aide à rencontrer d’autres passagers, organiser le trajet et partager les frais. Préparez votre arrivée avant de décoller.",
+      "primaryCta": "M’inscrire à la bêta",
+      "secondaryCta": "Comment fonctionne Cojauny",
+      "imageAlt": "Aperçu de la recherche de compagnons de vol dans Cojauny",
       "trustSignals": [
-        "Associé par vol",
-        "Chat avant le départ",
-        "Partagez le coût",
-        "Vérifié et privé"
+        "Un même vol",
+        "Un chat pour s’organiser",
+        "Vos compagnons, votre choix"
       ]
     },
     "heroVariants": {
       "savings": {
-        "title": "Économisez jusqu'à 75% sur votre prochain trajet",
-        "subtitle": "Trouvez des voyageurs vérifiés sur votre vol et partagez le trajet — sachez toujours avec qui vous voyagez avant de confirmer."
+        "title": "Un taxi. Des frais partagés.",
+        "subtitle": "Un trajet à 40 € partagé entre quatre personnes revient à 10 € chacune si le tarif reste identique. Cojauny vous aide à trouver des compagnons de vol pour l’organiser."
       }
     },
     "heroQuickSignup": {
-      "ariaLabel": "Rejoindre la bêta Cojauny",
-      "label": "Obtenez un accès anticipé — les places se remplissent vite",
-      "emailPlaceholder": "vous@email.com",
-      "submit": "Réserver ma place",
+      "ariaLabel": "M’inscrire sur la liste d’accès à la bêta Cojauny",
+      "label": "Recevez un email lorsque votre accès à la bêta sera disponible",
+      "emailPlaceholder": "vous@email.fr",
+      "submit": "M’inscrire à la bêta",
       "submitting": "Envoi…",
-      "privacyNote": "En vous inscrivant, vous acceptez nos conditions et notre politique de confidentialité. Jamais de spam, promis.",
-      "success": "Vous êtes inscrit ! Nous vous écrirons dès que votre place sera prête."
+      "privacyNote": "En vous inscrivant, vous acceptez nos conditions et notre politique de confidentialité. Nous vous informerons par email de votre accès.",
+      "success": "Vous êtes sur la liste ! Nous vous écrirons dès que votre accès sera disponible."
     },
     "airportsHubTitle": "Aéroports populaires",
     "airportsHubAll": "Voir tous les aéroports",
-    "betaReferralBanner": "Une fois inscrit, vous recevrez un lien d'invitation personnel — partagez-le pour avancer dans la file d'attente.",
+    "betaReferralBanner": "Invitez d’autres voyageurs avec votre lien personnel pour les aider à trouver des compagnons de vol.",
     "features": {
-      "title": "Tout ce qu'il faut pour vous connecter à votre vol",
-      "subtitle": "De l'association à la rencontre en personne : chaque fonctionnalité tourne autour de votre vol, et de votre sécurité.",
+      "title": "Moins d’allers-retours. Une arrivée mieux préparée.",
+      "subtitle": "Trouvez des compagnons, convenez des détails et gardez le contrôle de ce que vous partagez.",
       "items": [
         {
-          "title": "Associé par vol, jamais par hasard",
-          "description": "Nous vous associons par numéro de vol et date, pour que vous voyagiez toujours avec des gens de votre vol — jamais avec des inconnus au hasard.",
+          "title": "Trouvez des compagnons de vol",
+          "description": "Ajoutez le numéro et la date du vol pour rechercher des voyageurs avec qui organiser le transfert.",
           "iconName": "bolt"
         },
         {
-          "title": "Le partage des coûts, automatique",
-          "description": "L'app calcule la part de chacun, pour que personne n'ait à sortir la calculatrice.",
+          "title": "Clarifiez les frais avant de partir",
+          "description": "Consultez la répartition estimée et convenez du paiement. Cojauny ne traite pas les paiements du transfert.",
           "iconName": "sparkles"
         },
         {
-          "title": "Votre vrai nom reste privé",
-          "description": "Les autres voyageurs ne voient que votre pseudo et votre note — jamais votre vrai nom, votre numéro ou vos documents.",
+          "title": "Préservez vos informations privées",
+          "description": "Utilisez un pseudonyme sans publier votre téléphone ni vos documents.",
           "iconName": "lock"
         },
         {
-          "title": "Vérifié avant de vous associer",
-          "description": "Chaque voyageur confirme son e-mail, et peut aussi vérifier son numéro de téléphone, pour que vous sachiez toujours à qui vous parlez.",
+          "title": "Consultez le profil",
+          "description": "Vérifiez les informations et la confirmation de l’email. Un email confirmé ne constitue pas une vérification d’identité.",
           "iconName": "shield"
         },
         {
-          "title": "Des avis venant de vrais trajets partagés",
-          "description": "Chaque avis et commentaire vient d'un vol que cette personne a vraiment partagé avec vous — jamais inventé.",
+          "title": "Lisez les avis de voyage",
+          "description": "Les expériences de trajets précédents vous aident à choisir vos compagnons.",
           "iconName": "users"
         },
         {
-          "title": "Signalez ou bloquez en un geste",
-          "description": "Si quelque chose vous semble louche, vous pouvez signaler ou bloquer un voyageur instantanément, sans justification.",
+          "title": "Bloquez et signalez",
+          "description": "Utilisez les options de blocage et de signalement si une interaction vous met mal à l’aise.",
           "iconName": "flag"
         },
         {
-          "title": "Discutez dès que vous êtes associés",
-          "description": "Organisez-vous pendant des semaines à l'avance, restez en contact même hors ligne pendant le vol, et tout est prêt à l'atterrissage.",
+          "title": "Échangez avant d’atterrir",
+          "description": "Organisez-vous dans le chat de l’app sans communiquer votre numéro de téléphone.",
           "iconName": "chat"
         },
         {
-          "title": "Retrouvez-vous à l'arrivée",
-          "description": "Ouvrez l'app dès l'atterrissage et retrouvez vos compagnons de route à la porte en un geste.",
+          "title": "Convenez d’un lieu de rencontre",
+          "description": "Choisissez un point précis et revoyez les détails avant de sortir du terminal.",
           "iconName": "pin"
         },
         {
-          "title": "Vous rentrez chez vous ? Obtenez le badge local",
-          "description": "Si vous rentrez dans votre propre ville, on vous identifie comme local — pratique pour les voyageurs qui cherchent un conseil pour rejoindre le centre.",
+          "title": "Profitez des conseils locaux",
+          "description": "Le badge local identifie les voyageurs qui rentrent chez eux et peuvent partager des conseils.",
           "iconName": "globe"
         }
       ]
     },
     "value": {
-      "eyebrow": "Pourquoi on nous rejoint",
-      "title": "Un vol, quatre bonnes raisons",
-      "subtitle": "Cojauny réunit de vraies économies, un vrai confort et une vraie tranquillité d'esprit — vous choisissez toujours avec qui voyager.",
+      "eyebrow": "Préparez votre prochain transfert",
+      "title": "Partagez le trajet. Simplifiez l’arrivée.",
+      "subtitle": "Voyage en solo, retour à la maison ou envie de prévoir ? Un même vol est un bon point de départ.",
       "items": [
         {
-          "title": "Vous économisez, pour de vrai",
-          "description": "Partager un taxi ou un transfert avec d'autres passagers coûte une fraction du prix payé seul."
+          "title": "Partagez les frais",
+          "description": "Partager un taxi peut réduire le prix par personne. L’économie dépend du tarif, du trajet et de la taille du groupe."
         },
         {
-          "title": "Associé par vol, jamais par hasard",
-          "description": "Vous n'êtes en contact qu'avec des gens de votre vol — pas un post vieux de plusieurs jours dans un groupe Facebook, ni un inconnu que vous espérez encore trouver à la porte."
+          "title": "Trouvez des voyageurs aux plans proches",
+          "description": "Cherchez des compagnons de vol sans dépendre d’anciennes annonces ou improviser à la sortie du terminal."
         },
         {
-          "title": "Vérifié, et noté",
-          "description": "Chaque profil est vérifié, et les avis sont visibles avant que vous confirmiez quoi que ce soit — son vrai nom, lui, ne sera jamais visible que par Cojauny."
+          "title": "Choisissez en connaissance de cause",
+          "description": "Consultez profils et avis avant d’accepter. Vous choisissez vos compagnons et les informations à partager."
         },
         {
-          "title": "Aucune surprise le jour J",
-          "description": "Lieu de rendez-vous, horaire et répartition des coûts sont réglés dans l'app avant même de partir de chez vous."
+          "title": "Arrivez avec un plan convenu",
+          "description": "Discutez destination, bagages, point de rencontre et frais avant le transfert."
         }
       ]
     },
     "savings": {
-      "title": "Économisez jusqu'à 75% sur votre prochain trajet aéroport",
-      "caption": "Partager le trajet avec des voyageurs vérifiés de votre vol est le moyen le plus simple de réduire la facture. Voici les objectifs vers lesquels nous travaillons pendant la bêta.",
+      "title": "Ce qui change quand vous partagez les frais",
+      "caption": "Exemple illustratif : un taxi à 40 €, pour un tarif et un trajet identiques, partagé à parts égales. Il ne s’agit ni de prix réels ni d’économies garanties. Vérifiez suppléments, bagages et capacité du véhicule.",
       "metrics": [
         {
-          "value": "50-75%",
-          "label": "Économies par trajet",
-          "description": "Ce que vous pouvez économiser en partageant un taxi ou un transfert plutôt que d'y aller seul."
+          "value": "40 €",
+          "label": "En solo",
+          "description": "Une personne paie la totalité du trajet dans cet exemple."
         },
         {
-          "value": "180+",
-          "label": "Aéroports",
-          "description": "Nous couvrons les principaux hubs d'Europe, des Amériques et du Moyen-Orient."
+          "value": "20 €",
+          "label": "À deux",
+          "description": "Chacun paie la moitié : 20 € de moins qu’en solo."
         },
         {
-          "value": "50 000+",
-          "label": "Voyageurs attendus",
-          "description": "Plus il y a de voyageurs, plus de vols trouvent un match instantané — c'est la taille vers laquelle on travaille pendant la bêta."
+          "value": "10 €",
+          "label": "À quatre",
+          "description": "Chacun paie un quart : 75 % de moins dans cet exemple."
         },
         {
-          "value": "1 000+ t",
-          "label": "CO₂ évité",
-          "description": "L'impact estimé quand plus de monde partage une voiture au lieu de voyager seul."
+          "value": "Votre choix",
+          "label": "Avec qui voyager",
+          "description": "Convenez du trajet et du partage des frais avant de confirmer."
         }
       ]
     },
     "workflow": {
-      "title": "De la réservation à l'atterrissage, en 5 étapes",
-      "intro": "Vérifiez votre profil une seule fois. Ensuite, associez-vous, discutez et organisez-vous pendant des semaines — jusqu'au jour de l'atterrissage.",
+      "title": "Du vol au transfert organisé",
+      "intro": "Cinq étapes pour trouver des compagnons et convenir du trajet. La disponibilité dépend des voyageurs inscrits sur votre vol.",
       "steps": [
         {
           "title": "1. Créez votre profil",
-          "description": "Inscrivez-vous et vérifiez votre identité une fois. C'est tout, vous pouvez commencer à chercher un trajet."
+          "description": "Inscrivez-vous, confirmez votre email et choisissez les informations à afficher."
         },
         {
           "title": "2. Ajoutez votre vol",
-          "description": "Ajoutez-le dès la réservation, même des mois à l'avance, et on crée aussitôt un groupe et un chat rien que pour votre vol."
+          "description": "Indiquez son numéro et sa date pour rechercher d’autres passagers."
         },
         {
-          "title": "3. Choisissez votre compagnon de route",
-          "description": "Comparez les profils et les avis, puis décidez avec qui voyager."
+          "title": "3. Choisissez vos compagnons",
+          "description": "Consultez profils et avis, puis contactez les voyageurs dont les plans vous conviennent."
         },
         {
-          "title": "4. Réglez les détails",
-          "description": "Mettez-vous d'accord sur le lieu de rendez-vous, l'horaire et la répartition des coûts dans le chat — il continue même hors ligne pendant le vol."
+          "title": "4. Convenez des détails",
+          "description": "Utilisez le chat pour discuter destination, bagages, lieu de rencontre et frais."
         },
         {
-          "title": "5. Voyagez, puis notez",
-          "description": "Une fois posé, ouvrez l'app pour vous retrouver en un geste, faites le trajet, puis laissez un avis rapide."
+          "title": "5. Partagez et donnez votre avis",
+          "description": "Retrouvez-vous, effectuez le trajet et évaluez l’expérience."
         }
       ]
     },
     "mockups": {
-      "heading": "Voyez exactement avec qui vous voyageriez",
-      "description": "Vol, profil et avis précédents — tout est visible dans l'app avant de confirmer quoi que ce soit.",
+      "heading": "Découvrez comment organiser un voyage dans Cojauny",
+      "description": "Un aperçu du parcours, de l’ajout du vol au suivi des économies. Ces écrans illustrent l’expérience prévue pour la bêta.",
       "screens": [
         {
           "id": "flight-search",
-          "badge": "Matching",
-          "title": "Votre vol, vos compagnons de route",
-          "description": "Entrez votre numéro de vol et voyez qui d'autre est du voyage — pas de hasard.",
+          "badge": "Votre vol",
+          "title": "Commencez par votre vol",
+          "description": "Ajoutez numéro et date pour trouver des voyageurs avec qui partager le transfert.",
           "image": "/images/mockups/fr/mockup-flight-search.svg"
         },
         {
           "id": "profile",
           "badge": "Profil",
-          "title": "Un profil digne de confiance",
-          "description": "Identité vérifiée, note moyenne et commentaires des trajets précédents.",
+          "title": "Consultez le profil avant de choisir",
+          "description": "Vérifiez les informations publiques et les avis disponibles.",
           "image": "/images/mockups/fr/mockup-profile.svg"
         },
         {
           "id": "event-detail",
-          "badge": "Détail",
-          "title": "Rien de caché",
-          "description": "Qui organise, qui vient, où se retrouver et combien ça coûte — tout est affiché à l'avance.",
+          "badge": "Transfert",
+          "title": "Les détails au même endroit",
+          "description": "Consultez participants, lieu de rencontre et coût estimé.",
           "image": "/images/mockups/fr/mockup-event-detail.svg"
         },
         {
           "id": "chat",
           "badge": "Chat",
-          "title": "On se parle avant de se voir",
-          "description": "Coordonnez-vous avec votre groupe dans l'app, sans donner votre numéro.",
+          "title": "Échangez avant l’arrivée",
+          "description": "Organisez-vous sans publier votre numéro de téléphone.",
           "image": "/images/mockups/fr/mockup-chat.svg"
         },
         {
           "id": "events-list",
-          "badge": "Options",
-          "title": "Choisissez ce qui vous arrange",
-          "description": "Consultez tous les trajets disponibles pour votre vol, places et participants en temps réel.",
+          "badge": "Plans",
+          "title": "Choisissez le plan qui vous convient",
+          "description": "Comparez les événements disponibles pour votre vol avant de rejoindre le groupe.",
           "image": "/images/mockups/fr/mockup-events-list.svg"
         },
         {
           "id": "impact",
-          "badge": "Résultat",
-          "title": "Regardez vos économies grandir",
-          "description": "Suivez combien vous avez économisé, trajet après trajet.",
+          "badge": "Économies",
+          "title": "Consultez vos économies",
+          "description": "Retrouvez les économies enregistrées sur vos trajets partagés.",
           "image": "/images/mockups/fr/mockup-impact.svg"
         }
       ]
     },
     "ctaStrip": {
-      "heading": "Votre prochain vol a déjà vos compagnons de route",
-      "body": "Rejoignez la bêta, soyez associé à vos compagnons de vol dès la réservation, et discutez bien avant l'atterrissage.",
+      "heading": "Préparez votre prochaine arrivée avec nous",
+      "body": "Inscrivez-vous sur la liste d’accès à la bêta. Nous vous informerons quand vous pourrez essayer Cojauny et contribuer à améliorer les transferts partagés.",
       "link": "#beta",
-      "linkLabel": "Réserver ma place"
+      "linkLabel": "M’inscrire à la bêta"
     },
     "pricing": {
       "title": "Des tarifs simples, quand vous serez prêt",
@@ -345,69 +338,65 @@
       }
     },
     "faq": {
-      "title": "Questions Fréquentes",
-      "subtitle": "Nous répondons à vos questions sur Cojauny",
+      "title": "Quelques réponses avant de partager le trajet",
+      "subtitle": "Le rôle de Cojauny, l’organisation du transfert et le fonctionnement de la bêta.",
       "items": [
         {
-          "question": "Comment fonctionne le matching par vol ?",
-          "answer": "Indiquez simplement votre numéro de vol et la date. Nous vérifions notre base de données en temps réel et vous mettons en relation avec d'autres voyageurs de votre vol, ou d'un vol compatible au même aéroport et à la même heure."
+          "question": "Qu’est-ce que Cojauny ?",
+          "answer": "Une app pour rencontrer des voyageurs de votre vol et organiser des plans comme un taxi partagé à l’aéroport. Les participants conviennent du transfert et du paiement. Cojauny n’est pas un transporteur."
         },
         {
-          "question": "Pourquoi pas juste un groupe WhatsApp ou chercher quelqu'un à l'aéroport ?",
-          "answer": "Vous pouvez essayer — mais ça veut souvent dire espérer que quelqu'un soit encore là, faire défiler des publications vieilles de plusieurs jours, ou discuter avec quelqu'un qui n'avait même pas de billet. Cojauny confirme que tout le monde dans votre groupe est vraiment sur votre vol, vous associe automatiquement dès la réservation, et garde la conversation active pendant des semaines avant le départ — pas seulement les quelques minutes après l'atterrissage."
+          "question": "Puis-je utiliser l’app dès mon inscription ?",
+          "answer": "L’inscription vous ajoute à la liste d’accès à la bêta. Nous vous écrirons lorsque votre accès sera disponible. Elle ne garantit ni accès immédiat ni compagnons pour un vol donné."
         },
         {
-          "question": "Est-ce sûr de voyager avec des gens que je ne connais pas ?",
-          "answer": "Oui. Chacun vérifie son e-mail (et peut aussi vérifier son numéro de téléphone) avant de rejoindre, et vous pouvez consulter le profil public de chaque voyageur — avis, commentaires, réputation — avant de confirmer quoi que ce soit. Ce profil n'affiche qu'un pseudo, jamais le vrai nom : votre identité complète reste connue de Cojauny en interne, en cas de besoin pour la sécurité ou le suivi légal, mais elle n'est jamais partagée avec les autres utilisateurs. La coordination se fait via un chat sécurisé dans l'app, vous n'avez donc jamais à partager votre numéro."
+          "question": "Comment trouver des compagnons ?",
+          "answer": "Ajoutez le numéro et la date de votre vol. La disponibilité dépend des voyageurs inscrits. Vérifiez que la destination et les horaires du groupe vous conviennent."
         },
         {
-          "question": "Quelles informations les autres voyageurs voient-ils de moi ?",
-          "answer": "Seulement votre pseudo, votre photo de profil (si vous choisissez d'en ajouter une) et votre note moyenne. Votre vrai nom, votre numéro et vos documents de vérification ne sont jamais montrés aux autres utilisateurs — ils restent chez Cojauny, visibles uniquement en interne pour la sécurité et la traçabilité légale. Partager votre numéro de siège reste, lui aussi, toujours facultatif."
+          "question": "Combien puis-je économiser ?",
+          "answer": "Cela dépend du prix final et du groupe. Si un taxi coûte toujours 40 €, deux personnes paient 20 € chacune et quatre paient 10 €. Vérifiez suppléments, bagages, capacité et détours."
         },
         {
-          "question": "Et si je rentre dans ma propre ville ?",
-          "answer": "Encore mieux : on vous attribue le badge « retour à la maison », pour que les autres voyageurs de votre vol sachent que vous connaissez le coin et puissent vous demander des conseils pour rejoindre le centre. Vous pouvez quand même partager le trajet, ou juste donner un coup de main."
+          "question": "Cojauny réserve-t-il le taxi ou encaisse-t-il le paiement ?",
+          "answer": "Cojauny aide à organiser le groupe et à répartir les frais. L’app ne traite pas les paiements du transfert. Convenez de la réservation et du règlement avant le voyage."
         },
         {
-          "question": "Puis-je annuler ma participation sans pénalité ?",
-          "answer": "Oui, sans engagement. Vous pouvez quitter n'importe quel événement depuis l'app, sans frais. En tant qu'organisateur, le groupe est prévenu instantanément pour pouvoir se réorganiser. Essayez juste de prévenir le plus tôt possible."
+          "question": "Comment choisir mes compagnons ?",
+          "answer": "Consultez les informations et avis disponibles, échangez avec la personne et faites votre propre choix. La confirmation de l’email ne garantit ni l’identité ni la sécurité du trajet. Vous pouvez bloquer ou signaler une interaction."
         },
         {
-          "question": "Comment se répartissent les coûts entre les participants ?",
-          "answer": "L'app calcule automatiquement une répartition équitable et montre à tout le monde l'économie estimée avant le trajet. Nous ne gérons pas les paiements nous-mêmes, alors réglez-vous comme vous voulez — espèces, virement, PayPal, ce qui vous arrange."
+          "question": "Que voient les autres voyageurs ?",
+          "answer": "Votre pseudonyme, la photo que vous choisissez d’ajouter et les avis de votre profil. Votre nom réel, téléphone et documents de vérification ne figurent pas sur votre profil public. Évitez les informations sensibles dans le chat."
         },
         {
-          "question": "Quels types d'événements puis-je créer ou rejoindre ?",
-          "answer": "Trajets partagés vers l'aéroport, prises en charge à l'arrivée, navettes pour équipes, voitures privées partagées, hébergement partagé, ou même une sortie après l'atterrissage. Les utilisateurs Premium peuvent créer des événements personnalisés pour tout le reste."
+          "question": "Puis-je m’organiser avant le vol ?",
+          "answer": "Oui. Ajoutez le vol et convenez des détails à l’avance. Envoyez les messages lorsque vous êtes connecté et fixez le lieu de rencontre avant l’embarquement."
         },
         {
-          "question": "Dans quels aéroports Cojauny est-il disponible ?",
-          "answer": "Nous lançons dans les principaux aéroports d'Europe, des Amériques et du Moyen-Orient — dont Madrid, Barcelone, Londres-Heathrow, Paris-CDG et New York-JFK. Le vôtre n'y est pas ? Demandez-le depuis Paramètres → Demander un aéroport."
+          "question": "Et si mes plans changent ?",
+          "answer": "Prévenez le groupe au plus tôt, modifiez les détails ou quittez l’événement dans l’app. Vérifiez séparément les conditions d’annulation du transport réservé."
         },
         {
-          "question": "Que se passe-t-il si mon vol est retardé, annulé ou change de porte ?",
-          "answer": "Nous suivons votre vol en temps réel. Si quelque chose change, tout le groupe est prévenu instantanément, et vous pouvez ajuster l'heure ou le lieu de rendez-vous — ou annuler l'événement — en un geste."
+          "question": "Mon aéroport est-il disponible ?",
+          "answer": "Consultez les pages aéroports et indiquez le vôtre à l’inscription. Une page aéroport ne garantit pas un groupe disponible pour votre vol."
         },
         {
-          "question": "Combien puis-je vraiment économiser avec Cojauny ?",
-          "answer": "En moyenne, 50 à 75% par rapport à un trajet en solo. Un transfert à 30 € revient par exemple à environ 8 € par personne en le partageant avec trois autres passagers — soit 500 à 600 € par an pour quelqu'un qui prend l'avion deux fois par mois."
-        },
-        {
-          "question": "Que se passe-t-il après mon inscription sur la liste d'attente ?",
-          "answer": "Vous recevez immédiatement un e-mail de confirmation, ainsi que votre propre lien d'invitation pour avancer dans la file. Dès qu'une place se libère pour vous, nous vous écrivons avec tout ce qu'il faut pour votre premier trajet partagé."
+          "question": "À quoi sert mon lien d’invitation ?",
+          "answer": "Après l’inscription, votre lien personnel permet d’inviter d’autres voyageurs. Leurs visites et inscriptions contribuent à prioriser votre accès. Nous vous écrirons lorsque vous pourrez participer."
         }
       ]
     },
     "forms": {
       "beta": {
-        "heading": "Réservez votre place dans la bêta Cojauny",
-        "subheading": "Soyez parmi les premiers à partager des trajets aéroport vérifiés — quelques avantages vous attendent en tant que membre fondateur.",
-        "title": "Demander l'accès Bêta",
-        "description": "Accès prioritaire, profil vérifié, badge fondateur et contact direct avec notre équipe.",
+        "heading": "Votre prochain transfert commence ici",
+        "subheading": "Inscrivez-vous sur la liste d’accès. Nous vous écrirons quand vous pourrez essayer la bêta Cojauny.",
+        "title": "M’inscrire à la bêta",
+        "description": "Renseignez vos coordonnées. Les champs facultatifs nous aident à connaître vos trajets et préparer la bêta.",
         "success": "Vous êtes sur la liste ! Nous vous écrirons dès que votre accès sera prêt.",
         "error": "Un problème est survenu de notre côté — réessayez dans un instant.",
         "duplicateError": "Il semble que vous soyez déjà sur la liste. Nous vous recontactons bientôt.",
-        "submit": "Réserver ma place",
+        "submit": "M’inscrire à la bêta",
         "checkboxLabel": "J'ai lu et j'accepte la {privacyLink} de Cojauny.",
         "privacyLinkLabel": "politique de confidentialité",
         "referralNotice": "Après inscription, vous recevrez un lien à partager. Nous comptons uniquement les visites et inscriptions pour vous faire avancer dans la liste — vos données ne sont jamais partagées avec des tiers.",
@@ -497,10 +486,10 @@
         ]
       },
       "feedback": {
-        "heading": "Une idée à partager ? On vous écoute",
-        "subheading": "Idées, bugs, propositions professionnelles... dites-nous tout.",
+        "heading": "Aidez-nous à améliorer votre prochain voyage",
+        "subheading": "Partagez une idée, une question ou une proposition de partenariat.",
         "title": "Envoyez-nous un message",
-        "description": "Vous gérez des transferts réguliers ou avez un partenariat en tête ? Parlez-nous-en, ou écrivez à feedback@cojauny.com.",
+        "description": "Qu’est-ce qui faciliterait votre transfert ? Écrivez-nous ici ou à feedback@cojauny.com.",
         "success": "Bien reçu, merci ! Nous revenons vers vous si besoin.",
         "error": "Vérifiez votre message et réessayez.",
         "submit": "Envoyer le message",
@@ -562,7 +551,7 @@
       "moreInfo": "En savoir plus"
     },
     "footer": {
-      "description": "Nous rendons le trajet vers l'aéroport plus simple, moins cher et plus sûr. Ensemble.",
+      "description": "Rencontrez des voyageurs de votre vol et organisez un transfert partagé à l’aéroport.",
       "rights": "Tous droits réservés.",
       "appStoreSoon": "App Store (bientôt)",
       "playStoreSoon": "Google Play (bientôt)",
@@ -584,10 +573,10 @@
       "title": "Blog Cojauny · Mobilité Intelligente pour vos Voyages",
       "description": "Coordonnez vos transferts aéroport avec d'autres passagers, réduisez les coûts et restez synchronisés.",
       "ogTitle": "Blog Cojauny · Mobilité Aérienne Partagée",
-      "ogDescription": "Études de cas, tactiques opérationnelles et nouveautés pour maîtriser vos trajets porte-à-porte."
+      "ogDescription": "Des guides pour préparer votre arrivée, comparer les transports et partager les frais du trajet."
     },
-    "heading": "Stratégies de Mobilité",
-    "subtitle": "Tactiques éprouvées pour coordonner le transport partagé sur un même vol.",
+    "heading": "Arrivez avec un plan",
+    "subtitle": "Des conseils pratiques pour organiser le transfert, partager les frais et éviter d’improviser à l’arrivée.",
     "empty": "Nouveaux articles bientôt disponibles. Rejoignez la bêta pour un accès prioritaire.",
     "readTimeLabel": "min de lecture",
     "updatedLabel": "Mis à jour",

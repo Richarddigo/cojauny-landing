@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useEffect, useState } from 'react';
+import { useState, useSyncExternalStore, useEffect } from 'react';
 import { useConsent } from '@/hooks/useConsent';
 import type { LandingCopy } from '@/locales/copy';
 import type { Locale } from '@/locales/config';
@@ -10,18 +10,27 @@ interface CookieBannerProps {
     locale: Locale;
 }
 
+const subscribeToHydration = () => () => {};
+const clientSnapshot = () => true;
+const serverSnapshot = () => false;
+
 const CookieBanner = ({ copy, locale }: CookieBannerProps) => {
     const { isConfigured, acceptAll, rejectAnalytics, savePreferences } = useConsent();
-    const [open, setOpen] = useState(false);
+    const hydrated = useSyncExternalStore(subscribeToHydration, clientSnapshot, serverSnapshot);
+    const [dismissed, setDismissed] = useState(false);
+    const [reopened, setReopened] = useState(false);
+    useEffect(() => {
+        const reopen = () => setReopened(true);
+        window.addEventListener('cojauny:cookie-settings', reopen);
+        return () => window.removeEventListener('cojauny:cookie-settings', reopen);
+    }, []);
+    const open = hydrated && (reopened || (!isConfigured && !dismissed));
     const [customize, setCustomize] = useState(false);
     const [analyticsEnabled, setAnalyticsEnabled] = useState(false);
 
-    useEffect(() => {
-        setOpen(!isConfigured);
-    }, [isConfigured]);
-
     const close = () => {
-        setOpen(false);
+        setDismissed(true);
+        setReopened(false);
         setCustomize(false);
     };
 
@@ -32,6 +41,7 @@ const CookieBanner = ({ copy, locale }: CookieBannerProps) => {
             aria-live="polite"
             aria-label={copy.message}
             aria-hidden={!open}
+            inert={!open}
         >
             <p className="mb-4 text-sm text-white/80">{copy.message}</p>
 
@@ -66,7 +76,7 @@ const CookieBanner = ({ copy, locale }: CookieBannerProps) => {
                         acceptAll();
                         close();
                     }}
-                    className="rounded-xl bg-studio-accent px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-studio-accent-dim focus-visible:bg-studio-accent-dim"
+                    className="rounded-xl bg-action px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-action-dim focus-visible:bg-action-dim"
                     tabIndex={open ? 0 : -1}
                 >
                     {copy.acceptAll}

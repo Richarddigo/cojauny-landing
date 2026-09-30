@@ -7,7 +7,7 @@ import { locales } from '@/locales/config';
 
 export const dynamic = 'force-static';
 
-const localeAwarePaths = ['/', '/docs/sdk-plan', '/airports'];
+const localeAwarePaths = ['/', '/blog', '/docs/sdk-plan', '/airports'];
 const legalPaths = [
   '/account-deletion',
   '/legal/privacy',

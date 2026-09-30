@@ -1,3 +1,5 @@
+import WebVitals from '@/components/WebVitals';
+import RootDocument, { metadata as documentMetadata } from '@/components/RootDocument';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import type { ReactNode } from 'react';
@@ -10,7 +12,6 @@ import ConsentGatedVercelAnalytics from '@/components/ConsentGatedVercelAnalytic
 import Footer from '@/components/Footer';
 import HashScrollHandler from '@/components/HashScrollHandler';
 import Header from '@/components/Header';
-import LocaleDocumentLang from '@/components/LocaleDocumentLang';
 import {
     getCommonCopyFromMessages,
     getFooterCopyFromMessages,
@@ -43,6 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     const alternates = buildLocaleAlternates(locale);
 
     return {
+        ...documentMetadata,
         metadataBase: new URL(siteMetadata.url),
         title: copy.seo.title,
         description: copy.seo.description,
@@ -90,8 +92,8 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     const footerCopy = getFooterCopyFromMessages(footerT);
 
     return (
-        <NextIntlClientProvider locale={locale}>
-            <LocaleDocumentLang locale={locale} />
+        <RootDocument locale={locale}>
+        <NextIntlClientProvider locale={locale} messages={{ landing: { forms: copy.forms, referralPanel: copy.referralPanel } }}>
             <HashScrollHandler />
             <AccessibilitySkipLink label={landingT('skipLink')} />
             <Header locale={locale} copy={headerCopy} common={commonCopy} />
@@ -101,6 +103,8 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             <Footer copy={footerCopy} locale={locale} common={commonCopy} />
             <CookieBanner copy={copy.cookie} locale={locale} />
             <ConsentGatedVercelAnalytics />
+            <WebVitals locale={locale} />
         </NextIntlClientProvider>
+        </RootDocument>
     );
 }

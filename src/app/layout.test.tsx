@@ -1,6 +1,6 @@
 /* eslint-disable testing-library/no-node-access, testing-library/prefer-screen-queries */
 import { render } from '@testing-library/react';
-import { metadata } from './layout';
+import { metadata } from '@/components/RootDocument';
 import StructuredData from '@/components/StructuredData';
 
 // RootLayout renders <html> which JSDOM doesn't handle well in render()

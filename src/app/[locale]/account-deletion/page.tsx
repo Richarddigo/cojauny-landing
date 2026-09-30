@@ -1,3 +1,4 @@
+import { buildLocaleAlternates } from '@/lib/jsonld';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -27,9 +28,7 @@ export async function generateMetadata({ params }: AccountDeletionPageProps): Pr
     return {
         title: copy.title,
         description: copy.intro,
-        alternates: {
-            canonical: '/account-deletion'
-        }
+        alternates: buildLocaleAlternates(locale, '/account-deletion')
     };
 }
 

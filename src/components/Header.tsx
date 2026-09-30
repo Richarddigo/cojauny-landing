@@ -27,7 +27,7 @@ interface HeaderProps {
 
 type NavItem = { href: string; label: string; external?: boolean; highlight?: boolean };
 
-const buildNavItems = (copy: LandingCopy['header'], locale: Locale): NavItem[] => [
+const buildNavItems = (copy: LandingCopy['header']): NavItem[] => [
     { href: '#how-it-works', label: copy.workflow },
     { href: '#benefits', label: copy.benefits },
     { href: '#demo', label: copy.demo },
@@ -38,7 +38,7 @@ const buildNavItems = (copy: LandingCopy['header'], locale: Locale): NavItem[] =
 
 const Header = ({ locale, copy, common }: HeaderProps) => {
     const resolvedCommon = common ?? getCommonCopy(locale);
-    const navItems = buildNavItems(copy, locale);
+    const navItems = buildNavItems(copy);
     const desktopNavItems = navItems;
     const pathname = usePathname() ?? `/${locale}`;
 
@@ -136,7 +136,7 @@ const Header = ({ locale, copy, common }: HeaderProps) => {
 
     const desktopLinkClass = (active: boolean, highlight?: boolean) => (
         highlight
-            ? `inline-flex items-center justify-center whitespace-nowrap rounded-xl bg-studio-accent px-3 py-2 text-sm font-semibold text-white transition hover:bg-studio-accent-dim ${active ? 'ring-2 ring-white/30' : ''}`
+            ? `inline-flex items-center justify-center whitespace-nowrap rounded-xl bg-action px-3 py-2 text-sm font-semibold text-white transition hover:bg-action-dim ${active ? 'ring-2 ring-white/30' : ''}`
             : `group relative whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium leading-5 transition-all duration-200 ${active
                 ? 'text-white [text-shadow:0_0_10px_rgba(255,255,255,0.55)]'
                 : 'text-white/85 hover:text-white hover:[text-shadow:0_0_10px_rgba(255,255,255,0.55)]'
@@ -154,7 +154,7 @@ const Header = ({ locale, copy, common }: HeaderProps) => {
 
     const mobileLinkClass = (active: boolean, highlight?: boolean) => (
         highlight
-            ? `block w-full rounded-xl bg-studio-accent px-4 py-3.5 text-right text-sm font-semibold text-white transition hover:bg-studio-accent-dim ${active ? 'ring-2 ring-white/30' : ''}`
+            ? `block w-full rounded-xl bg-action px-4 py-3.5 text-right text-sm font-semibold text-white transition hover:bg-action-dim ${active ? 'ring-2 ring-white/30' : ''}`
             : `group relative block w-full rounded-lg px-4 py-3.5 text-right text-sm font-medium leading-5 transition-colors ${active
                 ? 'text-white [text-shadow:0_0_10px_rgba(255,255,255,0.55)]'
                 : 'text-white/85 hover:text-white hover:[text-shadow:0_0_10px_rgba(255,255,255,0.55)]'

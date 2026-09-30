@@ -21,6 +21,8 @@ export function parseConsent(raw: string | null): ConsentState {
     if (
       typeof parsed.analytics !== 'boolean' ||
       typeof parsed.timestamp !== 'number' ||
+      !Number.isFinite(parsed.timestamp) ||
+      parsed.timestamp > Date.now() ||
       parsed.version !== CONSENT_VERSION
     ) {
       return 'unknown';

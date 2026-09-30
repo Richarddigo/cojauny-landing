@@ -3,343 +3,511 @@
 <channel>
   <title><![CDATA[Cojauny]]></title>
   <link>https://cojauny.com</link>
-  <description><![CDATA[Plataforma para coordinar pasajeros del mismo vuelo, compartir taxis o vans y medir ahorro y CO₂ evitado en cada trayecto.]]></description>
-  <lastBuildDate>Fri, 28 Nov 2025 18:08:07 GMT</lastBuildDate>
+  <description><![CDATA[Conecta con la gente de tu vuelo en cuanto reservas: habla con ellos durante semanas, organizad el viaje juntos y compartid traslado al aterrizar.]]></description>
+  <lastBuildDate>Wed, 30 Sep 2026 13:18:58 GMT</lastBuildDate>
   <item>
-    <title><![CDATA[The Comprehensive Guide to Mastering Shared Airport Transportation]]></title>
-    <link>https://cojauny.com/en/blog/share-airport-ride</link>
-    <guid isPermaLink="false">https://cojauny.com/en/blog/share-airport-ride</guid>
+    <title><![CDATA[Sharing an airport ride: what to agree on]]></title>
+    <link>https://cojauny.com/blog/share-airport-ride</link>
+    <guid isPermaLink="false">https://cojauny.com/blog/share-airport-ride</guid>
     <pubDate>Mon, 10 Nov 2025 08:00:00 GMT</pubDate>
-    <description><![CDATA[An exhaustive strategic framework for optimizing group airport transfers through systematic coordination, intelligent resource allocation, and sophisticated logistical planning.]]></description>
+    <description><![CDATA[Agree on the route and total price. Sharing is not always worthwhile: include waiting and detours.]]></description>
   </item>
   <item>
-    <title><![CDATA[Guía Completa para Dominar el Transporte Aeroportuario Compartido]]></title>
+    <title><![CDATA[Compartir un traslado: qué acordar]]></title>
     <link>https://cojauny.com/es/blog/share-airport-ride</link>
     <guid isPermaLink="false">https://cojauny.com/es/blog/share-airport-ride</guid>
     <pubDate>Mon, 10 Nov 2025 08:00:00 GMT</pubDate>
-    <description><![CDATA[Un marco estratégico exhaustivo para optimizar traslados aeroportuarios grupales mediante coordinación sistemática, asignación inteligente de recursos y planificación logística sofisticada.]]></description>
+    <description><![CDATA[Acordad la ruta y el coste total. Compartir no compensa siempre: considerad también la espera y los desvíos.]]></description>
   </item>
   <item>
-    <title><![CDATA[Guide Complet pour Maîtriser le Transport Aéroportuaire Partagé]]></title>
+    <title><![CDATA[Partager un transfert : les points à convenir]]></title>
     <link>https://cojauny.com/fr/blog/share-airport-ride</link>
     <guid isPermaLink="false">https://cojauny.com/fr/blog/share-airport-ride</guid>
     <pubDate>Mon, 10 Nov 2025 08:00:00 GMT</pubDate>
-    <description><![CDATA[Un cadre stratégique exhaustif pour optimiser les transferts aéroportuaires de groupe grâce à une coordination systématique, une allocation intelligente des ressources et une planification logistique sophistiquée.]]></description>
+    <description><![CDATA[Convenez du trajet et du prix total. Tenez compte de l’attente et des détours.]]></description>
   </item>
   <item>
-    <title><![CDATA[Umfassender Leitfaden zur Beherrschung Gemeinsamer Flughafenbeförderung]]></title>
+    <title><![CDATA[Flughafentransfer teilen: Was ihr klären solltet]]></title>
     <link>https://cojauny.com/de/blog/share-airport-ride</link>
     <guid isPermaLink="false">https://cojauny.com/de/blog/share-airport-ride</guid>
     <pubDate>Mon, 10 Nov 2025 08:00:00 GMT</pubDate>
-    <description><![CDATA[Ein erschöpfender strategischer Rahmen zur Optimierung von Gruppenflughafentransfers durch systematische Koordination, intelligente Ressourcenzuweisung und anspruchsvolle logistische Planung.]]></description>
+    <description><![CDATA[Vereinbart Route und Gesamtpreis. Berücksichtigt beim Teilen auch Wartezeit und Umwege.]]></description>
   </item>
   <item>
-    <title><![CDATA[Advanced Real-Time Flight Coordination: Mastering Distributed Team Mobility]]></title>
-    <link>https://cojauny.com/en/blog/real-time-flight-coordination</link>
-    <guid isPermaLink="false">https://cojauny.com/en/blog/real-time-flight-coordination</guid>
+    <title><![CDATA[Coordinating a transfer when a flight changes]]></title>
+    <link>https://cojauny.com/blog/real-time-flight-coordination</link>
+    <guid isPermaLink="false">https://cojauny.com/blog/real-time-flight-coordination</guid>
     <pubDate>Wed, 12 Nov 2025 09:00:00 GMT</pubDate>
-    <description><![CDATA[Comprehensive framework for synchronizing complex team travel through intelligent systems, predictive analytics, and dynamic coordination protocols.]]></description>
+    <description><![CDATA[Check airline information and reconfirm pickup after a delay. Do not assume an app automatically updates the driver.]]></description>
   </item>
   <item>
-    <title><![CDATA[Coordinación Avanzada de Vuelos en Tiempo Real: Dominando la Movilidad de Equipos Distribuidos]]></title>
+    <title><![CDATA[Coordinar un traslado cuando cambia el vuelo]]></title>
     <link>https://cojauny.com/es/blog/real-time-flight-coordination</link>
     <guid isPermaLink="false">https://cojauny.com/es/blog/real-time-flight-coordination</guid>
     <pubDate>Wed, 12 Nov 2025 09:00:00 GMT</pubDate>
-    <description><![CDATA[Marco integral para sincronizar viajes de equipo complejos mediante sistemas inteligentes, análisis predictivo y protocolos de coordinación dinámica.]]></description>
+    <description><![CDATA[Consulta a la aerolínea y vuelve a confirmar la recogida tras un retraso. No asumas que una app avisará automáticamente al conductor.]]></description>
   </item>
   <item>
-    <title><![CDATA[Coordination de Vol en Temps Réel Avancée : Maîtriser la Mobilité des Équipes Distribuées]]></title>
+    <title><![CDATA[Organiser un transfert quand le vol change]]></title>
     <link>https://cojauny.com/fr/blog/real-time-flight-coordination</link>
     <guid isPermaLink="false">https://cojauny.com/fr/blog/real-time-flight-coordination</guid>
     <pubDate>Wed, 12 Nov 2025 09:00:00 GMT</pubDate>
-    <description><![CDATA[Cadre complet pour synchroniser les voyages d'équipe complexes grâce à des systèmes intelligents, l'analyse prédictive et des protocoles de coordination dynamique.]]></description>
+    <description><![CDATA[Consultez la compagnie et reconfirmez la prise en charge après un retard. Ne supposez pas une notification automatique au conducteur.]]></description>
   </item>
   <item>
-    <title><![CDATA[Erweiterte Echtzeit-Flugkoordination: Beherrschung der Mobilität Verteilter Teams]]></title>
+    <title><![CDATA[Transfer abstimmen, wenn sich der Flug ändert]]></title>
     <link>https://cojauny.com/de/blog/real-time-flight-coordination</link>
     <guid isPermaLink="false">https://cojauny.com/de/blog/real-time-flight-coordination</guid>
     <pubDate>Wed, 12 Nov 2025 09:00:00 GMT</pubDate>
-    <description><![CDATA[Umfassender Rahmen zur Synchronisierung komplexer Teamreisen durch intelligente Systeme, prädiktive Analysen und dynamische Koordinationsprotokolle.]]></description>
+    <description><![CDATA[Prüfe die Airline-Angaben und bestätige die Abholung bei Verspätung erneut. Automatische Fahrerupdates sind nicht vorauszusetzen.]]></description>
   </item>
   <item>
-    <title><![CDATA[Advanced Minibus Coordination Strategies for Large Teams]]></title>
-    <link>https://cojauny.com/en/blog/minibus-team-coordination</link>
-    <guid isPermaLink="false">https://cojauny.com/en/blog/minibus-team-coordination</guid>
+    <title><![CDATA[Planning a small group transfer]]></title>
+    <link>https://cojauny.com/blog/minibus-team-coordination</link>
+    <guid isPermaLink="false">https://cojauny.com/blog/minibus-team-coordination</guid>
     <pubDate>Fri, 14 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Comprehensive framework for optimizing minibus utilization, strategic seat mapping, and centralized communication protocols for teams of 8–15 members.]]></description>
+    <description><![CDATA[Request a quote for the whole group including luggage and accessibility needs. Choose one contact person and check cancellation terms.]]></description>
   </item>
   <item>
-    <title><![CDATA[Estrategias Avanzadas de Coordinación de Minibuses para Equipos Grandes]]></title>
+    <title><![CDATA[Organizar el traslado de un grupo pequeño]]></title>
     <link>https://cojauny.com/es/blog/minibus-team-coordination</link>
     <guid isPermaLink="false">https://cojauny.com/es/blog/minibus-team-coordination</guid>
     <pubDate>Fri, 14 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Marco integral para optimizar la utilización de minibuses, mapeo estratégico de asientos y protocolos de comunicación centralizados para equipos de 8 a 15 miembros.]]></description>
+    <description><![CDATA[Solicita un presupuesto para todo el grupo con equipaje y necesidades de accesibilidad. Designa una persona de contacto y revisa la cancelación.]]></description>
   </item>
   <item>
-    <title><![CDATA[Stratégies Avancées de Coordination de Minibus pour les Grandes Équipes]]></title>
+    <title><![CDATA[Préparer le transfert d’un petit groupe]]></title>
     <link>https://cojauny.com/fr/blog/minibus-team-coordination</link>
     <guid isPermaLink="false">https://cojauny.com/fr/blog/minibus-team-coordination</guid>
     <pubDate>Fri, 14 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Cadre complet pour optimiser l'utilisation des minibus, la cartographie stratégique des sièges et les protocoles de communication centralisés pour les équipes de 8 à 15 membres.]]></description>
+    <description><![CDATA[Demandez un devis pour tout le groupe, bagages et accessibilité compris. Désignez un contact et vérifiez les conditions d’annulation.]]></description>
   </item>
   <item>
-    <title><![CDATA[Erweiterte Minibus-Koordinationsstrategien für Große Teams]]></title>
+    <title><![CDATA[Transfer für eine kleine Gruppe planen]]></title>
     <link>https://cojauny.com/de/blog/minibus-team-coordination</link>
     <guid isPermaLink="false">https://cojauny.com/de/blog/minibus-team-coordination</guid>
     <pubDate>Fri, 14 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Umfassender Rahmen zur Optimierung der Minibus-Nutzung, strategischen Sitzplatzkartierung und zentralisierten Kommunikationsprotokollen für Teams von 8–15 Mitgliedern.]]></description>
+    <description><![CDATA[Fordere ein Angebot für die ganze Gruppe mit Gepäck und Barrierefreiheit an. Benenne eine Kontaktperson und prüfe Stornobedingungen.]]></description>
   </item>
   <item>
-    <title><![CDATA[Real-Time Location Sharing: Balancing Safety and Efficiency at Events]]></title>
-    <link>https://cojauny.com/en/blog/real-time-location-sharing</link>
-    <guid isPermaLink="false">https://cojauny.com/en/blog/real-time-location-sharing</guid>
+    <title><![CDATA[Sharing your location for a meeting]]></title>
+    <link>https://cojauny.com/blog/real-time-location-sharing</link>
+    <guid isPermaLink="false">https://cojauny.com/blog/real-time-location-sharing</guid>
     <pubDate>Sat, 15 Nov 2025 11:00:00 GMT</pubDate>
-    <description><![CDATA[Sophisticated approaches to temporary location sharing that enhance team coordination while rigorously protecting individual privacy and data security.]]></description>
+    <description><![CDATA[A fixed pin may be enough. If another tool supports live location, limit its duration and switch it off afterwards. This capability is not confirmed for the beta.]]></description>
   </item>
   <item>
-    <title><![CDATA[Compartir Ubicación en Tiempo Real: Equilibrando Seguridad y Eficiencia en Eventos]]></title>
+    <title><![CDATA[Compartir ubicación durante un encuentro]]></title>
     <link>https://cojauny.com/es/blog/real-time-location-sharing</link>
     <guid isPermaLink="false">https://cojauny.com/es/blog/real-time-location-sharing</guid>
     <pubDate>Sat, 15 Nov 2025 11:00:00 GMT</pubDate>
-    <description><![CDATA[Enfoques sofisticados para el intercambio temporal de ubicación que mejoran la coordinación del equipo mientras protegen rigurosamente la privacidad individual y la seguridad de los datos.]]></description>
+    <description><![CDATA[Un punto fijo puede bastar. Si otra herramienta permite ubicación en directo, limita la duración y desactívala después. Esta capacidad no está confirmada para la beta.]]></description>
   </item>
   <item>
-    <title><![CDATA[Partage de Localisation en Temps Réel : Équilibrer Sécurité et Efficacité lors des Événements]]></title>
+    <title><![CDATA[Partager sa position pour un rendez-vous]]></title>
     <link>https://cojauny.com/fr/blog/real-time-location-sharing</link>
     <guid isPermaLink="false">https://cojauny.com/fr/blog/real-time-location-sharing</guid>
     <pubDate>Sat, 15 Nov 2025 11:00:00 GMT</pubDate>
-    <description><![CDATA[Approches sophistiquées pour le partage temporaire de localisation qui améliorent la coordination d'équipe tout en protégeant rigoureusement la vie privée individuelle et la sécurité des données.]]></description>
+    <description><![CDATA[Un point fixe peut suffire. Limitez la durée du partage en direct et désactivez-le ensuite. Cette fonction n’est pas confirmée pour la bêta.]]></description>
   </item>
   <item>
-    <title><![CDATA[Echtzeit-Standortfreigabe: Ausgleich von Sicherheit und Effizienz bei Veranstaltungen]]></title>
+    <title><![CDATA[Standort für ein Treffen teilen]]></title>
     <link>https://cojauny.com/de/blog/real-time-location-sharing</link>
     <guid isPermaLink="false">https://cojauny.com/de/blog/real-time-location-sharing</guid>
     <pubDate>Sat, 15 Nov 2025 11:00:00 GMT</pubDate>
-    <description><![CDATA[Anspruchsvolle Ansätze für temporäre Standortfreigabe, die Teamkoordination verbessern und gleichzeitig individuellen Datenschutz und Datensicherheit rigoros schützen.]]></description>
+    <description><![CDATA[Ein fester Treffpunkt kann genügen. Begrenzt bei Live-Standortfreigabe die Dauer und beendet sie danach. Diese Funktion ist für die Beta nicht bestätigt.]]></description>
   </item>
   <item>
-    <title><![CDATA[Ephemeral Group Chats: Secure Communication That Self-Destructs]]></title>
-    <link>https://cojauny.com/en/blog/ephemeral-group-chat</link>
-    <guid isPermaLink="false">https://cojauny.com/en/blog/ephemeral-group-chat</guid>
+    <title><![CDATA[What to share in a travel chat]]></title>
+    <link>https://cojauny.com/blog/ephemeral-group-chat</link>
+    <guid isPermaLink="false">https://cojauny.com/blog/ephemeral-group-chat</guid>
     <pubDate>Sun, 16 Nov 2025 12:00:00 GMT</pubDate>
-    <description><![CDATA[Comprehensive analysis of self-destructing messaging systems and their strategic application in event coordination, balancing security needs with practical communication requirements.]]></description>
+    <description><![CDATA[Keep the chat focused on timing, meeting points and changes. Do not assume offline access or automatic deletion; check the service’s features.]]></description>
   </item>
   <item>
-    <title><![CDATA[Chats Grupales Efímeros: Comunicación Segura que se Autodestruye]]></title>
+    <title><![CDATA[Qué compartir en un chat de viaje]]></title>
     <link>https://cojauny.com/es/blog/ephemeral-group-chat</link>
     <guid isPermaLink="false">https://cojauny.com/es/blog/ephemeral-group-chat</guid>
     <pubDate>Sun, 16 Nov 2025 12:00:00 GMT</pubDate>
-    <description><![CDATA[Análisis integral de sistemas de mensajería autodestructivos y su aplicación estratégica en coordinación de eventos, equilibrando necesidades de seguridad con requisitos prácticos de comunicación.]]></description>
+    <description><![CDATA[Mantén el chat centrado en hora, encuentro y cambios. No presupongas acceso sin conexión ni borrado automático; verifica las funciones del servicio.]]></description>
   </item>
   <item>
-    <title><![CDATA[Chats de Groupe Éphémères : Communication Sécurisée qui s'Auto-Détruit]]></title>
+    <title><![CDATA[Que partager dans un groupe de voyage]]></title>
     <link>https://cojauny.com/fr/blog/ephemeral-group-chat</link>
     <guid isPermaLink="false">https://cojauny.com/fr/blog/ephemeral-group-chat</guid>
     <pubDate>Sun, 16 Nov 2025 12:00:00 GMT</pubDate>
-    <description><![CDATA[Analyse complète des systèmes de messagerie autodestructifs et leur application stratégique dans la coordination d'événements, équilibrant les besoins de sécurité avec les exigences pratiques de communication.]]></description>
+    <description><![CDATA[Limitez le chat aux horaires, au rendez-vous et aux changements. Vérifiez les fonctions avant de supposer un accès hors ligne ou une suppression automatique.]]></description>
   </item>
   <item>
-    <title><![CDATA[Ephemere Gruppenchats: Sichere Kommunikation, die sich Selbst Zerstört]]></title>
+    <title><![CDATA[Was in einen Reisechat gehört]]></title>
     <link>https://cojauny.com/de/blog/ephemeral-group-chat</link>
     <guid isPermaLink="false">https://cojauny.com/de/blog/ephemeral-group-chat</guid>
     <pubDate>Sun, 16 Nov 2025 12:00:00 GMT</pubDate>
-    <description><![CDATA[Umfassende Analyse selbstzerstörender Nachrichtensysteme und ihre strategische Anwendung in der Eventkoordination, die Sicherheitsbedürfnisse mit praktischen Kommunikationsanforderungen ausbalanciert.]]></description>
+    <description><![CDATA[Konzentriere den Chat auf Zeiten, Treffpunkt und Änderungen. Offline-Zugang oder automatische Löschung sind beim Dienst zu prüfen.]]></description>
   </item>
   <item>
-    <title><![CDATA[Automatic Cost Splitting: Revolutionizing Financial Management for Group Travel]]></title>
-    <link>https://cojauny.com/en/blog/automatic-cost-splitting</link>
-    <guid isPermaLink="false">https://cojauny.com/en/blog/automatic-cost-splitting</guid>
+    <title><![CDATA[Splitting transport costs clearly]]></title>
+    <link>https://cojauny.com/blog/automatic-cost-splitting</link>
+    <guid isPermaLink="false">https://cojauny.com/blog/automatic-cost-splitting</guid>
     <pubDate>Mon, 17 Nov 2025 13:00:00 GMT</pubDate>
-    <description><![CDATA[Advanced methodologies for automating expense allocation, eliminating spreadsheet dependencies, and ensuring transparent financial management across complex group travel scenarios.]]></description>
+    <description><![CDATA[For an illustrative €40 total, two pay €20 each and four €10 each. With three, two pay €13.33 and one €13.34. This is not a real fare or guaranteed saving.]]></description>
   </item>
   <item>
-    <title><![CDATA[División Automática de Costos: Revolucionando la Gestión Financiera para Viajes Grupales]]></title>
+    <title><![CDATA[Repartir gastos de transporte con claridad]]></title>
     <link>https://cojauny.com/es/blog/automatic-cost-splitting</link>
     <guid isPermaLink="false">https://cojauny.com/es/blog/automatic-cost-splitting</guid>
     <pubDate>Mon, 17 Nov 2025 13:00:00 GMT</pubDate>
-    <description><![CDATA[Metodologías avanzadas para automatizar la asignación de gastos, eliminar dependencias de hojas de cálculo y garantizar una gestión financiera transparente en escenarios complejos de viajes grupales.]]></description>
+    <description><![CDATA[Para un total ilustrativo de 40 €, dos pagan 20 € cada uno y cuatro, 10 €. Con tres, dos pagan 13,33 € y uno 13,34 €. No es una tarifa real ni un ahorro garantizado.]]></description>
   </item>
   <item>
-    <title><![CDATA[Partage Automatique des Coûts: Révolutionnant la Gestion Financière pour les Voyages de Groupe]]></title>
+    <title><![CDATA[Répartir clairement les frais de transport]]></title>
     <link>https://cojauny.com/fr/blog/automatic-cost-splitting</link>
     <guid isPermaLink="false">https://cojauny.com/fr/blog/automatic-cost-splitting</guid>
     <pubDate>Mon, 17 Nov 2025 13:00:00 GMT</pubDate>
-    <description><![CDATA[Méthodologies avancées pour automatiser la répartition des dépenses, éliminer les dépendances aux feuilles de calcul et assurer une gestion financière transparente dans des scénarios complexes de voyages de groupe.]]></description>
+    <description><![CDATA[Pour un total illustratif de 40 €, deux paient 20 € chacun et quatre 10 €. À trois, deux paient 13,33 € et un 13,34 €. Ce n’est pas un tarif réel ni une économie garantie.]]></description>
   </item>
   <item>
-    <title><![CDATA[Automatische Kostenaufteilung: Revolutionierung des Finanzmanagements für Gruppenreisen]]></title>
+    <title><![CDATA[Fahrtkosten nachvollziehbar teilen]]></title>
     <link>https://cojauny.com/de/blog/automatic-cost-splitting</link>
     <guid isPermaLink="false">https://cojauny.com/de/blog/automatic-cost-splitting</guid>
     <pubDate>Mon, 17 Nov 2025 13:00:00 GMT</pubDate>
-    <description><![CDATA[Fortgeschrittene Methodologien zur Automatisierung der Ausgabenzuordnung, Beseitigung von Tabellenkalkulationsabhängigkeiten und Sicherstellung transparenter Finanzverwaltung in komplexen Gruppenreiseszenarien.]]></description>
+    <description><![CDATA[Bei einem Beispielgesamtpreis von 40 € zahlen zwei je 20 € und vier je 10 €. Bei drei zahlen zwei je 13,33 € und eine Person 13,34 €. Kein echter Tarif oder garantierter Vorteil.]]></description>
   </item>
   <item>
-    <title><![CDATA[The Art of Sharing Taxis at Madrid–Barajas: A Connoisseur's Guide to Seamless Transfers]]></title>
-    <link>https://cojauny.com/en/blog/share-taxi-madrid-barajas</link>
-    <guid isPermaLink="false">https://cojauny.com/en/blog/share-taxi-madrid-barajas</guid>
+    <title><![CDATA[Planning a transfer at Madrid-Barajas]]></title>
+    <link>https://cojauny.com/blog/share-taxi-madrid-barajas</link>
+    <guid isPermaLink="false">https://cojauny.com/blog/share-taxi-madrid-barajas</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Master the delicate dance of coordinated taxi sharing at Europe's sun-drenched gateway—where precision meets pragmatism in the pursuit of perfect transfers.]]></description>
+    <description><![CDATA[Check the official airport website for terminals and pickup areas. Verify fares and timetables with the operator near your travel date.]]></description>
   </item>
   <item>
-    <title><![CDATA[El Arte de Compartir Taxis en Madrid–Barajas: Guía del Conocedor para Traslados Perfectos]]></title>
+    <title><![CDATA[Preparar un traslado en Madrid-Barajas]]></title>
     <link>https://cojauny.com/es/blog/share-taxi-madrid-barajas</link>
     <guid isPermaLink="false">https://cojauny.com/es/blog/share-taxi-madrid-barajas</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Domina la coreografía de los taxis compartidos en la puerta de entrada europea—donde la precisión se encuentra con la practicidad en la búsqueda de traslados impecables.]]></description>
+    <description><![CDATA[Consulta la web oficial del aeropuerto para la terminal y zonas de recogida. Verifica tarifas y horarios directamente con el operador cerca del viaje.]]></description>
   </item>
   <item>
-    <title><![CDATA[L'Art du Partage de Taxis à Madrid–Barajas : Guide du Connaisseur pour des Transfers Parfaits]]></title>
+    <title><![CDATA[Préparer un transfert à Madrid-Barajas]]></title>
     <link>https://cojauny.com/fr/blog/share-taxi-madrid-barajas</link>
     <guid isPermaLink="false">https://cojauny.com/fr/blog/share-taxi-madrid-barajas</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Maîtrisez la chorégraphie délicate du partage de taxis coordonné à la porte d'entrée ensoleillée de l'Europe—où la précision rencontre le pragmatisme dans la quête de transfers impeccables.]]></description>
+    <description><![CDATA[Consultez le site officiel de l’aéroport pour terminaux et prises en charge. Vérifiez tarifs et horaires auprès du transporteur près du voyage.]]></description>
   </item>
   <item>
-    <title><![CDATA[Die Kunst des Taxiteilens am Madrid–Barajas: Ein Kennerleitfaden für nahtlose Transfers]]></title>
+    <title><![CDATA[Transfer in Madrid-Barajas planen]]></title>
     <link>https://cojauny.com/de/blog/share-taxi-madrid-barajas</link>
     <guid isPermaLink="false">https://cojauny.com/de/blog/share-taxi-madrid-barajas</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Meistern Sie den delikaten Tanz koordinierten Taxiteilens am sonnenverwöhnten europäischen Tor—wo Präzision auf Pragmatismus in der Verfolgung perfekter Transfers trifft.]]></description>
+    <description><![CDATA[Prüfe Terminals und Abholbereiche auf der offiziellen Flughafenwebsite. Bestätige Preise und Fahrpläne beim Anbieter kurz vor der Reise.]]></description>
   </item>
   <item>
-    <title><![CDATA[The Heathrow Conundrum: Mastering the Art of Shared Taxis at London's Global Crossroads]]></title>
-    <link>https://cojauny.com/en/blog/share-taxi-london-heathrow</link>
-    <guid isPermaLink="false">https://cojauny.com/en/blog/share-taxi-london-heathrow</guid>
+    <title><![CDATA[Planning a transfer at Heathrow]]></title>
+    <link>https://cojauny.com/blog/share-taxi-london-heathrow</link>
+    <guid isPermaLink="false">https://cojauny.com/blog/share-taxi-london-heathrow</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Navigate the complex ecosystem of Heathrow's five terminals with mathematical precision and social intelligence—where British efficiency meets global chaos.]]></description>
+    <description><![CDATA[Check the official airport website for terminals and pickup areas. Verify fares and timetables with the operator near your travel date.]]></description>
   </item>
   <item>
-    <title><![CDATA[El Enigma de Heathrow: Dominando el Arte de los Taxis Compartidos en el Cruce Global Londinense]]></title>
+    <title><![CDATA[Preparar un traslado en Heathrow]]></title>
     <link>https://cojauny.com/es/blog/share-taxi-london-heathrow</link>
     <guid isPermaLink="false">https://cojauny.com/es/blog/share-taxi-london-heathrow</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Navega el complejo ecosistema de las cinco terminales de Heathrow con precisión matemática e inteligencia social—donde la eficiencia británica se encuentra con el caos global.]]></description>
+    <description><![CDATA[Consulta la web oficial del aeropuerto para la terminal y zonas de recogida. Verifica tarifas y horarios directamente con el operador cerca del viaje.]]></description>
   </item>
   <item>
-    <title><![CDATA[L'Énigme de Heathrow : Maîtriser l'Art du Partage de Taxis au Carrefour Mondial de Londres]]></title>
+    <title><![CDATA[Préparer un transfert à Heathrow]]></title>
     <link>https://cojauny.com/fr/blog/share-taxi-london-heathrow</link>
     <guid isPermaLink="false">https://cojauny.com/fr/blog/share-taxi-london-heathrow</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Naviguez l'écosystème complexe des cinq terminaux de Heathrow avec précision mathématique et intelligence sociale—où l'efficacité britannique rencontre le chaos mondial.]]></description>
+    <description><![CDATA[Consultez le site officiel de l’aéroport pour terminaux et prises en charge. Vérifiez tarifs et horaires auprès du transporteur près du voyage.]]></description>
   </item>
   <item>
-    <title><![CDATA[Das Heathrow-Rätsel: Meisterhaftes Taxiteilen am Londoner Globalen Knotenpunkt]]></title>
+    <title><![CDATA[Transfer in Heathrow planen]]></title>
     <link>https://cojauny.com/de/blog/share-taxi-london-heathrow</link>
     <guid isPermaLink="false">https://cojauny.com/de/blog/share-taxi-london-heathrow</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Navigieren Sie das komplexe Ökosystem der fünf Heathrow-Terminals mit mathematischer Präzision und sozialer Intelligenz—wo britische Effizienz auf globales Chaos trifft.]]></description>
+    <description><![CDATA[Prüfe Terminals und Abholbereiche auf der offiziellen Flughafenwebsite. Bestätige Preise und Fahrpläne beim Anbieter kurz vor der Reise.]]></description>
   </item>
   <item>
-    <title><![CDATA[The Schiphol Calculus: Decoding Amsterdam's Airport Through the Lens of Shared Mobility]]></title>
-    <link>https://cojauny.com/en/blog/share-taxi-amsterdam-schiphol</link>
-    <guid isPermaLink="false">https://cojauny.com/en/blog/share-taxi-amsterdam-schiphol</guid>
+    <title><![CDATA[Planning a transfer at Schiphol]]></title>
+    <link>https://cojauny.com/blog/share-taxi-amsterdam-schiphol</link>
+    <guid isPermaLink="false">https://cojauny.com/blog/share-taxi-amsterdam-schiphol</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Navigate the world's most efficient airport with Dutch precision—where architectural genius meets pragmatic coordination in a symphony of controlled chaos.]]></description>
+    <description><![CDATA[Check the official airport website for terminals and pickup areas. Verify fares and timetables with the operator near your travel date.]]></description>
   </item>
   <item>
-    <title><![CDATA[El Cálculo de Schiphol: Descifrando el Aeropuerto de Ámsterdam a Través del Cristal de la Movilidad Compartida]]></title>
+    <title><![CDATA[Preparar un traslado en Schiphol]]></title>
     <link>https://cojauny.com/es/blog/share-taxi-amsterdam-schiphol</link>
     <guid isPermaLink="false">https://cojauny.com/es/blog/share-taxi-amsterdam-schiphol</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Navega el aeropuerto más eficiente del mundo con precisión holandesa—donde el genio arquitectónico se encuentra con la coordinación pragmática en una sinfonía de caos controlado.]]></description>
+    <description><![CDATA[Consulta la web oficial del aeropuerto para la terminal y zonas de recogida. Verifica tarifas y horarios directamente con el operador cerca del viaje.]]></description>
   </item>
   <item>
-    <title><![CDATA[Le Calcul de Schiphol : Décoder l'Aéroport d'Amsterdam à Travers le Prisme de la Mobilité Partagée]]></title>
+    <title><![CDATA[Préparer un transfert à Schiphol]]></title>
     <link>https://cojauny.com/fr/blog/share-taxi-amsterdam-schiphol</link>
     <guid isPermaLink="false">https://cojauny.com/fr/blog/share-taxi-amsterdam-schiphol</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Naviguez l'aéroport le plus efficace du monde avec la précision néerlandaise—où le génie architectural rencontre la coordination pragmatique dans une symphonie de chaos contrôlé.]]></description>
+    <description><![CDATA[Consultez le site officiel de l’aéroport pour terminaux et prises en charge. Vérifiez tarifs et horaires auprès du transporteur près du voyage.]]></description>
   </item>
   <item>
-    <title><![CDATA[Die Schiphol-Berechnung: Entschlüsselung des Amsterdamer Flughafens durch die Linse Geteilter Mobilität]]></title>
+    <title><![CDATA[Transfer in Schiphol planen]]></title>
     <link>https://cojauny.com/de/blog/share-taxi-amsterdam-schiphol</link>
     <guid isPermaLink="false">https://cojauny.com/de/blog/share-taxi-amsterdam-schiphol</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Navigieren Sie den effizientesten Flughafen der Welt mit niederländischer Präzision—wo architektonisches Genie auf pragmatische Koordination in einer Symphonie kontrollierten Chaos trifft.]]></description>
+    <description><![CDATA[Prüfe Terminals und Abholbereiche auf der offiziellen Flughafenwebsite. Bestätige Preise und Fahrpläne beim Anbieter kurz vor der Reise.]]></description>
   </item>
   <item>
-    <title><![CDATA[The Corporate Mobility Transformation: A 120-Person Case Study in Reimagining Business Travel Economics]]></title>
-    <link>https://cojauny.com/en/blog/case-study-corporate-pilot</link>
-    <guid isPermaLink="false">https://cojauny.com/en/blog/case-study-corporate-pilot</guid>
+    <title><![CDATA[How to evaluate a company transfer pilot]]></title>
+    <link>https://cojauny.com/blog/case-study-corporate-pilot</link>
+    <guid isPermaLink="false">https://cojauny.com/blog/case-study-corporate-pilot</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[How a Fortune 500 company achieved 48% transfer cost reduction while transforming team dynamics through intelligent coordination systems.]]></description>
+    <description><![CDATA[This is a proposed method, not a completed pilot. With permission, measure requests, completed journeys, documented costs and cancellations without publishing personal data.]]></description>
   </item>
   <item>
-    <title><![CDATA[La Transformación de Movilidad Corporativa: Un Estudio de Caso de 120 Personas Reimaginando la Economía de Viajes de Negocios]]></title>
+    <title><![CDATA[Cómo evaluar un piloto de traslados de empresa]]></title>
     <link>https://cojauny.com/es/blog/case-study-corporate-pilot</link>
     <guid isPermaLink="false">https://cojauny.com/es/blog/case-study-corporate-pilot</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Cómo una empresa Fortune 500 logró 48% de reducción en costos de transferencia mientras transformaba dinámicas de equipo mediante sistemas de coordinación inteligente.]]></description>
+    <description><![CDATA[Este es un método propuesto, no un piloto realizado. Medid solicitudes, trayectos completados, costes documentados y cancelaciones con permiso, sin publicar datos personales.]]></description>
   </item>
   <item>
-    <title><![CDATA[La Transformation de la Mobilité d'Entreprise : Une Étude de Cas de 120 Personnes Réinventant l'Économie des Voyages d'Affaires]]></title>
+    <title><![CDATA[Évaluer un pilote de transferts professionnels]]></title>
     <link>https://cojauny.com/fr/blog/case-study-corporate-pilot</link>
     <guid isPermaLink="false">https://cojauny.com/fr/blog/case-study-corporate-pilot</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Comment une entreprise Fortune 500 a réalisé 48% de réduction des coûts de transfert tout en transformant la dynamique d'équipe grâce à des systèmes de coordination intelligents.]]></description>
+    <description><![CDATA[Il s’agit d’une méthode proposée, pas d’un pilote réalisé. Mesurez avec autorisation demandes, trajets, coûts documentés et annulations sans publier de données personnelles.]]></description>
   </item>
   <item>
-    <title><![CDATA[Die Unternehmensmobilitäts-Transformation: Eine 120-Personen-Fallstudie zur Neuerfindung der Geschäftsreisewirtschaft]]></title>
+    <title><![CDATA[Einen Firmenpilot für Transfers bewerten]]></title>
     <link>https://cojauny.com/de/blog/case-study-corporate-pilot</link>
     <guid isPermaLink="false">https://cojauny.com/de/blog/case-study-corporate-pilot</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Wie ein Fortune-500-Unternehmen 48 % Transferkostenreduktion erreichte und gleichzeitig Teamdynamiken durch intelligente Koordinationssysteme transformierte.]]></description>
+    <description><![CDATA[Dies ist ein vorgeschlagenes Verfahren, kein durchgeführter Pilot. Erfasst mit Erlaubnis Anfragen, Fahrten, belegte Kosten und Absagen ohne personenbezogene Veröffentlichung.]]></description>
   </item>
   <item>
-    <title><![CDATA[The Flight Data Conundrum: Architecting Real-Time Integration Systems for Enterprise-Grade Coordination]]></title>
-    <link>https://cojauny.com/en/blog/integrating-flight-data-and-cojauny</link>
-    <guid isPermaLink="false">https://cojauny.com/en/blog/integrating-flight-data-and-cojauny</guid>
+    <title><![CDATA[Using flight information to plan a transfer]]></title>
+    <link>https://cojauny.com/blog/integrating-flight-data-and-cojauny</link>
+    <guid isPermaLink="false">https://cojauny.com/blog/integrating-flight-data-and-cojauny</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[A technical deep-dive into building resilient flight data ecosystems—where milliseconds matter and reliability becomes a competitive advantage.]]></description>
+    <description><![CDATA[Distinguish scheduled arrival, estimated landing and actual airport departure. The landing does not confirm a public Cojauny API or integrations; ask the team before planning a connection.]]></description>
   </item>
   <item>
-    <title><![CDATA[El Enigma de los Datos de Vuelo: Arquitectura de Sistemas de Integración en Tiempo Real para Coordinación Empresarial]]></title>
+    <title><![CDATA[Usar datos de vuelo para planificar un traslado]]></title>
     <link>https://cojauny.com/es/blog/integrating-flight-data-and-cojauny</link>
     <guid isPermaLink="false">https://cojauny.com/es/blog/integrating-flight-data-and-cojauny</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Una inmersión técnica profunda en la construcción de ecosistemas resilientes de datos de vuelo—donde los milisegundos importan y la confiabilidad se convierte en ventaja competitiva.]]></description>
+    <description><![CDATA[Distingue llegada programada, estimada y salida real del aeropuerto. La landing no confirma una API pública de Cojauny ni integraciones; consulta al equipo antes de diseñar una conexión.]]></description>
   </item>
   <item>
-    <title><![CDATA[L'Énigme des Données de Vol: Architecture de Systèmes d'Intégration en Temps Réel pour la Coordination d'Entreprise]]></title>
+    <title><![CDATA[Utiliser les informations de vol pour un transfert]]></title>
     <link>https://cojauny.com/fr/blog/integrating-flight-data-and-cojauny</link>
     <guid isPermaLink="false">https://cojauny.com/fr/blog/integrating-flight-data-and-cojauny</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Une plongée technique approfondie dans la construction d'écosystèmes résilients de données de vol—où les millisecondes comptent et la fiabilité devient un avantage concurrentiel.]]></description>
+    <description><![CDATA[Distinguez arrivée prévue, estimée et départ réel de l’aéroport. La page ne confirme aucune API publique ou intégration Cojauny ; consultez l’équipe.]]></description>
   </item>
   <item>
-    <title><![CDATA[Das Flugdaten-Rätsel: Architektur von Echtzeit-Integrationssystemen für Unternehmensgrade Koordination]]></title>
+    <title><![CDATA[Mit Fluginformationen einen Transfer planen]]></title>
     <link>https://cojauny.com/de/blog/integrating-flight-data-and-cojauny</link>
     <guid isPermaLink="false">https://cojauny.com/de/blog/integrating-flight-data-and-cojauny</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Ein technischer Tiefgang in den Aufbau resilienter Flugdaten-Ökosysteme—wo Millisekunden zählen und Zuverlässigkeit zum Wettbewerbsvorteil wird.]]></description>
+    <description><![CDATA[Unterscheide geplante Ankunft, geschätzte Landung und tatsächliche Abfahrt. Eine öffentliche Cojauny-API oder Integration ist hier nicht bestätigt; frage das Team.]]></description>
   </item>
   <item>
-    <title><![CDATA[The Privacy Paradox: Architecting Ephemeral Communication Systems for GDPR-Compliant Enterprise Coordination]]></title>
-    <link>https://cojauny.com/en/blog/privacy-gdpr-event-chats</link>
-    <guid isPermaLink="false">https://cojauny.com/en/blog/privacy-gdpr-event-chats</guid>
+    <title><![CDATA[Privacy when organising a group trip]]></title>
+    <link>https://cojauny.com/blog/privacy-gdpr-event-chats</link>
+    <guid isPermaLink="false">https://cojauny.com/blog/privacy-gdpr-event-chats</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[How we built a privacy-first communication platform where data protection isn't a constraint but a fundamental design principle—balancing utility with impermanence.]]></description>
+    <description><![CDATA[Read the policy and ask the controller about access, retention or deletion. No ISO certification, SOC 2 report or independent audit is claimed.]]></description>
   </item>
   <item>
-    <title><![CDATA[La Paradoja de la Privacidad: Arquitectura de Sistemas de Comunicación Efímera para Coordinación Empresarial Conforme al GDPR]]></title>
+    <title><![CDATA[Privacidad al organizar un viaje en grupo]]></title>
     <link>https://cojauny.com/es/blog/privacy-gdpr-event-chats</link>
     <guid isPermaLink="false">https://cojauny.com/es/blog/privacy-gdpr-event-chats</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Cómo construimos una plataforma de comunicación centrada en privacidad donde la protección de datos no es una restricción sino un principio de diseño fundamental—equilibrando utilidad con impermanencia.]]></description>
+    <description><![CDATA[Lee la política y consulta al responsable sobre acceso, conservación o eliminación. No se afirman certificaciones ISO, SOC 2 ni auditorías externas.]]></description>
   </item>
   <item>
-    <title><![CDATA[Le Paradoxe de la Confidentialité : Architecture de Systèmes de Communication Éphémères pour la Coordination d'Entreprise Conforme au RGPD]]></title>
+    <title><![CDATA[Confidentialité lors d’un voyage en groupe]]></title>
     <link>https://cojauny.com/fr/blog/privacy-gdpr-event-chats</link>
     <guid isPermaLink="false">https://cojauny.com/fr/blog/privacy-gdpr-event-chats</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Comment nous avons construit une plateforme de communication axée sur la confidentialité où la protection des données n'est pas une contrainte mais un principe de conception fondamental—équilibrant utilité et impermanence.]]></description>
+    <description><![CDATA[Lisez la politique et contactez le responsable pour l’accès, la conservation ou la suppression. Aucune certification ISO, rapport SOC 2 ou audit externe n’est revendiqué.]]></description>
   </item>
   <item>
-    <title><![CDATA[Das Privatsphäre-Paradoxon: Architektur Ephemerer Kommunikationssysteme für GDPR-Konforme Unternehmenskoordination]]></title>
+    <title><![CDATA[Datenschutz bei gemeinsamen Reisen]]></title>
     <link>https://cojauny.com/de/blog/privacy-gdpr-event-chats</link>
     <guid isPermaLink="false">https://cojauny.com/de/blog/privacy-gdpr-event-chats</guid>
     <pubDate>Thu, 27 Nov 2025 10:00:00 GMT</pubDate>
-    <description><![CDATA[Wie wir eine privatsphären-zuerst Kommunikationsplattform bauten, wo Datenschutz keine Einschränkung sondern ein fundamentales Designprinzip ist—Nützlichkeit mit Vergänglichkeit ausbalancierend.]]></description>
+    <description><![CDATA[Lies die Erklärung und frage die verantwortliche Stelle zu Auskunft, Speicherung und Löschung. ISO-Zertifikate, SOC-2-Berichte oder externe Audits werden nicht behauptet.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Taxi, tren o traslado compartido: cómo elegir]]></title>
+    <link>https://cojauny.com/es/blog/airport-transfer-options</link>
+    <guid isPermaLink="false">https://cojauny.com/es/blog/airport-transfer-options</guid>
+    <pubDate>Wed, 30 Sep 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[Empieza por la hora a la que realmente podrás salir de llegadas. Añade desembarque, controles y recogida de equipaje. Una conexión barata puede resultar inútil si el último servicio sale antes de que alcances la estación.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Taxi, train or shared transfer: how to choose]]></title>
+    <link>https://cojauny.com/blog/airport-transfer-options</link>
+    <guid isPermaLink="false">https://cojauny.com/blog/airport-transfer-options</guid>
+    <pubDate>Wed, 30 Sep 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[Start with the time you can actually leave arrivals. Include disembarkation, border checks and baggage. A cheap connection is useless if its last service departs before you reach the station.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Taxi, Bahn oder geteilter Transfer: So entscheidest du]]></title>
+    <link>https://cojauny.com/de/blog/airport-transfer-options</link>
+    <guid isPermaLink="false">https://cojauny.com/de/blog/airport-transfer-options</guid>
+    <pubDate>Wed, 30 Sep 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[Plane mit der Zeit, zu der du den Ankunftsbereich wirklich verlassen kannst. Berücksichtige Aussteigen, Kontrollen und Gepäck. Eine günstige Verbindung hilft wenig, wenn die letzte Fahrt vorher abfährt.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Taxi, train ou transfert partagé : comment choisir]]></title>
+    <link>https://cojauny.com/fr/blog/airport-transfer-options</link>
+    <guid isPermaLink="false">https://cojauny.com/fr/blog/airport-transfer-options</guid>
+    <pubDate>Wed, 30 Sep 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[Partez de l’heure à laquelle vous pourrez vraiment quitter les arrivées. Ajoutez débarquement, contrôles et bagages. Une liaison peu chère devient inutile si le dernier départ vous échappe.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Cómo repartir el coste de un taxi al aeropuerto]]></title>
+    <link>https://cojauny.com/es/blog/split-airport-taxi-cost</link>
+    <guid isPermaLink="false">https://cojauny.com/es/blog/split-airport-taxi-cost</guid>
+    <pubDate>Wed, 30 Sep 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[Para un total ilustrativo de 40 €, dos pagan 20 € cada uno y cuatro, 10 €. Con tres, dos pagan 13,33 € y uno 13,34 €. No es una tarifa real ni un ahorro garantizado.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[How to split an airport taxi fare]]></title>
+    <link>https://cojauny.com/blog/split-airport-taxi-cost</link>
+    <guid isPermaLink="false">https://cojauny.com/blog/split-airport-taxi-cost</guid>
+    <pubDate>Wed, 30 Sep 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[For an illustrative €40 total, two pay €20 each and four €10 each. With three, two pay €13.33 and one €13.34. This is not a real fare or guaranteed saving.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Kosten für ein Flughafentaxi aufteilen]]></title>
+    <link>https://cojauny.com/de/blog/split-airport-taxi-cost</link>
+    <guid isPermaLink="false">https://cojauny.com/de/blog/split-airport-taxi-cost</guid>
+    <pubDate>Wed, 30 Sep 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[Bei einem Beispielgesamtpreis von 40 € zahlen zwei je 20 € und vier je 10 €. Bei drei zahlen zwei je 13,33 € und eine Person 13,34 €. Kein echter Tarif oder garantierter Vorteil.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Comment partager le prix d’un taxi à l’aéroport]]></title>
+    <link>https://cojauny.com/fr/blog/split-airport-taxi-cost</link>
+    <guid isPermaLink="false">https://cojauny.com/fr/blog/split-airport-taxi-cost</guid>
+    <pubDate>Wed, 30 Sep 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[Pour un total illustratif de 40 €, deux paient 20 € chacun et quatre 10 €. À trois, deux paient 13,33 € et un 13,34 €. Ce n’est pas un tarif réel ni une économie garantie.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Lista de comprobación para compartir un traslado]]></title>
+    <link>https://cojauny.com/es/blog/shared-airport-ride-checklist</link>
+    <guid isPermaLink="false">https://cojauny.com/es/blog/shared-airport-ride-checklist</guid>
+    <pubDate>Wed, 30 Sep 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[Antes de quedar, confirma vuelo, fecha, terminal, destino y participantes. Acordad maletas, accesibilidad y hora máxima de espera. Un plan escrito evita interpretaciones distintas.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[A checklist for sharing an airport ride]]></title>
+    <link>https://cojauny.com/blog/shared-airport-ride-checklist</link>
+    <guid isPermaLink="false">https://cojauny.com/blog/shared-airport-ride-checklist</guid>
+    <pubDate>Wed, 30 Sep 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[Before meeting, confirm flight, date, terminal, destination and participants. Agree on luggage, accessibility and a maximum wait. A written plan prevents misunderstandings.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Checkliste für einen gemeinsamen Flughafentransfer]]></title>
+    <link>https://cojauny.com/de/blog/shared-airport-ride-checklist</link>
+    <guid isPermaLink="false">https://cojauny.com/de/blog/shared-airport-ride-checklist</guid>
+    <pubDate>Wed, 30 Sep 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[Klärt vor dem Treffen Flug, Datum, Terminal, Ziel und Mitfahrende. Vereinbart Gepäck, Barrierefreiheit und maximale Wartezeit. Ein schriftlicher Plan verhindert Missverständnisse.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Liste de contrôle pour partager un transfert]]></title>
+    <link>https://cojauny.com/fr/blog/shared-airport-ride-checklist</link>
+    <guid isPermaLink="false">https://cojauny.com/fr/blog/shared-airport-ride-checklist</guid>
+    <pubDate>Wed, 30 Sep 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[Confirmez vol, date, terminal, destination et participants. Convenez des bagages, de l’accessibilité et du délai d’attente. Un plan écrit évite les malentendus.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Llegar tarde: prepara un plan B para el traslado]]></title>
+    <link>https://cojauny.com/es/blog/late-arrival-airport-transfer-plan</link>
+    <guid isPermaLink="false">https://cojauny.com/es/blog/late-arrival-airport-transfer-plan</guid>
+    <pubDate>Wed, 30 Sep 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[Consulta el último servicio útil en la web oficial del operador. Puede salir de otra terminal, requerir un enlace o terminar lejos del alojamiento. Compruébalo otra vez cerca del viaje.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Late arrival: prepare a transfer backup plan]]></title>
+    <link>https://cojauny.com/blog/late-arrival-airport-transfer-plan</link>
+    <guid isPermaLink="false">https://cojauny.com/blog/late-arrival-airport-transfer-plan</guid>
+    <pubDate>Wed, 30 Sep 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[Check the last useful service on the operator’s official website. It may leave from another terminal, require a connection or finish far from your accommodation. Recheck near your travel date.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Späte Ankunft: Plan B für den Transfer]]></title>
+    <link>https://cojauny.com/de/blog/late-arrival-airport-transfer-plan</link>
+    <guid isPermaLink="false">https://cojauny.com/de/blog/late-arrival-airport-transfer-plan</guid>
+    <pubDate>Wed, 30 Sep 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[Prüfe die letzte passende Verbindung auf der offiziellen Website. Sie fährt vielleicht an einem anderen Terminal ab, erfordert Umstiege oder endet weit von der Unterkunft. Prüfe kurz vor der Reise erneut.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Arrivée tardive : prévoir un plan B]]></title>
+    <link>https://cojauny.com/fr/blog/late-arrival-airport-transfer-plan</link>
+    <guid isPermaLink="false">https://cojauny.com/fr/blog/late-arrival-airport-transfer-plan</guid>
+    <pubDate>Wed, 30 Sep 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[Vérifiez la dernière liaison utile sur le site officiel. Elle peut partir d’un autre terminal, demander une correspondance ou terminer loin du logement. Vérifiez encore près du départ.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Qué ocurre al apuntarte a la beta de Cojauny]]></title>
+    <link>https://cojauny.com/es/blog/cojauny-beta-access-guide</link>
+    <guid isPermaLink="false">https://cojauny.com/es/blog/cojauny-beta-access-guide</guid>
+    <pubDate>Wed, 30 Sep 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[La landing recoge solicitudes para una lista de espera. Usa el formulario breve con tu correo o el completo con más datos de viaje. Revisa condiciones y privacidad antes de enviarlo.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[What happens when you join the Cojauny beta waitlist]]></title>
+    <link>https://cojauny.com/blog/cojauny-beta-access-guide</link>
+    <guid isPermaLink="false">https://cojauny.com/blog/cojauny-beta-access-guide</guid>
+    <pubDate>Wed, 30 Sep 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[The landing collects waitlist applications. Use the short email form or provide travel details in the full form. Review terms and privacy before submitting.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Was die Anmeldung zur Cojauny-Beta bedeutet]]></title>
+    <link>https://cojauny.com/de/blog/cojauny-beta-access-guide</link>
+    <guid isPermaLink="false">https://cojauny.com/de/blog/cojauny-beta-access-guide</guid>
+    <pubDate>Wed, 30 Sep 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[Die Seite nimmt Wartelistenanmeldungen an. Nutze das kurze E-Mail-Formular oder ergänze Reiseangaben im vollständigen Formular. Lies Bedingungen und Datenschutz vor dem Absenden.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Que se passe-t-il après l’inscription à la bêta Cojauny ?]]></title>
+    <link>https://cojauny.com/fr/blog/cojauny-beta-access-guide</link>
+    <guid isPermaLink="false">https://cojauny.com/fr/blog/cojauny-beta-access-guide</guid>
+    <pubDate>Wed, 30 Sep 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[La page recueille les demandes pour une liste d’attente. Utilisez le formulaire court ou ajoutez des informations de voyage dans le formulaire complet. Lisez conditions et confidentialité avant l’envoi.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Cómo compartir taxi al aeropuerto de Madrid-Barajas con tu mismo vuelo]]></title>
+    <link>https://cojauny.com/es/blog/traslado-compartido-madrid-barajas</link>
+    <guid isPermaLink="false">https://cojauny.com/es/blog/traslado-compartido-madrid-barajas</guid>
+    <pubDate>Tue, 30 Jun 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[Guía práctica para coordinar un traslado compartido a MAD con personas con planes compatibles del mismo vuelo usando Cojauny.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[How to share a ride to London Heathrow with passengers on your flight]]></title>
+    <link>https://cojauny.com/blog/shared-transfer-london-heathrow</link>
+    <guid isPermaLink="false">https://cojauny.com/blog/shared-transfer-london-heathrow</guid>
+    <pubDate>Tue, 30 Jun 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[A practical guide to coordinating a shared LHR transfer with people with compatible plans on the same flight using Cojauny.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Geteilter Transfer zum Flughafen Frankfurt mit Passagieren deines Flugs]]></title>
+    <link>https://cojauny.com/de/blog/geteilter-transfer-frankfurt</link>
+    <guid isPermaLink="false">https://cojauny.com/de/blog/geteilter-transfer-frankfurt</guid>
+    <pubDate>Tue, 30 Jun 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[Praxisleitfaden für einen geteilten FRA-Transfer mit Menschen mit passenden Reiseplänen auf dem gleichen Flug mit Cojauny.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Comment partager un transfert vers Paris CDG avec des passagers de votre vol]]></title>
+    <link>https://cojauny.com/fr/blog/transfert-partage-paris-cdg</link>
+    <guid isPermaLink="false">https://cojauny.com/fr/blog/transfert-partage-paris-cdg</guid>
+    <pubDate>Tue, 30 Jun 2026 10:00:00 GMT</pubDate>
+    <description><![CDATA[Guide pratique pour coordonner un transfert partagé vers CDG avec des personnes ayant des projets compatibles sur le même vol via Cojauny.]]></description>
   </item>
 </channel>
 </rss>
