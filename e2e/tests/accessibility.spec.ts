@@ -6,6 +6,8 @@ for (const locale of ['en', 'es', 'de', 'fr']) {
     const path = locale === 'en' ? '/' : `/${locale}`;
     const response = await request.get(path, { headers: { 'Accept-Language': locale } });
     expect(await response.text()).toMatch(new RegExp(`<html[^>]*lang="${locale}"`));
+    // Audit stable colors, not intermediate opacity frames during entrance animations.
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(path);
     await page.getByRole('dialog').getByRole('button').nth(1).click();
     await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1);
