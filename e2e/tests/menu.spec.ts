@@ -5,14 +5,18 @@ test.describe('Mobile menu accessibility', () => {
     await page.goto('/es');
     await page.setViewportSize({ width: 390, height: 844 });
 
-    const open = page.getByRole('button', { name: /open (main )?menu|abrir menú( principal)?|abrir menu( principal)?|menü öffnen|ouvrir le menu( principal)?/i });
+    const open = page.getByRole('button', {
+      name: /open (main )?menu|abrir menú( principal)?|abrir menu( principal)?|menü öffnen|ouvrir le menu( principal)?/i,
+    });
     await open.click();
 
-    const dialog = page.getByRole('dialog');
+    const dialog = page.getByRole('dialog').and(page.locator('[aria-modal=\"true\" ]'));
     await expect(dialog).toBeVisible();
 
     // close with Escape
     await page.keyboard.press('Escape');
-    await expect(page.getByRole('dialog')).toHaveCount(0);
+    await expect(
+      page.getByRole('dialog').and(page.locator('[aria-modal=\"true\" ]')),
+    ).toHaveCount(0);
   });
 });

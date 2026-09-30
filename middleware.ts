@@ -1,5 +1,4 @@
 ﻿import createMiddleware from 'next-intl/middleware';
-import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 import { routing } from './src/i18n/routing';
@@ -26,11 +25,13 @@ function assignHeroVariant(request: NextRequest): 'trust' | 'savings' {
 export default function middleware(request: NextRequest) {
   const response = intlMiddleware(request);
 
+  if (request.cookies.get('cojauny_analytics_consent')?.value !== 'granted') return response;
   const variant = assignHeroVariant(request);
   response.cookies.set(HERO_COOKIE, variant, {
     maxAge: HERO_COOKIE_MAX_AGE,
     path: '/',
     sameSite: 'lax',
+    secure: process.env.NODE_ENV === 'production',
   });
 
   return response;

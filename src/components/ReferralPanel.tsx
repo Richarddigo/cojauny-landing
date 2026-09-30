@@ -17,7 +17,7 @@ interface ReferralStats {
   signups: number;
 }
 
-const ReferralPanel = ({ copy, email, referralLink: propReferralLink }: ReferralPanelProps) => {
+const ReferralPanel = ({ copy, referralLink: propReferralLink }: ReferralPanelProps) => {
   const [stats, setStats] = useState<ReferralStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -26,7 +26,7 @@ const ReferralPanel = ({ copy, email, referralLink: propReferralLink }: Referral
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await fetch(`/api/referral/stats?email=${encodeURIComponent(email)}`);
+        const response = await fetch('/api/referral/stats', { cache: 'no-store' });
         if (!response.ok) {
           throw new Error('Failed to fetch referral stats');
         }
@@ -48,7 +48,7 @@ const ReferralPanel = ({ copy, email, referralLink: propReferralLink }: Referral
     };
 
     fetchStats();
-  }, [email]);
+  }, []);
 
   const handleCopyLink = async () => {
     const linkToCopy = propReferralLink || stats?.referral_link;
@@ -73,11 +73,11 @@ const ReferralPanel = ({ copy, email, referralLink: propReferralLink }: Referral
     );
   }
 
-  if (error || !stats) {
+  if ((error || !stats) && !propReferralLink) {
     return null;
   }
 
-  const displayLink = propReferralLink || stats.referral_link;
+  const displayLink = propReferralLink || stats?.referral_link || '';
 
   return (
     <div className="scroll-mt-16 lg:scroll-mt-20">
@@ -91,15 +91,16 @@ const ReferralPanel = ({ copy, email, referralLink: propReferralLink }: Referral
 
         {/* Referral Link Section / Seccion de enlace de referral / Empfehlungslink-Bereich / Section de lien de parrainage */}
         <div className="mb-8">
-          <label className="block text-sm font-medium text-studio-muted mb-3">
+          <label htmlFor="referral-share-link" className="block text-sm font-medium text-studio-muted mb-3">
             {copy.yourLink}
           </label>
           <div className="flex gap-3">
             <input
+              id="referral-share-link"
               type="text"
               readOnly
               value={displayLink}
-              className="flex-1 rounded-2xl border-2 border-studio-accent/40 bg-studio-surface-2 px-4 py-3 text-base text-studio-text focus:outline-none focus:ring-2 focus:ring-studio-accent/20"
+              className="min-w-0 flex-1 rounded-2xl border-2 border-studio-accent/40 bg-studio-surface-2 px-4 py-3 text-base text-studio-text focus:outline-none focus:ring-2 focus:ring-studio-accent/20"
             />
             <button
               onClick={handleCopyLink}
@@ -123,11 +124,11 @@ const ReferralPanel = ({ copy, email, referralLink: propReferralLink }: Referral
         {/* Stats Section / Seccion de estadisticas / Statistikbereich / Section des statistiques */}
         <div className="grid grid-cols-2 gap-4 mb-8">
           <div className="rounded-2xl bg-studio-surface-2 border border-white/8 p-6 text-center">
-            <div className="text-4xl font-bold text-studio-accent mb-2">{stats.visits}</div>
+            <div className="text-4xl font-bold text-studio-accent mb-2">{stats?.visits ?? '—'}</div>
             <div className="text-sm font-medium text-studio-muted">{copy.stats.visits}</div>
           </div>
           <div className="rounded-2xl bg-studio-surface-2 border border-white/8 p-6 text-center">
-            <div className="text-4xl font-bold text-emerald-400 mb-2">{stats.signups}</div>
+            <div className="text-4xl font-bold text-emerald-400 mb-2">{stats?.signups ?? '—'}</div>
             <div className="text-sm font-medium text-studio-muted">{copy.stats.signups}</div>
           </div>
         </div>

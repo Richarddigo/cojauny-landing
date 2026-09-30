@@ -18,7 +18,7 @@ const Footer = ({ copy, locale, common }: FooterProps) => {
     const resolvedCommon = common ?? getCommonCopy(locale);
 
     return (
-        <footer className="mt-auto border-t border-[rgba(255,255,255,0.06)] bg-bg">
+        <footer className="landing-footer mt-auto border-t border-[rgba(255,255,255,0.06)] bg-bg">
             <div className="mx-auto max-w-[1180px] px-4 sm:px-6 lg:px-8 py-16">
                 <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-5">
 
@@ -34,7 +34,7 @@ const Footer = ({ copy, locale, common }: FooterProps) => {
                             />
                             <span className="text-base font-bold text-white">Cojauny</span>
                         </a>
-                        <p className="max-w-[18ch] text-sm leading-relaxed text-studio-muted">
+                        <p className="max-w-[28ch] text-sm leading-relaxed text-studio-muted">
                             {copy.description}
                         </p>
                     </div>
@@ -86,6 +86,7 @@ const Footer = ({ copy, locale, common }: FooterProps) => {
                         <nav className="flex flex-col gap-2">
                             <Link href={`/${locale}/legal/privacy`} className="text-sm text-muted transition-colors hover:text-text">{copy.privacy}</Link>
                             <Link href={`/${locale}/legal/cookies`} className="text-sm text-muted transition-colors hover:text-text">{copy.cookies}</Link>
+                            <button type="button" onClick={() => window.dispatchEvent(new Event('cojauny:cookie-settings'))} className="text-left text-sm text-muted transition-colors hover:text-text">{{ es: 'Preferencias de cookies', en: 'Cookie preferences', de: 'Cookie-Einstellungen', fr: 'Préférences de cookies' }[locale]}</button>
                             <Link href={`/${locale}/legal/terms`} className="text-sm text-muted transition-colors hover:text-text">{copy.terms}</Link>
                             <Link href={`/${locale}/account-deletion`} className="text-sm text-muted transition-colors hover:text-text">{copy.accountDeletion}</Link>
                             <Link href={`/${locale}/legal/acceptable-use`} className="text-sm text-muted transition-colors hover:text-text">{copy.acceptableUse}</Link>

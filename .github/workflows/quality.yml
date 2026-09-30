@@ -1,0 +1,36 @@
+name: Quality
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run type-check
+      - run: npm run test:ci -- --runInBand
+      - run: npm audit --omit=dev --audit-level=high
+      - run: npm run generate:rss
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - name: Browser checks
+        shell: bash
+        run: |
+          npm run start -- --hostname localhost > /tmp/landing.log 2>&1 &
+          for i in {1..30}; do curl --fail http://localhost:3000/es >/dev/null 2>&1 && break; sleep 1; done
+          npm run test:e2e -- landing.locales.spec.ts menu.spec.ts menu.focus.spec.ts language.switcher.spec.ts accessibility.spec.ts
+          npm run seo:validate-hreflang
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-failures
+          path: test-results/

@@ -1,4 +1,7 @@
-﻿import type { Metadata } from 'next';
+import { getLandingCopy } from '@/locales/copy';
+/* This server component is the document of the locale root layout. */
+/* eslint-disable @next/next/no-head-element */
+import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { Inter } from 'next/font/google';
 
@@ -7,9 +10,9 @@ import FloatingSocialBar from '@/components/FloatingSocialBar';
 import ConsentGatedGoogleAnalytics from '@/components/ConsentGatedGoogleAnalytics';
 import GoogleConsentMode from '@/components/GoogleConsentMode';
 import StructuredData from '@/components/StructuredData';
-import { defaultLocale, locales } from '@/locales/config';
+import { defaultLocale, type Locale } from '@/locales/config';
 import { siteMetadata, ogImages } from '@/lib/site';
-import { buildOrganizationJsonLd, buildWebsiteJsonLd } from '@/lib/jsonld';
+import { buildOrganizationJsonLd, buildWebsiteJsonLd, buildLocaleAlternates } from '@/lib/jsonld';
 
 const inter = Inter({
     subsets: ['latin'],
@@ -24,7 +27,7 @@ export const metadata: Metadata = {
         template: `%s - ${siteMetadata.name}`
     },
     description:
-        'Cojauny matches you with your fellow passengers the moment you book. Chat for weeks, plan together, and share a ride once you land. Join the beta today.',
+        getLandingCopy(defaultLocale).seo.description,
     keywords: [
         'flight matching app',
         'connect with flight passengers',
@@ -44,7 +47,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: `${siteMetadata.name} - Connect with the people on your flight`,
         description:
-            'Cojauny matches you with your fellow passengers the moment you book. Chat for weeks, plan together, and share a ride once you land. Join the beta today.',
+            getLandingCopy(defaultLocale).seo.description,
         url: siteMetadata.url,
         siteName: siteMetadata.name,
         images: ogImages,
@@ -59,15 +62,8 @@ export const metadata: Metadata = {
         site: siteMetadata.twitter,
         creator: siteMetadata.twitter
     },
-    alternates: {
-        canonical: siteMetadata.url,
-        languages: Object.fromEntries(
-            locales.map((locale) => [locale, `${siteMetadata.url}/${locale}`]).concat([
-                ['x-default', siteMetadata.url]
-            ])
-        )
-    },
-    category: 'business',
+    alternates: buildLocaleAlternates(defaultLocale),
+    category: 'travel',
     robots: {
         index: true,
         follow: true,
@@ -79,12 +75,10 @@ export const metadata: Metadata = {
     // - src/app/apple-icon.tsx (apple-touch-icon 180x180)
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootDocument({ children, locale = defaultLocale }: { children: ReactNode; locale?: Locale }) {
     return (
-        <html lang={defaultLocale} suppressHydrationWarning className={`${inter.variable}`}>
+        <html lang={locale} suppressHydrationWarning className={`${inter.variable}`}>
             <head>
-                <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
-                <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
                 <link
                     rel="alternate"
                     type="application/rss+xml"
@@ -93,7 +87,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 />
                 <GoogleConsentMode />
                 <StructuredData id="ld-org" data={buildOrganizationJsonLd()} />
-                <StructuredData id="ld-website" data={buildWebsiteJsonLd(defaultLocale)} />
+                <StructuredData id="ld-website" data={buildWebsiteJsonLd(locale)} />
             </head>
             <body className="bg-studio-bg font-sans antialiased text-studio-text" data-prefers-reduced-motion="dynamic">
                 <FloatingSocialBar />

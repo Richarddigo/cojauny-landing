@@ -1,7 +1,7 @@
 import { writeFileSync, mkdirSync } from 'fs';
 import { resolve } from 'path';
 
-import { blogPosts } from '../src/content/blog/posts';
+import { allBlogPosts } from '../src/content/blog/posts';
 import { siteMetadata } from '../src/lib/site';
 
 function escapeCdata(input: string) {
@@ -12,9 +12,9 @@ function buildRss() {
   const base = (siteMetadata?.url || 'https://example.com').replace(/\/$/, '');
   const lastBuildDate = new Date().toUTCString();
 
-  const items = blogPosts
+  const items = allBlogPosts
     .map((post) => {
-      const link = `${base}/${post.locale}/blog/${post.slug}`;
+      const link = `${base}${post.locale === 'en' ? '' : '/' + post.locale}/blog/${post.slug}`;
       return `  <item>\n    <title>${escapeCdata(post.title)}</title>\n    <link>${link}</link>\n    <guid isPermaLink="false">${link}</guid>\n    <pubDate>${new Date(post.publishedAt).toUTCString()}</pubDate>\n    <description>${escapeCdata(post.summary || '')}</description>\n  </item>`;
     })
     .join('\n');

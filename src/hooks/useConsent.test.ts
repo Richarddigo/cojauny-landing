@@ -73,4 +73,22 @@ describe('useConsent', () => {
 
     expect(result.current.analyticsAllowed).toBe(true);
   });
+
+  it('synchronizes acceptance and revocation across independent consumers', () => {
+    const first = renderHook(() => useConsent());
+    const second = renderHook(() => useConsent());
+    act(() => first.result.current.acceptAll());
+    expect(second.result.current.analyticsAllowed).toBe(true);
+    act(() => second.result.current.rejectAnalytics());
+    expect(first.result.current.analyticsAllowed).toBe(false);
+  });
+
+  it('handles a choice changed in another tab', () => {
+    const { result } = renderHook(() => useConsent());
+    act(() => {
+      window.localStorage.setItem(CONSENT_STORAGE_KEY, serializeConsent(buildConsent(true)));
+      window.dispatchEvent(new StorageEvent('storage', { key: CONSENT_STORAGE_KEY }));
+    });
+    expect(result.current.analyticsAllowed).toBe(true);
+  });
 });

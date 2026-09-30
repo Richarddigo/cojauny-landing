@@ -1,3 +1,4 @@
+import { buildLocaleAlternates } from '@/lib/jsonld';
 ﻿import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -22,6 +23,7 @@ export async function generateMetadata({ params }: SdkPlanPageProps): Promise<Me
     const copy = (await getAppMessages(locale)).docs.sdkPlan;
 
     return {
+        alternates: buildLocaleAlternates(locale, '/docs/sdk-plan'),
         title: copy.title,
         description: copy.intro
     };

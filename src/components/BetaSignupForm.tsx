@@ -4,7 +4,7 @@ import { Fragment, useEffect, useRef, useState, type ChangeEvent, type FormEvent
 import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile';
 import AlertMessage from '@/components/AlertMessage';
 import { apiClient, ApiError } from '@/lib/api-client';
-import { trackBetaSignup } from '@/lib/analytics';
+import { trackBetaSignup, trackSignupStep } from '@/lib/analytics';
 import { betaSignupSchema, type BetaSignupInput } from '@/lib/validation';
 import { useAppMessages } from '@/i18n/useAppMessages';
 import { getCommonCopy } from '@/locales/common';
@@ -74,7 +74,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
         const urlParams = new URLSearchParams(window.location.search);
         const refParam = urlParams.get('ref');
 
-        if (refParam) {
+        if (refParam && /^[A-Za-z0-9]{1,32}$/.test(refParam)) {
             setReferralCode(refParam);
             // Track visit
             apiClient.referral.visit(refParam).catch(() => { });
@@ -113,6 +113,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
     };
 
 
+    const startedTracking = useRef(false);
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setSubmitting(true);
@@ -122,6 +123,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
         // Convert empty strings to undefined for optional fields
         const formData = {
             ...form,
+            referralCode,
             country: form.country || undefined,
             homeAirport: form.homeAirport || undefined,
             useCase: form.useCase || undefined,
@@ -148,7 +150,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
             if (err instanceof ApiError && err.code === 'beta_duplicate_email') {
                 setError(resolvedCopy.duplicateError ?? resolvedCopy.error);
                 try {
-                    const statsJson = await apiClient.referral.stats(form.email);
+                    const statsJson = await apiClient.referral.stats();
                     const parsedStats = statsJson as BetaReferralStatsResponse;
                     const payload = parsedStats.data;
                     const referralLinkFromApi = Array.isArray(payload)
@@ -162,6 +164,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                     // ignore
                 }
             } else {
+                trackSignupStep('error', 'full_form');
                 setError(resolvedCopy.error);
             }
         } finally {
@@ -180,7 +183,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
             </div>
             <form
                 onSubmit={handleSubmit}
-                onFocus={() => { if (!interacted) setInteracted(true); }}
+                onFocus={() => { if (!interacted) setInteracted(true); if (!startedTracking.current) { startedTracking.current = true; trackSignupStep('start', 'full_form'); } }}
                 className="space-y-6 rounded-3xl border border-white/8 bg-studio-surface p-8 shadow-xl"
                 aria-describedby="beta-form-help"
             >
@@ -344,7 +347,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                                 <Fragment key={`${segment}-${index}`}>
                                     {segment}
                                     {index < array.length - 1 && (
-                                        <a href={`/${locale}/legal/privacy`} className="text-brand-600 underline">
+                                        <a href={`/${locale}/legal/privacy`} className="text-studio-accent underline">
                                             {resolvedCopy.privacyLinkLabel}
                                         </a>
                                     )}
@@ -393,7 +396,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                     <button
                         type="submit"
                         disabled={submitting}
-                        className="inline-flex w-full items-center justify-center rounded-xl bg-brand-500 px-6 py-4 text-base font-bold text-white shadow-lg shadow-brand-500/25 transition-all duration-200 hover:bg-brand-600 hover:scale-[1.02] hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-brand-500/20 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:scale-100"
+                        className="inline-flex w-full items-center justify-center rounded-xl bg-action px-6 py-4 text-base font-bold text-white shadow-lg shadow-brand-500/25 transition-all duration-200 hover:bg-brand-600 hover:scale-[1.02] hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-brand-500/20 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:scale-100"
                     >
                         {submitting ? `${resolvedCopy.submit}...` : resolvedCopy.submit}
                     </button>

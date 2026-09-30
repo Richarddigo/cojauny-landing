@@ -1,9 +1,8 @@
 /**
  * Neon Postgres client — Cojauny Landing.
  *
- * The DB is OPTIONAL: if `DATABASE_URL` is not set the helper
- * returns `null` and every persistence-aware route degrades to
- * "email-only mode" so the site keeps working without a database.
+ * The helper returns null without configuration. Submission routes fail closed:
+ * durable storage and the mail outbox are required before acknowledging an application.
  *
  * Provisioning (free tier, no credit card):
  *   1. Vercel → Storage → Create Database → Neon

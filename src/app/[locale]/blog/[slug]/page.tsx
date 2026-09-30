@@ -1,3 +1,4 @@
+import { buildBlogAlternates } from '@/lib/blogAlternates';
 ﻿import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -10,7 +11,7 @@ import { allBlogPosts, getPost } from '@/content/blog/posts';
 import { locales, type Locale } from '@/locales/config';
 import { getBlogCopy } from '@/locales/blog';
 import { siteMetadata } from '@/lib/site';
-import { buildArticleJsonLd, buildBreadcrumbJsonLd, buildLocaleAlternates } from '@/lib/jsonld';
+import { buildArticleJsonLd, buildBreadcrumbJsonLd, buildCanonicalUrl } from '@/lib/jsonld';
 import StructuredData from '@/components/StructuredData';
 
 interface BlogPageProps {
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
         notFound();
     }
 
-    const alternates = buildLocaleAlternates(locale, `/blog/${slug}`);
+    const alternates = buildBlogAlternates(post);
 
     return {
         title: post.title,
@@ -42,7 +43,7 @@ export async function generateMetadata({ params }: BlogPageProps): Promise<Metad
         openGraph: {
             title: post.title,
             description: post.summary,
-            url: `${siteMetadata.url}/${locale}/blog/${post.slug}`,
+            url: buildCanonicalUrl(locale, `/blog/${post.slug}`),
             type: 'article',
             images: [
                 {
@@ -142,7 +143,7 @@ export default async function BlogPostPage({ params }: BlogPageProps) {
                     {copy.updatedLabel}:{' '}
                     <time dateTime={post.updatedAt}>{new Date(post.updatedAt).toLocaleDateString(locale)}</time>
                 </span>
-                <span className="text-studio-muted">{copy.shareLabel}: {`${siteMetadata.url}/${locale}/blog/${post.slug}`}</span>
+                <span className="text-studio-muted">{copy.shareLabel}: {buildCanonicalUrl(locale, `/blog/${post.slug}`)}</span>
             </footer>
         </article>
     );

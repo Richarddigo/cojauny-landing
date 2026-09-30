@@ -100,7 +100,9 @@ describe('jsonld utilities', () => {
             expect(app['@type']).toBe('SoftwareApplication');
             expect(app.operatingSystem).toBe('iOS, Android');
             expect(app.applicationCategory).toBe('TravelApplication');
-            expect(app).toHaveProperty('offers');
+            expect(app).not.toHaveProperty('offers');
+            expect(app).not.toHaveProperty('downloadUrl');
+            expect(app).not.toHaveProperty('installUrl');
             expect(app).not.toHaveProperty('aggregateRating');
         });
     });

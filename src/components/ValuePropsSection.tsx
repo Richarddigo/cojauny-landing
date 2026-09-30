@@ -18,7 +18,7 @@ const ValuePropsSection = ({ copy }: ValuePropsSectionProps) => (
                 titleClassName="text-white text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight"
                 descriptionClassName="text-studio-muted text-base sm:text-lg"
             />
-            <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 md:mt-16 lg:grid-cols-3 lg:gap-6">
+            <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 md:mt-12 lg:grid-cols-4 lg:gap-6">
                 {copy.items.map((item, index) => (
                     <article
                         key={item.title}

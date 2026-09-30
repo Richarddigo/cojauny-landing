@@ -25,7 +25,9 @@
     "generate:rss": "tsx ./scripts/generate-rss.ts",
     "test:e2e": "playwright test -c e2e/playwright.config.ts",
     "test:e2e:header-parity": "playwright test -c e2e/playwright.config.ts tests/parity/header.parity.spec.ts",
-    "audit:header-parity": "tsx scripts/report-header-parity.ts"
+    "audit:header-parity": "tsx scripts/report-header-parity.ts",
+    "production:preflight": "node scripts/production-preflight.mjs",
+    "quality": "npm run lint && npm run type-check && npm run test:ci -- --runInBand && npm run generate:rss && npm run build"
   },
   "keywords": [
     "cojauny",
@@ -45,10 +47,10 @@
     "@vercel/analytics": "^2.0.1",
     "cheerio": "^1.0.0-rc.12",
     "critters": "^0.0.23",
-    "next": "^16.0.7",
+    "next": "^16.3.6",
     "next-intl": "^4.12.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
     "resend": "^6.12.3",
@@ -56,7 +58,10 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@electric-sql/pglite": "^0.5.8",
     "@eslint/eslintrc": "^3.3.3",
+    "@jest/globals": "^29.7.0",
     "@playwright/test": "^1.56.1",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/postcss": "^4.1.17",
@@ -74,7 +79,7 @@
     "@typescript-eslint/parser": "^8.48.1",
     "cross-env": "^7.0.3",
     "eslint": "^9.39.1",
-    "eslint-config-next": "^16.0.6",
+    "eslint-config-next": "^16.3.3",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jest-dom": "^5.0.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",

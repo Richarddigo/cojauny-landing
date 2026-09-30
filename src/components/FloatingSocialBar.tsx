@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { socialLinks } from './SocialLinks';
 import { locales } from '@/locales/config';
 import { getCommonCopy } from '@/locales/common';
@@ -11,6 +11,7 @@ import { getCommonCopy } from '@/locales/common';
  */
 export default function FloatingSocialBar() {
     const pathname = usePathname();
+    const router = useRouter();
 
     const currentLocale = locales.find((loc) => pathname?.startsWith(`/${loc}`)) || 'en';
     const common = getCommonCopy(currentLocale);
@@ -26,13 +27,13 @@ export default function FloatingSocialBar() {
                 betaSection.scrollIntoView({ behavior: 'smooth' });
             }
         } else {
-            window.location.href = `/${currentLocale}#beta`;
+            router.push(`${currentLocale === 'en' ? '/' : '/' + currentLocale}#beta`);
         }
     };
 
     return (
         <div
-            className={`floating-social-bar fixed left-1.5 sm:left-2 md:left-3 top-20 z-40 flex flex-col gap-1 bg-slate-900/95 backdrop-blur-sm rounded-full py-2 px-1.5 shadow-lg border border-white/10 ${isMainPage ? '' : 'max-md:hidden'}`}
+            className="floating-social-bar fixed left-3 top-28 z-40 hidden flex-col gap-1 rounded-full border border-white/10 bg-slate-900/95 px-1.5 py-2 backdrop-blur-sm min-[1440px]:flex"
         >
             {socialLinks.map((link, index) => (
                 <a

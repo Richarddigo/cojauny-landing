@@ -1,3 +1,5 @@
+import { readConsent } from './consent-store';
+import { hasAnalyticsConsent } from './consent';
 import type { HeroVariant } from '@/lib/heroVariant';
 
 export type BetaSignupSource = 'hero' | 'full_form';
@@ -19,7 +21,7 @@ function readHeroVariantFromCookie(): HeroVariant {
 
 /** Fires a conversion event when a beta signup succeeds. No-op without analytics consent/scripts. */
 export function trackBetaSignup(source: BetaSignupSource): void {
-  if (typeof window === 'undefined') {
+  if (typeof window === 'undefined' || !hasAnalyticsConsent(readConsent())) {
     return;
   }
 
@@ -28,11 +30,13 @@ export function trackBetaSignup(source: BetaSignupSource): void {
   window.gtag?.('event', 'beta_signup', {
     event_category: 'conversion',
     event_label: source,
+    locale: document.documentElement.lang,
     hero_variant: heroVariant,
   });
 
   void import('@vercel/analytics')
     .then(({ track }) => {
+      if (!hasAnalyticsConsent(readConsent())) return;
       track('beta_signup', { source, hero_variant: heroVariant });
     })
     .catch(() => {
@@ -42,7 +46,7 @@ export function trackBetaSignup(source: BetaSignupSource): void {
 
 /** Records which hero copy arm was shown (trust vs savings experiment). */
 export function trackHeroVariant(variant: HeroVariant): void {
-  if (typeof window === 'undefined') {
+  if (typeof window === 'undefined' || !hasAnalyticsConsent(readConsent())) {
     return;
   }
 
@@ -53,9 +57,17 @@ export function trackHeroVariant(variant: HeroVariant): void {
 
   void import('@vercel/analytics')
     .then(({ track }) => {
+      if (!hasAnalyticsConsent(readConsent())) return;
       track('hero_variant_impression', { variant });
     })
     .catch(() => {
       // Optional dependency path — ignore if unavailable
     });
+}
+
+export function trackSignupStep(step: 'start' | 'error', source: BetaSignupSource): void {
+  if (typeof window === 'undefined' || !hasAnalyticsConsent(readConsent())) return;
+  window.gtag?.('event', `beta_signup_${step}`, {
+    source, locale: document.documentElement.lang, hero_variant: readHeroVariantFromCookie(),
+  });
 }

@@ -25,12 +25,8 @@ const betaUserCopy: Record<
     badge: 'Acceso beta Cojauny',
     title: (name) => `¡Hola, ${name}!`,
     intro:
-      'Gracias por unirte a la lista de espera de Cojauny. Estás un paso más cerca de compartir transporte con viajeros de tu mismo vuelo y ahorrar hasta un 75% en cada traslado.',
-    bullets: [
-      'Te avisaremos por email en cuanto tu acceso esté listo.',
-      'Los early adopters reciben tarifas exclusivas y soporte prioritario.',
-      'Comparte tu enlace de invitación para adelantar posiciones en la lista.',
-    ],
+      "Tu solicitud está guardada en la lista de espera. Cojauny prepara una beta para conectar viajeros con planes compatibles.",
+    bullets: ["El registro no garantiza una invitación ni una fecha de acceso.", "La disponibilidad de funciones y aeropuertos se confirmará con la beta.", "Compartir un enlace de referido no garantiza prioridad."],
     referralIntro: 'Tu enlace de invitación:',
     cta: 'Visitar cojauny.com',
     footer: 'Cojauny · Viajando juntos hacia un futuro sostenible · cojauny.com',
@@ -41,12 +37,8 @@ const betaUserCopy: Record<
     badge: 'Cojauny Beta Access',
     title: (name) => `Hi ${name}!`,
     intro:
-      'Thanks for joining the Cojauny waitlist. You are one step closer to sharing rides with passengers on your flight and saving up to 75% on every airport transfer.',
-    bullets: [
-      'We will email you as soon as your access is ready.',
-      'Early adopters get exclusive launch pricing and priority support.',
-      'Share your referral link to move up the waitlist.',
-    ],
+      "Your application is saved on the waitlist. Cojauny is preparing a beta to connect travellers with compatible plans.",
+    bullets: ["Registration does not guarantee an invitation or an access date.", "Features and airport availability will be confirmed with the beta.", "Sharing a referral link does not guarantee priority."],
     referralIntro: 'Your referral link:',
     cta: 'Visit cojauny.com',
     footer: 'Cojauny · Traveling together toward a sustainable future · cojauny.com',
@@ -57,12 +49,8 @@ const betaUserCopy: Record<
     badge: 'Cojauny Beta-Zugang',
     title: (name) => `Hallo ${name}!`,
     intro:
-      'Danke, dass du der Cojauny-Warteliste beigetreten bist. Du bist einen Schritt näher daran, Fahrten mit Passagieren deines Fluges zu teilen und bis zu 75 % bei Flughafentransfers zu sparen.',
-    bullets: [
-      'Wir benachrichtigen dich per E-Mail, sobald dein Zugang bereit ist.',
-      'Early Adopters erhalten exklusive Einführungspreise und Prioritäts-Support.',
-      'Teile deinen Empfehlungslink, um in der Warteliste aufzusteigen.',
-    ],
+      "Deine Anfrage ist in der Warteliste gespeichert. Cojauny bereitet eine Beta für Menschen mit passenden Reiseplänen vor.",
+    bullets: ["Die Anmeldung garantiert weder eine Einladung noch einen Zugangstermin.", "Funktionen und verfügbare Flughäfen werden mit der Beta bestätigt.", "Ein Empfehlungslink garantiert keinen Vorrang."],
     referralIntro: 'Dein Empfehlungslink:',
     cta: 'cojauny.com besuchen',
     footer: 'Cojauny · Gemeinsam reisen, nachhaltiger · cojauny.com',
@@ -73,12 +61,8 @@ const betaUserCopy: Record<
     badge: 'Accès bêta Cojauny',
     title: (name) => `Bonjour ${name} !`,
     intro:
-      'Merci de rejoindre la liste d\'attente Cojauny. Vous êtes plus près de partager vos trajets avec les passagers de votre vol et d\'économiser jusqu\'à 75 % sur chaque transfert aéroport.',
-    bullets: [
-      'Nous vous préviendrons par e-mail dès que votre accès sera prêt.',
-      'Les early adopters bénéficient de tarifs exclusifs et d\'un support prioritaire.',
-      'Partagez votre lien de parrainage pour gagner des places.',
-    ],
+      "Votre demande est enregistrée sur la liste d’attente. Cojauny prépare une bêta pour relier des voyageurs aux projets compatibles.",
+    bullets: ["L’inscription ne garantit ni invitation ni date d’accès.", "Les fonctions et aéroports disponibles seront confirmés avec la bêta.", "Partager un lien de parrainage ne garantit pas de priorité."],
     referralIntro: 'Votre lien de parrainage :',
     cta: 'Visiter cojauny.com',
     footer: 'Cojauny · Voyager ensemble vers un avenir durable · cojauny.com',

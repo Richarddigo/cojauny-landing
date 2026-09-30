@@ -239,7 +239,17 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                                     cardsRef.current[idx] = element;
                                 }}
                                 onClick={() => handleCardClick(idx)}
-                                className={`demo-card cojauny-fade-in transition-all duration-200 ease-out cursor-pointer ${activeStep === idx ? 'opacity-100' : 'opacity-60'} relative`}
+                                role="button"
+                                tabIndex={0}
+                                aria-pressed={isLocked && lockedIndex === idx}
+                                aria-label={screen.title}
+                                onKeyDown={(event) => {
+                                    if (event.key === 'Enter' || event.key === ' ') {
+                                        event.preventDefault();
+                                        handleCardClick(idx);
+                                    }
+                                }}
+                                className={`demo-card cojauny-fade-in transition-all duration-200 ease-out cursor-pointer opacity-100 relative`}
                             >
                                 {isLocked && lockedIndex === idx && (
                                     <div className="absolute top-2 right-2 bg-studio-surface-2 rounded-full p-1 shadow-md border-2 border-studio-accent">
@@ -250,7 +260,7 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                                 )}
                                 <div className={`bg-studio-surface rounded-3xl p-8 xl:p-10 shadow-xl border transition-all duration-200 ease-out ${isLocked && lockedIndex === idx ? 'border-studio-accent shadow-2xl' : activeStep === idx ? 'border-studio-accent/40 shadow-2xl' : 'border-white/8'}`}>
                                     <div className="inline-flex items-center gap-2 mb-5">
-                                        <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors duration-150 ${activeStep === idx ? 'bg-studio-accent text-white' : 'bg-white/10 text-studio-muted'}`}>{idx + 1}</div>
+                                        <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-colors duration-150 ${activeStep === idx ? 'bg-action text-white' : 'bg-white/10 text-studio-muted'}`}>{idx + 1}</div>
                                         <span className="px-3 py-1.5 rounded-full bg-studio-accent/10 text-studio-accent text-xs font-bold uppercase tracking-wider">{screen.badge}</span>
                                     </div>
                                     <h3 className="text-2xl xl:text-3xl font-bold text-white mb-4">{screen.title}</h3>
@@ -272,10 +282,10 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
 
                 <div className="md:hidden flex flex-col gap-8">
                     {copy.screens.map((screen, idx) => (
-                        <div key={screen.id} className="flex flex-col">
+                        <div key={screen.id} className="grid grid-cols-[minmax(0,1fr)_110px] items-center gap-3 sm:grid-cols-[minmax(0,1fr)_160px]">
                             <div className="bg-studio-surface rounded-2xl p-4 sm:p-5 md:p-6 shadow-lg border border-white/8">
                                 <div className="inline-flex items-center gap-2 mb-3">
-                                    <div className="w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-sm bg-studio-accent text-white">
+                                    <div className="w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center font-bold text-sm bg-action text-white">
                                         {idx + 1}
                                     </div>
                                     <span className="px-3 py-1 rounded-full bg-studio-accent/10 text-studio-accent text-xs font-bold uppercase tracking-wider">
@@ -290,8 +300,8 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                                 </p>
                             </div>
 
-                            <div className="mt-4 w-full flex justify-center">
-                                <div className="w-[50%] max-w-[200px] sm:max-w-[220px]">
+                            <div className="w-full flex justify-center">
+                                <div className="w-full">
                                     <LazyIPhoneMockup screen={screen} priority={idx === 0} />
                                 </div>
                             </div>

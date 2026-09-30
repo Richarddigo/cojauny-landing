@@ -9,6 +9,10 @@ const isProd = process.env.NODE_ENV === 'production';
 
 const securityHeaders = [
     {
+        key: 'Content-Security-Policy-Report-Only',
+        value: "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://challenges.cloudflare.com https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.google-analytics.com https://www.googletagmanager.com; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.vercel-insights.com; frame-src https://challenges.cloudflare.com"
+    },
+    {
         key: 'Strict-Transport-Security',
         value: 'max-age=63072000; includeSubDomains; preload'
     },
@@ -46,22 +50,13 @@ const cacheHeaders = [
                 headers: [
                     {
                         key: 'Cache-Control',
-                        value: 'public, max-age=31536000, immutable'
-                    }
-                ]
-            },
-            {
-                source: '/_next/static/:path*',
-                headers: [
-                    {
-                        key: 'Cache-Control',
-                        value: 'public, max-age=31536000, immutable'
+                        value: 'public, max-age=86400, must-revalidate'
                     }
                 ]
             },
             {
                 source: '/icons/:path*',
-                headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }]
+                headers: [{ key: 'Cache-Control', value: 'public, max-age=86400, must-revalidate' }]
             }
         ]
         : [])
@@ -89,16 +84,11 @@ const nextConfig = {
     ],
 
     images: {
-        formats: ['image/avif', 'image/webp'],
+        formats: ['image/webp'],
         deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
         imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
         minimumCacheTTL: 31536000,
-        remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: '**'
-            }
-        ]
+        remotePatterns: []
     },
 
     compiler: {

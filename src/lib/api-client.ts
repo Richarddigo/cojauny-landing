@@ -60,6 +60,6 @@ export const apiClient = {
   },
   referral: {
     visit: (referralCode: string) => apiRequest<{ success: boolean }>('/api/referral/visit', { referralCode }),
-    stats: (email: string) => fetch(`/api/referral/stats?email=${encodeURIComponent(email)}`).then(res => res.json()),
+    stats: () => fetch('/api/referral/stats', { cache: 'no-store' }).then(res => res.json()),
   }
 };

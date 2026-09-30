@@ -1,3 +1,4 @@
+import { buildLocaleAlternates } from '@/lib/jsonld';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -25,6 +26,7 @@ export async function generateMetadata({ params }: FaqPageProps): Promise<Metada
     const copy = (await getAppMessages(locale)).legal.faq;
 
     return {
+        alternates: buildLocaleAlternates(locale, '/legal/faq'),
         title: copy.title,
         description: copy.intro
     };

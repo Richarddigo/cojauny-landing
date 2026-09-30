@@ -47,234 +47,227 @@
       "feedback": "Feedback"
     },
     "seo": {
-      "title": "Cojauny | Teile deine Fahrt zum Flughafen mit deinem Flug",
-      "description": "Finde andere Reisende auf deinem Flug, teilt euch das Taxi und wisst genau, mit wem ihr unterwegs seid. Jetzt der Beta beitreten.",
+      "title": "Cojauny | Flughafentransfer mit Reisenden deines Flugs teilen",
+      "description": "Finde Mitreisende deines Flugs, plane den Flughafentransfer und teile die Fahrtkosten. Entdecke Cojauny und melde dich für den Beta-Zugang an.",
       "keywords": [
-        "geteilter flughafentransfer",
-        "taxi kosten teilen flughafen",
-        "flug ride sharing",
-        "gleicher flug carpool",
-        "flughafen carpool app",
-        "flug matching app",
-        "verifizierte reiseprofile",
-        "vertrauenswürdige reisegemeinschaft",
-        "sichere flughafen mobilität",
-        "flughafentransfer sparen"
+        "Flughafentransfer teilen",
+        "gemeinsamer Flughafentransfer",
+        "Mitreisende gleicher Flug",
+        "Kosten für Flughafentransfer teilen"
       ],
-      "ogTitle": "Cojauny | Teile deine Fahrt zum Flughafen",
-      "ogDescription": "Finde Mitreisende auf deinem Flug, teilt euch die Kosten und reist mit verifizierten Begleitern."
+      "ogTitle": "Dein Flug. Deine Mitreisenden. Eine gemeinsame Fahrt.",
+      "ogDescription": "Plane den Flughafentransfer mit anderen Reisenden und teile die Kosten. Melde dich für die Cojauny-Beta an."
     },
     "hero": {
-      "eyebrow": "Beta ist offen · Plätze sind begrenzt",
-      "title": "Verbinde dich mit den Leuten auf deinem Flug",
-      "subtitle": "Cojauny matcht dich mit deinen Mitreisenden, sobald du buchst — chattet wochenlang, plant gemeinsam, und teilt euch die Fahrt bei der Landung.",
-      "primaryCta": "Meinen Platz sichern",
-      "secondaryCta": "So funktioniert's",
-      "imageAlt": "Cojauny-Oberfläche mit Flug-Matching, geteilten Kosten und verifizierten Profilen",
+      "eyebrow": "Gemeinsame Flughafentransfers · Beta-Zugang",
+      "title": "Teile den Flughafentransfer mit Reisenden deines Flugs",
+      "subtitle": "Deine Reise endet nicht mit der Landung. Cojauny hilft dir, Mitreisende zu finden, die Fahrt abzusprechen und die Kosten zu teilen. Plane vor dem Abflug und komm gut vorbereitet an.",
+      "primaryCta": "Für die Beta anmelden",
+      "secondaryCta": "So funktioniert Cojauny",
+      "imageAlt": "Vorschau der Suche nach Mitreisenden in Cojauny",
       "trustSignals": [
-        "Nach Flug gematcht",
-        "Chat vor dem Abflug",
-        "Kosten teilen",
-        "Verifiziert & privat"
+        "Über den Flug verbinden",
+        "Im App-Chat planen",
+        "Mitreisende selbst wählen"
       ]
     },
     "heroVariants": {
       "savings": {
-        "title": "Spare bis zu 75% bei deinem nächsten Transfer",
-        "subtitle": "Finde verifizierte Reisende auf deinem Flug und teilt euch die Fahrt — du weißt immer, mit wem du unterwegs bist, bevor du zusagst."
+        "title": "Gemeinsam unterwegs. Kosten teilen.",
+        "subtitle": "Eine Fahrt für 40 € kostet bei vier Personen je 10 €, wenn der Fahrpreis gleich bleibt. Cojauny hilft dir, Mitreisende für die gemeinsame Planung zu finden."
       }
     },
     "heroQuickSignup": {
-      "ariaLabel": "Der Cojauny-Beta beitreten",
-      "label": "Sichere dir jetzt einen Platz — die Beta füllt sich schnell",
-      "emailPlaceholder": "name@email.de",
-      "submit": "Meinen Platz sichern",
+      "ariaLabel": "Für den Beta-Zugang von Cojauny anmelden",
+      "label": "Erhalte eine E-Mail, sobald dein Beta-Zugang bereitsteht",
+      "emailPlaceholder": "du@email.de",
+      "submit": "Für die Beta anmelden",
       "submitting": "Wird gesendet…",
-      "privacyNote": "Mit dem Beitritt akzeptierst du unsere AGB und Datenschutzrichtlinie. Kein Spam, versprochen.",
-      "success": "Du bist dabei! Wir schreiben dir, sobald dein Platz frei ist."
+      "privacyNote": "Mit der Anmeldung akzeptierst du unsere Nutzungsbedingungen und Datenschutzerklärung. Wir informieren dich per E-Mail über deinen Zugang.",
+      "success": "Du stehst auf der Liste! Wir informieren dich per E-Mail, sobald du Zugang erhältst."
     },
     "airportsHubTitle": "Beliebte Flughäfen",
     "airportsHubAll": "Alle Flughäfen ansehen",
-    "betaReferralBanner": "Sobald du dabei bist, bekommst du einen persönlichen Einladungslink — teile ihn und rutsche in der Warteliste nach vorne.",
+    "betaReferralBanner": "Lade über deinen persönlichen Link weitere Reisende ein und hilf ihnen, Mitreisende für ihren Flug zu finden.",
     "features": {
-      "title": "Alles, was du brauchst, um dich mit deinem Flug zu verbinden",
-      "subtitle": "Vom Match bis zum persönlichen Treffen — jede Funktion dreht sich um deinen Flug, und deine Sicherheit.",
+      "title": "Weniger Hin und Her. Besser vorbereitet ankommen.",
+      "subtitle": "Finde Mitreisende, kläre die Details und entscheide selbst, was du teilst.",
       "items": [
         {
-          "title": "Nach Flug gematcht, nicht nach Zufall",
-          "description": "Wir matchen dich über Flugnummer und Datum, damit du immer mit Leuten von deinem Flug unterwegs bist — nie mit wildfremden Leuten.",
+          "title": "Mitreisende finden",
+          "description": "Gib Flugnummer und Datum ein, um andere Reisende für die gemeinsame Fahrt zu finden.",
           "iconName": "bolt"
         },
         {
-          "title": "Kosten automatisch teilen",
-          "description": "Die App rechnet aus, was jeder zahlt, damit niemand selbst rechnen muss.",
+          "title": "Kosten vorher klären",
+          "description": "Prüft die geschätzte Aufteilung und vereinbart die Bezahlung. Cojauny wickelt keine Transferzahlungen ab.",
           "iconName": "sparkles"
         },
         {
-          "title": "Dein echter Name bleibt privat",
-          "description": "Andere Reisende sehen nur deinen Alias und deine Bewertung — nie deinen echten Namen, deine Telefonnummer oder Dokumente.",
+          "title": "Private Daten schützen",
+          "description": "Verbinde dich über einen Alias, ohne Telefonnummer oder Dokumente zu veröffentlichen.",
           "iconName": "lock"
         },
         {
-          "title": "Verifiziert, bevor ihr euch matcht",
-          "description": "Jeder bestätigt seine E-Mail und kann zusätzlich die Telefonnummer verifizieren, damit du immer weißt, mit wem du sprichst.",
+          "title": "Profil prüfen",
+          "description": "Sieh dir Profilangaben und E-Mail-Verifizierung an. Eine bestätigte E-Mail ist kein Identitätsnachweis.",
           "iconName": "shield"
         },
         {
-          "title": "Bewertungen aus echten gemeinsamen Flügen",
-          "description": "Jede Bewertung und jeder Kommentar stammt von einem Flug, den die Person wirklich mit dir geteilt hat — nie erfunden.",
+          "title": "Bewertungen lesen",
+          "description": "Erfahrungen aus früheren gemeinsamen Reisen helfen dir bei der Auswahl.",
           "iconName": "users"
         },
         {
-          "title": "Melden oder blockieren mit einem Klick",
-          "description": "Wenn sich etwas komisch anfühlt, kannst du einen anderen Reisenden sofort melden oder blockieren — ganz ohne Erklärung.",
+          "title": "Blockieren und melden",
+          "description": "Nutze die Funktionen zum Blockieren und Melden, wenn dir eine Interaktion unangenehm ist.",
           "iconName": "flag"
         },
         {
-          "title": "Chatten ab dem Moment des Matches",
-          "description": "Plane wochenlang im Voraus, bleib auch offline während des Flugs in Kontakt, und bei der Landung ist schon alles klar.",
+          "title": "Vor der Landung sprechen",
+          "description": "Plant im App-Chat, ohne eure Telefonnummern weiterzugeben.",
           "iconName": "chat"
         },
         {
-          "title": "Findet euch bei der Ankunft",
-          "description": "Öffne die App, sobald du gelandet bist, und triff deine Mitreisenden mit einem Klick am Gate.",
+          "title": "Treffpunkt vereinbaren",
+          "description": "Legt einen eindeutigen Treffpunkt fest und prüft die Details vor dem Verlassen des Terminals.",
           "iconName": "pin"
         },
         {
-          "title": "Fliegst du nach Hause? Hol dir das Local-Badge",
-          "description": "Wenn du in deine eigene Stadt zurückfliegst, markieren wir dich als Local — praktisch für Reisende, die einen Tipp für den Weg in die Stadt gebrauchen können.",
+          "title": "Ortskenntnis nutzen",
+          "description": "Das Local-Abzeichen kennzeichnet Reisende, die nach Hause zurückkehren und Tipps geben können.",
           "iconName": "globe"
         }
       ]
     },
     "value": {
-      "eyebrow": "Warum Leute mitmachen",
-      "title": "Ein Flug, vier gute Gründe",
-      "subtitle": "Cojauny bringt echte Ersparnis, echten Komfort und ein gutes Gefühl zusammen — du entscheidest immer, mit wem du fährst.",
+      "eyebrow": "Deinen nächsten Transfer planen",
+      "title": "Gemeinsam fahren. Einfacher ankommen.",
+      "subtitle": "Allein unterwegs, auf dem Heimweg oder gern gut vorbereitet? Ein gemeinsamer Flug ist ein guter Anfang.",
       "items": [
         {
-          "title": "Du sparst wirklich",
-          "description": "Ein geteiltes Taxi kostet einen Bruchteil von dem, was du allein zahlen würdest."
+          "title": "Kosten aufteilen",
+          "description": "Ein gemeinsamer Transfer kann die Kosten pro Person senken. Die Ersparnis hängt von Tarif, Strecke und Gruppengröße ab."
         },
         {
-          "title": "Nach Flug gematcht, nie nach Zufall",
-          "description": "Du verbindest dich nur mit Leuten von deinem Flug — nicht mit einem tagealten Post in einer Facebook-Gruppe oder einem Fremden, den du hoffentlich noch am Gate triffst."
+          "title": "Menschen mit ähnlichen Plänen finden",
+          "description": "Suche Mitreisende, ohne auf alte Beiträge angewiesen zu sein oder erst am Terminal jemanden zu finden."
         },
         {
-          "title": "Verifiziert und bewertet",
-          "description": "Jedes Profil ist geprüft, und du siehst Bewertungen, bevor du zusagst — den echten Namen kennt nur Cojauny, nie du."
+          "title": "Informiert entscheiden",
+          "description": "Prüfe Profile und Bewertungen. Du entscheidest, mit wem du reist und welche Informationen du teilst."
         },
         {
-          "title": "Keine Überraschungen am Reisetag",
-          "description": "Treffpunkt, Uhrzeit und Kostenaufteilung sind schon in der App geklärt, bevor du überhaupt losfährst."
+          "title": "Mit klaren Absprachen ankommen",
+          "description": "Besprecht Ziel, Gepäck, Treffpunkt und Kosten schon vor dem Transfer."
         }
       ]
     },
     "savings": {
-      "title": "Spare bis zu 75% bei deiner nächsten Fahrt zum Flughafen",
-      "caption": "Die Fahrt mit verifizierten Reisenden von deinem Flug zu teilen, ist der einfachste Weg, Kosten zu sparen. Das sind die Ziele, auf die wir während der Beta hinarbeiten.",
+      "title": "So verändert sich der Preis beim Teilen",
+      "caption": "Rechenbeispiel: Eine Taxifahrt für 40 € bei gleichem Tarif und gleicher Strecke, zu gleichen Teilen aufgeteilt. Keine aktuellen Preise oder garantierten Ersparnisse. Prüft Zuschläge, Gepäck und Fahrzeugkapazität.",
       "metrics": [
         {
-          "value": "50-75%",
-          "label": "Ersparnis pro Fahrt",
-          "description": "So viel kannst du sparen, wenn du dir Taxi oder Transfer teilst, statt allein zu fahren."
+          "value": "40 €",
+          "label": "Allein unterwegs",
+          "description": "Eine Person zahlt in diesem Beispiel den gesamten Fahrpreis."
         },
         {
-          "value": "180+",
-          "label": "Flughäfen",
-          "description": "Wir decken die wichtigsten Hubs in Europa, Amerika und dem Nahen Osten ab."
+          "value": "20 €",
+          "label": "Zu zweit",
+          "description": "Jede Person zahlt die Hälfte: 20 € weniger als allein."
         },
         {
-          "value": "50.000+",
-          "label": "Erwartete Reisende",
-          "description": "Je mehr Reisende mitmachen, desto mehr Flüge bekommen sofort ein Match — das ist die Größe, auf die wir während der Beta hinarbeiten."
+          "value": "10 €",
+          "label": "Zu viert",
+          "description": "Jede Person zahlt ein Viertel: 75 % weniger in diesem Beispiel."
         },
         {
-          "value": "1.000+ t",
-          "label": "Vermiedenes CO₂",
-          "description": "Der geschätzte Effekt, wenn mehr Leute sich ein Auto teilen, statt einzeln zu fahren."
+          "value": "Deine Wahl",
+          "label": "Mit wem du fährst",
+          "description": "Vereinbart Strecke und Kostenaufteilung vor der Zusage."
         }
       ]
     },
     "workflow": {
-      "title": "Von der Buchung bis zur Landung in 5 Schritten",
-      "intro": "Verifiziere dein Profil einmal. Danach kannst du matchen, chatten und wochenlang planen — bis zu dem Tag, an dem du landest.",
+      "title": "Vom Flug zum geplanten Flughafentransfer",
+      "intro": "In fünf Schritten Mitreisende finden und die Fahrt absprechen. Die Verfügbarkeit hängt davon ab, wer sich für deinen Flug anmeldet.",
       "steps": [
         {
-          "title": "1. Profil anlegen",
-          "description": "Melde dich an und verifiziere deine Identität einmal. Fertig — du kannst direkt loslegen."
+          "title": "1. Profil erstellen",
+          "description": "Registriere dich, bestätige deine E-Mail und wähle deine öffentlichen Angaben."
         },
         {
           "title": "2. Flug hinzufügen",
-          "description": "Trag ihn ein, sobald du buchst — auch Monate im Voraus — und wir legen sofort eine Gruppe und einen Chat nur für deinen Flug an."
+          "description": "Gib Flugnummer und Datum ein, um Mitreisende zu suchen."
         },
         {
-          "title": "3. Match auswählen",
-          "description": "Vergleiche Profile und Bewertungen und entscheide, mit wem du fährst."
+          "title": "3. Mitreisende wählen",
+          "description": "Prüfe Profile und Bewertungen und verbinde dich mit Reisenden, deren Pläne passen."
         },
         {
-          "title": "4. Details klären",
-          "description": "Sprecht Treffpunkt, Uhrzeit und Kostenaufteilung im Chat ab — der funktioniert sogar offline während des Flugs."
+          "title": "4. Details vereinbaren",
+          "description": "Besprecht im Chat Ziel, Gepäck, Treffpunkt und Kostenaufteilung."
         },
         {
-          "title": "5. Fahren und bewerten",
-          "description": "Nach der Landung öffnest du die App, findet euch mit einem Klick, macht die Fahrt und bewertet danach kurz."
+          "title": "5. Fahrt teilen und bewerten",
+          "description": "Trefft euch, fahrt gemeinsam und bewertet eure Erfahrung."
         }
       ]
     },
     "mockups": {
-      "heading": "Sieh genau, mit wem du unterwegs wärst",
-      "description": "Flug, Profil und frühere Bewertungen — alles sichtbar in der App, bevor du zusagst.",
+      "heading": "So planst du eine Reise in Cojauny",
+      "description": "Eine Vorschau vom Hinzufügen des Flugs bis zur Übersicht der Ersparnis. Die Ansichten zeigen die geplante Beta-Erfahrung.",
       "screens": [
         {
           "id": "flight-search",
-          "badge": "Matching",
-          "title": "Dein Flug, deine Leute",
-          "description": "Gib deine Flugnummer ein und sieh, wer sonst noch dabei ist — keine Zufallstreffer.",
+          "badge": "Dein Flug",
+          "title": "Mit dem eigenen Flug anfangen",
+          "description": "Gib Nummer und Datum ein, um Mitreisende für den Transfer zu finden.",
           "image": "/images/mockups/de/mockup-flight-search.svg"
         },
         {
           "id": "profile",
           "badge": "Profil",
-          "title": "Ein Profil, dem du vertrauen kannst",
-          "description": "Verifizierte Identität, mit Sternebewertung und Kommentaren aus früheren Fahrten.",
+          "title": "Erst das Profil ansehen",
+          "description": "Prüfe öffentliche Angaben und verfügbare Bewertungen.",
           "image": "/images/mockups/de/mockup-profile.svg"
         },
         {
           "id": "event-detail",
-          "badge": "Details",
-          "title": "Nichts versteckt",
-          "description": "Wer organisiert, wer mitkommt, wo ihr euch trefft und was es kostet — alles vorab sichtbar.",
+          "badge": "Transfer",
+          "title": "Alle Details an einem Ort",
+          "description": "Sieh Teilnehmende, Treffpunkt und geschätzte Kosten.",
           "image": "/images/mockups/de/mockup-event-detail.svg"
         },
         {
           "id": "chat",
           "badge": "Chat",
-          "title": "Reden, bevor ihr euch trefft",
-          "description": "Sprecht euch in der App ab, ganz ohne Telefonnummer.",
+          "title": "Vor der Ankunft sprechen",
+          "description": "Plant gemeinsam, ohne eure Telefonnummern zu veröffentlichen.",
           "image": "/images/mockups/de/mockup-chat.svg"
         },
         {
           "id": "events-list",
-          "badge": "Optionen",
-          "title": "Wähle, was zu dir passt",
-          "description": "Sieh alle verfügbaren Fahrten für deinen Flug, mit freien Plätzen in Echtzeit.",
+          "badge": "Pläne",
+          "title": "Den passenden Plan wählen",
+          "description": "Vergleiche verfügbare Events für deinen Flug, bevor du dich anschließt.",
           "image": "/images/mockups/de/mockup-events-list.svg"
         },
         {
           "id": "impact",
-          "badge": "Ergebnis",
-          "title": "Sieh deine Ersparnis wachsen",
-          "description": "Verfolge, wie viel du schon gespart hast — Fahrt für Fahrt.",
+          "badge": "Ersparnis",
+          "title": "Deine Ersparnis ansehen",
+          "description": "Prüfe die erfasste Ersparnis deiner gemeinsamen Fahrten.",
           "image": "/images/mockups/de/mockup-impact.svg"
         }
       ]
     },
     "ctaStrip": {
-      "heading": "Dein nächster Flug hat schon deine Leute",
-      "body": "Tritt der Beta bei, werde direkt bei der Buchung mit deinen Mitreisenden gematcht und chattet schon lange vor dem Abflug.",
+      "heading": "Plane deine nächste Ankunft mit uns",
+      "body": "Melde dich für die Beta an. Wir informieren dich, sobald du Cojauny ausprobieren und gemeinsame Flughafentransfers mitgestalten kannst.",
       "link": "#beta",
-      "linkLabel": "Meinen Platz sichern"
+      "linkLabel": "Für die Beta anmelden"
     },
     "pricing": {
       "title": "Einfache Preise, wann immer du bereit bist",
@@ -345,69 +338,65 @@
       }
     },
     "faq": {
-      "title": "Häufig gestellte Fragen",
-      "subtitle": "Wir beantworten deine Fragen zu Cojauny",
+      "title": "Antworten vor der gemeinsamen Fahrt",
+      "subtitle": "Was Cojauny macht, wie ihr den Transfer plant und was die Beta bedeutet.",
       "items": [
         {
-          "question": "Wie funktioniert das Flug-Matching?",
-          "answer": "Gib einfach deine Flugnummer und das Datum ein. Wir gleichen das in Echtzeit mit unserer Datenbank ab und bringen dich mit anderen Reisenden auf deinem Flug zusammen — oder auf einem passenden Flug am selben Flughafen zur selben Zeit."
+          "question": "Was ist Cojauny?",
+          "answer": "Eine App, um Mitreisende deines Flugs zu finden und etwa einen gemeinsamen Flughafentransfer zu organisieren. Die Teilnehmenden vereinbaren Transfer und Bezahlung. Cojauny ist kein Transportunternehmen."
         },
         {
-          "question": "Warum nicht einfach eine WhatsApp-Gruppe nutzen oder jemanden am Flughafen suchen?",
-          "answer": "Kannst du versuchen — meistens heißt das aber, zu hoffen, dass noch jemand da ist, tagealte Posts zu durchsuchen oder mit jemandem zu schreiben, der nie ein Ticket hatte. Cojauny bestätigt, dass alle in deiner Gruppe wirklich auf deinem Flug sind, matcht dich automatisch, sobald du buchst, und hält die Unterhaltung wochenlang vor dem Abflug am Laufen — nicht nur für die paar Minuten nach der Landung."
+          "question": "Kann ich die App direkt nach der Anmeldung nutzen?",
+          "answer": "Die Anmeldung setzt dich auf die Liste für den Beta-Zugang. Wir informieren dich per E-Mail, sobald du Zugang erhältst. Sofortiger Zugang oder Mitreisende für einen bestimmten Flug sind nicht garantiert."
         },
         {
-          "question": "Ist es sicher, mit Leuten zu reisen, die ich nicht kenne?",
-          "answer": "Ja. Jeder verifiziert seine E-Mail (und kann zusätzlich die Telefonnummer verifizieren), bevor er mitmachen kann, und du siehst das öffentliche Profil jedes Reisenden — Bewertungen, Kommentare, Reputation — bevor du zusagst. Dieses Profil zeigt immer nur einen Alias, nie den echten Namen: Deine vollständige Identität kennt Cojauny intern, falls sie aus Sicherheits- oder Rechtsgründen gebraucht wird, wird aber nie an andere Nutzer weitergegeben. Die Absprache läuft über einen sicheren Chat in der App, du musst also nie deine Nummer rausgeben."
+          "question": "Wie finde ich Mitreisende?",
+          "answer": "Füge Flugnummer und Datum hinzu. Die Verfügbarkeit hängt davon ab, wer sich angemeldet hat. Prüfe, ob Ziel und Zeiten der Gruppe zu deinen Plänen passen."
         },
         {
-          "question": "Welche Informationen sehen andere Reisende von mir?",
-          "answer": "Nur deinen Alias, dein Profilbild (falls du eines hochlädst) und deine Durchschnittsbewertung. Dein echter Name, deine Telefonnummer und deine Verifizierungsdokumente werden anderen Nutzern nie gezeigt — sie bleiben bei Cojauny und sind nur intern zu Sicherheits- und Rechtszwecken einsehbar. Auch deine Sitzplatznummer zu teilen, ist immer freiwillig."
+          "question": "Wie viel kann ich sparen?",
+          "answer": "Das hängt vom Endpreis und der Gruppengröße ab. Kostet das Taxi unverändert 40 €, zahlen zwei Personen je 20 € und vier je 10 €. Prüft Zuschläge, Gepäck, Kapazität und Umwege."
         },
         {
-          "question": "Was ist, wenn ich in meine eigene Stadt zurückfliege?",
-          "answer": "Umso besser — dann bekommst du das Local-Badge, damit andere Reisende auf deinem Flug wissen, dass du dich auskennst, und dich nach Tipps für den Weg in die Stadt fragen können. Du kannst trotzdem die Fahrt teilen oder einfach nur aushelfen."
+          "question": "Bucht Cojauny den Transfer oder zieht den Fahrpreis ein?",
+          "answer": "Cojauny hilft bei der Gruppenplanung und Kostenaufteilung, wickelt aber keine Transferzahlungen ab. Vereinbart vor der Reise, wie ihr den Transport bucht und bezahlt."
         },
         {
-          "question": "Kann ich ohne Nachteile stornieren?",
-          "answer": "Ja, ganz ohne Verpflichtung. Du kannst jedes Event jederzeit kostenlos in der App verlassen. Als Organisator wird die Gruppe sofort informiert, damit sie sich neu organisieren kann. Sag einfach so früh wie möglich Bescheid."
+          "question": "Wie entscheide ich, mit wem ich fahre?",
+          "answer": "Prüfe verfügbare Profilangaben und Bewertungen, sprich mit der Person und entscheide selbst. E-Mail-Verifizierung garantiert weder Identität noch Reisesicherheit. Du kannst Interaktionen blockieren oder melden."
         },
         {
-          "question": "Wie funktioniert die Kostenteilung zwischen den Teilnehmern?",
-          "answer": "Die App teilt die Kosten automatisch gleichmäßig auf und zeigt allen die geschätzte Ersparnis vor der Fahrt. Wir wickeln keine Zahlungen selbst ab, also regelt ihr das, wie es euch am besten passt — bar, Überweisung, PayPal, was auch immer einfacher ist."
+          "question": "Was sehen andere von mir?",
+          "answer": "Deinen Alias, ein freiwillig hinzugefügtes Foto und deine Profilbewertungen. Echter Name, Telefonnummer und Verifizierungsdokumente erscheinen nicht im öffentlichen Profil. Teile im Chat keine sensiblen Daten."
         },
         {
-          "question": "Welche Art von Events kann ich erstellen oder beitreten?",
-          "answer": "Geteilte Fahrten zum Flughafen, Abholungen bei der Ankunft, Shuttles für Teams, geteilte Privatwagen, gemeinsame Unterkünfte oder auch ein Treffen nach der Landung. Premium-Nutzer können für alles andere eigene Events erstellen."
+          "question": "Kann ich vor dem Flug planen?",
+          "answer": "Ja. Füge deinen Flug frühzeitig hinzu und besprecht die Details. Sende Nachrichten mit Internetverbindung und vereinbart den Treffpunkt vor dem Boarding."
         },
         {
-          "question": "An welchen Flughäfen ist Cojauny verfügbar?",
-          "answer": "Wir starten an den wichtigsten Flughäfen in Europa, Amerika und dem Nahen Osten — darunter Madrid, Barcelona, London-Heathrow, Paris-CDG und New York-JFK. Deiner fehlt? Frag ihn unter Einstellungen → Flughafen anfragen an."
+          "question": "Was passiert, wenn sich meine Pläne ändern?",
+          "answer": "Informiere die Gruppe frühzeitig und ändere die Details oder verlasse das Event in der App. Prüfe separat die Stornierungsbedingungen des gebuchten Transports."
         },
         {
-          "question": "Was passiert, wenn mein Flug Verspätung hat, storniert wird oder das Gate wechselt?",
-          "answer": "Wir verfolgen deinen Flug in Echtzeit. Ändert sich etwas, wird die ganze Gruppe sofort informiert, und du kannst Treffpunkt oder Uhrzeit mit einem Klick anpassen — oder das Event stornieren."
+          "question": "Ist mein Flughafen dabei?",
+          "answer": "Sieh dir die Flughafenseiten an und gib deinen Flughafen bei der Anmeldung an. Eine Flughafenseite garantiert keine verfügbare Gruppe für deinen Flug."
         },
         {
-          "question": "Wie viel Geld kann ich mit Cojauny wirklich sparen?",
-          "answer": "Im Schnitt 50-75% im Vergleich zum Alleinfahren. Ein Transfer für 30 € kostet zum Beispiel nur noch etwa 8 € pro Person, wenn du ihn mit drei weiteren Passagieren teilst — das macht 500-600 € im Jahr, wenn du zweimal im Monat fliegst."
-        },
-        {
-          "question": "Was passiert, nachdem ich mich auf die Warteliste gesetzt habe?",
-          "answer": "Du bekommst sofort eine Bestätigungsmail, dazu deinen eigenen Einladungslink, um in der Liste vorzurücken. Sobald ein Platz für dich frei ist, schreiben wir dir alles, was du für deine erste geteilte Fahrt brauchst."
+          "question": "Wozu dient mein Einladungslink?",
+          "answer": "Nach der Anmeldung kannst du über deinen persönlichen Link andere Reisende einladen. Besuche und Anmeldungen helfen, deinen Zugang zu priorisieren. Wir informieren dich per E-Mail, sobald du teilnehmen kannst."
         }
       ]
     },
     "forms": {
       "beta": {
-        "heading": "Sichere dir deinen Platz in der Cojauny-Beta",
-        "subheading": "Sei unter den Ersten, die verifizierte Flughafenfahrten teilen — als Gründungsmitglied gibt's ein paar Extras dazu.",
-        "title": "Beta-Zugang anfragen",
-        "description": "Bevorzugter Zugang, verifiziertes Profil, Gründer-Badge und direkter Draht zu unserem Team.",
+        "heading": "Dein nächster Flughafentransfer beginnt hier",
+        "subheading": "Melde dich für den Zugang an. Wir informieren dich, sobald du die Cojauny-Beta ausprobieren kannst.",
+        "title": "Für die Beta anmelden",
+        "description": "Gib deine Kontaktdaten ein. Freiwillige Angaben helfen uns, deine Strecken zu verstehen und die Beta vorzubereiten.",
         "success": "Du stehst auf der Liste! Wir schreiben dir, sobald dein Zugang bereit ist.",
         "error": "Auf unserer Seite ist etwas schiefgelaufen — versuch es gleich noch mal.",
         "duplicateError": "Sieht so aus, als wärst du schon auf der Liste. Wir melden uns bald.",
-        "submit": "Meinen Platz sichern",
+        "submit": "Für die Beta anmelden",
         "checkboxLabel": "Ich habe Cojaunys {privacyLink} gelesen und akzeptiere sie.",
         "privacyLinkLabel": "Datenschutzrichtlinie",
         "referralNotice": "Nach der Anmeldung bekommst du einen Einladungslink zum Teilen. Wir zählen nur Besuche und Anmeldungen, um dich weiter vorne einzureihen — deine Daten geben wir nie an Dritte weiter.",
@@ -497,10 +486,10 @@
         ]
       },
       "feedback": {
-        "heading": "Was liegt dir auf dem Herzen?",
-        "subheading": "Ideen, Bugs, Geschäftsvorschläge — wir hören zu.",
+        "heading": "Hilf uns, deine nächste Reise zu verbessern",
+        "subheading": "Teile eine Idee, eine Frage oder einen Vorschlag zur Zusammenarbeit.",
         "title": "Schreib uns",
-        "description": "Organisierst du regelmäßige Transfers oder hast eine Kooperationsidee? Erzähl uns davon, oder schreib direkt an feedback@cojauny.com.",
+        "description": "Was würde deinen Transfer einfacher machen? Schreib uns hier oder an feedback@cojauny.com.",
         "success": "Danke, ist angekommen! Wir melden uns, falls wir noch etwas brauchen.",
         "error": "Bitte überprüfe deine Nachricht und versuch es erneut.",
         "submit": "Nachricht senden",
@@ -562,7 +551,7 @@
       "moreInfo": "Mehr erfahren"
     },
     "footer": {
-      "description": "Wir machen den Weg zum Flughafen einfacher, günstiger und sicherer. Gemeinsam.",
+      "description": "Finde Mitreisende deines Flugs und plane einen gemeinsamen Flughafentransfer.",
       "rights": "Alle Rechte vorbehalten.",
       "appStoreSoon": "App Store (bald)",
       "playStoreSoon": "Google Play (bald)",
@@ -584,10 +573,10 @@
       "title": "Cojauny Blog · Smarte Mobilität für Flugreisen",
       "description": "Koordiniere Flughafentransfers mit Mitreisenden, senke Kosten und bleib vor dem Boarding informiert.",
       "ogTitle": "Cojauny Blog · Effiziente Flughafentransfers",
-      "ogDescription": "Fallstudien, Taktiken und Produkt-News für die perfekte Koordination von Tür zu Gate."
+      "ogDescription": "Tipps zur Ankunft, zum Vergleich von Verkehrsmitteln und zum Teilen der Fahrtkosten."
     },
-    "heading": "Einblicke in smarte Mobilität",
-    "subtitle": "Bewährte Strategien für die Koordination gemeinsamer Fahrten rund um den Flug.",
+    "heading": "Mit einem Plan ankommen",
+    "subtitle": "Praktische Tipps für Flughafentransfers, geteilte Kosten und weniger spontane Entscheidungen.",
     "empty": "Neue Artikel kommen bald. Melde dich zur Beta an für Vorab-Zugriff.",
     "readTimeLabel": "Min. Lesezeit",
     "updatedLabel": "Aktualisiert",

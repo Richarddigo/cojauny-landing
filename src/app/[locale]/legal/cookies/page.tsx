@@ -1,3 +1,4 @@
+import { buildLocaleAlternates } from '@/lib/jsonld';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -23,6 +24,7 @@ export async function generateMetadata({ params }: CookiesPageProps): Promise<Me
     const copy = (await getAppMessages(locale)).legal.cookies;
 
     return {
+        alternates: buildLocaleAlternates(locale, '/legal/cookies'),
         title: copy.title,
         description: copy.intro
     };
