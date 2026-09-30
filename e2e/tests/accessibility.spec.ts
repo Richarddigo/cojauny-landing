@@ -15,7 +15,8 @@ for (const locale of ['en', 'es', 'de', 'fr']) {
     const audit = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
     expect(audit.violations).toEqual([]);
     await page.setViewportSize({ width: 320, height: 800 });
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    // The mobile layout also reacts to matchMedia; wait for that resize render.
+    await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth), { timeout: 3000 }).toBeLessThanOrEqual(320);
   });
 }
 
