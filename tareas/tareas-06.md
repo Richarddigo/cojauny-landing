@@ -1,6 +1,6 @@
 # Operación y validación previa al despliegue
 
-Estado: procedimiento preparado; ejecución externa pendiente. No introducir secretos en Git ni en logs.
+Estado al 30/09/2026: migración aplicada y verificada en Neon; dominio `cojauny.com` verificado en Resend; clave de la landing actualizada como Secret en Vercel para Production y Preview. Secretos independientes de sesión y cola configurados en ambos entornos. Build de preview con la nueva configuración: Ready. La protección de Vercel redirige las comprobaciones HTTP externas; entrega real de correo y despliegue de producción todavía pendientes. No introducir secretos en Git ni en logs.
 
 ## Orden de puesta en marcha
 
@@ -10,7 +10,7 @@ Estado: procedimiento preparado; ejecución externa pendiente. No introducir sec
 4. Para dominios adicionales, definir `SUBMISSION_ALLOWED_ORIGINS` como lista separada por comas de orígenes HTTPS exactos y `TURNSTILE_ALLOWED_HOSTNAMES` como lista de hostnames admitidos. Configurar esos dominios también en Cloudflare. No admitir comodines ni previews arbitrarios.
 5. Verificar DNS/remitente Resend y el destino del feedback. Configurar también `BETA_TO_EMAIL` si se desea aviso interno de nuevas altas y `RESEND_SEGMENT_BETA` para contactos con opt-in; sin destino beta solo se encola el email al usuario. Ejecutar `npm run production:preflight`; solo comprueba presencia/formato, no conectividad, esquema ni permisos de proveedores.
 6. Ejecutar `npm run quality`, `npm audit`, build y las pruebas E2E/SEO sobre la instancia. La aplicación requiere secretos reales para recibir altas en producción.
-7. Programar POST cada cinco minutos a `/api/internal/mail-outbox`, header `Authorization: Bearer <MAIL_OUTBOX_SECRET>`. Usar un scheduler capaz de POST y de almacenar el secreto; no sirve una llamada pública ni el cron GET de Vercel sin adaptación. El alta también intenta enviar tras la respuesta, pero no sustituye el scheduler.
+7. Activar `.github/workflows/mail-outbox.yml` guardando `MAIL_OUTBOX_SECRET` en los secretos del repositorio, con autorización del propietario. Solo comparte el secreto de activación de la cola, nunca la clave de Resend. Ejecuta `scripts/retry-mail-outbox.mjs` contra el dominio fijo de producción con POST autenticado cada cinco minutos y consulta GET de estado. Si hay correos pendientes de más de quince minutos, la ejecución falla y usa las notificaciones habituales de Actions. GitHub puede retrasar o descartar ejecuciones programadas; este intervalo no es una garantía de entrega. El alta también intenta enviar tras la respuesta, pero no sustituye el scheduler. Vercel Hobby limita su cron a una vez al día.
 8. Consultar GET en ese mismo endpoint con idéntica autorización: devuelve pendientes, antigüedad del más antiguo y máximo de intentos, sin emails ni mensajes. Alertar si hay pendientes de más de 15 minutos; investigar antes de reintentar en masa.
 
 ## Pruebas de aceptación externas

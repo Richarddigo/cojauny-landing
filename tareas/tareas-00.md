@@ -25,10 +25,10 @@ Este bloque sustituye los estados pendientes de la auditoría inicial conservada
 
 ## P0 — requerido antes de desplegar
 
-- [ ] Aplicar `database/migrations/20260930-mail-outbox.sql` a staging y después a producción con respaldo y revisión. La migración también actualiza la anonimización para eliminar correos asociados.
-- [ ] Configurar Neon, Resend/remitente verificado, destino de feedback, Redis, Turnstile y secretos independientes de sesión y cola. Ejecutar `npm run production:preflight` dentro del entorno. Aquí los nueve grupos de configuración están ausentes.
-- [ ] Programar POST autenticado a `/api/internal/mail-outbox` cada cinco minutos y alertar por antigüedad de pendientes. Probar caída temporal y recuperación de Resend, evitando registrar secretos o contenidos de mensajes.
-- [ ] Registro y feedback reales en staging en los cuatro idiomas; comprobar recepción de correos, duplicados, referidos, bloqueo de bots y errores 503. Ningún proveedor externo se ha probado desde este workspace.
+- [x] Aplicar `database/migrations/20260930-mail-outbox.sql` a Neon. Verificados tabla, índice y actualización de la función de anonimización; no se han borrado registros reales. Preview y Production comparten esta conexión: no se ha creado staging aislado.
+- [x] Configuración de Vercel comprobada: Neon, Resend, destinos, Redis y Turnstile presentes. Dominio Resend verificado; clave específica actualizada como Secret; secretos independientes de sesión y cola creados para Production y Preview. Build de preview con esta configuración: Ready. La presencia de variables no prueba la conectividad de todos los proveedores.
+- [ ] Activar y validar los reintentos de `.github/workflows/mail-outbox.yml`: requiere autorización para guardar el secreto de cola en GitHub. Código y pruebas de éxito, rechazo de autorización y alerta por pendientes de más de quince minutos preparados. Probar caída temporal y recuperación real de Resend sin registrar secretos ni mensajes.
+- [ ] Registro y feedback reales; comprobar recepción de correos, duplicados, referidos, bloqueo de bots y errores 503. Neon y verificación de dominio Resend comprobados; la protección del preview impide los checks HTTP externos sin sesión Vercel. Entrega de email real aún pendiente.
 - [ ] Revisar política de privacidad, retención, derechos y encargados contra la configuración real. El borrado en SQL no elimina contactos de Resend ni copias de seguridad externas por sí solo.
 
 ## P1 — tras activar el entorno

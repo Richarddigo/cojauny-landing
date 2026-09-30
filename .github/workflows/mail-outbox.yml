@@ -1,0 +1,23 @@
+name: Mail outbox
+on:
+  schedule:
+    - cron: '2/5 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: production-mail-outbox
+  cancel-in-progress: false
+jobs:
+  retry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Retry pending mail and check queue age
+        env:
+          MAIL_OUTBOX_SECRET: ${{ secrets.MAIL_OUTBOX_SECRET }}
+        run: node scripts/retry-mail-outbox.mjs
