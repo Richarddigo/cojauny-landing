@@ -1,6 +1,6 @@
 # Operación y validación previa al despliegue
 
-Estado al 30/09/2026: migración aplicada y verificada en Neon; dominio `cojauny.com` verificado en Resend; clave de la landing actualizada como Secret en Vercel para Production y Preview. Secretos independientes de sesión y cola configurados en ambos entornos. Build de preview con la nueva configuración: Ready. La protección de Vercel redirige las comprobaciones HTTP externas; entrega real de correo y despliegue de producción todavía pendientes. No introducir secretos en Git ni en logs.
+Estado al 01/10/2026: migración aplicada y verificada en Neon; dominio `cojauny.com` verificado en Resend; clave de la landing actualizada como Secret en Vercel para Production y Preview. Secretos independientes de sesión y cola configurados en ambos entornos. Build de preview con la nueva configuración: Ready. La protección de Vercel redirige las comprobaciones HTTP externas; entrega real de correo y despliegue de producción todavía pendientes. MAIL_OUTBOX_SECRET guardado en GitHub Actions con autorización expresa; ejecución real pendiente. Next actualizado a 16.3.8 tras GHSA-vcvr-r3jv-pc5j; npm audit vuelve a cero vulnerabilidades. No introducir secretos en Git ni en logs.
 
 ## Orden de puesta en marcha
 
