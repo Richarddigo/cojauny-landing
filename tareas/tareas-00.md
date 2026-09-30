@@ -1,6 +1,6 @@
 # Estado actualizado de la auditoría — 30/09/2026
 
-Este bloque sustituye los estados pendientes de la auditoría inicial conservada más abajo. Los cambios están implementados en `improve/landing-security-content`; requieren revisión y validación del entorno antes del despliegue.
+Este bloque sustituye los estados pendientes de la auditoría inicial conservada más abajo. Los cambios están implementados en `improve/landing-security-content`, PR normal #13: https://github.com/Richarddigo/cojauny-landing/pull/13. El mensaje general usa transporte compartido en ES/EN/DE/FR; taxi se conserva solo en ejemplos y guías específicas. Requieren validación del entorno antes del despliegue.
 
 ## Trabajo importante completado
 
