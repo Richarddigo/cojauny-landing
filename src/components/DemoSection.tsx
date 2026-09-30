@@ -249,7 +249,7 @@ export default function DemoSection({ copy, className }: DemoSectionProps) {
                                         handleCardClick(idx);
                                     }
                                 }}
-                                className={`demo-card cojauny-fade-in transition-all duration-200 ease-out cursor-pointer ${activeStep === idx ? 'opacity-100' : 'opacity-60'} relative`}
+                                className={`demo-card cojauny-fade-in transition-all duration-200 ease-out cursor-pointer opacity-100 relative`}
                             >
                                 {isLocked && lockedIndex === idx && (
                                     <div className="absolute top-2 right-2 bg-studio-surface-2 rounded-full p-1 shadow-md border-2 border-studio-accent">
