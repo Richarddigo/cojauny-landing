@@ -18,7 +18,7 @@ Este bloque sustituye los estados pendientes de la auditoría inicial conservada
 ## Validación realizada
 
 - 32 suites / 147 pruebas Jest: pasan; incluyen persistencia SQL real en PGlite, duplicados, rollback de cola, borrado de correos asociados, sesiones y consentimiento.
-- 26 pruebas Chromium/móvil: pasan; cuatro idiomas, WCAG automática sobre todas las secciones, teclado, menús y revocación. No equivalen a una auditoría manual completa con lector de pantalla.
+- 28 pruebas Chromium/móvil: pasan; cuatro idiomas, WCAG automática sobre todas las secciones, teclado, menús y revocación. No equivalen a una auditoría manual completa con lector de pantalla.
 - 128 URLs comprobadas sobre HTML servido: cero fallos de idioma, canonical, hreflang, H1 o JSON-LD.
 - TypeScript, ESLint y build de producción comprobados. Las pruebas de servicios externos usan mocks; no acreditan entrega real ni disponibilidad de Neon/Redis/Turnstile.
 - Lighthouse local y capturas responsive se entregan con el informe. Son mediciones de laboratorio; no prueban mejoras de conversión ni Core Web Vitals de usuarios reales.
