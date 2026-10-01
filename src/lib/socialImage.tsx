@@ -6,23 +6,23 @@ const size = { width: 1200, height: 630 };
 const ogTexts: Record<Locale, { title: string; tagline: string; cta: string }> = {
     es: {
         title: 'Cojauny',
-        tagline: 'Conecta con la gente de tu vuelo',
-        cta: 'Organiza el traslado · Comparte el coste · Lista de espera beta'
+        tagline: 'Viaja con confianza. Llega con un plan.',
+        cta: 'Tú eliges · Tu privacidad cuenta · Acceso beta'
     },
     en: {
         title: 'Cojauny',
-        tagline: 'Connect with the people on your flight',
-        cta: 'Plan your transfer · Split the cost · Beta waitlist'
+        tagline: 'Travel with confidence. Arrive with a plan.',
+        cta: 'Your choice · Your privacy matters · Beta waitlist'
     },
     de: {
         title: 'Cojauny',
-        tagline: 'Verbinde dich mit den Leuten auf deinem Flug',
-        cta: 'Transfer planen · Kosten teilen · Beta-Warteliste'
+        tagline: 'Mit Vertrauen reisen. Mit einem Plan ankommen.',
+        cta: 'Deine Entscheidung · Deine Privatsphäre · Beta-Zugang'
     },
     fr: {
         title: 'Cojauny',
-        tagline: 'Connectez-vous aux passagers de votre vol',
-        cta: 'Préparez le transfert · Partagez le coût · Liste d’attente bêta'
+        tagline: 'Voyagez en confiance. Arrivez avec un plan.',
+        cta: 'Votre choix · Votre vie privée · Accès bêta'
     }
 };
 
