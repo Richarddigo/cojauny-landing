@@ -270,7 +270,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
   es: {
     trustDetails: {
       "title": "La privacidad también forma parte del plan",
-      "description": "Para apuntarte basta tu email; las novedades comerciales son opcionales. La analítica opcional solo se activa con tu consentimiento y puedes cambiarlo desde el pie de la página. Consulta para qué usamos los datos, qué proveedores intervienen y cómo solicitar su eliminación."
+      "description": "El registro rápido pide tu email; el formulario completo también solicita tu nombre. Los datos de viaje y las novedades comerciales son opcionales. La analítica opcional solo se activa con tu consentimiento y puedes cambiarlo desde el pie de la página. Consulta para qué usamos los datos, qué proveedores intervienen y cómo solicitar su eliminación."
     },
     skipLink: 'Saltar al contenido principal',
     header: {
@@ -611,7 +611,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           "question": "¿Cómo se tratan mis datos al apuntarme?",
-          "answer": "Tus datos se utilizan para gestionar la lista de acceso y comunicarte tu entrada a la beta. Las novedades comerciales requieren tu elección de opt-in y la analítica opcional requiere consentimiento. La política de privacidad detalla finalidades, proveedores y cómo ejercer tus derechos."
+          "answer": "Tus datos se utilizan para gestionar la lista de acceso y comunicarte tu entrada a la beta. Las novedades comerciales requieren que elijas recibirlas y la analítica opcional requiere consentimiento. La política de privacidad detalla finalidades, proveedores y cómo ejercer tus derechos."
         },
         {
           "question": "¿Cojauny garantiza que llegue a tiempo?",
@@ -664,7 +664,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           "Únete a la lista de acceso a la beta y descubre una forma de compartir con más confianza. Te avisaremos cuando puedas probarla.",
         title: 'Apúntate a la beta',
         description:
-          "Solo necesitamos tu email para avisarte del acceso. Los demás campos son opcionales; las novedades comerciales las eliges tú.",
+          "Indica tu nombre y email para gestionar el acceso. Los datos de viaje son opcionales y las novedades comerciales las eliges tú.",
         success:
           '¡Ya estás en la lista! Te escribiremos por email en cuanto tengas acceso.',
         error: 'Algo ha fallado por nuestra parte — inténtalo de nuevo en un momento.',
@@ -810,7 +810,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
   en: {
     trustDetails: {
       "title": "Privacy is part of the plan, too",
-      "description": "Your email is enough to join the waitlist; marketing updates are optional. Optional analytics only run with your consent, which you can change in the footer. Read how data is used, which providers are involved and how to request deletion."
+      "description": "Quick signup asks for your email; the full form also asks for your name. Journey details and marketing updates are optional. Optional analytics only run with your consent, which you can change in the footer. Read how data is used, which providers are involved and how to request deletion."
     },
     skipLink: 'Skip to main content',
     header: {
@@ -1148,7 +1148,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           "question": "How is my data used when I join the waitlist?",
-          "answer": "Your details are used to manage the access waitlist and notify you about beta access. Marketing updates require your opt-in and optional analytics require consent. The privacy policy explains purposes, service providers and how to exercise your rights."
+          "answer": "Your details are used to manage the access waitlist and notify you about beta access. Marketing updates require you to choose to receive them and optional analytics require consent. The privacy policy explains purposes, service providers and how to exercise your rights."
         },
         {
           "question": "Does Cojauny guarantee I will arrive on time?",
@@ -1201,7 +1201,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           "Join the beta waitlist and discover a more confident way to share. We will let you know when you can try it.",
         title: 'Join the beta list',
         description:
-          "Your email is enough for access notifications. The other fields are optional, and marketing updates are your choice.",
+          "Enter your name and email so we can manage your access. Journey details are optional, and marketing updates are your choice.",
         success: "You're on the list! We'll email you as soon as your spot is ready.",
         error: 'Something went wrong on our end — please try again in a moment.',
         duplicateError: "Looks like you're already on the list. We'll be in touch soon.",
@@ -1343,7 +1343,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
   de: {
     trustDetails: {
       "title": "Privatsphäre gehört zum Reiseplan",
-      "description": "Für die Zugangsliste genügt deine E-Mail; werbliche Neuigkeiten sind optional. Optionale Analysen starten nur mit deiner Einwilligung, die du im Seitenfuß ändern kannst. Erfahre, wofür Daten verwendet werden, welche Dienstleister beteiligt sind und wie du ihre Löschung beantragst."
+      "description": "Die Kurzanmeldung fragt nach deiner E-Mail, das vollständige Formular auch nach deinem Namen. Reiseangaben und werbliche Neuigkeiten sind optional. Optionale Analysen starten nur mit deiner Einwilligung, die du im Seitenfuß ändern kannst. Erfahre, wofür Daten verwendet werden, welche Dienstleister beteiligt sind und wie du ihre Löschung beantragst."
     },
     skipLink: 'Zum Hauptinhalt springen',
     header: {
@@ -1683,7 +1683,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           "question": "Wie werden meine Daten bei der Anmeldung genutzt?",
-          "answer": "Deine Angaben dienen der Verwaltung der Zugangsliste und der Benachrichtigung über den Beta-Zugang. Werbliche Neuigkeiten erfordern dein Opt-in, optionale Analysen deine Einwilligung. Die Datenschutzerklärung beschreibt Zwecke, Dienstleister und deine Rechte."
+          "answer": "Deine Angaben dienen der Verwaltung der Zugangsliste und der Benachrichtigung über den Beta-Zugang. Werbliche Neuigkeiten erfordern deine ausdrückliche Zustimmung, optionale Analysen deine Einwilligung. Die Datenschutzerklärung beschreibt Zwecke, Dienstleister und deine Rechte."
         },
         {
           "question": "Garantiert Cojauny eine pünktliche Ankunft?",
@@ -1736,7 +1736,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           "Melde dich für den Beta-Zugang an und entdecke eine Möglichkeit, mit mehr Vertrauen gemeinsam zu reisen. Wir informieren dich, sobald du die App testen kannst.",
         title: 'Für die Beta anmelden',
         description:
-          "Für die Benachrichtigung zum Zugang genügt deine E-Mail. Weitere Felder sind optional; werbliche Neuigkeiten wählst du selbst.",
+          "Gib deinen Namen und deine E-Mail für die Verwaltung des Zugangs an. Reiseangaben sind optional; werbliche Neuigkeiten wählst du selbst.",
         success:
           'Du stehst auf der Liste! Wir schreiben dir, sobald dein Zugang bereit ist.',
         error: 'Auf unserer Seite ist etwas schiefgelaufen — versuch es gleich noch mal.',
@@ -1885,7 +1885,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
   fr: {
     trustDetails: {
       "title": "La confidentialité fait aussi partie du voyage",
-      "description": "Votre email suffit pour rejoindre la liste ; les actualités commerciales sont facultatives. Les analyses facultatives nécessitent votre consentement, modifiable en bas de page. Consultez les usages des données, les prestataires concernés et la procédure de suppression."
+      "description": "L’inscription rapide demande votre email ; le formulaire complet demande aussi votre nom. Les détails du voyage et les actualités commerciales sont facultatifs. Les analyses facultatives nécessitent votre consentement, modifiable en bas de page. Consultez les usages des données, les prestataires concernés et la procédure de suppression."
     },
     skipLink: 'Aller au contenu principal',
     header: {
@@ -2226,7 +2226,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
         },
         {
           "question": "Comment mes données sont-elles utilisées à l’inscription ?",
-          "answer": "Vos informations servent à gérer la liste d’accès et à vous informer de votre entrée dans la bêta. Les actualités commerciales nécessitent votre opt-in et les analyses facultatives votre consentement. La politique de confidentialité explique les finalités, les prestataires et vos droits."
+          "answer": "Vos informations servent à gérer la liste d’accès et à vous informer de votre entrée dans la bêta. Les actualités commerciales nécessitent votre accord et les analyses facultatives votre consentement. La politique de confidentialité explique les finalités, les prestataires et vos droits."
         },
         {
           "question": "Cojauny garantit-elle une arrivée à l’heure ?",
@@ -2279,7 +2279,7 @@ export const landingCopy: Record<Locale, LandingCopy> = {
           "Rejoignez la liste d’accès à la bêta et découvrez une façon de partager avec plus de confiance. Nous vous préviendrons quand vous pourrez l’essayer.",
         title: 'M’inscrire à la bêta',
         description:
-          "Votre email suffit pour être informé de l’accès. Les autres champs sont facultatifs ; les actualités commerciales restent votre choix.",
+          "Indiquez votre nom et votre email pour gérer votre accès. Les détails du voyage sont facultatifs ; les actualités commerciales restent votre choix.",
         success:
           'Vous êtes sur la liste ! Nous vous écrirons dès que votre accès sera prêt.',
         error: 'Un problème est survenu de notre côté — réessayez dans un instant.',

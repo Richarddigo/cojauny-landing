@@ -33,7 +33,7 @@
   "landing": {
     "trustDetails": {
       "title": "Privacy is part of the plan, too",
-      "description": "Your email is enough to join the waitlist; marketing updates are optional. Optional analytics only run with your consent, which you can change in the footer. Read how data is used, which providers are involved and how to request deletion."
+      "description": "Quick signup asks for your email; the full form also asks for your name. Journey details and marketing updates are optional. Optional analytics only run with your consent, which you can change in the footer. Read how data is used, which providers are involved and how to request deletion."
     },
     "skipLink": "Skip to main content",
     "header": {
@@ -359,7 +359,7 @@
         },
         {
           "question": "How is my data used when I join the waitlist?",
-          "answer": "Your details are used to manage the access waitlist and notify you about beta access. Marketing updates require your opt-in and optional analytics require consent. The privacy policy explains purposes, service providers and how to exercise your rights."
+          "answer": "Your details are used to manage the access waitlist and notify you about beta access. Marketing updates require you to choose to receive them and optional analytics require consent. The privacy policy explains purposes, service providers and how to exercise your rights."
         },
         {
           "question": "Does Cojauny guarantee I will arrive on time?",
@@ -404,7 +404,7 @@
         "heading": "Take the first step towards a better planned arrival",
         "subheading": "Join the beta waitlist and discover a more confident way to share. We will let you know when you can try it.",
         "title": "Join the beta list",
-        "description": "Your email is enough for access notifications. The other fields are optional, and marketing updates are your choice.",
+        "description": "Enter your name and email so we can manage your access. Journey details are optional, and marketing updates are your choice.",
         "success": "You're on the list! We'll email you as soon as your spot is ready.",
         "error": "Something went wrong on our end — please try again in a moment.",
         "duplicateError": "Looks like you're already on the list. We'll be in touch soon.",

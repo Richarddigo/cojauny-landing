@@ -33,7 +33,7 @@
   "landing": {
     "trustDetails": {
       "title": "La privacidad también forma parte del plan",
-      "description": "Para apuntarte basta tu email; las novedades comerciales son opcionales. La analítica opcional solo se activa con tu consentimiento y puedes cambiarlo desde el pie de la página. Consulta para qué usamos los datos, qué proveedores intervienen y cómo solicitar su eliminación."
+      "description": "El registro rápido pide tu email; el formulario completo también solicita tu nombre. Los datos de viaje y las novedades comerciales son opcionales. La analítica opcional solo se activa con tu consentimiento y puedes cambiarlo desde el pie de la página. Consulta para qué usamos los datos, qué proveedores intervienen y cómo solicitar su eliminación."
     },
     "skipLink": "Saltar al contenido principal",
     "header": {
@@ -359,7 +359,7 @@
         },
         {
           "question": "¿Cómo se tratan mis datos al apuntarme?",
-          "answer": "Tus datos se utilizan para gestionar la lista de acceso y comunicarte tu entrada a la beta. Las novedades comerciales requieren tu elección de opt-in y la analítica opcional requiere consentimiento. La política de privacidad detalla finalidades, proveedores y cómo ejercer tus derechos."
+          "answer": "Tus datos se utilizan para gestionar la lista de acceso y comunicarte tu entrada a la beta. Las novedades comerciales requieren que elijas recibirlas y la analítica opcional requiere consentimiento. La política de privacidad detalla finalidades, proveedores y cómo ejercer tus derechos."
         },
         {
           "question": "¿Cojauny garantiza que llegue a tiempo?",
@@ -404,7 +404,7 @@
         "heading": "Da el primer paso hacia una llegada mejor organizada",
         "subheading": "Únete a la lista de acceso a la beta y descubre una forma de compartir con más confianza. Te avisaremos cuando puedas probarla.",
         "title": "Apúntate a la beta",
-        "description": "Solo necesitamos tu email para avisarte del acceso. Los demás campos son opcionales; las novedades comerciales las eliges tú.",
+        "description": "Indica tu nombre y email para gestionar el acceso. Los datos de viaje son opcionales y las novedades comerciales las eliges tú.",
         "success": "¡Ya estás en la lista! Te escribiremos por email en cuanto tengas acceso.",
         "error": "Algo ha fallado por nuestra parte — inténtalo de nuevo en un momento.",
         "duplicateError": "Parece que ya estás en la lista. Te contactaremos pronto.",

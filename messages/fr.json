@@ -33,7 +33,7 @@
   "landing": {
     "trustDetails": {
       "title": "La confidentialité fait aussi partie du voyage",
-      "description": "Votre email suffit pour rejoindre la liste ; les actualités commerciales sont facultatives. Les analyses facultatives nécessitent votre consentement, modifiable en bas de page. Consultez les usages des données, les prestataires concernés et la procédure de suppression."
+      "description": "L’inscription rapide demande votre email ; le formulaire complet demande aussi votre nom. Les détails du voyage et les actualités commerciales sont facultatifs. Les analyses facultatives nécessitent votre consentement, modifiable en bas de page. Consultez les usages des données, les prestataires concernés et la procédure de suppression."
     },
     "skipLink": "Aller au contenu principal",
     "header": {
@@ -359,7 +359,7 @@
         },
         {
           "question": "Comment mes données sont-elles utilisées à l’inscription ?",
-          "answer": "Vos informations servent à gérer la liste d’accès et à vous informer de votre entrée dans la bêta. Les actualités commerciales nécessitent votre opt-in et les analyses facultatives votre consentement. La politique de confidentialité explique les finalités, les prestataires et vos droits."
+          "answer": "Vos informations servent à gérer la liste d’accès et à vous informer de votre entrée dans la bêta. Les actualités commerciales nécessitent votre accord et les analyses facultatives votre consentement. La politique de confidentialité explique les finalités, les prestataires et vos droits."
         },
         {
           "question": "Cojauny garantit-elle une arrivée à l’heure ?",
@@ -404,7 +404,7 @@
         "heading": "Le premier pas vers une arrivée mieux organisée",
         "subheading": "Rejoignez la liste d’accès à la bêta et découvrez une façon de partager avec plus de confiance. Nous vous préviendrons quand vous pourrez l’essayer.",
         "title": "M’inscrire à la bêta",
-        "description": "Votre email suffit pour être informé de l’accès. Les autres champs sont facultatifs ; les actualités commerciales restent votre choix.",
+        "description": "Indiquez votre nom et votre email pour gérer votre accès. Les détails du voyage sont facultatifs ; les actualités commerciales restent votre choix.",
         "success": "Vous êtes sur la liste ! Nous vous écrirons dès que votre accès sera prêt.",
         "error": "Un problème est survenu de notre côté — réessayez dans un instant.",
         "duplicateError": "Il semble que vous soyez déjà sur la liste. Nous vous recontactons bientôt.",

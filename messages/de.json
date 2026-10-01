@@ -33,7 +33,7 @@
   "landing": {
     "trustDetails": {
       "title": "Privatsphäre gehört zum Reiseplan",
-      "description": "Für die Zugangsliste genügt deine E-Mail; werbliche Neuigkeiten sind optional. Optionale Analysen starten nur mit deiner Einwilligung, die du im Seitenfuß ändern kannst. Erfahre, wofür Daten verwendet werden, welche Dienstleister beteiligt sind und wie du ihre Löschung beantragst."
+      "description": "Die Kurzanmeldung fragt nach deiner E-Mail, das vollständige Formular auch nach deinem Namen. Reiseangaben und werbliche Neuigkeiten sind optional. Optionale Analysen starten nur mit deiner Einwilligung, die du im Seitenfuß ändern kannst. Erfahre, wofür Daten verwendet werden, welche Dienstleister beteiligt sind und wie du ihre Löschung beantragst."
     },
     "skipLink": "Zum Hauptinhalt springen",
     "header": {
@@ -359,7 +359,7 @@
         },
         {
           "question": "Wie werden meine Daten bei der Anmeldung genutzt?",
-          "answer": "Deine Angaben dienen der Verwaltung der Zugangsliste und der Benachrichtigung über den Beta-Zugang. Werbliche Neuigkeiten erfordern dein Opt-in, optionale Analysen deine Einwilligung. Die Datenschutzerklärung beschreibt Zwecke, Dienstleister und deine Rechte."
+          "answer": "Deine Angaben dienen der Verwaltung der Zugangsliste und der Benachrichtigung über den Beta-Zugang. Werbliche Neuigkeiten erfordern deine ausdrückliche Zustimmung, optionale Analysen deine Einwilligung. Die Datenschutzerklärung beschreibt Zwecke, Dienstleister und deine Rechte."
         },
         {
           "question": "Garantiert Cojauny eine pünktliche Ankunft?",
@@ -404,7 +404,7 @@
         "heading": "Der erste Schritt zu einer besser geplanten Ankunft",
         "subheading": "Melde dich für den Beta-Zugang an und entdecke eine Möglichkeit, mit mehr Vertrauen gemeinsam zu reisen. Wir informieren dich, sobald du die App testen kannst.",
         "title": "Für die Beta anmelden",
-        "description": "Für die Benachrichtigung zum Zugang genügt deine E-Mail. Weitere Felder sind optional; werbliche Neuigkeiten wählst du selbst.",
+        "description": "Gib deinen Namen und deine E-Mail für die Verwaltung des Zugangs an. Reiseangaben sind optional; werbliche Neuigkeiten wählst du selbst.",
         "success": "Du stehst auf der Liste! Wir schreiben dir, sobald dein Zugang bereit ist.",
         "error": "Auf unserer Seite ist etwas schiefgelaufen — versuch es gleich noch mal.",
         "duplicateError": "Sieht so aus, als wärst du schon auf der Liste. Wir melden uns bald.",
