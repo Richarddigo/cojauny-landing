@@ -26,14 +26,14 @@ const blogCopy: Record<Locale, BlogCopy> = {
     meta: {
       title: 'Blog Cojauny · Movilidad inteligente para tus viajes',
       description:
-        'Consejos prácticos para compartir transporte con compañeros de vuelo y ahorrar en tus traslados al aeropuerto.',
-      ogTitle: 'Blog Cojauny · Movilidad colaborativa en vuelos',
+        'Consejos para elegir compañeros, cuidar tu privacidad y planificar el traslado con margen. Comparte el viaje con más confianza y también sus costes.',
+      ogTitle: 'Blog Cojauny · Confianza y privacidad al viajar',
       ogDescription:
-        'Guías para planificar la llegada, comparar opciones y compartir los gastos del traslado.'
+        'Elige compañeros con información, cuida tus datos y prepara la llegada con margen. También puedes compartir gastos.'
     },
     heading: 'Llega con un plan',
     subtitle:
-      'Consejos para organizar el traslado, compartir gastos y viajar con menos improvisación.',
+      'Guías sobre confianza entre viajeros, privacidad y llegadas con margen. El ahorro también tiene su lugar.',
     empty: 'Pronto publicaremos nuevos artículos. Únete a la beta para leerlos antes que nadie.',
     readTimeLabel: 'min de lectura',
     updatedLabel: 'Actualizado',
@@ -46,14 +46,14 @@ const blogCopy: Record<Locale, BlogCopy> = {
     meta: {
       title: 'Cojauny Blog · Smart Mobility for Air Travel',
       description:
-        'Coordinate airport transfers with fellow passengers, cut costs, and stay synced before boarding.',
-      ogTitle: 'Cojauny Blog · Smarter Airport Rides',
+        'Advice on choosing companions, protecting your privacy and planning transfers with time to spare. Share with more confidence and split the cost, too.',
+      ogTitle: 'Cojauny Blog · Travel Confidence and Privacy',
       ogDescription:
-        'Guides to plan your arrival, compare transport options and share the cost of a ride.'
+        'Make informed choices about companions, look after your data and plan your arrival with time to spare. Share costs, too.'
     },
     heading: 'Arrive with a plan',
     subtitle:
-      'Practical advice for planning airport rides, sharing costs and travelling with fewer last-minute decisions.',
+      'Guides to trust between travellers, privacy and planning an arrival with time to spare. Saving money is part of the journey, too.',
     empty: 'New articles coming soon. Join the beta to get early access.',
     readTimeLabel: 'min read',
     updatedLabel: 'Updated',
@@ -66,14 +66,14 @@ const blogCopy: Record<Locale, BlogCopy> = {
     meta: {
       title: 'Cojauny Blog · Smarte Mobilität für Flugreisen',
       description:
-        'Koordiniere Flughafentransfers mit Mitreisenden, senke Kosten und bleib vor dem Boarding informiert.',
-      ogTitle: 'Cojauny Blog · Effiziente Flughafentransfers',
+        'Tipps zur Wahl von Mitreisenden, zum Schutz deiner Privatsphäre und zur Planung mit Zeitreserve. Mit mehr Vertrauen reisen und auch Kosten teilen.',
+      ogTitle: 'Cojauny Blog · Vertrauen und Privatsphäre auf Reisen',
       ogDescription:
-        'Tipps zur Ankunft, zum Vergleich von Verkehrsmitteln und zum Teilen der Fahrtkosten.'
+        'Wähle Mitreisende informiert, achte auf deine Daten und plane die Ankunft mit Zeitreserve. Teile auch die Kosten.'
     },
     heading: 'Mit einem Plan ankommen',
     subtitle:
-      'Praktische Tipps für Flughafentransfers, geteilte Kosten und weniger spontane Entscheidungen.',
+      'Tipps zu Vertrauen zwischen Reisenden, Privatsphäre und Ankunft mit Zeitreserve. Auch die Ersparnis kommt nicht zu kurz.',
     empty: 'Neue Artikel kommen bald. Melde dich zur Beta an für Vorab-Zugriff.',
     readTimeLabel: 'Min. Lesezeit',
     updatedLabel: 'Aktualisiert',
@@ -86,14 +86,14 @@ const blogCopy: Record<Locale, BlogCopy> = {
     meta: {
       title: "Blog Cojauny · Mobilité Intelligente pour vos Voyages",
       description:
-        "Coordonnez vos transferts aéroport avec d'autres passagers, réduisez les coûts et restez synchronisés.",
-      ogTitle: "Blog Cojauny · Mobilité Aérienne Partagée",
+        "Conseils pour choisir vos compagnons, préserver votre vie privée et prévoir une marge à l’arrivée. Partagez avec plus de confiance, et répartissez aussi les frais.",
+      ogTitle: "Blog Cojauny · Confiance et confidentialité en voyage",
       ogDescription:
-        'Des guides pour préparer votre arrivée, comparer les transports et partager les frais du trajet.'
+        'Choisissez vos compagnons en connaissance de cause, préservez vos données et prévoyez une marge à l’arrivée. Partagez aussi les frais.'
     },
     heading: 'Arrivez avec un plan',
     subtitle:
-      "Des conseils pratiques pour organiser le transfert, partager les frais et éviter d’improviser à l’arrivée.",
+      "Des guides sur la confiance entre voyageurs, la confidentialité et les arrivées avec une marge de temps. Les économies gardent aussi leur place.",
     empty: 'Nouveaux articles bientôt disponibles. Rejoignez la bêta pour un accès prioritaire.',
     readTimeLabel: 'min de lecture',
     updatedLabel: 'Mis à jour',
