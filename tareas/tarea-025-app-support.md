@@ -1,0 +1,34 @@
+# Soporte de Cojauny app — extensión de la tarea 025
+
+Fecha: 09/10/2026. Rama: `task/025-app-support`, desde `origin/main` (`24c9605`).
+
+## Petición y criterio
+
+El usuario pide investigar landing y studio; si falta soporte, crear `https://www.cojauny.com/support` con contenido útil y publicar el código. Preservar los trabajos ajenos y documentar evidencia real. La tarea 025 de la app conserva sus criterios y no se considera completada por este cambio.
+
+## Investigación y decisiones
+
+- Landing define `support@cojauny.com` en `src/lib/site.ts`, JSON-LD y eliminación de cuenta, pero carece de ruta de soporte. El GET público de `/support` devuelve 404 antes del cambio.
+- Studio, revisado en `e501b2e28f256ecfa6780cc89e0fc7a280398f4d`, ofrece `/contact` para proyectos y `studio@cojauny.com`; no se ha encontrado una ruta de soporte de la app.
+- Se reutiliza el correo explícitamente definido por landing, sin inventar buzones ni afirmar recepción verificada. No se envían mensajes reales ni se crea un formulario que aparente entregar solicitudes.
+- Ruta localizada en EN/ES/DE/FR con ayuda para acceso, vuelos/Jaunts, mensajes, notificaciones, abusos, privacidad y eliminación. Explica cómo preparar una consulta minimizando datos personales y cómo abrir o copiar el correo. No promete tiempos de respuesta, garantías de seguridad ni servicios de transporte.
+- Se conservan el contacto comercial de Studio y la configuración de privacidad. Se añade navegación desde el pie, canonical/hreflang y sitemap usando los mecanismos existentes. `/support` utiliza el idioma por defecto y la detección ya configurada.
+- El checkout previo de landing tiene trabajo ajeno sin guardar: se usa un worktree nuevo desde main y no se modifican esos archivos.
+
+## Validación y entrega
+
+- PASS: instalación desde lockfile; ESLint y TypeScript. Next.js instalado 16.3.8; Node 24.16.0 local, Node 22 en la CI existente.
+- PASS: 147 pruebas Jest / 32 suites, repetidas después del parche de dependencia y con `src/proxy.ts`. La cobertura final observada de landing es 54,29% de líneas (antes de migrar proxy: 54,45%); no representa la cobertura de Flutter ni el objetivo del 75% de la tarea 025.
+- PASS: build de producción, 900 páginas generadas incluidas las cuatro de soporte. Se conservan advertencias existentes de `metadataBase` en otras rutas; no equivalen a fallo del build.
+- PASS: 18 pruebas de soporte y portada, más 18 de navegación, cambio de idioma y accesibilidad, en Chromium y perfil móvil. Incluyen HTTP 200, idioma del documento, enlaces, canonical, WCAG 2 A/AA y 2.1 AA mediante axe, ancho de 320 y navegación a eliminación de cuenta. No certifican todos los dispositivos físicos.
+- PASS: 132 páginas verificadas con HTML real para canonical/hreflang, idioma, h1 y JSON-LD; las cuatro URL de soporte figuran en el sitemap servido.
+- PASS: cinco capturas reales revisadas por el agente (cuatro idiomas en escritorio y español a 320 px): contenido legible, sin recortes ni desbordamientos observados. No se presentan como revisión nativa humana.
+- PASS: auditoría de dependencias de producción, cero vulnerabilidades después de actualizar únicamente `source-map-js` 1.2.1 → 1.2.2 en el lockfile. Antes falló por [GHSA-68fv-2mgg-jv7q](https://github.com/advisories/GHSA-68fv-2mgg-jv7q); no se ocultó ni se desactivó el control.
+
+La primera ejecución de navegador produjo 6 PASS / 2 FAIL: bucle de redirección en inglés con servidor enlazado a `127.0.0.1`. La migración aislada al `proxy.ts` oficial de Next no bastó: en raíz no se registró y produjo 14 PASS / 4 FAIL; en `src`, al nivel de `app`, sí se registró, pero el enlace a `127.0.0.1` mantuvo el bucle (14 PASS / 4 FAIL). Ejecutando servidor y cliente en `localhost`, igual que la CI existente, las 18 pruebas pasaron. Se conserva la migración a `src/proxy.ts` con la lógica original de idioma/cookie; solo cambian ubicación, import relativo y nombre. No se elimina ninguna prueba ni se rebaja su aserción. Este [informe upstream](https://github.com/vercel/next.js/issues/94342) describe el desajuste de origen de las reescrituras; no se trata como confirmación de resolución upstream. El despliegue debe validar su propio dominio/proxy.
+
+PENDIENTE: commit/push, lectura remota y CI alojada. No hay despliegue ni recepción de correo acreditados. Un push de rama no demuestra disponibilidad de `/support` en producción. No se fusiona main ni se despliega con esta entrega de código.
+
+## Reversión
+
+Revertir el commit de esta rama elimina únicamente la nueva ruta/copia y sus enlaces. No cambia datos, APIs, configuración de correo ni contratos de la app.
