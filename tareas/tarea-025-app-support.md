@@ -34,3 +34,11 @@ Vercel creó automáticamente una vista previa del commit con estado SUCCESS. Su
 ## Reversión
 
 Revertir el commit de esta rama elimina únicamente la nueva ruta/copia y sus enlaces. No cambia datos, APIs, configuración de correo ni contratos de la app.
+
+## Corrección de contacto aprobada — 2026-10-11
+
+La decisión del propietario del 8 de octubre está registrada en la app, commit `52b7424d6e67a44c106c11f96edfaf49b5356bd5`, tarea 006 y `docs/ops/RELEASE_READINESS_TRACKER.md:87`: soporte `soporte@cojauny.com`; contacto general/legal/privacidad `cojauny@cojauny.com`. La coordinación confirmó esa aprobación. Se añade `appSupportEmail` y se usa sólo en SupportPage; los demás contactos existentes permanecen intactos. Esta decisión sustituye la reutilización inicial del correo de landing en esta página.
+
+Regresión real: la página anterior falla las cuatro expectativas de contacto (5 PASS / 4 FAIL); corregida, 9 PASS / 0 FAIL. TypeScript y ESLint de los cuatro archivos afectados pasan. Next dev recién compilado en localhost sirve las cuatro rutas; ocho pruebas Chromium/escritorio-móvil pasan en 18,8 s incluyendo contacto, canonical, navegación, axe y ancho de 320 px. El árbol de servidor propio se apagó. El primer import del nuevo test falló TypeScript por un alias no registrado; se corrigió al import relativo sin modificar configuración ni aserciones.
+
+[Recibo actual](evidence/task053-contact-20261011.json). Los controles completos anteriores siguen atribuidos a su revisión original. El GET público sigue devolviendo 404; no se afirma recepción del buzón, disponibilidad pública, despliegue ni integración. Falta acreditar recepción y realizar la publicación autorizada cuando corresponda, sin volver a pedir confirmación de la dirección ya aprobada.

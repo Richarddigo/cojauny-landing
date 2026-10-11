@@ -12,9 +12,9 @@ for (const locale of ['en', 'es', 'de', 'fr']) {
     const banner = page.getByRole('dialog');
     await banner.getByRole('button').nth(1).click();
     const main = page.getByRole('main');
-    await expect(main.getByRole('link', { name: 'support@cojauny.com' })).toHaveAttribute(
+    await expect(main.getByRole('link', { name: 'soporte@cojauny.com' })).toHaveAttribute(
       'href',
-      'mailto:support@cojauny.com',
+      'mailto:soporte@cojauny.com',
     );
     const nav = main.getByRole('navigation');
     for (const target of [

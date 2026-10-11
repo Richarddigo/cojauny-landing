@@ -42,10 +42,10 @@ export default async function SupportPage({ params }: Props) {
       <div className="legal-card mt-8">
         <h2 className="text-xl font-semibold text-white">{copy.contact}</h2>
         <a
-          href={`mailto:${siteMetadata.contactEmail}`}
+          href={`mailto:${siteMetadata.appSupportEmail}`}
           className="mt-4 inline-block rounded-lg bg-brand-600 px-5 py-3 font-semibold text-white underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4"
         >
-          {siteMetadata.contactEmail}
+          {siteMetadata.appSupportEmail}
         </a>
         <p className="mt-4 text-sm leading-6 text-studio-muted">{copy.emailHint}</p>
       </div>
