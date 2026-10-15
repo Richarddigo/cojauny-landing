@@ -1,0 +1,191 @@
+PASS __tests__/AppSupportContact.test.tsx
+  √ en: app support uses the owner-confirmed app contact (106 ms)
+  √ en: the contact correction preserves support metadata (1 ms)
+  √ es: app support uses the owner-confirmed app contact (26 ms)
+  √ es: the contact correction preserves support metadata (1 ms)
+  √ de: app support uses the owner-confirmed app contact (25 ms)
+  √ de: the contact correction preserves support metadata
+  √ fr: app support uses the owner-confirmed app contact (30 ms)
+  √ fr: the contact correction preserves support metadata
+  √ the app contact correction preserves the existing shared contact
+
+---------------------------------------|---------|----------|---------|---------|---------------------------------------
+File                                   | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s                     
+---------------------------------------|---------|----------|---------|---------|---------------------------------------
+All files                              |   20.66 |     7.91 |    3.57 |   20.66 |                                       
+ src                                   |       0 |        0 |       0 |       0 |                                       
+  proxy.ts                             |       0 |        0 |       0 |       0 | 1-42                                  
+ src/app                               |       0 |        0 |       0 |       0 |                                       
+  apple-icon.tsx                       |       0 |        0 |       0 |       0 | 1-39                                  
+  icon.tsx                             |       0 |        0 |       0 |       0 | 1-39                                  
+  opengraph-image.tsx                  |       0 |        0 |       0 |       0 | 1-6                                   
+  robots.ts                            |       0 |        0 |       0 |       0 | 1-16                                  
+  sitemap.ts                           |       0 |        0 |       0 |       0 | 1-57                                  
+  twitter-image.tsx                    |       0 |        0 |       0 |       0 | 1-6                                   
+ src/app/[locale]                      |       0 |        0 |       0 |       0 |                                       
+  error.tsx                            |       0 |        0 |       0 |       0 | 1-50                                  
+  layout.tsx                           |       0 |        0 |       0 |       0 | 1-110                                 
+  loading.tsx                          |       0 |        0 |       0 |       0 | 1-37                                  
+  opengraph-image.tsx                  |       0 |        0 |       0 |       0 | 1-11                                  
+  page.tsx                             |       0 |        0 |       0 |       0 | 1-80                                  
+  twitter-image.tsx                    |       0 |        0 |       0 |       0 | 1-11                                  
+ src/app/[locale]/account-deletion     |       0 |        0 |       0 |       0 |                                       
+  page.tsx                             |       0 |        0 |       0 |       0 | 1-83                                  
+ src/app/[locale]/airports             |       0 |        0 |       0 |       0 |                                       
+  page.tsx                             |       0 |        0 |       0 |       0 | 1-98                                  
+ src/app/[locale]/airports/[slug]      |       0 |        0 |       0 |       0 |                                       
+  page.tsx                             |       0 |        0 |       0 |       0 | 1-137                                 
+ src/app/[locale]/blog                 |       0 |        0 |       0 |       0 |                                       
+  page.tsx                             |       0 |        0 |       0 |       0 | 1-144                                 
+ src/app/[locale]/blog/[slug]          |       0 |        0 |       0 |       0 |                                       
+  page.tsx                             |       0 |        0 |       0 |       0 | 1-150                                 
+ src/app/[locale]/docs/sdk-plan        |       0 |        0 |       0 |       0 |                                       
+  page.tsx                             |       0 |        0 |       0 |       0 | 1-59                                  
+ src/app/[locale]/legal/acceptable-use |       0 |        0 |       0 |       0 |                                       
+  page.tsx                             |       0 |        0 |       0 |       0 | 1-45                                  
+ src/app/[locale]/legal/cookies        |       0 |        0 |       0 |       0 |                                       
+  page.tsx                             |       0 |        0 |       0 |       0 | 1-45                                  
+ src/app/[locale]/legal/faq            |       0 |        0 |       0 |       0 |                                       
+  page.tsx                             |       0 |        0 |       0 |       0 | 1-53                                  
+ src/app/[locale]/legal/privacy        |       0 |        0 |       0 |       0 |                                       
+  page.tsx                             |       0 |        0 |       0 |       0 | 1-45                                  
+ src/app/[locale]/legal/subprocessors  |       0 |        0 |       0 |       0 |                                       
+  page.tsx                             |       0 |        0 |       0 |       0 | 1-45                                  
+ src/app/[locale]/legal/terms          |       0 |        0 |       0 |       0 |                                       
+  page.tsx                             |       0 |        0 |       0 |       0 | 1-45                                  
+ src/app/[locale]/support              |    97.5 |    83.33 |      75 |    97.5 |                                       
+  page.tsx                             |    97.5 |    83.33 |      75 |    97.5 | 20-21                                 
+ src/app/api/beta-signups              |       0 |        0 |       0 |       0 |                                       
+  route.ts                             |       0 |        0 |       0 |       0 | 1-150                                 
+ src/app/api/feedback                  |       0 |        0 |       0 |       0 |                                       
+  route.ts                             |       0 |        0 |       0 |       0 | 1-81                                  
+ src/app/api/internal/mail-outbox      |       0 |        0 |       0 |       0 |                                       
+  route.ts                             |       0 |        0 |       0 |       0 | 1-30                                  
+ src/app/api/referral/stats            |       0 |        0 |       0 |       0 |                                       
+  route.ts                             |       0 |        0 |       0 |       0 | 1-34                                  
+ src/app/api/referral/visit            |       0 |        0 |       0 |       0 |                                       
+  route.ts                             |       0 |        0 |       0 |       0 | 1-60                                  
+ src/app/docs/sdk-plan                 |       0 |        0 |       0 |       0 |                                       
+  page.tsx                             |       0 |        0 |       0 |       0 | 1-13                                  
+ src/app/legal/cookies                 |       0 |        0 |       0 |       0 |                                       
+  page.tsx                             |       0 |        0 |       0 |       0 | 1-13                                  
+ src/app/legal/faq                     |       0 |        0 |       0 |       0 |                                       
+  page.tsx                             |       0 |        0 |       0 |       0 | 1-8                                   
+ src/app/legal/privacidad              |       0 |        0 |       0 |       0 |                                       
+  page.tsx                             |       0 |        0 |       0 |       0 | 1-13                                  
+ src/app/legal/subprocesadores         |       0 |        0 |       0 |       0 |                                       
+  page.tsx                             |       0 |        0 |       0 |       0 | 1-8                                   
+ src/app/legal/terminos                |       0 |        0 |       0 |       0 |                                       
+  page.tsx                             |       0 |        0 |       0 |       0 | 1-13                                  
+ src/app/legal/uso-aceptable           |       0 |        0 |       0 |       0 |                                       
+  page.tsx                             |       0 |        0 |       0 |       0 | 1-8                                   
+ src/components                        |       0 |        0 |       0 |       0 |                                       
+  AccessibilitySkipLink.tsx            |       0 |        0 |       0 |       0 | 1-26                                  
+  AirportHubLinks.tsx                  |       0 |        0 |       0 |       0 | 1-57                                  
+  AlertMessage.tsx                     |       0 |        0 |       0 |       0 | 1-110                                 
+  BetaSignupForm.tsx                   |       0 |        0 |       0 |       0 | 1-419                                 
+  ConsentGatedGoogleAnalytics.tsx      |       0 |        0 |       0 |       0 | 1-34                                  
+  ConsentGatedVercelAnalytics.tsx      |       0 |        0 |       0 |       0 | 1-23                                  
+  CookieBanner.tsx                     |       0 |        0 |       0 |       0 | 1-129                                 
+  DemoSection.tsx                      |       0 |        0 |       0 |       0 | 1-314                                 
+  FaqSection.tsx                       |       0 |        0 |       0 |       0 | 1-59                                  
+  Features.tsx                         |       0 |        0 |       0 |       0 | 1-67                                  
+  FeedbackForm.tsx                     |       0 |        0 |       0 |       0 | 1-286                                 
+  FlagIcons.tsx                        |       0 |        0 |       0 |       0 | 1-39                                  
+  FloatingSocialBar.tsx                |       0 |        0 |       0 |       0 | 1-99                                  
+  Footer.tsx                           |       0 |        0 |       0 |       0 | 1-123                                 
+  GoogleConsentMode.tsx                |       0 |        0 |       0 |       0 | 1-28                                  
+  HashScrollHandler.tsx                |       0 |        0 |       0 |       0 | 1-44                                  
+  Header.tsx                           |       0 |        0 |       0 |       0 | 1-312                                 
+  Hero.tsx                             |       0 |        0 |       0 |       0 | 1-98                                  
+  HeroBetaCapture.tsx                  |       0 |        0 |       0 |       0 | 1-131                                 
+  HeroVariantTracker.tsx               |       0 |        0 |       0 |       0 | 1-23                                  
+  HeroWithVariant.tsx                  |       0 |        0 |       0 |       0 | 1-46                                  
+  IntegrationCTA.tsx                   |       0 |        0 |       0 |       0 | 1-46                                  
+  LandingPageContent.tsx               |       0 |        0 |       0 |       0 | 1-94                                  
+  LanguageSwitcher.tsx                 |       0 |        0 |       0 |       0 | 1-317                                 
+  LegalArticle.tsx                     |       0 |        0 |       0 |       0 | 1-26                                  
+  LegalFaq.tsx                         |       0 |        0 |       0 |       0 | 1-45                                  
+  LegalSubprocessors.tsx               |       0 |        0 |       0 |       0 | 1-38                                  
+  LocaleDocumentLang.tsx               |       0 |        0 |       0 |       0 | 1-13                                  
+  PricingSection.tsx                   |       0 |        0 |       0 |       0 | 1-114                                 
+  PrivacyTrustSection.tsx              |       0 |        0 |       0 |       0 | 1-22                                  
+  ReferralPanel.tsx                    |       0 |        0 |       0 |       0 | 1-172                                 
+  RootDocument.tsx                     |       0 |        0 |       0 |       0 | 1-99                                  
+  SavingsSection.tsx                   |       0 |        0 |       0 |       0 | 1-41                                  
+  SectionIntro.tsx                     |       0 |        0 |       0 |       0 | 1-51                                  
+  SectionSkeletons.tsx                 |       0 |        0 |       0 |       0 | 1-24                                  
+  SocialLinks.tsx                      |       0 |        0 |       0 |       0 | 1-168                                 
+  StickyMobileBetaCta.tsx              |       0 |        0 |       0 |       0 | 1-44                                  
+  StructuredData.tsx                   |       0 |        0 |       0 |       0 | 1-17                                  
+  ValuePropsSection.tsx                |       0 |        0 |       0 |       0 | 1-41                                  
+  WebVitals.tsx                        |       0 |        0 |       0 |       0 | 1-21                                  
+  WorkflowSection.tsx                  |       0 |        0 |       0 |       0 | 1-34                                  
+ src/content                           |       0 |        0 |       0 |       0 |                                       
+  airports.ts                          |       0 |        0 |       0 |       0 | 1-249                                 
+ src/content/blog                      |       0 |        0 |       0 |       0 |                                       
+  airport-blog-posts.ts                |       0 |        0 |       0 |       0 | 1-81                                  
+  posts.ts                             |       0 |        0 |       0 |       0 | 1-2323                                
+ src/hooks                             |       0 |        0 |       0 |       0 |                                       
+  useConsent.ts                        |       0 |        0 |       0 |       0 | 1-17                                  
+  useHeroVariant.ts                    |       0 |        0 |       0 |       0 | 1-36                                  
+  useMenuPortal.ts                     |       0 |        0 |       0 |       0 | 1-35                                  
+  useMobileMenuA11y.ts                 |       0 |        0 |       0 |       0 | 1-146                                 
+  useReducedMotionPreference.ts        |       0 |        0 |       0 |       0 | 1-17                                  
+  useScrollToHash.ts                   |       0 |        0 |       0 |       0 | 1-46                                  
+ src/i18n                              |       0 |        0 |       0 |       0 |                                       
+  message-adapters.ts                  |       0 |        0 |       0 |       0 | 1-75                                  
+  messages.ts                          |       0 |        0 |       0 |       0 | 1-20                                  
+  navigation.ts                        |       0 |        0 |       0 |       0 | 1-4                                   
+  request.ts                           |       0 |        0 |       0 |       0 | 1-17                                  
+  routing.ts                           |       0 |        0 |       0 |       0 | 1-12                                  
+  useAppMessages.ts                    |       0 |        0 |       0 |       0 | 1-9                                   
+ src/lib                               |   10.18 |       20 |    6.45 |   10.18 |                                       
+  analytics.ts                         |       0 |        0 |       0 |       0 | 1-73                                  
+  api-client.ts                        |       0 |        0 |       0 |       0 | 1-65                                  
+  blogAlternates.ts                    |       0 |        0 |       0 |       0 | 1-14                                  
+  consent-store.ts                     |       0 |        0 |       0 |       0 | 1-38                                  
+  consent.ts                           |       0 |        0 |       0 |       0 | 1-55                                  
+  db.ts                                |       0 |        0 |       0 |       0 | 1-29                                  
+  env.ts                               |   74.19 |       50 |     100 |   74.19 | 7-14                                  
+  faq.ts                               |       0 |        0 |       0 |       0 | 1-17                                  
+  faqFilters.ts                        |       0 |        0 |       0 |       0 | 1-21                                  
+  flags.ts                             |       0 |        0 |       0 |       0 | 1-16                                  
+  heroVariant.ts                       |       0 |        0 |       0 |       0 | 1-33                                  
+  i18nMessages.ts                      |       0 |        0 |       0 |       0 | 1-25                                  
+  jsonld.ts                            |   31.42 |    83.33 |   22.22 |   31.42 | 35-52,55-61,64-75,78-88,91-99,102-140 
+  landingCopy.ts                       |       0 |        0 |       0 |       0 | 1-21                                  
+  localeMap.ts                         |       0 |        0 |       0 |       0 | 1-19                                  
+  mail-outbox.ts                       |       0 |        0 |       0 |       0 | 1-28                                  
+  navigationContract.ts                |       0 |        0 |       0 |       0 | 1-50                                  
+  ratelimit.ts                         |       0 |        0 |       0 |       0 | 1-44                                  
+  referral-session.ts                  |       0 |        0 |       0 |       0 | 1-29                                  
+  request-body.ts                      |       0 |        0 |       0 |       0 | 1-25                                  
+  site.ts                              |     100 |      100 |     100 |     100 |                                       
+  socialImage.tsx                      |       0 |        0 |       0 |       0 | 1-159                                 
+  utils.ts                             |       0 |        0 |       0 |       0 | 1-26                                  
+  validation.ts                        |       0 |        0 |       0 |       0 | 1-89                                  
+  verify-bot.ts                        |       0 |        0 |       0 |       0 | 1-17                                  
+ src/lib/email                         |       0 |        0 |       0 |       0 |                                       
+  brand-tokens.ts                      |       0 |        0 |       0 |       0 | 1-16                                  
+  escape.ts                            |       0 |        0 |       0 |       0 | 1-12                                  
+  index.ts                             |       0 |        0 |       0 |       0 | 1-9                                   
+  layout.ts                            |       0 |        0 |       0 |       0 | 1-53                                  
+  templates.ts                         |       0 |        0 |       0 |       0 | 1-236                                 
+ src/locales                           |   68.64 |        0 |       0 |   68.64 |                                       
+  airports.ts                          |       0 |        0 |       0 |       0 | 1-80                                  
+  blog.ts                              |       0 |        0 |       0 |       0 | 1-107                                 
+  common.ts                            |    98.9 |      100 |       0 |    98.9 | 182-183                               
+  config.ts                            |     100 |      100 |     100 |     100 |                                       
+  copy.ts                              |   99.91 |      100 |       0 |   99.91 | 2430-2431                             
+  docs.ts                              |       0 |        0 |       0 |       0 | 1-110                                 
+  legal.ts                             |       0 |        0 |       0 |       0 | 1-977                                 
+  support.ts                           |     100 |      100 |     100 |     100 |                                       
+ src/utils                             |       0 |        0 |       0 |       0 |                                       
+  smoothScroll.ts                      |       0 |        0 |       0 |       0 | 1-10                                  
+---------------------------------------|---------|----------|---------|---------|---------------------------------------
+Test Suites: 1 passed, 1 total
+Tests:       9 passed, 9 total
+Snapshots:   0 total
+Time:        4.193 s
+Ran all test suites within paths "__tests__/AppSupportContact.test.tsx".

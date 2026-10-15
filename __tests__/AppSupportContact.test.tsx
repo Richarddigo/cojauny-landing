@@ -11,8 +11,8 @@ for (const locale of ['en', 'es', 'de', 'fr']) {
   test(`${locale}: app support uses the owner-confirmed app contact`, async () => {
     const params = Promise.resolve({ locale });
     render(await SupportPage({ params }));
-    const contact = screen.getByRole('link', { name: 'soporte@cojauny.com' });
-    expect(contact).toHaveAttribute('href', 'mailto:soporte@cojauny.com');
+    const contact = screen.getByRole('link', { name: 'support@cojauny.com' });
+    expect(contact).toHaveAttribute('href', 'mailto:support@cojauny.com');
     expect(screen.getByRole('heading', { level: 1 })).toBeVisible();
   });
 

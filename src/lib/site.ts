@@ -15,7 +15,7 @@ export const siteMetadata = {
   appStoreUrl: 'https://cojauny.com/app-store',
   playStoreUrl: 'https://cojauny.com/google-play',
   contactEmail: 'support@cojauny.com',
-  appSupportEmail: 'soporte@cojauny.com',
+  appSupportEmail: 'support@cojauny.com',
   socialProfiles: [
     'https://www.linkedin.com/company/cojauny',
     'https://twitter.com/cojauny',
