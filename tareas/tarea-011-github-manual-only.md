@@ -19,5 +19,5 @@ permiso explícito por ejecución. No se sustituyen por otro scheduler.
 Los reintentos automáticos del correo se detienen; la cola no se elimina.
 No hay cambios de DNS, certificados, secretos, lógica de correo ni despliegue.
 
-Estado: validación local PASS; publicación pendiente. No finalizada. YAML validado, único evento workflow_dispatch, jobs preservados. JSON Vercel, regla alwaysApply y enlaces PASS. Copilot autenticado: No rulesets; no cambios de opciones.
+Estado: aceptación y entrega acreditadas al100%. PR https://github.com/Richarddigo/cojauny-landing/pull/16 verificado CLEAN/MERGEABLE, diffs equivalentes al local salvo abreviatura index, checks/reviews vacíos y sin nuevos runs. Integración pendiente de comprobación final. YAML validado, único evento workflow_dispatch, jobs preservados. JSON Vercel, regla alwaysApply y enlaces PASS. Copilot autenticado: No rulesets; no cambios de opciones.
 Rama task/001-github-manual-only desde24c9605. Jobs iniciados/reintentados:0.
