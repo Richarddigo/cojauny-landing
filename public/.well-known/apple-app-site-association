@@ -1,0 +1,23 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [
+          "352HG7A4HX.com.cojauny.app"
+        ],
+        "components": [
+          {
+            "/": "/invite",
+            "?": {
+              "code": "?*"
+            }
+          },
+          {
+            "/": "/invite/*"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -38,7 +38,16 @@ const securityHeaders = [
     }
 ];
 
+const associationHeaders = [
+    { key: 'Content-Type', value: 'application/json' },
+    { key: 'Cache-Control', value: 'public, max-age=3600, must-revalidate' }
+];
+
 const cacheHeaders = [
+    ...['/.well-known/assetlinks.json', '/.well-known/apple-app-site-association', '/apple-app-site-association'].map(source => ({
+        source,
+        headers: associationHeaders
+    })),
     {
         source: '/:path*',
         headers: securityHeaders
@@ -96,6 +105,11 @@ const nextConfig = {
     },
 
     headers: async () => cacheHeaders,
+
+    // Internal rewrite retains the canonical URL and its code query; no redirect.
+    rewrites: async () => [
+        { source: '/invite', destination: '/invite/index.html' }
+    ],
 
     redirects: async () => [
         // Contact page is centralized in cojauny-studio. Redirect any legacy traffic.
