@@ -1,5 +1,5 @@
 ﻿import createMiddleware from 'next-intl/middleware';
-import type { NextRequest } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 
 import { routing } from './src/i18n/routing';
 
@@ -23,6 +23,12 @@ function assignHeroVariant(request: NextRequest): 'trust' | 'savings' {
 }
 
 export default function middleware(request: NextRequest) {
+  // Machine associations and invitation fallback must never enter locale routing
+  // or the consented hero experiment. Exact matches preserve other site routes.
+  const path = request.nextUrl.pathname;
+  if (path === '/apple-app-site-association' || path === '/invite') {
+    return NextResponse.next();
+  }
   const response = intlMiddleware(request);
 
   if (request.cookies.get('cojauny_analytics_consent')?.value !== 'granted') return response;
