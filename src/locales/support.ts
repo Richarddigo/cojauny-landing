@@ -18,7 +18,7 @@ export const supportCopy: Record<Locale, SupportCopy> = {
     intro: 'Help with your account, flights, Jaunts and conversations in Cojauny.',
     contact: 'Contact the Cojauny team',
     emailHint:
-      'Email us with a description of the problem. This link opens your email app; if none is configured, copy the address. This page does not send a message.',
+      'Email us with a description of the problem. Support is available in Spanish and German; for other languages, please use English. This link opens your email app; if none is configured, copy the address. This page does not send a message.',
     sections: [
       {
         heading: 'Before contacting us',
@@ -42,7 +42,7 @@ export const supportCopy: Record<Locale, SupportCopy> = {
       },
       {
         heading: 'Privacy and account deletion',
-        body: 'Use the links below for privacy information and account deletion instructions. For account-related requests, write from the email associated with your account when possible. Do not send identity documents unless the team requests them through an appropriate channel.',
+        body: 'Use the links below for privacy information and account deletion instructions. For account-related requests, write from the email associated with your account when possible. Cojauny v1 does not collect identity documents. Do not send an identity card or passport to support.',
       },
       {
         heading: 'After you contact us',
@@ -59,7 +59,7 @@ export const supportCopy: Record<Locale, SupportCopy> = {
     intro: 'Ayuda con tu cuenta, vuelos, Jaunts y conversaciones en Cojauny.',
     contact: 'Contactar con el equipo de Cojauny',
     emailHint:
-      'Escríbenos describiendo el problema. Este enlace abre tu aplicación de correo; si no tienes una configurada, copia la dirección. Esta página no envía un mensaje.',
+      'Escríbenos describiendo el problema. Atendemos en español y alemán; para los demás idiomas, utiliza el inglés. Este enlace abre tu aplicación de correo; si no tienes una configurada, copia la dirección. Esta página no envía un mensaje.',
     sections: [
       {
         heading: 'Antes de contactar',
@@ -83,7 +83,7 @@ export const supportCopy: Record<Locale, SupportCopy> = {
       },
       {
         heading: 'Privacidad y eliminación de cuenta',
-        body: 'Consulta los enlaces siguientes para la información de privacidad y las instrucciones de eliminación de cuenta. Para solicitudes sobre tu cuenta, escribe desde su correo asociado cuando sea posible. No envíes documentos de identidad salvo que el equipo los solicite por un canal adecuado.',
+        body: 'Consulta los enlaces siguientes para la información de privacidad y las instrucciones de eliminación de cuenta. Para solicitudes sobre tu cuenta, escribe desde su correo asociado cuando sea posible. Cojauny v1 no recoge documentos de identidad. No envíes DNI ni pasaportes al soporte.',
       },
       {
         heading: 'Después de contactar',
@@ -100,7 +100,7 @@ export const supportCopy: Record<Locale, SupportCopy> = {
     intro: 'Hilfe zu deinem Konto, Flügen, Jaunts und Unterhaltungen in Cojauny.',
     contact: 'Das Cojauny-Team kontaktieren',
     emailHint:
-      'Beschreibe uns das Problem per E-Mail. Dieser Link öffnet dein E-Mail-Programm. Ist keines eingerichtet, kopiere die Adresse. Diese Seite versendet keine Nachricht.',
+      'Beschreibe uns das Problem per E-Mail. Wir bieten Support auf Spanisch und Deutsch; für andere Sprachen verwende bitte Englisch. Dieser Link öffnet dein E-Mail-Programm. Ist keines eingerichtet, kopiere die Adresse. Diese Seite versendet keine Nachricht.',
     sections: [
       {
         heading: 'Vor der Kontaktaufnahme',
@@ -124,7 +124,7 @@ export const supportCopy: Record<Locale, SupportCopy> = {
       },
       {
         heading: 'Datenschutz und Kontolöschung',
-        body: 'Die folgenden Links führen zu Datenschutzinformationen und zur Anleitung für die Kontolöschung. Schreibe bei Kontoanfragen möglichst von der zugehörigen E-Mail-Adresse. Sende Ausweisdokumente nur, wenn das Team sie über einen geeigneten Kanal anfordert.',
+        body: 'Die folgenden Links führen zu Datenschutzinformationen und zur Anleitung für die Kontolöschung. Schreibe bei Kontoanfragen möglichst von der zugehörigen E-Mail-Adresse. Cojauny v1 erhebt keine Ausweisdokumente. Sende dem Support keinen Personalausweis oder Reisepass.',
       },
       {
         heading: 'Nach der Kontaktaufnahme',
@@ -142,7 +142,7 @@ export const supportCopy: Record<Locale, SupportCopy> = {
       'De l’aide pour votre compte, vos vols, vos Jaunts et vos conversations dans Cojauny.',
     contact: 'Contacter l’équipe Cojauny',
     emailHint:
-      'Décrivez-nous le problème par e-mail. Ce lien ouvre votre application de messagerie ; si aucune n’est configurée, copiez l’adresse. Cette page n’envoie aucun message.',
+      'Décrivez-nous le problème par e-mail. L’assistance est disponible en espagnol et en allemand ; pour les autres langues, veuillez utiliser l’anglais. Ce lien ouvre votre application de messagerie ; si aucune n’est configurée, copiez l’adresse. Cette page n’envoie aucun message.',
     sections: [
       {
         heading: 'Avant de nous contacter',
@@ -166,7 +166,7 @@ export const supportCopy: Record<Locale, SupportCopy> = {
       },
       {
         heading: 'Confidentialité et suppression du compte',
-        body: 'Les liens ci-dessous expliquent la confidentialité et la suppression du compte. Pour une demande concernant votre compte, écrivez si possible depuis l’adresse associée. N’envoyez des pièces d’identité que si l’équipe les demande par un canal approprié.',
+        body: 'Les liens ci-dessous expliquent la confidentialité et la suppression du compte. Pour une demande concernant votre compte, écrivez si possible depuis l’adresse associée. Cojauny v1 ne recueille pas de pièces d’identité. N’envoyez ni carte d’identité ni passeport à l’assistance.',
       },
       {
         heading: 'Après votre message',

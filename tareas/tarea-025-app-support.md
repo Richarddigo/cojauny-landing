@@ -48,3 +48,13 @@ Regresión real: la página anterior falla las cuatro expectativas de contacto (
 El propietario aclara que no existe el buzón `soporte@cojauny.com` y ordena sustituir su uso vigente por `support@cojauny.com`. Solo existen `cojauny@cojauny.com` y `support@cojauny.com`. Esta instrucción sustituye la decisión de contacto anterior; las notas y los recibos históricos se conservan como tales. Se actualizan el contacto de SupportPage y las expectativas existentes de Jest/Playwright. La recepción de correo y la publicación pública siguen sin acreditarse. No se crea otro buzón, no se envía correo y no se modifica la configuración de correo.
 
 Validación de esta corrección: 9/9 pruebas Jest PASS sobre SupportPage real en cuatro idiomas; canonical y contacto compartido preservados. ESLint: EXIT0, cero errores en site.ts y support.spec.ts; el archivo unitario está ignorado por la configuración y no se afirma analizado. E2E, suite completa, despliegue y recepción del buzón: NOT RUN para estos bytes. [Recibo y logs](evidence/contact-correction-20261016/receipt.json).
+
+## Idiomas de atención y documentos de identidad — 2026-10-16
+
+El propietario confirma atención en español y alemán, e inglés para los demás idiomas. Se añade esa información al contacto en los cuatro idiomas de la página, sin prometer atención en los 73 idiomas de la interfaz ni un plazo de respuesta.
+
+La decisión de la tarea 074 aplaza DNI/pasaporte a v2: v1 no recoge esos documentos. Se sustituye la invitación condicional anterior por una indicación explícita de no enviarlos al soporte. La instrucción no modifica la verificación de correo ni la biometría local.
+
+Esta revisión cambia únicamente la copia localizada y este registro. Validación de estos bytes: NOT RUN; pendiente de la ventana compartida. No se atribuyen las pruebas anteriores a esta revisión ni se afirma despliegue o aprobación legal.
+
+Disponibilidad operativa declarada por el propietario: revisará el buzón al menos una vez al día, todos los días. No equivale a respuesta/resolución en 24 horas, cobertura de incidentes o suplencia acreditadas; se conserva la copia pública sin plazo garantizado.
