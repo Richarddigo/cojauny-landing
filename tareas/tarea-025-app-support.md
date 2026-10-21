@@ -58,3 +58,30 @@ La decisión de la tarea 074 aplaza DNI/pasaporte a v2: v1 no recoge esos docume
 Esta revisión cambia únicamente la copia localizada y este registro. Validación de estos bytes: NOT RUN; pendiente de la ventana compartida. No se atribuyen las pruebas anteriores a esta revisión ni se afirma despliegue o aprobación legal.
 
 Disponibilidad operativa declarada por el propietario: revisará el buzón al menos una vez al día, todos los días. No equivale a respuesta/resolución en 24 horas, cobertura de incidentes o suplencia acreditadas; se conserva la copia pública sin plazo garantizado.
+
+## Composición local de políticas y copia aprobada — 2026-10-21
+
+La implementación de soporte permanecía en esta rama sin integrar en main;
+por ello la verificación pública actual sigue encontrando404 en `/support`.
+Se conservaron externamente los bytes de los dos archivos modificados y se
+registró la copia aprobada en un commit local antes de componer origin/main
+`7c45ef0713a5fb785b17f8c77b76cf63544b326b`, mediante merge normal sin stash,
+reset ni descarte. No hubo conflictos. Entran AGENTS, reglas y políticas manuales:
+Quality/Mail outbox solo workflow_dispatch y despliegue Git de Vercel desactivado.
+No se ejecutó job ni se escribió remotamente.
+
+Pruebas actuales de la página real:13JestPASS antes y después de la composición,
+cuatro idiomas con mailto `support@cojauny.com`, metadata canonical, atención
+ES/DE/EN y rechazo de documentos de identidad en v1. Los cuatro casos nuevos
+preservan las nueve aserciones anteriores. Logs externos en
+`outputs/landing-support-main-composition-20261021/`.
+La comprobación inicial de9casos no incluía todavía esos cuatro casos nuevos;
+una primera edición falló por ruta de trabajo incorrecta y no modificó el test.
+
+Build completo, HTTP servido y navegador actuales:NOT RUN para esta composición.
+RAM libre observada4,12GiB con suite Flutter de otra rama en ejecución; se
+pospone el heap de Next hasta una ventana estable. No se instalaron dependencias.
+La ruta de middleware de soporte conserva src/proxy.ts; la rama056/invitaciones
+permanece separada y sin cambios. No se atribuye paridad de despliegue.
+La disponibilidad pública y recepción de correo continúan sin aceptación;
+no se envió correo, no hubo push/PRwrite/deploy ni se declara100%.

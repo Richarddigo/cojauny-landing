@@ -1,7 +1,5 @@
 name: Mail outbox
 on:
-  schedule:
-    - cron: '2/5 * * * *'
   workflow_dispatch:
 permissions:
   contents: read
