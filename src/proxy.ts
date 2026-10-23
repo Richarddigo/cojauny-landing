@@ -1,7 +1,7 @@
 ﻿import createMiddleware from 'next-intl/middleware';
 import type { NextRequest } from 'next/server';
 
-import { routing } from './src/i18n/routing';
+import { routing } from './i18n/routing';
 
 const intlMiddleware = createMiddleware(routing);
 
@@ -22,7 +22,7 @@ function assignHeroVariant(request: NextRequest): 'trust' | 'savings' {
   return Math.random() < 0.5 ? 'trust' : 'savings';
 }
 
-export default function middleware(request: NextRequest) {
+export default function proxy(request: NextRequest) {
   const response = intlMiddleware(request);
 
   if (request.cookies.get('cojauny_analytics_consent')?.value !== 'granted') return response;

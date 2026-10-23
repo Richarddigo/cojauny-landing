@@ -7,6 +7,7 @@ import type { LandingCopy } from '@/locales/copy';
 import type { Locale } from '@/locales/config';
 import { getCommonCopy, type CommonCopy } from '@/locales/common';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import { supportCopy } from '@/locales/support';
 
 interface FooterProps {
     copy: LandingCopy['footer'];
@@ -76,6 +77,7 @@ const Footer = ({ copy, locale, common }: FooterProps) => {
                             <Link href={`/${locale}`} className="text-sm text-muted transition-colors hover:text-text">{resolvedCommon.footerHomeLabel}</Link>
                             <Link href={`/${locale}/blog`} className="text-sm text-muted transition-colors hover:text-text">{copy.blog}</Link>
                             <Link href={`/${locale}/airports`} className="text-sm text-muted transition-colors hover:text-text">{resolvedCommon.footerAirportsLabel}</Link>
+                            <Link href={locale === 'en' ? '/support' : `/${locale}/support`} className="text-sm text-muted transition-colors hover:text-text">{supportCopy[locale].title}</Link>
                             <a href={`https://studio.cojauny.com/${locale}/contact`} target="_blank" rel="noopener noreferrer" className="text-sm text-muted transition-colors hover:text-text">{copy.contact}</a>
                         </nav>
                     </div>
