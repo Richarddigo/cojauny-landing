@@ -85,3 +85,47 @@ La ruta de middleware de soporte conserva src/proxy.ts; la rama056/invitaciones
 permanece separada y sin cambios. No se atribuye paridad de despliegue.
 La disponibilidad pública y recepción de correo continúan sin aceptación;
 no se envió correo, no hubo push/PRwrite/deploy ni se declara100%.
+
+## Validación local actual de la composición — 2026-10-23
+
+Fuente validada: `7f0eb93f968724657f38862f664a06f014ca2e31` en `task/025-app-support`. El checkout y sus278
+archivos versionados, HEAD e índice semántico permanecieron idénticos entre el
+build estándar y las validaciones HTTP/navegador; estado Git limpio antes de
+este apunte documental. No se prestan resultados de la revisión inicial de2026-10-09.
+
+La revisión oficial del21Oct sobre esta misma fuente terminó: ESLint completo
+EXIT0, TypeScript EXIT0,33suites Jest con160PASS/0FAIL en18,823s y **`npm run build`
+estándar EXIT0**, Next16.3.8. Se comprobó CPU1 tanto en el default oficial como
+en la configuración cargada con `CIRCLE_NODE_TOTAL=2`, sin instalar dependencias
+ni modificar configuración fuente. El build emitió un aviso de metadataBase no
+configurado y fallback social a localhost3000; queda conservado, no silenciado ni
+presentado como resuelto. No acredita metadatos sociales públicos correctos.
+
+El23Oct se arrancó únicamente el servidor propio del build en `localhost:3187`:
+las cuatro rutas EN/ES/DE/FR respondieron200, con idioma HTML, canonical y
+`mailto:support@cojauny.com` correctos. La ejecución oficial de Playwright
+`npm run test:e2e -- support.spec.ts --workers=1 --retries=0` terminó **8PASS/0FAIL
+en17,4s**, cuatro idiomas por desktop/mobile, comprobando navegación legal y
+eliminación, canonical, contacto, axe WCAG2A/2AA/2.1AA y ausencia de overflow a320px.
+El servidor propio se cerró por CtrlC y confirmación de batch; su exit1 intencional
+no se confunde con un fallo del navegador. Puerto3187 sin listener al terminar.
+
+Evidencia externa real, fuera de Git y de contenido de usuarios:
+
+- `outputs/landing-support-main-composition-20261021/direct-gates-current-receipt.json`,
+  SHA256 `9f89bd9ea4983ef8a1e87d1fbb206e018dc66d61d6894e78573b82fd9edec305`.
+- `outputs/landing-support-main-composition-20261021/http-browser-current10-20261023-receipt.json`,
+  SHA256 `40fd3d6bd388807f3a058020eb5fdb8d582447669306f8f91e6c0148f9a7b84f`; referencia los hashes de HTTP4 y del log de navegador8.
+
+Las rutas de evidencia anteriores se resuelven desde la raíz del workspace de
+coordinación; no son enlaces internos del repositorio landing ni se afirma que
+sus archivos estén publicados en la rama. La guía y los recibos históricos se
+mantienen. No se recrearon los runners/planes rechazados ni se repitieron tests
+sin cambios; se utilizaron comandos oficiales directos y una sesión propia.
+
+**Disponibilidad pública de `/support`:OPEN; recepción real del buzón:OPEN.**
+La observación loopback no demuestra despliegue ni entrega de correo. No se envió
+ningún mensaje ni hubo push, PRwrite, merge, despliegue o job hospedado. La tarea025
+de la app conserva sus criterios; esta extensión **no está al100%** ni acredita
+aceptación operativa o legal global. La publicación y comprobación pública
+requieren la revisión y autoridad correspondientes.
