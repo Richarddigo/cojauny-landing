@@ -1,4 +1,20 @@
-# Soporte: candidato de dependencias corregidas
+# Soporte: publicación y entrega completadas
+
+Estado del 6 de noviembre de 2026: **COMPLETED — 100% del alcance de publicación de soporte y su corrección de dependencias**. Publicado, aceptado y fusionado en main; no cierra la tarea053 de la aplicación.
+
+La [PR19](https://github.com/Richarddigo/cojauny-landing/pull/19) se fusionó normalmente en main mediante `b53e0353aee72d0368a42fe541c64f084209130c`, con head revisado `41f3998c2d6a2dbe4f1a8fd0e2e294b518b26eb1`. La [PR18](https://github.com/Richarddigo/cojauny-landing/pull/18), merge `fe6d27e820f4807d535ce393ad9a68237bf795da`, también es ancestro verificado de esa main.
+
+Las dos ramas asociadas se eliminaron en remoto y en local después de comprobar sus PR, heads y ascendencia. Sus worktrees limpios se conservan separados de las ramas, en estado detached; no se eliminaron archivos ni se alteraron otros trabajos. El [recibo real de merge](evidence/support-pr19-main-merge-receipt-20261106.json) y el [recibo de limpieza](evidence/support-merged-branches-cleanup-20261106.json) documentan esas acciones posteriores a la aceptación.
+
+La fuente pública `f7722511c3a0fa9b46c8e228dc8ff46e97507d00` ya está acreditada por el [acta de aceptación](evidence/support-publication-acceptance-20261106.json): las dos ejecuciones Vercel autorizadas terminaronReady y se verificaron HTTPS y DOM reales en los cuatro idiomas. Esta continuación sólo registra la entrega Git posterior; no introduce cambios de funcionamiento ni nuevas ejecuciones. Se conservan el plan, los pesos C1=45/C2=20/C3=25/C4=10 y los recibos históricos, incluidos los fallos iniciales y sus correcciones.
+
+La tarea00/053 de la aplicación permanece al50% con sus requisitos de tiendas, revisión legal y binario presentado abiertos. El inventario global conserva8450/12000=70,4167%; registrar la entrega de esta dependencia no añade puntos ni una tarea nueva. Permanecen documentadas las17 alertas bajas/moderadas de desarrollo y los límites de la verificación pública; no se certifica cumplimiento jurídico ni ausencia universal de vulnerabilidades.
+
+GitHub Actions sigueOFF, hooks[], y Vercel `git.deploymentEnabled=false`. Esta acta no ejecuta builds, pruebas de la app, GitHub Actions, Codemagic ni despliegues; cualquier ejecución posterior conserva su requisito de autorización específica.
+
+## Historial de implementación y aceptación
+
+Los apartados siguientes conservan los checkpoints anteriores en su orden original. Sus estados pendientes describen aquellos momentos y quedan resueltos únicamente por los recibos posteriores citados arriba.
 
 Estado del 6 de noviembre de 2026: preparado para revisión independiente y validación local de publicación. No está publicado ni cierra la tarea 053 de la aplicación.
 
