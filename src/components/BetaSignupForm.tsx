@@ -50,8 +50,8 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
     const resolvedCopy = copy ?? messages.landing.forms.beta;
     const resolvedReferralPanelCopy = referralPanelCopy ?? messages.landing.referralPanel;
     const common = getCommonCopy(locale);
-    const [referralCode, setReferralCode] = useState<string | undefined>();
-    const [form, setForm] = useState<BetaSignupFormState>(() => buildInitialState(locale, referralCode));
+    const referralCode = useRef<string | undefined>(undefined);
+    const [form, setForm] = useState<BetaSignupFormState>(() => buildInitialState(locale));
     const [submitting, setSubmitting] = useState(false);
     const [success, setSuccess] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
@@ -75,7 +75,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
         const refParam = urlParams.get('ref');
 
         if (refParam && /^[A-Za-z0-9]{1,32}$/.test(refParam)) {
-            setReferralCode(refParam);
+            referralCode.current = refParam;
             // Track visit
             apiClient.referral.visit(refParam).catch(() => { });
         }
@@ -123,7 +123,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
         // Convert empty strings to undefined for optional fields
         const formData = {
             ...form,
-            referralCode,
+            referralCode: referralCode.current,
             country: form.country || undefined,
             homeAirport: form.homeAirport || undefined,
             useCase: form.useCase || undefined,
@@ -141,7 +141,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
             trackBetaSignup('full_form');
             setReferralLink(result.referralLink || '');
             setUserEmail(form.email);
-            setForm(buildInitialState(locale, referralCode));
+            setForm(buildInitialState(locale, referralCode.current));
             setSuccess(resolvedCopy.success);
             setShowReferralPanel(true);
             turnstileRef.current?.reset();

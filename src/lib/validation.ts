@@ -42,11 +42,11 @@ export const betaSignupSchema = z
     useCase: z.string().max(2000).optional(),
     country: z
       .enum(betaCountryValues, {
-        errorMap: () => ({ message: 'Select your country' })
+        error: 'Select your country'
       })
       .optional(),
     flightFrequency: z.enum(betaFrequencyValues, {
-      errorMap: () => ({ message: 'Select how often you fly' })
+      error: 'Select how often you fly'
     }).optional(),
     homeAirport: z.string().max(120).optional(),
     updatesOptIn: z.boolean().optional(),
