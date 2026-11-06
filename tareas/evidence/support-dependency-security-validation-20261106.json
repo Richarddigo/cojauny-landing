@@ -1,0 +1,818 @@
+{
+  "task": "Support publication security dependency; existing application task00/053 remains open",
+  "recordedAtUTC": "2026-11-06T14:26:38.174208+00:00",
+  "runtimeSource": "ed085b8b961bf59527d5da792cb20373fb7b8822",
+  "branch": "task/025-support-safe-dependencies-20261106",
+  "plansBeforeSource": [
+    "fa4fdb5fdc70521c57685d40da530d0940e3c3ba",
+    "417f5cb",
+    "e7c9a12"
+  ],
+  "frozenSupportSourceUnchanged": "3522ee3fb8a572d7ca2fbfe1be80097575920188",
+  "sourceFiles": {
+    ".npmrc": {
+      "sha256": "d92bd3b390c6acb5be7ab9ad54e9fee368b3080ed7f3f4d6ed85e12cd369e9dd",
+      "sha256LF": "5602bb233ec1478ef60941257e98dfa8a86c9aeb22a4705aeb4beb15605e8a40"
+    },
+    "package.json": {
+      "sha256": "8d229ac83bfdf967bc9e018fd15e6f0ca3d4d6e8534bbe83409f84b095da96e6",
+      "sha256LF": "a0521e74054967b6151461144a85a3bb3807a35671ffff40421f928ed6fd8787"
+    },
+    "package-lock.json": {
+      "sha256": "4366a5098bd5713dee6cc39bb6a16bec1f9525c80d1e2d2e0f1c3349e0e58303",
+      "sha256LF": "86df70f732a1bb4d35bf63f2e5a10cc8230d414453a7e1d7b58ed1c046906a95"
+    },
+    "src/lib/validation.ts": {
+      "sha256": "4386b043b85cb5c7bd8b536a3ed25033ce07040ad3a63416891250083167b19a",
+      "sha256LF": "451f5b50db5aa79016ab9dc56276458e0ceaa43a37488b27eeaa26f7c9e3d578"
+    },
+    "src/components/BetaSignupForm.tsx": {
+      "sha256": "98a21d2ccb424e69b07e4715bf8b4deaa5e6e2e94100260f874f5477a463a17e",
+      "sha256LF": "5fa38adf02df37ed270ee324d9d379305aad090d10172bc3317d6c6633c83837"
+    },
+    "src/components/FeedbackForm.tsx": {
+      "sha256": "004b06e28650115788e874337d08da7340dd12a7164ce37b4403267a3ff5573f",
+      "sha256LF": "83abd3a63db18f912ecfc297d13900b89807cf379d461e13e4a1d5e2992d97b1"
+    },
+    "__tests__/validation.security.test.ts": {
+      "sha256": "6e15008d0c8b5a87528741275437a87ea9e508c98c1c0ea901584ebcb35406ba",
+      "sha256LF": "6e15008d0c8b5a87528741275437a87ea9e508c98c1c0ea901584ebcb35406ba"
+    },
+    "__tests__/submission-validation.security.test.ts": {
+      "sha256": "d5b6bb49e47e38b5794cdc1341995027593101c7ff18c6d985d0580254d8d518",
+      "sha256LF": "d5b6bb49e47e38b5794cdc1341995027593101c7ff18c6d985d0580254d8d518"
+    },
+    "__tests__/HeroBetaCapture.security.test.tsx": {
+      "sha256": "e6724c20742b2a8bc67135718f96824ab4375833a2c4233d67bce1185a7c50dc",
+      "sha256LF": "e6724c20742b2a8bc67135718f96824ab4375833a2c4233d67bce1185a7c50dc"
+    },
+    "__tests__/FormState.security.test.tsx": {
+      "sha256": "289b209695d865e9e75de4668611498a72bfbb4afbab1a7da6f96315f0dbf32b",
+      "sha256LF": "289b209695d865e9e75de4668611498a72bfbb4afbab1a7da6f96315f0dbf32b"
+    }
+  },
+  "unchangedConsumerAndConfigSHA256LF": {
+    "src/lib/env.ts": "008fbccb2839b02acf8d57ceb93d142d5477ffd473b2ee82abcc54b3ee49f5f0",
+    "src/app/api/beta-signups/route.ts": "46b0494ec06a57db3dd9371005abe9efad7da34cde3ba072346da897a00253a3",
+    "src/app/api/feedback/route.ts": "e591abd51294b49e0f3d3633edb8aca1aba4c4bb4bbed223f427f7485bc1833f",
+    "src/components/HeroBetaCapture.tsx": "6904d89c1a75b4b2bd1a49ef4510f8a28491bd138e561a43af57fb685ff71105",
+    "next.config.mjs": "e6458f4f20892d1c9a04caef09f4da301478e62e297bf36817c3f28a85585993",
+    "jest.config.ts": "7c1ec388771b4b2863d3dffc6deceea58e4b46e1a6ea1c530dd2068ef1893027",
+    "jest.setup.ts": "3a15d95b1905311da5bd49cb3215ec422fda8b9b60c17c2d429096641ad2f8f3",
+    "deno.lock": "228cf9f5784e387f4ad9f8e3f33cb2d336d35fd49c3362034a0569f2692005e8"
+  },
+  "officialVersionsAndMetadata": [
+    {
+      "name": "next",
+      "version": "16.4.5",
+      "source": "https://registry.npmjs.org/next/16.4.5",
+      "metadataSHA256": "8483396571c53bbb6d03ff47cb4f741ebc6fc75b38c2aa95768f90665e4c0391",
+      "integrity": "sha512-rmdfsWosjTUO+6R0S3KokoIk6Kj0sWDRTe86tZHdqaWH/oXq/udX3/4xb+YQi7aWbyEFoglDU54kaifLCdXbBw==",
+      "engines": {
+        "node": ">=20.9.0"
+      }
+    },
+    {
+      "name": "eslint-config-next",
+      "version": "16.4.5",
+      "source": "https://registry.npmjs.org/eslint-config-next/16.4.5",
+      "metadataSHA256": "315458093cacd8ca9312cb4683f1afe20d8739c2525ce23bac41eec13e1d1d56",
+      "integrity": "sha512-mvh39zYLoNjpT5tVmf8xZu7i5lEOb5jN5cW6qD9OpeCp4GEEOeYta0Z2XyKiD0pYdlvm5/Td6Bi890maPRlIjg==",
+      "engines": null
+    },
+    {
+      "name": "zod",
+      "version": "4.6.7",
+      "source": "https://registry.npmjs.org/zod/4.6.7",
+      "metadataSHA256": "d6eac84f6c13cbef91acd6ee6b4c1ccbaef774a2f5e7147a0166880ca30ccbbb",
+      "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+      "engines": null
+    },
+    {
+      "name": "undici",
+      "version": "7.30.2",
+      "source": "https://registry.npmjs.org/undici/7.30.2",
+      "metadataSHA256": "a3847699c659d5e105a8b99cd3111ad03273c02c28ecdf679d61fd97073b03db",
+      "integrity": "sha512-mLyPQnHwUxaM/rideoK/+KL8DaAJLRl4aBCfmX444aCSLnIaomqPLtNRe2jdCYcsk5wZzXrDIQC8ZeYNRAYyIA==",
+      "engines": {
+        "node": ">=20.18.1"
+      }
+    },
+    {
+      "name": "sharp",
+      "version": "0.35.5",
+      "source": "https://registry.npmjs.org/sharp/0.35.5",
+      "metadataSHA256": "534cddc062d4b03df11e7558d28cb9f6c8d527f0979377c849b7e5ebb2a10612",
+      "integrity": "sha512-Ywn4OnzGukp7CDMrp08RQ50YKmuwG47brZgIVPTvBaaAfQlRlygrRqSrxdCiL9M+LlzLBiJ68IR1QqvzHyjC7g==",
+      "engines": {
+        "node": ">=20.9.0"
+      }
+    }
+  ],
+  "versions": {
+    "next": "16.4.5",
+    "eslint-config-next": "16.4.5",
+    "zod": "4.6.7",
+    "undici": "7.30.2",
+    "sharp": "0.35.5",
+    "typescript": "6.0.3"
+  },
+  "officialSources": [
+    "https://github.com/vercel/next.js/security/advisories/GHSA-2464-fhr4-w9xw",
+    "https://github.com/vercel/next.js/security/advisories/GHSA-673q-mjm6-r5xr",
+    "https://github.com/vercel/next.js/security/advisories/GHSA-p3m5-59mp-jv5r",
+    "https://github.com/advisories/GHSA-mrhx-c7xc-m3w5",
+    "https://zod.dev/v4/changelog"
+  ],
+  "dependencyDecisions": [
+    "Use the official security releases and matched Next ESLint configuration. No force, new overrides, vendor edits or package source substitutes.",
+    "Undici is reached through Cheerio1.1.2 whose ^7.12.0 range allows official7.30.2; no direct Undici override was introduced.",
+    "Sharp0.35.5 is resolved under the official patched Next graph; local tests do not certify every native production platform.",
+    "Remove unused ts-jest: its peer excludes the project TypeScript6, and config/scripts use next/jest SWC. The historical deno.lock snapshot still mentions old package versions; it is preserved and is not an active Jest configuration.",
+    "After strict install and real focused SWC tests passed, replace the pre-existing legacy-peer-deps=true workaround with explicit false. Npm config verified false without the environment peer override; npm ls all passed.",
+    "Retain TypeScript6.0.3 and all unrelated direct dependencies. Lock additions are compatible optional platform closure/metadata, not a new broad dependency migration."
+  ],
+  "graphDelta": {
+    "changedNodes": [
+      {
+        "path": "",
+        "before": "1.0.0",
+        "after": "1.0.0"
+      },
+      {
+        "path": "node_modules/@next/env",
+        "before": "16.3.8",
+        "after": "16.4.5"
+      },
+      {
+        "path": "node_modules/@next/eslint-plugin-next",
+        "before": "16.3.3",
+        "after": "16.4.5"
+      },
+      {
+        "path": "node_modules/@next/swc-darwin-arm64",
+        "before": "16.3.8",
+        "after": "16.4.5"
+      },
+      {
+        "path": "node_modules/@next/swc-darwin-x64",
+        "before": "16.3.8",
+        "after": "16.4.5"
+      },
+      {
+        "path": "node_modules/@next/swc-linux-arm64-gnu",
+        "before": "16.3.8",
+        "after": "16.4.5"
+      },
+      {
+        "path": "node_modules/@next/swc-linux-arm64-musl",
+        "before": "16.3.8",
+        "after": "16.4.5"
+      },
+      {
+        "path": "node_modules/@next/swc-linux-x64-gnu",
+        "before": "16.3.8",
+        "after": "16.4.5"
+      },
+      {
+        "path": "node_modules/@next/swc-linux-x64-musl",
+        "before": "16.3.8",
+        "after": "16.4.5"
+      },
+      {
+        "path": "node_modules/@next/swc-win32-arm64-msvc",
+        "before": "16.3.8",
+        "after": "16.4.5"
+      },
+      {
+        "path": "node_modules/@next/swc-win32-x64-msvc",
+        "before": "16.3.8",
+        "after": "16.4.5"
+      },
+      {
+        "path": "node_modules/@playwright/test",
+        "before": "1.57.0",
+        "after": "1.57.0"
+      },
+      {
+        "path": "node_modules/@types/react",
+        "before": "19.2.15",
+        "after": "19.2.15"
+      },
+      {
+        "path": "node_modules/csstype",
+        "before": "3.2.3",
+        "after": "3.2.3"
+      },
+      {
+        "path": "node_modules/eslint-config-next",
+        "before": "16.3.3",
+        "after": "16.4.5"
+      },
+      {
+        "path": "node_modules/eslint-plugin-react-hooks",
+        "before": "7.0.1",
+        "after": "7.1.1"
+      },
+      {
+        "path": "node_modules/next",
+        "before": "16.3.8",
+        "after": "16.4.5"
+      },
+      {
+        "path": "node_modules/playwright",
+        "before": "1.57.0",
+        "after": "1.57.0"
+      },
+      {
+        "path": "node_modules/playwright-core",
+        "before": "1.57.0",
+        "after": "1.57.0"
+      },
+      {
+        "path": "node_modules/playwright/node_modules/fsevents",
+        "before": "2.3.2",
+        "after": "2.3.2"
+      },
+      {
+        "path": "node_modules/undici",
+        "before": "7.30.0",
+        "after": "7.30.2"
+      },
+      {
+        "path": "node_modules/zod",
+        "before": "3.25.76",
+        "after": "4.6.7"
+      }
+    ],
+    "addedNodes": {
+      "node_modules/@tailwindcss/oxide-wasm32-wasi/node_modules/@emnapi/core": "1.10.0",
+      "node_modules/@tailwindcss/oxide-wasm32-wasi/node_modules/@emnapi/runtime": "1.10.0",
+      "node_modules/@tailwindcss/oxide-wasm32-wasi/node_modules/@emnapi/wasi-threads": "1.2.1",
+      "node_modules/@tailwindcss/oxide-wasm32-wasi/node_modules/@napi-rs/wasm-runtime": "1.1.4",
+      "node_modules/@tailwindcss/oxide-wasm32-wasi/node_modules/@tybys/wasm-util": "0.10.1",
+      "node_modules/@tailwindcss/oxide-wasm32-wasi/node_modules/tslib": "2.8.1"
+    },
+    "removedNodes": {
+      "node_modules/bs-logger": "0.2.6",
+      "node_modules/handlebars": "4.7.9",
+      "node_modules/lodash.memoize": "4.1.2",
+      "node_modules/neo-async": "2.6.2",
+      "node_modules/ts-jest": "29.4.5",
+      "node_modules/ts-jest/node_modules/type-fest": "4.41.0",
+      "node_modules/uglify-js": "3.19.3",
+      "node_modules/wordwrap": "1.0.0"
+    }
+  },
+  "audit": {
+    "baseline": {
+      "sha256": "3180b75b68c1e05a3c6025a02950016e30b0fea0d3eaabb5dec99b5ed62cb4bf",
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 2,
+        "critical": 1,
+        "total": 3
+      }
+    },
+    "productionAdopted": {
+      "sha256": "041007ec6bc2b751edbdcd851490fe8fa0bdf3ee1caaa9cc106b7445622123ea",
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      }
+    },
+    "fullGraphSameLock": {
+      "sha256": "48106182dbf37edfae98c5a56f97934b8b88171a812da3c25196212d0cbbf584",
+      "vulnerabilities": {
+        "info": 0,
+        "low": 6,
+        "moderate": 11,
+        "high": 0,
+        "critical": 0,
+        "total": 17
+      },
+      "remaining": {
+        "@jest/core": {
+          "severity": "low",
+          "nodes": [
+            "node_modules/@jest/core"
+          ],
+          "via": [
+            "jest-config"
+          ],
+          "fixAvailable": true
+        },
+        "@tailwindcss/typography": {
+          "severity": "moderate",
+          "nodes": [
+            "node_modules/@tailwindcss/typography"
+          ],
+          "via": [
+            "postcss-selector-parser"
+          ],
+          "fixAvailable": {
+            "name": "@tailwindcss/typography",
+            "version": "0.5.4",
+            "isSemVerMajor": true
+          }
+        },
+        "@typescript-eslint/eslint-plugin": {
+          "severity": "moderate",
+          "nodes": [
+            "node_modules/@typescript-eslint/eslint-plugin"
+          ],
+          "via": [
+            "@typescript-eslint/parser",
+            "@typescript-eslint/type-utils",
+            "@typescript-eslint/utils"
+          ],
+          "fixAvailable": {
+            "name": "@typescript-eslint/eslint-plugin",
+            "version": "6.15.0",
+            "isSemVerMajor": true
+          }
+        },
+        "@typescript-eslint/parser": {
+          "severity": "moderate",
+          "nodes": [
+            "node_modules/@typescript-eslint/parser"
+          ],
+          "via": [
+            "@typescript-eslint/typescript-estree"
+          ],
+          "fixAvailable": {
+            "name": "@typescript-eslint/parser",
+            "version": "6.15.0",
+            "isSemVerMajor": true
+          }
+        },
+        "@typescript-eslint/type-utils": {
+          "severity": "moderate",
+          "nodes": [
+            "node_modules/@typescript-eslint/type-utils"
+          ],
+          "via": [
+            "@typescript-eslint/typescript-estree",
+            "@typescript-eslint/utils"
+          ],
+          "fixAvailable": {
+            "name": "@typescript-eslint/eslint-plugin",
+            "version": "6.15.0",
+            "isSemVerMajor": true
+          }
+        },
+        "@typescript-eslint/typescript-estree": {
+          "severity": "moderate",
+          "nodes": [
+            "node_modules/@typescript-eslint/typescript-estree"
+          ],
+          "via": [
+            "minimatch"
+          ],
+          "fixAvailable": {
+            "name": "@typescript-eslint/parser",
+            "version": "6.15.0",
+            "isSemVerMajor": true
+          }
+        },
+        "@typescript-eslint/utils": {
+          "severity": "moderate",
+          "nodes": [
+            "node_modules/@typescript-eslint/utils"
+          ],
+          "via": [
+            "@typescript-eslint/typescript-estree"
+          ],
+          "fixAvailable": {
+            "name": "eslint-config-next",
+            "version": "15.5.29",
+            "isSemVerMajor": true
+          }
+        },
+        "create-jest": {
+          "severity": "low",
+          "nodes": [
+            "node_modules/create-jest"
+          ],
+          "via": [
+            "jest-config"
+          ],
+          "fixAvailable": {
+            "name": "jest",
+            "version": "25.1.0",
+            "isSemVerMajor": true
+          }
+        },
+        "deepmerge": {
+          "severity": "low",
+          "nodes": [
+            "node_modules/deepmerge"
+          ],
+          "via": [
+            {
+              "source": 1243505,
+              "name": "deepmerge",
+              "dependency": "deepmerge",
+              "title": "deepmerge mergeObject() allows prototype poisoning of returned objects",
+              "url": "https://github.com/advisories/GHSA-gcqx-w48m-w2h4",
+              "severity": "low",
+              "cwe": [
+                "CWE-1321"
+              ],
+              "cvss": {
+                "score": 5.3,
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+              },
+              "range": ">=4.2.0 <=4.3.1"
+            }
+          ],
+          "fixAvailable": {
+            "name": "jest",
+            "version": "25.1.0",
+            "isSemVerMajor": true
+          }
+        },
+        "eslint-config-next": {
+          "severity": "moderate",
+          "nodes": [
+            "node_modules/eslint-config-next"
+          ],
+          "via": [
+            "typescript-eslint"
+          ],
+          "fixAvailable": {
+            "name": "eslint-config-next",
+            "version": "15.5.29",
+            "isSemVerMajor": true
+          }
+        },
+        "eslint-plugin-testing-library": {
+          "severity": "moderate",
+          "nodes": [
+            "node_modules/eslint-plugin-testing-library"
+          ],
+          "via": [
+            "@typescript-eslint/utils"
+          ],
+          "fixAvailable": {
+            "name": "eslint-plugin-testing-library",
+            "version": "6.5.0",
+            "isSemVerMajor": true
+          }
+        },
+        "jest": {
+          "severity": "low",
+          "nodes": [
+            "node_modules/jest"
+          ],
+          "via": [
+            "@jest/core",
+            "jest-cli"
+          ],
+          "fixAvailable": {
+            "name": "jest",
+            "version": "25.1.0",
+            "isSemVerMajor": true
+          }
+        },
+        "jest-cli": {
+          "severity": "low",
+          "nodes": [
+            "node_modules/jest-cli"
+          ],
+          "via": [
+            "@jest/core",
+            "create-jest",
+            "jest-config"
+          ],
+          "fixAvailable": {
+            "name": "jest",
+            "version": "25.1.0",
+            "isSemVerMajor": true
+          }
+        },
+        "jest-config": {
+          "severity": "low",
+          "nodes": [
+            "node_modules/jest-config"
+          ],
+          "via": [
+            "deepmerge"
+          ],
+          "fixAvailable": {
+            "name": "jest",
+            "version": "25.1.0",
+            "isSemVerMajor": true
+          }
+        },
+        "minimatch": {
+          "severity": "moderate",
+          "nodes": [
+            "node_modules/@typescript-eslint/typescript-estree/node_modules/minimatch"
+          ],
+          "via": [
+            {
+              "source": 1244623,
+              "name": "minimatch",
+              "dependency": "minimatch",
+              "title": "minimatch has potential denial of service via globparts amplification",
+              "url": "https://github.com/advisories/GHSA-g3hv-75wg-m249",
+              "severity": "moderate",
+              "cwe": [
+                "CWE-405"
+              ],
+              "cvss": {
+                "score": 0,
+                "vectorString": null
+              },
+              "range": ">=7.0.0 <11.0.1"
+            }
+          ],
+          "fixAvailable": {
+            "name": "@typescript-eslint/parser",
+            "version": "6.15.0",
+            "isSemVerMajor": true
+          }
+        },
+        "postcss-selector-parser": {
+          "severity": "moderate",
+          "nodes": [
+            "node_modules/postcss-selector-parser"
+          ],
+          "via": [
+            {
+              "source": 1243379,
+              "name": "postcss-selector-parser",
+              "dependency": "postcss-selector-parser",
+              "title": "PostCSS: Quadratic complexity in flat selector parsing allows CPU exhaustion",
+              "url": "https://github.com/advisories/GHSA-rj75-hqrm-r3gf",
+              "severity": "moderate",
+              "cwe": [
+                "CWE-400",
+                "CWE-407"
+              ],
+              "cvss": {
+                "score": 5.9,
+                "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+              },
+              "range": "<6.1.5"
+            }
+          ],
+          "fixAvailable": {
+            "name": "@tailwindcss/typography",
+            "version": "0.5.4",
+            "isSemVerMajor": true
+          }
+        },
+        "typescript-eslint": {
+          "severity": "moderate",
+          "nodes": [
+            "node_modules/typescript-eslint"
+          ],
+          "via": [
+            "@typescript-eslint/eslint-plugin",
+            "@typescript-eslint/parser",
+            "@typescript-eslint/typescript-estree",
+            "@typescript-eslint/utils"
+          ],
+          "fixAvailable": {
+            "name": "eslint-config-next",
+            "version": "15.5.29",
+            "isSemVerMajor": true
+          }
+        }
+      }
+    }
+  },
+  "causalEvidence": {
+    "zod4BeforeAdapter": {
+      "passed": 23,
+      "failed": 4,
+      "cause": "The two enum errorMap options no longer preserved their approved message in both schema and actual HTTP422 route responses."
+    },
+    "finalUniqueTests": 61,
+    "roots": 9,
+    "skips": 0,
+    "noTandemCountInflation": "The 4 form-state controls and repeated fixture checks are included within the 61 unique cases, not added again.",
+    "lintCompatibility": "Matched security config exposed 2 existing set-state-in-effect errors. Referral tracking now stores non-render state in a ref; locale changes reset FeedbackForm only when stored locale differs. Four controls passed before/after; no invented red behavioral failure.",
+    "fixtureCorrections": "Fixed 2 missing TypeScript alias imports and 1 optional fixture label type; captured failed attempts remain in local evidence. No production compiler relaxation."
+  },
+  "checks": {
+    "strict-locked-install": {
+      "command": [
+        "C:/nvm4w/nodejs/npm.cmd",
+        "ci",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "exit": 0,
+      "seconds": 47.70292650000192,
+      "log": "strict-locked-install.log",
+      "logSHA256": "78eccb7fc60447c168d9e79951719c8a57ebda15d4556e9abdab67cbb0fcd7a8"
+    },
+    "installed-peer-closure": {
+      "command": [
+        "C:/nvm4w/nodejs/npm.cmd",
+        "ls",
+        "--all",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 2.014646099996753,
+      "log": "installed-peer-closure.log",
+      "logSHA256": "df8fbb18ed97ff7427289e64b9f5c2f8ccac57c543a188447ca0209a68b5067b"
+    },
+    "config-source-peer-policy": {
+      "command": [
+        "C:/nvm4w/nodejs/npm.cmd",
+        "config",
+        "get",
+        "legacy-peer-deps"
+      ],
+      "exit": 0,
+      "seconds": 1.0497290999919642,
+      "log": "config-source-peer-policy.log",
+      "logSHA256": "2ed27c1421e6928dbe13dbfdb5c59e1045b30341fe7ebe05700006bc5ac572c0"
+    },
+    "zod4-causal-before-adapter": {
+      "command": [
+        "C:/nvm4w/nodejs/node.exe",
+        "node_modules/jest/bin/jest.js",
+        "--runInBand",
+        "--coverage=false",
+        "--runTestsByPath",
+        "__tests__/validation.security.test.ts",
+        "__tests__/submission-validation.security.test.ts"
+      ],
+      "exit": 1,
+      "seconds": 11.886674500012305,
+      "log": "zod4-causal-before-adapter.log",
+      "logSHA256": "ca3aec951977c77282ae00ebbbeafe6f2e40fa213d3e90aa8a4ca681f4e99f92"
+    },
+    "affected-validation-forms-api-final": {
+      "command": [
+        "C:/nvm4w/nodejs/node.exe",
+        "node_modules/jest/bin/jest.js",
+        "--runInBand",
+        "--coverage=false",
+        "--runTestsByPath",
+        "__tests__/validation.security.test.ts",
+        "__tests__/submission-validation.security.test.ts",
+        "__tests__/HeroBetaCapture.security.test.tsx",
+        "__tests__/FormState.security.test.tsx",
+        "__tests__/submission-api.test.ts",
+        "__tests__/BetaSignupForm.test.tsx",
+        "__tests__/FeedbackForm.test.tsx",
+        "__tests__/Hero.test.tsx",
+        "__tests__/AppSupportContact.test.tsx"
+      ],
+      "exit": 0,
+      "seconds": 9.438430200010771,
+      "log": "affected-validation-forms-api-final.log",
+      "logSHA256": "0df16dc17cbbc535d5db5a09d294cb661f2e0fe1014a62d1bd651bdbdec75005"
+    },
+    "form-state-before-compatibility": {
+      "command": [
+        "C:/nvm4w/nodejs/node.exe",
+        "node_modules/jest/bin/jest.js",
+        "--runInBand",
+        "--coverage=false",
+        "--runTestsByPath",
+        "__tests__/FormState.security.test.tsx"
+      ],
+      "exit": 0,
+      "seconds": 3.885768399981316,
+      "log": "form-state-before-compatibility.log",
+      "logSHA256": "c28e6a8867db8b69b5357f3ec06385e0934f67d87e622b42ca963a3cb91240fb"
+    },
+    "form-state-fixed-fixture": {
+      "command": [
+        "C:/nvm4w/nodejs/node.exe",
+        "node_modules/jest/bin/jest.js",
+        "--runInBand",
+        "--coverage=false",
+        "--runTestsByPath",
+        "__tests__/FormState.security.test.tsx"
+      ],
+      "exit": 0,
+      "seconds": 4.212146399979247,
+      "log": "form-state-fixed-fixture.log",
+      "logSHA256": "a699ffa5ccc870ae4a812ecb621abba31d94a6447877af882544da830225d9ab"
+    },
+    "focused-source-lint-final": {
+      "command": [
+        "C:/nvm4w/nodejs/node.exe",
+        "node_modules/eslint/bin/eslint.js",
+        "src/lib/validation.ts",
+        "src/lib/env.ts",
+        "src/app/api/beta-signups/route.ts",
+        "src/app/api/feedback/route.ts",
+        "src/components/BetaSignupForm.tsx",
+        "src/components/FeedbackForm.tsx",
+        "src/components/HeroBetaCapture.tsx"
+      ],
+      "exit": 0,
+      "seconds": 3.2205065000161994,
+      "log": "focused-source-lint-final.log",
+      "logSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "focused-test-lint-final": {
+      "command": [
+        "C:/nvm4w/nodejs/node.exe",
+        "node_modules/eslint/bin/eslint.js",
+        "--no-ignore",
+        "__tests__/validation.security.test.ts",
+        "__tests__/submission-validation.security.test.ts",
+        "__tests__/HeroBetaCapture.security.test.tsx",
+        "__tests__/FormState.security.test.tsx"
+      ],
+      "exit": 0,
+      "seconds": 2.1258813999884296,
+      "log": "focused-test-lint-final.log",
+      "logSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "project-type-check-fixed-fixture": {
+      "command": [
+        "C:/nvm4w/nodejs/node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--incremental",
+        "false"
+      ],
+      "exit": 0,
+      "seconds": 5.173175000003539,
+      "log": "project-type-check-fixed-fixture.log",
+      "logSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "new-test-format-verified": {
+      "command": [
+        "C:/nvm4w/nodejs/node.exe",
+        "node_modules/prettier/bin/prettier.cjs",
+        "--check",
+        "__tests__/validation.security.test.ts",
+        "__tests__/submission-validation.security.test.ts",
+        "__tests__/HeroBetaCapture.security.test.tsx",
+        "__tests__/FormState.security.test.tsx"
+      ],
+      "exit": 0,
+      "seconds": 0.6852251999953296,
+      "log": "new-test-format-verified.log",
+      "logSHA256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    },
+    "adopted-production-audit": {
+      "command": [
+        "C:/nvm4w/nodejs/npm.cmd",
+        "audit",
+        "--omit=dev",
+        "--json"
+      ],
+      "exit": 0,
+      "seconds": 1.2574680999969132,
+      "log": "adopted-production-audit.log",
+      "logSHA256": "041007ec6bc2b751edbdcd851490fe8fa0bdf3ee1caaa9cc106b7445622123ea"
+    },
+    "jest-transformer-config": {
+      "command": [
+        "C:/nvm4w/nodejs/node.exe",
+        "node_modules/jest/bin/jest.js",
+        "--showConfig"
+      ],
+      "exit": 0,
+      "seconds": 2.3229301999963354,
+      "log": "jest-transformer-config.log",
+      "logSHA256": "6d33fb51053b01f93278e733909dd97a11b40155063232cf5e17e5182217633b"
+    }
+  },
+  "privacy": "Authentication-empty inherited environment, empty user/global npm config, no .env files, lifecycle scripts ignored during install. Real bot, database, mail, analytics, Billing and Cloud calls were not executed. Invalid request tests exercise actual routes with mocked side-effect dependencies.",
+  "criteria": {
+    "C1": {
+      "weight": 45,
+      "status": "Evidence prepared; independent source review pending"
+    },
+    "C2": {
+      "weight": 20,
+      "status": "Evidence prepared; independent source review pending"
+    },
+    "C3": {
+      "weight": 25,
+      "status": "PENDING: ROOT exact-source local Next build and four-locale browser checks"
+    },
+    "C4": {
+      "weight": 10,
+      "status": "PENDING: reviewed remote delivery and fresh exact-source publication permission plus live HTTPS evidence"
+    }
+  },
+  "limits": [
+    "Production audit0 is an advisory database snapshot, not a penetration-test or universal absence-of-vulnerabilities certification.",
+    "Full dependency audit retains17 reported development-only dependency nodes:6low and11moderate, nohigh/critical. Do not downgrade or silently suppress them.",
+    "No Next build, native application build, full suite, GitHub Actions, Codemagic, Vercel deployment, account change or real message transmission was performed in this checkpoint.",
+    "No app taskID, original criterion, global task percentage, submission binary, current production deployment or frozen support branch was altered."
+  ]
+}
