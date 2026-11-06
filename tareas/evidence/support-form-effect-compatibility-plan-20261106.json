@@ -1,0 +1,12 @@
+{
+  "parentPlan": "support-publication-dependency-plan-20261106.json",
+  "recordedAt": "2026-11-06",
+  "reason": "Matched Next security ESLint configuration now reports two existing synchronous effect state updates in affected forms. Do not suppress the rule or downgrade the security graph.",
+  "changesPlannedBeforeSource": [
+    "Keep the validated referral code in a ref because it affects submission and visit tracking, not rendered content; preserve validation, one mount visit attempt and the submitted attribution.",
+    "Adjust FeedbackForm state only when its stored form locale differs from the incoming locale, before rendering that locale. Preserve reset of form/success/error and avoid an effect-triggered intermediate render with old input.",
+    "Add regressions for valid and malformed referral attribution and feedback locale reset before changing production form source. Keep API calls mocked, with no real analytics, DB or mail.",
+    "Re-run only the affected form/validation roots and lint/type checks. No new build, full suite or remote execution."
+  ],
+  "contract": "No new business policy, endpoint, input permission or display copy. Original C1/C2/C3/C4 weights stay unchanged."
+}
