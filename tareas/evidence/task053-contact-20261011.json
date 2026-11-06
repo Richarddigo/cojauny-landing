@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-11",
+  "sourceBase": "391a98affca1344ab2c0f030bb35ee974cda4e15",
+  "decision": {
+    "ownerApprovalRecorded": "2026-10-08",
+    "appCommit": "52b7424d6e67a44c106c11f96edfaf49b5356bd5",
+    "references": [
+      "tareas/tareas-00.md task006 follow-up 2026-10-08",
+      "docs/ops/RELEASE_READINESS_TRACKER.md:87"
+    ],
+    "approvedSupport": "soporte@cojauny.com",
+    "generalLegalPrivacy": "cojauny@cojauny.com",
+    "parentConfirmed": true
+  },
+  "change": "Dedicated appSupportEmail used only by SupportPage; existing shared contactEmail remains unchanged.",
+  "regression": {
+    "before": {
+      "passed": 5,
+      "failed": 4
+    },
+    "after": {
+      "passed": 9,
+      "failed": 0
+    },
+    "typecheck": "PASS",
+    "targetedLint": "PASS",
+    "browser": {
+      "passed": 8,
+      "failed": 0,
+      "durationSeconds": 18.8,
+      "locales": [
+        "en",
+        "es",
+        "de",
+        "fr"
+      ],
+      "projects": [
+        "chromium",
+        "mobile"
+      ],
+      "server": "fresh Next dev localhost:3197; own server tree stopped"
+    },
+    "logs": {
+      "contact-baseline": "f30fa7d21bfaffae20e893ff2344613a782b2db59d6e07a76059b3c038078983",
+      "contact-final": "dc4aa22df3edcf352cc4b110c7d4ea99dc40b948474a0761555187cf8ad58e51",
+      "typecheck-final": "44742489639e06d76b740f05c4800e09fd255dfd149a6081feaa2ffff18a6a48",
+      "lint": "3a718b4d3f36d667a320f8edb3f7d3e7e8b96d589c12e9a84e1688569646471b",
+      "browser-final": "421b978146ba0d2868d612117143efb2079bc33725498113efe2fd1f522e96ac"
+    }
+  },
+  "publicSupport": {
+    "status": 404,
+    "receipt": "task053-public-support-current-20261011.json"
+  },
+  "mailboxReceipt": "NOT VERIFIED",
+  "productionDeploy": "NOT RUN",
+  "merge": "NOT RUN",
+  "historicalValidation": "Previous full Jest/build/36 browser/132 SEO/CI retained at original commit; current continuation is targeted."
+}

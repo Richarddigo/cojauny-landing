@@ -1,0 +1,55 @@
+{
+  "atUtc": "2026-10-15T22:00:47.7957894Z",
+  "ownerDecision": "Replace current soporte mailbox with support@cojauny.com; historical evidence preserved",
+  "files": [
+    "src/lib/site.ts",
+    "__tests__/AppSupportContact.test.tsx",
+    "e2e/tests/support.spec.ts"
+  ],
+  "jest": {
+    "status": "PASS",
+    "tests": 9,
+    "command": "node --max-old-space-size=256 --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --runTestsByPath __tests__/AppSupportContact.test.tsx",
+    "suites": 1,
+    "scope": "Actual SupportPage rendered in en/es/de/fr, visible contact and mailto, metadata canonical, shared contact preserved"
+  },
+  "eslint": {
+    "warnings": 1,
+    "ignoredFile": "__tests__/AppSupportContact.test.tsx",
+    "exitCode": 0,
+    "executedFiles": [
+      "src/lib/site.ts",
+      "e2e/tests/support.spec.ts"
+    ],
+    "errors": 0,
+    "qualification": "Unit test file is ignored by existing ESLint configuration; not claimed linted."
+  },
+  "e2eAfterCorrection": "NOT_RUN",
+  "fullSuiteAfterCorrection": "NOT_RUN",
+  "publicAvailability": "NOT_VERIFIED",
+  "mailboxDelivery": "NOT_VERIFIED",
+  "deployment": "NOT_RUN",
+  "qualification": "Focused evidence for contact-only correction; does not replace public route, receipt or full task acceptance.",
+  "logs": [
+    {
+      "name": "support-contact-eslint-20261015.log",
+      "bytes": 352,
+      "sha256": "3a718b4d3f36d667a320f8edb3f7d3e7e8b96d589c12e9a84e1688569646471b"
+    },
+    {
+      "name": "support-contact-eslint-20261015.log.exit.txt",
+      "bytes": 1,
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+    },
+    {
+      "name": "support-contact-jest-20261015.log",
+      "bytes": 22180,
+      "sha256": "6c09a246a774738bceee6350a1efe6c83d1d913f63d25d6d3ecffd933ae90c33"
+    },
+    {
+      "name": "support-contact-jest-20261015.log.exit.txt",
+      "bytes": 1,
+      "sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+    }
+  ]
+}
