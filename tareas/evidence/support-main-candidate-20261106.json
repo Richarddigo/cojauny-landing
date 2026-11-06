@@ -1,0 +1,516 @@
+{
+  "task": "Landing task025 support / app00/053 support dependency only",
+  "date": "2026-11-06",
+  "status": "SOURCE PREPARED; 13 focused Jest PASS and 5-file ESLint PASS; current build/browser/publication NOT RUN",
+  "app053UnchangedPercent": 50,
+  "app053OriginalCriteria": {
+    "C1": 15,
+    "C2": 35,
+    "C3": 25,
+    "C4": 25
+  },
+  "app053Unresolved": [
+    "C3 store listing/copy/legal approval plus current support URL verification",
+    "C4 secure reviewer journey in exact submitted binary"
+  ],
+  "supportPublicationDoesNotRequireInventedAppOperatorGate": true,
+  "candidateBranch": "task/025-support-main-candidate-20261106",
+  "baseMain": "7c45ef0713a5fb785b17f8c77b76cf63544b326b",
+  "sourcePR15Head": "bfbabfc4873f59dfeb6bace80ffeee1fdb97fcec",
+  "productionCurrent": {
+    "observedDate": "2026-11-06",
+    "source": "Authenticated Vercel Chrome UI, computer-use read-only",
+    "team": "richarddigo-projects",
+    "project": "cojauny-landing",
+    "projectUrl": "https://vercel.com/richarddigo-projects/cojauny-landing",
+    "domain": "cojauny.com",
+    "repository": "Richarddigo/cojauny-landing",
+    "production": {
+      "deploymentId": "5n1cz69jr4skRbaJVBiXpcH92Cx7",
+      "url": "cojauny-landing-grgru9l2e-richarddigo-projects.vercel.app",
+      "state": "Ready",
+      "created": "October1 visible; exact time not extracted",
+      "branch": "main",
+      "sourceCommit": "24c9605c88d2536c4a50bbbe2a85af5c2308cbac"
+    },
+    "existingPreview": {
+      "deploymentId": "hzRrJKMiMUXGKng6fckFoRkLydUg",
+      "branch": "task/025-app-support",
+      "state": "Ready",
+      "created": "October16 visible",
+      "sourceCommit": "NOT VERIFIED; do not promote or credit this preview"
+    },
+    "settings": {
+      "productionBranch": "main",
+      "autoAssignCustomProductionDomains": true,
+      "ignoredBuildStep": "Automatic",
+      "nodeVersion": "24.x",
+      "deployHooks": 0,
+      "connectedGitRepository": true,
+      "pullRequestComments": true,
+      "commitComments": false,
+      "deploymentStatusEvents": true,
+      "repositoryDispatchEvents": true,
+      "commitStatus": true
+    },
+    "versionedAutomationGuard": {
+      "path": "vercel.json",
+      "value": "git.deploymentEnabled=false",
+      "verifiedOn": [
+        "7c45ef0713a5fb785b17f8c77b76cf63544b326b",
+        "bfbabfc4873f59dfeb6bace80ffeee1fdb97fcec"
+      ],
+      "officialMeaning": "Disable automatic Git deployment on all branches",
+      "source": "https://vercel.com/docs/project-configuration/git-configuration"
+    },
+    "limits": [
+      "No settings saved or toggled; no build/deploy/promote/rollback/DNS/billing/role mutation",
+      "No environment variable values opened/exported; no credentials read",
+      "Normal existing GitHub SSO completed without new permissions",
+      "Parent must review outgoing GitHub events before any future manual Vercel deployment"
+    ]
+  },
+  "anonymousHTTPS": {
+    "requested": "https://www.cojauny.com/support",
+    "observedAtUTC": "2026-11-06T12:09:35.510675+00:00",
+    "method": "GET; standardTLS verification; no cookies/credentials; no cache bypass",
+    "chain": [
+      {
+        "url": "https://www.cojauny.com/support",
+        "status": 307,
+        "location": "https://cojauny.com/support",
+        "headers": {
+          "Cache-Control": "public, max-age=0, must-revalidate",
+          "Content-Type": "text/plain",
+          "Location": "https://cojauny.com/support",
+          "Server": "Vercel",
+          "Strict-Transport-Security": "max-age=63072000"
+        }
+      }
+    ],
+    "finalUrl": "https://cojauny.com/support",
+    "status": 404,
+    "headers": {
+      "Age": "553",
+      "Cache-Control": "public, max-age=0, must-revalidate",
+      "Content-Type": "text/html; charset=utf-8",
+      "Server": "Vercel",
+      "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+      "X-Matched-Path": "/404",
+      "X-Vercel-Cache": "HIT"
+    },
+    "bodySha256": "b8a6375edc8555bcbdcba8308486ba5bd1c7a5bc606860d926836cc9b6ff0d66",
+    "bytesRead": 9201,
+    "truncated": false,
+    "title": [
+      "404: This page could not be found."
+    ],
+    "supportMailboxMentioned": false
+  },
+  "treeEvidence": [
+    {
+      "ref": "24c9605c88d2536c4a50bbbe2a85af5c2308cbac",
+      "routeExists": false,
+      "copyExists": false,
+      "routeBlob": null
+    },
+    {
+      "ref": "7c45ef0713a5fb785b17f8c77b76cf63544b326b",
+      "routeExists": false,
+      "copyExists": false,
+      "routeBlob": null
+    },
+    {
+      "ref": "bfbabfc4873f59dfeb6bace80ffeee1fdb97fcec",
+      "routeExists": true,
+      "copyExists": true,
+      "routeBlob": "4c6e305569c424a463c677980d8b8bc7757533f6"
+    }
+  ],
+  "causalConclusion": "Domain serves cojauny-landing production24c9605 with no support route. PR15 remains draft/unmerged; neither production nor current main contains the support implementation. Current404 response matches/404; cacheHIT is not evidence that a correct page was deployed. Do not change DNS or purge as a substitute for shipping reviewed source.",
+  "correctedObservation": "Earlier empty git-show output with a bracketed path was misinterpreted as an empty blob. Complete Git tree enumeration proves the paths are absent on both production and main; no empty-file claim is retained.",
+  "sourcePreparation": {
+    "scope": "Support-only candidate from exact current landing main",
+    "observedAtUTC": "2026-11-06T12:15:42.115302+00:00",
+    "branch": "task/025-support-main-candidate-20261106",
+    "baseMain": "7c45ef0713a5fb785b17f8c77b76cf63544b326b",
+    "sourcePR15Head": "bfbabfc4873f59dfeb6bace80ffeee1fdb97fcec",
+    "selected": [
+      {
+        "path": "src/app/[locale]/support/page.tsx",
+        "sourceBlob": "4c6e305569c424a463c677980d8b8bc7757533f6",
+        "sourceRawSha256": "1e58ec872c9762c95ff719bd05749de9e30a80ee0f90ae39b1fb04ac9f9a1853",
+        "targetRawSha256": "1e58ec872c9762c95ff719bd05749de9e30a80ee0f90ae39b1fb04ac9f9a1853",
+        "exactBytes": true
+      },
+      {
+        "path": "src/locales/support.ts",
+        "sourceBlob": "a2ff9492d7c3b3cfcd84aded92fce06953e6a414",
+        "sourceRawSha256": "6ddc0e55a9b9dc4b650ec4004e23072a7eca6df471d3505ab771ea4859a2de00",
+        "targetRawSha256": "6ddc0e55a9b9dc4b650ec4004e23072a7eca6df471d3505ab771ea4859a2de00",
+        "exactBytes": true
+      },
+      {
+        "path": "src/components/Footer.tsx",
+        "sourceBlob": "466f74e17aec5a4be7b23b59b7918c2c87aebb3b",
+        "sourceRawSha256": "04e125cef66c0ff889ab61cb092813346d115cdc7ebd1526f9f5b2ba0ebd58ed",
+        "targetRawSha256": "04e125cef66c0ff889ab61cb092813346d115cdc7ebd1526f9f5b2ba0ebd58ed",
+        "exactBytes": true
+      },
+      {
+        "path": "src/app/sitemap.ts",
+        "sourceBlob": "37d47ec4d6dc773994b70cd4ee4970423b555378",
+        "sourceRawSha256": "88719e8a440d41c2c8312fd4f4db9b4bcb063f174f8177e2761f46f1c9c50e06",
+        "targetRawSha256": "88719e8a440d41c2c8312fd4f4db9b4bcb063f174f8177e2761f46f1c9c50e06",
+        "exactBytes": true
+      },
+      {
+        "path": "scripts/validate-hreflang.ts",
+        "sourceBlob": "b51d8e9facf96b2effe497be57e8deb6ebf5eebb",
+        "sourceRawSha256": "8c2e14686176b380bcabdb8ef3128fc6dea3e662d803dbff09c1a10f8834a285",
+        "targetRawSha256": "8c2e14686176b380bcabdb8ef3128fc6dea3e662d803dbff09c1a10f8834a285",
+        "exactBytes": true
+      },
+      {
+        "path": "__tests__/AppSupportContact.test.tsx",
+        "sourceBlob": "85b2259fe7189ea11e4e25e35360c4154fa3ebe4",
+        "sourceRawSha256": "91d1b62d4d5a81f2ef7494e7c44136516d3e09b18a7212c721689ae68ec210fe",
+        "targetRawSha256": "91d1b62d4d5a81f2ef7494e7c44136516d3e09b18a7212c721689ae68ec210fe",
+        "exactBytes": true
+      },
+      {
+        "path": "e2e/tests/support.spec.ts",
+        "sourceBlob": "a754504e51a4c5dd7dad54ad8cbbeeb4f2b91fe3",
+        "sourceRawSha256": "5b8925462a347ad550ddfde1bd2b626005ddc05883f794d150eb4f793d661441",
+        "targetRawSha256": "5b8925462a347ad550ddfde1bd2b626005ddc05883f794d150eb4f793d661441",
+        "exactBytes": true
+      },
+      {
+        "path": "src/lib/site.ts",
+        "source": "main plus exactly one appSupportEmail property; preserves BOM/EOL and all shared metadata",
+        "mainRawSha256": "4306e8cf4d937c056b74181bb3dce9cd1d30641fade40ae1baec0c5533b03b8c",
+        "targetRawSha256": "56c1f0a1b66db05cd530a0bb9fd54bd9c8020882cc0c324d526e2af1af73cc28"
+      }
+    ],
+    "preserved": [
+      {
+        "path": "package.json",
+        "canonicalLFsha256": "391170b2423fa283d441f3433ef7300d31e380203eb7c3cda0a352fd97865d6d",
+        "unchangedFromMain": true
+      },
+      {
+        "path": "vercel.json",
+        "canonicalLFsha256": "b2ca3677c797f6006864cf604eee0ad15713d2d2b5f8b8b8b6f74a683095f428",
+        "unchangedFromMain": true
+      },
+      {
+        "path": "AGENTS.md",
+        "canonicalLFsha256": "6e526589b3cecdd08d1f513a21b3e4b1a9a245952704f4d1e5cce73a753a656a",
+        "unchangedFromMain": true
+      },
+      {
+        "path": "middleware.ts",
+        "canonicalLFsha256": "c64af5a8bcc3ad4bce1a03edf99d6a71ae0c6657256efa08d8e328d2e666abed",
+        "unchangedFromMain": true
+      },
+      {
+        "path": ".github/workflows/header-parity.yml",
+        "canonicalLFsha256": "4266abd84601ea1ea709a5b4d40deff2f20b69b6adf976a8bc101729ecb7a834",
+        "unchangedFromMain": true
+      },
+      {
+        "path": ".github/workflows/mail-outbox.yml",
+        "canonicalLFsha256": "0b27c3057498bbc9c7ec95c2880e8b0afb5765e3b1e293cf93a93ae0aa568a4f",
+        "unchangedFromMain": true
+      },
+      {
+        "path": ".github/workflows/quality.yml",
+        "canonicalLFsha256": "ff52da460ef12f5dc469d830457446db2c23dbbe939c11dd029b5e73cb7d510b",
+        "unchangedFromMain": true
+      }
+    ],
+    "excluded": [
+      "gitattributes",
+      "quality workflow support argument",
+      "middleware→src/proxy migration pending explicit routing gate",
+      "all historical task documents/receipts/WIP"
+    ],
+    "preparationFailure": "Initial site insertion anchor expected LF but fresh checkout usesCRLF; no site write occurred. Corrected byte insertion preserves original BOM/EOL. Seven selected copies were already exact; no reset/discard.",
+    "tests": "13 focused Jest PASS; browser NOT RUN",
+    "builds": "NOT RUN",
+    "deploys": "NOT RUN",
+    "remoteWrites": 0,
+    "securityDelta": {
+      "path": "package-lock.json",
+      "packageEntry": "node_modules/source-map-js",
+      "before": "1.2.1",
+      "after": "1.2.2",
+      "allOtherRootAndPackageEntriesIdentical": true,
+      "exactPR15LockBytes": true,
+      "rawSHA256": "8bcb6434e7036746356b87863e02e2d914effabf08537e4555e857ce2a73000b"
+    }
+  },
+  "optionalDeltas": {
+    "status": "Security delta APPLIED and installed; proxy alternative NOT APPLIED",
+    "security": {
+      "changedPackageEntries": [
+        "node_modules/source-map-js"
+      ],
+      "before": "1.2.1",
+      "after": "1.2.2",
+      "allOtherLockRootAndPackageEntriesIdentical": true,
+      "advisory": "https://github.com/advisories/GHSA-68fv-2mgg-jv7q",
+      "affected": "source-map-js >=1.0.0,<1.2.2",
+      "notProven": "No remote exploit path claimed; no fresh npm audit run",
+      "applied": true,
+      "installation": "Official registry npm ci, frozen package-lock, isolated candidate; no audit or app build"
+    },
+    "proxy": {
+      "change": "Move middleware.ts to src/proxy.ts; same algorithm, rename export and relative import only",
+      "reasonForReview": "Next16 file convention; previous support branch runtime history requires correct registration and localhost origin. Existing main retained unchanged pending exact routing gate.",
+      "officialCachedDocs": "next/dist/docs/01-app/03-api-reference/03-file-conventions/proxy.md",
+      "applied": false
+    },
+    "patchRawSha256": {
+      "source-map-js-existing-security.patch": "d0cdc13587c3d473dff5b3cb3b183e503270c6b6366cc3df92c6f484c5f4db4d",
+      "proxy-existing-compatibility.patch": "0f2a77b5dfa9ca1703472254482c8d4fb09375d426556354c62a8a4e375fdeda"
+    },
+    "noBuildDeploy": true
+  },
+  "reviewDecisions": [
+    "Public help is informational, no new form or support backend, no messages transmitted",
+    "Support address is owner-authorized support@cojauny.com; Spanish/German and English for other languages; daily inbox review is owner availability, not24h SLA",
+    "No identity documents in v1; do not request them",
+    "Premium remains v1 goal in app073, but help page makes no sales/booking/Enterprise claims",
+    "Store/legal approvals remain under original053; do not conflate them with informational support-route publication"
+  ],
+  "validationRequired": [
+    "Current candidate local Next build and eight browser cases require separate parent execution decision; support UI is not runtime-certified by Jest",
+    "8Playwright cases:4locales×2existing profiles, real local Next server on reviewed bytes, canonical/mailto/legal nav/320px/axe; do not credit old preview or cached.next",
+    "Resolve root/support locale routing against main middleware before claiming success; optional exact proxy migration isolated",
+    "Existing Playwright config ignoreHTTPSErrors=true does not certify public TLS; final anonymous HTTPS checks must retain standard certificate validation",
+    "Parent-controlled manual publication to exact existing project only after review; preserve git.deploymentEnabled=false and manual-only workflows; assess outgoing GitHub events first",
+    "After authorized publication, verify https://www.cojauny.com/support redirects to real support content200 and correct contact, including locale variants; no email receipt/OS device/store approval inferred"
+  ],
+  "notRun": [
+    "current local Next build/devserver",
+    "current Playwright eight cases",
+    "global TypeScript analysis/full Jest/full browser suite",
+    "fresh npm security audit",
+    "deployment/promotion",
+    "GitHub jobs/Codemagic",
+    "DNS/billing/permissions",
+    "email transmission/receipt",
+    "reviewer credentials/accounts or exact submitted native binary approval"
+  ],
+  "wipProtection": {
+    "checkedAtUTC": "2026-11-06T12:36:22.662749+00:00",
+    "unchangedFiles": 5,
+    "allRawHashesMatch": true,
+    "protected": [
+      {
+        "worktree": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\work\\task053-20261011",
+        "path": "docs/evidence/task053-review-packet-20261024.json",
+        "rawSha256": "4e298e2f05cc7cccd4e11020578e5e5cad30aac61451bbf911baba9dc13ac97b",
+        "bytes": 2510
+      },
+      {
+        "worktree": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\work\\task053-20261011",
+        "path": "store_assets/STORE_LISTING_APPROVAL_20261024.md",
+        "rawSha256": "09cc1fc439bfb1c9856a76a5c76b4472e328ba8951240e37b223f6f452866941",
+        "bytes": 4537
+      },
+      {
+        "worktree": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\work\\task053-20261011",
+        "path": "tareas/tareas-00.md",
+        "rawSha256": "d552774e16c08c790f2e823bab0d062d4bf5ae7bab9492cd27f538e0b30c9cb1",
+        "bytes": 786844
+      },
+      {
+        "worktree": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\work\\task025-support-landing",
+        "path": "tareas/tarea-025-app-support.md",
+        "rawSha256": "fa432d154df70cb70f0a12c02e20b080aa131d43da84566e34aaab601e274fbf",
+        "bytes": 18014
+      },
+      {
+        "worktree": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\work\\task025-support-landing",
+        "path": "tareas/evidence/support-integration-preparation-20261025.json",
+        "rawSha256": "5f3a365b8809c71b17b680911e2e5ae4744649c842987523862bdd7e11715ad9",
+        "bytes": 4557
+      }
+    ]
+  },
+  "rollback": "Revert only candidate Support code before publication; production24c9605 remains unchanged until parent chooses authorized publication. Preserve all original task branches/WIP.",
+  "observedAtUTC": "2026-11-06T12:36:22.662749+00:00",
+  "validationCompleted": {
+    "install-isolated": {
+      "status": "PASS",
+      "exitCode": 0,
+      "elapsedSeconds": 43.237,
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.EXE",
+        "C:\\nvm4w\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+        "ci",
+        "--no-audit",
+        "--no-fund",
+        "--registry=https://registry.npmjs.org",
+        "--cache=C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\outputs\\task053-support-20261106\\npm-cache",
+        "--userconfig=C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\outputs\\task053-support-20261106\\empty-user.npmrc",
+        "--globalconfig=C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\outputs\\task053-support-20261106\\empty-global.npmrc",
+        "--fetch-retries=0",
+        "--maxsockets=4"
+      ],
+      "resultFile": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\outputs\\task053-support-20261106\\install-isolated.result.json",
+      "resultSHA256": "bb486443432a58afa86acc345a2b202172b5464d4a4410b975054f0d7ed5a217",
+      "logFile": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\outputs\\task053-support-20261106\\install-isolated.log",
+      "logSHA256": "b6c77500d653d34ec55557e9fa47d874f50d93239d8ac38ff4f535908616902b",
+      "sourceGraphUnchanged": true
+    },
+    "jest-isolated": {
+      "status": "PASS",
+      "exitCode": 0,
+      "elapsedSeconds": 6.551,
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.EXE",
+        "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\work\\landing-support-main-20261106\\node_modules\\jest\\bin\\jest.js",
+        "--runTestsByPath",
+        "__tests__/AppSupportContact.test.tsx",
+        "--runInBand",
+        "--coverage=false",
+        "--cacheDirectory=C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\outputs\\task053-support-20261106\\jest-cache"
+      ],
+      "resultFile": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\outputs\\task053-support-20261106\\jest-isolated.result.json",
+      "resultSHA256": "439e10f60943acfff52c2fc6afac9a53fcc4fb4c76d7b205d59fc2fe4d772498",
+      "logFile": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\outputs\\task053-support-20261106\\jest-isolated.log",
+      "logSHA256": "3fc530c6b0b546653390223ec850e8087b28834f4b1633dd3c0b55f70083cae4",
+      "sourceGraphUnchanged": true,
+      "caseCount": 13,
+      "failures": 0
+    },
+    "lint-isolated": {
+      "status": "PASS",
+      "exitCode": 0,
+      "elapsedSeconds": 4.836,
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.EXE",
+        "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\work\\landing-support-main-20261106\\node_modules\\eslint\\bin\\eslint.js",
+        "src/app/[locale]/support/page.tsx",
+        "src/locales/support.ts",
+        "src/components/Footer.tsx",
+        "src/app/sitemap.ts",
+        "src/lib/site.ts",
+        "--max-warnings=0"
+      ],
+      "resultFile": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\outputs\\task053-support-20261106\\lint-isolated.result.json",
+      "resultSHA256": "9132dd00b66319ec7d11e6501adae56e6bd2f9bb5d8740b1d5011cec82ad105d",
+      "logFile": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\outputs\\task053-support-20261106\\lint-isolated.log",
+      "logSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceGraphUnchanged": true,
+      "productionFilesChecked": 5,
+      "warnings": 0
+    },
+    "limits": [
+      "Jest is one existing root of 13 tests, no full suite or coverage",
+      "ESLint checked five production files only; scripts/tests are not claimed analyzed",
+      "Official isolated npm ci installed 863 packages; no SDK or vendor patch",
+      "The guessed Program Files Node launcher failed before npm started; corrected using Get-Command Node at C:/nvm4w/nodejs",
+      "The tracked .npmrc is only legacy-peer-deps=true and was preserved; empty user/global config plus allowlisted environment used",
+      "No fresh npm audit or remote exploit assessment was executed"
+    ]
+  },
+  "sourceFiles": [
+    {
+      "path": "src/app/[locale]/support/page.tsx",
+      "rawSHA256": "1e58ec872c9762c95ff719bd05749de9e30a80ee0f90ae39b1fb04ac9f9a1853"
+    },
+    {
+      "path": "src/locales/support.ts",
+      "rawSHA256": "6ddc0e55a9b9dc4b650ec4004e23072a7eca6df471d3505ab771ea4859a2de00"
+    },
+    {
+      "path": "src/components/Footer.tsx",
+      "rawSHA256": "04e125cef66c0ff889ab61cb092813346d115cdc7ebd1526f9f5b2ba0ebd58ed"
+    },
+    {
+      "path": "src/app/sitemap.ts",
+      "rawSHA256": "88719e8a440d41c2c8312fd4f4db9b4bcb063f174f8177e2761f46f1c9c50e06"
+    },
+    {
+      "path": "scripts/validate-hreflang.ts",
+      "rawSHA256": "8c2e14686176b380bcabdb8ef3128fc6dea3e662d803dbff09c1a10f8834a285"
+    },
+    {
+      "path": "__tests__/AppSupportContact.test.tsx",
+      "rawSHA256": "91d1b62d4d5a81f2ef7494e7c44136516d3e09b18a7212c721689ae68ec210fe"
+    },
+    {
+      "path": "e2e/tests/support.spec.ts",
+      "rawSHA256": "5b8925462a347ad550ddfde1bd2b626005ddc05883f794d150eb4f793d661441"
+    },
+    {
+      "path": "src/lib/site.ts",
+      "rawSHA256": "56c1f0a1b66db05cd530a0bb9fd54bd9c8020882cc0c324d526e2af1af73cc28"
+    },
+    {
+      "path": "package-lock.json",
+      "rawSHA256": "8bcb6434e7036746356b87863e02e2d914effabf08537e4555e857ce2a73000b"
+    }
+  ],
+  "browserProposal": {
+    "status": "PREPARED NOT RUN; requires parent execution decision",
+    "candidateBranch": "task/025-support-main-candidate-20261106",
+    "frozenCommit": "To be supplied after this receipt commit; verify current HEAD before execution",
+    "environment": {
+      "NODE_ENV": "production",
+      "NEXT_TELEMETRY_DISABLED": "1",
+      "CIRCLE_NODE_TOTAL": "2",
+      "PLAYWRIGHT_BASE_URL": "http://localhost:3187"
+    },
+    "build": [
+      "node",
+      "node_modules/next/dist/bin/next",
+      "build"
+    ],
+    "server": [
+      "node",
+      "node_modules/next/dist/bin/next",
+      "start",
+      "--hostname",
+      "localhost",
+      "--port",
+      "3187"
+    ],
+    "tests": [
+      "node",
+      "node_modules/@playwright/test/cli.js",
+      "test",
+      "-c",
+      "e2e/playwright.config.ts",
+      "support.spec.ts",
+      "--workers=1",
+      "--retries=0"
+    ],
+    "expectedCases": "4 locales en/es/de/fr x 2 existing profiles chromium/mobile = 8",
+    "budgetsProposedNotMeasured": {
+      "buildSeconds": 300,
+      "serverReadySeconds": 60,
+      "eightBrowserCasesSeconds": 300
+    },
+    "historicalReference": {
+      "source": "7f0eb93f968724657f38862f664a06f014ca2e31",
+      "build": "Next16.3.8 standard npm build EXIT0; compile2.6s, TypeScript6.6s,900pages, total wall time NOT RECORDED",
+      "browser": "2026-10-23 eight cases PASS17.4s on source7f0; not evidence for current candidate",
+      "buildReceipt": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\outputs\\landing-support-main-composition-20261021\\direct-gates-current-receipt.json",
+      "browserReceipt": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\outputs\\landing-support-main-composition-20261021\\http-browser-current10-20261023-receipt.json"
+    },
+    "guards": [
+      "Use minimal allowlisted environment; no .env files exist in candidate",
+      "No deployment, remote API/email calls, credentials or inherited secret env",
+      "Do not download browsers automatically; if required Chromium is absent report the dependency before execution",
+      "Check 3187 unused first; own only started local server and stop it after testing",
+      "No stale .next; exact fresh build required before eight browser tests",
+      "Keep current middleware unless exact routing gate demonstrates a defect; no policy change for rename",
+      "ignoreHTTPSErrors existing setting does not certify public TLS; anonymous live verification uses standard TLS"
+    ]
+  }
+}
