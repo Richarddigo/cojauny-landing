@@ -23,3 +23,12 @@ Evidencia local:
 El [recibo completo](evidence/support-dependency-security-validation-20261106.json) incluye hashes de fuente y lock, metadatos oficiales, cambios del grafo, intentos causales y límites. Los [criterios originales](evidence/support-publication-dependency-plan-20261106.json) y sus pesos 45/20/25/10 permanecen intactos; C1 y C2 tienen evidencia preparada pendiente de revisión independiente. C3 requiere el build local exacto y la comprobación de navegador en cuatro idiomas. C4 requiere entrega remota revisada y una autorización específica nueva para publicar esta fuente, seguida de evidencia HTTPS real.
 
 No se han ejecutado builds, la suite completa, GitHub Actions, Codemagic ni despliegues en este checkpoint. Un retorno de versión debe conservar las correcciones de seguridad, sin volver a publicar el grafo afectado.
+
+
+## Continuación posterior: fuente local lista para publicación
+
+El primer build de84c311cd falló en siete páginas antiguas de redirección sin layout raíz. Se conserva ese fallo. El plan9b3bd0c precede a dos layouts mínimos que reutilizan RootDocument por separado para legal y docs, sin envolver el layout de idiomas ni anidar html/body. Los siete handlers y destinos permanecen intactos. Nueve casos nuevos verifican documentos reales y redirecciones; tipos y lint pasan. Un error inicial de alias en el nuevo fixture se corrigió usando imports relativos.
+
+La fuenteacfb61e8 compila correctamente en29,402s y pasa los ocho casos de navegador en12,224s, cuatro idiomas y dos tamaños. Se verifican HTTP local, navegación, canonical, mailto, idioma, controles de accesibilidad y ancho320px. Los70 casos unitarios focales son61 anteriores más9 de layout, sin sumar reintentos o los13 casos históricos de soporte. El servidor local propio se cerró y se conservaron los cambios ajenos. Dos revisiones independientes no encontraron hallazgos accionables en sus alcances.
+
+[Recibo de continuación](evidence/support-security-local-publication-validation-20261106.json): C1=45, C2=20 y C3=25 acreditados; corrección de publicación al90%, C4 abierto. Falta publicar la fuente corregida con autorización nueva y comprobar HTTPS real. La Preview autorizada de3522 estáReady, pero nunca se promovió a producción. Su permiso pendiente no cubre este commit distinto. La tarea053 de la app sigue al50%; esta dependencia no concede aceptación de las tiendas.

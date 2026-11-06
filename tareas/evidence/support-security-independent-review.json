@@ -1,0 +1,408 @@
+{
+  "review": "Independent read-only landing support dependency security and form-contract review",
+  "date": "2026-11-06",
+  "timezone": "Europe/Berlin",
+  "source": "84c311cd3796a5913b2d9fed934b88c82de8ac6c",
+  "runtimeSource": "ed085b8b961bf59527d5da792cb20373fb7b8822",
+  "baseFrozenSource": "3522ee3fb8a572d7ca2fbfe1be80097575920188",
+  "status": "CLEAR_C1_C2_SOURCE_REVIEW_C3_BUILD_FAILED_C4_PENDING",
+  "scope": "Immutable Git diff, current exact source, manifest+lock, producer evidence and primary official documentation. No repo source edits, tests, install, analyzer, build, jobs or publication by this reviewer.",
+  "criteria": {
+    "C1": "Source and supplied technical evidence independently consistent: official locked Next16.4.5/ESLint16.4.5/Zod4.6.7/Undici7.30.2/Sharp0.35.5, strict peers, no override/vendor patch; production audit0 is only its recorded snapshot.",
+    "C2": "No actionable regression found in adapted consumers. Two enum messages retain field paths and privacy; accepted constraints/consent/optional stripping/env contracts retained. Referral ref is non-render state. Feedback render-time locale adjustment has a stable guard allowed by official React guidance.",
+    "C3": "NOT ACCREDITED: parent independently reports exact-source Next build failure on missing root layouts for seven unlocalized redirect pages. Reviewer did not execute build/browser.",
+    "C4": "PENDING: no publication/delivery or live HTTPS acceptance by this review. App00/053 global criteria unchanged."
+  },
+  "actionableFindings": [],
+  "existingNonBlockingLimits": [
+    "Feedback messageError/Turnstile/pending request are not fully reset/cancelled on locale replacement in either old or new implementation. Existing behavior is not introduced by this patch and the four new state tests cover input/referral behavior only; do not overstate full locale/request isolation.",
+    "17 development dependency nodes remain reported low/moderate; no audit waiver or global security completion is implied.",
+    "No deployed reachability assessment for advisory prerequisites; fixing affected versions does not prove exploitability of the old site."
+  ],
+  "manifestLockRootMetadataMatch": true,
+  "officialPackages": [
+    {
+      "package": "next",
+      "version": "16.4.5",
+      "url": "https://registry.npmjs.org/next/16.4.5",
+      "metadataSha256Raw": "8483396571c53bbb6d03ff47cb4f741ebc6fc75b38c2aa95768f90665e4c0391",
+      "integrityMatchesOfficialRegistry": true,
+      "tarballMatchesOfficialRegistry": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=20.9.0"
+      }
+    },
+    {
+      "package": "eslint-config-next",
+      "version": "16.4.5",
+      "url": "https://registry.npmjs.org/eslint-config-next/16.4.5",
+      "metadataSha256Raw": "315458093cacd8ca9312cb4683f1afe20d8739c2525ce23bac41eec13e1d1d56",
+      "integrityMatchesOfficialRegistry": true,
+      "tarballMatchesOfficialRegistry": true,
+      "license": "MIT",
+      "engines": null
+    },
+    {
+      "package": "zod",
+      "version": "4.6.7",
+      "url": "https://registry.npmjs.org/zod/4.6.7",
+      "metadataSha256Raw": "d6eac84f6c13cbef91acd6ee6b4c1ccbaef774a2f5e7147a0166880ca30ccbbb",
+      "integrityMatchesOfficialRegistry": true,
+      "tarballMatchesOfficialRegistry": true,
+      "license": "MIT",
+      "engines": null
+    },
+    {
+      "package": "undici",
+      "version": "7.30.2",
+      "url": "https://registry.npmjs.org/undici/7.30.2",
+      "metadataSha256Raw": "a3847699c659d5e105a8b99cd3111ad03273c02c28ecdf679d61fd97073b03db",
+      "integrityMatchesOfficialRegistry": true,
+      "tarballMatchesOfficialRegistry": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=20.18.1"
+      }
+    },
+    {
+      "package": "sharp",
+      "version": "0.35.5",
+      "url": "https://registry.npmjs.org/sharp/0.35.5",
+      "metadataSha256Raw": "534cddc062d4b03df11e7558d28cb9f6c8d527f0979377c849b7e5ebb2a10612",
+      "integrityMatchesOfficialRegistry": true,
+      "tarballMatchesOfficialRegistry": true,
+      "license": "Apache-2.0",
+      "engines": {
+        "node": ">=20.9.0"
+      }
+    }
+  ],
+  "undiciParent": {
+    "package": "cheerio",
+    "version": "1.1.2",
+    "range": "^7.12.0",
+    "newDirectDependency": false
+  },
+  "lockDelta": [
+    {
+      "path": "",
+      "before": "1.0.0",
+      "after": "1.0.0",
+      "versionChanged": false
+    },
+    {
+      "path": "node_modules/@next/env",
+      "before": "16.3.8",
+      "after": "16.4.5",
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/@next/eslint-plugin-next",
+      "before": "16.3.3",
+      "after": "16.4.5",
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/@next/swc-darwin-arm64",
+      "before": "16.3.8",
+      "after": "16.4.5",
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/@next/swc-darwin-x64",
+      "before": "16.3.8",
+      "after": "16.4.5",
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/@next/swc-linux-arm64-gnu",
+      "before": "16.3.8",
+      "after": "16.4.5",
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/@next/swc-linux-arm64-musl",
+      "before": "16.3.8",
+      "after": "16.4.5",
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/@next/swc-linux-x64-gnu",
+      "before": "16.3.8",
+      "after": "16.4.5",
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/@next/swc-linux-x64-musl",
+      "before": "16.3.8",
+      "after": "16.4.5",
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/@next/swc-win32-arm64-msvc",
+      "before": "16.3.8",
+      "after": "16.4.5",
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/@next/swc-win32-x64-msvc",
+      "before": "16.3.8",
+      "after": "16.4.5",
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/@playwright/test",
+      "before": "1.57.0",
+      "after": "1.57.0",
+      "versionChanged": false
+    },
+    {
+      "path": "node_modules/@tailwindcss/oxide-wasm32-wasi/node_modules/@emnapi/core",
+      "before": null,
+      "after": "1.10.0",
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/@tailwindcss/oxide-wasm32-wasi/node_modules/@emnapi/runtime",
+      "before": null,
+      "after": "1.10.0",
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/@tailwindcss/oxide-wasm32-wasi/node_modules/@emnapi/wasi-threads",
+      "before": null,
+      "after": "1.2.1",
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/@tailwindcss/oxide-wasm32-wasi/node_modules/@napi-rs/wasm-runtime",
+      "before": null,
+      "after": "1.1.4",
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/@tailwindcss/oxide-wasm32-wasi/node_modules/@tybys/wasm-util",
+      "before": null,
+      "after": "0.10.1",
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/@tailwindcss/oxide-wasm32-wasi/node_modules/tslib",
+      "before": null,
+      "after": "2.8.1",
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/@types/react",
+      "before": "19.2.15",
+      "after": "19.2.15",
+      "versionChanged": false
+    },
+    {
+      "path": "node_modules/bs-logger",
+      "before": "0.2.6",
+      "after": null,
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/csstype",
+      "before": "3.2.3",
+      "after": "3.2.3",
+      "versionChanged": false
+    },
+    {
+      "path": "node_modules/eslint-config-next",
+      "before": "16.3.3",
+      "after": "16.4.5",
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/eslint-plugin-react-hooks",
+      "before": "7.0.1",
+      "after": "7.1.1",
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/handlebars",
+      "before": "4.7.9",
+      "after": null,
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/lodash.memoize",
+      "before": "4.1.2",
+      "after": null,
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/neo-async",
+      "before": "2.6.2",
+      "after": null,
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/next",
+      "before": "16.3.8",
+      "after": "16.4.5",
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/playwright",
+      "before": "1.57.0",
+      "after": "1.57.0",
+      "versionChanged": false
+    },
+    {
+      "path": "node_modules/playwright-core",
+      "before": "1.57.0",
+      "after": "1.57.0",
+      "versionChanged": false
+    },
+    {
+      "path": "node_modules/playwright/node_modules/fsevents",
+      "before": "2.3.2",
+      "after": "2.3.2",
+      "versionChanged": false
+    },
+    {
+      "path": "node_modules/ts-jest",
+      "before": "29.4.5",
+      "after": null,
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/ts-jest/node_modules/type-fest",
+      "before": "4.41.0",
+      "after": null,
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/uglify-js",
+      "before": "3.19.3",
+      "after": null,
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/undici",
+      "before": "7.30.0",
+      "after": "7.30.2",
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/wordwrap",
+      "before": "1.0.0",
+      "after": null,
+      "versionChanged": true
+    },
+    {
+      "path": "node_modules/zod",
+      "before": "3.25.76",
+      "after": "4.6.7",
+      "versionChanged": true
+    }
+  ],
+  "producerSourceHashParity": [
+    {
+      "path": ".npmrc",
+      "sha256CanonicalLf": "5602bb233ec1478ef60941257e98dfa8a86c9aeb22a4705aeb4beb15605e8a40",
+      "producerReceiptMatches": true
+    },
+    {
+      "path": "package.json",
+      "sha256CanonicalLf": "a0521e74054967b6151461144a85a3bb3807a35671ffff40421f928ed6fd8787",
+      "producerReceiptMatches": true
+    },
+    {
+      "path": "package-lock.json",
+      "sha256CanonicalLf": "86df70f732a1bb4d35bf63f2e5a10cc8230d414453a7e1d7b58ed1c046906a95",
+      "producerReceiptMatches": true
+    },
+    {
+      "path": "src/lib/validation.ts",
+      "sha256CanonicalLf": "451f5b50db5aa79016ab9dc56276458e0ceaa43a37488b27eeaa26f7c9e3d578",
+      "producerReceiptMatches": true
+    },
+    {
+      "path": "src/components/BetaSignupForm.tsx",
+      "sha256CanonicalLf": "5fa38adf02df37ed270ee324d9d379305aad090d10172bc3317d6c6633c83837",
+      "producerReceiptMatches": true
+    },
+    {
+      "path": "src/components/FeedbackForm.tsx",
+      "sha256CanonicalLf": "83abd3a63db18f912ecfc297d13900b89807cf379d461e13e4a1d5e2992d97b1",
+      "producerReceiptMatches": true
+    },
+    {
+      "path": "__tests__/validation.security.test.ts",
+      "sha256CanonicalLf": "6e15008d0c8b5a87528741275437a87ea9e508c98c1c0ea901584ebcb35406ba",
+      "producerReceiptMatches": true
+    },
+    {
+      "path": "__tests__/submission-validation.security.test.ts",
+      "sha256CanonicalLf": "d5b6bb49e47e38b5794cdc1341995027593101c7ff18c6d985d0580254d8d518",
+      "producerReceiptMatches": true
+    },
+    {
+      "path": "__tests__/HeroBetaCapture.security.test.tsx",
+      "sha256CanonicalLf": "e6724c20742b2a8bc67135718f96824ab4375833a2c4233d67bce1185a7c50dc",
+      "producerReceiptMatches": true
+    },
+    {
+      "path": "__tests__/FormState.security.test.tsx",
+      "sha256CanonicalLf": "289b209695d865e9e75de4668611498a72bfbb4afbab1a7da6f96315f0dbf32b",
+      "producerReceiptMatches": true
+    }
+  ],
+  "controlsReviewed": [
+    "Jest uses next/jest SWC; removed ts-jest had no active transformer consumer.",
+    ".npmrc legacy-peer-deps=false, matching recorded strict npm ci/npm ls evidence.",
+    "No route, env, database, mail, bot-verification, consent or storage source changes.",
+    "HTTP422 issues do not opt in to Zod reportInput; new tests check private feedback is absent before DB/bot work.",
+    "vercel.json git.deploymentEnabled=false unchanged; AGENTS GitHub execution policy unchanged; no automation file added."
+  ],
+  "producerTestEvidenceNotRerun": {
+    "unique": 61,
+    "roots": 9,
+    "skip": 0,
+    "receipt": "tareas/evidence/support-dependency-security-validation-20261106.json"
+  },
+  "officialReferences": [
+    {
+      "url": "https://github.com/vercel/next.js/security/advisories/GHSA-2464-fhr4-w9xw",
+      "fact": "Next16.4.1 fixes affected16.x; Sharp>=0.35.5 is the upstream fix."
+    },
+    {
+      "url": "https://github.com/vercel/next.js/security/advisories/GHSA-673q-mjm6-r5xr",
+      "fact": "Next16.4.1 patches affected use-cache typed-array chain."
+    },
+    {
+      "url": "https://github.com/vercel/next.js/security/advisories/GHSA-p3m5-59mp-jv5r",
+      "fact": "Next16.4.1 patches affected AppRouter ServerAction DoS chain."
+    },
+    {
+      "url": "https://github.com/nodejs/undici/security/advisories/GHSA-4w7w-5xrc-9h26",
+      "fact": "Undici7.30.1 patches affected7.x redirect/shared-cache chain; locked7.30.2 is newer."
+    },
+    {
+      "url": "https://github.com/colinhacks/zod/releases/tag/v4.6.6",
+      "fact": "Maintainer release documents size-bound fix and npm provenance/history context."
+    },
+    {
+      "url": "https://github.com/colinhacks/zod/releases/tag/v4.6.7",
+      "fact": "Chosen follow-up official release."
+    },
+    {
+      "url": "https://zod.dev/v4/changelog",
+      "fact": "errorMap renamed error; message remains supported, deprecated; consumers use issues."
+    },
+    {
+      "url": "https://react.dev/reference/react/useState#storing-information-from-previous-renders",
+      "fact": "Guarded same-component render-time state adjustment is supported; no effect loop is required."
+    }
+  ],
+  "sourceInspectionMethod": "git show reviewed immutable SHA; parent may progress the live worktree independently. No live-head identity assumption.",
+  "observedLiveHeadAtInspection": "9b3bd0c8e19ccf26faa628e38cf1003e52231c6e",
+  "worktreeStatusUnchangedDuringStaticInspection": true,
+  "reviewerWroteSourceFiles": false
+}
