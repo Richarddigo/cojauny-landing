@@ -1,7 +1,7 @@
 {
   "task": "Landing task025 support / app00/053 support dependency only",
   "date": "2026-11-06",
-  "status": "SOURCE PREPARED; 13 focused Jest PASS and 5-file ESLint PASS; current build/browser/publication NOT RUN",
+  "status": "LOCAL SUPPORT CANDIDATE VALIDATED: 13 Jest PASS, 5-file ESLint PASS, one Next build PASS, 8 browser PASS; public publication/URL approval pending",
   "app053UnchangedPercent": 50,
   "app053OriginalCriteria": {
     "C1": 15,
@@ -267,7 +267,7 @@
     },
     "proxy": {
       "change": "Move middleware.ts to src/proxy.ts; same algorithm, rename export and relative import only",
-      "reasonForReview": "Next16 file convention; previous support branch runtime history requires correct registration and localhost origin. Existing main retained unchanged pending exact routing gate.",
+      "reasonForReview": "Actual current-main middleware passed all eight browser cases after the single build; do not migrate speculatively.",
       "officialCachedDocs": "next/dist/docs/01-app/03-api-reference/03-file-conventions/proxy.md",
       "applied": false
     },
@@ -285,26 +285,22 @@
     "Store/legal approvals remain under original053; do not conflate them with informational support-route publication"
   ],
   "validationRequired": [
-    "Current candidate local Next build and eight browser cases require separate parent execution decision; support UI is not runtime-certified by Jest",
-    "8Playwright cases:4locales×2existing profiles, real local Next server on reviewed bytes, canonical/mailto/legal nav/320px/axe; do not credit old preview or cached.next",
-    "Resolve root/support locale routing against main middleware before claiming success; optional exact proxy migration isolated",
     "Existing Playwright config ignoreHTTPSErrors=true does not certify public TLS; final anonymous HTTPS checks must retain standard certificate validation",
     "Parent-controlled manual publication to exact existing project only after review; preserve git.deploymentEnabled=false and manual-only workflows; assess outgoing GitHub events first",
     "After authorized publication, verify https://www.cojauny.com/support redirects to real support content200 and correct contact, including locale variants; no email receipt/OS device/store approval inferred"
   ],
   "notRun": [
-    "current local Next build/devserver",
-    "current Playwright eight cases",
-    "global TypeScript analysis/full Jest/full browser suite",
-    "fresh npm security audit",
+    "livepublicsupport200afterpublication",
     "deployment/promotion",
+    "global standalone TypeScript/full Jest/full browser suite",
+    "fresh npm security audit",
     "GitHub jobs/Codemagic",
     "DNS/billing/permissions",
-    "email transmission/receipt",
+    "realOSmailto/email transmission/receipt",
     "reviewer credentials/accounts or exact submitted native binary approval"
   ],
   "wipProtection": {
-    "checkedAtUTC": "2026-11-06T12:36:22.662749+00:00",
+    "checkedAtUTC": "2026-11-06T12:43:57.165498+00:00",
     "unchangedFiles": 5,
     "allRawHashesMatch": true,
     "protected": [
@@ -457,9 +453,9 @@
     }
   ],
   "browserProposal": {
-    "status": "PREPARED NOT RUN; requires parent execution decision",
+    "status": "EXECUTED ONCE within parent authorization; eight cases PASS; no further build/test authorization implied",
     "candidateBranch": "task/025-support-main-candidate-20261106",
-    "frozenCommit": "To be supplied after this receipt commit; verify current HEAD before execution",
+    "frozenCommit": "a9f86003bbae025bfc66392165e66dd824482f74",
     "environment": {
       "NODE_ENV": "production",
       "NEXT_TELEMETRY_DISABLED": "1",
@@ -511,6 +507,115 @@
       "No stale .next; exact fresh build required before eight browser tests",
       "Keep current middleware unless exact routing gate demonstrates a defect; no policy change for rename",
       "ignoreHTTPSErrors existing setting does not certify public TLS; anonymous live verification uses standard TLS"
+    ]
+  },
+  "localRuntimeAcceptance": {
+    "sourceCommit": "a9f86003bbae025bfc66392165e66dd824482f74",
+    "nextVersion": "16.3.8",
+    "nodeVersion": "24.16.0",
+    "build": {
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.EXE",
+        "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\work\\landing-support-main-20261106\\node_modules\\next\\dist\\bin\\next",
+        "build"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 44.581,
+      "maxWorkers": 1,
+      "staticPages": 900,
+      "freshNextOutput": true,
+      "invocations": 1,
+      "resultFile": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\outputs\\task053-support-20261106\\build-current.result.json",
+      "resultSHA256": "30de3efc883f089c21e83133bd35c413193fce0aa12b43baf250280daa1511c7",
+      "logSHA256": "43c5a0cdb7816dc0e0f5927a77a4771a12fcfa8a6bb3504143523e24e564f0ab",
+      "embeddedTypeScript": "PASS in5.9s within the single Next build; no second standalone global analysis"
+    },
+    "browser": {
+      "command": [
+        "C:\\nvm4w\\nodejs\\node.EXE",
+        "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\work\\landing-support-main-20261106\\node_modules\\@playwright\\test\\cli.js",
+        "test",
+        "-c",
+        "e2e/playwright.config.ts",
+        "support.spec.ts",
+        "--workers=1",
+        "--retries=0"
+      ],
+      "baseURL": "http://localhost:3187",
+      "cases": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "workers": 1,
+      "playwrightReportedSeconds": 18.6,
+      "commandElapsedSeconds": 19.905,
+      "exactNames": [
+        "[chromium] en: app support is reachable and accessible",
+        "[chromium] es: app support is reachable and accessible",
+        "[chromium] de: app support is reachable and accessible",
+        "[chromium] fr: app support is reachable and accessible",
+        "[mobile] en: app support is reachable and accessible",
+        "[mobile] es: app support is reachable and accessible",
+        "[mobile] de: app support is reachable and accessible",
+        "[mobile] fr: app support is reachable and accessible"
+      ],
+      "covered": [
+        "realHTTP200",
+        "HTMLlang",
+        "oneH1",
+        "cookiechoice",
+        "correctsupportmailto",
+        "localeprivacylegaldeletionFAQnavigation",
+        "canonicalURL",
+        "axeWCAG2A/AA2.1AA",
+        "320pxnohorizontaloverflow",
+        "actualaccount-deletionnavigation"
+      ],
+      "resultFile": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\outputs\\task053-support-20261106\\browser-current.result.json",
+      "resultSHA256": "356570f7fa65a864d2a611801a39ff1bf04a5893d4f65272813f6997b5a0a45b",
+      "logSHA256": "7106cad1db8255ac7c8a30772233da96e44aa5e521c9958a856bea96e40700ff"
+    },
+    "sourceIntegrity": {
+      "trackedFiles": 271,
+      "allRawHashesEqualAcrossBuildAndBrowser": true,
+      "packageManifestLockUnchanged": true,
+      "protectedWIPFiles": 5,
+      "allProtectedRawHashesEqual": true,
+      "candidateCleanAfterExecution": true
+    },
+    "cleanup": {
+      "server": {
+        "command": [
+          "C:\\nvm4w\\nodejs\\node.EXE",
+          "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\work\\landing-support-main-20261106\\node_modules\\next\\dist\\bin\\next",
+          "start",
+          "--hostname",
+          "localhost",
+          "--port",
+          "3187"
+        ],
+        "ownedPID": 15340,
+        "readinessStatus": 200,
+        "readinessSeconds": 1.967,
+        "exitCodeAfterOwnedCleanup": 1,
+        "ownedProcessExited": true,
+        "logSHA256": "3b41767e730017fc7a06deb8cde81a198993ea87f365278c561e8f1d52ca0e36"
+      },
+      "localhost3187ListenerAfterCleanup": false,
+      "onlyOwnedServerTerminated": true,
+      "noPortKillOrForeignProcessCleanup": true
+    },
+    "middlewareDecision": "Existing middleware is preserved verbatim from main7c; all eight real browser cases pass, so no speculative migration to proxy is applied. No middleware deprecation was reported by this build.",
+    "warnings": [
+      "Existing metadataBase fallback for social OpenGraph/Twitter images to http://localhost:3000 was reported; canonical support links passed. It is documented, not hidden or falsely called fixed.",
+      "No initial Next build cache; expected fresh build, not a failure."
+    ],
+    "limits": [
+      "Local HTTP and controlled browser profiles are not live publicHTTPS, realOSmailto dispatch, inbox receipt, native app or submittedbinary validation",
+      "No remote deployment/promotion/push, no GitHubjobs/Codemagic, no email transmitted",
+      "Only eight selected browser cases; no retry or full browser suite",
+      "This is the current prepared support-page dependency, not full053C3listing/legal approval or053C4reviewerjourney"
     ]
   }
 }
