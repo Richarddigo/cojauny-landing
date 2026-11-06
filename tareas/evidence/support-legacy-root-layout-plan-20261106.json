@@ -1,0 +1,29 @@
+{
+  "recordedAtUTC": "2026-11-06T14:35:19.316348+00:00",
+  "scope": "Necessary C3 compilation repair of the already planned support-publication dependency upgrade; no new app task or altered weights",
+  "sourceBefore": "84c311cd3796a5913b2d9fed934b88c82de8ac6c",
+  "observedFailure": {
+    "command": "node node_modules/next/dist/bin/next build",
+    "status": "FAIL",
+    "seconds": 7.519,
+    "next": "16.4.5",
+    "affectedLegacyRedirectPages": 7,
+    "message": "Unlocalized legal/* and docs/sdk-plan pages do not have a root layout",
+    "logSha256": "40155a88f12b005df9337d904c94b3057372d4357d900ccb6ffd28b26d22b154"
+  },
+  "decision": "Add one minimal root layout in each existing unlocalized legal and docs subtree, both reusing the existing RootDocument with its default locale. Do not add a global app/layout wrapping the existing [locale] document, which would nest html/body. Keep all seven redirect handlers and destinations byte-identical.",
+  "plannedPaths": [
+    "src/app/legal/layout.tsx",
+    "src/app/docs/layout.tsx",
+    "__tests__/LegacyRootLayouts.security.test.tsx"
+  ],
+  "validation": "Nine focused server-render/redirect cases with actual RootDocument and handlers, focused lint/type checks; preserve initial failing build, then one exact-source local build and eight support browser cases if source review is clear. No full suite, app/native build, mail/API submission or remote deployment.",
+  "unchanged": [
+    "localized layout and locale contract",
+    "legacy redirect statuses/destinations",
+    "middleware and next.config",
+    "manifest/lock/security pins",
+    "Vercel and GitHub execution protections"
+  ],
+  "publication": "No new remote job authorization. Unused production approval for3522 does not cover this corrected source. C3/C4 remain open until actual evidence."
+}

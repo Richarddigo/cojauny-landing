@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from 'react';
+import { useRef, useState, type ChangeEvent, type FormEvent } from 'react';
 import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile';
 import { ChatBubbleBottomCenterTextIcon, LightBulbIcon, BriefcaseIcon } from '@heroicons/react/24/outline';
 import AlertMessage from '@/components/AlertMessage';
@@ -47,11 +47,13 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
     const [interacted, setInteracted] = useState(false);
     const MAX_CHARS = 1000;
 
-    useEffect(() => {
+    // Reset before rendering a different locale, without an intermediate frame
+    // containing the previous locale's input and status messages.
+    if (form.locale !== locale) {
         setForm(buildInitialState(locale));
         setSuccess(null);
         setError(null);
-    }, [locale]);
+    }
 
     const handleChange = (
         event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>

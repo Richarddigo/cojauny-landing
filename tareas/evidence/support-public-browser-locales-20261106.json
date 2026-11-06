@@ -1,0 +1,42 @@
+[
+  {
+    "canonical": "https://cojauny.com/de/support",
+    "headings": 1,
+    "lang": "de",
+    "mail": [
+      "mailto:support@cojauny.com"
+    ],
+    "title": "Support für die Cojauny-App",
+    "url": "https://cojauny.com/de/support"
+  },
+  {
+    "canonical": "https://cojauny.com/support",
+    "headings": 1,
+    "lang": "en",
+    "mail": [
+      "mailto:support@cojauny.com"
+    ],
+    "title": "Cojauny app support",
+    "url": "https://cojauny.com/support"
+  },
+  {
+    "canonical": "https://cojauny.com/es/support",
+    "headings": 1,
+    "lang": "es",
+    "mail": [
+      "mailto:support@cojauny.com"
+    ],
+    "title": "Soporte de la app Cojauny",
+    "url": "https://cojauny.com/es/support"
+  },
+  {
+    "canonical": "https://cojauny.com/fr/support",
+    "headings": 1,
+    "lang": "fr",
+    "mail": [
+      "mailto:support@cojauny.com"
+    ],
+    "title": "Assistance pour l’application Cojauny",
+    "url": "https://cojauny.com/fr/support"
+  }
+]

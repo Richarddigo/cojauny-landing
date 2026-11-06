@@ -1,0 +1,87 @@
+{
+  "status": "INITIAL_HTTP_MAIN_SCOPING_IS_STREAMING_PARSER_LIMITATION_NOT_PROVEN_PRODUCT_DEFECT",
+  "source": "f7722511c3a0fa9b46c8e228dc8ff46e97507d00",
+  "deployment": "5fiwgF3CpGe1jUFBgQjKePDHY6TM",
+  "date": "2026-11-06",
+  "getCountAdditional": 0,
+  "initialHTTPReceiptPreserved": true,
+  "initialHTTPReceiptSha256Raw": "e1f08bd8255f7dec5cb1b686fe85127472c9b68157297fbdd3027d445bc53342",
+  "rootPublicDOMProof": {
+    "path": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\outputs\\task053-support-security-20261106\\production-locale-checks.json",
+    "sha256Raw": "1c7c66016bb513387944b1bf7cb4dbd337fef33dea6dcdd7564b5a1d260e3c75",
+    "fourLocalesMailH1LangCanonicalVerifiedFromSavedProof": true,
+    "exactFourNavigationHrefsPerLocale": "Not present in this saved DOM proof; root may capture separately without this checker issuing requests."
+  },
+  "cause": "Next/React streaming emits the support section in a hidden server-completion container after the serialized closing main. Browser scripts reparent that segment into the live main. The simple HTMLParser does not execute that DOM operation, so its main-scoped mailto/navigation query is an invalid acceptance oracle. Global anchor existence is separately checked in saved static output; no initial failure was erased or relabelled as a product regression.",
+  "rows": [
+    {
+      "locale": "en",
+      "localStaticArtifact": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\work\\landing-support-security-20261106\\.next\\server\\app\\en\\support.html",
+      "localStaticArtifactSha256Raw": "89d236141b97c3412313b41766c1cf4d53a858300ef18049ed1c10c9ec4132eb",
+      "sanitizedProjectionSha256": "299293b11345cf42165b2728ee4e368d24c5246cd6feb5209b9a35c263fd883f",
+      "liveProjectionSha256": "91f5d3959cbf4420f8685ed61b77f081d5e5f99d82c1c94618f75ab087ad387e",
+      "localSanitizedProjectionEqualsLiveHTTP": false,
+      "supportSectionEmittedAfterMainClosingTag": true,
+      "hiddenStreamContainerBeforeH1": true,
+      "hasReactReparentCall": true,
+      "allExpectedHrefsInRawHTML": true,
+      "publicMailtoInRawHTML": true,
+      "initialParserMainScopedMailto": [],
+      "initialParserMainScopedNav": [],
+      "rootPublicDOMProofMatches": true
+    },
+    {
+      "locale": "es",
+      "localStaticArtifact": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\work\\landing-support-security-20261106\\.next\\server\\app\\es\\support.html",
+      "localStaticArtifactSha256Raw": "883c3e43a25010a88c834d2b838c82cd677133576eeaa7b34fbf48b816ab010d",
+      "sanitizedProjectionSha256": "57ea0340133cd0df06108ec094a17633700026af0e1658153d88bd77d81c8089",
+      "liveProjectionSha256": "2b785a4a7b4ac12a6e4d84e2de3012f3ba7a7b6b8fa8f7684d84231eedf9677d",
+      "localSanitizedProjectionEqualsLiveHTTP": false,
+      "supportSectionEmittedAfterMainClosingTag": true,
+      "hiddenStreamContainerBeforeH1": true,
+      "hasReactReparentCall": true,
+      "allExpectedHrefsInRawHTML": true,
+      "publicMailtoInRawHTML": true,
+      "initialParserMainScopedMailto": [],
+      "initialParserMainScopedNav": [],
+      "rootPublicDOMProofMatches": true
+    },
+    {
+      "locale": "de",
+      "localStaticArtifact": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\work\\landing-support-security-20261106\\.next\\server\\app\\de\\support.html",
+      "localStaticArtifactSha256Raw": "230c6eceb33a8563fdf3ce9edde17d16a463ae676e5cd50d2f48984a1fa512da",
+      "sanitizedProjectionSha256": "79147b8e1174511105a5681b72bb38ef0151eb163b2d7683556c44112e93dc40",
+      "liveProjectionSha256": "f66bb5fd758fba8bc00237894cb8ff62cc9f0b8fb6d150e26b94f295395f5578",
+      "localSanitizedProjectionEqualsLiveHTTP": false,
+      "supportSectionEmittedAfterMainClosingTag": true,
+      "hiddenStreamContainerBeforeH1": true,
+      "hasReactReparentCall": true,
+      "allExpectedHrefsInRawHTML": true,
+      "publicMailtoInRawHTML": true,
+      "initialParserMainScopedMailto": [],
+      "initialParserMainScopedNav": [],
+      "rootPublicDOMProofMatches": true
+    },
+    {
+      "locale": "fr",
+      "localStaticArtifact": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\work\\landing-support-security-20261106\\.next\\server\\app\\fr\\support.html",
+      "localStaticArtifactSha256Raw": "c0011f3cf94733b28f170deffbc529c35b162683b571361c606d26f2e73ed1de",
+      "sanitizedProjectionSha256": "fdadc7162bde7d3a2195438340d6e5c3bc2ed91fc68ca3c1af5bd354ff11c619",
+      "liveProjectionSha256": "03d3eecde80af15478a558ecbe7ab4765c64a8b0a2d2becdd1bc26237faf6ad5",
+      "localSanitizedProjectionEqualsLiveHTTP": false,
+      "supportSectionEmittedAfterMainClosingTag": true,
+      "hiddenStreamContainerBeforeH1": true,
+      "hasReactReparentCall": true,
+      "allExpectedHrefsInRawHTML": true,
+      "publicMailtoInRawHTML": true,
+      "initialParserMainScopedMailto": [],
+      "initialParserMainScopedNav": [],
+      "rootPublicDOMProofMatches": true
+    }
+  ],
+  "limits": [
+    "No additional public GET, browser interaction, build, test, job or deployment performed.",
+    "Local raw output supports parser causality; public DOM proof is the authority for live main containment.",
+    "No legal compliance, mailbox delivery, native app acceptance or053globalclosure claim."
+  ]
+}

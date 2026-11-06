@@ -1,0 +1,199 @@
+{
+  "recordedAtUTC": "2026-11-06T14:46:26.332426+00:00",
+  "scope": "Support publication dependency C1/C2/C3 accepted locally; C4 publication pending",
+  "runtimeSource": "acfb61e8bde3fbcb37c25ff1fdced1a915b0788f",
+  "sourceBeforeLayoutRepair": "84c311cd3796a5913b2d9fed934b88c82de8ac6c",
+  "plansBeforeLayoutRepair": [
+    "9b3bd0c"
+  ],
+  "layoutFilesSha256CanonicalLf": {
+    "src/app/legal/layout.tsx": "6ced54049859a6d4f330f4b05cc323d6c6145d513137a71ae8b25e4781e15176",
+    "src/app/docs/layout.tsx": "1d7420978963fe5984368dd94231485d375360b51b86ef22142c543afc880f6d",
+    "__tests__/LegacyRootLayouts.security.test.tsx": "7d6cd8cbded646e69a519c22776810d34b9b83dd1817716d271618876467a3ca"
+  },
+  "sourceInputsBeforeFinalDocs": {
+    "files": 284,
+    "allRawSha256UnchangedAfterBuildAndBrowser": true
+  },
+  "independentReviews": [
+    {
+      "path": "tareas/evidence/support-security-independent-review.json",
+      "sha256CanonicalLf": "3da05480b7e6cbeca861f4df983d145c082e3c2cbf20fd0f8661b97bc4d297a7"
+    },
+    {
+      "path": "tareas/evidence/support-security-layout-independent-review.json",
+      "sha256CanonicalLf": "15a9bab889e1ba843a1f42f899647db1e64b10b9feab8ea204eb1b2b19a91ebb"
+    }
+  ],
+  "focusedTests": {
+    "originalDependencyConsumers": 61,
+    "newLayoutAndUnchangedRedirectCases": 9,
+    "uniqueTotalAcrossDisjointRoots": 70,
+    "historical13SupportCasesNotAdded": true,
+    "noFullSuite": true,
+    "checks": {
+      "legacy-root-jest-final": {
+        "command": [
+          "C:/nvm4w/nodejs/node.exe",
+          "node_modules/jest/bin/jest.js",
+          "--runInBand",
+          "--coverage=false",
+          "--runTestsByPath",
+          "__tests__/LegacyRootLayouts.security.test.tsx"
+        ],
+        "exit": 0,
+        "seconds": 3.459316399996169,
+        "log": "legacy-root-jest-final.log",
+        "logSHA256": "e69d2b8f0974bad482ba6e29c37a74c45cf25ce4002f653d01d73746266a9b22",
+        "emptyUserGlobalConfig": true,
+        "noInheritedCredentialsOrDotenv": true,
+        "strictPeers": true,
+        "sourceInputs": {
+          "package.json": "8d229ac83bfdf967bc9e018fd15e6f0ca3d4d6e8534bbe83409f84b095da96e6",
+          "package-lock.json": "4366a5098bd5713dee6cc39bb6a16bec1f9525c80d1e2d2e0f1c3349e0e58303",
+          "src/lib/validation.ts": "4386b043b85cb5c7bd8b536a3ed25033ce07040ad3a63416891250083167b19a",
+          "src/lib/env.ts": "4f14b9cc22d4d9e8e334276a314be4bdbcd4da926e349ef68ef728f2fd22dc84",
+          "__tests__/validation.security.test.ts": "6e15008d0c8b5a87528741275437a87ea9e508c98c1c0ea901584ebcb35406ba"
+        }
+      },
+      "legacy-root-lint-final": {
+        "command": [
+          "C:/nvm4w/nodejs/node.exe",
+          "node_modules/eslint/bin/eslint.js",
+          "src/app/legal/layout.tsx",
+          "src/app/docs/layout.tsx",
+          "__tests__/LegacyRootLayouts.security.test.tsx"
+        ],
+        "exit": 0,
+        "seconds": 2.622334100014996,
+        "log": "legacy-root-lint-final.log",
+        "logSHA256": "09e14291a00235ee32bccd0dd779ea21e87bae57e101b477e3baac5ad6532cbd",
+        "emptyUserGlobalConfig": true,
+        "noInheritedCredentialsOrDotenv": true,
+        "strictPeers": true,
+        "sourceInputs": {
+          "package.json": "8d229ac83bfdf967bc9e018fd15e6f0ca3d4d6e8534bbe83409f84b095da96e6",
+          "package-lock.json": "4366a5098bd5713dee6cc39bb6a16bec1f9525c80d1e2d2e0f1c3349e0e58303",
+          "src/lib/validation.ts": "4386b043b85cb5c7bd8b536a3ed25033ce07040ad3a63416891250083167b19a",
+          "src/lib/env.ts": "4f14b9cc22d4d9e8e334276a314be4bdbcd4da926e349ef68ef728f2fd22dc84",
+          "__tests__/validation.security.test.ts": "6e15008d0c8b5a87528741275437a87ea9e508c98c1c0ea901584ebcb35406ba"
+        }
+      },
+      "legacy-root-types-final": {
+        "command": [
+          "C:/nvm4w/nodejs/node.exe",
+          "node_modules/typescript/bin/tsc",
+          "--noEmit"
+        ],
+        "exit": 0,
+        "seconds": 3.0959411000076216,
+        "log": "legacy-root-types-final.log",
+        "logSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "emptyUserGlobalConfig": true,
+        "noInheritedCredentialsOrDotenv": true,
+        "strictPeers": true,
+        "sourceInputs": {
+          "package.json": "8d229ac83bfdf967bc9e018fd15e6f0ca3d4d6e8534bbe83409f84b095da96e6",
+          "package-lock.json": "4366a5098bd5713dee6cc39bb6a16bec1f9525c80d1e2d2e0f1c3349e0e58303",
+          "src/lib/validation.ts": "4386b043b85cb5c7bd8b536a3ed25033ce07040ad3a63416891250083167b19a",
+          "src/lib/env.ts": "4f14b9cc22d4d9e8e334276a314be4bdbcd4da926e349ef68ef728f2fd22dc84",
+          "__tests__/validation.security.test.ts": "6e15008d0c8b5a87528741275437a87ea9e508c98c1c0ea901584ebcb35406ba"
+        }
+      }
+    }
+  },
+  "initialBuild": {
+    "status": "FAIL",
+    "seconds": 7.519,
+    "missingRootPages": 7,
+    "logSha256": "40155a88f12b005df9337d904c94b3057372d4357d900ccb6ffd28b26d22b154",
+    "archivePreserved": true
+  },
+  "exactSourceBuild": {
+    "status": "PASS",
+    "seconds": 29.402,
+    "command": [
+      "C:\\nvm4w\\nodejs\\node.EXE",
+      "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\work\\landing-support-security-20261106\\node_modules\\next\\dist\\bin\\next",
+      "build"
+    ],
+    "logSha256": "aa4eb6db837c1c6257ec12a20cd1acf9f71b09974d89aa363e11a97a039007d5",
+    "maximumNextWorkers": 1
+  },
+  "exactSourceBrowser": {
+    "status": "PASS",
+    "cases": 8,
+    "locales": [
+      "en",
+      "es",
+      "de",
+      "fr"
+    ],
+    "projects": [
+      "chromium",
+      "mobile Pixel5"
+    ],
+    "checks": [
+      "actual local HTTP200",
+      "html lang",
+      "single heading",
+      "support mailto",
+      "canonical",
+      "privacy/terms/FAQ/account-deletion links",
+      "WCAG2/2.1AA axe subset",
+      "no horizontal overflow at320px",
+      "actual account-deletion navigation"
+    ],
+    "seconds": 12.224,
+    "command": [
+      "C:\\nvm4w\\nodejs\\node.EXE",
+      "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\work\\landing-support-security-20261106\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "-c",
+      "e2e/playwright.config.ts",
+      "support.spec.ts",
+      "--workers=1",
+      "--retries=0"
+    ],
+    "logSha256": "d6d6adc4530c18813bbb1964c305e3df5fb646a64a7f1205181b28bb9fd30b00",
+    "serverOwnedAndClosed": true,
+    "wipUntouched": true,
+    "tlsOrProductionAcceptance": false
+  },
+  "criteria": {
+    "C1": {
+      "weight": 45,
+      "status": "PASS_LOCAL_REVIEW"
+    },
+    "C2": {
+      "weight": 20,
+      "status": "PASS_FOCUSED_COMPATIBILITY"
+    },
+    "C3": {
+      "weight": 25,
+      "status": "PASS_LOCAL_BUILD_AND_BROWSER"
+    },
+    "C4": {
+      "weight": 10,
+      "status": "OPEN_FRESH_EXACT_SOURCE_DEPLOYMENT_AUTHORIZATION_AND_LIVE_HTTPS"
+    }
+  },
+  "dependencyCorrectionProgress": 90,
+  "app053PercentUnchanged": 50,
+  "publicSupportFixed": false,
+  "remoteExecutions": {
+    "newCandidate": 0,
+    "old3522Preview": "Ready EdHsduiuZbczVW1CjkFfzdDDWWqc",
+    "old3522ProductionPromotion": "NOT_STARTED"
+  },
+  "remaining": [
+    "Fresh publication authorization must name the final corrected reviewed source; unused3522 approval cannot be reused.",
+    "Verify actual production deployment source and public HTTPS/support in four locales before closing this dependency.",
+    "17 low/moderate development advisory nodes remain recorded; production advisory snapshot0 is not a pentest or universal safety certificate.",
+    "App053 store/legal and exact submitted reviewer journey remain separate original criteria."
+  ],
+  "noSideEffects": [
+    "No real form submission, email, billing, Cloud, secrets, flags, GitHub Actions or Codemagic.",
+    "No production settings or deployment automation changed; Vercel git deploymentEnabled remains false."
+  ]
+}
