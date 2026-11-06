@@ -1,0 +1,74 @@
+{
+  "date": "2026-11-06",
+  "status": "ALL_ORIGINAL_DEPENDENCY_CRITERIA_ACCEPTED_READY_FOR_MAIN_MERGE",
+  "scope": "Existing landing support publication and its required dependency correction only; not app053 closure",
+  "deployedSource": "f7722511c3a0fa9b46c8e228dc8ff46e97507d00",
+  "preview": {
+    "id": "6ccjBzWzrJT943JKP4YCL6UDX5p9",
+    "url": "https://cojauny-landing-8erbqwwa7-richarddigo-projects.vercel.app",
+    "source": "f7722511c3a0fa9b46c8e228dc8ff46e97507d00",
+    "state": "Ready",
+    "seconds": 119,
+    "observedReadyLocal": "2026-11-06T15:58:57+01:00",
+    "fourLocaleCheckSha256": "d4df9408aec304d32141ef9ce71167d7453f6782d5deb0e585bd0d92eff657aa"
+  },
+  "production": {
+    "id": "5fiwgF3CpGe1jUFBgQjKePDHY6TM",
+    "dashboard": "https://vercel.com/richarddigo-projects/cojauny-landing/5fiwgF3CpGe1jUFBgQjKePDHY6TM",
+    "source": "f7722511c3a0fa9b46c8e228dc8ff46e97507d00",
+    "state": "Ready",
+    "environment": "Production",
+    "durationSeconds": 114,
+    "observedReadyLocal": "2026-11-06T16:12:47+01:00",
+    "domain": "cojauny.com",
+    "fourLocaleBrowserSha256": "1c7c66016bb513387944b1bf7cb4dbd337fef33dea6dcdd7564b5a1d260e3c75",
+    "publicNavigationBrowserSha256": "281c6862d6a7bcd737db8e7d16d128ff5224671ab70d8690e18f75ac1d9cf281"
+  },
+  "approvedRemoteExecutions": 2,
+  "confirmedRemoteExecutions": 2,
+  "executionRetries": 0,
+  "ownerCompletedPrivateIdentityVerification": true,
+  "privateCodesReadOrStored": false,
+  "sourceBuildAndReviewEvidence": "tareas/evidence/support-security-local-publication-validation-20261106.json",
+  "publicHttpsEvidence": "tareas/evidence/support-public-https-rendered-contract-followup.json",
+  "staticParserInitialLimitationPreserved": true,
+  "publicChecks": {
+    "supportFourLocalesHttp200": true,
+    "normalCaAndHostnameValidation": true,
+    "actualBrowserLangH1Canonical": true,
+    "mainMailtoAndFourLegalAccountHrefsAllLocales": true,
+    "accountDeletionHttp200AllLocales": true,
+    "separateLegalDestinationFetches": false,
+    "legalComplianceAccepted": false,
+    "supportMailSent": false
+  },
+  "criteria": {
+    "C1": {
+      "weight": 45,
+      "accepted": true
+    },
+    "C2": {
+      "weight": 20,
+      "accepted": true
+    },
+    "C3": {
+      "weight": 25,
+      "accepted": true
+    },
+    "C4": {
+      "weight": 10,
+      "accepted": true
+    }
+  },
+  "percent": 100,
+  "app053PercentUnchanged": 50,
+  "globalApplicationTaskPointsUnchangedByThisDependency": 8450,
+  "gitDelivery": "PR19 head will contain documentary evidence only after deployed f7722511. Recheck exact head/reviews/checks/guards before main merge; record actual merge and branch removal separately.",
+  "preserved": [
+    "Original app053 definition and weights; listing/legal/submitted-binary gates open.",
+    "Vercel production branch and git deploymentEnabled=false; repository ActionsOFF/hooks[]",
+    "17 low/moderate development-only advisories remain documented; production snapshot0 is not a pentest.",
+    "Initial3522 Preview remains historical; it was never promoted.",
+    "First local patched build84c failed on seven missing root layouts; corrected runtimeacfb passed and f772 adds documents only."
+  ]
+}

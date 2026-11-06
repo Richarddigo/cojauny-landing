@@ -1,0 +1,64 @@
+{
+  "source": "f7722511c3a0fa9b46c8e228dc8ff46e97507d00",
+  "deploymentId": "5fiwgF3CpGe1jUFBgQjKePDHY6TM",
+  "date": "2026-11-06",
+  "timezone": "Europe/Berlin",
+  "status": "PUBLIC_HTTPS_AND_RENDERED_SUPPORT_CONTRACT_PASS",
+  "sourceAssociation": "Parent Vercel GUI verified exact source/deployment ProductionReady; HTTP alone does not prove commit identity.",
+  "initialCheckerReceipt": {
+    "path": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\outputs\\landing-support-security-review-20261106\\public-https-production-receipt.json",
+    "sha256Raw": "e1f08bd8255f7dec5cb1b686fe85127472c9b68157297fbdd3027d445bc53342",
+    "statusPreserved": "SUPPORT_HTTP_CONTRACT_NOT_ACCREDITED",
+    "mainScopedRawHTMLChecks": "NOT_ACCREDITED; invalid streaming parser oracle, not waived or relabelled as a product failure."
+  },
+  "transport": {
+    "getCount": 16,
+    "maxGetCount": 16,
+    "additionalGETsForFollowup": 0,
+    "retryCount": 0,
+    "normalCAAndHostnameValidationAll16": true,
+    "actualRedirectDirection": "www.cojauny.com307 to apex cojauny.com; final200",
+    "cookiesOrAuthSent": false
+  },
+  "renderedDOMProof": [
+    {
+      "path": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\outputs\\task053-support-security-20261106\\production-locale-checks.json",
+      "sha256Raw": "1c7c66016bb513387944b1bf7cb4dbd337fef33dea6dcdd7564b5a1d260e3c75",
+      "fourLocaleSavedProofValidated": true
+    },
+    {
+      "path": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\outputs\\task053-support-security-20261106\\public-dom-navigation-checks.json",
+      "sha256Raw": "281c6862d6a7bcd737db8e7d16d128ff5224671ab70d8690e18f75ac1d9cf281",
+      "fourLocaleSavedProofValidated": true
+    }
+  ],
+  "staticParserCausalDiagnostic": {
+    "path": "C:\\Users\\richa\\Documents\\Codex\\2026-10-02\\elige-y-completa-al-100-una-2\\outputs\\landing-support-security-review-20261106\\public-https-streaming-parser-diagnostic.json",
+    "sha256Raw": "56a1a64e87951658ced778dec233004c7bae1c0f8ac807ed49a820860d65c5c4",
+    "finding": "All4saved local Next HTML emit support under hidden S: container after closing main and contain React $RC reparenting calls. Existing HTMLParser checks use serialized ancestor state and therefore see no main links; live browser sees the links.",
+    "limit": "Local sanitized hashes differ from live HTTP hashes, so no byte-equivalence of local vs public HTML is claimed. Public DOM proof independently establishes live containment."
+  },
+  "verified": {
+    "supportLocales": [
+      "en",
+      "es",
+      "de",
+      "fr"
+    ],
+    "http200LangSingleExpectedH1Canonical": true,
+    "renderedMainPublicSupportMailtoAll4": true,
+    "renderedMainFourExpectedLegalAccountHrefsAll4": true,
+    "accountDeletionDestinationHTTP200LangH1All4": true
+  },
+  "notVisited": [
+    "The12privacy/terms/FAQ destination URLs were present in rendered DOM but were not separately HTTP-fetched due to the global16GETbudget."
+  ],
+  "noClaims": [
+    "No legal compliance acceptance",
+    "No support email delivered",
+    "No forms/data mutations",
+    "No app053globalclosure",
+    "No native app/runtime acceptance",
+    "No new build/deploy/job or authorization inferred"
+  ]
+}
