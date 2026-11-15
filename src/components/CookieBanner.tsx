@@ -36,7 +36,7 @@ const CookieBanner = ({ copy, locale }: CookieBannerProps) => {
 
     return (
         <div
-            className={`fixed bottom-4 left-1/2 z-50 w-[95%] max-w-2xl -translate-x-1/2 rounded-2xl bg-slate-900/95 backdrop-blur-sm p-6 shadow-lg border border-white/10 transition-opacity duration-300 ${open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+            className={`guide-cookie-banner fixed inset-x-0 bottom-0 z-50 transition-opacity duration-300 ${open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
             role="dialog"
             aria-live="polite"
             aria-label={copy.message}

@@ -33,7 +33,7 @@ export default function StickyMobileBetaCta({ label }: StickyMobileBetaCtaProps)
       aria-hidden={!visible}
     >
       <a
-        href="#home"
+        href="#quick-beta"
         className="flex w-full items-center justify-center rounded-xl bg-action px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition-colors hover:bg-action-dim"
         tabIndex={visible ? 0 : -1}
       >

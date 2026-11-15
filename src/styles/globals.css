@@ -1,18 +1,18 @@
 @import "tailwindcss";
 @config "../../tailwind.config.js";
 
-/* ─── Cojauny Design Tokens (aligned with cojauny-studio) ─────────── */
+/* Cojauny travel palette. Editorial page layouts live in travel-guide.css. */
 :root {
-    /* Brand palette - matches cojauny-studio accent exactly */
-    --accent: #5B7BFF;
-    --accent-dim: #3A59D9;
+    /* Forest ink and warm travel-paper accents. */
+    --accent: #b8c78f;
+    --accent-dim: #315b48;
     --accent-glow: rgba(91, 123, 255, 0.18);
 
-    /* Studio dark surfaces (used by Header/Footer) */
-    --bg: #0C1120;
-    --surface: #1C2336;
-    --surface-2: #2A3550;
-    --surface-3: #333F60;
+    /* Navigation/document surfaces; legacy utility names remain compatible. */
+    --bg: #172e26;
+    --surface: #233f34;
+    --surface-2: #365347;
+    --surface-3: #466456;
 
     /* Surfaces (light mode) */
     --light-bg: #F8FAFC;
@@ -25,7 +25,7 @@
     --faint: #8B9DBF;
     --border: rgba(255, 255, 255, 0.08);
 
-    /* Radius — shared with studio */
+    /* Utility radius defaults. */
     --radius-sm: 6px;
     --radius: 12px;
     --radius-lg: 20px;
@@ -67,17 +67,17 @@
 }
 
 @theme inline {
-    --font-sans: var(--font-inter);
-    --color-bg: #0C1120;
-    --color-surface: #1C2336;
-    --color-surface-2: #2A3550;
-    --color-surface-3: #333F60;
-    --color-accent: #93A8FF;
-    --color-studio-accent: #93A8FF;
-    --color-action: #3A59D9;
-    --color-action-dim: #2E46B0;
-    --color-accent-dim: #3A59D9;
-    --color-accent-light: #93A8FF;
+    --font-sans: ui-sans-serif, system-ui, sans-serif;
+    --color-bg: #172e26;
+    --color-surface: #233f34;
+    --color-surface-2: #365347;
+    --color-surface-3: #466456;
+    --color-accent: #d6c28d;
+    --color-studio-accent: #d6c28d;
+    --color-action: #315b48;
+    --color-action-dim: #244837;
+    --color-accent-dim: #315b48;
+    --color-accent-light: #d6c28d;
     --color-text: #F1F5F9;
     --color-muted: #94A3B8;
     --color-faint: #8B9DBF;

@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useConsent } from '@/hooks/useConsent';
+import { hasAnalyticsConsent } from '@/lib/consent';
+import { readConsent, subscribeConsent } from '@/lib/consent-store';
+import { env } from '@/lib/env';
 
 declare global {
   interface Window {
@@ -12,17 +14,33 @@ declare global {
 
 /** Sets Google Consent Mode v2 defaults and updates when the user chooses. */
 export default function GoogleConsentMode() {
-  const { analyticsAllowed, isConfigured } = useConsent();
-
   useEffect(() => {
     window.dataLayer ??= [];
     window.gtag ??= (...args: unknown[]) => window.dataLayer?.push(args);
-    const id = process.env.NEXT_PUBLIC_ANALYTICS_ID;
-    if (id) (window as unknown as Record<string, unknown>)[`ga-disable-${id}`] = !analyticsAllowed;
-    window.gtag('consent', 'update', {
-      analytics_storage: analyticsAllowed && isConfigured ? 'granted' : 'denied',
-      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+    const id = env.NEXT_PUBLIC_ANALYTICS_ID;
+    if (id)
+      (window as unknown as Record<string, unknown>)[`ga-disable-${id}`] =
+        !hasAnalyticsConsent(readConsent());
+    window.gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
     });
-  }, [analyticsAllowed, isConfigured]);
+    const synchronize = () => {
+      const allowed = hasAnalyticsConsent(readConsent());
+      if (id)
+        (window as unknown as Record<string, unknown>)[`ga-disable-${id}`] = !allowed;
+      window.gtag?.('consent', 'update', {
+        analytics_storage: allowed ? 'granted' : 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+      });
+    };
+    synchronize();
+    // The listener runs during saveConsent, before another SDK callback can run.
+    return subscribeConsent(synchronize);
+  }, []);
   return null;
 }

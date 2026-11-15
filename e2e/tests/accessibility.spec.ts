@@ -9,6 +9,22 @@ for (const locale of ['en', 'es', 'de', 'fr']) {
     // Audit stable colors, not intermediate opacity frames during entrance animations.
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto(path);
+    // Audit the real optimized first-visit banner before dismissing it. A
+    // transform utility surviving CSS minification must not hide its message.
+    const originalViewport = page.viewportSize();
+    const banner = page.getByRole('dialog');
+    await expect(banner).toBeVisible();
+    for (const viewport of [{ width: 1280, height: 800 }, { width: 390, height: 844 }]) {
+      await page.setViewportSize(viewport);
+      for (const element of [banner, banner.locator('p').first(), ...await banner.getByRole('button').all()]) {
+        await expect.poll(async () => (await element.boundingBox())?.x ?? -1).toBeGreaterThanOrEqual(0);
+        await expect.poll(async () => {
+          const bounds = await element.boundingBox();
+          return bounds ? bounds.x + bounds.width : Infinity;
+        }).toBeLessThanOrEqual(viewport.width + 1);
+      }
+    }
+    if (originalViewport) await page.setViewportSize(originalViewport);
     await page.getByRole('dialog').getByRole('button').nth(1).click();
     await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1);
     await page.addStyleTag({ content: '.cv-auto { content-visibility: visible !important; }' });

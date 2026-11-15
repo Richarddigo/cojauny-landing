@@ -15,6 +15,7 @@ interface HeroWithVariantProps {
   locale: Locale;
   airportsHubTitle: string;
   airportsHubAll: string;
+  journeyCopy?: LandingCopy['workflow'];
 }
 
 /** Resolves A/B hero copy from the middleware cookie without forcing SSR. */
@@ -26,6 +27,7 @@ export default function HeroWithVariant({
   locale,
   airportsHubTitle,
   airportsHubAll,
+  journeyCopy,
 }: HeroWithVariantProps) {
   const heroVariant = useHeroVariant();
   const heroCopy = resolveHeroCopy(hero, heroVariants, heroVariant);
@@ -40,6 +42,7 @@ export default function HeroWithVariant({
         locale={locale}
         airportsHubTitle={airportsHubTitle}
         airportsHubAll={airportsHubAll}
+        journeyCopy={journeyCopy}
       />
     </>
   );

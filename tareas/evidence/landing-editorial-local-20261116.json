@@ -1,0 +1,390 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-16T00:38:45.2425190+01:00",
+  "status": "LOCAL_ACCEPTANCE_PASS_NO_REMOTE_DELIVERY",
+  "repository": "Richarddigo/cojauny-landing",
+  "branch": "codex/landing-editorial-live-20261115",
+  "productionBase": "f7722511c3a0fa9b46c8e228dc8ff46e97507d00",
+  "priorMainNotUsedAsDeliveryBase": "24c9605",
+  "direction": "Guía editorial de llegada: papel cálido, tinta verde, titulares serif del sistema, itinerario real de cinco pasos, notas abiertas y reglas finas; sin vuelos/testimonios/métricas inventados.",
+  "preserved": [
+    "Cuatro locales y copy funcional/legal",
+    "Página soporte publicada, footer/sitemap y validación de f7722511",
+    "API y restricciones de origen, configuración de backend y correo",
+    "AGENTS.md, workflows manuales y vercel.json deploymentEnabled=false"
+  ],
+  "gates": {
+    "lint": "PASS",
+    "typeCheck": "PASS",
+    "unit": {
+      "suites": 39,
+      "passed": 218,
+      "failed": 0,
+      "seconds": 61.87,
+      "log": "reports/tests-delivery.log"
+    },
+    "productionBuild": {
+      "status": "PASS",
+      "next": "16.4.6",
+      "buildId": "Ij7I3_1k4hZa11gy3eTWi",
+      "staticPages": 900,
+      "log": "reports/build-final-05.log"
+    },
+    "permanentBrowser": {
+      "passed": 13,
+      "failed": 0,
+      "seconds": 18.8,
+      "workers": 1,
+      "includes": "First-visit banner/message/buttons within desktop1280 and mobile390 viewport; 4 locales WCAG; keyboard/focus/menu/language; support; cookie revocation",
+      "log": "reports/browser-production-05-final.log"
+    },
+    "additionalBrowser": {
+      "passed": 7,
+      "failed": 0,
+      "result": "reports/editorial-browser-result.json",
+      "includes": "Canonical/root/en/support HTTP; first-visit desktop/mobile screenshots and cookie WCAG; client ES→EN→DE→FR→ES URL+heading+document.lang; 320px layout; intercepted beta success/error/required policy and feedback error; reduced-motion and visible quick signup"
+    },
+    "npmAudit": {
+      "production": {
+        "total": 0,
+        "critical": 0,
+        "high": 0
+      },
+      "wholeTree": {
+        "critical": 0,
+        "high": 0,
+        "moderate": 9,
+        "low": 6
+      },
+      "forceOrOverridesUsed": false
+    },
+    "diffCheck": "PASS"
+  },
+  "causalHistory": [
+    {
+      "case": "Google initialization after revocation and failed consent persistence",
+      "red": "2 FAIL / 2 PASS",
+      "green": "11 GA cases PASS in final full suite",
+      "scope": "Fake analytics ID and local deferred script/queue, no Google network"
+    },
+    {
+      "case": "Fallback resurrection after observing null/corrupt/denied then blocked read",
+      "red": "3 FAIL",
+      "green": "3 corresponding cases PASS; fallback updated only after readable storage, failed-write override remains first"
+    },
+    {
+      "case": "Hash target hidden behind fixed header",
+      "red": "Expected420, actual470 for target500/header80",
+      "green": "Header offset assertion strengthened; existing smooth/reduced-motion controls preserved"
+    },
+    {
+      "case": "Optimized first-visit banner displaced by inherited translate utility",
+      "red": "Real build04 bounds x=-720,width1440",
+      "green": "Old utility removed from source; permanent browser geometry assertions PASS in build05"
+    },
+    {
+      "case": "Intermediate browser failures",
+      "results": "5PASS8FAIL then9PASS4FAIL; contrast/routing/hydration/faint-label issues fixed. These checkpoints are not final acceptance."
+    }
+  ],
+  "privacy": {
+    "writeFailure": "Latest explicit choice overrides stale persisted data for the current document",
+    "readFailure": "Readable null/corrupt/deny retires the former fallback",
+    "google": "Synchronous official ga-disable flag and Consent Mode update, guarded deferred onReady",
+    "primary": "https://developers.google.com/tag-platform/security/guides/privacy#turn_off_google_analytics"
+  },
+  "preview": {
+    "url": "http://localhost:3000/es",
+    "bind": "localhost",
+    "toolSession": 13711,
+    "node": "24.22.3",
+    "method": "Supervised exec process; no visible GUI window",
+    "allBrowserContextsClosed": true
+  },
+  "limits": [
+    "Browser verification uses local Playwright Chromium and mobile viewports, not physical Safari/iOS/Android acceptance.",
+    "Form endpoints were intercepted: no actual mail or production backend delivery is claimed.",
+    "No real Google analytics ID or external SDK traffic was enabled in tests. Opt-out does not cancel requests already emitted.",
+    "A failed persistence write has document-local protection; persistence through a reload is not promised when browser storage rejects writes.",
+    "Next build emitted metadataBase fallback warnings during SSG. Existing canonical URLs and localized root/support responses were checked; no broad SEO acceptance is claimed.",
+    "Only a local commit is authorized. No push, PR, merge, Vercel mutation, deployment or hosted automation execution."
+  ],
+  "sourceFiles": [
+    {
+      "path": "e2e/tests/accessibility.spec.ts",
+      "sha256": "54c31b702bd738a72b1e9908b040ba52f1f538aa73fefe4c1cf320ccc3fd36e6",
+      "gitBlob": "a1482475fb1badf88d12abb68fd4f27963b18e5e"
+    },
+    {
+      "path": "middleware.ts",
+      "state": "REMOVED_AFTER_RELOCATION_TO_src/proxy.ts"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "3c8a9331f5c687b9a2d7cb20778eb416ef3b772941072b5a3489e5c06dc8a8ea",
+      "gitBlob": "acfa5b0ffb28212399f8bf9a3ffa0a08d1722fd8"
+    },
+    {
+      "path": "package.json",
+      "sha256": "476ffb973c0852fe7d1acd0d5cb950233ae1dfda6dd40d1d9105f675bee91390",
+      "gitBlob": "663cc3073ae4f16ed72ec887c120bcf42c0a5733"
+    },
+    {
+      "path": "src/components/BetaSignupForm.tsx",
+      "sha256": "9225e43065e188bcedc0e97c028cb63c086b9daa785c56ddb797b3ac3f692816",
+      "gitBlob": "62a0a439f9ba14b00ccb42658a2e3ede6814c0c8"
+    },
+    {
+      "path": "src/components/ConsentGatedGoogleAnalytics.tsx",
+      "sha256": "c2c2b42be74b3d907bbcaece7b58b5cdca6c421a74cbb2fef0fb00258b4853e9",
+      "gitBlob": "68d66dc850c53b42ab2513a51139417f926c119b"
+    },
+    {
+      "path": "src/components/ConsentGatedGoogleAnalytics.test.tsx",
+      "sha256": "a1ab81bd03b768726ef99183f557d1d02d9b90f8ca5f5b509e75dbbb189d6787",
+      "gitBlob": "c85bbd0e5e4c9523cf8afc3a88be0a4737d6b433"
+    },
+    {
+      "path": "src/components/CookieBanner.tsx",
+      "sha256": "ed3f5180f9583fbb967aa8a14aaebf1777bf6e7dc8a5ffbc019a326ecf06f515",
+      "gitBlob": "5dc3f392088f50fb0ff5ce1c5a2d3e1816f12709"
+    },
+    {
+      "path": "src/components/DemoSection.tsx",
+      "sha256": "b4950333f32ec7e226e9c9cde0c13bfe492f4e048a16a024c5bf1cec38c4d1bd",
+      "gitBlob": "cbaf8fb93abf2c5d9f81dd1e4abcc8eece74dc8d"
+    },
+    {
+      "path": "src/components/FaqSection.tsx",
+      "sha256": "8b393471aece1ca26dd08e859952be641d9f43337c118cf874225da5d179a7b2",
+      "gitBlob": "82cd0c5dc3d6764fcf784792e2586304ba184eb2"
+    },
+    {
+      "path": "src/components/Features.tsx",
+      "sha256": "4c58765d06333940462d7f81e0767f82919c6beb604be3f6eecb569f5a51da96",
+      "gitBlob": "acd136b269cd6dce02e6e2e7c2c183247ec68112"
+    },
+    {
+      "path": "src/components/FeedbackForm.tsx",
+      "sha256": "eaa17f34c95caa6d3cdcf90ffe478b74ddd3e81f8cc190e83bb9888a91ad476b",
+      "gitBlob": "dad8beecc52e4f122ccd34e67ff4ab80e4df4a31"
+    },
+    {
+      "path": "src/components/FloatingSocialBar.tsx",
+      "sha256": "56dcebb3fc9a79db5101d2c488229af728cea40303f90c29bdd46f55f926b1cc",
+      "gitBlob": "857a096c132fbc3499c4edf8a04b7703fac90942"
+    },
+    {
+      "path": "src/components/Footer.tsx",
+      "sha256": "20a6ba921d41630ec0770417ab82be4b5682f5cbce09b65a171c97f0a27c6010",
+      "gitBlob": "09fa05e637e2be3dd683d0cf4011cdcb7aaa05e7"
+    },
+    {
+      "path": "src/components/GoogleConsentMode.tsx",
+      "sha256": "d03b0f7ba26f14628b261adb02349afbf9f83636d67c6653c79c9df21f56c075",
+      "gitBlob": "6c60bc6ef83633d31f30d34bf7cf22263cbfc7d4"
+    },
+    {
+      "path": "src/components/HashScrollHandler.test.tsx",
+      "sha256": "8f8320c867d11ac212d6211b43f9c2d1c81d011e0caced403492f3cc6a196c05",
+      "gitBlob": "daf6c3abb0706e18f1c08a496ec09a44a1d0cb55"
+    },
+    {
+      "path": "src/components/HashScrollHandler.tsx",
+      "sha256": "88c95aee0c9cc725281c206df7d4ca39b49fce5ec8957b935058b95e4a269f10",
+      "gitBlob": "757f8c83d44a4e17e1b92f8e6775dc14847d3a4c"
+    },
+    {
+      "path": "src/components/Header.tsx",
+      "sha256": "132a0fc2857ec7dc7da43e56d84e5bd1d6bb5315cb1c42200e40b41bfddccd86",
+      "gitBlob": "df51f1bc9b80935c3ac9c67673f797b89833f8cf"
+    },
+    {
+      "path": "src/components/Hero.tsx",
+      "sha256": "f3f27adf1943c082c8870f6197cb083a97b9b3526ec854cbbe6938c12f5a4ed1",
+      "gitBlob": "a208f054b86bf7a8146ce73007145c924edf7bfe"
+    },
+    {
+      "path": "src/components/HeroBetaCapture.tsx",
+      "sha256": "1512581d2610142025434a3f3e9ea3166ae1b582f2a9cc6081d6ed824172f31b",
+      "gitBlob": "c472004c4102f2fd372d782677ddacec9a64fa0f"
+    },
+    {
+      "path": "src/components/HeroWithVariant.tsx",
+      "sha256": "6ca59e2ef0ba8306bd08c13dfcbf87b0fa30e66cef527b076de03c13c0eb5d42",
+      "gitBlob": "ac34fea09bcf0c5c63a0b146062b547c1cee6d1b"
+    },
+    {
+      "path": "src/components/IntegrationCTA.tsx",
+      "sha256": "06059475fc205a7b5c45233206a17f39680b52bc4ceb90b7c61f1ac10970fa7b",
+      "gitBlob": "ab9aa05bdc22a47bc6b83be6cf031f8d120c1331"
+    },
+    {
+      "path": "src/components/LandingPageContent.tsx",
+      "sha256": "39fe46824393b7d7f7e9e5129b87882b54f9fea1607958466a215c91321329c9",
+      "gitBlob": "05a876c37f188d9ad2251c315f2e73471cd14b7f"
+    },
+    {
+      "path": "src/components/PrivacyTrustSection.tsx",
+      "sha256": "361a140fa7fac21fc3ac4c57e00ae1685a511d2d6dde8fcc02206dbfe0adbf0f",
+      "gitBlob": "0290ef505e0152a06a328b355b293db5b0189772"
+    },
+    {
+      "path": "src/components/RootDocument.tsx",
+      "sha256": "1256010c22e5d07a65b609931d163e6f58f064484cb89326a9a83ca464c0680b",
+      "gitBlob": "8b94165d2d22735540cf9f265834694449a1522c"
+    },
+    {
+      "path": "src/components/SavingsSection.tsx",
+      "sha256": "51e161fb074f69d4870de76af84074b68947ce4e0ef579c3dd3cd21386a793f9",
+      "gitBlob": "43e1d9c96e8eff1e4f33ba0667d221b5bd922cb6"
+    },
+    {
+      "path": "src/components/StickyMobileBetaCta.tsx",
+      "sha256": "831f61ed626171e3f2638c33e2783b5d1b760bfd4075af9b8dc326e81b3eb750",
+      "gitBlob": "9114ca3e1540ee171272e13c00e8648724b7da9e"
+    },
+    {
+      "path": "src/components/ValuePropsSection.tsx",
+      "sha256": "592c74826200e7f867747f6f8ae8d8e17ea7dcaf426c647219dd3ff7ebd90b99",
+      "gitBlob": "aa25f5beb0c9bfecfa9b26a733ab8d3173ba810c"
+    },
+    {
+      "path": "src/components/WorkflowSection.tsx",
+      "sha256": "3ef20d11b2abc2189aaf34b968eef30527473ffcf451ac807aa351f230a79fd0",
+      "gitBlob": "1fda3f5ae3794fa244b455c8489dfd62a2940d28"
+    },
+    {
+      "path": "src/hooks/useScrollToHash.ts",
+      "sha256": "0c30e488b3997814d366044a2073fc24572b5d59b9fc823d6ee58b6f33799cce",
+      "gitBlob": "8825414498c14bda2727edf0b69af64cbf60f84b"
+    },
+    {
+      "path": "src/lib/consent-store.ts",
+      "sha256": "2616375a673def54b51499fa4caa1e143f6b0ca5e4f558100e7db544fd25ff5c",
+      "gitBlob": "54d9c52d50d3883368c4b39ec3c2af1c507f5f9a"
+    },
+    {
+      "path": "src/proxy.ts",
+      "sha256": "99eb355a8391df70eedb9d19fb8764e83ad7d3810949aca65be823f0829e10cc",
+      "gitBlob": "cacc2c40f024d555336c507448a03290a2ec310a"
+    },
+    {
+      "path": "src/styles/globals.css",
+      "sha256": "19fefaa698de33206e3aa855afcf36ddfaa94197dae060b551468ceffaadafea",
+      "gitBlob": "4bb213ca24fc0ea238218272bbbe719064cecbc6"
+    },
+    {
+      "path": "src/styles/travel-guide.css",
+      "sha256": "1e5c1f1ae9d2397ca4fb42f4ef1b959c94266e5f680747ca836ce49fc55625ff",
+      "gitBlob": "8f3f6cb3bdc6d65d3fd4011df5fb222486cbc984"
+    },
+    {
+      "path": "src/utils/smoothScroll.test.ts",
+      "sha256": "73dd1cbaedd00180125084fab3ff2c1bdd05bcecdff6ec6202f95c1793e79420",
+      "gitBlob": "e71ad053703566ac46a63a57f682e5c9f8ad5dbe"
+    },
+    {
+      "path": "src/utils/smoothScroll.ts",
+      "sha256": "2f683d290820842bf9067cab59d39a8ca8d80319a7cb8dce7a44487d30e2be54",
+      "gitBlob": "b1364ade7e7a6b73edf8a166a81f5024cd04b17b"
+    },
+    {
+      "path": "tailwind.config.js",
+      "sha256": "15674c39813cbe357727d4b43d48c5fa6c69dedcac5725b80576ce9965e80054",
+      "gitBlob": "576145f5af732be9295886f2cb0adb9599e78781"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "reports/lint-delivery.log",
+      "sha256": "0b1b0397d695f76ef2edc399f5760ee361023e2250b49386a35c860de5c2da54"
+    },
+    {
+      "path": "reports/type-check-delivery.log",
+      "sha256": "44742489639e06d76b740f05c4800e09fd255dfd149a6081feaa2ffff18a6a48"
+    },
+    {
+      "path": "reports/tests-delivery.log",
+      "sha256": "3c9ca67b699efc3450ec96e8e6b98027a8ff345814b018e1d5166b49fb17a947"
+    },
+    {
+      "path": "reports/build-final-05.log",
+      "sha256": "08a12e00267c0b666e7fc990cc08d5aa4d74ab39912b0ec5c9d092dcd05ca839"
+    },
+    {
+      "path": "reports/browser-production-05-final.log",
+      "sha256": "b6ac9dbaba0c240def5e2a2fbb4e436fc369f3dc136725241ffe988d1c1167df"
+    },
+    {
+      "path": "reports/editorial-browser-result.json",
+      "sha256": "ef47028f2abedfa4ff0ecb9ca200d9ccb7ca492c28994adaea7c98713cdddebe"
+    },
+    {
+      "path": "reports/consent-ga-red.log",
+      "sha256": "4910116bc986d2fafc918de3020430615afbad31934d6d2b19daa356d35e7138"
+    },
+    {
+      "path": "reports/consent-fallback-and-anchor-red.log",
+      "sha256": "b8a97f0f4631a8e378a3bef95ab4dc073671e32173c760f051e39b6ecdeb4b96"
+    },
+    {
+      "path": "reports/consent-fallback-and-anchor-green.log",
+      "sha256": "273eee32363a2d4ad6a87bd1e9071df5162eae8867ae601bd71e444477d8f19a"
+    },
+    {
+      "path": "reports/dependency-audit-after.json",
+      "sha256": "1171f99ff0bdc747ed901cd33f0f52fc65994c32cbf6a00d58f7969a9aea9bbd"
+    },
+    {
+      "path": "reports/dependency-production-final.json",
+      "sha256": "041007ec6bc2b751edbdcd851490fe8fa0bdf3ee1caaa9cc106b7445622123ea"
+    }
+  ],
+  "captures": [
+    {
+      "path": "reports/production-desktop-es-first-visit.png",
+      "sha256": "0894ad2a545d310f2a9f5bdf4f6d26254bc80c605d749a24b1062613130ed0ee"
+    },
+    {
+      "path": "reports/production-desktop-es.png",
+      "sha256": "f12b27d4d0e4c56204e50f2b519b9b55a17dd3a72968ae47cf74a374166bfd49"
+    },
+    {
+      "path": "reports/production-mobile-es-first-visit.png",
+      "sha256": "1614e5e1aca8487bfb3e42308fae4cc6c6ef05804ad52d326b04dc81edb649d7"
+    },
+    {
+      "path": "reports/production-mobile-es.png",
+      "sha256": "509ddda63af828090ad4d4531cc99047d8a25dbcadda56e739de77eedeac961b"
+    },
+    {
+      "path": "reports/production-mobile-menu.png",
+      "sha256": "949549e80313bb538130621e735638348e0c8a337704c9048591817b5fe26317"
+    },
+    {
+      "path": "reports/production-section-benefits.png",
+      "sha256": "fee319c567a6304237cd668328afa9a90a17075b6ebe662efcc4af71ed0d4293"
+    },
+    {
+      "path": "reports/production-section-how-it-works.png",
+      "sha256": "e0d156b10d052e6507e8a5bbae983ac34336c4eff733ea5be7e04f061d3ebb69"
+    },
+    {
+      "path": "reports/production-section-privacy-trust.png",
+      "sha256": "d3bea1f2437661ddc94682081108404a14321e84e0a317807dd82ec9f737de49"
+    },
+    {
+      "path": "reports/production-section-faq.png",
+      "sha256": "7f18dc112487239f1b7419244156379a559091d8ff14d678641c84f1b678ceb7"
+    },
+    {
+      "path": "reports/production-section-beta.png",
+      "sha256": "28d5cacb7cd7f0d6ceba296a9881b9d8bebcdd9ee958dca17baed971fb9ad230"
+    },
+    {
+      "path": "reports/production-feedback-error.png",
+      "sha256": "4da0ae813134ca560fa048d455e1737c041127ff605c72983c2e1c9834cf8c21"
+    }
+  ]
+}
