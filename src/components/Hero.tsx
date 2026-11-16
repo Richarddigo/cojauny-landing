@@ -36,7 +36,6 @@ const Hero = ({
           <div className="guide-hero-actions">
             <a href="#beta" className="guide-primary-link">
               {copy.primaryCta}
-              <span aria-hidden="true">↗</span>
             </a>
             <a href="#how-it-works" className="guide-text-link">
               {copy.secondaryCta}

@@ -1,24 +1,19 @@
-/* Cojauny is a travel field guide: paper, ink, route lines and quiet typography.
-   Studio and the app keep their own visual systems. No font download is needed. */
+/* Editorial composition using Cojauny's original production brand palette.
+   The navy/blue tokens below come from f7722511; no new brand colors or icons. */
 :root {
-  --guide-paper: #f4f1e8;
-  --guide-sheet: #fcfaf5;
-  --guide-ink: #203d32;
-  --guide-muted: #546458;
-  --guide-line: #c9ccbb;
-  --guide-ochre: #a67836;
+  --guide-bg: var(--bg);
+  --guide-surface: var(--surface);
+  --guide-text: var(--text);
+  --guide-muted: #aab8cc;
+  --guide-line: rgba(255, 255, 255, 0.1);
+  --guide-accent: #93a8ff;
+  --guide-action: #3a59d9;
+  --guide-action-dim: #2e46b0;
+  --guide-action-text: #ffffff;
+  --guide-control-border: #94a3b8;
   --guide-serif: Iowan Old Style, Palatino Linotype, Book Antiqua, Georgia, serif;
-  --bg: #172e26;
-  --surface: #233f34;
-  --surface-2: #365347;
-  --surface-3: #466456;
-  --accent: #d6c28d;
-  --accent-dim: #b59b5c;
-  --muted: #b7c9be;
-  --border: #ffffff24;
   --social-bar-offset: 0rem;
 }
-
 body {
   background: var(--bg);
   font-family: 'Segoe UI', Arial, sans-serif;
@@ -58,7 +53,9 @@ h3 {
   border-radius: 0;
   box-shadow: none;
 }
-.guide-ecosystem-link { border-bottom: 1px solid #b7c9be55; }
+.guide-ecosystem-link {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
 .guide-cookie-banner {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -69,11 +66,11 @@ h3 {
   width: 100%;
   max-width: none;
   padding: 1.25rem clamp(1.25rem, 4.5vw, 3rem);
-  background: var(--guide-paper);
-  color: var(--guide-ink);
+  background: var(--guide-bg);
+  color: var(--guide-text);
   border-radius: 0;
   border: 0;
-  border-top: 1px solid var(--guide-ink);
+  border-top: 1px solid var(--guide-text);
   box-shadow: none;
   backdrop-filter: none;
 }
@@ -82,7 +79,7 @@ h3 {
 }
 .guide-cookie-banner [class*='text-white'],
 .guide-cookie-banner [class*='text-studio-accent'] {
-  color: var(--guide-ink);
+  color: var(--guide-text);
 }
 .guide-cookie-banner > p {
   max-width: 65ch;
@@ -101,21 +98,32 @@ h3 {
 }
 .guide-cookie-banner button {
   min-height: 42px;
-  border: 1px solid var(--guide-ink);
+  border: 1px solid var(--guide-text);
   background: transparent;
-  color: var(--guide-ink);
+  color: var(--guide-text);
   box-shadow: none;
 }
 .guide-cookie-banner button:hover {
-  background: var(--guide-ink);
-  color: var(--guide-sheet);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--guide-text);
+}
+.guide-cookie-banner [class*='text-studio-accent'] {
+  color: var(--guide-accent);
+}
+.guide-cookie-banner button[class*='bg-action'] {
+  background: var(--guide-action);
+  border-color: var(--guide-action);
+  color: var(--guide-action-text);
+}
+.guide-cookie-banner button[class*='bg-action']:hover {
+  background: var(--guide-action-dim);
 }
 .guide-cookie-banner a {
-  color: var(--guide-ink);
+  color: var(--guide-text);
   text-decoration: underline;
 }
 .guide-cookie-banner :is(button, a, input):focus-visible {
-  outline: 2px solid var(--guide-ink);
+  outline: 2px solid var(--guide-text);
   outline-offset: 3px;
   box-shadow: none;
 }
@@ -132,15 +140,17 @@ h3 {
   border: 0;
   animation: none;
 }
-.floating-social-bar svg { animation: none; }
+.floating-social-bar svg {
+  animation: none;
+}
 
 main:has(.landing-guide) {
-  background: var(--guide-paper);
+  background: var(--guide-bg);
   padding-top: 74px;
 }
 .landing-guide {
-  background: var(--guide-paper);
-  color: var(--guide-ink);
+  background: var(--guide-bg);
+  color: var(--guide-text);
   --muted: var(--guide-muted);
 }
 .landing-guide :is(h1, h2, h3) {
@@ -160,7 +170,7 @@ main:has(.landing-guide) {
 }
 .landing-guide [class*='text-white'],
 .landing-guide [class*='text-studio-text'] {
-  color: var(--guide-ink);
+  color: var(--guide-text);
 }
 .landing-guide [class*='text-studio-muted'],
 .landing-guide [class*='text-studio-faint'],
@@ -169,17 +179,10 @@ main:has(.landing-guide) {
   color: var(--guide-muted);
 }
 .landing-guide [class*='text-studio-accent'] {
-  color: var(--guide-ink);
+  color: var(--guide-accent);
 }
 .landing-guide [class*='text-brand-'] {
-  color: var(--guide-ink);
-}
-.landing-guide [class*='text-red-'] {
-  color: #a33728;
-}
-.landing-guide [class*='text-emerald-'],
-.landing-guide [class*='text-green-'] {
-  color: #236042;
+  color: var(--guide-accent);
 }
 .landing-guide [class*='border-white/'] {
   border-color: var(--guide-line);
@@ -191,16 +194,16 @@ main:has(.landing-guide) {
   border-radius: 2px;
 }
 .landing-guide :is(a, button, input, textarea, select):focus-visible {
-  outline: 2px solid var(--guide-ink);
+  outline: 2px solid var(--guide-text);
   outline-offset: 4px;
   box-shadow: none;
 }
 .landing-guide :is(a, button)[class*='bg-action'] {
-  background: var(--guide-ink);
-  color: var(--guide-sheet);
+  background: var(--guide-action);
+  color: var(--guide-action-text);
 }
 .landing-guide :is(a, button)[class*='bg-action']:hover {
-  background: #345a48;
+  background: var(--guide-action-dim);
 }
 .guide-shell {
   width: min(100%, 1248px);
@@ -233,7 +236,7 @@ main:has(.landing-guide) {
   display: flex;
   justify-content: space-between;
   padding-bottom: 1rem;
-  border-bottom: 1px solid var(--guide-ink);
+  border-bottom: 1px solid var(--guide-text);
 }
 .landing-hero {
   overflow: hidden;
@@ -275,21 +278,17 @@ main:has(.landing-guide) {
   align-items: center;
   gap: 2rem;
   padding: 1rem 1.25rem;
-  background: var(--guide-ink);
-  color: var(--guide-sheet);
+  background: var(--guide-action);
+  color: var(--guide-action-text);
   font-size: 0.9rem;
   font-weight: 600;
 }
 .guide-primary-link:hover {
-  background: #345a48;
-}
-.guide-primary-link > span {
-  font-size: 1.35rem;
-  line-height: 1;
+  background: var(--guide-action-dim);
 }
 .guide-text-link {
   padding-block: 0.5rem;
-  border-bottom: 1px solid var(--guide-ink);
+  border-bottom: 1px solid var(--guide-text);
   font-size: 0.85rem;
   font-weight: 600;
 }
@@ -320,13 +319,13 @@ main:has(.landing-guide) {
 .journey-note li > span:first-child {
   font-family: ui-monospace, monospace;
   font-size: 0.7rem;
-  color: #7c673d;
+  color: var(--guide-accent);
 }
 .journey-note li > span:last-child {
   font-size: 0.95rem;
 }
 .journey-note .journey-note-footer {
-  border-top: 1px solid var(--guide-ink);
+  border-top: 1px solid var(--guide-text);
   padding-top: 1rem;
   font-size: 0.75rem;
   color: var(--guide-muted);
@@ -335,7 +334,7 @@ main:has(.landing-guide) {
 .guide-trust-line {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--guide-ink);
+  border-top: 1px solid var(--guide-text);
   border-bottom: 1px solid var(--guide-line);
   margin: 0;
   padding: 0;
@@ -349,7 +348,7 @@ main:has(.landing-guide) {
   font-size: 0.8rem;
 }
 .guide-trust-line > li > span {
-  color: #7c673d;
+  color: var(--guide-accent);
 }
 .guide-capture-row {
   padding-block: 1.75rem;
@@ -360,7 +359,7 @@ main:has(.landing-guide) {
 }
 .landing-guide .guide-signup {
   border: 0;
-  border-left: 3px solid #a9935c;
+  border-left: 3px solid var(--guide-accent);
   padding: 0.25rem 0 0.25rem 1.5rem;
 }
 .guide-signup > label:first-child {
@@ -392,8 +391,8 @@ main:has(.landing-guide) {
   border-radius: 0;
 }
 .guide-airports a:hover {
-  border-color: var(--guide-ink);
-  color: var(--guide-ink);
+  border-color: var(--guide-text);
+  color: var(--guide-text);
   background: none;
 }
 .guide-benefits {
@@ -420,10 +419,10 @@ main:has(.landing-guide) {
 }
 .guide-number {
   padding-top: 0.3rem;
-  color: #7c673d;
+  color: var(--guide-accent);
 }
 .guide-privacy {
-  background: #e3e7d8;
+  background: var(--guide-surface);
   padding-block: 2.5rem;
   border-block: 1px solid var(--guide-line);
 }
@@ -453,7 +452,7 @@ main:has(.landing-guide) {
 }
 .guide-feature-icon {
   display: block;
-  color: var(--guide-ink);
+  color: var(--guide-accent);
 }
 .guide-feature h3 {
   margin-top: 0.9rem;
@@ -477,7 +476,7 @@ main:has(.landing-guide) {
   left: 1rem;
   top: 2rem;
   bottom: 0;
-  border-left: 1px solid #849378;
+  border-left: 1px solid var(--guide-control-border);
 }
 .guide-itinerary li:last-child::before {
   display: none;
@@ -490,7 +489,7 @@ main:has(.landing-guide) {
   height: 2rem;
   display: grid;
   place-items: center;
-  border: 1px solid #849378;
+  border: 1px solid var(--guide-control-border);
   border-radius: 50%;
 }
 .guide-itinerary h3 {
@@ -517,10 +516,10 @@ main:has(.landing-guide) {
   border-top: 1px solid var(--guide-line);
 }
 .landing-guide .demo-card[aria-pressed='true'] > div:last-child {
-  border-top: 3px solid var(--guide-ink);
+  border-top: 3px solid var(--guide-text);
 }
 .landing-guide .demo-card:focus-visible {
-  outline: 2px solid var(--guide-ink);
+  outline: 2px solid var(--guide-text);
   outline-offset: 5px;
 }
 .landing-guide #demo .md\:hidden > div > div:first-child {
@@ -530,8 +529,8 @@ main:has(.landing-guide) {
   padding: 0.75rem 0;
 }
 .landing-guide #demo [class*='bg-action'] {
-  background: var(--guide-ink);
-  color: var(--guide-sheet);
+  background: var(--guide-action);
+  color: var(--guide-action-text);
 }
 .landing-guide .demo-device [class*='text-white'] {
   color: #fff;
@@ -542,7 +541,7 @@ main:has(.landing-guide) {
   margin-top: 3rem;
 }
 .guide-metric {
-  border-top: 1px solid var(--guide-ink);
+  border-top: 1px solid var(--guide-text);
   padding-top: 1.25rem;
 }
 .guide-metric > p:first-child {
@@ -550,7 +549,7 @@ main:has(.landing-guide) {
   font-weight: 400;
 }
 .guide-metric > span {
-  color: var(--guide-ink);
+  color: var(--guide-text);
   font-size: 0.7rem;
 }
 .guide-metric > p:last-child {
@@ -564,11 +563,11 @@ main:has(.landing-guide) {
   border-bottom: 1px solid var(--guide-line);
 }
 .landing-guide .guide-faq-item button:hover {
-  background: #e3e7d855;
+  background: rgba(255, 255, 255, 0.1);
 }
 .guide-integration {
   padding-block: 2rem;
-  border-block: 1px solid var(--guide-ink);
+  border-block: 1px solid var(--guide-text);
 }
 .guide-integration > div {
   display: flex;
@@ -594,40 +593,47 @@ main:has(.landing-guide) {
   box-shadow: none;
   backdrop-filter: none;
   border-radius: 0;
-  background: var(--guide-sheet);
+  background: var(--guide-surface);
 }
-.landing-guide form button[type='submit'] { background: var(--guide-ink); background-image: none; color: var(--guide-sheet); box-shadow: none; }
-.landing-guide form button[type='submit']:hover { background: #345a48; }
+.landing-guide form button[type='submit'] {
+  background: var(--guide-action);
+  background-image: none;
+  color: var(--guide-action-text);
+  box-shadow: none;
+}
+.landing-guide form button[type='submit']:hover {
+  background: var(--guide-action-dim);
+}
 .landing-guide .guide-signup {
   background: none;
 }
 .landing-guide :is(input:not([type='checkbox']):not([type='radio']), textarea, select) {
-  border: 1px solid #849378;
-  background: var(--guide-sheet);
-  color: var(--guide-ink);
+  border: 1px solid var(--guide-control-border);
+  background: var(--guide-surface);
+  color: var(--guide-text);
   box-shadow: none;
 }
 .landing-guide input::placeholder,
 .landing-guide textarea::placeholder {
-  color: #697368;
+  color: var(--guide-muted);
   opacity: 1;
 }
 .landing-guide input[type='checkbox'] {
-  color: var(--guide-ink);
-  border-color: #697368;
+  color: var(--guide-action);
+  border-color: var(--guide-muted);
 }
 .landing-guide form [class*='bg-studio-surface'] {
-  background: #e3e7d8;
+  background: var(--guide-surface);
 }
 .landing-guide #beta > div > p {
   border-radius: 0;
-  background: #e3e7d8;
+  background: var(--guide-surface);
   border: 0;
-  border-left: 3px solid #a9935c;
+  border-left: 3px solid var(--guide-accent);
   text-align: left;
 }
 .landing-guide .fixed.inset-x-0 {
-  background: var(--guide-paper);
+  background: var(--guide-bg);
   border-color: var(--guide-line);
 }
 .landing-guide .fixed.inset-x-0 a {
@@ -693,7 +699,7 @@ main:has(.landing-guide) {
     top: 1rem;
     bottom: auto;
     border-left: 0;
-    border-top: 1px solid #849378;
+    border-top: 1px solid var(--guide-control-border);
   }
   .guide-metrics {
     grid-template-columns: repeat(4, minmax(0, 1fr));

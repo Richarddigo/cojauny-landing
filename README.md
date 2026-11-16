@@ -3,15 +3,16 @@
 Landing multilingüe de Cojauny: información del viaje, acceso beta, soporte y
 documentos legales en español, inglés, alemán y francés.
 
-La dirección editorial utiliza papel cálido, tinta verde, titulares serif del
+La composición editorial conserva los colores y la iconografía originales de
+Cojauny: navy, azul y sus superficies de producción. Utiliza titulares serif del
 sistema y un itinerario con los cinco pasos reales del producto. Las ventajas
 son notas numeradas, las funciones un índice abierto y las preguntas una lista
 de consulta. Los mockups permanecen en la demostración. No se inventan vuelos,
 testimonios, disponibilidad o métricas para decorar la portada.
 
 `src/styles/travel-guide.css` contiene esta composición. Los nombres históricos
-de utilidades `studio` siguen siendo alias compatibles; la landing tiene su
-propia paleta. El menú, los formularios, las traducciones y los enlaces de
+de utilidades `studio` conservan los valores de la versión publicada original.
+El menú, los formularios, las traducciones y los enlaces de
 soporte y privacidad conservan sus contratos. Los desplazamientos respetan
 `prefers-reduced-motion` y los destinos quedan debajo del encabezado fijo.
 
@@ -61,10 +62,14 @@ en ese caso, ni cancelar solicitudes emitidas antes de revocar.
 
 ## Entrega
 
-El recibo en `tareas/evidence/landing-editorial-local-20261116.json` registra los
+El recibo vigente en `tareas/evidence/landing-brand-restoration-local-20261116.json` registra los
 gates, hashes y límites. Las capturas y logs quedan en `reports/`, fuera de Git.
 Los formularios del recorrido local usan respuestas interceptadas: no prueban
 la entrega real de correo ni el backend de producción.
+
+El recibo editorial anterior documenta el primer candidato. La instrucción del
+propietario de conservar la marca original sustituye su propuesta de color;
+se mantienen la composición y sus correcciones funcionales.
 
 Esta entrega es local. No incluye despliegue, cambios de Vercel, activación de
 tags, push, PR, merge o ejecución de automatizaciones alojadas. Se conserva

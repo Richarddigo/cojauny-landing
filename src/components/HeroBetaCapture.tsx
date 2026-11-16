@@ -113,7 +113,7 @@ export default function HeroBetaCapture({ locale, copy, betaCopy }: HeroBetaCapt
               siteKey={TURNSTILE_SITE_KEY}
               onSuccess={setTurnstileToken}
               onExpire={() => setTurnstileToken('')}
-              options={{ theme: 'light', size: 'compact' }}
+              options={{ theme: 'dark', size: 'compact' }}
             />
           </div>
         )}
