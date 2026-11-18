@@ -396,7 +396,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                     <button
                         type="submit"
                         disabled={submitting}
-                        className="inline-flex w-full items-center justify-center rounded-xl bg-action px-6 py-4 text-base font-bold text-white shadow-lg shadow-brand-500/25 transition-all duration-200 hover:bg-brand-600 hover:scale-[1.02] hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-brand-500/20 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:scale-100"
+                        className="guide-form-submit inline-flex w-full items-center justify-center bg-action px-6 py-4 text-base font-semibold text-white transition-colors disabled:cursor-not-allowed disabled:opacity-70"
                     >
                         {submitting ? `${resolvedCopy.submit}...` : resolvedCopy.submit}
                     </button>

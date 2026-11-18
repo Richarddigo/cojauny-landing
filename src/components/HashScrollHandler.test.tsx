@@ -6,12 +6,14 @@ import HashScrollHandler from './HashScrollHandler';
 
 describe('HashScrollHandler', () => {
     const originalScrollTo = window.scrollTo;
+    const originalMatchMedia = window.matchMedia;
     const originalLocation = window.location;
     let mockScrollTo: jest.Mock;
 
     beforeEach(() => {
         mockScrollTo = jest.fn();
         window.scrollTo = mockScrollTo;
+        window.matchMedia = jest.fn().mockReturnValue({ matches: false });
 
         // Reset hash
         Object.defineProperty(window, 'location', {
@@ -25,6 +27,7 @@ describe('HashScrollHandler', () => {
 
     afterEach(() => {
         window.scrollTo = originalScrollTo;
+        window.matchMedia = originalMatchMedia;
         Object.defineProperty(window, 'location', {
             value: originalLocation,
             writable: true
@@ -70,7 +73,7 @@ describe('HashScrollHandler', () => {
         });
 
         expect(mockScrollTo).toHaveBeenCalledWith(
-            expect.objectContaining({ behavior: 'smooth' })
+            expect.objectContaining({ top: 420, behavior: 'smooth' })
         );
     });
 

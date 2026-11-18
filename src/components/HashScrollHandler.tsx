@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from 'react';
+import { preferredScrollBehavior } from '@/utils/smoothScroll';
 
 const getHeaderOffset = () => {
     const hdr = document.querySelector('header');
@@ -13,10 +14,9 @@ const scrollToId = (id: string) => {
     if (!el) return false;
     const headerHeight = getHeaderOffset();
     const elementTop = el.getBoundingClientRect().top + window.scrollY;
-    const baseOffset = 50;
     const homeAdjustment = id === 'home' ? -80 : 0;
-    const offsetPosition = Math.max(0, elementTop - headerHeight + baseOffset + homeAdjustment);
-    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    const offsetPosition = Math.max(0, elementTop - headerHeight + homeAdjustment);
+    window.scrollTo({ top: offsetPosition, behavior: preferredScrollBehavior() });
     return true;
 };
 

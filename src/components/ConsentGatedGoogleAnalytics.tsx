@@ -3,6 +3,8 @@
 import Script from 'next/script';
 import { useConsent } from '@/hooks/useConsent';
 import { env } from '@/lib/env';
+import { hasAnalyticsConsent } from '@/lib/consent';
+import { readConsent } from '@/lib/consent-store';
 
 /** Loads Google Analytics only after the user accepts analytics cookies. */
 export default function ConsentGatedGoogleAnalytics() {
@@ -13,22 +15,23 @@ export default function ConsentGatedGoogleAnalytics() {
     return null;
   }
 
+  const initialize = () => {
+    if (
+      !hasAnalyticsConsent(readConsent()) ||
+      (window as unknown as Record<string, unknown>)[`ga-disable-${analyticsId}`] === true
+    )
+      return;
+    window.dataLayer ??= [];
+    window.gtag ??= (...args: unknown[]) => window.dataLayer?.push(args);
+    window.gtag('js', new Date());
+    window.gtag('config', analyticsId, { anonymize_ip: true });
+  };
+
   return (
-    <>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${analyticsId}`}
-        strategy="afterInteractive"
-      />
-      <Script id="ga" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
-          gtag('consent', 'update', { analytics_storage: 'granted' });
-          gtag('js', new Date());
-          gtag('config', '${analyticsId}', { anonymize_ip: true });
-        `}
-      </Script>
-    </>
+    <Script
+      src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(analyticsId)}`}
+      strategy="afterInteractive"
+      onReady={initialize}
+    />
   );
 }

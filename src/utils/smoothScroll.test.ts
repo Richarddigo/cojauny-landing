@@ -2,16 +2,19 @@ import { smoothScrollTo } from './smoothScroll';
 
 describe('smoothScrollTo', () => {
     const originalScrollTo = window.scrollTo;
+    const originalMatchMedia = window.matchMedia;
     const mockScrollTo = jest.fn();
 
     beforeEach(() => {
         window.scrollTo = mockScrollTo;
+        window.matchMedia = jest.fn().mockReturnValue({ matches: false });
         mockScrollTo.mockClear();
         document.body.innerHTML = '';
     });
 
     afterEach(() => {
         window.scrollTo = originalScrollTo;
+        window.matchMedia = originalMatchMedia;
     });
 
     it('no hace nada si el elemento no existe', () => {
@@ -72,5 +75,20 @@ describe('smoothScrollTo', () => {
                 behavior: 'smooth'
             })
         );
+    });
+
+    it('evita el desplazamiento animado cuando se solicita movimiento reducido', () => {
+        const target = document.createElement('div');
+        target.id = 'reduced-motion-target';
+        target.getBoundingClientRect = jest.fn().mockReturnValue({ top: 300 });
+        document.body.appendChild(target);
+        const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const matchMedia = jest.spyOn(window, 'matchMedia').mockReturnValue({ ...media, matches: true });
+        try {
+            smoothScrollTo(target.id);
+            expect(mockScrollTo).toHaveBeenCalledWith({ top: 300, behavior: 'auto' });
+        } finally {
+            matchMedia.mockRestore();
+        }
     });
 });
