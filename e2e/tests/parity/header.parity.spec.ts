@@ -1,4 +1,4 @@
-import { expect, test, type Browser } from '@playwright/test';
+import { expect, test, type Browser, type Page } from '@playwright/test';
 
 const TARGETS = [
     {
@@ -30,6 +30,37 @@ function normalizeOverflow(value: string): string {
     return value.trim().replace(/\s+/g, ' ');
 }
 
+async function collectScrolledHeaderMetrics(page: Page, url: string) {
+    const header = page.locator('header');
+    const initialClass = await header.getAttribute('class');
+    await page.evaluate(() => window.scrollTo({ top: 160, behavior: 'instant' }));
+    await expect.poll(() => page.evaluate(() => window.scrollY), {
+        message: `${url}: the viewport scrolls to the header test position`,
+        timeout: 5000,
+    }).toBe(160);
+    await expect(header, `${url}: scrolling applies the scrolled header state`).not.toHaveAttribute('class', initialClass ?? '');
+
+    const metrics = await header.evaluate(async element => {
+        // Flush the changed style so measurements include completed transitions.
+        element.getBoundingClientRect();
+        await Promise.all(element.getAnimations().map(animation => animation.finished));
+        const nav = element.querySelector('nav');
+        if (!(nav instanceof HTMLElement)) throw new Error('Header nav element not found.');
+        return {
+            headerHeight: Math.round(element.getBoundingClientRect().height),
+            navHeight: Math.round(nav.getBoundingClientRect().height),
+        };
+    });
+
+    await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+    await expect.poll(() => page.evaluate(() => window.scrollY), {
+        message: `${url}: the viewport returns to its initial scroll position`,
+        timeout: 5000,
+    }).toBe(0);
+    await expect(header, `${url}: returning to the top restores the initial header state`).toHaveAttribute('class', initialClass ?? '');
+    return metrics;
+}
+
 async function collectDesktopMetrics(browser: Browser, url: string) {
     const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
     const page = await context.newPage();
@@ -38,7 +69,7 @@ async function collectDesktopMetrics(browser: Browser, url: string) {
         await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60_000 });
         await page.waitForSelector('header', { timeout: 30_000 });
 
-        return await page.evaluate(() => {
+        const initial = await page.evaluate(() => {
             const header = document.querySelector('header');
             const nav = document.querySelector('header nav');
             if (!(header instanceof HTMLElement) || !(nav instanceof HTMLElement)) {
@@ -50,6 +81,12 @@ async function collectDesktopMetrics(browser: Browser, url: string) {
                 navHeight: Math.round(nav.getBoundingClientRect().height),
             };
         });
+        const scrolled = await collectScrolledHeaderMetrics(page, url);
+        return {
+            ...initial,
+            scrolledHeaderHeight: scrolled.headerHeight,
+            scrolledNavHeight: scrolled.navHeight,
+        };
     } finally {
         await context.close();
     }
@@ -78,15 +115,16 @@ async function collectMobileMetrics(browser: Browser, url: string) {
                 navHeight: Math.round(nav.getBoundingClientRect().height),
             };
         });
+        const scrolled = await collectScrolledHeaderMetrics(page, url);
 
         await opener.click();
-        await page.waitForTimeout(260);
 
-        const dialog = page.getByRole('dialog').first();
-        await expect(dialog).toHaveAttribute('aria-hidden', 'false');
+        const dialog = page.locator('#__menu_portal [role="dialog"][aria-modal="true"]');
+        await expect(opener, `${url}: metric collection opens the menu`).toHaveAttribute('aria-expanded', 'true');
+        await expect(dialog, `${url}: metric collection shows the controlled modal`).toHaveAttribute('aria-hidden', 'false');
 
         const menuMetrics = await page.evaluate(() => {
-            const dialogEl = document.querySelector('[role="dialog"]');
+            const dialogEl = document.querySelector('#__menu_portal [role="dialog"][aria-modal="true"]');
             if (!(dialogEl instanceof HTMLElement)) {
                 throw new Error('Mobile menu dialog not found.');
             }
@@ -107,14 +145,18 @@ async function collectMobileMetrics(browser: Browser, url: string) {
         });
 
         await page.keyboard.press('Escape');
-        await page.waitForTimeout(320);
+        await expect.poll(
+            () => dialog.evaluateAll(nodes => nodes.every(el => el.getAttribute('aria-hidden') === 'true')),
+            { message: `${url}: metric collection closes or unmounts the menu with Escape`, timeout: 5000 },
+        ).toBe(true);
+        await expect(opener, `${url}: metric collection restores opener focus`).toBeFocused();
 
         const closed = await page.evaluate(() => {
-            const dialogEl = document.querySelector('[role="dialog"]');
+            const dialogEl = document.querySelector('#__menu_portal [role="dialog"][aria-modal="true"]');
             const openerEl = document.querySelector('button[aria-controls="__menu_portal"]');
 
             return {
-                dialogAriaHidden: dialogEl?.getAttribute('aria-hidden') ?? null,
+                dialogClosed: dialogEl === null || dialogEl.getAttribute('aria-hidden') === 'true',
                 openerFocused: openerEl !== null && document.activeElement === openerEl,
                 bodyOverflow: getComputedStyle(document.body).overflow,
             };
@@ -123,12 +165,14 @@ async function collectMobileMetrics(browser: Browser, url: string) {
         return {
             mobileHeaderHeight: base.headerHeight,
             mobileNavHeight: base.navHeight,
+            scrolledMobileHeaderHeight: scrolled.headerHeight,
+            scrolledMobileNavHeight: scrolled.navHeight,
             mobileMenuPanelWidth: menuMetrics.panelWidth,
             scrollbarWidth: menuMetrics.scrollbarWidth,
             scrollbarThumbColor: menuMetrics.scrollbarThumbColor,
             bodyOverflowAfterClose: normalizeOverflow(closed.bodyOverflow),
             openerFocusedAfterClose: closed.openerFocused,
-            dialogAriaHiddenAfterClose: closed.dialogAriaHidden,
+            dialogClosedAfterClose: closed.dialogClosed,
         };
     } finally {
         await context.close();
@@ -158,41 +202,30 @@ async function collectTelemetryReasons(browser: Browser, url: string) {
         const opener = page.locator('button[aria-controls="__menu_portal"]').first();
         await expect(opener).toBeVisible();
 
+        const dialog = page.locator('#__menu_portal [role="dialog"][aria-modal="true"]');
         await opener.click();
-        await page.waitForTimeout(220);
-
-        const dialog = page.getByRole('dialog').first();
-        const isOpenAfterClick = await page.evaluate(() => {
-            const dialogEl = document.querySelector('[role="dialog"]');
-            return dialogEl !== null && dialogEl.getAttribute('aria-hidden') === 'false';
-        });
-        expect(isOpenAfterClick).toBeTruthy();
+        await expect(opener, `${url}: first click expands the menu control`).toHaveAttribute('aria-expanded', 'true');
+        await expect(dialog, `${url}: first click opens the controlled modal`).toHaveAttribute('aria-hidden', 'false');
 
         const overlay = dialog.locator(':scope > div').first();
         await overlay.click();
-        await page.waitForTimeout(220);
-        const isClosedAfterOverlay = await page.evaluate(() => {
-            const dialogEl = document.querySelector('[role="dialog"]');
-            return dialogEl === null || dialogEl.getAttribute('aria-hidden') === 'true';
-        });
-        expect(isClosedAfterOverlay).toBeTruthy();
+        await expect(opener, `${url}: overlay collapses the menu control`).toHaveAttribute('aria-expanded', 'false');
+        await expect.poll(
+            () => dialog.evaluateAll(nodes => nodes.every(el => el.getAttribute('aria-hidden') === 'true')),
+            { message: `${url}: overlay closes or unmounts the controlled modal`, timeout: 5000 },
+        ).toBe(true);
 
         await opener.click();
-        await page.waitForTimeout(220);
-        const isOpenAfterSecondClick = await page.evaluate(() => {
-            const dialogEl = document.querySelector('[role="dialog"]');
-            return dialogEl !== null && dialogEl.getAttribute('aria-hidden') === 'false';
-        });
-        expect(isOpenAfterSecondClick).toBeTruthy();
+        await expect(opener, `${url}: second click expands the menu control`).toHaveAttribute('aria-expanded', 'true');
+        await expect(dialog, `${url}: second click opens the controlled modal`).toHaveAttribute('aria-hidden', 'false');
 
         await page.keyboard.press('Escape');
-        await page.waitForTimeout(220);
-        const isClosedAfterEscape = await page.evaluate(() => {
-            const dialogEl = document.querySelector('[role="dialog"]');
-            return dialogEl === null || dialogEl.getAttribute('aria-hidden') === 'true';
-        });
-        expect(isClosedAfterEscape).toBeTruthy();
-        await expect(opener).toBeFocused();
+        await expect(opener, `${url}: Escape collapses the menu control`).toHaveAttribute('aria-expanded', 'false');
+        await expect.poll(
+            () => dialog.evaluateAll(nodes => nodes.every(el => el.getAttribute('aria-hidden') === 'true')),
+            { message: `${url}: Escape closes or unmounts the controlled modal`, timeout: 5000 },
+        ).toBe(true);
+        await expect(opener, `${url}: Escape restores opener focus`).toBeFocused();
 
         const events = await page.evaluate(() => {
             return (
@@ -222,6 +255,14 @@ test.describe('Header parity cross-project', () => {
                 desktop.navHeight,
                 `${target.name}: desktop nav height must stay aligned with shared contract`,
             ).toBe(EXPECTED.desktopNavHeightPx);
+            expect(
+                desktop.scrolledHeaderHeight,
+                `${target.name}: scrolled desktop header height must stay aligned with shared contract`,
+            ).toBe(EXPECTED.desktopHeaderHeightPx);
+            expect(
+                desktop.scrolledNavHeight,
+                `${target.name}: scrolled desktop nav height must stay aligned with shared contract`,
+            ).toBe(EXPECTED.desktopNavHeightPx);
 
             const mobile = await collectMobileMetrics(browser, target.url);
             expect(
@@ -231,6 +272,14 @@ test.describe('Header parity cross-project', () => {
             expect(
                 mobile.mobileNavHeight,
                 `${target.name}: mobile nav height must stay aligned with shared contract`,
+            ).toBe(EXPECTED.mobileNavHeightPx);
+            expect(
+                mobile.scrolledMobileHeaderHeight,
+                `${target.name}: scrolled mobile header height must stay aligned with shared contract`,
+            ).toBe(EXPECTED.mobileHeaderHeightPx);
+            expect(
+                mobile.scrolledMobileNavHeight,
+                `${target.name}: scrolled mobile nav height must stay aligned with shared contract`,
             ).toBe(EXPECTED.mobileNavHeightPx);
             expect(
                 mobile.mobileMenuPanelWidth,
@@ -253,9 +302,9 @@ test.describe('Header parity cross-project', () => {
                 `${target.name}: menu opener should restore focus after closing with Escape`,
             ).toBeTruthy();
             expect(
-                mobile.dialogAriaHiddenAfterClose,
-                `${target.name}: dialog aria-hidden should be true after close`,
-            ).toBe('true');
+                mobile.dialogClosedAfterClose,
+                `${target.name}: menu should be absent or aria-hidden=true after close`,
+            ).toBeTruthy();
         }
     });
 

@@ -73,7 +73,7 @@ export default function HeroBetaCapture({ locale, copy, betaCopy }: HeroBetaCapt
         onFocus={() => {
           if (!interacted) { setInteracted(true); trackSignupStep('start', 'hero'); }
         }}
-        className="rounded-2xl border border-white/12 bg-studio-surface/95 p-5 shadow-[0_20px_50px_rgba(0,0,0,0.35)] backdrop-blur-md sm:p-6"
+        className="guide-signup border border-white/12 p-5 sm:p-6"
         aria-label={copy.ariaLabel}
       >
         <label htmlFor="hero-beta-email" className="block text-left text-sm font-semibold tracking-tight text-white">{copy.label}</label>

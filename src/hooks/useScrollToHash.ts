@@ -3,6 +3,7 @@
 import { useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import type { Locale } from '@/locales/config';
+import { preferredScrollBehavior } from '@/utils/smoothScroll';
 
 /**
  * Returns a stable `scrollToHash(hrefOrId, opts)` function that:
@@ -22,17 +23,16 @@ export function useScrollToHash(locale: Locale) {
             const element = document.getElementById(targetId);
             if (!element) return false;
             if (isMobile && targetId === 'home') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({ top: 0, behavior: preferredScrollBehavior() });
                 return true;
             }
             const header = document.querySelector('header');
             const headerHeight = header ? header.getBoundingClientRect().height : 0;
             const elementTop = element.getBoundingClientRect().top + window.scrollY;
-            const baseOffset = 50;
             // desktop: -80 nudge for #home; mobile uses early-return above
             const homeAdjustment = targetId === 'home' ? (isMobile ? -20 : -80) : 0;
-            const offsetPosition = Math.max(0, elementTop - headerHeight + baseOffset + homeAdjustment);
-            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            const offsetPosition = Math.max(0, elementTop - headerHeight + homeAdjustment);
+            window.scrollTo({ top: offsetPosition, behavior: preferredScrollBehavior() });
             return true;
         };
 

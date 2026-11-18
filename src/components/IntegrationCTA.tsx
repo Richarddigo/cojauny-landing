@@ -5,43 +5,39 @@ import type { Locale } from '@/locales/config';
 import SectionIntro from '@/components/SectionIntro';
 
 interface IntegrationCTAProps {
-    copy: LandingCopy['ctaStrip'];
-    locale: Locale;
+  copy: LandingCopy['ctaStrip'];
+  locale: Locale;
 }
 
 const IntegrationCTA = ({ copy, locale }: IntegrationCTAProps) => {
-    const href = copy.link.startsWith('/') ? `/${locale}${copy.link}` : copy.link;
+  const href = copy.link.startsWith('/') ? `/${locale}${copy.link}` : copy.link;
 
-    const isInternal = href.startsWith('/');
+  const isInternal = href.startsWith('/');
 
-    return (
-        <div className="overflow-hidden rounded-[3rem] bg-gradient-to-br from-slate-900 via-brand-700 to-slate-900 py-20 px-6 text-white">
-            <div className="relative mx-auto max-w-[1180px] px-6 text-center">
-                <div className="absolute inset-0 -z-10 blur-3xl" aria-hidden>
-                    <div className="mx-auto h-64 w-64 rounded-full bg-brand-400/30" />
-                </div>
-                <SectionIntro title={copy.heading} description={copy.body} tone="light" />
-                <div className="mt-10 flex justify-center">
-                    {isInternal ? (
-                        <Link
-                            href={href}
-                            className="inline-flex items-center justify-center rounded-xl bg-action px-8 py-3 text-base font-semibold text-white transition hover:bg-action-dim"
-                        >
-                            {copy.linkLabel}
-                        </Link>
-                    ) : (
-                        <a
-                            href={href}
-                            className="inline-flex items-center justify-center rounded-xl bg-action px-8 py-3 text-base font-semibold text-white transition hover:bg-action-dim"
-                        >
-                            {copy.linkLabel}
-                        </a>
-                    )}
-                </div>
-            </div>
+  return (
+    <div className="guide-integration">
+      <div>
+        <SectionIntro title={copy.heading} description={copy.body} align="left" />
+        <div className="mt-10 flex justify-center">
+          {isInternal ? (
+            <Link
+              href={href}
+              className="inline-flex items-center justify-center rounded-xl bg-action px-8 py-3 text-base font-semibold text-white transition hover:bg-action-dim"
+            >
+              {copy.linkLabel}
+            </Link>
+          ) : (
+            <a
+              href={href}
+              className="inline-flex items-center justify-center rounded-xl bg-action px-8 py-3 text-base font-semibold text-white transition hover:bg-action-dim"
+            >
+              {copy.linkLabel}
+            </a>
+          )}
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default IntegrationCTA;
-

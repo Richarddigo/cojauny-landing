@@ -42,7 +42,7 @@ const LandingPageContent = ({ copy, locale, common }: LandingPageContentProps) =
     const resolvedCommon = common ?? getCommonCopy(locale);
 
     return (
-        <>
+        <div className="landing-guide">
             <HeroWithVariant
                 hero={copy.hero}
                 heroVariants={copy.heroVariants}
@@ -51,6 +51,7 @@ const LandingPageContent = ({ copy, locale, common }: LandingPageContentProps) =
                 locale={locale}
                 airportsHubTitle={copy.airportsHubTitle}
                 airportsHubAll={copy.airportsHubAll}
+                journeyCopy={copy.workflow}
             />
             <StickyMobileBetaCta locale={locale} label={copy.hero.primaryCta} />
             <div className="cv-auto"><ValuePropsSection copy={copy.value} /></div>
@@ -87,7 +88,7 @@ const LandingPageContent = ({ copy, locale, common }: LandingPageContentProps) =
                     <FeedbackForm locale={locale} />
                 </div>
             </section>
-        </>
+        </div>
     );
 };
 

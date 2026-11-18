@@ -51,7 +51,7 @@ const IPhoneMockup = ({
     const shouldAnimate = animate && !prefersReducedMotion;
 
     return (
-        <div className={`relative aspect-[9/19.5] w-full mx-auto ${className ?? ''}`}>
+        <div className={`demo-device relative aspect-[9/19.5] w-full mx-auto ${className ?? ''}`}>
             <div className="absolute inset-0 z-10 pointer-events-none">
                 <div className="relative h-full w-full rounded-[2rem] md:rounded-[2.5rem] lg:rounded-[3rem] border-[5px] border-slate-900 bg-slate-900 shadow-2xl overflow-hidden">
                     <div className="absolute left-1/2 top-[0.5%] z-20 h-[4%] w-[26%] -translate-x-1/2 rounded-full bg-slate-900" />

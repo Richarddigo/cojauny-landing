@@ -3,9 +3,9 @@ import { getLandingCopy } from '@/locales/copy';
 /* eslint-disable @next/next/no-head-element */
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import { Inter } from 'next/font/google';
 
 import '@/styles/globals.css';
+import '@/styles/travel-guide.css';
 import FloatingSocialBar from '@/components/FloatingSocialBar';
 import ConsentGatedGoogleAnalytics from '@/components/ConsentGatedGoogleAnalytics';
 import GoogleConsentMode from '@/components/GoogleConsentMode';
@@ -13,12 +13,6 @@ import StructuredData from '@/components/StructuredData';
 import { defaultLocale, type Locale } from '@/locales/config';
 import { siteMetadata, ogImages } from '@/lib/site';
 import { buildOrganizationJsonLd, buildWebsiteJsonLd, buildLocaleAlternates } from '@/lib/jsonld';
-
-const inter = Inter({
-    subsets: ['latin'],
-    display: 'optional',
-    variable: '--font-inter'
-});
 
 export const metadata: Metadata = {
     metadataBase: new URL(siteMetadata.url),
@@ -77,7 +71,7 @@ export const metadata: Metadata = {
 
 export default function RootDocument({ children, locale = defaultLocale }: { children: ReactNode; locale?: Locale }) {
     return (
-        <html lang={locale} suppressHydrationWarning className={`${inter.variable}`}>
+        <html lang={locale} suppressHydrationWarning data-scroll-behavior="smooth">
             <head>
                 <link
                     rel="alternate"
@@ -90,8 +84,9 @@ export default function RootDocument({ children, locale = defaultLocale }: { chi
                 <StructuredData id="ld-website" data={buildWebsiteJsonLd(locale)} />
             </head>
             <body className="bg-studio-bg font-sans antialiased text-studio-text" data-prefers-reduced-motion="dynamic">
-                <FloatingSocialBar />
+
                 {children}
+                <FloatingSocialBar />
                 <ConsentGatedGoogleAnalytics />
             </body>
         </html>

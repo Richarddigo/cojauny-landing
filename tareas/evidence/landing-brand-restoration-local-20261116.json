@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-16T07:06:02.4826627+01:00",
+  "status": "LOCAL_BRAND_RESTORATION_PASS",
+  "repository": "Richarddigo/cojauny-landing",
+  "startingLocalCommit": "9a6ea50474e6c15c93e35534f57fa91fd3908dd8",
+  "originalProductionBrand": "f7722511c3a0fa9b46c8e228dc8ff46e97507d00",
+  "instruction": "Conservar logos/iconos y colores principales originales; mantener composición editorial, privacidad y accesibilidad. Sin publicación por este agente.",
+  "changes": [
+    "Restaurados globals.css y tailwind.config.js exactamente a los blobs de producción.",
+    "La composición editorial usa ahora únicamente navy/azules/blancos de la marca original; retirados crema/verde/ocre.",
+    "Retirada la flecha nueva del CTA; activos e iconos originales no modificados. Turnstile vuelve al tema dark original.",
+    "Estados de alerta vuelven a sus colores contextuales originales, conservando contraste."
+  ],
+  "preserved": [
+    "Itinerario/listas/composición editorial y mockups originales de la app",
+    "Lógica de consentimiento/GA, reduced-motion y geometría de primera visita",
+    "Copias y rutas de los cuatro idiomas, soporte y legal",
+    "AGENTS y configuración manual-only; git.deploymentEnabled=false"
+  ],
+  "brandTokenIdentity": [
+    {
+      "path": "src/styles/globals.css",
+      "originalAndCurrentGitBlob": "0b62e78d18bdd20d401b5290bab7ddb5052b0878"
+    },
+    {
+      "path": "tailwind.config.js",
+      "originalAndCurrentGitBlob": "2859244440b34335cd36b2c5b067ebc8c0c0358d"
+    }
+  ],
+  "originalAssetsUnchanged": true,
+  "publicTree": "da020e7a4770de3b57d5289926e846fa58cb693f",
+  "assetsTree": "1fbaabf7e88f0474abe58e6cc50feefb50b68467",
+  "vercelGuard": {
+    "gitBlob": "87056607badcfceb2dddb95864942180b10c438f",
+    "workingTreeSha256": "f40c573515bf21f59846e2d91056a4ab42a2ca4e3174d7a7810a73677e9aa4e1",
+    "deploymentEnabled": false,
+    "unchanged": true
+  },
+  "validation": {
+    "lint": "PASS",
+    "types": "PASS",
+    "unit": {
+      "passed": 218,
+      "suites": 39,
+      "failed": 0,
+      "seconds": 75.85
+    },
+    "build": {
+      "status": "PASS",
+      "buildId": "5ZfYQ1I5UgJcOfK28lSSD",
+      "node": "24.22.3",
+      "next": "16.4.6"
+    },
+    "browser": {
+      "permanentPassed": 13,
+      "permanentFailed": 0,
+      "seconds": 18.8,
+      "additionalPassed": 7,
+      "additionalFailed": 0,
+      "workers": 1
+    },
+    "intermediateFailure": "Primer probe6PASS/1FAIL: override claro global afectaba AlertMessage bg-red50/text-red900, contraste2.52:1. Retirados overrides de estados; comprobación completa repetida PASS sin relajar aserciones.",
+    "diffCheck": "PASS"
+  },
+  "preview": {
+    "url": "http://localhost:3000/es",
+    "toolSession": 79029,
+    "bind": "localhost",
+    "allTestBrowsersClosed": true
+  },
+  "previousReceipt": "tareas/evidence/landing-editorial-local-20261116.json es histórico; su propuesta de color queda sustituida por esta restauración, sin retirar sus fixes.",
+  "limits": [
+    "Validación local Chromium y viewports móviles; no se acredita hardware Safari/iOS/Android.",
+    "Formularios con respuestas interceptadas, sin correo ni backend real.",
+    "Sin SDK de Google real, nuevas etiquetas/IDs ni cambios de analítica.",
+    "Sin push, PR, merge, despliegue, cambios Vercel ni ejecución alojada."
+  ],
+  "sourceFiles": [
+    {
+      "path": "README.md",
+      "sha256": "188aff98a3b47453b7a6d7c45a86e50030b65d08ccb20e8d9f21e2bf045f90bd",
+      "gitBlob": "bab15786a22e4242eb5ee7724fc95574e44047d5"
+    },
+    {
+      "path": "src/components/Hero.tsx",
+      "sha256": "099161080c3e83d00bec7a4e33fd24ec5dbccf4a743877819126f4c414719b28",
+      "gitBlob": "0d9e67f7ace4754999235d81324ab4bc35ce3b0c"
+    },
+    {
+      "path": "src/components/HeroBetaCapture.tsx",
+      "sha256": "b1302fa6995de2f94e57ad10d0bcd88c329bcfb0dc23aaec98b89dfef442d1b1",
+      "gitBlob": "67d4c45fa873da02362ededc8da99a130ce2e8c8"
+    },
+    {
+      "path": "src/styles/globals.css",
+      "sha256": "ec9ad240ad0670327c8d8f465130d608aa8adeb0f83a85c2c2f9445b4f61b1a1",
+      "gitBlob": "0b62e78d18bdd20d401b5290bab7ddb5052b0878"
+    },
+    {
+      "path": "src/styles/travel-guide.css",
+      "sha256": "79196537f823ad6fc27761c62572309ff2a8a4a573d7808e44dc6a59cc6d4487",
+      "gitBlob": "6ededea0ca1dd37b2213a6e6d1169871a080b656"
+    },
+    {
+      "path": "tailwind.config.js",
+      "sha256": "f6a9a893379b4db16f65b3429dd6142825ef6bcbc445503628f328c4b2f00d44",
+      "gitBlob": "2859244440b34335cd36b2c5b067ebc8c0c0358d"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "reports/brand-restore-lint.log",
+      "sha256": "0b1b0397d695f76ef2edc399f5760ee361023e2250b49386a35c860de5c2da54"
+    },
+    {
+      "path": "reports/brand-restore-types.log",
+      "sha256": "44742489639e06d76b740f05c4800e09fd255dfd149a6081feaa2ffff18a6a48"
+    },
+    {
+      "path": "reports/brand-restore-tests.log",
+      "sha256": "0306ef2ed1f75bc47880b82e84ac5656f985689c20d4af04e6260044d61b33ed"
+    },
+    {
+      "path": "reports/brand-restoration/build-final.log",
+      "sha256": "99f4fc88abadc9587d8dcb28ec0047d8bd0ae568f0f3a5814c22e72381adc0d8"
+    },
+    {
+      "path": "reports/brand-restoration/browser-final.log",
+      "sha256": "e335340ac355212062b75926b1326f6c0a76083e30439fd0560f63f0ccf0d092"
+    },
+    {
+      "path": "reports/brand-restoration/editorial-browser-result.json",
+      "sha256": "6321c7e31c462bd60fbf634aaf34dca970c8795195ea68835cf01c078b1ea134"
+    },
+    {
+      "path": "reports/brand-restoration/probe-first.log",
+      "sha256": "36f6d2d449a62a8035619fa4a829fbfdadbe5049b179e0ddcf5bffeaaa2175e1"
+    }
+  ],
+  "captures": [
+    {
+      "path": "reports/brand-restoration/production-desktop-es-first-visit.png",
+      "sha256": "d1709ac470734483d21e0dd397163bac5ba54a4082e31e64a17be07a9eae9981"
+    },
+    {
+      "path": "reports/brand-restoration/production-desktop-es.png",
+      "sha256": "905f37b8d5086e7ce2875f1725060f42b58a62ab2267edda9c22ce466b141652"
+    },
+    {
+      "path": "reports/brand-restoration/production-mobile-es-first-visit.png",
+      "sha256": "f65aa031224c5e01b0222515c042b6583ee5b141b0dbd2e6468c5471fa3c36d8"
+    },
+    {
+      "path": "reports/brand-restoration/production-mobile-es.png",
+      "sha256": "96ce93ca58afcc37c83f8e0e4e17c8f4af8a8dd995d95509663187dce1b4b8b2"
+    }
+  ]
+}
