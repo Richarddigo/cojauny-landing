@@ -1,0 +1,82 @@
+[
+  {
+    "lang": "en",
+    "mail": [
+      "mailto:support@cojauny.com"
+    ],
+    "navLinks": [
+      "/legal/privacy",
+      "/account-deletion",
+      "/legal/terms",
+      "/legal/faq"
+    ],
+    "url": "https://cojauny.com/support",
+    "expectedLinks": [
+      "/legal/privacy",
+      "/account-deletion",
+      "/legal/terms",
+      "/legal/faq"
+    ],
+    "status": "PASS"
+  },
+  {
+    "lang": "es",
+    "mail": [
+      "mailto:support@cojauny.com"
+    ],
+    "navLinks": [
+      "/es/legal/privacy",
+      "/es/account-deletion",
+      "/es/legal/terms",
+      "/es/legal/faq"
+    ],
+    "url": "https://cojauny.com/es/support",
+    "expectedLinks": [
+      "/es/legal/privacy",
+      "/es/account-deletion",
+      "/es/legal/terms",
+      "/es/legal/faq"
+    ],
+    "status": "PASS"
+  },
+  {
+    "lang": "de",
+    "mail": [
+      "mailto:support@cojauny.com"
+    ],
+    "navLinks": [
+      "/de/legal/privacy",
+      "/de/account-deletion",
+      "/de/legal/terms",
+      "/de/legal/faq"
+    ],
+    "url": "https://cojauny.com/de/support",
+    "expectedLinks": [
+      "/de/legal/privacy",
+      "/de/account-deletion",
+      "/de/legal/terms",
+      "/de/legal/faq"
+    ],
+    "status": "PASS"
+  },
+  {
+    "lang": "fr",
+    "mail": [
+      "mailto:support@cojauny.com"
+    ],
+    "navLinks": [
+      "/fr/legal/privacy",
+      "/fr/account-deletion",
+      "/fr/legal/terms",
+      "/fr/legal/faq"
+    ],
+    "url": "https://cojauny.com/fr/support",
+    "expectedLinks": [
+      "/fr/legal/privacy",
+      "/fr/account-deletion",
+      "/fr/legal/terms",
+      "/fr/legal/faq"
+    ],
+    "status": "PASS"
+  }
+]

@@ -50,8 +50,8 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
     const resolvedCopy = copy ?? messages.landing.forms.beta;
     const resolvedReferralPanelCopy = referralPanelCopy ?? messages.landing.referralPanel;
     const common = getCommonCopy(locale);
-    const [referralCode, setReferralCode] = useState<string | undefined>();
-    const [form, setForm] = useState<BetaSignupFormState>(() => buildInitialState(locale, referralCode));
+    const referralCode = useRef<string | undefined>(undefined);
+    const [form, setForm] = useState<BetaSignupFormState>(() => buildInitialState(locale));
     const [submitting, setSubmitting] = useState(false);
     const [success, setSuccess] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
@@ -75,7 +75,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
         const refParam = urlParams.get('ref');
 
         if (refParam && /^[A-Za-z0-9]{1,32}$/.test(refParam)) {
-            setReferralCode(refParam);
+            referralCode.current = refParam;
             // Track visit
             apiClient.referral.visit(refParam).catch(() => { });
         }
@@ -123,7 +123,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
         // Convert empty strings to undefined for optional fields
         const formData = {
             ...form,
-            referralCode,
+            referralCode: referralCode.current,
             country: form.country || undefined,
             homeAirport: form.homeAirport || undefined,
             useCase: form.useCase || undefined,
@@ -141,7 +141,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
             trackBetaSignup('full_form');
             setReferralLink(result.referralLink || '');
             setUserEmail(form.email);
-            setForm(buildInitialState(locale, referralCode));
+            setForm(buildInitialState(locale, referralCode.current));
             setSuccess(resolvedCopy.success);
             setShowReferralPanel(true);
             turnstileRef.current?.reset();
@@ -396,7 +396,7 @@ const BetaSignupForm = ({ copy, referralPanelCopy, locale }: BetaSignupFormProps
                     <button
                         type="submit"
                         disabled={submitting}
-                        className="inline-flex w-full items-center justify-center rounded-xl bg-action px-6 py-4 text-base font-bold text-white shadow-lg shadow-brand-500/25 transition-all duration-200 hover:bg-brand-600 hover:scale-[1.02] hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-brand-500/20 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:scale-100"
+                        className="guide-form-submit inline-flex w-full items-center justify-center bg-action px-6 py-4 text-base font-semibold text-white transition-colors disabled:cursor-not-allowed disabled:opacity-70"
                     >
                         {submitting ? `${resolvedCopy.submit}...` : resolvedCopy.submit}
                     </button>

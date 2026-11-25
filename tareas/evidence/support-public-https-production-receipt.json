@@ -1,0 +1,947 @@
+{
+  "date": "2026-11-06",
+  "timezone": "Europe/Berlin",
+  "declaredSource": "f7722511c3a0fa9b46c8e228dc8ff46e97507d00",
+  "declaredDeploymentId": "5fiwgF3CpGe1jUFBgQjKePDHY6TM",
+  "environment": "Production",
+  "sourceAttribution": "Exact source and deployment association verified by parent Vercel GUI; public HTTP alone does not attest a Git commit.",
+  "status": "SUPPORT_HTTP_CONTRACT_NOT_ACCREDITED",
+  "elapsedSeconds": 4.535,
+  "getCount": 16,
+  "globalGetLimit": 16,
+  "normalCAAndHostnameValidation": true,
+  "cookiesOrAuthorizationSent": false,
+  "retryCount": 0,
+  "sanitization": "Only hashes of script/style/noscript-free public HTML projection are persisted; no rawHTML, cookie values, tokens or session data.",
+  "results": [
+    {
+      "kind": "support",
+      "locale": "en",
+      "result": "FAIL",
+      "checks": {
+        "http200": true,
+        "htmlLang": true,
+        "oneExpectedH1": true,
+        "publicSupportMailto": false,
+        "canonical": true,
+        "fourExpectedNavigationLinks": false
+      },
+      "htmlLang": "en",
+      "h1": [
+        "Cojauny app support"
+      ],
+      "canonical": [
+        "https://cojauny.com/support"
+      ],
+      "expectedNavigationPaths": [
+        "/legal/privacy",
+        "/account-deletion",
+        "/legal/terms",
+        "/legal/faq"
+      ],
+      "initialURL": "https://www.cojauny.com/support",
+      "finalURL": "https://cojauny.com/support",
+      "status": 200,
+      "redirectHops": 1,
+      "hops": [
+        {
+          "requestOrdinal": 1,
+          "url": "https://www.cojauny.com/support",
+          "status": 307,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html",
+            "server": "Vercel",
+            "strict-transport-security": "max-age=63072000"
+          },
+          "tls": {
+            "normalCAAndHostnameValidation": true,
+            "hostname": "www.cojauny.com",
+            "version": "TLSv1.3",
+            "leafCertificateSha256": "db1ffb87617f3545f94d13d38813854bf231041704cc56868ef36b6d5678e10f",
+            "certificateNotAfter": "Dec 22 00:45:17 2026 GMT"
+          },
+          "bodyBytes": 141,
+          "redirectLocation": "https://cojauny.com/support"
+        },
+        {
+          "requestOrdinal": 2,
+          "url": "https://cojauny.com/support",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "permissions-policy": "camera=(), microphone=(), geolocation=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "server": "Vercel",
+            "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "SAMEORIGIN",
+            "x-vercel-cache": "HIT"
+          },
+          "tls": {
+            "normalCAAndHostnameValidation": true,
+            "hostname": "cojauny.com",
+            "version": "TLSv1.3",
+            "leafCertificateSha256": "4c8413c84a20aa899f2df422f178906a07108e7b6cba5179e9fce15b50e92ef1",
+            "certificateNotAfter": "Dec 25 14:43:08 2026 GMT"
+          },
+          "bodyBytes": 57492,
+          "sanitizedHTMLSha256": "91f5d3959cbf4420f8685ed61b77f081d5e5f99d82c1c94618f75ab087ad387e"
+        }
+      ]
+    },
+    {
+      "kind": "support",
+      "locale": "es",
+      "result": "FAIL",
+      "checks": {
+        "http200": true,
+        "htmlLang": true,
+        "oneExpectedH1": true,
+        "publicSupportMailto": false,
+        "canonical": true,
+        "fourExpectedNavigationLinks": false
+      },
+      "htmlLang": "es",
+      "h1": [
+        "Soporte de la app Cojauny"
+      ],
+      "canonical": [
+        "https://cojauny.com/es/support"
+      ],
+      "expectedNavigationPaths": [
+        "/es/legal/privacy",
+        "/es/account-deletion",
+        "/es/legal/terms",
+        "/es/legal/faq"
+      ],
+      "initialURL": "https://www.cojauny.com/es/support",
+      "finalURL": "https://cojauny.com/es/support",
+      "status": 200,
+      "redirectHops": 1,
+      "hops": [
+        {
+          "requestOrdinal": 3,
+          "url": "https://www.cojauny.com/es/support",
+          "status": 307,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html",
+            "server": "Vercel",
+            "strict-transport-security": "max-age=63072000"
+          },
+          "tls": {
+            "normalCAAndHostnameValidation": true,
+            "hostname": "www.cojauny.com",
+            "version": "TLSv1.3",
+            "leafCertificateSha256": "db1ffb87617f3545f94d13d38813854bf231041704cc56868ef36b6d5678e10f",
+            "certificateNotAfter": "Dec 22 00:45:17 2026 GMT"
+          },
+          "bodyBytes": 144,
+          "redirectLocation": "https://cojauny.com/es/support"
+        },
+        {
+          "requestOrdinal": 4,
+          "url": "https://cojauny.com/es/support",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "permissions-policy": "camera=(), microphone=(), geolocation=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "server": "Vercel",
+            "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "SAMEORIGIN",
+            "x-vercel-cache": "HIT"
+          },
+          "tls": {
+            "normalCAAndHostnameValidation": true,
+            "hostname": "cojauny.com",
+            "version": "TLSv1.3",
+            "leafCertificateSha256": "4c8413c84a20aa899f2df422f178906a07108e7b6cba5179e9fce15b50e92ef1",
+            "certificateNotAfter": "Dec 25 14:43:08 2026 GMT"
+          },
+          "bodyBytes": 57539,
+          "sanitizedHTMLSha256": "2b785a4a7b4ac12a6e4d84e2de3012f3ba7a7b6b8fa8f7684d84231eedf9677d"
+        }
+      ]
+    },
+    {
+      "kind": "support",
+      "locale": "de",
+      "result": "FAIL",
+      "checks": {
+        "http200": true,
+        "htmlLang": true,
+        "oneExpectedH1": true,
+        "publicSupportMailto": false,
+        "canonical": true,
+        "fourExpectedNavigationLinks": false
+      },
+      "htmlLang": "de",
+      "h1": [
+        "Support für die Cojauny-App"
+      ],
+      "canonical": [
+        "https://cojauny.com/de/support"
+      ],
+      "expectedNavigationPaths": [
+        "/de/legal/privacy",
+        "/de/account-deletion",
+        "/de/legal/terms",
+        "/de/legal/faq"
+      ],
+      "initialURL": "https://www.cojauny.com/de/support",
+      "finalURL": "https://cojauny.com/de/support",
+      "status": 200,
+      "redirectHops": 1,
+      "hops": [
+        {
+          "requestOrdinal": 5,
+          "url": "https://www.cojauny.com/de/support",
+          "status": 307,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html",
+            "server": "Vercel",
+            "strict-transport-security": "max-age=63072000"
+          },
+          "tls": {
+            "normalCAAndHostnameValidation": true,
+            "hostname": "www.cojauny.com",
+            "version": "TLSv1.3",
+            "leafCertificateSha256": "db1ffb87617f3545f94d13d38813854bf231041704cc56868ef36b6d5678e10f",
+            "certificateNotAfter": "Dec 22 00:45:17 2026 GMT"
+          },
+          "bodyBytes": 144,
+          "redirectLocation": "https://cojauny.com/de/support"
+        },
+        {
+          "requestOrdinal": 6,
+          "url": "https://cojauny.com/de/support",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "permissions-policy": "camera=(), microphone=(), geolocation=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "server": "Vercel",
+            "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "SAMEORIGIN",
+            "x-vercel-cache": "HIT"
+          },
+          "tls": {
+            "normalCAAndHostnameValidation": true,
+            "hostname": "cojauny.com",
+            "version": "TLSv1.3",
+            "leafCertificateSha256": "4c8413c84a20aa899f2df422f178906a07108e7b6cba5179e9fce15b50e92ef1",
+            "certificateNotAfter": "Dec 25 14:43:08 2026 GMT"
+          },
+          "bodyBytes": 57945,
+          "sanitizedHTMLSha256": "f66bb5fd758fba8bc00237894cb8ff62cc9f0b8fb6d150e26b94f295395f5578"
+        }
+      ]
+    },
+    {
+      "kind": "support",
+      "locale": "fr",
+      "result": "FAIL",
+      "checks": {
+        "http200": true,
+        "htmlLang": true,
+        "oneExpectedH1": true,
+        "publicSupportMailto": false,
+        "canonical": true,
+        "fourExpectedNavigationLinks": false
+      },
+      "htmlLang": "fr",
+      "h1": [
+        "Assistance pour l’application Cojauny"
+      ],
+      "canonical": [
+        "https://cojauny.com/fr/support"
+      ],
+      "expectedNavigationPaths": [
+        "/fr/legal/privacy",
+        "/fr/account-deletion",
+        "/fr/legal/terms",
+        "/fr/legal/faq"
+      ],
+      "initialURL": "https://www.cojauny.com/fr/support",
+      "finalURL": "https://cojauny.com/fr/support",
+      "status": 200,
+      "redirectHops": 1,
+      "hops": [
+        {
+          "requestOrdinal": 7,
+          "url": "https://www.cojauny.com/fr/support",
+          "status": 307,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html",
+            "server": "Vercel",
+            "strict-transport-security": "max-age=63072000"
+          },
+          "tls": {
+            "normalCAAndHostnameValidation": true,
+            "hostname": "www.cojauny.com",
+            "version": "TLSv1.3",
+            "leafCertificateSha256": "db1ffb87617f3545f94d13d38813854bf231041704cc56868ef36b6d5678e10f",
+            "certificateNotAfter": "Dec 22 00:45:17 2026 GMT"
+          },
+          "bodyBytes": 144,
+          "redirectLocation": "https://cojauny.com/fr/support"
+        },
+        {
+          "requestOrdinal": 8,
+          "url": "https://cojauny.com/fr/support",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "permissions-policy": "camera=(), microphone=(), geolocation=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "server": "Vercel",
+            "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "SAMEORIGIN",
+            "x-vercel-cache": "HIT"
+          },
+          "tls": {
+            "normalCAAndHostnameValidation": true,
+            "hostname": "cojauny.com",
+            "version": "TLSv1.3",
+            "leafCertificateSha256": "4c8413c84a20aa899f2df422f178906a07108e7b6cba5179e9fce15b50e92ef1",
+            "certificateNotAfter": "Dec 25 14:43:08 2026 GMT"
+          },
+          "bodyBytes": 59111,
+          "sanitizedHTMLSha256": "03d3eecde80af15478a558ecbe7ab4765c64a8b0a2d2becdd1bc26237faf6ad5"
+        }
+      ]
+    },
+    {
+      "kind": "apexHTTPSAndRedirect",
+      "result": "OBSERVED_IN_SUPPORT_CHAIN",
+      "url": "https://cojauny.com/support"
+    },
+    {
+      "kind": "destinationSample",
+      "locale": "en",
+      "path": "/account-deletion",
+      "result": "PASS",
+      "checks": {
+        "http200": true,
+        "htmlLang": true,
+        "hasH1": true
+      },
+      "initialURL": "https://www.cojauny.com/account-deletion",
+      "finalURL": "https://cojauny.com/account-deletion",
+      "status": 200,
+      "redirectHops": 1,
+      "hops": [
+        {
+          "requestOrdinal": 9,
+          "url": "https://www.cojauny.com/account-deletion",
+          "status": 307,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html",
+            "server": "Vercel",
+            "strict-transport-security": "max-age=63072000"
+          },
+          "tls": {
+            "normalCAAndHostnameValidation": true,
+            "hostname": "www.cojauny.com",
+            "version": "TLSv1.3",
+            "leafCertificateSha256": "db1ffb87617f3545f94d13d38813854bf231041704cc56868ef36b6d5678e10f",
+            "certificateNotAfter": "Dec 22 00:45:17 2026 GMT"
+          },
+          "bodyBytes": 150,
+          "redirectLocation": "https://cojauny.com/account-deletion"
+        },
+        {
+          "requestOrdinal": 10,
+          "url": "https://cojauny.com/account-deletion",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "permissions-policy": "camera=(), microphone=(), geolocation=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "server": "Vercel",
+            "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "SAMEORIGIN",
+            "x-vercel-cache": "PRERENDER"
+          },
+          "tls": {
+            "normalCAAndHostnameValidation": true,
+            "hostname": "cojauny.com",
+            "version": "TLSv1.3",
+            "leafCertificateSha256": "4c8413c84a20aa899f2df422f178906a07108e7b6cba5179e9fce15b50e92ef1",
+            "certificateNotAfter": "Dec 25 14:43:08 2026 GMT"
+          },
+          "bodyBytes": 54926,
+          "sanitizedHTMLSha256": "4041990cc188bde4717bb0b80e4dbf34e1756ac98f5e918cc8453c78408d8d7f"
+        }
+      ]
+    },
+    {
+      "kind": "destinationSample",
+      "locale": "es",
+      "path": "/account-deletion",
+      "result": "PASS",
+      "checks": {
+        "http200": true,
+        "htmlLang": true,
+        "hasH1": true
+      },
+      "initialURL": "https://www.cojauny.com/es/account-deletion",
+      "finalURL": "https://cojauny.com/es/account-deletion",
+      "status": 200,
+      "redirectHops": 1,
+      "hops": [
+        {
+          "requestOrdinal": 11,
+          "url": "https://www.cojauny.com/es/account-deletion",
+          "status": 307,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html",
+            "server": "Vercel",
+            "strict-transport-security": "max-age=63072000"
+          },
+          "tls": {
+            "normalCAAndHostnameValidation": true,
+            "hostname": "www.cojauny.com",
+            "version": "TLSv1.3",
+            "leafCertificateSha256": "db1ffb87617f3545f94d13d38813854bf231041704cc56868ef36b6d5678e10f",
+            "certificateNotAfter": "Dec 22 00:45:17 2026 GMT"
+          },
+          "bodyBytes": 153,
+          "redirectLocation": "https://cojauny.com/es/account-deletion"
+        },
+        {
+          "requestOrdinal": 12,
+          "url": "https://cojauny.com/es/account-deletion",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "permissions-policy": "camera=(), microphone=(), geolocation=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "server": "Vercel",
+            "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "SAMEORIGIN",
+            "x-vercel-cache": "PRERENDER"
+          },
+          "tls": {
+            "normalCAAndHostnameValidation": true,
+            "hostname": "cojauny.com",
+            "version": "TLSv1.3",
+            "leafCertificateSha256": "4c8413c84a20aa899f2df422f178906a07108e7b6cba5179e9fce15b50e92ef1",
+            "certificateNotAfter": "Dec 25 14:43:08 2026 GMT"
+          },
+          "bodyBytes": 55464,
+          "sanitizedHTMLSha256": "3a92607c695a9fc148ab1e19c56d281e4e3a66e0592cc75f203d5dd02c0e494a"
+        }
+      ]
+    },
+    {
+      "kind": "destinationSample",
+      "locale": "de",
+      "path": "/account-deletion",
+      "result": "PASS",
+      "checks": {
+        "http200": true,
+        "htmlLang": true,
+        "hasH1": true
+      },
+      "initialURL": "https://www.cojauny.com/de/account-deletion",
+      "finalURL": "https://cojauny.com/de/account-deletion",
+      "status": 200,
+      "redirectHops": 1,
+      "hops": [
+        {
+          "requestOrdinal": 13,
+          "url": "https://www.cojauny.com/de/account-deletion",
+          "status": 307,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html",
+            "server": "Vercel",
+            "strict-transport-security": "max-age=63072000"
+          },
+          "tls": {
+            "normalCAAndHostnameValidation": true,
+            "hostname": "www.cojauny.com",
+            "version": "TLSv1.3",
+            "leafCertificateSha256": "db1ffb87617f3545f94d13d38813854bf231041704cc56868ef36b6d5678e10f",
+            "certificateNotAfter": "Dec 22 00:45:17 2026 GMT"
+          },
+          "bodyBytes": 153,
+          "redirectLocation": "https://cojauny.com/de/account-deletion"
+        },
+        {
+          "requestOrdinal": 14,
+          "url": "https://cojauny.com/de/account-deletion",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "permissions-policy": "camera=(), microphone=(), geolocation=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "server": "Vercel",
+            "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "SAMEORIGIN",
+            "x-vercel-cache": "PRERENDER"
+          },
+          "tls": {
+            "normalCAAndHostnameValidation": true,
+            "hostname": "cojauny.com",
+            "version": "TLSv1.3",
+            "leafCertificateSha256": "4c8413c84a20aa899f2df422f178906a07108e7b6cba5179e9fce15b50e92ef1",
+            "certificateNotAfter": "Dec 25 14:43:08 2026 GMT"
+          },
+          "bodyBytes": 54730,
+          "sanitizedHTMLSha256": "f7861ed541f70f03fc5fcbe621948e6d7026bc511af4b8ae6ed800a31e212a7e"
+        }
+      ]
+    },
+    {
+      "kind": "destinationSample",
+      "locale": "fr",
+      "path": "/account-deletion",
+      "result": "PASS",
+      "checks": {
+        "http200": true,
+        "htmlLang": true,
+        "hasH1": true
+      },
+      "initialURL": "https://www.cojauny.com/fr/account-deletion",
+      "finalURL": "https://cojauny.com/fr/account-deletion",
+      "status": 200,
+      "redirectHops": 1,
+      "hops": [
+        {
+          "requestOrdinal": 15,
+          "url": "https://www.cojauny.com/fr/account-deletion",
+          "status": 307,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html",
+            "server": "Vercel",
+            "strict-transport-security": "max-age=63072000"
+          },
+          "tls": {
+            "normalCAAndHostnameValidation": true,
+            "hostname": "www.cojauny.com",
+            "version": "TLSv1.3",
+            "leafCertificateSha256": "db1ffb87617f3545f94d13d38813854bf231041704cc56868ef36b6d5678e10f",
+            "certificateNotAfter": "Dec 22 00:45:17 2026 GMT"
+          },
+          "bodyBytes": 153,
+          "redirectLocation": "https://cojauny.com/fr/account-deletion"
+        },
+        {
+          "requestOrdinal": 16,
+          "url": "https://cojauny.com/fr/account-deletion",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "permissions-policy": "camera=(), microphone=(), geolocation=()",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "server": "Vercel",
+            "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+            "x-content-type-options": "nosniff",
+            "x-frame-options": "SAMEORIGIN",
+            "x-vercel-cache": "PRERENDER"
+          },
+          "tls": {
+            "normalCAAndHostnameValidation": true,
+            "hostname": "cojauny.com",
+            "version": "TLSv1.3",
+            "leafCertificateSha256": "4c8413c84a20aa899f2df422f178906a07108e7b6cba5179e9fce15b50e92ef1",
+            "certificateNotAfter": "Dec 25 14:43:08 2026 GMT"
+          },
+          "bodyBytes": 55375,
+          "sanitizedHTMLSha256": "9f69069bcccf1317e3decb3f4ef1f5ff4f17e37e94ed260c2d2e8241bb55a2c2"
+        }
+      ]
+    }
+  ],
+  "exchanges": [
+    {
+      "requestOrdinal": 1,
+      "url": "https://www.cojauny.com/support",
+      "status": 307,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/html",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000"
+      },
+      "tls": {
+        "normalCAAndHostnameValidation": true,
+        "hostname": "www.cojauny.com",
+        "version": "TLSv1.3",
+        "leafCertificateSha256": "db1ffb87617f3545f94d13d38813854bf231041704cc56868ef36b6d5678e10f",
+        "certificateNotAfter": "Dec 22 00:45:17 2026 GMT"
+      },
+      "bodyBytes": 141,
+      "redirectLocation": "https://cojauny.com/support"
+    },
+    {
+      "requestOrdinal": 2,
+      "url": "https://cojauny.com/support",
+      "status": 200,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-vercel-cache": "HIT"
+      },
+      "tls": {
+        "normalCAAndHostnameValidation": true,
+        "hostname": "cojauny.com",
+        "version": "TLSv1.3",
+        "leafCertificateSha256": "4c8413c84a20aa899f2df422f178906a07108e7b6cba5179e9fce15b50e92ef1",
+        "certificateNotAfter": "Dec 25 14:43:08 2026 GMT"
+      },
+      "bodyBytes": 57492,
+      "sanitizedHTMLSha256": "91f5d3959cbf4420f8685ed61b77f081d5e5f99d82c1c94618f75ab087ad387e"
+    },
+    {
+      "requestOrdinal": 3,
+      "url": "https://www.cojauny.com/es/support",
+      "status": 307,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/html",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000"
+      },
+      "tls": {
+        "normalCAAndHostnameValidation": true,
+        "hostname": "www.cojauny.com",
+        "version": "TLSv1.3",
+        "leafCertificateSha256": "db1ffb87617f3545f94d13d38813854bf231041704cc56868ef36b6d5678e10f",
+        "certificateNotAfter": "Dec 22 00:45:17 2026 GMT"
+      },
+      "bodyBytes": 144,
+      "redirectLocation": "https://cojauny.com/es/support"
+    },
+    {
+      "requestOrdinal": 4,
+      "url": "https://cojauny.com/es/support",
+      "status": 200,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-vercel-cache": "HIT"
+      },
+      "tls": {
+        "normalCAAndHostnameValidation": true,
+        "hostname": "cojauny.com",
+        "version": "TLSv1.3",
+        "leafCertificateSha256": "4c8413c84a20aa899f2df422f178906a07108e7b6cba5179e9fce15b50e92ef1",
+        "certificateNotAfter": "Dec 25 14:43:08 2026 GMT"
+      },
+      "bodyBytes": 57539,
+      "sanitizedHTMLSha256": "2b785a4a7b4ac12a6e4d84e2de3012f3ba7a7b6b8fa8f7684d84231eedf9677d"
+    },
+    {
+      "requestOrdinal": 5,
+      "url": "https://www.cojauny.com/de/support",
+      "status": 307,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/html",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000"
+      },
+      "tls": {
+        "normalCAAndHostnameValidation": true,
+        "hostname": "www.cojauny.com",
+        "version": "TLSv1.3",
+        "leafCertificateSha256": "db1ffb87617f3545f94d13d38813854bf231041704cc56868ef36b6d5678e10f",
+        "certificateNotAfter": "Dec 22 00:45:17 2026 GMT"
+      },
+      "bodyBytes": 144,
+      "redirectLocation": "https://cojauny.com/de/support"
+    },
+    {
+      "requestOrdinal": 6,
+      "url": "https://cojauny.com/de/support",
+      "status": 200,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-vercel-cache": "HIT"
+      },
+      "tls": {
+        "normalCAAndHostnameValidation": true,
+        "hostname": "cojauny.com",
+        "version": "TLSv1.3",
+        "leafCertificateSha256": "4c8413c84a20aa899f2df422f178906a07108e7b6cba5179e9fce15b50e92ef1",
+        "certificateNotAfter": "Dec 25 14:43:08 2026 GMT"
+      },
+      "bodyBytes": 57945,
+      "sanitizedHTMLSha256": "f66bb5fd758fba8bc00237894cb8ff62cc9f0b8fb6d150e26b94f295395f5578"
+    },
+    {
+      "requestOrdinal": 7,
+      "url": "https://www.cojauny.com/fr/support",
+      "status": 307,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/html",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000"
+      },
+      "tls": {
+        "normalCAAndHostnameValidation": true,
+        "hostname": "www.cojauny.com",
+        "version": "TLSv1.3",
+        "leafCertificateSha256": "db1ffb87617f3545f94d13d38813854bf231041704cc56868ef36b6d5678e10f",
+        "certificateNotAfter": "Dec 22 00:45:17 2026 GMT"
+      },
+      "bodyBytes": 144,
+      "redirectLocation": "https://cojauny.com/fr/support"
+    },
+    {
+      "requestOrdinal": 8,
+      "url": "https://cojauny.com/fr/support",
+      "status": 200,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-vercel-cache": "HIT"
+      },
+      "tls": {
+        "normalCAAndHostnameValidation": true,
+        "hostname": "cojauny.com",
+        "version": "TLSv1.3",
+        "leafCertificateSha256": "4c8413c84a20aa899f2df422f178906a07108e7b6cba5179e9fce15b50e92ef1",
+        "certificateNotAfter": "Dec 25 14:43:08 2026 GMT"
+      },
+      "bodyBytes": 59111,
+      "sanitizedHTMLSha256": "03d3eecde80af15478a558ecbe7ab4765c64a8b0a2d2becdd1bc26237faf6ad5"
+    },
+    {
+      "requestOrdinal": 9,
+      "url": "https://www.cojauny.com/account-deletion",
+      "status": 307,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/html",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000"
+      },
+      "tls": {
+        "normalCAAndHostnameValidation": true,
+        "hostname": "www.cojauny.com",
+        "version": "TLSv1.3",
+        "leafCertificateSha256": "db1ffb87617f3545f94d13d38813854bf231041704cc56868ef36b6d5678e10f",
+        "certificateNotAfter": "Dec 22 00:45:17 2026 GMT"
+      },
+      "bodyBytes": 150,
+      "redirectLocation": "https://cojauny.com/account-deletion"
+    },
+    {
+      "requestOrdinal": 10,
+      "url": "https://cojauny.com/account-deletion",
+      "status": 200,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-vercel-cache": "PRERENDER"
+      },
+      "tls": {
+        "normalCAAndHostnameValidation": true,
+        "hostname": "cojauny.com",
+        "version": "TLSv1.3",
+        "leafCertificateSha256": "4c8413c84a20aa899f2df422f178906a07108e7b6cba5179e9fce15b50e92ef1",
+        "certificateNotAfter": "Dec 25 14:43:08 2026 GMT"
+      },
+      "bodyBytes": 54926,
+      "sanitizedHTMLSha256": "4041990cc188bde4717bb0b80e4dbf34e1756ac98f5e918cc8453c78408d8d7f"
+    },
+    {
+      "requestOrdinal": 11,
+      "url": "https://www.cojauny.com/es/account-deletion",
+      "status": 307,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/html",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000"
+      },
+      "tls": {
+        "normalCAAndHostnameValidation": true,
+        "hostname": "www.cojauny.com",
+        "version": "TLSv1.3",
+        "leafCertificateSha256": "db1ffb87617f3545f94d13d38813854bf231041704cc56868ef36b6d5678e10f",
+        "certificateNotAfter": "Dec 22 00:45:17 2026 GMT"
+      },
+      "bodyBytes": 153,
+      "redirectLocation": "https://cojauny.com/es/account-deletion"
+    },
+    {
+      "requestOrdinal": 12,
+      "url": "https://cojauny.com/es/account-deletion",
+      "status": 200,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-vercel-cache": "PRERENDER"
+      },
+      "tls": {
+        "normalCAAndHostnameValidation": true,
+        "hostname": "cojauny.com",
+        "version": "TLSv1.3",
+        "leafCertificateSha256": "4c8413c84a20aa899f2df422f178906a07108e7b6cba5179e9fce15b50e92ef1",
+        "certificateNotAfter": "Dec 25 14:43:08 2026 GMT"
+      },
+      "bodyBytes": 55464,
+      "sanitizedHTMLSha256": "3a92607c695a9fc148ab1e19c56d281e4e3a66e0592cc75f203d5dd02c0e494a"
+    },
+    {
+      "requestOrdinal": 13,
+      "url": "https://www.cojauny.com/de/account-deletion",
+      "status": 307,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/html",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000"
+      },
+      "tls": {
+        "normalCAAndHostnameValidation": true,
+        "hostname": "www.cojauny.com",
+        "version": "TLSv1.3",
+        "leafCertificateSha256": "db1ffb87617f3545f94d13d38813854bf231041704cc56868ef36b6d5678e10f",
+        "certificateNotAfter": "Dec 22 00:45:17 2026 GMT"
+      },
+      "bodyBytes": 153,
+      "redirectLocation": "https://cojauny.com/de/account-deletion"
+    },
+    {
+      "requestOrdinal": 14,
+      "url": "https://cojauny.com/de/account-deletion",
+      "status": 200,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-vercel-cache": "PRERENDER"
+      },
+      "tls": {
+        "normalCAAndHostnameValidation": true,
+        "hostname": "cojauny.com",
+        "version": "TLSv1.3",
+        "leafCertificateSha256": "4c8413c84a20aa899f2df422f178906a07108e7b6cba5179e9fce15b50e92ef1",
+        "certificateNotAfter": "Dec 25 14:43:08 2026 GMT"
+      },
+      "bodyBytes": 54730,
+      "sanitizedHTMLSha256": "f7861ed541f70f03fc5fcbe621948e6d7026bc511af4b8ae6ed800a31e212a7e"
+    },
+    {
+      "requestOrdinal": 15,
+      "url": "https://www.cojauny.com/fr/account-deletion",
+      "status": 307,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/html",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000"
+      },
+      "tls": {
+        "normalCAAndHostnameValidation": true,
+        "hostname": "www.cojauny.com",
+        "version": "TLSv1.3",
+        "leafCertificateSha256": "db1ffb87617f3545f94d13d38813854bf231041704cc56868ef36b6d5678e10f",
+        "certificateNotAfter": "Dec 22 00:45:17 2026 GMT"
+      },
+      "bodyBytes": 153,
+      "redirectLocation": "https://cojauny.com/fr/account-deletion"
+    },
+    {
+      "requestOrdinal": 16,
+      "url": "https://cojauny.com/fr/account-deletion",
+      "status": 200,
+      "headers": {
+        "cache-control": "public, max-age=0, must-revalidate",
+        "content-type": "text/html; charset=utf-8",
+        "permissions-policy": "camera=(), microphone=(), geolocation=()",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Vercel",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-vercel-cache": "PRERENDER"
+      },
+      "tls": {
+        "normalCAAndHostnameValidation": true,
+        "hostname": "cojauny.com",
+        "version": "TLSv1.3",
+        "leafCertificateSha256": "4c8413c84a20aa899f2df422f178906a07108e7b6cba5179e9fce15b50e92ef1",
+        "certificateNotAfter": "Dec 25 14:43:08 2026 GMT"
+      },
+      "bodyBytes": 55375,
+      "sanitizedHTMLSha256": "9f69069bcccf1317e3decb3f4ef1f5ff4f17e37e94ed260c2d2e8241bb55a2c2"
+    }
+  ],
+  "limits": [
+    "Only public GET requests, no forms or application operations.",
+    "Navigation href existence verified in all4locales; destinationHTTP sampling is bounded separately and is not full legal-route coverage.",
+    "No legal-compliance, mailbox-delivery, native-app acceptance or task053closure claim.",
+    "No Vercel mutation/build/retry, CI or GitHub job executed by this checker."
+  ]
+}

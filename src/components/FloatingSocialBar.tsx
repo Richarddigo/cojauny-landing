@@ -4,6 +4,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { socialLinks } from './SocialLinks';
 import { locales } from '@/locales/config';
 import { getCommonCopy } from '@/locales/common';
+import { preferredScrollBehavior } from '@/utils/smoothScroll';
 
 /**
  * Barra vertical flotante fija con iconos de redes sociales + enlace al formulario beta.
@@ -24,7 +25,7 @@ export default function FloatingSocialBar() {
         if (isMainPage) {
             const betaSection = document.getElementById('beta');
             if (betaSection) {
-                betaSection.scrollIntoView({ behavior: 'smooth' });
+                betaSection.scrollIntoView({ behavior: preferredScrollBehavior() });
             }
         } else {
             router.push(`${currentLocale === 'en' ? '/' : '/' + currentLocale}#beta`);

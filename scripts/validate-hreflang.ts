@@ -10,7 +10,7 @@ import { locales, type Locale } from '../src/locales/config';
 const base = process.env.SEO_CHECK_BASE_URL ?? 'http://localhost:3000';
 const pages: Array<{locale: Locale; path: string; expected: ReturnType<typeof buildLocaleAlternates>}> = [];
 for (const locale of locales) {
-  for (const path of ['', '/blog', '/airports', '/legal/privacy', '/legal/cookies', '/legal/terms', '/legal/faq', '/legal/subprocessors', '/legal/acceptable-use', '/account-deletion', '/docs/sdk-plan']) {
+  for (const path of ['', '/blog', '/airports', '/support', '/legal/privacy', '/legal/cookies', '/legal/terms', '/legal/faq', '/legal/subprocessors', '/legal/acceptable-use', '/account-deletion', '/docs/sdk-plan']) {
     pages.push({ locale, path, expected: buildLocaleAlternates(locale, path) });
   }
   for (const airport of featuredAirports.slice(0, 3)) {

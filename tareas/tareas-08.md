@@ -136,3 +136,19 @@ sin redirects/contenttypes y matriz App/Universal Links física
 auth/signedout/cold/warm: **NOT RUN**. AppIDprefix firmado/Playcertificate siguen
 pendientes. No deployment,100%,merge ni nueva disponibilidad de app acreditados.
 **20%,C2/C3 abiertos**.
+
+## Integración con main del 25 de noviembre de 2026
+
+La rama de la PR17 incorpora `e6a6a97` de main en local. El bypass exacto de
+`/invite` y `/apple-app-site-association` vive en `src/proxy.ts`, que conserva
+la navegación por idioma y el consentimiento del sitio para las demás rutas.
+Se mantienen las dos copias AASA y el rewrite interno de invitaciones. Se
+quita la cabecera específica de Android para el `assetlinks.json` ausente.
+
+La observación pública del 25 de noviembre verifica TLS. `cojauny.com`
+devuelve 404 HTML en `/invite`, ambas rutas AASA y
+`/.well-known/assetlinks.json`. `www.cojauny.com` devuelve 307. Los checks
+del candidato anterior `77550bd` conservan su alcance histórico. En esta
+integración sólo se revisaron el diff y los destinos de los archivos. Queda
+pendiente validar el candidato integrado y verificar la identidad Apple
+firmada, el certificado Play y la recepción nativa. **20%, C2/C3 abiertos**.

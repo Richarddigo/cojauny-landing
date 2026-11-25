@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from 'react';
+import { useRef, useState, type ChangeEvent, type FormEvent } from 'react';
 import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile';
 import { ChatBubbleBottomCenterTextIcon, LightBulbIcon, BriefcaseIcon } from '@heroicons/react/24/outline';
 import AlertMessage from '@/components/AlertMessage';
@@ -47,11 +47,13 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
     const [interacted, setInteracted] = useState(false);
     const MAX_CHARS = 1000;
 
-    useEffect(() => {
+    // Reset before rendering a different locale, without an intermediate frame
+    // containing the previous locale's input and status messages.
+    if (form.locale !== locale) {
         setForm(buildInitialState(locale));
         setSuccess(null);
         setError(null);
-    }, [locale]);
+    }
 
     const handleChange = (
         event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -261,7 +263,7 @@ const FeedbackForm = ({ copy, locale }: FeedbackFormProps) => {
                 <button
                     type="submit"
                     disabled={submitting}
-                    className="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-brand-600 to-brand-500 px-6 py-4 text-base font-bold text-white shadow-lg shadow-brand-600/25 transition-all duration-200 hover:scale-[1.02] hover:shadow-xl hover:shadow-brand-600/35 focus:outline-none focus:ring-4 focus:ring-brand-500/20 disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:scale-100"
+                    className="guide-form-submit inline-flex w-full items-center justify-center bg-action px-6 py-4 text-base font-semibold text-white transition-colors disabled:cursor-not-allowed disabled:opacity-70"
                 >
                     {submitting ? (
                         <>

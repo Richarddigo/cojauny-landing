@@ -1,0 +1,41 @@
+{
+  "task": "Landing support publication dependency correction (app00/053 support dependency, not a new app taskID or completion)",
+  "recordedAtUTC": "2026-11-06T13:58:57.124062+00:00",
+  "baseMain": "7c45ef0713a5fb785b17f8c77b76cf63544b326b",
+  "reviewedSupportSource": "3522ee3fb8a572d7ca2fbfe1be80097575920188",
+  "sourceFrozenPriorPreview": "EdHsduiuZbczVW1CjkFfzdDDWWqc",
+  "cause": "Fresh production audit found Nextcritical/Undicihigh/Zodhigh; old3522 production promotion was not started. No incident or reachability claim.",
+  "scope": [
+    "Official compatibleNextsecurityrelease>=16.4.1 and matchedESLintconfig ifnecessary",
+    "OfficialUndici7.30.1 or later compatible7.x through its realparent, no new overrides",
+    "OfficialZod>=4.6.6 with preserved validation/env/routes/UIcontracts and negative regressions",
+    "No app or billing changes, mail transmission, secrets, new collection, native APIs, automatic deployment or security-policy downgrade"
+  ],
+  "criteria": [
+    {
+      "id": "C1",
+      "weight": 45,
+      "text": "Official graph resolves with reviewedmanifest+lock, production audit has no reported critical/high advisories from the identified chains; no vendor patches or hidden exceptions."
+    },
+    {
+      "id": "C2",
+      "weight": 20,
+      "text": "All affected validation/env/API and form consumers preserve approved behavior, real errors and privacy under meaningful focused tests, with lint/type checks."
+    },
+    {
+      "id": "C3",
+      "weight": 25,
+      "text": "One exact-source local Next build and affected four-locale browser checks pass with recorded inputs, outputs and no broad unrelated suites."
+    },
+    {
+      "id": "C4",
+      "weight": 10,
+      "text": "Documentation and actual remote diff/delivery verified; any public deployment needs fresh exact-source execution authorization and liveHTTPS evidence before this publication dependency is complete."
+    }
+  ],
+  "allCriteriaCredits": 0,
+  "risk": "High: public site security+Zodmajor. Preserve endpoints, accepted input intent, error privacy, env guarantees and deployment rollback. Exact old3522 execution approval does not cover newsource.",
+  "validationPlan": "First compare officialmanifests/advisories and resolve minimalparents isolated; then lockedinstall, focusedschema/env/API/form tests and applicable lint/type checks. AskROOTbeforeexpensiveNext/browser job. No GitHubActions/Codemagic/Vercelrun.",
+  "rollback": "Retain frozen3522 branch and current production deployment. Do not blindly rollback a newly published security fix to affected versions; retain patched dependency lines and compatibility adapters.",
+  "boundaries": "Existing app120-IDcriteria remain intact and sourcegraphCore4 unchanged; support page/synthetic tests do not close app053C3listing/legal orC4submittedbinary."
+}

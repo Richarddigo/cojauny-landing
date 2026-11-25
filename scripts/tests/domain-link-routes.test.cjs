@@ -31,12 +31,12 @@ function load(relative) {
   vm.runInThisContext(`(function(require,module,exports,__filename,__dirname){${code}\n})`, { filename })(localRequire, module, module.exports, filename, path.dirname(filename));
   return module.exports;
 }
-const middleware = load('middleware.ts').default;
+const proxy = load('src/proxy.ts').default;
 const config = load('next.config.mjs').default;
 for (const pathname of ['/invite', '/apple-app-site-association']) {
   test(`raw route ${pathname} bypasses locale and cookies with consent granted`, () => {
     const request = new NextRequest(`https://cojauny.com${pathname}?code=a%2Bb`, { headers: { 'accept-language': 'de', cookie: 'cojauny_analytics_consent=granted' } });
-    const response = middleware(request);
+    const response = proxy(request);
     assert.equal(response.status, 200);
     assert.equal(response.headers.get('x-middleware-next'), '1');
     assert.equal(response.headers.get('location'), null);
@@ -46,7 +46,7 @@ for (const pathname of ['/invite', '/apple-app-site-association']) {
 }
 for (const pathname of ['/support', '/invite-other']) {
   test(`ordinary route ${pathname} keeps real next-intl locale routing`, () => {
-    const response = middleware(new NextRequest(`https://cojauny.com${pathname}`, { headers: { 'accept-language': 'de' } }));
+    const response = proxy(new NextRequest(`https://cojauny.com${pathname}`, { headers: { 'accept-language': 'de' } }));
     assert.equal(response.status, 307);
     assert.equal(new URL(response.headers.get('location')).pathname, `/de${pathname}`);
   });
@@ -65,7 +65,7 @@ test('invite internal rewrite preserves opaque query using actual Next destinati
 });
 test('all raw association paths have JSON headers and global security headers remain', async () => {
   const rows = await config.headers();
-  for (const source of ['/.well-known/assetlinks.json', '/.well-known/apple-app-site-association', '/apple-app-site-association']) {
+  for (const source of ['/.well-known/apple-app-site-association', '/apple-app-site-association']) {
     const row = rows.find(row => row.source === source);
     assert.ok(row, source);
     assert.equal(row.headers.find(header => header.key === 'Content-Type')?.value, 'application/json');

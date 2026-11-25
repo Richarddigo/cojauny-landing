@@ -1,0 +1,142 @@
+{
+  "review": "Independent read-only review of required legacy root-layout repair",
+  "date": "2026-11-06",
+  "timezone": "Europe/Berlin",
+  "source": "acfb61e8bde3fbcb37c25ff1fdced1a915b0788f",
+  "sourceBefore": "84c311cd3796a5913b2d9fed934b88c82de8ac6c",
+  "planBeforeSource": "9b3bd0c",
+  "status": "CLEAR_SOURCE_DELTA_C3_RUNTIME_PENDING",
+  "actionableFindings": [],
+  "reasoning": [
+    "No global app/layout was introduced. Existing [locale] root remains separate; legal and docs layouts are siblings, not ancestors of the localized layout.",
+    "Both new roots reuse the same existing RootDocument, which supplies one html/body and defaults to the same defaultLocale used by all seven redirects.",
+    "Metadata is re-exported through Next Metadata API; existing handler-specific metadata remains available. No new metadata policy, canonical target, status or redirect text is introduced.",
+    "RootDocument client children need no NextIntlClientProvider: FloatingSocialBar resolves copy from pathname and common dictionary; analytics remains consent-gated. Their implementations are unchanged.",
+    "The minimal four-file delta leaves middleware/routing, frozen support handlers, package security pins and automation permissions byte-identical."
+  ],
+  "parentReportedEvidenceNotRerun": {
+    "focusedSSRAndRedirectCases": 9,
+    "pass": 9,
+    "fail": 0,
+    "lintFiles": 3,
+    "typeCheck": "PASS",
+    "fixtureOnlyAliasErrorCorrected": true
+  },
+  "firstBuildEvidencePreserved": {
+    "source": "84c311cd3796a5913b2d9fed934b88c82de8ac6c",
+    "status": "FAIL",
+    "missingRoots": 7,
+    "next": "16.4.5",
+    "sourcePlanReceipt": "tareas/evidence/support-legacy-root-layout-plan-20261106.json"
+  },
+  "nextBuildBrowserStatus": "PENDING parent exact-source validation; reviewer executed none",
+  "app053GlobalAcceptance": false,
+  "C4PublicationAcceptance": false,
+  "unchangedFiles": [
+    {
+      "path": "src/app/legal/cookies/page.tsx",
+      "gitBlobBytesUnchanged": true,
+      "sha256CanonicalLf": "6b26a13e678385d62f2d251c00eebdab5fb3acc7608e32b13e2e6795616afa83"
+    },
+    {
+      "path": "src/app/legal/faq/page.tsx",
+      "gitBlobBytesUnchanged": true,
+      "sha256CanonicalLf": "2263258aacf7af4fe00bd3f97dfa29ea7d7626bb63f766a758227e865e638dfe"
+    },
+    {
+      "path": "src/app/legal/privacidad/page.tsx",
+      "gitBlobBytesUnchanged": true,
+      "sha256CanonicalLf": "70100fc9a54fec3e7aa6727407acd62ee3d111c113420bbaa594e54f6ebe5cf0"
+    },
+    {
+      "path": "src/app/legal/subprocesadores/page.tsx",
+      "gitBlobBytesUnchanged": true,
+      "sha256CanonicalLf": "58a32c842f8cd4d09924f4ccfb3036daf8cd4ef16144e7048249b32114de3402"
+    },
+    {
+      "path": "src/app/legal/terminos/page.tsx",
+      "gitBlobBytesUnchanged": true,
+      "sha256CanonicalLf": "c0318a773af3db1340b1cea01750f154c2ed8e45f8a97f47c5b3884943c0e026"
+    },
+    {
+      "path": "src/app/legal/uso-aceptable/page.tsx",
+      "gitBlobBytesUnchanged": true,
+      "sha256CanonicalLf": "1899cbfce7572b7ca4b7f1f10ba44255d6720e9555f36105e64a4a17f613345d"
+    },
+    {
+      "path": "src/app/docs/sdk-plan/page.tsx",
+      "gitBlobBytesUnchanged": true,
+      "sha256CanonicalLf": "d024efe18a868bfbe1e137441376759450d5e28401cde7e7e04e8625a19733cb"
+    },
+    {
+      "path": "src/app/[locale]/layout.tsx",
+      "gitBlobBytesUnchanged": true,
+      "sha256CanonicalLf": "5ca3ed078bd0c54040af43f960e5afc5f16d0bbb1583d064513ed802d8df4980"
+    },
+    {
+      "path": "src/components/RootDocument.tsx",
+      "gitBlobBytesUnchanged": true,
+      "sha256CanonicalLf": "afec434a8534b5d9ab2563c12c4e7ce024afc245b6eb1c4b8fa5ecf514b2d9ac"
+    },
+    {
+      "path": "src/locales/config.ts",
+      "gitBlobBytesUnchanged": true,
+      "sha256CanonicalLf": "b80fb8e03fbcb9e1e62e4f50c078cf4dab3a145f7590b27991760e1b5ba56944"
+    },
+    {
+      "path": "src/i18n/routing.ts",
+      "gitBlobBytesUnchanged": true,
+      "sha256CanonicalLf": "7c09661dccb8e1aea5060c3404247a36b512bd05a2f437794b2d47614508189e"
+    },
+    {
+      "path": "middleware.ts",
+      "gitBlobBytesUnchanged": true,
+      "sha256CanonicalLf": "c64af5a8bcc3ad4bce1a03edf99d6a71ae0c6657256efa08d8e328d2e666abed"
+    },
+    {
+      "path": "package.json",
+      "gitBlobBytesUnchanged": true,
+      "sha256CanonicalLf": "a0521e74054967b6151461144a85a3bb3807a35671ffff40421f928ed6fd8787"
+    },
+    {
+      "path": "package-lock.json",
+      "gitBlobBytesUnchanged": true,
+      "sha256CanonicalLf": "86df70f732a1bb4d35bf63f2e5a10cc8230d414453a7e1d7b58ed1c046906a95"
+    },
+    {
+      "path": ".npmrc",
+      "gitBlobBytesUnchanged": true,
+      "sha256CanonicalLf": "5602bb233ec1478ef60941257e98dfa8a86c9aeb22a4705aeb4beb15605e8a40"
+    },
+    {
+      "path": "next.config.mjs",
+      "gitBlobBytesUnchanged": true,
+      "sha256CanonicalLf": "e6458f4f20892d1c9a04caef09f4da301478e62e297bf36817c3f28a85585993"
+    },
+    {
+      "path": "vercel.json",
+      "gitBlobBytesUnchanged": true,
+      "sha256CanonicalLf": "b2ca3677c797f6006864cf604eee0ad15713d2d2b5f8b8b8b6f74a683095f428"
+    },
+    {
+      "path": "AGENTS.md",
+      "gitBlobBytesUnchanged": true,
+      "sha256CanonicalLf": "6e526589b3cecdd08d1f513a21b3e4b1a9a245952704f4d1e5cce73a753a656a"
+    }
+  ],
+  "newLayouts": [
+    {
+      "path": "src/app/legal/layout.tsx",
+      "sha256CanonicalLf": "6ced54049859a6d4f330f4b05cc323d6c6145d513137a71ae8b25e4781e15176"
+    },
+    {
+      "path": "src/app/docs/layout.tsx",
+      "sha256CanonicalLf": "1d7420978963fe5984368dd94231485d375360b51b86ef22142c543afc880f6d"
+    }
+  ],
+  "officialReference": {
+    "url": "https://nextjs.org/docs/app/api-reference/file-conventions/layout#root-layout",
+    "fact": "Root layouts define html/body; omitting app/layout allows separate root layouts in subdirectories. Dynamic locale roots are supported; crossing roots causes a full page load."
+  },
+  "reviewerActions": "Immutable Git/source/document reads and external JSON evidence only; no source edits, tests, builds, installs, analyzers, jobs, account changes or publication."
+}

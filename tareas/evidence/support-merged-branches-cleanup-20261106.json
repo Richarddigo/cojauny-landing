@@ -1,0 +1,41 @@
+{
+  "atUTC": "2026-11-06T15:28:50.310936+00:00",
+  "repo": "Richarddigo/cojauny-landing",
+  "main": "b53e0353aee72d0368a42fe541c64f084209130c",
+  "results": [
+    {
+      "pr": 19,
+      "reviewedHead": "41f3998c2d6a2dbe4f1a8fd0e2e294b518b26eb1",
+      "mergeCommit": "b53e0353aee72d0368a42fe541c64f084209130c",
+      "branch": "task/025-support-safe-dependencies-20261106",
+      "mainAncestryVerified": true,
+      "remoteWasAlreadyAbsent": false,
+      "remoteAbsentVerified": true,
+      "localAbsentVerified": true,
+      "cleanWorktreeRetainedDetached": "work/landing-support-security-20261106",
+      "filesystemDeleted": false
+    },
+    {
+      "pr": 18,
+      "reviewedHead": "3522ee3fb8a572d7ca2fbfe1be80097575920188",
+      "mergeCommit": "fe6d27e820f4807d535ce393ad9a68237bf795da",
+      "branch": "task/025-support-main-candidate-20261106",
+      "mainAncestryVerified": true,
+      "remoteWasAlreadyAbsent": false,
+      "remoteAbsentVerified": true,
+      "localAbsentVerified": true,
+      "cleanWorktreeRetainedDetached": "work/landing-support-main-20261106",
+      "filesystemDeleted": false
+    }
+  ],
+  "remoteBranchesAbsent": 2,
+  "localBranchesAbsent": 2,
+  "unownedWorktreesTouched": false,
+  "userMainWorktreeUpdated": false,
+  "actionsEnabled": false,
+  "hooks": [],
+  "vercelGitDeploymentEnabled": false,
+  "newHostedExecutionsByCleanup": 0,
+  "app053PercentUnchanged": 50,
+  "supportScopePercent": 100
+}

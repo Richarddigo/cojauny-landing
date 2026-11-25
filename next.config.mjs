@@ -44,7 +44,7 @@ const associationHeaders = [
 ];
 
 const cacheHeaders = [
-    ...['/.well-known/assetlinks.json', '/.well-known/apple-app-site-association', '/apple-app-site-association'].map(source => ({
+    ...['/.well-known/apple-app-site-association', '/apple-app-site-association'].map(source => ({
         source,
         headers: associationHeaders
     })),

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
@@ -176,7 +176,7 @@ const Header = ({ locale, copy, common }: HeaderProps) => {
 
     return (
         <>
-            <header className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${headerStateClass}`}>
+            <header className={`guide-header fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${headerStateClass}`}>
                 <nav className="container-studio flex items-center justify-between py-4" aria-label={resolvedCommon.navAriaLabel}>
                     <div className="flex lg:flex-1">
                         <a href={`/${locale}`} className="group -m-1.5 flex items-center gap-2 p-1.5 sm:gap-3">
@@ -196,6 +196,7 @@ const Header = ({ locale, copy, common }: HeaderProps) => {
                         <button
                             ref={openButtonRef}
                             type="button"
+                            disabled={!isHydrated || !portalEl}
                             className="focus-ring inline-flex items-center justify-center rounded-lg p-2 text-white/80 transition-all duration-200 hover:bg-white/10 hover:text-white"
                             onClick={openMobileMenu}
                             aria-label={resolvedCommon.openMainMenu}

@@ -1,0 +1,26 @@
+{
+  "task": "Follow-up to support-publication-dependency-plan-20261106.json; criteria and weights unchanged",
+  "recordedAt": "2026-11-06",
+  "sourceBeforeChanges": "fa4fdb5fdc70521c57685d40da530d0940e3c3ba",
+  "reason": "Strict official npm resolution exposed the existing unused ts-jest peer constraint against TypeScript 6. next/jest supplies the SWC transform; a repository-wide config/script search found ts-jest only in the manifest, excluding the lock.",
+  "orderedActions": [
+    "Adopt only the isolated official security graph after strict resolution: Next and eslint-config-next 16.4.5, Zod 4.6.7, compatible transitive Undici 7.30.2 and Sharp 0.35.5; retain TypeScript 6.0.3.",
+    "Remove unused ts-jest instead of overriding its peer constraint, forcing resolution or downgrading TypeScript. Preserve the original strict failure log and the historical legacy-peer-deps setting as evidence.",
+    "Install with the lock and explicit strict peer handling in an authentication-empty environment; ignore lifecycle scripts and do not build the application.",
+    "Run the new validation regressions against the new graph before changing the two Zod enum error options; retain causal failure evidence, then migrate those options and run bounded schema/env/API/form regressions using the real next/jest SWC transformer.",
+    "Remove the legacy peer workaround only once strict resolution and focused SWC tests prove it unnecessary. Run applicable lint/type checks, capture graph/audit/delta hashes, and retain any remaining dev-only advisory limitations.",
+    "Leave the exact-source local Next build, browser validation, delivery and public deployment to ROOT with their required approvals. Do not create a job or claim app task 053 complete."
+  ],
+  "isolatedStrictResult": {
+    "resolutionExit": 0,
+    "productionVulnerabilities": 0,
+    "fullAudit": { "low": 6, "moderate": 11, "high": 0, "critical": 0 },
+    "manifestSHA256": "8d229ac83bfdf967bc9e018fd15e6f0ca3d4d6e8534bbe83409f84b095da96e6",
+    "lockSHA256": "4366a5098bd5713dee6cc39bb6a16bec1f9525c80d1e2d2e0f1c3349e0e58303",
+    "resolutionLogSHA256": "96ac9cdcdcf0b44f3777a125563513c77371f535c603331a4cae91ec825d3002",
+    "originalStrictFailureLogSHA256": "34aca250ed011885b8bf0fa526e6c55069289308334c348e15655f551c7008fd"
+  },
+  "rollback": "Frozen support source 3522ee3fb8a572d7ca2fbfe1be80097575920188 and the current production deployment remain untouched. A release rollback must retain security fixes; do not republish the vulnerable graph.",
+  "notAuthorizedHere": ["app build", "full test suite", "Codemagic", "GitHub Actions", "Vercel deployment", "real email", "Cloud configuration changes"],
+  "criteriaCreditsAtPlanTime": 0
+}
